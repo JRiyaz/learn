@@ -1,0 +1,107 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pyre/
+.pdm-build/
+.pdm.toml
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.python-version
+
+# Packaging / build artifacts
+build/
+dist/
+out/
+out*/
+*.egg-info/
+.eggs/
+*.egg
+wheels/
+pip-wheel-metadata/
+
+# Test and coverage artifacts
+.coverage
+.coverage.*
+htmlcov/
+.pytype/
+.tox/
+.nox/
+.hypothesis/
+pytestdebug.log
+
+# Jupyter / notebooks
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# IDEs and editors
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Logs and temp files
+*.log
+*.tmp
+*.temp
+tmp/
+temp/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Database / local data
+*.sqlite3
+*.db
+*.dump
+*.bak
+
+# OS generated files
+.AppleDouble
+.LSOverride
+._*
+
+# Node / frontend artifacts (if present)
+node_modules/
+.npm/
+.pnpm-store/
+.yarn/
+.yarn-cache/
+
+# Documentation builds
+site/
+
+# Miscellaneous
+*.orig
+*.rej
+
+# Local shell history
+.history
+
+# JetBrains / PyCharm
+.idea/
+
+# Local test outputs
+coverage.xml
+junit.xml
+
+# Profiling
+*.prof
+
+# Cython debug symbols
+cython_debug/

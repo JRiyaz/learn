@@ -1,0 +1,549 @@
+{
+  /*
+    =========================================================
+                RUFF
+    =========================================================
+  */
+  "ruff.showSyntaxErrors": true,
+  "ruff.enable": true,
+  "ruff.lint.enable": true,
+  "ruff.codeAction.fixViolation": {
+    "enable": true,
+  },
+  "ruff.lineLength": 120,
+  "ruff.fixAll": true,
+  "ruff.lint.select": [
+    "E",
+    "W",
+    "F",
+    "I",
+    "C90",
+    "PLR",
+    "UP",
+    "B",
+    "SIM",
+    "C4",
+    "PIE",
+    "RET",
+    "RUF",
+  ],
+  "ruff.exclude": [
+    ".venv",
+    "__pycache__",
+    "build",
+    "dist",
+    // "tmp",
+  ],
+  "ruff.lint.ignore": [
+    "E731"
+  ],
+  /*
+    =========================================================
+                PYTHON / PYLANCE
+    =========================================================
+  */
+  "python.languageServer": "None",
+  "python.pyrefly.typeCheckingMode": "default",
+  "python.envFile": "${workspaceFolder}/.env",
+  "python.terminal.useEnvFile": true,
+  "python.analysis.importFormat": "relative",
+  "python.terminal.activateEnvInCurrentTerminal": false,
+  "python.terminal.activateEnvironment": false,
+  // The following Pylance configurations are commented out because Pyrefly is used.
+  // Note: Pyrefly's rules, diagnostic severity overrides, and project-level file inclusions/exclusions
+  // should be configured in `pyrefly.toml` or `pyproject.toml` (under `[tool.pyrefly]`).
+  // "python.analysis.typeCheckingMode": "standard",
+  // "python.analysis.enableParallelIndexing": true,
+  // "python.analysis.diagnosticMode": "openFilesOnly",
+  // "python.analysis.inlayHints.functionReturnTypes": false,
+  // "python.analysis.inlayHints.variableTypes": false,
+  // "python.analysis.inlayHints.callArgumentNames": "off",
+  // "python.analysis.autoFormatStrings": true,
+  // // Better inference engine
+  // "python.analysis.autoImportCompletions": true,
+  // // Disable for giant monorepo performance
+  // "python.analysis.indexing": false,
+  // // "python.analysis.typeCheckingMode": "strict",
+  // "python.analysis.autoSearchPaths": true,
+  // "python.analysis.completeFunctionParens": true,
+  // "python.analysis.autoIndent": true,
+  // "python.analysis.diagnosticsSource": "Pylance",
+  // "python.analysis.diagnosticSeverityOverrides": {
+  //   "useLibraryCodeForTypes": true,
+  //   "autoImportCompletions": true,
+  //   "reportMissingImports": "error",
+  //   "reportMissingModuleSource": "warning",
+  //   // "reportArgumentType": "information",
+  //   // "reportGeneralTypeIssues": "information",
+  //   "reportImportCycles": "error",
+  //   "reportInvalidCast": "error",
+  //   "reportInvalidTypeArguments": "warning",
+  //   "reportUnusedVariable": "error",
+  //   "reportUnusedImport": "error",
+  //   // "reportUnusedCallResult": "warning",
+  //   // "reportUnusedParameter": "warning",
+  //   "reportUnreachable": "error",
+  //   // "reportUnknownVariableType": "information",
+  //   "reportExplicitAny": "warning",
+  //   "reportDuplicateImport": "error",
+  //   "reportUnusedFunction": "warning",
+  //   "reportUnusedExcept": "error",
+  //   // "reportUnknownMemberType": "information",
+  //   // "reportUnknownArgumentType": "information",
+  //   "reportUndefinedVariable": "error",
+  //   "reportDeprecated": "error",
+  //   "reportImplicitOverride": "error",
+  //   "reportAbstractUsage": "error",
+  //   "reportConstantRedefinition": "warning",
+  //   "reportUnusedExpression": "error",
+  //   "reportUnnecessaryIsInstance": "error",
+  //   "reportUnnecessaryCast": "error",
+  //   "reportUnnecessaryContains": "error",
+  //   "reportUnnecessaryComparison": "error",
+  //   // "reportMissingParameterType": "warning",
+  //   "reportMissingTypeStubs": "none",
+  //   "reportUnknownParameterType": "none",
+  //   "reportSelfClsParameterName": "error",
+  // },
+  // "python.analysis.aiCodeActions": {
+  //   "generateDocstring": true,
+  //   "implementAbstractClasses": true,
+  //   "generateSymbol": true,
+  //   "convertFormatString": true
+  // },
+  // /*
+  //   | Setting    |    Behavior
+  //   -------------|--------------
+  //   | exclude    |   "Completely ignored. Pylance will not scan, index, or watch these files. They are essentially ""invisible"" to the engine unless you manually open one."
+  //   | ignore     |   "Still visible, but no type errors. The files are still indexed for ""Go to Definition"" and autocompletion, but Pylance will suppress all linting and type-checking ""red squiggles."""
+  //   | include    |   The allowed zone. Defines the only paths Pylance is permitted to scan. Anything outside of these paths (that isn't in extraPaths) is treated as if it doesn't exist.
+  //   | extraPaths |   "Reference-only visibility. Files are indexed as ""Library Code."" You can ""Go to Definition"" and get autocompletion, but Pylance won't perform active background type-checking on them."
+  // */
+  // "python.analysis.include": [
+  //   // ".venv",
+  // ],
+  // "python.analysis.extraPaths": [
+  //   // ".venv",
+  // ],
+  // "python.analysis.exclude": [
+  //   "**/.*",
+  //   "**/.venv",
+  //   "**/venv",
+  //   "**/__pycache__",
+  //   "**/.pytest_cache",
+  //   "**/.mypy_cache",
+  //   "**/.ruff_cache",
+  //   "**/.tox",
+  //   "**/.nox",
+  //   "**/build",
+  //   "**/dist",
+  //   "**/*.egg-info",
+  //   "**/.ipynb_checkpoints",
+  //   "**/node_modules",
+  //   "**/__pycache__",
+  //   ".venv",
+  //   "**/.pytest_cache",
+  //   "**/.git",
+  //   "**/.idea",
+  //   "**/.vscode",
+  //   "./docker",
+  //   "**./ZODB",
+  //   "./downloads",
+  //   "./etc",
+  //   "./ssg_blackduck"
+  // ],
+  /*
+    =========================================================
+                Jupyter
+    =========================================================
+  */
+  "jupyter.disableJupyterAutoStart": true,
+  "jupyter.excludeUserSitePackages": true,
+  "jupyter.themeMatplotlibPlots": true,
+  "jupyter.askForKernelRestart": false,
+  "jupyter.interactiveWindow.textEditor.executeSelection": true,
+  "jupyter.interactiveWindow.creationMode": "perFile",
+  "notebook.lineNumbers": "on",
+  "notebook.formatOnSave.enabled": true,
+  "notebook.languageServer": "Pylance", // Explicitly set Pylance as the language server for notebooks
+  "notebook.codeActionsOnSave": {
+    // Specifically organizes imports (isort equivalent)
+    "notebook.source.organizeImports.ruff": "explicit",
+    "notebook.source.fixAll.ruff": "explicit",
+    "notebook.source.organizeimports.ruff": "explicit",
+  },
+  /*
+    =========================================================
+                  FORMATTER
+    =========================================================
+  */
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "js/ts.updateImportsOnFileMove.enabled": "always",
+  "[javascript]": {
+    "editor.rulers": [
+      120
+    ],
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features",
+    "editor.rulers": [
+      120
+    ]
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.rulers": [
+      120
+    ]
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features",
+    "editor.rulers": [
+      120
+    ]
+  },
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports.ruff": "always",
+      "source.fixAll": "explicit",
+    },
+    "editor.rulers": [
+      120
+    ]
+  },
+  "[pyi]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
+    "editor.rulers": [
+      120
+    ]
+  },
+  "[jupyter]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "vscode.markdown-language-features",
+    "editor.formatOnSave": true,
+    "files.insertFinalNewline": true
+  },
+  /*
+    =========================================================
+                PYTEST
+    =========================================================
+  */
+  // "python.testing.pytestPath": "${workspaceFolder}/.venv.bin/pytest.exe",
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false,
+  // TEST DISCOVERY ROOT
+  "python.testing.cwd": "${workspaceFolder}",
+  // AUTO DISCOVERY
+  "python.testing.autoTestDiscoverOnSaveEnabled": true,
+  // TEST OUTPUT (clean like PyCharm test runner)
+  "python.testing.pytestArgs": [
+    // "tests",
+  ],
+  /*
+    =========================================================
+                  EDITOR Settings
+    =========================================================
+  */
+  "workbench.secondarySideBar.showLabels": false,
+  // Bonus: remove VS Code “confusing behavior
+  "editor.suggest.showSnippets": true,
+  "editor.suggest.showWords": true,
+  "editor.fontFamily": "JetBrains Mono",
+  "editor.fontWeight": "normal", // Font Weight
+  "editor.fontSize": 13,
+  "editor.inlineSuggest.fontFamily": "JetBrains Mono",
+  "editor.codeLensFontFamily": "JetBrains Mono",
+  "editor.inlayHints.fontFamily": "JetBrains Mono",
+  "explorer.autoReveal": false,
+  "debug.closeReadonlyTabsOnEnd": true,
+  "editor.formatOnSave": true,
+  "explorer.confirmDelete": false,
+  "editor.rulers": [
+    120
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.ruff": "always",
+    "source.organizeImports.ruff": "always",
+    "source.organizeImports": "always",
+    "source.removeUnusedImports": "explicit",
+    "source.fixAll.ts": "explicit",
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.suggestOnTriggerCharacters": true,
+  "editor.wordBasedSuggestions": "off", // currentDocument
+  "editor.suggestSelection": "recentlyUsedByPrefix",
+  "editor.acceptSuggestionOnEnter": "smart",
+  // Search heighlight
+  "editor.occurrencesHighlight": "singleFile",
+  "editor.selectionHighlight": true,
+  "editor.inlayHints.enabled": "on",
+  "editor.guides.bracketPairs": true,
+  // Refactoring support
+  "editor.rename.enablePreview": true,
+  // Enable PyCharm-Like Navigation
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  // "editor.gotoLocation.multipleDefinitions": "peek",
+  "editor.gotoLocation.multipleDeclarations": "goto",
+  "editor.gotoLocation.multipleReferences": "peek",
+  "editor.gotoLocation.multipleImplementations": "peek",
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "editor.autoClosingBrackets": "always",
+  "editor.autoClosingQuotes": "always",
+  "editor.autoSurround": "languageDefined",
+  "editor.autoIndent": "full",
+  "editor.tabCompletion": "on",
+  "editor.inlineSuggest.enabled": true,
+  "editor.snippetSuggestions": "top",
+  "editor.parameterHints.enabled": true,
+  // This ensures snippets appear immediately while typing def.
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": true
+  },
+  // Strong IDE like feel
+  // "editor.acceptSuggestionOnEnter": "smart",
+  // "editor.suggestSelection": "first",
+  // "editor.wordBasedSuggestions": false,
+  // Bonus: remove VS Code “confusing behavior
+  // "editor.suggest.showSnippets": true,
+  // "editor.suggest.showWords": false,
+  "editor.multiCursorModifier": "alt",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.matchBrackets": "always",
+  "editor.smoothScrolling": true,
+  "editor.minimap.enabled": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.semanticHighlighting.enabled": true,
+  // Change Python Strings color
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "string.quoted.docstring.multi.python",
+        "settings": {
+          "foreground": "#586472",
+          "fontStyle": "italic"
+        }
+      },
+    ]
+  },
+  // Exclude files from Find in Files
+  "search.exclude": {
+    "**/.git": true,
+    "**/__pycache__": true,
+    "**/.pytest_cache": true,
+    "**/.mypy_cache": true,
+    "**/.ruff_cache": true,
+    "**/.ipynb_checkpoints": true,
+    "**/node_modules": true,
+    "**/.tox": true,
+    "**/.nox": true,
+    "**/.coverage": true,
+    "**/.hypothesis": true,
+    "**/build": true,
+    "**/dist": true,
+    "**/*.egg-info": true,
+    "**/.eggs": true,
+    "**/.venv": true,
+    "**/venv": true,
+    "**/env": true,
+    "**/.cache": true,
+    "**/*.pyc": true,
+    "**/*.pyo": true,
+    "**/*.pyd": true,
+    "**/ZODB/**": true,
+  },
+  /*
+    =========================================================
+                SEARCH
+    =========================================================
+  */
+  "search.quickOpen.includeHistory": true,
+  "search.quickOpen.includeSymbols": false,
+  "search.useIgnoreFiles": false,
+  "search.followSymlinks": true,
+  "search.smartCase": true,
+  "search.quickAccess.preserveInput": true,
+  /*
+    =========================================================
+                FILES
+    =========================================================
+  */
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  // Hide files/folders
+  "files.exclude": {
+    "**/.git": true,
+    "**/__pycache__": true,
+    "**/.pytest_cache": true,
+    "**/.mypy_cache": true,
+    "**/.ruff_cache": true,
+    "**/.ipynb_checkpoints": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/.tox": true,
+    "**/.nox": true,
+    "**/.coverage": true,
+    "**/.hypothesis": true,
+    "**/*.egg-info": true,
+    "**/.eggs": true,
+    // "**/.venv": true,
+    // "**/venv": true,
+    // "**/env": true,
+    "**/.svn": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/.idea": true,
+    "**/*.pyc": true,
+    "**/*.pyo": true,
+    "**/*.pyd": true,
+    "**/.cache": true,
+    "**/.sass-cache": true
+  },
+  // Stop monitoring files for changes
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/ZODB/**": true,
+    "**/docker/**": true,
+    "**/downloads/**": true,
+    "**/.venv/**": true,
+    "**/venv/**": true,
+    "**/__pycache__/**": true,
+    "**/.pytest_cache/**": true,
+    "**/.mypy_cache/**": true,
+    "**/.ruff_cache/**": true,
+    "**/build/**": true,
+    "**/dist/**": true,
+    "**/.tox/**": true,
+    "**/.nox/**": true,
+    "**/.ipynb_checkpoints/**": true
+  },
+  /*
+    =========================================================
+                  DEBUG CONSOLE
+    =========================================================
+  */
+  "debug.toolBarLocation": "docked",
+  "debugpy.debugJustMyCode": false,
+  "debug.inlineValues": "on",
+  "workbench.colorCustomizations": {
+    "debugConsole.errorForeground": "#bbbbbb",
+    "debugConsole.warningForeground": "#bbbbbb",
+    "debugConsole.infoForeground": "#9cdcfe",
+    "debugConsole.sourceForeground": "#888888",
+    "debugConsoleInputIcon.foreground": "#3399ff"
+  },
+  "debug.console.fontFamily": "JetBrains Mono",
+  /*
+    =========================================================
+                  TERMINAL
+    =========================================================
+  */
+  "terminal.integrated.fontFamily": "JetBrains Mono",
+  "terminal.integrated.fontWeightBold": "normal",
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.hideOnStartup": "always",
+  /*
+    =========================================================
+                  GIT
+    =========================================================
+  */
+  "git.enabled": true,
+  "git.autofetch": false,
+  "git.confirmSync": false,
+  "git.openRepositoryInParentFolders": "prompt",
+  "git.enableSmartCommit": true,
+  "git.smartCommitChanges": "tracked",
+  // Show Git status decorations in explorer
+  "git.decorations.enabled": true,
+  // Automatically refresh Git status
+  "git.autorefresh": true,
+  // Detect submodules
+  "git.detectSubmodules": true,
+  // Follow tags when fetching
+  "git.followTagsWhenSync": true,
+  // Show untracked files
+  "git.untrackedChanges": "separate",
+  // Enable commit signing awareness
+  "git.enableCommitSigning": true,
+  // Warn when force pushing
+  "git.useForcePushWithLease": true,
+  "git.ignoreLimitWarning": true,
+  "scm.diffDecorations": "all",
+  "diffEditor.ignoreTrimWhitespace": true,
+  "diffEditor.renderSideBySide": true,
+  "git.mergeEditor": true,
+  // Enable the faded inline blame text at the end of the current line
+  "git.blame.editorDecoration.enabled": true,
+  // Enable blame information in the bottom Status Bar
+  "git.blame.statusBarItem.enabled": true,
+  // You can adjust placeholders like author name, date, and commit subject.
+  "git.blame.editorDecoration.template": "${authorName} (${authorDateAgo}) -> ${subject}",
+  // "git.blame.editorDecoration.template": "${subject} -> ${authorName} (${authorDateAgo})",
+  "git.blame.editorDecoration.disableHover": true,
+  "git.blame.statusBarItem.template": "${authorName} (${authorDateAgo})",
+  "git.defaultBranchName": "main",
+  "git.detectWorktrees": true,
+  "git.terminalAuthentication": true,
+  "git.terminalGitEditor": true,
+  /*
+    =========================================================
+                  DICTIONARY
+    =========================================================
+  */
+  "cSpell.userWords": [
+    "flowbite",
+    "Harddisk",
+    "jriyaz",
+    "jsonify",
+    "kubectl",
+    "Kubernetes",
+    "pydantic",
+    "riyaz",
+    "simplejson",
+    "traefik",
+  ],
+  /*
+    =========================================================
+                  EXTENSIONS
+    =========================================================
+  */
+  "extensions.ignoreRecommendations": true,
+  "chat.extensionTools.enabled": false,
+  "recommendations": [
+    "ms-python.python",
+    "charliermarsh.ruff",
+    "ms-toolsai.jupyter"
+  ],
+  /*
+    =========================================================
+                  TELEMETRY
+    =========================================================
+  */
+  "telemetry.feedback.enabled": false,
+  "telemetry.editStats.enabled": false,
+  "telemetry.editStats.showStatusBar": false,
+  "python.analysis.typeCheckingMode": "off",
+  /*
+    =========================================================
+                WINDOWS SETTINGS
+    =========================================================
+  */
+  // "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+  // "window.restoreWindows": "none",
+  // "security.workspace.trust.untrustedFiles": "open",
+  // "terminal.integrated.defaultProfile.windows": "Git Bash",
+  // "terminal.external.windowsExec": "C:\\Program Files\\Git\\bin\\bash.exe --login",
+}

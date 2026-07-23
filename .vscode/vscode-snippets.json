@@ -1,0 +1,191 @@
+{
+    // =========================================================
+    // FUNCTIONS (PyCharm-style)
+    // =========================================================
+    "Function": {
+        "prefix": "def",
+        "body": [
+            "def ${1:name}(${2:params}) -> ${3:None}:",
+            "    ${4:pass}"
+        ],
+        "description": "PyCharm-style function"
+    },
+    // =========================================================
+    // DOCUMENTED FUNCTIONS
+    // =========================================================
+    "Function (typed + docstring)": {
+        "prefix": "defx",
+        "body": [
+            "def ${1:name}(${2:params}) -> ${3:None}:",
+            "    \"\"\"",
+            "    ${4:Summary}",
+            "",
+            "    Args:",
+            "        ${2:params}",
+            "",
+            "    Returns:",
+            "        ${3:None}",
+            "    \"\"\"",
+            "    ${5:pass}"
+        ],
+        "description": "Function with docstring (PyCharm-style but better)"
+    },
+    // =========================================================
+    // API STYLE FUNCTIONS
+    // =========================================================
+    "API function": {
+        "prefix": "apifn",
+        "body": [
+            "def ${1:handler}(${2:request}) -> dict:",
+            "    \"\"\"API handler\"\"\"",
+            "    try:",
+            "        ${3:return {}}",
+            "    except Exception as e:",
+            "        return {\"error\": str(e)}"
+        ]
+    },
+    // =========================================================
+    // CLASS
+    // =========================================================
+    "Class (typed)": {
+        "prefix": "classx",
+        "body": [
+            "class ${1:ClassName}:",
+            "    \"\"\"${2:Class description}\"\"\"",
+            "",
+            "    def __init__(self, ${3:args}) -> None:",
+            "        ${4:pass}"
+        ]
+    },
+    // =========================================================
+    // DATACLASS
+    // =========================================================
+    "Dataclass": {
+        "prefix": "dataclass",
+        "body": [
+            "from dataclasses import dataclass",
+            "",
+            "@dataclass",
+            "class ${1:Name}:",
+            "    ${2:field}: ${3:type}"
+        ]
+    },
+    // =========================================================
+    // MAIN ENTRY POINT
+    // =========================================================
+    "Main": {
+        "prefix": "main",
+        "body": [
+            "if __name__ == \"__main__\":",
+            "    ${1:main()}"
+        ]
+    },
+    // =========================================================
+    // FOR LOOP
+    // =========================================================
+    "For loop": {
+        "prefix": "forx",
+        "body": [
+            "for ${1:item} in ${2:items}:",
+            "    ${3:pass}"
+        ]
+    },
+    // =========================================================
+    // TRY EXCEPT
+    // =========================================================
+    "Try Except": {
+        "prefix": "tryx",
+        "body": [
+            "try:",
+            "    ${1:code}",
+            "except ${2:Exception} as e:",
+            "    logger.exception(e)"
+        ]
+    },
+    // =========================================================
+    // QUICK PRINT
+    // =========================================================
+    "Debug print": {
+        "prefix": "log",
+        "body": [
+            "print(f\"${1:var} = {${1:var}}\")"
+        ]
+    },
+    "Print statement": {
+        "prefix": ".print",
+        "body": [
+            "print(\"${1}\")$0"
+        ],
+        "description": "Prints a message to the console"
+    },
+    // =========================================================
+    // QUICK LOG SETUP
+    // =========================================================
+    "Logger setup": {
+        "prefix": "logsetup",
+        "body": [
+            "import logging",
+            "",
+            "logging.basicConfig(",
+            "    level=logging.INFO,",
+            "    format='%(asctime)s - %(levelname)s - %(message)s'",
+            ")",
+            "",
+            "logger = logging.getLogger(__name__)"
+        ]
+    },
+    // =========================================================
+    // CONTEXT MANAGER
+    // =========================================================
+    "Context manager": {
+        "prefix": "withx",
+        "body": [
+            "with ${1:open(file, 'r')} as f:",
+            "    ${2:data = f.read()}"
+        ]
+    },
+    // =========================================================
+    // if / elif / else
+    // =========================================================
+    "If / Elif / Else": {
+        "prefix": "ifx",
+        "body": [
+            "if ${1:condition}:",
+            "    ${2:pass}",
+            "elif ${3:condition}:",
+            "    ${4:pass}",
+            "else:",
+            "    ${5:pass}"
+        ],
+        "description": "if / elif / else block"
+    },
+    // =========================================================
+    // if / elif
+    // =========================================================
+    "If Else": {
+        "prefix": "ife",
+        "body": [
+            "if ${1:condition}:",
+            "    ${2:pass}",
+            "else:",
+            "    ${3:pass}"
+        ],
+        "description": "if / else block"
+    },
+    // =========================================================
+    // MATCH
+    // =========================================================
+    "Match Statement": {
+        "prefix": "matchx",
+        "body": [
+            "match ${1:value}:",
+            "    case ${2:pattern1}:",
+            "        ${3:pass}",
+            "    case ${4:pattern2}:",
+            "        ${5:pass}",
+            "    case _:",
+            "        ${6:pass}"
+        ],
+        "description": "Python match-case block"
+    }
+}

@@ -1,0 +1,367 @@
+# File: roadmap.md
+
+# Backend Engineering Roadmap
+## Python Backend Engineer (Intermediate → Senior)
+
+---
+
+# Phase 1 - Advanced Python
+
+## Module 1 - Python Object Model & Memory
+
+- Memory Management & Object Model
+- Reference Counting
+- Garbage Collection
+- Shallow Copy vs Deep Copy
+- Mutable Default Arguments
+- Small Integer Caching
+- Interning
+- LEGB Scope
+- Closures
+- Decorators
+- First-Class Functions
+- Higher-Order Functions
+- Lambda Functions
+- Iterators
+- Iterator Protocol
+- Generators
+- Generator Expressions
+- Context Managers
+- Magic Methods (Dunder Methods)
+- Dataclasses
+- NamedTuple
+- Enums
+
+---
+
+## Module 2 - Advanced OOP
+
+- Inheritance
+- Multiple Inheritance
+- Method Resolution Order (MRO)
+- Composition vs Inheritance
+- Abstract Base Classes (ABC)
+- Mixins
+- Class Methods
+- Static Methods
+- Properties
+- Descriptors
+- __slots__
+- __new__
+- Metaclasses (Interview Level)
+
+---
+
+## Module 3 - Functional Python
+
+- map()
+- filter()
+- reduce()
+- zip()
+- enumerate()
+- any()
+- all()
+- functools
+- itertools
+- collections module
+
+---
+
+## Module 4 - Concurrency
+
+- Processes vs Threads
+- Threading
+- Multiprocessing
+- GIL
+- Async Programming
+- AsyncIO
+- async
+- await
+- Event Loop
+- Futures
+- Coroutines
+- asyncio.gather()
+- asyncio.create_task()
+
+---
+
+## Module 5 - Production Python
+
+- Logging
+- Exception Handling
+- Custom Exceptions
+- Type Hinting
+- Typing Module
+- Pydantic
+- Configuration Management
+- Environment Variables
+- Virtual Environments
+- Packaging
+- Project Structure
+- Dependency Injection
+- Profiling
+- Memory Optimization
+
+---
+
+## Module 6 - Testing
+
+- unittest
+- pytest
+- Fixtures
+- Mocking
+- Monkeypatch
+- Coverage
+- Integration Testing
+- API Testing
+
+---
+
+# Phase 2 - SQL
+
+## Database Fundamentals
+
+- ACID
+- Transactions
+- Normalization
+- Constraints
+
+## SQL Queries
+
+- Joins
+- Group By
+- Having
+- CTE
+- Window Functions
+- Subqueries
+- Recursive Queries
+
+## Performance
+
+- Indexes
+- Query Optimization
+- Execution Plans
+- Locking
+- Deadlocks
+- Isolation Levels
+- Partitioning
+
+---
+
+# Phase 3 - Redis
+
+- Redis Introduction
+- Installation
+- Redis CLI
+- Data Types
+- Strings
+- Lists
+- Sets
+- Hashes
+- Sorted Sets
+- Streams
+- Pub/Sub
+- TTL
+- Expiry
+- Persistence
+- Caching Strategies
+- Session Management
+- Rate Limiting
+- Distributed Locking
+- Redis in FastAPI
+- Production Best Practices
+
+---
+
+# Phase 4 - Docker
+
+- Docker Basics
+- Images
+- Containers
+- Layers
+- Volumes
+- Networks
+- Docker Compose
+- Multi-stage Builds
+- Environment Variables
+- Health Checks
+- Debugging Containers
+- Docker Best Practices
+
+---
+
+# Phase 5 - Kafka
+
+- Kafka Architecture
+- Brokers
+- Topics
+- Partitions
+- Producers
+- Consumers
+- Consumer Groups
+- Offsets
+- Delivery Guarantees
+- Rebalancing
+- Serialization
+- Schema Registry (Overview)
+- Dead Letter Queue
+- Retry Strategies
+- Event-Driven Architecture
+- Kafka with FastAPI
+- Kafka Best Practices
+
+---
+
+# Phase 6 - FastAPI Advanced
+
+- Dependency Injection
+- Middleware
+- Background Tasks
+- Lifespan Events
+- Authentication
+- Authorization
+- JWT
+- OAuth2
+- File Uploads
+- WebSockets
+- Pagination
+- Rate Limiting
+- Caching
+- Testing
+- Project Structure
+
+---
+
+# Phase 7 - AWS
+
+- Cloud Fundamentals
+- IAM
+- EC2
+- VPC Basics
+- Security Groups
+- S3
+- RDS
+- CloudWatch
+- ECS
+- ECR
+- Lambda
+- API Gateway
+- Secrets Manager
+- Parameter Store
+- Load Balancer
+- Auto Scaling
+
+---
+
+# Phase 8 - CI/CD
+
+- Git Advanced
+- GitHub Actions
+- GitLab CI
+- Docker Deployment
+- Automated Testing
+- Versioning
+- Release Management
+
+---
+
+# Phase 9 - System Design
+
+## Fundamentals
+
+- Scalability
+- Availability
+- Reliability
+- CAP Theorem
+- Load Balancing
+- Caching
+- Database Scaling
+
+## Design Problems
+
+- URL Shortener
+- Chat Application
+- Notification System
+- Rate Limiter
+- Payment System
+- Order Management
+- File Storage
+- API Gateway
+- Logging Service
+
+---
+
+# Phase 10 - Capstone Projects
+
+## Project 1
+
+Production Ready REST API
+
+Technologies:
+
+- FastAPI
+- PostgreSQL
+- Docker
+- Redis
+- JWT
+
+---
+
+## Project 2
+
+E-commerce Backend
+
+Technologies:
+
+- FastAPI
+- PostgreSQL
+- Redis
+- Kafka
+- Docker
+- Pytest
+
+---
+
+## Project 3
+
+Microservices Backend
+
+Technologies:
+
+- FastAPI
+- Kafka
+- Redis
+- Docker Compose
+- PostgreSQL
+
+---
+
+## Project 4
+
+Production Deployment
+
+Technologies:
+
+- AWS
+- Docker
+- GitHub Actions
+- Nginx
+- SSL
+- Monitoring
+
+---
+
+# Final Preparation
+
+- Python Interview Questions
+- SQL Interview Questions
+- Redis Interview Questions
+- Kafka Interview Questions
+- FastAPI Interview Questions
+- Docker Interview Questions
+- AWS Interview Questions
+- System Design Interviews
+- Mock Interviews
+- Resume Review
+- GitHub Review
+- LinkedIn Review

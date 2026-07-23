@@ -1,0 +1,95 @@
+{
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+    "security.workspace.trust.untrustedFiles": "open",
+    "python.analysis.completeFunctionParens": true,
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.autoFormatStrings": true,
+    "python.analysis.importFormat": "relative",
+    "python.analysis.autoIndent": true,
+    // Jupyter settings
+    "jupyter.askForKernelRestart": false,
+    "jupyter.disableJupyterAutoStart": true,
+    "jupyter.excludeUserSitePackages": true,
+    "jupyter.themeMatplotlibPlots": true,
+    "jupyter.interactiveWindow.textEditor.executeSelection": true,
+    "jupyter.interactiveWindow.creationMode": "perFile",
+    "notebook.lineNumbers": "on",
+    "notebook.formatOnSave.enabled": true,
+    "notebook.defaultFormatter": "charliermarsh.ruff",
+    // Explorer settings
+    "explorer.autoReveal": false,
+    "editor.formatOnSave": true,
+    "explorer.confirmDelete": false,
+    // Terminal settings
+    "terminal.integrated.cursorStyleInactive": "line",
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.fontFamily": "JetBrains Mono",
+    "terminal.integrated.fontWeightBold": "normal",
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.hideOnStartup": "always",
+    // Debug Console settings
+    "debug.closeReadonlyTabsOnEnd": true,
+    "debug.toolBarLocation": "docked",
+    "debugpy.debugJustMyCode": false,
+    "debug.inlineValues": "on",
+    "workbench.colorCustomizations": {
+        "debugConsole.errorForeground": "#bbbbbb",
+        "debugConsole.warningForeground": "#bbbbbb",
+        "debugConsole.infoForeground": "#9cdcfe",
+        "debugConsole.sourceForeground": "#888888",
+        "debugConsoleInputIcon.foreground": "#3399ff"
+    },
+    "debug.console.fontFamily": "JetBrains Mono",
+    // Editor settings
+    "window.restoreWindows": "none",
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "string.quoted.docstring.multi.python",
+                "settings": {
+                    "foreground": "#586472",
+                    "fontStyle": "italic"
+                }
+            },
+        ],
+    },
+    // Git settings
+    "git.mergeEditor": true,
+    // Enable the faded inline blame text at the end of the current line
+    "git.blame.editorDecoration.enabled": true,
+    // Enable blame information in the bottom Status Bar
+    "git.blame.statusBarItem.enabled": true,
+    // You can adjust placeholders like author name, date, and commit subject.
+    "git.blame.editorDecoration.template": "${authorName} (${authorDateAgo}) -> ${subject}",
+    // "git.blame.editorDecoration.template": "${subject} -> ${authorName} (${authorDateAgo})",
+    "git.blame.editorDecoration.disableHover": true,
+    "git.blame.statusBarItem.template": "${authorName} (${authorDateAgo})",
+    "git.defaultBranchName": "main",
+    "git.detectWorktrees": true,
+    "git.terminalAuthentication": true,
+    "git.terminalGitEditor": true,
+    // Telemetry settings
+    "telemetry.feedback.enabled": false,
+    "telemetry.editStats.enabled": false,
+    "telemetry.editStats.showStatusBar": false,
+    "telemetry.telemetryLevel": "off",
+    // GitHub Copilot
+    "github.copilot.chat.organizationCustomAgents.enabled": false,
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    },
+    "python.analysis.aiCodeActions": {
+        "generateDocstring": true,
+        "implementAbstractClasses": true,
+        "generateSymbol": true,
+        "convertFormatString": true
+    },
+    "python.analysis.enableParallelIndexing": true,
+    "python.analysis.typeCheckingMode": "standard",
+    "ruff.lineLength": 120,
+}
