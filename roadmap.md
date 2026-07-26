@@ -93,7 +93,78 @@
 - Coroutines
 - asyncio.gather()
 - asyncio.create_task()
-
+Lesson 56 — Futures & Low-Level Asyncio
+    asyncio.Future
+    Relationship between Futures and Tasks
+    loop.create_future()
+    Callback-based APIs
+    Bridging old and new async code
+Lesson 57 — Async Generators & Async Iterators
+    async for
+    async with
+    __aiter__
+    __anext__
+    Streaming large datasets
+    Server-Sent Events (SSE)
+Lesson 58 — Executors & Blocking Code
+    run_in_executor()
+    asyncio.to_thread()
+    ThreadPoolExecutor
+    ProcessPoolExecutor
+    Integrating synchronous libraries
+Lesson 59 — Async Context Managers & Resource Lifecycle
+    __aenter__
+    __aexit__
+    Connection pools
+    HTTP clients
+    Database sessions
+    Cleanup patterns
+Lesson 60 — Structured Concurrency
+    asyncio.TaskGroup
+    Exception groups
+    Python 3.11 improvements
+    Why TaskGroup is preferred over raw create_task()
+Lesson 61 — Debugging & Performance
+    Debug mode
+    Detecting blocking calls
+    Slow callbacks
+    Task inspection
+    Profiling async applications
+Lesson 62 — CPython Async Internals
+    Coroutine objects
+    Frame objects
+    Awaitable protocol
+    Bytecode (GET_AWAITABLE, SEND, etc.)
+    Suspension and resumption
+Lesson 63 — Event Loop Internals
+    SelectorEventLoop
+    ProactorEventLoop
+    epoll
+    kqueue
+    IOCP
+    Readiness notifications
+    How Uvicorn drives the loop
+Lesson 64 — Production Async Patterns
+    Fan-out/fan-in
+    Backpressure
+    Worker pools
+    Pipelines
+    Rate limiting
+    Circuit breakers
+    Retries
+    Graceful shutdown
+Lesson 65 — Concurrency Capstone (A complete production-style backend project combining):
+    FastAPI
+    PostgreSQL
+    Redis
+    Background workers
+    Async queues
+    Timeouts
+    Cancellation
+    TaskGroups
+    Semaphores
+    Structured logging
+    Production architecture review
 ---
 
 ## Module 6 - Production Python
