@@ -1,4 +1,4 @@
-# File: python/python-advanced-19-class-methods-static-methods-properties.md
+# File: python/19-class-methods-static-methods-properties.md
 
 # Python Advanced - Lesson 19
 # Instance Methods, Class Methods, Static Methods & Properties
@@ -28,7 +28,6 @@ By the end of this lesson, you will understand:
 - Read-only properties
 - When to use each method type
 - Production examples
-- Interview questions
 
 ---
 
@@ -955,9 +954,9 @@ Properties are widely used for:
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > What is the difference between an instance method, class method and static method?
 
@@ -967,7 +966,7 @@ An instance method operates on an object and receives `self`. A class method ope
 
 ---
 
-### Interviewer
+### Question
 
 > When should you use a class method?
 
@@ -977,7 +976,7 @@ Class methods are commonly used for alternative constructors, operations involvi
 
 ---
 
-### Interviewer
+### Question
 
 > Why use `@property` instead of a getter method?
 
@@ -987,7 +986,7 @@ Class methods are commonly used for alternative constructors, operations involvi
 
 ---
 
-### Interviewer
+### Question
 
 > Why should class methods use `cls` instead of the class name?
 
@@ -1065,7 +1064,7 @@ True
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -1174,8 +1173,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-advanced-20-descriptors.md`
+[20-Descriptors](20-descriptors.md)
 
 Topics:
 
@@ -1188,7 +1186,6 @@ Topics:
 - Data vs Non-Data Descriptors
 - Attribute Lookup Order
 - Production Examples (ORMs, Validation, Pydantic)
-- Interview Questions
 
 > **Why next?**
 >

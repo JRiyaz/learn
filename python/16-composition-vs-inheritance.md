@@ -1,4 +1,4 @@
-# File: python/python-advanced-16-composition-vs-inheritance.md
+# File: python/16-composition-vs-inheritance.md
 
 # Python Advanced - Lesson 16
 # Composition vs Inheritance - Designing Flexible Object-Oriented Systems
@@ -27,7 +27,6 @@ By the end of this lesson, you will understand:
 - Real-world backend examples
 - Common design mistakes
 - Production best practices
-- Interview questions
 
 ---
 
@@ -738,9 +737,9 @@ Composition is one of the key reasons modern backend systems remain maintainable
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > What is composition?
 
@@ -750,7 +749,7 @@ Composition is an object-oriented design technique where one object contains ano
 
 ---
 
-### Interviewer
+### Question
 
 > What is the difference between composition and inheritance?
 
@@ -760,7 +759,7 @@ Inheritance models an "is-a" relationship and allows one class to extend another
 
 ---
 
-### Interviewer
+### Question
 
 > Why do modern applications prefer composition?
 
@@ -831,7 +830,7 @@ Observe how each object depends on another through composition instead of inheri
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -943,8 +942,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-advanced-17-abstract-base-classes.md`
+[17-Abstract-Base-Classes](17-abstract-base-classes.md)
 
 Topics:
 
@@ -955,4 +953,3 @@ Topics:
 - Enforcing Contracts
 - Polymorphism with ABCs
 - Production Examples
-- Interview Questions

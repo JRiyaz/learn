@@ -1,4 +1,4 @@
-# File: python/python-functional-04-functools-deep-dive.md
+# File: python/26-functools-deep-dive.md
 
 # Python Functional Programming - Part 4
 # Deep Dive into the `functools` Module
@@ -53,7 +53,6 @@ By the end of this lesson, you will understand:
 - `functools.total_ordering`
 - Production use cases
 - Performance considerations
-- Interview questions
 
 ---
 
@@ -1080,9 +1079,9 @@ The most commonly used `functools` features in backend engineering are:
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > Why should you always use `functools.wraps()`?
 
@@ -1092,7 +1091,7 @@ It preserves the original function's metadata, including its name, documentation
 
 ---
 
-### Interviewer
+### Question
 
 > What problem does `lru_cache()` solve?
 
@@ -1102,7 +1101,7 @@ It avoids repeated computation by caching function results for previously seen a
 
 ---
 
-### Interviewer
+### Question
 
 > What is memoisation?
 
@@ -1112,7 +1111,7 @@ Memoisation is the technique of storing the results of expensive function calls 
 
 ---
 
-### Interviewer
+### Question
 
 > When should you use `cached_property`?
 
@@ -1122,7 +1121,7 @@ When an object's property is expensive to compute but unlikely to change during 
 
 ---
 
-### Interviewer
+### Question
 
 > What is `singledispatch()`?
 
@@ -1236,7 +1235,7 @@ Notice that **"Loading configuration..."** is printed only once.
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -1344,8 +1343,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-functional-27-itertools-part-1.md`
+[27-Itertools-part-1](27-itertools-part-1.md)
 
 Topics:
 
@@ -1357,7 +1355,6 @@ Topics:
 - Memory Optimisation
 - Production Examples
 - Performance Benchmarks
-- Interview Questions
 
 > **Why next?**
 >

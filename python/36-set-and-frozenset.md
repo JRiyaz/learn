@@ -1,5 +1,4 @@
-# File:
-python/python-36-set-and-frozenset.md
+# File: python/36-set-and-frozenset.md
 
 # Python Built-in Types
 # Set (`set`) & FrozenSet (`frozenset`) Deep Dive
@@ -47,7 +46,6 @@ By the end of this lesson, you will understand:
 - Performance characteristics
 - Production use cases
 - Best practices
-- Interview questions
 
 ---
 
@@ -1073,9 +1071,9 @@ Backend engineers frequently use sets to reduce algorithms from **O(n²)** to **
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > Why is membership testing faster in a set than in a list?
 
@@ -1085,7 +1083,7 @@ Sets use hash tables, allowing average O(1) lookups. Lists perform sequential se
 
 ---
 
-### Interviewer
+### Question
 
 > Why can't lists be stored in a set?
 
@@ -1095,7 +1093,7 @@ Lists are mutable and therefore unhashable. Set elements must have stable hash v
 
 ---
 
-### Interviewer
+### Question
 
 > When would you choose a `frozenset`?
 
@@ -1105,7 +1103,7 @@ When you need an immutable set that can be used as a dictionary key, cached safe
 
 ---
 
-### Interviewer
+### Question
 
 > Why doesn't `set.pop()` remove the "first" element?
 
@@ -1115,7 +1113,7 @@ Sets are unordered collections. `pop()` removes an arbitrary element rather than
 
 ---
 
-### Interviewer
+### Question
 
 > Give a production use case for sets.
 
@@ -1185,7 +1183,7 @@ frozenset({'read', 'write'})
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -1300,8 +1298,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-37-numeric-types-deep-dive.md`
+[37-Numeric-Types-Deep-Dive](37-numeric-types-deep-dive.md)
 
 Topics:
 
@@ -1317,6 +1314,5 @@ Topics:
 - Arithmetic pitfalls
 - Production best practices
 - Performance considerations
-- Interview questions
 
 > **Note:** This lesson goes far beyond basic arithmetic. We'll explore how Python represents numbers internally, why floating-point errors occur, when to use `Decimal` instead of `float`, and how senior backend engineers make the right choice for financial and scientific applications.

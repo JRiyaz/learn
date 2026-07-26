@@ -1,4 +1,4 @@
-# File: python/python-advanced-06-iterators-and-iterables-part-1.md
+# File: python/06-iterators-and-iterables-part-1.md
 
 # Python Advanced - Lesson 06 (Part 1)
 # Iterables, Iterators & The Iterator Protocol
@@ -509,9 +509,9 @@ The same concept is used in:
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > What is the difference between an iterable and an iterator?
 
@@ -521,7 +521,7 @@ An iterable is an object capable of producing an iterator. An iterator is an obj
 
 ---
 
-### Interviewer
+### Question
 
 > What happens when a `for` loop starts?
 
@@ -531,7 +531,7 @@ Python calls `iter()` on the iterable to create an iterator. It repeatedly calls
 
 ---
 
-### Interviewer
+### Question
 
 > Why can an iterator usually be used only once?
 
@@ -592,7 +592,7 @@ Observe how strings also behave as iterables.
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -693,8 +693,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-advanced-06-iterators-and-iterables-part-2.md`
+[06-Iterators-and-Iterables-part-2](06-iterators-and-iterables-part-2.md)
 
 Topics:
 
@@ -703,4 +702,3 @@ Topics:
 - Infinite Iterators
 - Iterators vs Generators
 - Real-world Backend Examples
-- Interview Questions

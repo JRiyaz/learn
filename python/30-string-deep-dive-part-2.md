@@ -1,4 +1,4 @@
-# File: python/python-30-string-deep-dive-part-2.md
+# File: python/30-string-deep-dive-part-2.md
 
 # Python Built-in Types
 # String (`str`) Deep Dive - Part 2: Methods, Formatting & Encoding
@@ -384,7 +384,7 @@ Python calculates the required memory once and builds the final string efficient
 
 ---
 
-# Interview Favourite
+# Favourite Questions
 
 Why is
 
@@ -1156,9 +1156,9 @@ These account for the majority of string manipulation in production applications
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > Why is `"".join()` faster than repeated `+` concatenation?
 
@@ -1168,7 +1168,7 @@ Because `join()` allocates memory once for the final string, whereas repeated `+
 
 ---
 
-### Interviewer
+### Question
 
 > What is the difference between `find()` and `index()`?
 
@@ -1178,7 +1178,7 @@ Because `join()` allocates memory once for the final string, whereas repeated `+
 
 ---
 
-### Interviewer
+### Question
 
 > Why are f-strings preferred?
 
@@ -1188,7 +1188,7 @@ They are more readable, generally faster and support inline expressions.
 
 ---
 
-### Interviewer
+### Question
 
 > What is the difference between encoding and decoding?
 
@@ -1271,7 +1271,7 @@ Hello
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -1391,8 +1391,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-31-string-deep-dive-part-3.md`
+[31-String-Deep-Dive-part-3](31-string-deep-dive-part-3.md)
 
 Topics:
 

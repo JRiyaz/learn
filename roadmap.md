@@ -48,7 +48,7 @@
 - Descriptors
 - __slots__
 - __new__
-- Metaclasses (Interview Level)
+- Metaclasses (Question Level)
 
 ---
 
@@ -364,15 +364,15 @@ Technologies:
 
 # Final Preparation
 
-- Python Interview Questions
-- SQL Interview Questions
-- Redis Interview Questions
-- Kafka Interview Questions
-- FastAPI Interview Questions
-- Docker Interview Questions
-- AWS Interview Questions
-- System Design Interviews
-- Mock Interviews
+- Python Questions
+- SQL Questions
+- Redis Questions
+- Kafka Questions
+- FastAPI Questions
+- Docker Questions
+- AWS Questions
+- System Design Questions
+- Mock Questions
 - Resume Review
 - GitHub Review
 - LinkedIn Review

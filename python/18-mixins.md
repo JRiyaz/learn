@@ -1,4 +1,4 @@
-# File: python/python-advanced-18-mixins.md
+# File: python/18-mixins.md
 
 # Python Advanced - Lesson 18
 # Mixins - Reusing Small, Focused Behaviours
@@ -28,7 +28,6 @@ By the end of this lesson, you will understand:
 - Real-world framework examples
 - Common mistakes
 - Production best practices
-- Interview questions
 
 ---
 
@@ -691,9 +690,9 @@ This is why Django, SQLAlchemy and many internal enterprise frameworks rely heav
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > What is a mixin?
 
@@ -703,7 +702,7 @@ A mixin is a small class designed to provide a single reusable behaviour that ca
 
 ---
 
-### Interviewer
+### Question
 
 > How is a mixin different from a normal parent class?
 
@@ -713,7 +712,7 @@ A normal parent class represents a domain relationship, such as `Car` inheriting
 
 ---
 
-### Interviewer
+### Question
 
 > Why do mixins typically use `super()`?
 
@@ -723,7 +722,7 @@ Mixins participate in cooperative multiple inheritance. Calling `super()` ensure
 
 ---
 
-### Interviewer
+### Question
 
 > When should you choose composition instead of a mixin?
 
@@ -822,7 +821,7 @@ Notice how the inheritance order directly affects execution.
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -939,8 +938,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-advanced-19-class-methods-static-methods-properties.md`
+[19-Class-Methods-Static-Methods-Properties](19-class-methods-static-methods-properties.md)
 
 Topics:
 
@@ -952,6 +950,5 @@ Topics:
 - Read-only Properties
 - Choosing the Right Method Type
 - Production Examples
-- Interview Questions
 
 > **Note:** These concepts are closely related and frequently used together in production code, so we'll cover them in a single comprehensive lesson before moving on to descriptors and `__slots__`.

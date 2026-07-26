@@ -1,4 +1,4 @@
-# File: python/python-advanced-22-new-and-metaclasses.md
+# File: python/22-new-and-metaclasses.md
 
 # Python Advanced - Lesson 22
 # `__new__` and Metaclasses - How Python Creates Classes and Objects
@@ -29,7 +29,6 @@ By the end of this lesson, you will understand:
 - Why `type` is a metaclass
 - How custom metaclasses work
 - Production use cases
-- Interview questions
 
 ---
 
@@ -894,9 +893,9 @@ Most backend engineers don't write metaclasses regularly, but understanding them
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > What is the difference between `__new__` and `__init__`?
 
@@ -906,7 +905,7 @@ Most backend engineers don't write metaclasses regularly, but understanding them
 
 ---
 
-### Interviewer
+### Question
 
 > When should you override `__new__`?
 
@@ -916,7 +915,7 @@ Typically when subclassing immutable types, implementing specialised object crea
 
 ---
 
-### Interviewer
+### Question
 
 > What is a metaclass?
 
@@ -926,7 +925,7 @@ A metaclass is the class responsible for creating classes. In Python, the defaul
 
 ---
 
-### Interviewer
+### Question
 
 > Name some libraries that use metaclasses.
 
@@ -1031,7 +1030,7 @@ Observe that the registry is populated **when the classes are defined**, before 
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -1174,8 +1173,7 @@ These concepts form the foundation of Python's object model and explain many of 
 **Module 3 – Functional Python**
 
 **File:**
-
-`python/python-functional-23-map-filter-reduce.md`
+[23-Map-Filter-Reduce](23-map-filter-reduce.md)
 
 Topics:
 
@@ -1189,7 +1187,6 @@ Topics:
 - Lambda with Functional Tools
 - Performance Considerations
 - Production Examples
-- Interview Questions
 
 > **Why this next?**
 >

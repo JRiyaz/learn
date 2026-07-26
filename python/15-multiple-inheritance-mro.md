@@ -1,4 +1,4 @@
-# File: python/python-advanced-15-multiple-inheritance-mro.md
+# File: python/15-multiple-inheritance-mro.md
 
 # Python Advanced - Lesson 15
 # Multiple Inheritance & Method Resolution Order (MRO)
@@ -27,7 +27,6 @@ By the end of this lesson, you will understand:
 - Cooperative multiple inheritance
 - Production use cases
 - Best practices
-- Interview questions
 
 ---
 
@@ -693,9 +692,9 @@ The final class combines them.
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > What is Multiple Inheritance?
 
@@ -705,7 +704,7 @@ Multiple inheritance allows a class to inherit attributes and methods from more 
 
 ---
 
-### Interviewer
+### Question
 
 > What is the Diamond Problem?
 
@@ -715,7 +714,7 @@ The Diamond Problem occurs when a class inherits from two classes that both inhe
 
 ---
 
-### Interviewer
+### Question
 
 > Does `super()` always call the immediate parent?
 
@@ -795,7 +794,7 @@ Observe the order that Python follows.
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -926,8 +925,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-advanced-16-composition-vs-inheritance.md`
+[16-Composition-vs-Inheritance](16-composition-vs-inheritance.md)
 
 Topics:
 
@@ -938,4 +936,3 @@ Topics:
 - Real-world Backend Examples
 - When to Choose Composition
 - Production Best Practices
-- Interview Questions

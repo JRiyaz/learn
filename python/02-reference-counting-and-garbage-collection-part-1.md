@@ -1,4 +1,4 @@
-# File: python/python-advanced-02-reference-counting-and-garbage-collection-part-1.md
+# File: python/02-reference-counting-garbage-collection-and-copying.md
 
 # Python Advanced - Lesson 02 (Part 1)
 # Reference Counting & Garbage Collection
@@ -515,19 +515,13 @@ Understanding this helps you reason about memory usage in long-running applicati
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > What is the difference between Reference Counting and Garbage Collection?
 
-### Weak Answer
-
-> Python uses garbage collection.
-
-This answer is incomplete.
-
-### Strong Answer
+### Answer
 
 > Python primarily manages memory using **reference counting**, where each object tracks how many references point to it. When the reference count reaches zero, the object is destroyed immediately. However, reference counting alone cannot handle circular references, so Python also includes a cyclic garbage collector that periodically finds and frees unreachable objects involved in reference cycles.
 
@@ -569,7 +563,7 @@ Try adding a third variable and predict the output before running it.
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -651,8 +645,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-advanced-02-reference-counting-and-garbage-collection-part-2.md`
+[02-Reference-Counting-and-Garbage-Collection-part-2](02-reference-counting-and-garbage-collection-part-2.md)
 
 Topics:
 
@@ -663,4 +656,3 @@ Topics:
 - Nested Objects
 - Mutable Default Argument Bug
 - Production Examples
-- Interview Questions

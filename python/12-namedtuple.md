@@ -1,4 +1,4 @@
-# File: python/python-advanced-12-namedtuple.md
+# File: python/12-namedtuple.md
 
 # Python Advanced - Lesson 12
 # NamedTuple - Lightweight Immutable Data Structures
@@ -28,7 +28,6 @@ By the end of this lesson, you will understand:
 - `collections.namedtuple` vs `typing.NamedTuple`
 - NamedTuple vs Dataclass
 - Production use cases
-- Interview questions
 
 ---
 
@@ -489,9 +488,9 @@ named tuples are still common in libraries that return immutable records.
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > Why should you use a named tuple instead of a regular tuple?
 
@@ -501,7 +500,7 @@ A named tuple provides meaningful attribute names while retaining the efficiency
 
 ---
 
-### Interviewer
+### Question
 
 > What is the difference between a named tuple and a dataclass?
 
@@ -511,7 +510,7 @@ A named tuple is immutable, lightweight and behaves like a tuple. A dataclass is
 
 ---
 
-### Interviewer
+### Question
 
 > Why is `typing.NamedTuple` generally preferred over `collections.namedtuple`?
 
@@ -581,7 +580,7 @@ Observe that the original object remains unchanged.
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -691,8 +690,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-advanced-13-enums.md`
+[13-Enums](13-enums.md)
 
 Topics:
 
@@ -706,6 +704,5 @@ Topics:
 - Iterating Enums
 - Enum vs Constants
 - Production Examples
-- Interview Questions
 
 ```

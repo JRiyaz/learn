@@ -1,4 +1,4 @@
-# File: python/python-functional-03-zip-enumerate-any-all.md
+# File: python/25-zip-enumerate-any-all.md
 
 # Python Functional Programming - Part 3
 # `zip()`, `enumerate()`, `any()` and `all()`
@@ -48,7 +48,6 @@ By the end of this lesson, you will understand:
 - Short-circuit evaluation
 - Production examples
 - Performance considerations
-- Interview questions
 
 ---
 
@@ -71,7 +70,6 @@ You'll see them in
 - ETL pipelines
 - Data processing
 - Testing
-- Interview questions
 
 ---
 
@@ -343,7 +341,7 @@ Output
 
 # Different Lengths
 
-Interview favourite.
+favourite Questions.
 
 ```python
 names = [
@@ -1348,9 +1346,9 @@ Writing code this way makes it more idiomatic, concise and easier for other Pyth
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > What happens if the iterables passed to `zip()` have different lengths?
 
@@ -1360,7 +1358,7 @@ Writing code this way makes it more idiomatic, concise and easier for other Pyth
 
 ---
 
-### Interviewer
+### Question
 
 > Why is `enumerate()` preferred over `range(len(...))`?
 
@@ -1370,7 +1368,7 @@ It is cleaner, avoids manual indexing and reduces the chance of index-related er
 
 ---
 
-### Interviewer
+### Question
 
 > What is the difference between `any()` and `all()`?
 
@@ -1380,7 +1378,7 @@ It is cleaner, avoids manual indexing and reduces the chance of index-related er
 
 ---
 
-### Interviewer
+### Question
 
 > Why should `any()` and `all()` often be used with generator expressions?
 
@@ -1440,7 +1438,7 @@ True
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -1578,8 +1576,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-functional-26-functools-deep-dive.md`
+[26-Functools-Deep-Dive](26-functools-deep-dive.md)
 
 Topics:
 
@@ -1592,7 +1589,6 @@ Topics:
 - `functools.total_ordering`
 - Function Caching
 - Production Examples
-- Interview Questions
 
 > **Why next?**
 >

@@ -1,4 +1,4 @@
-# File: python/python-advanced-06-iterators-and-iterables-part-2.md
+# File: python/06-iterators-and-iterables-part-2.md
 
 # Python Advanced - Lesson 06 (Part 2)
 # The Iterator Protocol & Building Custom Iterators
@@ -485,9 +485,9 @@ Using iterators allows applications to process huge datasets efficiently without
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > What methods must a custom iterator implement?
 
@@ -497,7 +497,7 @@ A custom iterator must implement `__iter__()` and `__next__()`. The `__iter__()`
 
 ---
 
-### Interviewer
+### Question
 
 > Why is `StopIteration` important?
 
@@ -507,7 +507,7 @@ A custom iterator must implement `__iter__()` and `__next__()`. The `__iter__()`
 
 ---
 
-### Interviewer
+### Question
 
 > What is the difference between an iterable and an iterator?
 
@@ -571,7 +571,7 @@ Now modify the iterator so that it counts down by **2** instead of **1**.
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -673,8 +673,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-advanced-07-generators-part-1.md`
+[07-Generators-part-1](07-generators-part-1.md)
 
 Topics:
 
@@ -685,4 +684,3 @@ Topics:
 - Memory Efficiency
 - `yield` vs `return`
 - Real-world Backend Examples
-- Interview Questions

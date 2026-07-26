@@ -1,4 +1,4 @@
-# File: python/python-advanced-07-generators-part-2.md
+# File: python/07-generators-part-2.md
 
 # Python Advanced - Lesson 07 (Part 2)
 # Advanced Generators - Generator Expressions, `yield from` & Generator Control
@@ -642,9 +642,9 @@ This design scales much better for large datasets.
 
 ---
 
-# Interview Deep Dive
+# Question
 
-### Interviewer
+### Question
 
 > What is the difference between a list comprehension and a generator expression?
 
@@ -654,7 +654,7 @@ A list comprehension creates and stores all values immediately, while a generato
 
 ---
 
-### Interviewer
+### Question
 
 > What does `yield from` do?
 
@@ -664,7 +664,7 @@ A list comprehension creates and stores all values immediately, while a generato
 
 ---
 
-### Interviewer
+### Question
 
 > Why would you use `send()`?
 
@@ -737,7 +737,7 @@ Try replacing the generators with lists and compare the code. Notice how generat
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -839,16 +839,4 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-advanced-08-context-managers-part-1.md`
-
-Topics:
-
-- Why Context Managers Exist
-- The `with` Statement
-- The Context Manager Protocol
-- `__enter__()` and `__exit__()`
-- Building Your First Context Manager
-- File Handling Internals
-- Production Examples
-- Interview Questions
+[08-Lambda-Functions](08-lambda-functions.md)

@@ -1,4 +1,4 @@
-# File: python/python-advanced-02-reference-counting-and-garbage-collection-part-2.md
+# File: python/02-reference-counting-and-garbage-collection-part-2.md
 
 # Python Advanced - Lesson 02 (Part 2)
 # Shallow Copy, Deep Copy & The Mutable Default Argument Bug
@@ -548,37 +548,23 @@ Whenever you see a mutable default argument (`[]`, `{}`, `set()`), treat it as a
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > Explain the difference between a shallow copy and a deep copy.
 
-### Weak Answer
-
-> Deep copy copies everything.
-
-This is correct but incomplete.
-
----
-
-### Strong Answer
+### Answer
 
 > A shallow copy creates a new outer container but keeps references to the nested objects. Therefore, changes to nested mutable objects are reflected in both copies. A deep copy recursively duplicates every nested object, ensuring the copied structure is completely independent of the original.
 
 ---
 
-### Interviewer
+### Question
 
 > Why are mutable default arguments dangerous?
 
-### Weak Answer
-
-> Because they are shared.
-
----
-
-### Strong Answer
+### Answer
 
 > Default arguments are evaluated only once when the function is defined, not every time it is called. If the default value is mutable, such as a list or dictionary, every function call shares the same object, which can lead to unexpected state being preserved across calls.
 
@@ -639,7 +625,7 @@ Understanding this example will make shallow vs deep copy intuitive.
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -760,8 +746,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-advanced-03-legb-scope-and-variable-resolution.md`
+[03-LEGB-Scope-and-Variable-Resolution-part-1](03-legb-scope-and-variable-resolution-part-1.md)
 
 Topics:
 
@@ -773,4 +758,4 @@ Topics:
 - `global`
 - `nonlocal`
 - Real-world examples from FastAPI and Flask
-- Common interview questions
+- Common questions

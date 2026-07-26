@@ -1,4 +1,4 @@
-# File: python/python-advanced-05-decorators-part-1.md
+# File: python/05-decorators-part-1.md
 
 # Python Advanced - Lesson 05 (Part 1)
 # Decorators - Why They Exist & How They Work
@@ -622,37 +622,23 @@ def get_users():
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
-> What is a decorator?
+> What is a decorator
 
-### Weak Answer
-
-> A decorator adds functionality to a function.
-
-This is correct but incomplete.
-
----
-
-### Strong Answer
+### Answer
 
 > A decorator is a higher-order function that accepts another function, wraps it with additional behaviour, and returns a new function. It allows cross-cutting concerns such as logging, authentication, caching and timing to be added without modifying the original business logic.
 
 ---
 
-### Interviewer
+### Question
 
 > What does the `@` symbol do?
 
-### Weak Answer
-
-> It calls the decorator.
-
----
-
-### Strong Answer
+### Answer
 
 > The `@decorator` syntax is syntactic sugar. Python automatically rewrites:
 
@@ -673,17 +659,11 @@ func = decorator(func)
 
 ---
 
-### Interviewer
+### Question
 
 > Why do decorators usually use `*args` and `**kwargs`?
 
-### Weak Answer
-
-> To accept arguments.
-
----
-
-### Strong Answer
+### Answer
 
 > Decorators should work with functions that have different parameter lists. Using `*args` and `**kwargs` allows the wrapper to forward any positional and keyword arguments to the original function without knowing its signature in advance.
 
@@ -752,7 +732,7 @@ Welcome Alice!
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -883,8 +863,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-advanced-05-decorators-part-2.md`
+[05-Decorators-part-2](05-decorators-part-2.md)
 
 Topics:
 
@@ -895,4 +874,3 @@ Topics:
 - Authentication Decorator
 - Caching Decorator
 - Real FastAPI/Flask Examples
-- Interview Questions

@@ -1,4 +1,4 @@
-# File: python/python-31-string-deep-dive-part-3.md
+# File: python/31-string-deep-dive-part-3.md
 
 # Python Built-in Types
 # String (`str`) Deep Dive - Part 3: Performance, Regular Expressions & Production Best Practices
@@ -41,7 +41,6 @@ By the end of this lesson, you will understand:
 - JSON handling
 - Logging best practices
 - Production patterns
-- Interview questions
 
 ---
 
@@ -534,7 +533,7 @@ Output
 True
 ```
 
-Interview favourite.
+favourite Questions.
 
 ---
 
@@ -931,9 +930,9 @@ Writing efficient and secure string code is a core backend engineering skill.
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > Why is `join()` faster than repeated `+`?
 
@@ -943,7 +942,7 @@ Writing efficient and secure string code is a core backend engineering skill.
 
 ---
 
-### Interviewer
+### Question
 
 > When should you use regex?
 
@@ -953,7 +952,7 @@ When string methods cannot express the required pattern clearly, such as validat
 
 ---
 
-### Interviewer
+### Question
 
 > Why should SQL queries never be built using string concatenation?
 
@@ -963,7 +962,7 @@ It exposes the application to SQL injection attacks. Parameterised queries separ
 
 ---
 
-### Interviewer
+### Question
 
 > Why use `StringIO`?
 
@@ -973,7 +972,7 @@ It efficiently builds large strings incrementally without repeated memory alloca
 
 ---
 
-### Interviewer
+### Question
 
 > Why is `logger.info("User %s", username)` preferred over an f-string?
 
@@ -1049,7 +1048,7 @@ INFO:__main__:User alice logged in
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -1171,7 +1170,6 @@ You now have a strong understanding of Python strings, including:
 - ✅ Regular expressions.
 - ✅ Production patterns.
 - ✅ Security best practices.
-- ✅ Interview-focused concepts.
 
 This is the level of string knowledge expected from a professional backend engineer.
 
@@ -1180,8 +1178,7 @@ This is the level of string knowledge expected from a professional backend engin
 # What's Next
 
 **File:**
-
-`python/python-32-list-deep-dive.md`
+[32-List-Deep-Dive](32-list-deep-dive.md)
 
 Topics:
 
@@ -1195,6 +1192,5 @@ Topics:
 - List comprehensions revisited
 - Performance pitfalls
 - Production examples
-- Interview questions
 
 ```

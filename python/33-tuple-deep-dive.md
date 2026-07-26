@@ -1,5 +1,4 @@
-# File:
-python/python-33-tuple-deep-dive.md
+# File: python/33-tuple-deep-dive.md
 
 # Python Built-in Types
 # Tuple (`tuple`) Deep Dive
@@ -48,7 +47,6 @@ By the end of this lesson, you will understand:
 - Tuple vs List
 - Performance considerations
 - Production best practices
-- Interview questions
 
 ---
 
@@ -847,9 +845,9 @@ Python's own standard library returns tuples in many APIs because they clearly c
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > What is the difference between a tuple and a list?
 
@@ -859,7 +857,7 @@ A tuple is immutable and generally more memory-efficient, while a list is mutabl
 
 ---
 
-### Interviewer
+### Question
 
 > Why can tuples be dictionary keys but lists cannot?
 
@@ -869,7 +867,7 @@ Tuples are immutable and hashable (provided all their elements are hashable), ma
 
 ---
 
-### Interviewer
+### Question
 
 > Does tuple immutability guarantee that its contents cannot change?
 
@@ -879,7 +877,7 @@ No. If a tuple contains mutable objects such as lists, those objects can still b
 
 ---
 
-### Interviewer
+### Question
 
 > Why do functions often return tuples?
 
@@ -950,7 +948,7 @@ Cached Response
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -1058,8 +1056,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-34-dict-deep-dive-part-1.md`
+[34-Dict-Deep-Dive-part-1](34-dict-deep-dive-part-1.md)
 
 Topics:
 

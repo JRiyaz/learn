@@ -1,4 +1,4 @@
-# File: python/python-advanced-03-legb-scope-and-variable-resolution-part-2.md
+# File: python/03-legb-scope-and-variable-resolution-part-2.md
 
 # Python Advanced - Lesson 03 (Part 2)
 # Enclosing Scope, `global`, `nonlocal` & Closures
@@ -605,39 +605,23 @@ Closures are also heavily used when writing decorators, which you'll learn in th
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > What is the difference between `global` and `nonlocal`?
 
-### Weak Answer
-
-> One is for global variables and the other is for local variables.
-
-This answer is incorrect because `nonlocal` does **not** work with local variables.
-
----
-
-### Strong Answer
+### Answer
 
 > `global` allows a function to modify variables defined at the module level. `nonlocal` allows an inner function to modify variables defined in its enclosing function. `nonlocal` only works inside nested functions.
 
 ---
 
-### Interviewer
+### Question
 
 > What is a closure?
 
-### Weak Answer
-
-> A nested function.
-
-This is incomplete.
-
----
-
-### Strong Answer
+### Answer
 
 > A closure is a function that retains access to variables from its enclosing scope even after the enclosing function has completed execution. This allows the function to maintain state without relying on global variables.
 
@@ -689,7 +673,7 @@ Predict the output before running it.
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -814,8 +798,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-advanced-04-first-class-functions-and-higher-order-functions-part-1.md`
+[04-First-Class-Functions-and-Higher-Order-Functions-part-1](04-first-class-functions-and-higher-order-functions-part-1.md)
 
 Topics:
 
@@ -825,4 +808,3 @@ Topics:
 - Returning Functions
 - Higher-Order Functions
 - Real-world Backend Examples
-- Interview Questions

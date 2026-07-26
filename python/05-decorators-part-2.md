@@ -1,4 +1,4 @@
-# File: python/python-advanced-05-decorators-part-2.md
+# File: python/05-decorators-part-2.md
 
 # Python Advanced - Lesson 05 (Part 2)
 # Advanced Decorators
@@ -543,9 +543,9 @@ Understanding decorators means understanding how many Python frameworks work int
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > Why should you use `functools.wraps`?
 
@@ -555,7 +555,7 @@ Understanding decorators means understanding how many Python frameworks work int
 
 ---
 
-### Interviewer
+### Question
 
 > In what order are multiple decorators applied?
 
@@ -580,7 +580,7 @@ The decorator closest to the function is applied first.
 
 ---
 
-### Interviewer
+### Question
 
 > Why are decorators widely used in web frameworks?
 
@@ -646,7 +646,7 @@ Execution Time: 2.00xxxx seconds
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -768,8 +768,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-advanced-06-iterators-and-iterables-part-1.md`
+[06-Iterators-and-Iterables-part-1](06-iterators-and-iterables-part-1.md)
 
 Topics:
 
@@ -780,4 +779,3 @@ Topics:
 - Why `for` loops work
 - Building a Custom Iterator
 - Production Examples
-- Interview Questions

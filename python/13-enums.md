@@ -1,4 +1,4 @@
-# File: python/python-advanced-13-enums.md
+# File: python/13-enums.md
 
 # Python Advanced - Lesson 13
 # Enums - Creating Meaningful Constants in Python
@@ -31,7 +31,6 @@ By the end of this lesson, you will understand:
 - `Flag` and `IntFlag`
 - Enum vs constants
 - Production use cases
-- Interview questions
 
 ---
 
@@ -623,9 +622,9 @@ if order.status == OrderStatus.SHIPPED:
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > Why should enums be used instead of string constants?
 
@@ -635,7 +634,7 @@ Enums provide meaningful names, improve readability, reduce typographical errors
 
 ---
 
-### Interviewer
+### Question
 
 > What is the difference between `Enum` and `IntEnum`?
 
@@ -645,7 +644,7 @@ Enums provide meaningful names, improve readability, reduce typographical errors
 
 ---
 
-### Interviewer
+### Question
 
 > When should you use `auto()`?
 
@@ -705,7 +704,7 @@ for status in TicketStatus:
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -852,8 +851,7 @@ You have covered:
 # What's Next
 
 **File:**
-
-`python/python-advanced-14-inheritance.md`
+[14-Inheritance](14-inheritance.md)
 
 Topics:
 
@@ -864,4 +862,3 @@ Topics:
 - The `is-a` Relationship
 - When to Use (and Avoid) Inheritance
 - Production Examples
-- Interview Questions

@@ -1,4 +1,4 @@
-# File: python/python-advanced-17-abstract-base-classes.md
+# File: python/17-abstract-base-classes.md
 
 # Python Advanced - Lesson 17
 # Abstract Base Classes (ABC) - Defining Contracts for Classes
@@ -31,7 +31,6 @@ By the end of this lesson, you will understand:
 - ABCs vs normal base classes
 - ABCs vs duck typing
 - Production use cases
-- Interview questions
 
 ---
 
@@ -648,9 +647,9 @@ This principle is often summarised as:
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > What is an Abstract Base Class?
 
@@ -660,7 +659,7 @@ An Abstract Base Class is a class that cannot be instantiated directly and defin
 
 ---
 
-### Interviewer
+### Question
 
 > What is the purpose of `@abstractmethod`?
 
@@ -670,7 +669,7 @@ An Abstract Base Class is a class that cannot be instantiated directly and defin
 
 ---
 
-### Interviewer
+### Question
 
 > When would you use an ABC instead of a normal base class?
 
@@ -680,7 +679,7 @@ Use an ABC when multiple classes must follow the same interface and you want Pyt
 
 ---
 
-### Interviewer
+### Question
 
 > What is the difference between ABCs and duck typing?
 
@@ -756,7 +755,7 @@ Now comment out one of the `pay()` implementations and observe the error when cr
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -884,8 +883,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-advanced-18-mixins.md`
+[18-Mixins](18-mixins.md)
 
 Topics:
 
@@ -897,4 +895,3 @@ Topics:
 - Cooperative Mixins with `super()`
 - Production Examples (Django, SQLAlchemy, FastAPI)
 - Best Practices
-- Interview Questions

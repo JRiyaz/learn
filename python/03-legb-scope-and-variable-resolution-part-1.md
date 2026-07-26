@@ -1,4 +1,4 @@
-# File: python/python-advanced-03-legb-scope-and-variable-resolution-part-1.md
+# File: python/03-legb-scope-and-variable-resolution-part-1.md
 
 # Python Advanced - Lesson 03 (Part 1)
 # LEGB Scope & Variable Resolution
@@ -551,35 +551,23 @@ Understanding scope helps avoid mistakes like these.
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > Explain the LEGB Rule.
 
-### Weak Answer
-
-> Python checks the local variable first.
-
----
-
-### Strong Answer
+### Answer
 
 > Python resolves variables using the LEGB Rule. It first searches the Local scope, then the Enclosing scope, followed by the Global scope, and finally the Built-in scope. The search stops as soon as the variable is found.
 
 ---
 
-### Interviewer
+### Question
 
 > What is variable shadowing?
 
-### Weak Answer
-
-> A local variable replaces the global variable.
-
----
-
-### Strong Answer
+### Answer
 
 > Variable shadowing occurs when a variable in an inner scope has the same name as one in an outer scope. The inner variable temporarily hides the outer variable within that scope, but it does not modify or replace the outer variable.
 
@@ -625,7 +613,7 @@ Then execute it and compare your prediction.
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -752,8 +740,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-advanced-03-legb-scope-and-variable-resolution-part-2.md`
+[03-LEGB-Scope-and-Variable-Resolution-part-2](03-legb-scope-and-variable-resolution-part-2.md)
 
 Topics:
 
@@ -765,4 +752,3 @@ Topics:
 - Real-world Closure Examples
 - Common Scope Bugs
 - Production Examples
-- Interview Questions

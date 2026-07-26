@@ -1,4 +1,4 @@
-# File: python/python-functional-02-comprehensions-vs-map-filter.md
+# File: python/24-comprehensions-vs-map-filter.md
 
 # Python Functional Programming - Part 2
 # Comprehensions vs `map()` and `filter()`
@@ -50,7 +50,6 @@ By the end of this lesson, you will understand:
 - Comprehensions vs `filter()`
 - Performance considerations
 - Production best practices
-- Interview questions
 
 ---
 
@@ -1106,9 +1105,9 @@ Frameworks such as Django, FastAPI, SQLAlchemy and Pandas often use comprehensio
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > What is the difference between a list comprehension and a generator expression?
 
@@ -1118,7 +1117,7 @@ A list comprehension creates the entire list immediately, while a generator expr
 
 ---
 
-### Interviewer
+### Question
 
 > Why are comprehensions generally preferred over `map()` and `filter()`?
 
@@ -1128,7 +1127,7 @@ For simple transformations and filtering, comprehensions are usually more readab
 
 ---
 
-### Interviewer
+### Question
 
 > When would you use `map()` instead of a comprehension?
 
@@ -1138,7 +1137,7 @@ When applying an existing named function to every element or when working with m
 
 ---
 
-### Interviewer
+### Question
 
 > Why shouldn't comprehensions be used for side effects?
 
@@ -1253,7 +1252,7 @@ Expected Output
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -1379,8 +1378,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-functional-25-zip-enumerate-any-all.md`
+[25-Zip-Enumerate-Any-All](25-zip-enumerate-any-all.md)
 
 Topics:
 
@@ -1393,7 +1391,6 @@ Topics:
 - Lazy Evaluation
 - Production Examples
 - Performance Considerations
-- Interview Questions
 
 > **Why next?**
 >

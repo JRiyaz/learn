@@ -1,4 +1,4 @@
-# File: python/python-advanced-21-slots.md
+# File: python/21-slots.md
 
 # Python Advanced - Lesson 21
 # `__slots__` - Optimising Memory and Controlling Object Attributes
@@ -25,10 +25,8 @@ By the end of this lesson, you will understand:
 - How `__slots__` changes object memory
 - Memory and performance implications
 - Inheritance with `__slots__`
-- Weak references
 - Dataclasses with slots
 - Production use cases
-- Interview questions
 
 ---
 
@@ -790,9 +788,9 @@ Always profile your application before introducing memory optimisations.
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > What problem does `__slots__` solve?
 
@@ -802,7 +800,7 @@ Always profile your application before introducing memory optimisations.
 
 ---
 
-### Interviewer
+### Question
 
 > Can you add new attributes to a slotted object?
 
@@ -812,7 +810,7 @@ No. Only attributes listed in `__slots__` may be assigned unless the class also 
 
 ---
 
-### Interviewer
+### Question
 
 > Does `__slots__` improve performance?
 
@@ -822,7 +820,7 @@ It may provide a small improvement in attribute access, but its primary benefit 
 
 ---
 
-### Interviewer
+### Question
 
 > What happens if a subclass doesn't define `__slots__`?
 
@@ -893,7 +891,7 @@ Now remove `__slots__` from `User` and observe how adding `country` succeeds.
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -1008,8 +1006,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-advanced-22-new-and-metaclasses.md`
+[22-New-and-Metaclasses](22-new-and-metaclasses.md)
 
 Topics:
 
@@ -1020,8 +1017,7 @@ Topics:
 - Singleton Pattern
 - Introduction to Metaclasses
 - `type` as a Metaclass
-- Creating Custom Metaclasses (Interview Level)
+- Creating Custom Metaclasses (Level)
 - Production Examples
-- Interview Questions
 
 > **Note:** This will be the final lesson in the **Advanced OOP** module. After completing it, we'll move into **Functional Python**, starting with higher-order built-ins like `map()`, `filter()`, `reduce()`, and the powerful `functools` and `itertools` modules.

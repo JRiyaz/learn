@@ -1,5 +1,4 @@
-# File:
-python/python-35-dict-deep-dive-part-2.md
+# File: python/35-dict-deep-dive-part-2.md
 
 # Python Built-in Types
 # Dictionary (`dict`) Deep Dive - Part 2: Internals, Advanced Operations & Production Patterns
@@ -49,7 +48,6 @@ By the end of this lesson, you will understand:
 - Dictionary merging
 - Performance considerations
 - Production patterns
-- Interview questions
 
 ---
 
@@ -753,9 +751,9 @@ Senior backend engineers often use dictionaries to convert repeated database loo
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > What is a hash collision?
 
@@ -765,7 +763,7 @@ A hash collision occurs when two different keys map to the same location in the 
 
 ---
 
-### Interviewer
+### Question
 
 > Why does Python resize dictionaries?
 
@@ -775,7 +773,7 @@ As dictionaries become crowded, collisions become more frequent. Resizing create
 
 ---
 
-### Interviewer
+### Question
 
 > When would you use `setdefault()`?
 
@@ -785,7 +783,7 @@ It's useful when grouping or accumulating values where keys may not yet exist, s
 
 ---
 
-### Interviewer
+### Question
 
 > What is the difference between `update()` and `|`?
 
@@ -795,7 +793,7 @@ It's useful when grouping or accumulating values where keys may not yet exist, s
 
 ---
 
-### Interviewer
+### Question
 
 > Why is `dict.fromkeys(keys, [])` dangerous?
 
@@ -878,7 +876,7 @@ Expected Output
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -986,8 +984,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-36-set-and-frozenset.md`
+[36-Set-and-Frozenset](36-set-and-frozenset.md)
 
 Topics:
 
@@ -1001,4 +998,3 @@ Topics:
 - Performance
 - Real-world backend use cases
 - Production best practices
-- Interview questions

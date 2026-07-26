@@ -1,5 +1,4 @@
-# File:
-python/python-38-collections-module-part-1.md
+# File: python/38-collections-module-part-1.md
 
 # Python Standard Library
 # Collections Module - Part 1: `deque`, `Counter` & `defaultdict`
@@ -46,7 +45,6 @@ By the end of this lesson, you will understand:
 - Performance comparisons
 - Production use cases
 - Best practices
-- Interview questions
 
 ---
 
@@ -931,9 +929,9 @@ Many production systems become both shorter and faster simply by replacing custo
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > Why is `deque.popleft()` faster than `list.pop(0)`?
 
@@ -943,7 +941,7 @@ Lists are dynamic arrays, so removing the first element requires shifting all re
 
 ---
 
-### Interviewer
+### Question
 
 > When would you use `Counter`?
 
@@ -953,7 +951,7 @@ Whenever frequency counting is required, such as counting API responses, log lev
 
 ---
 
-### Interviewer
+### Question
 
 > What problem does `defaultdict` solve?
 
@@ -963,7 +961,7 @@ It automatically creates default values for missing keys, eliminating repetitive
 
 ---
 
-### Interviewer
+### Question
 
 > Why shouldn't a deque replace every list?
 
@@ -1049,7 +1047,7 @@ defaultdict(
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -1163,8 +1161,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-39-collections-module-part-2.md`
+[39-Collections-Module-part-2](39-collections-module-part-2.md)
 
 Topics:
 
@@ -1177,6 +1174,5 @@ Topics:
 - Choosing the right collection
 - Advanced production patterns
 - Performance trade-offs
-- Interview questions
 
 > **Note:** We'll also discuss which `collections` types are still highly relevant today and which have become less common due to improvements in modern Python.

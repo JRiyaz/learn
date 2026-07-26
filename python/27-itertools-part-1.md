@@ -1,4 +1,4 @@
-# File: python/python-functional-05-itertools-part-1.md
+# File: python/27-itertools-part-1.md
 
 # Python Functional Programming - Part 5
 # `itertools` Part 1 - Infinite Iterators and Iterator Building Blocks
@@ -49,7 +49,6 @@ By the end of this lesson, you will understand:
 - Memory optimisation
 - Production use cases
 - Performance considerations
-- Interview questions
 
 ---
 
@@ -1150,7 +1149,7 @@ No unnecessary work is performed.
 
 # Why Not Use range()?
 
-Interview favourite.
+favourite Questions.
 
 `range()` already has
 
@@ -1283,9 +1282,9 @@ The ability to process one item at a time keeps memory usage low and allows appl
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > Why is `itertools` considered memory efficient?
 
@@ -1295,7 +1294,7 @@ Most `itertools` functions return lazy iterators that generate values only when 
 
 ---
 
-### Interviewer
+### Question
 
 > What is the difference between `chain()` and using the `+` operator on lists?
 
@@ -1305,7 +1304,7 @@ Most `itertools` functions return lazy iterators that generate values only when 
 
 ---
 
-### Interviewer
+### Question
 
 > Why can't you call `list(count())`?
 
@@ -1315,7 +1314,7 @@ Because `count()` produces an infinite sequence, so iteration never terminates a
 
 ---
 
-### Interviewer
+### Question
 
 > When would you use `islice()` instead of list slicing?
 
@@ -1395,7 +1394,7 @@ Red
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -1505,8 +1504,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-functional-28-itertools-part-2.md`
+[28-Itertools-part-2](28-itertools-part-2.md)
 
 Topics:
 
@@ -1521,7 +1519,6 @@ Topics:
 - `pairwise()` (Python 3.10+)
 - Real-world Production Examples
 - Performance Considerations
-- Interview Questions
 
 > **Why next?**
 >

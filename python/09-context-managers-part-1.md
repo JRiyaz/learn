@@ -1,4 +1,4 @@
-# File: python/python-advanced-09-context-managers-part-1.md
+# File: python/09-context-managers-part-1.md
 
 # Python Advanced - Lesson 09 (Part 1)
 # Context Managers - Managing Resources Safely with `with`
@@ -515,9 +515,9 @@ In all of these cases, the context manager ensures that resources are cleaned up
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > Why should you use the `with` statement instead of manually calling `close()`?
 
@@ -527,7 +527,7 @@ The `with` statement guarantees that resources are released correctly, even if a
 
 ---
 
-### Interviewer
+### Question
 
 > What methods must a context manager implement?
 
@@ -537,7 +537,7 @@ A context manager implements `__enter__()` and `__exit__()`. `__enter__()` prepa
 
 ---
 
-### Interviewer
+### Question
 
 > What is passed to `__exit__()`?
 
@@ -590,7 +590,7 @@ Observe that `__exit__()` still executes.
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -689,8 +689,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-advanced-09-context-managers-part-2.md`
+[09-Context-Managers-part-2](09-context-managers-part-2.md)
 
 Topics:
 
@@ -701,4 +700,3 @@ Topics:
 - Multiple Context Managers
 - Real-world Database Transactions
 - Production Examples
-- Interview Questions

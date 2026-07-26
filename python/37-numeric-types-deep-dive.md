@@ -1,5 +1,4 @@
-# File:
-python/python-37-numeric-types-deep-dive.md
+# File: python/37-numeric-types-deep-dive.md
 
 # Python Built-in Types
 # Numeric Types Deep Dive (`int`, `float`, `bool`, `Decimal`, `Fraction`, `complex`)
@@ -52,7 +51,6 @@ By the end of this lesson, you will understand:
 - `bool`
 - Numeric performance
 - Production best practices
-- Interview questions
 
 ---
 
@@ -880,9 +878,9 @@ Senior engineers choose the numeric type based on correctness first and performa
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > Why shouldn't `float` be used for financial calculations?
 
@@ -892,7 +890,7 @@ Floats use binary floating-point representation, which cannot exactly represent 
 
 ---
 
-### Interviewer
+### Question
 
 > Why does `0.1 + 0.2` not equal `0.3` exactly?
 
@@ -902,7 +900,7 @@ Because `0.1` and `0.2` cannot be represented exactly in binary. Python stores t
 
 ---
 
-### Interviewer
+### Question
 
 > Why can Python integers become arbitrarily large?
 
@@ -912,7 +910,7 @@ Python 3 integers use arbitrary-precision arithmetic, allocating additional memo
 
 ---
 
-### Interviewer
+### Question
 
 > Why is `bool` a subclass of `int`?
 
@@ -922,7 +920,7 @@ Python represents `False` as `0` and `True` as `1`, allowing booleans to partici
 
 ---
 
-### Interviewer
+### Question
 
 > When would you use `Fraction` instead of `Decimal`?
 
@@ -984,7 +982,7 @@ True
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -1106,8 +1104,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-38-collections-module-part-1.md`
+[38-Collections-Module-part-1](38-collections-module-part-1.md)
 
 Topics:
 
@@ -1119,6 +1116,5 @@ Topics:
 - Performance comparisons
 - Production use cases
 - Best practices
-- Interview questions
 
 > **Note:** The `collections` module is broad and foundational. We'll cover it in **two parts**, starting with the three data structures that every backend engineer should know: `deque`, `Counter`, and `defaultdict`.

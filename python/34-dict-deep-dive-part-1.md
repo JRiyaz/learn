@@ -1,5 +1,4 @@
-# File:
-python/python-34-dict-deep-dive-part-1.md
+# File: python/34-dict-deep-dive-part-1.md
 
 # Python Built-in Types
 # Dictionary (`dict`) Deep Dive - Part 1: Fundamentals, Hash Tables & Core Operations
@@ -1069,9 +1068,9 @@ Understanding dictionaries is essential because most backend data eventually bec
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > Why are dictionary lookups usually O(1)?
 
@@ -1081,7 +1080,7 @@ Because dictionaries use hash tables. Python computes the key's hash value and u
 
 ---
 
-### Interviewer
+### Question
 
 > Why can't lists be dictionary keys?
 
@@ -1091,7 +1090,7 @@ Lists are mutable. If their contents changed after insertion, their hash value w
 
 ---
 
-### Interviewer
+### Question
 
 > When should you use `get()` instead of square bracket access?
 
@@ -1101,7 +1100,7 @@ Use `get()` when missing keys are expected or acceptable. Use square brackets wh
 
 ---
 
-### Interviewer
+### Question
 
 > What does `items()` return?
 
@@ -1167,7 +1166,7 @@ Removed age: 31
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -1271,8 +1270,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-35-dict-deep-dive-part-2.md`
+[35-Dict-Deep-Dive-part-2](35-dict-deep-dive-part-2.md)
 
 Topics:
 

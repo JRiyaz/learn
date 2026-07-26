@@ -1,4 +1,4 @@
-# File: python/python-functional-06-itertools-part-2.md
+# File: python/28-itertools-part-2.md
 
 # Python Functional Programming - Part 6
 # `itertools` Part 2 - Combinatorics, Grouping and Advanced Iterator Patterns
@@ -51,7 +51,6 @@ By the end of this lesson, you will understand:
 - Consecutive pairs using `pairwise()`
 - Time and memory considerations
 - Production examples
-- Interview questions
 
 ---
 
@@ -1366,9 +1365,9 @@ Functions such as `groupby()`, `accumulate()` and `pairwise()` are much more com
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > What is the difference between `permutations()` and `combinations()`?
 
@@ -1378,7 +1377,7 @@ Functions such as `groupby()`, `accumulate()` and `pairwise()` are much more com
 
 ---
 
-### Interviewer
+### Question
 
 > Why does `groupby()` often require sorting first?
 
@@ -1388,7 +1387,7 @@ Because it groups only consecutive items with the same key rather than all match
 
 ---
 
-### Interviewer
+### Question
 
 > What problem does `tee()` solve?
 
@@ -1398,7 +1397,7 @@ It allows multiple independent iterators to consume the same input iterator with
 
 ---
 
-### Interviewer
+### Question
 
 > When would you use `accumulate()`?
 
@@ -1474,7 +1473,7 @@ Expected Output
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -1636,22 +1635,4 @@ You now have a strong understanding of Python's functional programming toolkit a
 **Module 4 – Concurrency & Parallelism**
 
 **File:**
-
-`python/python-concurrency-01-processes-vs-threads.md`
-
-Topics:
-
-- What is Concurrency?
-- What is Parallelism?
-- Processes vs Threads
-- CPU-bound vs I/O-bound Tasks
-- Memory Model
-- Context Switching
-- Process Communication
-- Thread Communication
-- Production Examples
-- Interview Questions
-
-> **Why next?**
->
-> Concurrency is one of the most important topics for senior backend engineers. Before learning Python's `threading`, `multiprocessing` and `asyncio`, you need a solid mental model of how operating systems execute programs. This module will build that foundation before diving into Python-specific concurrency features.
+[29-String-Deep-Dive-part-1](29-string-deep-dive-part-1.md)

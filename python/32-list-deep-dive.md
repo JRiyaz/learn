@@ -1,5 +1,4 @@
-# File:
-python/python-32-list-deep-dive.md
+# File: python/32-list-deep-dive.md
 
 # Python Built-in Types
 # List (`list`) Deep Dive
@@ -49,7 +48,6 @@ By the end of this lesson, you will understand:
 - Time complexity
 - Performance considerations
 - Production best practices
-- Interview questions
 
 ---
 
@@ -527,7 +525,7 @@ Output
 [1, 2, 3, 4]
 ```
 
-Interview favourite.
+favourite Questions.
 
 ---
 
@@ -1013,9 +1011,9 @@ Choosing the right operations on lists can significantly affect application perf
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > Why is `append()` considered O(1) if lists sometimes resize?
 
@@ -1025,7 +1023,7 @@ Because Python over-allocates memory. Most appends don't require resizing, makin
 
 ---
 
-### Interviewer
+### Question
 
 > What is the difference between `append()` and `extend()`?
 
@@ -1035,7 +1033,7 @@ Because Python over-allocates memory. Most appends don't require resizing, makin
 
 ---
 
-### Interviewer
+### Question
 
 > Why is membership testing in a list O(n)?
 
@@ -1045,7 +1043,7 @@ Because Python searches elements sequentially until it finds a match or reaches 
 
 ---
 
-### Interviewer
+### Question
 
 > Why is Python's sort stable?
 
@@ -1114,7 +1112,7 @@ Expected Output
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -1229,8 +1227,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-33-tuple-deep-dive.md`
+[33-Tuple-Deep-Dive](33-tuple-deep-dive.md)
 
 Topics:
 
@@ -1244,4 +1241,3 @@ Topics:
 - Tuple vs List
 - Performance comparisons
 - Production examples
-- Interview questions

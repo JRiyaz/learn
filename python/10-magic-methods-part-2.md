@@ -1,4 +1,4 @@
-# File: python/python-advanced-10-magic-methods-part-2.md
+# File: python/10-magic-methods-part-2.md
 
 # Python Advanced - Lesson 10 (Part 2)
 # Magic Methods - Customising Object Behaviour
@@ -580,9 +580,9 @@ only makes sense if adding two users has a clear meaning.
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > What is the difference between `__str__()` and `__repr__()`?
 
@@ -592,7 +592,7 @@ only makes sense if adding two users has a clear meaning.
 
 ---
 
-### Interviewer
+### Question
 
 > Why should `__eq__()` and `__hash__()` usually be implemented together?
 
@@ -602,7 +602,7 @@ Hash-based collections such as dictionaries and sets rely on equal objects havin
 
 ---
 
-### Interviewer
+### Questions
 
 > What is operator overloading?
 
@@ -668,7 +668,7 @@ True
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -782,8 +782,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-advanced-11-dataclasses.md`
+[11-Dataclasses](11-dataclasses.md)
 
 Topics:
 
@@ -796,6 +795,5 @@ Topics:
 - Ordered Dataclasses
 - Dataclass Inheritance
 - Production Examples
-- Interview Questions
 
 ```

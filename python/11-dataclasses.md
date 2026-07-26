@@ -1,4 +1,4 @@
-# File: python/python-advanced-11-dataclasses.md
+# File: python/11-dataclasses.md
 
 # Python Advanced - Lesson 11
 # Dataclasses - Writing Cleaner and More Maintainable Classes
@@ -487,9 +487,9 @@ They are **not** typically used as ORM models in frameworks such as SQLAlchemy b
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > Why were dataclasses introduced?
 
@@ -499,7 +499,7 @@ Dataclasses reduce boilerplate for classes whose primary purpose is storing data
 
 ---
 
-### Interviewer
+### Question
 
 > Why should mutable defaults use `default_factory`?
 
@@ -509,7 +509,7 @@ Using a mutable object as a default value would cause every instance to share th
 
 ---
 
-### Interviewer
+### Question
 
 > What does `frozen=True` do?
 
@@ -554,7 +554,7 @@ Modify the program to:
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -652,8 +652,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-advanced-12-namedtuple.md`
+[12-NamedTuple](12-namedtuple.md)
 
 Topics:
 
@@ -666,4 +665,3 @@ Topics:
 - `typing.NamedTuple`
 - Dataclass vs NamedTuple
 - Production Examples
-- Interview Questions

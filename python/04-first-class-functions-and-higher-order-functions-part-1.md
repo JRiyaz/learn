@@ -1,4 +1,4 @@
-# File: python/python-advanced-04-first-class-functions-and-higher-order-functions-part-1.md
+# File: python/04-first-class-functions-and-higher-order-functions-part-1.md
 
 # Python Advanced - Lesson 04 (Part 1)
 # First-Class Functions & Higher-Order Functions
@@ -493,39 +493,23 @@ In the next lesson, you'll see that **decorators are built using this exact idea
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > What does it mean that functions are first-class objects?
 
-### Weak Answer
-
-> Functions can be called.
-
-This doesn't answer the question.
-
----
-
-### Strong Answer
+### Answer
 
 > In Python, functions are first-class objects, meaning they can be treated like any other object. They can be assigned to variables, passed as arguments, returned from other functions and stored inside data structures. This flexibility enables powerful features such as decorators, callbacks and dependency injection.
 
 ---
 
-### Interviewer
+### Question
 
 > What is a higher-order function?
 
-### Weak Answer
-
-> A function inside another function.
-
-This is incorrect.
-
----
-
-### Strong Answer
+### Answer
 
 > A higher-order function is a function that either accepts another function as an argument or returns a function. Python's `map()`, `filter()` and custom decorators are common examples.
 
@@ -810,7 +794,7 @@ Closures demonstrate how dependencies can be "remembered" and reused, while fram
 
 
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -924,8 +908,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-advanced-04-first-class-functions-and-higher-order-functions-part-2.md`
+[04-First-Class-Functions-and-Higher-Order-Functions-part-2](04-first-class-functions-and-higher-order-functions-part-2.md)
 
 Topics:
 
@@ -935,4 +918,3 @@ Topics:
 - Callbacks
 - Preparing for Decorators
 - Production Examples
-- Interview Questions

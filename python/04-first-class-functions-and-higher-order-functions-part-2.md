@@ -1,4 +1,4 @@
-# File: python/python-advanced-04-first-class-functions-and-higher-order-functions-part-2.md
+# File: python/04-first-class-functions-and-higher-order-functions-part-2.md
 
 # Python Advanced - Lesson 04 (Part 2)
 # Lambda Functions, Built-in Higher-Order Functions & Callbacks
@@ -504,55 +504,33 @@ Decorators use exactly the same idea.
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > What is a lambda function?
 
-### Weak Answer
-
-> It's a short function.
-
-This is correct but incomplete.
-
----
-
-### Strong Answer
+### Answer
 
 > A lambda function is an anonymous function defined using the `lambda` keyword. It consists of a single expression and is commonly used for short-lived operations such as sorting, mapping and filtering. For complex logic, a normal function defined with `def` is preferred.
 
 ---
 
-### Interviewer
+### Question
 
 > What is the difference between `map()` and `filter()`?
 
-### Weak Answer
-
-> One changes values and the other filters values.
-
----
-
-### Strong Answer
+### Answer
 
 > `map()` transforms every element in an iterable by applying a function to each item. `filter()` removes elements that do not satisfy a condition. Both return iterator objects in Python 3.
 
 ---
 
-### Interviewer
+### Question
 
 > What is a callback?
 
-### Weak Answer
-
-> A function inside another function.
-
-This is incorrect.
-
----
-
-### Strong Answer
+### Answer
 
 > A callback is a function passed as an argument to another function so that it can be executed later. Callbacks allow behaviour to be customised without modifying the calling function.
 
@@ -620,7 +598,7 @@ Use it with `notify()` without modifying the `notify()` function.
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -733,8 +711,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-advanced-05-decorators-part-1.md`
+[05-Decorators-part-1](05-decorators-part-1.md)
 
 Topics:
 
@@ -744,4 +721,3 @@ Topics:
 - `*args` and `**kwargs`
 - Preserving Return Values
 - Real-world Examples
-- Interview Questions

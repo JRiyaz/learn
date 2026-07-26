@@ -1,4 +1,4 @@
-# File: python/python-advanced-01-memory-management-and-object-model.md
+# File: python/01-memory-management-and-object-model.md
 
 # Python Advanced - Lesson 01
 # Memory Management & Python Object Model
@@ -589,7 +589,7 @@ Correct:
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -799,7 +799,7 @@ If you can explain these concepts without looking at the notes, you're ready for
 # Next Lesson
 
 **File:**
-`python/python-advanced-02-reference-counting-garbage-collection-and-copying.md`
+[02-Reference-Counting-and-Garbage-Collection-part-1](02-reference-counting-and-garbage-collection-part-1.md)
 
 Topics:
 

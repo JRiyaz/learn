@@ -1,4 +1,4 @@
-# File: python/python-advanced-10-magic-methods-part-1.md
+# File: python/10-magic-methods-part-1.md
 
 # Python Advanced - Lesson 10 (Part 1)
 # Magic Methods - Understanding Python's Object Model
@@ -558,9 +558,9 @@ or explicit `close()` methods.
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > What is the difference between `__new__()` and `__init__()`?
 
@@ -570,7 +570,7 @@ or explicit `close()` methods.
 
 ---
 
-### Interviewer
+### Question
 
 > Why is `__new__()` rarely overridden?
 
@@ -580,7 +580,7 @@ Most classes only need custom initialisation, which is handled by `__init__()`. 
 
 ---
 
-### Interviewer
+### Question
 
 > Why is relying on `__del__()` discouraged?
 
@@ -641,7 +641,7 @@ Depending on the Python implementation, the final message may appear immediately
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -736,8 +736,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-advanced-10-magic-methods-part-2.md`
+[10-Magic-Methods-part-2](10-magic-methods-part-2.md)
 
 Topics:
 
@@ -749,4 +748,3 @@ Topics:
 - `__hash__()`
 - Operator Overloading (`__add__()`, `__sub__()`)
 - Production Examples
-- Interview Questions

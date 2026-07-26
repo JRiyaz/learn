@@ -1,4 +1,4 @@
-# File: python/python-advanced-07-generators-part-1.md
+# File: python/07-generators-part-1.md
 
 # Python Advanced - Lesson 07 (Part 1)
 # Generators - Why They Exist & How `yield` Works
@@ -550,9 +550,9 @@ You'll encounter generators in:
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > Why were generators introduced in Python?
 
@@ -562,7 +562,7 @@ Generators provide a simpler way to create iterators. Instead of implementing `_
 
 ---
 
-### Interviewer
+### Question
 
 > What is the difference between `yield` and `return`?
 
@@ -572,7 +572,7 @@ Generators provide a simpler way to create iterators. Instead of implementing `_
 
 ---
 
-### Interviewer
+### Questions
 
 > Why are generators memory efficient?
 
@@ -627,7 +627,7 @@ Now replace the `for` loop with repeated calls to `next()` and observe where `St
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -735,8 +735,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-advanced-07-generators-part-2.md`
+[07-Generators-part-2](07-generators-part-2.md)
 
 Topics:
 
@@ -747,4 +746,3 @@ Topics:
 - Real-world Streaming Pipelines
 - Generators vs Iterators vs Lists
 - Production Examples
-- Interview Questions

@@ -1,4 +1,4 @@
-# File: python/python-advanced-09-context-managers-part-2.md
+# File: python/09-context-managers-part-2.md
 
 # Python Advanced - Lesson 09 (Part 2)
 # Advanced Context Managers - Exception Handling & `contextlib`
@@ -565,9 +565,9 @@ Python guarantees cleanup.
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > What happens if `__exit__()` returns `True`?
 
@@ -577,7 +577,7 @@ Returning `True` tells Python that the exception has been handled. The exception
 
 ---
 
-### Interviewer
+### Question
 
 > What is the purpose of `contextlib.contextmanager`?
 
@@ -587,7 +587,7 @@ It allows a generator function to be used as a context manager. Code before `yie
 
 ---
 
-### Interviewer
+### Question
 
 > Why are context managers commonly used for database transactions?
 
@@ -647,7 +647,7 @@ Observe the difference between **Commit** and **Rollback**.
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -756,17 +756,4 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-advanced-10-object-oriented-programming-part-1.md`
-
-Topics:
-
-- Why OOP Exists
-- Classes vs Objects
-- Attributes and Methods
-- Instance vs Class Variables
-- `self`
-- Constructors (`__init__`)
-- Encapsulation Basics
-- Production Examples
-- Interview Questions
+[10-Magic-Methods-part-1](10-magic-methods-part-1.md)

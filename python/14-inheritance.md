@@ -1,4 +1,4 @@
-# File: python/python-advanced-14-inheritance.md
+# File: python/14-inheritance.md
 
 # Python Advanced - Lesson 14
 # Inheritance - Reusing and Extending Behaviour
@@ -28,7 +28,6 @@ By the end of this lesson, you will understand:
 - Constructor inheritance
 - When inheritance should and should not be used
 - Production examples
-- Interview questions
 
 ---
 
@@ -650,9 +649,9 @@ modern Python encourages **composition over inheritance** for many designs becau
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > What is inheritance?
 
@@ -662,7 +661,7 @@ Inheritance allows one class to reuse and extend the behaviour of another class.
 
 ---
 
-### Interviewer
+### Question
 
 > What does `super()` do?
 
@@ -672,7 +671,7 @@ Inheritance allows one class to reuse and extend the behaviour of another class.
 
 ---
 
-### Interviewer
+### Question
 
 > When should inheritance be avoided?
 
@@ -737,7 +736,7 @@ I write Python.
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -833,8 +832,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-advanced-15-multiple-inheritance-mro.md`
+[15-Multiple-Inheritance-MRO](15-multiple-inheritance-mro.md)
 
 Topics:
 
@@ -845,4 +843,3 @@ Topics:
 - `mro()` and `__mro__`
 - Cooperative Multiple Inheritance
 - Production Examples
-- Interview Questions

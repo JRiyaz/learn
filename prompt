@@ -1,4 +1,4 @@
-# File: python/python-31-string-deep-dive-part-3.md
+# File: python/31-string-deep-dive-part-3.md
 
 # Python Built-in Types
 # String (`str`) Deep Dive - Part 3: Performance, Regular Expressions & Production Best Practices
@@ -1181,7 +1181,20 @@ This is the level of string knowledge expected from a professional backend engin
 
 **File:**
 
-`python/python-32-list-deep-dive.md`
+[<next-lesson-title>](<next-lesson-filename>.md)
+
+Example:
+# Next Lesson
+
+**File:**
+[02-Reference-Counting-and-Garbage-Collection-Part-1](02-reference-counting-and-garbage-collection-part-1.md)
+
+Rules:
+- Always use a relative Markdown link.
+- The link text should be the lesson title/file prefix (without the `.md` extension).
+- The link target should be the exact filename including the `.md` extension.
+- This section should replace the old "What's Next" file reference.
+- Ensure every lesson links directly to the immediate next lesson in the course.
 
 Topics:
 

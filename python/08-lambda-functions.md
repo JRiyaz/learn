@@ -1,4 +1,4 @@
-# File: python/python-advanced-08-lambda-functions.md
+# File: python/08-lambda-functions.md
 
 # Python Advanced - Lesson 08
 # Lambda Functions - Anonymous Functions in Python
@@ -368,9 +368,9 @@ Although lambdas are common, production code should favour readability over brev
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > When should you use a lambda instead of a normal function?
 
@@ -380,7 +380,7 @@ Use a lambda for short, single-expression functions that are used temporarily, s
 
 ---
 
-### Interviewer
+### Question
 
 > Why can't a lambda contain multiple statements?
 
@@ -390,7 +390,7 @@ Python intentionally restricts lambda functions to a single expression to keep t
 
 ---
 
-### Interviewer
+### Question
 
 > Are lambda functions faster than normal functions?
 
@@ -431,7 +431,7 @@ Modify the program to:
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -519,8 +519,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-advanced-09-context-managers-part-1.md`
+[09-Context-Managers-part-1](09-context-managers-part-1.md)
 
 Topics:
 
@@ -531,4 +530,3 @@ Topics:
 - Building Your First Context Manager
 - File Handling Internals
 - Production Examples
-- Interview Questions

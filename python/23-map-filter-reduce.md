@@ -1,4 +1,4 @@
-# File: python/python-functional-01-map-filter-reduce.md
+# File: python/23-map-filter-reduce.md
 
 # Python Functional Programming - Part 1
 # Functional Programming Fundamentals, `map()`, `filter()` and `reduce()`
@@ -67,7 +67,6 @@ By the end of this lesson, you will understand:
 - Lazy evaluation
 - Performance considerations
 - Production use cases
-- Interview questions
 
 ---
 
@@ -1031,9 +1030,9 @@ Libraries such as Pandas, FastAPI, Airflow and ETL frameworks often build data-p
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > What is a pure function?
 
@@ -1043,7 +1042,7 @@ A pure function always produces the same output for the same input and has no ob
 
 ---
 
-### Interviewer
+### Question
 
 > Why does `map()` return an iterator in Python 3?
 
@@ -1053,7 +1052,7 @@ Returning an iterator enables lazy evaluation, reducing memory usage by processi
 
 ---
 
-### Interviewer
+### Question
 
 > What is the difference between `map()`, `filter()` and `reduce()`?
 
@@ -1063,7 +1062,7 @@ Returning an iterator enables lazy evaluation, reducing memory usage by processi
 
 ---
 
-### Interviewer
+### Question
 
 > Why is `reduce()` less common in modern Python?
 
@@ -1136,7 +1135,7 @@ Expected Output
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -1253,8 +1252,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-functional-24-comprehensions-vs-map-filter.md`
+[24-Comprehensions-vs-Map-Filter](24-comprehensions-vs-map-filter.md)
 
 Topics:
 
@@ -1268,7 +1266,6 @@ Topics:
 - Performance Benchmarks
 - Readability Guidelines
 - Production Best Practices
-- Interview Questions
 
 > **Why next?**
 >

@@ -1,4 +1,4 @@
-# File: python/python-29-string-deep-dive-part-1.md
+# File: python/29-string-deep-dive-part-1.md
 
 # Python Built-in Types
 # String (`str`) Deep Dive - Part 1: Foundations & Internals
@@ -711,9 +711,9 @@ A strong understanding of string fundamentals makes all of these tasks easier an
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > Why are Python strings immutable?
 
@@ -723,7 +723,7 @@ Immutability makes strings hashable, thread-safe and allows CPython to optimise 
 
 ---
 
-### Interviewer
+### Question
 
 > What is the difference between `str` and `bytes`?
 
@@ -733,7 +733,7 @@ Immutability makes strings hashable, thread-safe and allows CPython to optimise 
 
 ---
 
-### Interviewer
+### Question
 
 > What is string interning?
 
@@ -743,7 +743,7 @@ String interning is an optimisation where identical strings share the same objec
 
 ---
 
-### Interviewer
+### Question
 
 > Why is indexing O(1) but slicing O(k)?
 
@@ -783,8 +783,7 @@ In this lesson, you learned:
 # What's Next
 
 **File:**
-
-`python/python-30-string-deep-dive-part-2.md`
+[30-String-Deep-Dive-part-2](30-string-deep-dive-part-2.md)
 
 Topics:
 

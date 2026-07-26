@@ -1,5 +1,4 @@
-# File:
-python/python-39-collections-module-part-2.md
+# File: python/39-collections-module-part-2.md
 
 # Python Standard Library
 # Collections Module - Part 2: `namedtuple`, `OrderedDict`, `ChainMap`, `UserDict`, `UserList` & `UserString`
@@ -50,7 +49,6 @@ By the end of this lesson, you will understand:
 - Performance trade-offs
 - Production use cases
 - Modern alternatives
-- Interview questions
 
 ---
 
@@ -729,9 +727,9 @@ Senior engineers know these tools exist—even if they use them less frequently 
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > When would you choose `namedtuple` over a normal tuple?
 
@@ -741,7 +739,7 @@ When the data has named fields and represents a fixed immutable record. Named fi
 
 ---
 
-### Interviewer
+### Question
 
 > Is `OrderedDict` obsolete?
 
@@ -751,7 +749,7 @@ Not entirely. Normal dictionaries preserve insertion order, but `OrderedDict` st
 
 ---
 
-### Interviewer
+### Question
 
 > What is the purpose of `ChainMap`?
 
@@ -761,7 +759,7 @@ It provides a single view across multiple mappings, searching each in order with
 
 ---
 
-### Interviewer
+### Question
 
 > Why use `UserDict` instead of subclassing `dict`?
 
@@ -771,7 +769,7 @@ It provides a single view across multiple mappings, searching each in order with
 
 ---
 
-### Interviewer
+### Question
 
 > When should you use a `dataclass` instead of a `namedtuple`?
 
@@ -852,7 +850,7 @@ alice@example.com
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -983,8 +981,7 @@ This knowledge forms the foundation for writing efficient, production-grade Pyth
 # What's Next
 
 **File:**
-
-`python/python-40-algorithms-with-python-collections.md`
+[40-Algorithms-With-Python-Collections](40-algorithms-with-python-collections.md)
 
 Topics:
 

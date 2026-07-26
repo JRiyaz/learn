@@ -1,5 +1,4 @@
-# File:
-python/python-40-algorithms-with-python-collections.md
+# File: python/40-algorithms-with-python-collections.md
 
 # Python Algorithms
 # Algorithms with Python Collections: Solving Real Backend Problems
@@ -42,7 +41,6 @@ By the end of this lesson, you will understand:
 - Breadth-First Search (BFS)
 - Caching
 - Production backend applications
-- Interview problem-solving techniques
 
 ---
 
@@ -870,9 +868,9 @@ These improvements are simple, readable, and scale well.
 
 ---
 
-# Interview Deep Dive
+# Questions
 
-### Interviewer
+### Question
 
 > How can you improve repeated lookups in a list of database records?
 
@@ -882,7 +880,7 @@ Build a dictionary keyed by the unique identifier. This converts repeated O(n) s
 
 ---
 
-### Interviewer
+### Question
 
 > When should you use a `set` instead of a `list`?
 
@@ -892,7 +890,7 @@ When uniqueness or frequent membership testing is required. Sets provide average
 
 ---
 
-### Interviewer
+### Question
 
 > Why is `deque` preferred for BFS?
 
@@ -902,7 +900,7 @@ Breadth-first search repeatedly removes elements from the front of a queue. `deq
 
 ---
 
-### Interviewer
+### Question
 
 > How would you group database rows by customer?
 
@@ -912,7 +910,7 @@ Use `defaultdict(list)` and append each row to the list associated with its cust
 
 ---
 
-### Interviewer
+### Question
 
 > What is the biggest optimisation opportunity in many Python applications?
 
@@ -1010,7 +1008,7 @@ deque([2, 3, 4], maxlen=3)
 
 ---
 
-# Interview Questions
+# Questions
 
 ## Question 1
 
@@ -1155,8 +1153,7 @@ You now have a solid understanding of Python's core data structures, their inter
 **Phase 2 – Advanced Python Runtime & Concurrency**
 
 **File:**
-
-`python/python-41-concurrency-part-1-processes-vs-threads.md`
+[41-Concurrency-part-1-Processes-vs-Threads](41-concurrency-part-1-processes-vs-threads.md)
 
 Topics:
 
@@ -1168,6 +1165,5 @@ Topics:
 - CPU-bound vs I/O-bound workloads
 - The Global Interpreter Lock (GIL) introduction
 - Backend production examples
-- Interview questions
 
 > **This marks the beginning of one of the most important sections of the course.** We'll move beyond language syntax into how Python interacts with the operating system, how high-performance backend services handle thousands of requests, and why understanding concurrency is essential for senior backend engineers.
