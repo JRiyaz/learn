@@ -67,7 +67,18 @@
 
 ---
 
-## Module 4 - Concurrency
+## Module 4 - Built in types
+
+- str
+- int
+- list
+- set
+- tuple
+- dict
+
+---
+
+## Module 5 - Concurrency
 
 - Processes vs Threads
 - Threading
@@ -85,7 +96,7 @@
 
 ---
 
-## Module 5 - Production Python
+## Module 6 - Production Python
 
 - Logging
 - Exception Handling
@@ -104,7 +115,7 @@
 
 ---
 
-## Module 6 - Testing
+## Module 7 - Testing
 
 - unittest
 - pytest
