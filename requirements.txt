@@ -1,0 +1,2 @@
+ipykernel==7.3.0
+objgraph==3.6.2
