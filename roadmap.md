@@ -199,6 +199,16 @@ Lesson 65 — Concurrency Capstone (A complete production-style backend project 
 
 ---
 
+## Module 8 – Computer Networking & Sockets
+
+- Networking & TCP Sockets
+- UDP Sockets
+- Multi-Client TCP Server
+- Non-Blocking Sockets & Selectors
+- WebSockets
+
+---
+
 # Phase 2 - SQL
 
 ## Database Fundamentals
