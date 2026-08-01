@@ -730,4 +730,4 @@ ______________________________________________________________________
 
 ## Next File
 
-[Redis Fundamentals](../redis/1-redis-fundamentals.md)
+[Database Scaling Masterclass - Part 1](25.db-scaling-part-1.md)
