@@ -1,6 +1,7 @@
 # File: python/14-inheritance.md
 
 # Python Advanced - Lesson 14
+
 # Inheritance - Reusing and Extending Behaviour
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 90 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -29,7 +30,7 @@ By the end of this lesson, you will understand:
 - When inheritance should and should not be used
 - Production examples
 
----
+______________________________________________________________________
 
 # Why Does Inheritance Exist?
 
@@ -84,7 +85,7 @@ email
 
 appear in every class.
 
----
+______________________________________________________________________
 
 # The Problem
 
@@ -97,7 +98,7 @@ Duplicated code leads to:
 
 Inheritance allows us to define common behaviour once.
 
----
+______________________________________________________________________
 
 # The "is-a" Relationship
 
@@ -117,7 +118,7 @@ Car is a Vehicle
 
 Notice that each child **is a** specialised version of its parent.
 
----
+______________________________________________________________________
 
 # Creating a Parent Class
 
@@ -135,7 +136,7 @@ class Employee:
 
 This contains everything common to all employees.
 
----
+______________________________________________________________________
 
 # Creating a Child Class
 
@@ -157,7 +158,7 @@ means
 Developer inherits Employee
 ```
 
----
+______________________________________________________________________
 
 # Inheriting Methods
 
@@ -191,7 +192,7 @@ I am an employee.
 
 The method is inherited automatically.
 
----
+______________________________________________________________________
 
 # Constructor Inheritance
 
@@ -229,7 +230,7 @@ Alice
 
 Python automatically inherits the parent's constructor if the child doesn't define one.
 
----
+______________________________________________________________________
 
 # Adding Child-Specific Behaviour
 
@@ -257,7 +258,7 @@ This works.
 
 But something is wrong.
 
----
+______________________________________________________________________
 
 # The Problem
 
@@ -273,7 +274,7 @@ This violates the DRY principle.
 
 (Don't Repeat Yourself)
 
----
+______________________________________________________________________
 
 # Introducing super()
 
@@ -326,7 +327,7 @@ Alice
 Python
 ```
 
----
+______________________________________________________________________
 
 # What Does super() Do?
 
@@ -346,7 +347,7 @@ But you don't need to pass `self`.
 
 Python does that automatically.
 
----
+______________________________________________________________________
 
 # Method Overriding
 
@@ -388,7 +389,7 @@ Writing Python code.
 
 The child overrides the parent's implementation.
 
----
+______________________________________________________________________
 
 # Calling the Parent Method
 
@@ -422,7 +423,7 @@ Writing backend APIs.
 
 This extends the parent's behaviour instead of replacing it completely.
 
----
+______________________________________________________________________
 
 # Visualising Inheritance
 
@@ -435,7 +436,7 @@ This extends the parent's behaviour instead of replacing it completely.
 
 Both classes inherit common functionality.
 
----
+______________________________________________________________________
 
 # isinstance()
 
@@ -474,7 +475,7 @@ True
 
 A `Developer` is also an `Employee`.
 
----
+______________________________________________________________________
 
 # issubclass()
 
@@ -501,7 +502,7 @@ Output
 True
 ```
 
----
+______________________________________________________________________
 
 # When Should You Use Inheritance?
 
@@ -523,7 +524,7 @@ Dog
 
 Each child is a specialised version of its parent.
 
----
+______________________________________________________________________
 
 # When Should You Avoid Inheritance?
 
@@ -555,7 +556,7 @@ the user **has a** database connection.
 
 This is composition, which we'll study later.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -591,7 +592,7 @@ Every notification shares the same interface,
 
 but each implements it differently.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -629,9 +630,10 @@ UnicodeError
 
 However,
 
-modern Python encourages **composition over inheritance** for many designs because it produces more flexible and loosely coupled code.
+modern Python encourages **composition over inheritance** for many designs because it produces more flexible and loosely
+coupled code.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -647,7 +649,7 @@ modern Python encourages **composition over inheritance** for many designs becau
 
 ❌ Don't create deep inheritance chains.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -657,9 +659,10 @@ modern Python encourages **composition over inheritance** for many designs becau
 
 ### Answer
 
-Inheritance allows one class to reuse and extend the behaviour of another class. The child class automatically inherits the attributes and methods of the parent class and may override or extend them.
+Inheritance allows one class to reuse and extend the behaviour of another class. The child class automatically inherits
+the attributes and methods of the parent class and may override or extend them.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -667,9 +670,10 @@ Inheritance allows one class to reuse and extend the behaviour of another class.
 
 ### Answer
 
-`super()` provides access to the parent class. It is commonly used to call the parent's constructor or methods without explicitly referring to the parent class by name.
+`super()` provides access to the parent class. It is commonly used to call the parent's constructor or methods without
+explicitly referring to the parent class by name.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -677,9 +681,10 @@ Inheritance allows one class to reuse and extend the behaviour of another class.
 
 ### Answer
 
-Inheritance should be avoided when there is no true **is-a** relationship. In such cases, composition is usually a better design because it creates looser coupling and greater flexibility.
+Inheritance should be avoided when there is no true **is-a** relationship. In such cases, composition is usually a
+better design because it creates looser coupling and greater flexibility.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -734,7 +739,7 @@ I am Alice.
 I write Python.
 ```
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -744,9 +749,10 @@ What is inheritance?
 
 ### Answer
 
-Inheritance is an object-oriented mechanism that allows one class to acquire and extend the attributes and methods of another class.
+Inheritance is an object-oriented mechanism that allows one class to acquire and extend the attributes and methods of
+another class.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -754,9 +760,10 @@ What is the difference between a parent class and a child class?
 
 ### Answer
 
-A parent class defines shared behaviour, while a child class inherits that behaviour and may add new functionality or override existing methods.
+A parent class defines shared behaviour, while a child class inherits that behaviour and may add new functionality or
+override existing methods.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -764,9 +771,10 @@ Why should `super()` be used?
 
 ### Answer
 
-`super()` allows child classes to reuse the parent's implementation, reducing duplication and making code easier to maintain.
+`super()` allows child classes to reuse the parent's implementation, reducing duplication and making code easier to
+maintain.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -774,9 +782,10 @@ What is method overriding?
 
 ### Answer
 
-Method overriding occurs when a child class provides its own implementation of a method already defined in the parent class.
+Method overriding occurs when a child class provides its own implementation of a method already defined in the parent
+class.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -784,9 +793,10 @@ What is the "is-a" relationship?
 
 ### Answer
 
-It describes a situation where a child class is a specialised version of its parent class, such as a `Developer` being an `Employee`.
+It describes a situation where a child class is a specialised version of its parent class, such as a `Developer` being
+an `Employee`.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -798,7 +808,7 @@ Create `Car` and `Bike` classes that inherit from it.
 
 Add one method unique to each child.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -806,13 +816,13 @@ Override a method in the child class and call the parent's version using `super(
 
 Observe the order of execution.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
 Use `isinstance()` and `issubclass()` to verify the inheritance relationships.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -827,12 +837,11 @@ In this lesson, you learned:
 - ✅ `isinstance()` and `issubclass()`.
 - ✅ Production best practices for using inheritance.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[15-Multiple-Inheritance-MRO](15-multiple-inheritance-mro.md)
+**File:** [15-Multiple-Inheritance-MRO](15-multiple-inheritance-mro.md)
 
 Topics:
 

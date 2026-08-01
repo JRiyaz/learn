@@ -2,7 +2,7 @@
 
 **Python Version Introduced:** Python 3.x
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -17,7 +17,7 @@ By the end of this lesson, you will be able to:
 - Understand common pitfalls while creating arrays.
 - Apply best practices used in production code.
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -32,7 +32,7 @@ In the previous lesson, you learned:
 
 In this lesson, we'll learn the various ways to create NumPy arrays efficiently.
 
----
+______________________________________________________________________
 
 # Why Does NumPy Have So Many Array Creation Functions?
 
@@ -59,7 +59,7 @@ For example:
 
 Choosing the right function makes code more readable and often more efficient.
 
----
+______________________________________________________________________
 
 # Creating Arrays with `np.array()`
 
@@ -72,7 +72,7 @@ Creates a NumPy array from an existing Python object such as:
 - nested list
 - another NumPy array
 
----
+______________________________________________________________________
 
 ## Syntax
 
@@ -80,7 +80,7 @@ Creates a NumPy array from an existing Python object such as:
 np.array(object, dtype=None, copy=True)
 ```
 
----
+______________________________________________________________________
 
 ## Important Parameters
 
@@ -90,7 +90,7 @@ np.array(object, dtype=None, copy=True)
 | `dtype` | Desired data type |
 | `copy` | Whether a copy should be made when possible |
 
----
+______________________________________________________________________
 
 ## Example
 
@@ -108,7 +108,7 @@ Output
 [10 20 30]
 ```
 
----
+______________________________________________________________________
 
 ## Nested Lists
 
@@ -128,7 +128,7 @@ Output
  [3 4]]
 ```
 
----
+______________________________________________________________________
 
 # How Does NumPy Determine the Data Type?
 
@@ -167,7 +167,7 @@ float64
 
 The integers are automatically promoted to floating-point values.
 
----
+______________________________________________________________________
 
 # Specifying the Data Type
 
@@ -190,7 +190,7 @@ float32
 
 This is common when memory usage matters.
 
----
+______________________________________________________________________
 
 # Should You Specify `dtype`?
 
@@ -209,7 +209,7 @@ Suppose you store 100 million integers.
 
 Choosing `int32` instead of `int64` could reduce memory usage by hundreds of megabytes.
 
----
+______________________________________________________________________
 
 # Does `np.array()` Create a Copy?
 
@@ -242,7 +242,7 @@ Output
 [1 2 3]
 ```
 
----
+______________________________________________________________________
 
 ### Case 2: Existing NumPy Array
 
@@ -269,7 +269,7 @@ Output
 [100 2 3]
 ```
 
----
+______________________________________________________________________
 
 ### Using `copy=False`
 
@@ -283,7 +283,7 @@ NumPy will try to avoid creating a copy.
 
 We'll revisit this topic in the Memory Model lesson.
 
----
+______________________________________________________________________
 
 # Creating Arrays Filled with Zeros
 
@@ -291,7 +291,7 @@ We'll revisit this topic in the Memory Model lesson.
 
 Creates an array where every element is zero.
 
----
+______________________________________________________________________
 
 ## Syntax
 
@@ -299,7 +299,7 @@ Creates an array where every element is zero.
 np.zeros(shape, dtype=float)
 ```
 
----
+______________________________________________________________________
 
 ## Example
 
@@ -315,7 +315,7 @@ Output
 [0. 0. 0. 0. 0.]
 ```
 
----
+______________________________________________________________________
 
 Matrix example.
 
@@ -333,7 +333,7 @@ Output
  [0. 0. 0. 0.]]
 ```
 
----
+______________________________________________________________________
 
 ## Copy or View?
 
@@ -341,7 +341,7 @@ Creates a **new array**.
 
 Every call allocates new memory.
 
----
+______________________________________________________________________
 
 ## Common Use Cases
 
@@ -350,7 +350,7 @@ Every call allocates new memory.
 - Image buffers
 - Scientific computations
 
----
+______________________________________________________________________
 
 # Creating Arrays Filled with Ones
 
@@ -367,13 +367,13 @@ Output
  [1. 1. 1.]]
 ```
 
----
+______________________________________________________________________
 
 ## Copy or View?
 
 Always allocates new memory.
 
----
+______________________________________________________________________
 
 # Creating Arrays Filled with Any Value
 
@@ -390,7 +390,7 @@ Output
  [7 7 7 7]]
 ```
 
----
+______________________________________________________________________
 
 ## When Should You Use `full()`?
 
@@ -408,7 +408,7 @@ np.full((5, 5), 100)
 
 It's clearer and expresses your intent directly.
 
----
+______________________________________________________________________
 
 # Creating Empty Arrays
 
@@ -432,7 +432,7 @@ NumPy only allocates memory.
 
 It does **not** initialize it.
 
----
+______________________________________________________________________
 
 ## When Should You Use `empty()`?
 
@@ -443,7 +443,7 @@ Only when:
 
 Otherwise, prefer `zeros()`.
 
----
+______________________________________________________________________
 
 # Creating Identity Matrices
 
@@ -468,7 +468,7 @@ Identity matrices are common in:
 - Machine learning
 - Computer graphics
 
----
+______________________________________________________________________
 
 # `eye()` vs `identity()`
 
@@ -484,7 +484,7 @@ Both create square identity matrices.
 
 `eye()` is generally preferred because it also supports rectangular matrices and diagonal offsets.
 
----
+______________________________________________________________________
 
 # Creating Sequential Values with `arange()`
 
@@ -494,7 +494,7 @@ Both create square identity matrices.
 np.arange(start, stop, step)
 ```
 
----
+______________________________________________________________________
 
 Example
 
@@ -512,7 +512,7 @@ Output
 
 Notice that the stop value is excluded, just like Python's `range()`.
 
----
+______________________________________________________________________
 
 # Creating Evenly Spaced Values with `linspace()`
 
@@ -522,7 +522,7 @@ Notice that the stop value is excluded, just like Python's `range()`.
 np.linspace(start, stop, num)
 ```
 
----
+______________________________________________________________________
 
 Example
 
@@ -544,7 +544,7 @@ Output
 
 Unlike `arange()`, the end value is included by default.
 
----
+______________________________________________________________________
 
 # `arange()` vs `linspace()`
 
@@ -559,7 +559,7 @@ A simple rule:
 - Know the step → `arange()`
 - Know how many values → `linspace()`
 
----
+______________________________________________________________________
 
 # Introduction to Random Arrays
 
@@ -581,7 +581,7 @@ Possible output
 
 We'll study random number generation in detail in a dedicated lesson.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -599,7 +599,7 @@ Correct
 np.zeros((3, 4))
 ```
 
----
+______________________________________________________________________
 
 ### Assuming `empty()` Returns Zeros
 
@@ -611,7 +611,7 @@ arr = np.empty(5)
 
 Never rely on its initial values.
 
----
+______________________________________________________________________
 
 ### Using `arange()` with Floating-Point Steps
 
@@ -623,7 +623,7 @@ Floating-point precision can sometimes produce unexpected results.
 
 For evenly spaced floating-point values, prefer `linspace()`.
 
----
+______________________________________________________________________
 
 ### Forgetting to Specify `dtype` for Large Arrays
 
@@ -631,7 +631,7 @@ The default data type may consume more memory than necessary.
 
 When appropriate, choose a smaller type such as `float32` or `int32`.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -642,7 +642,7 @@ When appropriate, choose a smaller type such as `float32` or `int32`.
 - Use `linspace()` for evenly spaced floating-point values.
 - Use `eye()` instead of `identity()` for greater flexibility.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -657,7 +657,7 @@ For example:
 
 Choosing the appropriate array creation function improves readability and can reduce unnecessary memory allocations.
 
----
+______________________________________________________________________
 
 ```markdown id="b3x9vn"
 # Questions
@@ -701,25 +701,25 @@ It specifies the data type of the array, allowing you to control memory usage an
 No. By default, it creates a copy. Using `copy=False` allows NumPy to avoid copying when possible, but it is not guaranteed.
 ```
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
 Write a program that:
 
 1. Creates a one-dimensional array from a Python list.
-2. Creates:
+1. Creates:
    - A 4×4 zero matrix.
    - A 3×5 matrix of ones.
    - A 2×3 matrix filled with the value `99`.
-3. Creates:
+1. Creates:
    - An identity matrix.
    - An array using `arange()`.
    - An array using `linspace()`.
-4. Creates arrays using both `int32` and `int64` and compares their `itemsize` and `nbytes`.
-5. Experiment with `copy=False` using an existing NumPy array and observe whether the arrays share memory (don't worry if the behaviour isn't always the same—we'll explain it fully in the next lesson).
+1. Creates arrays using both `int32` and `int64` and compares their `itemsize` and `nbytes`.
+1. Experiment with `copy=False` using an existing NumPy array and observe whether the arrays share memory (don't worry if the behaviour isn't always the same—we'll explain it fully in the next lesson).
 
----
+______________________________________________________________________
 
 ```markdown id="g5n8tw"
 # Knowledge Check
@@ -783,7 +783,7 @@ Why might you explicitly choose `float32` instead of `float64`?
 To reduce memory usage when the additional precision of `float64` is unnecessary.
 ```
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -796,17 +796,20 @@ To reduce memory usage when the additional precision of `float64` is unnecessary
    - `eye()`
    - `arange()`
    - `linspace()`
-2. Compare the memory usage (`itemsize` and `nbytes`) of arrays created with `int32`, `int64`, `float32`, and `float64`.
-3. Compare the outputs of `arange(0, 1, 0.1)` and `linspace(0, 1, 10)` and explain the differences.
-4. Create a NumPy array from another NumPy array using both the default behaviour and `copy=False`. Observe how changes to one array affect the other, and note your observations. We'll explain the underlying reasons in the next lesson.
+1. Compare the memory usage (`itemsize` and `nbytes`) of arrays created with `int32`, `int64`, `float32`, and `float64`.
+1. Compare the outputs of `arange(0, 1, 0.1)` and `linspace(0, 1, 10)` and explain the differences.
+1. Create a NumPy array from another NumPy array using both the default behaviour and `copy=False`. Observe how changes to one array affect the other, and note your observations. We'll explain the underlying reasons in the next lesson.
 
----
+______________________________________________________________________
 
 # Summary
 
-In this lesson, you learned the most common ways to create NumPy arrays and when to use each approach. You explored `array()`, `zeros()`, `ones()`, `full()`, `empty()`, `eye()`, `arange()`, and `linspace()`, learned how NumPy infers data types, how to control them with `dtype`, and the memory implications of different choices. You also received an introduction to copy behaviour, preparing you for the next lesson on NumPy's memory model.
+In this lesson, you learned the most common ways to create NumPy arrays and when to use each approach. You explored
+`array()`, `zeros()`, `ones()`, `full()`, `empty()`, `eye()`, `arange()`, and `linspace()`, learned how NumPy infers
+data types, how to control them with `dtype`, and the memory implications of different choices. You also received an
+introduction to copy behaviour, preparing you for the next lesson on NumPy's memory model.
 
----
+______________________________________________________________________
 
 # Next Lesson
 

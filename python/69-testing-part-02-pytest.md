@@ -1,6 +1,7 @@
 # File: python/69-testing-part-02-pytest.md
 
 # Testing
+
 # Part 2: pytest – Modern Python Testing
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 10–12 Hours
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -31,15 +32,17 @@ By the end of this lesson, you will understand:
 - Organising test suites
 - Production best practices
 
----
+______________________________________________________________________
 
 # Recap
 
 In the previous lesson, we learned how to write unit tests using Python's built-in `unittest` framework.
 
-Although `unittest` is powerful and widely used, most modern Python projects—including **FastAPI**, **Flask**, **Django**, **SQLAlchemy**, and many open-source libraries—use **pytest** because it is simpler, more expressive, and highly extensible.
+Although `unittest` is powerful and widely used, most modern Python projects—including **FastAPI**, **Flask**,
+**Django**, **SQLAlchemy**, and many open-source libraries—use **pytest** because it is simpler, more expressive, and
+highly extensible.
 
----
+______________________________________________________________________
 
 # Why pytest?
 
@@ -75,7 +78,7 @@ Less boilerplate.
 
 More readable.
 
----
+______________________________________________________________________
 
 # Installing pytest
 
@@ -89,7 +92,7 @@ Verify installation:
 pytest --version
 ```
 
----
+______________________________________________________________________
 
 # Test Discovery
 
@@ -117,7 +120,7 @@ class Test...
 
 without requiring inheritance from `TestCase`.
 
----
+______________________________________________________________________
 
 # Your First pytest Test
 
@@ -153,7 +156,7 @@ Output:
 ====================
 ```
 
----
+______________________________________________________________________
 
 # Assertions
 
@@ -185,7 +188,7 @@ E assert 150 == 120
 
 This is one of pytest's biggest usability improvements.
 
----
+______________________________________________________________________
 
 # Organising Tests
 
@@ -207,7 +210,7 @@ inventory/
 
 Keeping tests in a dedicated `tests/` directory is the most common convention.
 
----
+______________________________________________________________________
 
 # Running Tests
 
@@ -235,7 +238,7 @@ Run quietly:
 pytest -q
 ```
 
----
+______________________________________________________________________
 
 # Parametrized Tests
 
@@ -300,7 +303,7 @@ One test.
 
 Multiple scenarios.
 
----
+______________________________________________________________________
 
 # Skipping Tests
 
@@ -326,7 +329,7 @@ You can also provide a reason:
 )
 ```
 
----
+______________________________________________________________________
 
 # Expected Failures
 
@@ -342,7 +345,7 @@ def test_known_bug():
 
 The failure is recorded without causing the entire test suite to fail.
 
----
+______________________________________________________________________
 
 # Markers
 
@@ -371,7 +374,7 @@ Useful markers include:
 - slow
 - integration
 
----
+______________________________________________________________________
 
 # Comparing unittest and pytest
 
@@ -388,7 +391,7 @@ Both frameworks are excellent.
 
 `pytest` is generally preferred for new Python projects.
 
----
+______________________________________________________________________
 
 # Backend Example
 
@@ -446,7 +449,7 @@ def test_authentication(
 
 Adding new cases requires only another tuple.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -454,31 +457,31 @@ Adding new cases requires only another tuple.
 
 Writing very large test functions.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
 Duplicating test data instead of using parametrization.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
 Using markers without documenting them.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
 Skipping tests permanently instead of fixing them.
 
----
+______________________________________________________________________
 
 ## Mistake 5
 
 Writing tests that depend on execution order.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -496,7 +499,7 @@ Writing tests that depend on execution order.
 
 ❌ Don't share mutable state between tests.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -524,9 +527,10 @@ Build
 Deploy
 ```
 
-Many teams configure the pipeline so that **any failing test blocks deployment**, ensuring regressions are caught before reaching production.
+Many teams configure the pipeline so that **any failing test blocks deployment**, ensuring regressions are caught before
+reaching production.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -536,9 +540,10 @@ Many teams configure the pipeline so that **any failing test blocks deployment**
 
 ### Answer
 
-Because it requires less boilerplate, has a simpler assertion style, supports powerful features like parametrization, and has a rich plugin ecosystem.
+Because it requires less boilerplate, has a simpler assertion style, supports powerful features like parametrization,
+and has a rich plugin ecosystem.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -548,7 +553,7 @@ Because it requires less boilerplate, has a simpler assertion style, supports po
 
 They reduce duplicated test code while allowing multiple input combinations to be tested with a single function.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -556,9 +561,10 @@ They reduce duplicated test code while allowing multiple input combinations to b
 
 ### Answer
 
-Only when a test genuinely cannot be executed, such as on unsupported platforms or while a feature is temporarily unavailable.
+Only when a test genuinely cannot be executed, such as on unsupported platforms or while a feature is temporarily
+unavailable.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -568,7 +574,7 @@ Only when a test genuinely cannot be executed, such as on unsupported platforms 
 
 Markers categorise tests so subsets (such as database or slow tests) can be executed independently.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -578,7 +584,7 @@ Markers categorise tests so subsets (such as database or slow tests) can be exec
 
 Yes. `pytest` can discover and execute many existing `unittest` test cases, making migration easier.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -610,7 +616,7 @@ pytest
 
 Then run only the `slow` tests.
 
----
+______________________________________________________________________
 
 # Knowledge Check
 
@@ -620,9 +626,10 @@ Why do many Python projects prefer `pytest` over `unittest`?
 
 ### Answer
 
-Its concise syntax, powerful features, and extensive plugin ecosystem improve developer productivity while keeping tests easy to read.
+Its concise syntax, powerful features, and extensive plugin ecosystem improve developer productivity while keeping tests
+easy to read.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -630,9 +637,10 @@ What advantage does using `assert` provide in `pytest`?
 
 ### Answer
 
-`pytest` automatically rewrites assertions to produce detailed failure messages without requiring specialised assertion methods.
+`pytest` automatically rewrites assertions to produce detailed failure messages without requiring specialised assertion
+methods.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -642,7 +650,7 @@ Why should parametrized tests be preferred over duplicated test functions?
 
 They reduce repetition, improve maintainability, and make it easier to add new test scenarios.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -652,7 +660,7 @@ What is the difference between `skip` and `xfail`?
 
 `skip` prevents a test from running, while `xfail` runs the test but treats an expected failure as non-blocking.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -660,9 +668,10 @@ Why should tests remain deterministic?
 
 ### Answer
 
-A test should produce the same result every time it runs under the same conditions, making failures reliable and easier to investigate.
+A test should produce the same result every time it runs under the same conditions, making failures reliable and easier
+to investigate.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -670,13 +679,13 @@ A test should produce the same result every time it runs under the same conditio
 
 Install `pytest` and migrate five existing `unittest` tests to `pytest`.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
 Replace duplicated tests in one of your projects with a single parametrized test.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -688,7 +697,7 @@ Create custom markers:
 
 Run each group independently.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -696,7 +705,7 @@ Compare one `unittest` file and its equivalent `pytest` version.
 
 Identify which approach is more readable and explain why.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -711,9 +720,8 @@ In this lesson, you learned:
 - ✅ Expected failures.
 - ✅ Production testing practices with `pytest`.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[70-testing-part-03-fixtures](70-testing-part-03-fixtures.md)
+**File:** [70-testing-part-03-fixtures](70-testing-part-03-fixtures.md)

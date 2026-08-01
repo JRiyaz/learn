@@ -4,46 +4,48 @@
 
 > **Audience:** Software Engineers using Claude Code for professional software development.
 
-This guide explains how Claude Code understands your repository, how to organize projects for maximum productivity, and how to reduce token usage while improving response quality.
+This guide explains how Claude Code understands your repository, how to organize projects for maximum productivity, and
+how to reduce token usage while improving response quality.
 
----
+______________________________________________________________________
 
 # Table of Contents
 
 1. What is Claude Code?
-2. How Claude Code Works
-3. Repository Discovery
-4. CLAUDE.md
-5. Repository Organization
-6. Context Loading Strategy
-7. Working with Large Projects
-8. Documentation Strategy
-9. Token Optimization
-10. Best Practices
-11. Common Mistakes
-12. Example Project
-13. Recommended Workflow
+1. How Claude Code Works
+1. Repository Discovery
+1. CLAUDE.md
+1. Repository Organization
+1. Context Loading Strategy
+1. Working with Large Projects
+1. Documentation Strategy
+1. Token Optimization
+1. Best Practices
+1. Common Mistakes
+1. Example Project
+1. Recommended Workflow
 
----
+______________________________________________________________________
 
 # 1. What is Claude Code?
 
-Claude Code is an AI-powered coding assistant designed to work with **entire software projects**, not just individual files.
+Claude Code is an AI-powered coding assistant designed to work with **entire software projects**, not just individual
+files.
 
 Unlike traditional autocomplete tools, Claude Code attempts to understand:
 
-* Repository structure
-* Project architecture
-* Documentation
-* Related source code
-* Existing implementation
-* Coding conventions
+- Repository structure
+- Project architecture
+- Documentation
+- Related source code
+- Existing implementation
+- Coding conventions
 
 Think of Claude Code as another software engineer joining your project.
 
 The better your repository communicates knowledge, the better Claude performs.
 
----
+______________________________________________________________________
 
 # 2. How Claude Code Thinks
 
@@ -107,7 +109,7 @@ LLM
 
 Claude tries to gather only the information necessary for the current task.
 
----
+______________________________________________________________________
 
 # Why This Matters
 
@@ -131,7 +133,7 @@ Instead,
 
 it loads only relevant information.
 
----
+______________________________________________________________________
 
 # 3. Repository Discovery
 
@@ -191,7 +193,7 @@ examples/
 Dockerfiles
 ```
 
----
+______________________________________________________________________
 
 # Repository Organization
 
@@ -205,7 +207,7 @@ instead of
 
 This dramatically reduces token usage.
 
----
+______________________________________________________________________
 
 # 4. CLAUDE.md
 
@@ -219,7 +221,7 @@ project/
 CLAUDE.md
 ```
 
----
+______________________________________________________________________
 
 # Purpose
 
@@ -239,7 +241,7 @@ stable information
 
 about the project.
 
----
+______________________________________________________________________
 
 # Good Information
 
@@ -259,7 +261,7 @@ Testing expectations
 
 Documentation references
 
----
+______________________________________________________________________
 
 # Avoid
 
@@ -277,7 +279,7 @@ Release notes
 
 Large implementation details
 
----
+______________________________________________________________________
 
 # Keep It Small
 
@@ -315,7 +317,7 @@ CLAUDE.md
 
 is NOT another README.
 
----
+______________________________________________________________________
 
 # Example Structure
 
@@ -343,7 +345,7 @@ Only headings.
 
 Not implementation.
 
----
+______________________________________________________________________
 
 # When Should It Change?
 
@@ -363,7 +365,7 @@ Major project constraints change
 
 Not after every feature.
 
----
+______________________________________________________________________
 
 # 5. Repository Organization
 
@@ -391,7 +393,7 @@ README.md
 Everything
 ```
 
----
+______________________________________________________________________
 
 # Documentation Organization
 
@@ -427,7 +429,7 @@ smaller focused documents
 
 far better.
 
----
+______________________________________________________________________
 
 # 6. Context Loading
 
@@ -463,29 +465,29 @@ Additional Files
 
 Each layer is loaded only if necessary.
 
----
+______________________________________________________________________
 
 # Stable vs Dynamic Context
 
 Stable Context
 
-* Architecture
+- Architecture
 
-* Coding Standards
+- Coding Standards
 
-* Naming
+- Naming
 
-* Constraints
+- Constraints
 
 Dynamic Context
 
-* Current Task
+- Current Task
 
-* Open Files
+- Open Files
 
-* Related Source
+- Related Source
 
-* Current Branch
+- Current Branch
 
 Stable information belongs
 
@@ -499,7 +501,7 @@ inside
 
 the prompt.
 
----
+______________________________________________________________________
 
 # Good Prompt
 
@@ -533,7 +535,7 @@ Manager
 
 The repository should already contain this knowledge.
 
----
+______________________________________________________________________
 
 # 7. Working with Large Projects
 
@@ -571,7 +573,7 @@ Architecture.md
 300 pages
 ```
 
----
+______________________________________________________________________
 
 # Documentation Hierarchy
 
@@ -597,7 +599,7 @@ Implementation
 
 Never skip levels.
 
----
+______________________________________________________________________
 
 # 8. Token Optimization
 
@@ -609,7 +611,7 @@ NOT
 
 Prompt Engineering.
 
----
+______________________________________________________________________
 
 ## Rule 1
 
@@ -617,7 +619,7 @@ Don't repeat architecture.
 
 Reference it.
 
----
+______________________________________________________________________
 
 ## Rule 2
 
@@ -639,7 +641,7 @@ say
 Review ReplicaWorker.notify().
 ```
 
----
+______________________________________________________________________
 
 ## Rule 3
 
@@ -661,7 +663,7 @@ Bad
 Everything.md
 ```
 
----
+______________________________________________________________________
 
 ## Rule 4
 
@@ -669,7 +671,7 @@ One document.
 
 One responsibility.
 
----
+______________________________________________________________________
 
 ## Rule 5
 
@@ -687,7 +689,7 @@ write
 docs/decisions.md
 ```
 
----
+______________________________________________________________________
 
 ## Rule 6
 
@@ -705,7 +707,7 @@ Feature Summary
 
 Claude understands summaries much faster.
 
----
+______________________________________________________________________
 
 ## Rule 7
 
@@ -731,7 +733,7 @@ Worker
 
 everywhere.
 
----
+______________________________________________________________________
 
 # 9. Working Session Strategy
 
@@ -777,7 +779,7 @@ Break work into
 
 small tasks.
 
----
+______________________________________________________________________
 
 # Feature Workflow
 
@@ -809,7 +811,7 @@ Claude performs much better with
 
 incremental development.
 
----
+______________________________________________________________________
 
 # 10. Common Mistakes
 
@@ -829,7 +831,7 @@ incremental development.
 
 ❌ Multiple names for one component
 
----
+______________________________________________________________________
 
 # 11. Example Repository
 
@@ -869,7 +871,7 @@ examples/
 configs/
 ```
 
----
+______________________________________________________________________
 
 # 12. Recommended Daily Workflow
 
@@ -915,7 +917,7 @@ Tests
 Documentation Update
 ```
 
----
+______________________________________________________________________
 
 # 13. Repository Maintenance
 
@@ -945,7 +947,7 @@ after public-facing changes.
 
 The goal is to keep permanent knowledge inside the repository rather than inside repeated prompts.
 
----
+______________________________________________________________________
 
 # Final Recommendations
 
@@ -961,7 +963,9 @@ For Claude Code:
 
 ✅ Let the repository provide context; keep prompts focused on the task.
 
-Claude Code performs best when the repository is treated as a long-lived knowledge base rather than relying on large prompts to re-establish context for every conversation.
+Claude Code performs best when the repository is treated as a long-lived knowledge base rather than relying on large
+prompts to re-establish context for every conversation.
 
 ## Next
+
 [GitHub Copilot & Antigravity Complete Guide](part-5.md)

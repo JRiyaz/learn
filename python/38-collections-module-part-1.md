@@ -1,6 +1,7 @@
 # File: python/38-collections-module-part-1.md
 
 # Python Standard Library
+
 # Collections Module - Part 1: `deque`, `Counter` & `defaultdict`
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 5 Hours
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -30,7 +31,7 @@
 - Python 3.7+ guarantees dictionary insertion order, reducing the need for `OrderedDict` in many situations.
 - The data structures in `collections` are highly optimised and should generally be preferred over writing custom implementations.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -46,7 +47,7 @@ By the end of this lesson, you will understand:
 - Production use cases
 - Best practices
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -61,7 +62,7 @@ In the previous lesson, we explored Python's numeric types:
 
 Now we'll begin exploring one of Python's most useful standard library modules.
 
----
+______________________________________________________________________
 
 # Why Does `collections` Exist?
 
@@ -82,7 +83,7 @@ Because some problems appear so frequently that specialised data structures prov
 
 Instead of writing your own implementation, Python already provides one.
 
----
+______________________________________________________________________
 
 # Real Backend Example
 
@@ -112,7 +113,7 @@ Maybe.
 
 But there is a better option.
 
----
+______________________________________________________________________
 
 # Introducing `deque`
 
@@ -124,7 +125,7 @@ Double Ended Queue
 
 It allows efficient insertion and removal from **both ends**.
 
----
+______________________________________________________________________
 
 # Import
 
@@ -132,7 +133,7 @@ It allows efficient insertion and removal from **both ends**.
 from collections import deque
 ```
 
----
+______________________________________________________________________
 
 # Creating a Deque
 
@@ -154,7 +155,7 @@ Output
 deque(['Alice', 'Bob'])
 ```
 
----
+______________________________________________________________________
 
 # Queue Behaviour (FIFO)
 
@@ -190,7 +191,7 @@ Output
 Task A
 ```
 
----
+______________________________________________________________________
 
 # Stack Behaviour (LIFO)
 
@@ -222,7 +223,7 @@ Output
 C
 ```
 
----
+______________________________________________________________________
 
 # Why Not Use a List?
 
@@ -242,7 +243,7 @@ O(n)
 
 Every remaining element must shift.
 
----
+______________________________________________________________________
 
 With a deque
 
@@ -260,7 +261,7 @@ O(1)
 
 No shifting.
 
----
+______________________________________________________________________
 
 # Internal Representation
 
@@ -306,7 +307,7 @@ Conceptually
 
 Appending or removing from either end only updates the end blocks.
 
----
+______________________________________________________________________
 
 # appendleft()
 
@@ -326,7 +327,7 @@ Output
 deque(['Alice', 'Bob'])
 ```
 
----
+______________________________________________________________________
 
 # extend()
 
@@ -344,7 +345,7 @@ Output
 deque(['A', 'B', 'C'])
 ```
 
----
+______________________________________________________________________
 
 # extendleft()
 
@@ -366,7 +367,7 @@ Notice something interesting.
 
 `extendleft()` inserts each element on the left one at a time, so the iterable appears reversed.
 
----
+______________________________________________________________________
 
 # rotate()
 
@@ -392,7 +393,7 @@ Rotate left
 queue.rotate(-1)
 ```
 
----
+______________________________________________________________________
 
 # Maximum Length
 
@@ -417,7 +418,7 @@ deque(['Log 2', 'Log 3', 'Log 4'])
 
 Old entries disappear automatically.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -433,7 +434,7 @@ recent_requests.append(request)
 
 No cleanup code required.
 
----
+______________________________________________________________________
 
 # Time Complexity
 
@@ -451,7 +452,7 @@ Lists are better for random indexing.
 
 Deques are better for queues.
 
----
+______________________________________________________________________
 
 # Counter
 
@@ -473,7 +474,7 @@ Works.
 
 But Python already solved this problem.
 
----
+______________________________________________________________________
 
 # Using Counter
 
@@ -501,7 +502,7 @@ Counter({
 })
 ```
 
----
+______________________________________________________________________
 
 # Accessing Counts
 
@@ -531,7 +532,7 @@ Unlike dictionaries,
 
 missing keys don't raise `KeyError`.
 
----
+______________________________________________________________________
 
 # most_common()
 
@@ -555,7 +556,7 @@ Output
 
 Extremely useful.
 
----
+______________________________________________________________________
 
 # Updating a Counter
 
@@ -569,7 +570,7 @@ counts.update("banana")
 print(counts)
 ```
 
----
+______________________________________________________________________
 
 # Counter Arithmetic
 
@@ -595,7 +596,7 @@ Counter({
 
 Counters support addition, subtraction, intersection and union.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -637,7 +638,7 @@ Counter({
 })
 ```
 
----
+______________________________________________________________________
 
 # defaultdict
 
@@ -661,7 +662,7 @@ for department, employee in rows:
 
 `defaultdict` makes this cleaner.
 
----
+______________________________________________________________________
 
 # Creating One
 
@@ -675,7 +676,7 @@ Whenever a missing key is accessed,
 
 Python automatically creates an empty list.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -711,7 +712,7 @@ defaultdict(
 )
 ```
 
----
+______________________________________________________________________
 
 # Why Does This Work?
 
@@ -739,7 +740,7 @@ data["Engineering"] = []
 
 before appending.
 
----
+______________________________________________________________________
 
 # Other Default Factories
 
@@ -767,7 +768,7 @@ Every missing key starts with
 set()
 ```
 
----
+______________________________________________________________________
 
 # Counting Example
 
@@ -803,7 +804,7 @@ defaultdict(
 )
 ```
 
----
+______________________________________________________________________
 
 # Time Complexity
 
@@ -815,7 +816,7 @@ defaultdict(
 
 All inherit their excellent average-case performance from Python's underlying hash tables or deque implementation.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -833,7 +834,7 @@ Prefer
 deque.popleft()
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -851,7 +852,7 @@ Prefer
 Counter()
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -869,7 +870,7 @@ Prefer
 defaultdict(list)
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -877,7 +878,7 @@ Using a deque for frequent random indexing.
 
 Lists are more appropriate when indexed access is the primary operation.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -895,7 +896,7 @@ Lists are more appropriate when indexed access is the primary operation.
 
 ❌ Don't replace every dictionary with a `defaultdict`; use it only when automatic initialisation is beneficial.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -925,9 +926,10 @@ These three data structures appear frequently in production backend systems.
 - Categorising log events
 - Indexing records by key
 
-Many production systems become both shorter and faster simply by replacing custom implementations with these specialised data structures.
+Many production systems become both shorter and faster simply by replacing custom implementations with these specialised
+data structures.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -937,9 +939,10 @@ Many production systems become both shorter and faster simply by replacing custo
 
 ### Answer
 
-Lists are dynamic arrays, so removing the first element requires shifting all remaining elements. A deque is optimised for insertion and removal at both ends, making `popleft()` an O(1) operation.
+Lists are dynamic arrays, so removing the first element requires shifting all remaining elements. A deque is optimised
+for insertion and removal at both ends, making `popleft()` an O(1) operation.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -947,9 +950,10 @@ Lists are dynamic arrays, so removing the first element requires shifting all re
 
 ### Answer
 
-Whenever frequency counting is required, such as counting API responses, log levels, words, or user events. It is simpler and less error-prone than manually maintaining a dictionary.
+Whenever frequency counting is required, such as counting API responses, log levels, words, or user events. It is
+simpler and less error-prone than manually maintaining a dictionary.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -957,9 +961,10 @@ Whenever frequency counting is required, such as counting API responses, log lev
 
 ### Answer
 
-It automatically creates default values for missing keys, eliminating repetitive existence checks and reducing boilerplate code.
+It automatically creates default values for missing keys, eliminating repetitive existence checks and reducing
+boilerplate code.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -967,9 +972,10 @@ It automatically creates default values for missing keys, eliminating repetitive
 
 ### Answer
 
-Because deques optimise end operations, not random indexing. Lists provide faster indexed access and are generally a better choice when queue behaviour is not required.
+Because deques optimise end operations, not random indexing. Lists provide faster indexed access and are generally a
+better choice when queue behaviour is not required.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -1045,7 +1051,7 @@ defaultdict(
 )
 ```
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1055,9 +1061,10 @@ When should you use a `deque` instead of a list?
 
 ### Answer
 
-Use a `deque` when your application frequently inserts or removes elements from the beginning or end of a sequence, such as queues and sliding windows.
+Use a `deque` when your application frequently inserts or removes elements from the beginning or end of a sequence, such
+as queues and sliding windows.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -1065,9 +1072,10 @@ What advantages does `Counter` provide over a normal dictionary?
 
 ### Answer
 
-It automatically counts frequencies, returns `0` for missing keys, supports arithmetic operations and provides convenience methods like `most_common()`.
+It automatically counts frequencies, returns `0` for missing keys, supports arithmetic operations and provides
+convenience methods like `most_common()`.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -1075,9 +1083,10 @@ What is the purpose of `defaultdict`?
 
 ### Answer
 
-It automatically initialises missing keys using a default factory, reducing repetitive existence checks and simplifying grouping and counting logic.
+It automatically initialises missing keys using a default factory, reducing repetitive existence checks and simplifying
+grouping and counting logic.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -1087,7 +1096,7 @@ Why is `deque(maxlen=N)` useful?
 
 It automatically maintains a fixed-size buffer by discarding the oldest elements when new ones are added.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1095,9 +1104,10 @@ Why isn't a `deque` ideal for random indexing?
 
 ### Answer
 
-Although indexing is supported, deques are optimised for operations at both ends rather than fast random access. Lists remain the better choice for frequent indexed access.
+Although indexing is supported, deques are optimised for operations at both ends rather than fast random access. Lists
+remain the better choice for frequent indexed access.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -1111,7 +1121,7 @@ Support:
 - Process next task
 - View pending tasks
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -1123,7 +1133,7 @@ Read an application log file and use `Counter` to calculate:
 
 Display the results sorted by frequency.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -1135,13 +1145,14 @@ Given a list of employees, group them by department using:
 
 Compare the readability of all three implementations.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
-Implement a rolling buffer that stores only the last 50 API requests using `deque(maxlen=50)`. Simulate 100 incoming requests and verify that only the newest 50 remain.
+Implement a rolling buffer that stores only the last 50 API requests using `deque(maxlen=50)`. Simulate 100 incoming
+requests and verify that only the newest 50 remain.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1156,12 +1167,11 @@ In this lesson, you learned:
 - ✅ Production use cases.
 - ✅ Common interview topics.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[39-Collections-Module-part-2](39-collections-module-part-2.md)
+**File:** [39-Collections-Module-part-2](39-collections-module-part-2.md)
 
 Topics:
 

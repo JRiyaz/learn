@@ -1,6 +1,7 @@
 # File: python/07-generators-part-2.md
 
 # Python Advanced - Lesson 07 (Part 2)
+
 # Advanced Generators - Generator Expressions, `yield from` & Generator Control
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 90 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -26,7 +27,7 @@ By the end of this lesson, you will understand:
 - The difference between generators, iterators and lists
 - How generators are used to build data processing pipelines
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -40,7 +41,7 @@ In the previous lesson, we learned that generators:
 
 Now we'll explore the more advanced features that make generators extremely powerful.
 
----
+______________________________________________________________________
 
 # Generator Expressions
 
@@ -76,7 +77,7 @@ Output
 
 Notice that no values have been created yet.
 
----
+______________________________________________________________________
 
 # Consuming a Generator Expression
 
@@ -103,7 +104,7 @@ Output
 
 The values are generated one at a time.
 
----
+______________________________________________________________________
 
 # List vs Generator Expression
 
@@ -127,7 +128,7 @@ Python creates:
 
 immediately.
 
----
+______________________________________________________________________
 
 Generator expression:
 
@@ -159,7 +160,7 @@ Generator Object
 
 Only one value exists at a time.
 
----
+______________________________________________________________________
 
 # When Should You Use Generator Expressions?
 
@@ -177,7 +178,7 @@ Avoid them when:
 - You need the data multiple times
 - The dataset is small and readability is more important
 
----
+______________________________________________________________________
 
 # yield from
 
@@ -225,7 +226,7 @@ B
 
 This works, but it's repetitive.
 
----
+______________________________________________________________________
 
 # Using yield from
 
@@ -251,7 +252,7 @@ B
 
 `yield from` delegates iteration to another iterable.
 
----
+______________________________________________________________________
 
 # Understanding yield from
 
@@ -293,7 +294,7 @@ Python handles iteration automatically
 
 It removes boilerplate code.
 
----
+______________________________________________________________________
 
 # Example - Reading Multiple Files
 
@@ -336,7 +337,7 @@ def all_logs():
 
 Cleaner and easier to maintain.
 
----
+______________________________________________________________________
 
 # Sending Values into Generators
 
@@ -386,7 +387,7 @@ Output
 
 The value `100` becomes the result of the `yield` expression.
 
----
+______________________________________________________________________
 
 # Why Must next() Be Called First?
 
@@ -418,7 +419,7 @@ next(generator)
 
 starts the generator and pauses it at the first `yield`, making it ready to receive values.
 
----
+______________________________________________________________________
 
 # A More Practical Example
 
@@ -462,7 +463,7 @@ Output
 
 Notice that the generator remembers the value of `total`.
 
----
+______________________________________________________________________
 
 # Closing a Generator
 
@@ -504,7 +505,7 @@ StopIteration
 
 The generator is permanently closed.
 
----
+______________________________________________________________________
 
 # Generators vs Iterators vs Lists
 
@@ -517,7 +518,7 @@ The generator is permanently closed.
 | Memory efficient | ❌ | ✅ | ✅ |
 | Easy to implement | ✅ | ❌ | ✅ |
 
----
+______________________________________________________________________
 
 # Generator Pipelines
 
@@ -579,7 +580,7 @@ Each stage processes one value at a time.
 
 No intermediate lists are created.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -640,7 +641,7 @@ Frameworks and libraries that use similar ideas include:
 
 This design scales much better for large datasets.
 
----
+______________________________________________________________________
 
 # Question
 
@@ -650,9 +651,10 @@ This design scales much better for large datasets.
 
 ### Answer
 
-A list comprehension creates and stores all values immediately, while a generator expression produces values lazily as they are requested. Generator expressions are more memory efficient for large datasets.
+A list comprehension creates and stores all values immediately, while a generator expression produces values lazily as
+they are requested. Generator expressions are more memory efficient for large datasets.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -660,9 +662,10 @@ A list comprehension creates and stores all values immediately, while a generato
 
 ### Answer
 
-`yield from` delegates iteration to another iterable or generator. It automatically yields every value from the delegated iterable without requiring an explicit loop.
+`yield from` delegates iteration to another iterable or generator. It automatically yields every value from the
+delegated iterable without requiring an explicit loop.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -670,9 +673,10 @@ A list comprehension creates and stores all values immediately, while a generato
 
 ### Answer
 
-The `send()` method allows values to be passed back into a paused generator. This enables two-way communication and can be useful for stateful processing, coroutines and event-driven workflows.
+The `send()` method allows values to be passed back into a paused generator. This enables two-way communication and can
+be useful for stateful processing, coroutines and event-driven workflows.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -733,9 +737,10 @@ Expected Output
 324
 ```
 
-Try replacing the generators with lists and compare the code. Notice how generators avoid creating unnecessary intermediate collections.
+Try replacing the generators with lists and compare the code. Notice how generators avoid creating unnecessary
+intermediate collections.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -745,9 +750,10 @@ What is a generator expression?
 
 ### Answer
 
-A generator expression is a concise way to create a generator. It uses parentheses instead of square brackets and produces values lazily.
+A generator expression is a concise way to create a generator. It uses parentheses instead of square brackets and
+produces values lazily.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -755,9 +761,10 @@ What does `yield from` simplify?
 
 ### Answer
 
-It simplifies yielding values from another iterable or generator by automatically forwarding each value without writing an explicit loop.
+It simplifies yielding values from another iterable or generator by automatically forwarding each value without writing
+an explicit loop.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -765,9 +772,10 @@ Why must `next()` usually be called before `send()`?
 
 ### Answer
 
-The generator must first execute until it reaches its initial `yield`. Only then is it paused and ready to receive a value through `send()`.
+The generator must first execute until it reaches its initial `yield`. Only then is it paused and ready to receive a
+value through `send()`.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -775,9 +783,10 @@ What does `generator.close()` do?
 
 ### Answer
 
-It terminates the generator by raising `GeneratorExit` internally. After being closed, the generator cannot produce any more values.
+It terminates the generator by raising `GeneratorExit` internally. After being closed, the generator cannot produce any
+more values.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -785,9 +794,10 @@ Why are generator pipelines efficient?
 
 ### Answer
 
-Each stage processes one value at a time instead of creating multiple intermediate collections, reducing memory usage and improving scalability.
+Each stage processes one value at a time instead of creating multiple intermediate collections, reducing memory usage
+and improving scalability.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -797,7 +807,7 @@ Create a generator expression that produces the squares of numbers from **1** to
 
 Print only the first ten values.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -808,19 +818,19 @@ Create two generators:
 
 Combine them using `yield from`.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
 Build a three-stage generator pipeline:
 
 1. Generate numbers from **1** to **50**
-2. Keep only numbers divisible by **5**
-3. Multiply each number by **10**
+1. Keep only numbers divisible by **5**
+1. Multiply each number by **10**
 
 Print the final output.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -834,9 +844,8 @@ In this lesson, you learned:
 - ✅ How generator pipelines process data efficiently.
 - ✅ Why generators are widely used in production data processing systems.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[08-Lambda-Functions](08-lambda-functions.md)
+**File:** [08-Lambda-Functions](08-lambda-functions.md)

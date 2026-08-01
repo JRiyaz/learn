@@ -1,6 +1,7 @@
 # File: python/54-concurrency-part-14-asyncio-synchronization-primitives.md
 
 # Advanced Python Runtime & Concurrency
+
 # Concurrency Part 14: Asyncio Synchronization Primitives (`Lock`, `Event`, `Condition`, `Semaphore`, `Queue`)
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 10 Hours
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -25,7 +26,7 @@
 | `asyncio.Semaphore` | Python 3.4 |
 | `asyncio.Queue` | Python 3.4 |
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -45,7 +46,7 @@ By the end of this lesson, you will understand:
 - Best practices
 - questions
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -55,11 +56,12 @@ One of the biggest misconceptions about asyncio is:
 
 This is **false**.
 
-Although only one coroutine executes Python bytecode at a time, execution switches whenever a coroutine reaches an `await`.
+Although only one coroutine executes Python bytecode at a time, execution switches whenever a coroutine reaches an
+`await`.
 
 That switch can occur inside what you thought was a single logical operation.
 
----
+______________________________________________________________________
 
 # A Race Condition in Async Code
 
@@ -129,7 +131,7 @@ Exactly the same logical race condition we saw with threads.
 
 The difference is **when** context switching occurs.
 
----
+______________________________________________________________________
 
 # Why Does This Happen?
 
@@ -161,7 +163,7 @@ The switch is cooperative,
 
 but it still happens.
 
----
+______________________________________________________________________
 
 # Asyncio Lock
 
@@ -175,7 +177,7 @@ Unlike `threading.Lock`,
 
 this lock is designed specifically for coroutines.
 
----
+______________________________________________________________________
 
 # Creating a Lock
 
@@ -185,7 +187,7 @@ import asyncio
 lock = asyncio.Lock()
 ```
 
----
+______________________________________________________________________
 
 # Acquiring a Lock
 
@@ -211,7 +213,7 @@ finally:
 
 The context manager is preferred.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -258,7 +260,7 @@ Output
 2
 ```
 
----
+______________________________________________________________________
 
 # Asyncio Event
 
@@ -284,7 +286,7 @@ Allow Workers To Continue
 
 This is what `Event` is for.
 
----
+______________________________________________________________________
 
 # Creating an Event
 
@@ -292,7 +294,7 @@ This is what `Event` is for.
 event = asyncio.Event()
 ```
 
----
+______________________________________________________________________
 
 # Waiting
 
@@ -300,7 +302,7 @@ event = asyncio.Event()
 await event.wait()
 ```
 
----
+______________________________________________________________________
 
 # Signalling
 
@@ -310,7 +312,7 @@ event.set()
 
 Every waiting coroutine resumes.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -344,7 +346,7 @@ async def main():
 asyncio.run(main())
 ```
 
----
+______________________________________________________________________
 
 # Asyncio Condition
 
@@ -384,7 +386,7 @@ async with condition:
     condition.notify_all()
 ```
 
----
+______________________________________________________________________
 
 # Asyncio Semaphore
 
@@ -418,7 +420,7 @@ Use:
 asyncio.Semaphore(10)
 ```
 
----
+______________________________________________________________________
 
 # Example
 
@@ -435,7 +437,7 @@ async def call_api():
 
 Only ten coroutines may execute the protected section simultaneously.
 
----
+______________________________________________________________________
 
 # BoundedSemaphore
 
@@ -449,7 +451,7 @@ but raises an exception if released more times than acquired.
 
 Useful for detecting programming errors.
 
----
+______________________________________________________________________
 
 # Asyncio Queue
 
@@ -467,7 +469,7 @@ it is designed for coroutines,
 
 not threads.
 
----
+______________________________________________________________________
 
 # Creating a Queue
 
@@ -475,7 +477,7 @@ not threads.
 queue = asyncio.Queue()
 ```
 
----
+______________________________________________________________________
 
 # Producer
 
@@ -483,7 +485,7 @@ queue = asyncio.Queue()
 await queue.put(item)
 ```
 
----
+______________________________________________________________________
 
 # Consumer
 
@@ -493,7 +495,7 @@ item = await queue.get()
 queue.task_done()
 ```
 
----
+______________________________________________________________________
 
 # Example
 
@@ -535,7 +537,7 @@ async def main():
 asyncio.run(main())
 ```
 
----
+______________________________________________________________________
 
 # Producer-Consumer Workflow
 
@@ -553,7 +555,7 @@ Consumer
 
 This pattern is common in asynchronous applications.
 
----
+______________________________________________________________________
 
 # Synchronization Comparison
 
@@ -565,7 +567,7 @@ This pattern is common in asynchronous applications.
 | Limit concurrency | `Semaphore` |
 | Producer-consumer | `Queue` |
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -605,7 +607,7 @@ Semaphore(20)
 
 ensuring that no more than twenty uploads happen simultaneously.
 
----
+______________________________________________________________________
 
 # Async Locks vs Thread Locks
 
@@ -617,7 +619,7 @@ ensuring that no more than twenty uploads happen simultaneously.
 
 Never use a `threading.Lock` to synchronize coroutines running on the event loop.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -631,7 +633,7 @@ threading.Lock
 
 inside async code.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -643,7 +645,7 @@ queue.task_done()
 
 when using `asyncio.Queue`.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -651,7 +653,7 @@ Holding a lock longer than necessary.
 
 Keep critical sections as short as possible.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -661,7 +663,7 @@ If only one coroutine should enter,
 
 use a `Lock`.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -677,7 +679,7 @@ use a `Lock`.
 
 ❌ Don't block the event loop while holding a lock.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -721,7 +723,7 @@ Although the application uses only a few operating system threads,
 
 proper synchronization remains essential for correctness.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -731,9 +733,10 @@ proper synchronization remains essential for correctness.
 
 ### Answer
 
-Yes. Coroutines may interleave execution whenever they reach an `await`, leading to inconsistent updates if shared state is not synchronized.
+Yes. Coroutines may interleave execution whenever they reach an `await`, leading to inconsistent updates if shared state
+is not synchronized.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -741,9 +744,10 @@ Yes. Coroutines may interleave execution whenever they reach an `await`, leading
 
 ### Answer
 
-`asyncio.Lock` suspends coroutines without blocking the event loop, whereas `threading.Lock` is designed for operating system threads.
+`asyncio.Lock` suspends coroutines without blocking the event loop, whereas `threading.Lock` is designed for operating
+system threads.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -753,7 +757,7 @@ Yes. Coroutines may interleave execution whenever they reach an `await`, leading
 
 When limiting concurrent access to a finite resource such as a database connection pool or an external API.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -763,7 +767,7 @@ When limiting concurrent access to a finite resource such as a database connecti
 
 It provides asynchronous producer-consumer communication between coroutines.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -773,7 +777,7 @@ It provides asynchronous producer-consumer communication between coroutines.
 
 Long critical sections reduce concurrency and increase waiting time for other coroutines.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -820,7 +824,7 @@ Run the example with and without the lock.
 
 Observe how synchronization affects the final value.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -830,9 +834,10 @@ Can race conditions occur in asyncio?
 
 ### Answer
 
-Yes. They occur when multiple coroutines access shared mutable state and yield execution at `await` points before completing a logical operation.
+Yes. They occur when multiple coroutines access shared mutable state and yield execution at `await` points before
+completing a logical operation.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -842,7 +847,7 @@ Why is `asyncio.Lock` non-blocking?
 
 Because waiting coroutines are suspended by the event loop instead of blocking the operating system thread.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -852,7 +857,7 @@ When should `asyncio.Queue` be preferred?
 
 For asynchronous producer-consumer workflows where coroutines exchange work items safely.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -860,9 +865,10 @@ What is the difference between `Semaphore` and `Lock`?
 
 ### Answer
 
-A lock allows only one coroutine into a critical section, whereas a semaphore allows a configurable number of concurrent entrants.
+A lock allows only one coroutine into a critical section, whereas a semaphore allows a configurable number of concurrent
+entrants.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -872,7 +878,7 @@ How is `asyncio.Semaphore` commonly used in backend applications?
 
 To limit concurrent access to rate-limited services, connection pools, or expensive shared resources.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -887,7 +893,7 @@ Run the program:
 
 Compare the results.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -900,7 +906,7 @@ Use:
 
 Measure throughput.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -908,7 +914,7 @@ Simulate an external API that allows only five concurrent requests.
 
 Use `asyncio.Semaphore` to enforce the limit.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -922,7 +928,7 @@ Identify where you would use:
 
 Explain why each primitive is appropriate.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -936,11 +942,14 @@ In this lesson, you learned:
 - ✅ How `Queue` implements asynchronous producer-consumer workflows.
 - ✅ Production synchronization patterns used in modern async services.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
 **File:**
 [55-concurrency-part-15-asyncio-timeouts-cancellation-and-shielding](55-concurrency-part-15-asyncio-timeouts-cancellation-and-shielding.md)
 
-In the next lesson, we'll cover one of the most important topics for production async systems: **timeouts, cancellation, and shielding**. You'll learn how `asyncio.wait_for()`, `asyncio.timeout()`, `asyncio.shield()`, and cooperative cancellation work, why client disconnects cancel tasks, and how to write cancellation-safe code in FastAPI and other asyncio-based services.
+In the next lesson, we'll cover one of the most important topics for production async systems: **timeouts, cancellation,
+and shielding**. You'll learn how `asyncio.wait_for()`, `asyncio.timeout()`, `asyncio.shield()`, and cooperative
+cancellation work, why client disconnects cancel tasks, and how to write cancellation-safe code in FastAPI and other
+asyncio-based services.

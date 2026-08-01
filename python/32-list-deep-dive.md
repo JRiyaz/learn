@@ -1,6 +1,7 @@
 # File: python/32-list-deep-dive.md
 
 # Python Built-in Types
+
 # List (`list`) Deep Dive
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 4 Hours
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -31,7 +32,7 @@
 - Python 3 introduced several improvements to list comprehensions and unpacking.
 - Although the API has remained stable, CPython has continuously improved list performance internally.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -49,7 +50,7 @@ By the end of this lesson, you will understand:
 - Performance considerations
 - Production best practices
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -65,7 +66,7 @@ In the previous lessons, we completed the **String Deep Dive**, covering:
 
 Unlike strings, **lists are mutable**, making them one of the most important data structures in Python.
 
----
+______________________________________________________________________
 
 # Why Are Lists Important?
 
@@ -85,7 +86,7 @@ Examples:
 
 If you write Python, you will use lists every day.
 
----
+______________________________________________________________________
 
 # What is a List?
 
@@ -115,7 +116,7 @@ data = [
 
 Unlike many programming languages, Python lists can contain different object types.
 
----
+______________________________________________________________________
 
 # Characteristics of Lists
 
@@ -133,7 +134,7 @@ Lists are:
 
 ✅ Support slicing
 
----
+______________________________________________________________________
 
 # Internal Representation
 
@@ -173,7 +174,7 @@ The integers live elsewhere in memory.
 
 The list only stores references.
 
----
+______________________________________________________________________
 
 # Why Is This Important?
 
@@ -217,7 +218,7 @@ Output
 [1, 2, 3, 4]
 ```
 
----
+______________________________________________________________________
 
 # Dynamic Arrays
 
@@ -255,7 +256,7 @@ Copies the references,
 
 then continues.
 
----
+______________________________________________________________________
 
 # Why Not Resize Every Time?
 
@@ -287,7 +288,7 @@ Allocated Capacity
 
 The next 28 appends require no resizing.
 
----
+______________________________________________________________________
 
 # Amortised O(1)
 
@@ -337,7 +338,7 @@ O(1)
 
 This is called **amortised constant time**.
 
----
+______________________________________________________________________
 
 # Creating Lists
 
@@ -355,7 +356,7 @@ Output
 ['P', 'y', 't', 'h', 'o', 'n']
 ```
 
----
+______________________________________________________________________
 
 # Indexing
 
@@ -391,7 +392,7 @@ Output
 Charlie
 ```
 
----
+______________________________________________________________________
 
 # Slicing
 
@@ -421,7 +422,7 @@ Output
 [50, 40, 30, 20, 10]
 ```
 
----
+______________________________________________________________________
 
 # Mutability
 
@@ -443,7 +444,7 @@ Output
 [100, 2, 3]
 ```
 
----
+______________________________________________________________________
 
 # append()
 
@@ -469,7 +470,7 @@ Complexity
 Amortised O(1)
 ```
 
----
+______________________________________________________________________
 
 # extend()
 
@@ -491,7 +492,7 @@ Output
 [1, 2, 3, 4]
 ```
 
----
+______________________________________________________________________
 
 # append() vs extend()
 
@@ -527,7 +528,7 @@ Output
 
 favourite Questions.
 
----
+______________________________________________________________________
 
 # insert()
 
@@ -553,7 +554,7 @@ O(n)
 
 because existing elements must shift.
 
----
+______________________________________________________________________
 
 # remove()
 
@@ -573,7 +574,7 @@ Output
 [1, 3, 2]
 ```
 
----
+______________________________________________________________________
 
 # pop()
 
@@ -605,7 +606,7 @@ Middle element
 O(n)
 ```
 
----
+______________________________________________________________________
 
 # clear()
 
@@ -623,7 +624,7 @@ Output
 []
 ```
 
----
+______________________________________________________________________
 
 # Membership Testing
 
@@ -653,7 +654,7 @@ O(n)
 
 Python searches sequentially.
 
----
+______________________________________________________________________
 
 # Sorting
 
@@ -671,7 +672,7 @@ Output
 [1, 2, 4, 5]
 ```
 
----
+______________________________________________________________________
 
 # sorted()
 
@@ -701,7 +702,7 @@ Output
 [1, 2, 3]
 ```
 
----
+______________________________________________________________________
 
 # TimSort
 
@@ -733,7 +734,7 @@ Worst
 O(n log n)
 ```
 
----
+______________________________________________________________________
 
 # key Parameter
 
@@ -759,7 +760,7 @@ print(users)
 
 Production code frequently uses `key`.
 
----
+______________________________________________________________________
 
 # Reverse Sorting
 
@@ -777,7 +778,7 @@ Output
 [5, 2, 1]
 ```
 
----
+______________________________________________________________________
 
 # Shallow Copy
 
@@ -813,7 +814,7 @@ b
 
 Two different list objects.
 
----
+______________________________________________________________________
 
 # Nested Lists
 
@@ -841,7 +842,7 @@ Inner lists are shared.
 
 We covered deep copies earlier in the course.
 
----
+______________________________________________________________________
 
 # List Comprehension
 
@@ -871,7 +872,7 @@ Output
 
 Use comprehensions when they improve readability.
 
----
+______________________________________________________________________
 
 # Time Complexity Summary
 
@@ -888,7 +889,7 @@ Use comprehensions when they improve readability.
 | Slice | O(k) |
 | Copy | O(n) |
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -902,7 +903,7 @@ b = a
 
 when a copy was intended.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -916,7 +917,7 @@ inside large loops.
 
 Every insertion shifts the remaining elements.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -932,7 +933,7 @@ this becomes expensive.
 
 Use a set instead.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -952,7 +953,7 @@ sorted()
 
 instead.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -970,7 +971,7 @@ instead.
 
 ❌ Don't use lists for frequent membership checks on large datasets.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -1009,7 +1010,7 @@ return users
 
 Choosing the right operations on lists can significantly affect application performance.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1019,9 +1020,10 @@ Choosing the right operations on lists can significantly affect application perf
 
 ### Answer
 
-Because Python over-allocates memory. Most appends don't require resizing, making the average (amortised) complexity O(1).
+Because Python over-allocates memory. Most appends don't require resizing, making the average (amortised) complexity
+O(1).
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1029,9 +1031,10 @@ Because Python over-allocates memory. Most appends don't require resizing, makin
 
 ### Answer
 
-`append()` adds a single object to the end of the list, while `extend()` iterates over another iterable and adds each element individually.
+`append()` adds a single object to the end of the list, while `extend()` iterates over another iterable and adds each
+element individually.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1041,7 +1044,7 @@ Because Python over-allocates memory. Most appends don't require resizing, makin
 
 Because Python searches elements sequentially until it finds a match or reaches the end of the list.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1049,9 +1052,10 @@ Because Python searches elements sequentially until it finds a match or reaches 
 
 ### Answer
 
-A stable sort preserves the relative order of elements with equal keys, allowing multiple sorting passes without losing previous ordering.
+A stable sort preserves the relative order of elements with equal keys, allowing multiple sorting passes without losing
+previous ordering.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -1110,7 +1114,7 @@ Expected Output
 ['Alice', 'Bob', 'Charlie']
 ```
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1122,7 +1126,7 @@ Why are Python lists called dynamic arrays?
 
 Because they automatically resize as elements are added, unlike fixed-size arrays.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -1130,9 +1134,10 @@ Why is `append()` usually faster than `insert(0, value)`?
 
 ### Answer
 
-`append()` typically adds an element to unused capacity at the end, while inserting at the beginning shifts every existing element.
+`append()` typically adds an element to unused capacity at the end, while inserting at the beginning shifts every
+existing element.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -1140,9 +1145,10 @@ What is the difference between `sort()` and `sorted()`?
 
 ### Answer
 
-`sort()` modifies the original list in place, whereas `sorted()` returns a new sorted list and leaves the original unchanged.
+`sort()` modifies the original list in place, whereas `sorted()` returns a new sorted list and leaves the original
+unchanged.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -1152,7 +1158,7 @@ Why does a shallow copy not protect nested objects?
 
 A shallow copy duplicates only the outer list. Nested mutable objects are still shared between both lists.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1162,7 +1168,7 @@ When should you use a list instead of a set?
 
 Use a list when element order matters, duplicates are allowed, or indexed access is required.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -1177,7 +1183,7 @@ Implement a student management program that supports:
 
 Use only lists.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -1189,13 +1195,13 @@ Sort a list of dictionaries representing employees by:
 
 using the `key` parameter.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
 Read a CSV file into a list of dictionaries and sort the records by multiple fields.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -1206,7 +1212,7 @@ Measure the execution time of:
 
 for 100,000 operations and compare the results.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1222,12 +1228,11 @@ In this lesson, you learned:
 - ✅ Production use cases.
 - ✅ Common interview topics.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[33-Tuple-Deep-Dive](33-tuple-deep-dive.md)
+**File:** [33-Tuple-Deep-Dive](33-tuple-deep-dive.md)
 
 Topics:
 

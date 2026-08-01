@@ -1,6 +1,7 @@
 # File: python/11-dataclasses.md
 
 # Python Advanced - Lesson 11
+
 # Dataclasses - Writing Cleaner and More Maintainable Classes
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 90 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -31,7 +32,7 @@ By the end of this lesson, you will understand:
 - Production use cases
 - Best practices and interview questions
 
----
+______________________________________________________________________
 
 # Why Were Dataclasses Introduced?
 
@@ -83,7 +84,7 @@ Notice the repetition.
 
 Every class needs nearly identical boilerplate.
 
----
+______________________________________________________________________
 
 # The Problem
 
@@ -101,7 +102,7 @@ Sometimes it also needs:
 
 Writing these repeatedly becomes tedious and error-prone.
 
----
+______________________________________________________________________
 
 # Introducing Dataclasses
 
@@ -135,7 +136,7 @@ That's all.
 
 Python generates the constructor automatically.
 
----
+______________________________________________________________________
 
 # What Does @dataclass Generate?
 
@@ -171,7 +172,7 @@ User(id=1, name='Alice')
 
 We never implemented `__repr__()` ourselves.
 
----
+______________________________________________________________________
 
 # Automatic Equality
 
@@ -202,7 +203,7 @@ A normal class compares object identity unless `__eq__()` is implemented.
 
 A dataclass compares field values by default.
 
----
+______________________________________________________________________
 
 # Type Annotations
 
@@ -219,7 +220,7 @@ They describe the expected type of each field.
 
 Dataclasses use these annotations to identify which attributes belong to the class.
 
----
+______________________________________________________________________
 
 # Default Values
 
@@ -250,7 +251,7 @@ Output
 User(name='Alice', active=True)
 ```
 
----
+______________________________________________________________________
 
 # The Mutable Default Problem Returns
 
@@ -276,7 +277,7 @@ We studied this earlier in the course.
 
 Every instance would otherwise share the same list.
 
----
+______________________________________________________________________
 
 # default_factory
 
@@ -315,7 +316,7 @@ Output
 
 Each instance has an independent list.
 
----
+______________________________________________________________________
 
 # field()
 
@@ -361,7 +362,7 @@ User(username='alice')
 
 The password is hidden from the object's string representation.
 
----
+______________________________________________________________________
 
 # Frozen Dataclasses
 
@@ -391,7 +392,7 @@ FrozenInstanceError
 
 Frozen dataclasses are immutable after creation.
 
----
+______________________________________________________________________
 
 # Ordered Dataclasses
 
@@ -424,7 +425,7 @@ Python automatically creates:
 - `__gt__()`
 - `__ge__()`
 
----
+______________________________________________________________________
 
 # Dataclass Inheritance
 
@@ -458,7 +459,7 @@ Output
 Employee(name='Alice', salary=50000)
 ```
 
----
+______________________________________________________________________
 
 # Dataclass vs Normal Class
 
@@ -470,7 +471,7 @@ Employee(name='Alice', salary=50000)
 | More boilerplate | Less boilerplate |
 | Better for complex behaviour | Better for data containers |
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -483,9 +484,10 @@ Dataclasses are widely used in backend systems for:
 - Internal service messages
 - Immutable configuration
 
-They are **not** typically used as ORM models in frameworks such as SQLAlchemy because those frameworks manage object behaviour differently.
+They are **not** typically used as ORM models in frameworks such as SQLAlchemy because those frameworks manage object
+behaviour differently.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -495,9 +497,10 @@ They are **not** typically used as ORM models in frameworks such as SQLAlchemy b
 
 ### Answer
 
-Dataclasses reduce boilerplate for classes whose primary purpose is storing data. They automatically generate methods such as `__init__()`, `__repr__()` and `__eq__()`.
+Dataclasses reduce boilerplate for classes whose primary purpose is storing data. They automatically generate methods
+such as `__init__()`, `__repr__()` and `__eq__()`.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -505,9 +508,10 @@ Dataclasses reduce boilerplate for classes whose primary purpose is storing data
 
 ### Answer
 
-Using a mutable object as a default value would cause every instance to share the same object. `default_factory` creates a new object for each instance.
+Using a mutable object as a default value would cause every instance to share the same object. `default_factory` creates
+a new object for each instance.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -517,7 +521,7 @@ Using a mutable object as a default value would cause every instance to share th
 
 It makes instances immutable after creation. Attempting to modify a field raises a `FrozenInstanceError`.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -552,7 +556,7 @@ Modify the program to:
 - Verify that each employee has an independent `skills` list.
 - Mark the dataclass as frozen and observe the behaviour when trying to modify a field.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -564,7 +568,7 @@ What problem do dataclasses solve?
 
 They reduce boilerplate by automatically generating common methods for classes that primarily store data.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -574,7 +578,7 @@ Which methods are generated by default?
 
 `__init__()`, `__repr__()` and `__eq__()`.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -584,7 +588,7 @@ Why is `default_factory` preferred over mutable default values?
 
 It creates a new object for every instance, preventing unintended sharing of mutable objects.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -594,7 +598,7 @@ What does `frozen=True` do?
 
 It makes the dataclass immutable after construction.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -604,7 +608,7 @@ When should you choose a dataclass?
 
 When the class primarily represents structured data with little or no custom behaviour.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -618,7 +622,7 @@ Create a `Book` dataclass with:
 
 Instantiate three books and print them.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -626,13 +630,13 @@ Create a `Library` dataclass containing a list of books using `default_factory`.
 
 Verify that two `Library` instances maintain separate book collections.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
 Create a frozen `Configuration` dataclass and confirm that attempting to modify a field raises an exception.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -647,12 +651,11 @@ In this lesson, you learned:
 - ✅ Dataclass inheritance.
 - ✅ Production use cases and best practices.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[12-NamedTuple](12-namedtuple.md)
+**File:** [12-NamedTuple](12-namedtuple.md)
 
 Topics:
 

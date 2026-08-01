@@ -1,6 +1,7 @@
 # File: python/06-iterators-and-iterables-part-1.md
 
 # Python Advanced - Lesson 06 (Part 1)
+
 # Iterables, Iterators & The Iterator Protocol
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 75 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -27,7 +28,7 @@ By the end of this lesson, you will understand:
 - How `next()` works
 - What actually happens inside a `for` loop
 
----
+______________________________________________________________________
 
 # Why Should You Learn This?
 
@@ -41,7 +42,7 @@ If you understand iterators, you'll understand:
 - Large data processing
 - Memory-efficient programming
 
----
+______________________________________________________________________
 
 # Theory
 
@@ -78,7 +79,7 @@ The answer is:
 
 **Iterators.**
 
----
+______________________________________________________________________
 
 # What is an Iterable?
 
@@ -115,7 +116,7 @@ The list itself is an iterable.
 
 It knows **how to create an iterator**.
 
----
+______________________________________________________________________
 
 # What is an Iterator?
 
@@ -150,7 +151,7 @@ Every time you call `next()`,
 
 the bookmark moves forward.
 
----
+______________________________________________________________________
 
 # Iterable vs Iterator
 
@@ -184,7 +185,7 @@ next()
 Values
 ```
 
----
+______________________________________________________________________
 
 # Example 1 - Creating an Iterator
 
@@ -218,7 +219,7 @@ iter(numbers)
 
 creates a new iterator.
 
----
+______________________________________________________________________
 
 # Example 2 - Using next()
 
@@ -246,7 +247,7 @@ Output
 
 Every call to `next()` returns the next value.
 
----
+______________________________________________________________________
 
 # What Happens After the Last Item?
 
@@ -266,7 +267,7 @@ This exception tells Python:
 
 > "There are no more values."
 
----
+______________________________________________________________________
 
 # Visualization
 
@@ -318,7 +319,7 @@ next()
 StopIteration
 ```
 
----
+______________________________________________________________________
 
 # Why Doesn't a for Loop Raise StopIteration?
 
@@ -367,7 +368,7 @@ while True:
 
 This is essentially what Python does behind the scenes.
 
----
+______________________________________________________________________
 
 # Example 3 - Strings are Iterables
 
@@ -395,7 +396,7 @@ y
 
 Strings are iterables too.
 
----
+______________________________________________________________________
 
 # Example 4 - Dictionaries
 
@@ -426,7 +427,7 @@ By default,
 
 iterating over a dictionary returns its **keys**.
 
----
+______________________________________________________________________
 
 # Iterator Exhaustion
 
@@ -474,7 +475,7 @@ create a new iterator.
 iterator = iter(numbers)
 ```
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -507,7 +508,7 @@ The same concept is used in:
 - Kafka consumers
 - API response streaming
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -517,9 +518,11 @@ The same concept is used in:
 
 ### Answer
 
-An iterable is an object capable of producing an iterator. An iterator is an object that keeps track of its current position and returns one value at a time using `next()`. Every iterator is iterable, but not every iterable is an iterator.
+An iterable is an object capable of producing an iterator. An iterator is an object that keeps track of its current
+position and returns one value at a time using `next()`. Every iterator is iterable, but not every iterable is an
+iterator.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -527,9 +530,10 @@ An iterable is an object capable of producing an iterator. An iterator is an obj
 
 ### Answer
 
-Python calls `iter()` on the iterable to create an iterator. It repeatedly calls `next()` until a `StopIteration` exception is raised, which signals that iteration has finished.
+Python calls `iter()` on the iterable to create an iterator. It repeatedly calls `next()` until a `StopIteration`
+exception is raised, which signals that iteration has finished.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -537,9 +541,10 @@ Python calls `iter()` on the iterable to create an iterator. It repeatedly calls
 
 ### Answer
 
-Because it maintains internal state. Each call to `next()` advances the iterator. Once it reaches the end, it is exhausted and must be recreated using `iter()` if you want to iterate again.
+Because it maintains internal state. Each call to `next()` advances the iterator. Once it reaches the end, it is
+exhausted and must be recreated using `iter()` if you want to iterate again.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -590,7 +595,7 @@ Now replace the list with:
 
 Observe how strings also behave as iterables.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -604,7 +609,7 @@ An iterable is any object that can return an iterator using the `iter()` functio
 
 Examples include lists, tuples, strings, dictionaries, sets, files and ranges.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -612,9 +617,10 @@ What is an iterator?
 
 ### Answer
 
-An iterator is an object that returns one value at a time using the `next()` function while keeping track of its current position.
+An iterator is an object that returns one value at a time using the `next()` function while keeping track of its current
+position.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -626,7 +632,7 @@ What exception signals the end of iteration?
 
 Python raises this exception when there are no more values to return.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -636,7 +642,7 @@ What does `iter()` do?
 
 It creates and returns an iterator from an iterable object.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -646,7 +652,7 @@ Why doesn't a `for` loop raise `StopIteration`?
 
 Because Python catches the `StopIteration` exception internally and uses it to terminate the loop gracefully.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -656,7 +662,7 @@ Create an iterator from a tuple.
 
 Retrieve every value manually using `next()`.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -666,7 +672,7 @@ Print each character using `next()` until `StopIteration` occurs.
 
 Handle the exception gracefully.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -674,7 +680,7 @@ Write a program that demonstrates iterator exhaustion.
 
 Iterate over the same iterator twice and explain why the second loop produces no output.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -688,12 +694,11 @@ In this lesson, you learned:
 - ✅ Why `StopIteration` exists.
 - ✅ What a `for` loop does internally.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[06-Iterators-and-Iterables-part-2](06-iterators-and-iterables-part-2.md)
+**File:** [06-Iterators-and-Iterables-part-2](06-iterators-and-iterables-part-2.md)
 
 Topics:
 

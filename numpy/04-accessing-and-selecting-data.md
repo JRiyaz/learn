@@ -2,7 +2,7 @@
 
 **Python Version Introduced:** Python 3.x
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -16,7 +16,7 @@ By the end of this lesson, you will be able to:
 - Avoid common indexing mistakes.
 - Write efficient and readable array selection code.
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -32,7 +32,7 @@ In the previous lesson, you learned about NumPy's memory model:
 
 This lesson builds directly on those concepts because many indexing operations either share or duplicate memory.
 
----
+______________________________________________________________________
 
 # Why Data Selection Matters
 
@@ -50,7 +50,7 @@ Examples:
 
 Efficient data selection is one of the most frequently used operations in NumPy.
 
----
+______________________________________________________________________
 
 # Indexing Basics
 
@@ -98,7 +98,7 @@ Output
 50
 ```
 
----
+______________________________________________________________________
 
 # Negative Indexing
 
@@ -126,7 +126,7 @@ Output
 
 This is often cleaner than calculating the last index manually.
 
----
+______________________________________________________________________
 
 # Indexing Multi-Dimensional Arrays
 
@@ -158,7 +158,7 @@ print(matrix[0][1])
 
 However, the comma notation is preferred because it is faster and more readable.
 
----
+______________________________________________________________________
 
 # Selecting Entire Rows
 
@@ -186,7 +186,7 @@ Output
 [40 50 60]
 ```
 
----
+______________________________________________________________________
 
 # Selecting Entire Columns
 
@@ -222,7 +222,7 @@ matrix[row, column]
 
 A colon (`:`) means "select everything along this axis."
 
----
+______________________________________________________________________
 
 # Slicing
 
@@ -238,7 +238,7 @@ Like Python lists:
 - `stop` is exclusive.
 - `step` is optional.
 
----
+______________________________________________________________________
 
 Example.
 
@@ -254,7 +254,7 @@ Output
 [20 30 40]
 ```
 
----
+______________________________________________________________________
 
 Skipping elements.
 
@@ -268,7 +268,7 @@ Output
 [10 30 50]
 ```
 
----
+______________________________________________________________________
 
 Reversing an array.
 
@@ -282,7 +282,7 @@ Output
 [50 40 30 20 10]
 ```
 
----
+______________________________________________________________________
 
 # Slicing Multi-Dimensional Arrays
 
@@ -307,7 +307,7 @@ Output
  [40 50 60]]
 ```
 
----
+______________________________________________________________________
 
 Columns 1 and 2.
 
@@ -323,7 +323,7 @@ Output
  [80 90]]
 ```
 
----
+______________________________________________________________________
 
 Submatrix.
 
@@ -338,7 +338,7 @@ Output
  [80 90]]
 ```
 
----
+______________________________________________________________________
 
 # Does Slicing Return a View or Copy?
 
@@ -370,7 +370,7 @@ Why?
 
 Because **basic slicing returns a View.**
 
----
+______________________________________________________________________
 
 Verify.
 
@@ -384,7 +384,7 @@ Output
 True
 ```
 
----
+______________________________________________________________________
 
 # Boolean Indexing
 
@@ -418,7 +418,7 @@ Output
 
 Boolean indexing is extremely common in data analysis.
 
----
+______________________________________________________________________
 
 # Does Boolean Indexing Return a View?
 
@@ -458,7 +458,7 @@ Output
 False
 ```
 
----
+______________________________________________________________________
 
 # Fancy Indexing
 
@@ -490,7 +490,7 @@ Output
 [30 30 30]
 ```
 
----
+______________________________________________________________________
 
 # Does Fancy Indexing Return a View?
 
@@ -524,7 +524,7 @@ Output
 False
 ```
 
----
+______________________________________________________________________
 
 # Copy vs View Summary
 
@@ -539,7 +539,7 @@ False
 
 This table is worth remembering.
 
----
+______________________________________________________________________
 
 # Performance Notes
 
@@ -555,7 +555,7 @@ Creates only another view.
 
 Almost no additional memory.
 
----
+______________________________________________________________________
 
 Boolean indexing:
 
@@ -567,7 +567,7 @@ Creates a completely new array.
 
 Requires additional memory proportional to the number of selected elements.
 
----
+______________________________________________________________________
 
 Fancy indexing:
 
@@ -577,7 +577,7 @@ arr[[1,5,9]]
 
 Also creates a new array.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -593,7 +593,7 @@ It doesn't.
 
 Changes affect the original.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -613,7 +613,7 @@ matrix[0,1]
 
 It is clearer and avoids creating intermediate objects.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -625,7 +625,7 @@ selected = arr[arr > 10]
 
 `selected` is independent.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -643,7 +643,7 @@ matrix[:,1]
 
 Returns column 2.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -653,7 +653,7 @@ Returns column 2.
 - Use Fancy indexing when selecting arbitrary positions.
 - Verify memory sharing with `np.shares_memory()` when debugging.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -661,13 +661,14 @@ Imagine processing a dataset with 50 million records.
 
 Using slicing to process chunks avoids unnecessary memory allocation because slices share memory.
 
-On the other hand, Boolean indexing creates new arrays, which is often necessary for filtering but increases memory usage.
+On the other hand, Boolean indexing creates new arrays, which is often necessary for filtering but increases memory
+usage.
 
 Understanding which operations create copies helps you write scalable data processing pipelines.
 
----
+______________________________________________________________________
 
-```markdown id="u6f9qc"
+````markdown id="u6f9qc"
 # Questions
 
 ### Question
@@ -698,9 +699,9 @@ Boolean indexing and Fancy indexing.
 
 ```python
 matrix[:,1]
-```
+````
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -709,7 +710,8 @@ matrix[:,1]
 ### Answer
 
 It is more efficient, more readable, and avoids creating an intermediate object.
-```
+
+````
 
 ---
 
@@ -724,21 +726,21 @@ matrix = np.array([
     [90,100,110,120],
     [130,140,150,160]
 ])
-```
+````
 
 Perform the following tasks:
 
 1. Select the third row.
-2. Select the second column.
-3. Extract the top-left 2×2 submatrix.
-4. Reverse the rows.
-5. Select all values greater than 75.
-6. Select rows 1 and 3 using Fancy indexing.
-7. Verify which results share memory with the original array using `np.shares_memory()`.
+1. Select the second column.
+1. Extract the top-left 2×2 submatrix.
+1. Reverse the rows.
+1. Select all values greater than 75.
+1. Select rows 1 and 3 using Fancy indexing.
+1. Verify which results share memory with the original array using `np.shares_memory()`.
 
----
+______________________________________________________________________
 
-```markdown id="d4y7ms"
+````markdown id="d4y7ms"
 # Knowledge Check
 
 ## Question 1
@@ -769,9 +771,9 @@ How do you select every row from the third column?
 
 ```python
 array[:,2]
-```
+````
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -783,7 +785,7 @@ How do you reverse an array using slicing?
 array[::-1]
 ```
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -793,7 +795,7 @@ Why is Boolean indexing more memory-intensive than slicing?
 
 Because Boolean indexing creates a new array containing the selected elements, while slicing usually shares the original memory.
 
----
+______________________________________________________________________
 
 ## Question 6
 
@@ -806,6 +808,7 @@ Use:
 ```python
 np.shares_memory(array1, array2)
 ```
+
 ```
 
 ---
@@ -832,7 +835,11 @@ Create a summary table listing each operation and whether it shares memory with 
 
 # Summary
 
-In this lesson, you learned how to access and select data efficiently using indexing, slicing, Boolean indexing, and Fancy indexing. More importantly, you learned which operations return **Views** and which create **Copies**, allowing you to predict memory usage and avoid subtle bugs. This knowledge is fundamental for writing efficient NumPy code and prepares you for the next lesson, where you'll explore reshaping arrays and how memory layout affects operations such as `reshape()`, `flatten()`, and `transpose()`.
+In this lesson, you learned how to access and select data efficiently using indexing, slicing, Boolean indexing, and
+Fancy indexing. More importantly, you learned which operations return **Views** and which create **Copies**, allowing
+you to predict memory usage and avoid subtle bugs. This knowledge is fundamental for writing efficient NumPy code and
+prepares you for the next lesson, where you'll explore reshaping arrays and how memory layout affects operations such as
+`reshape()`, `flatten()`, and `transpose()`.
 
 ---
 
@@ -841,3 +848,4 @@ In this lesson, you learned how to access and select data efficiently using inde
 **File:**
 
 [05-reshaping-and-array-layout.md](05-reshaping-and-array-layout.md)
+```

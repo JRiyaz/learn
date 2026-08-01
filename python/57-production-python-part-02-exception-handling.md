@@ -1,6 +1,7 @@
 # File: python/57-production-python-part-02-exception-handling.md
 
 # Production Python
+
 # Part 2: Exception Handling – Building Reliable and Resilient Python Applications
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 10–12 Hours
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -33,7 +34,7 @@ By the end of this lesson, you will understand:
 - Best practices
 - questions
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -61,7 +62,7 @@ Instead, it is expected to:
 
 That is the purpose of exception handling.
 
----
+______________________________________________________________________
 
 # Errors vs Exceptions
 
@@ -87,7 +88,7 @@ ZeroDivisionError
 
 This exception communicates that something unexpected occurred.
 
----
+______________________________________________________________________
 
 # Python Exception Hierarchy
 
@@ -134,7 +135,7 @@ BaseException
 
 because it includes exceptions used to terminate the program.
 
----
+______________________________________________________________________
 
 # What Happens When an Exception Occurs?
 
@@ -171,7 +172,7 @@ If no matching exception handler exists,
 
 Python unwinds the call stack.
 
----
+______________________________________________________________________
 
 # Stack Unwinding
 
@@ -225,7 +226,7 @@ If none exists,
 
 the application crashes.
 
----
+______________________________________________________________________
 
 # Basic Exception Handling
 
@@ -261,7 +262,7 @@ except
 Continue
 ```
 
----
+______________________________________________________________________
 
 # Multiple Exception Handlers
 
@@ -287,7 +288,7 @@ Python evaluates them from top to bottom.
 
 The first matching handler executes.
 
----
+______________________________________________________________________
 
 # Catching Multiple Exceptions
 
@@ -313,7 +314,7 @@ except (ValueError, TypeError):
 
 Useful when the recovery strategy is identical.
 
----
+______________________________________________________________________
 
 # The `else` Block
 
@@ -343,7 +344,7 @@ The `else` block executes only if no exception occurs.
 
 This keeps success logic separate from error handling.
 
----
+______________________________________________________________________
 
 # The `finally` Block
 
@@ -380,7 +381,7 @@ Whether an exception occurs or not,
 
 the file is closed.
 
----
+______________________________________________________________________
 
 # Execution Flow
 
@@ -426,7 +427,7 @@ Notice:
 
 `finally` always executes.
 
----
+______________________________________________________________________
 
 # Raising Exceptions
 
@@ -453,7 +454,7 @@ None
 
 when those values could be ambiguous.
 
----
+______________________________________________________________________
 
 # Re-Raising Exceptions
 
@@ -481,7 +482,7 @@ without specifying an exception.
 
 This preserves the original traceback.
 
----
+______________________________________________________________________
 
 # Exception Chaining
 
@@ -515,7 +516,7 @@ FileNotFoundError
 
 Exception chaining preserves the original context.
 
----
+______________________________________________________________________
 
 # Backend Example
 
@@ -563,7 +564,7 @@ HTTP 503
 
 The original cause remains visible in logs.
 
----
+______________________________________________________________________
 
 # What Should You Catch?
 
@@ -602,7 +603,7 @@ These hide serious problems like:
 - KeyboardInterrupt
 - SystemExit
 
----
+______________________________________________________________________
 
 # Anti-Pattern: Silent Failures
 
@@ -622,7 +623,7 @@ The application ignores failures completely.
 
 Debugging becomes nearly impossible.
 
----
+______________________________________________________________________
 
 # Anti-Pattern: Returning Error Codes
 
@@ -640,7 +641,7 @@ raise ValueError(...)
 
 Exceptions clearly communicate failure.
 
----
+______________________________________________________________________
 
 # Anti-Pattern: Broad Catching
 
@@ -658,7 +659,7 @@ At minimum,
 
 log the exception.
 
----
+______________________________________________________________________
 
 # Production Strategy
 
@@ -695,7 +696,7 @@ Upper layers:
 - Alert
 - Recover where appropriate
 
----
+______________________________________________________________________
 
 # Exception Translation
 
@@ -715,7 +716,7 @@ Higher layers no longer depend on PostgreSQL-specific exceptions.
 
 This improves abstraction.
 
----
+______________________________________________________________________
 
 # Logging Exceptions
 
@@ -739,7 +740,7 @@ inside an `except` block.
 
 `logger.exception()` automatically records the traceback.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -751,7 +752,7 @@ Using
 except:
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -761,19 +762,19 @@ Ignoring exceptions with
 pass
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
 Returning magic values instead of raising exceptions.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
 Losing the original traceback by raising a completely new exception without chaining.
 
----
+______________________________________________________________________
 
 ## Mistake 5
 
@@ -781,7 +782,7 @@ Handling exceptions too early.
 
 Sometimes it is better to let them propagate to the appropriate layer.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -801,7 +802,7 @@ Sometimes it is better to let them propagate to the appropriate layer.
 
 ❌ Don't catch `BaseException`.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -839,7 +840,7 @@ The API understands HTTP.
 
 Keeping these concerns separate makes systems easier to maintain, test, and evolve.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -849,9 +850,10 @@ Keeping these concerns separate makes systems easier to maintain, test, and evol
 
 ### Answer
 
-It is the process by which Python walks back through the call stack searching for a matching exception handler after an exception is raised.
+It is the process by which Python walks back through the call stack searching for a matching exception handler after an
+exception is raised.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -861,7 +863,7 @@ It is the process by which Python walks back through the call stack searching fo
 
 Because it guarantees cleanup code executes regardless of whether an exception occurs.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -871,7 +873,7 @@ Because it guarantees cleanup code executes regardless of whether an exception o
 
 To allow higher-level code to handle it while preserving the original traceback and execution context.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -881,7 +883,7 @@ To allow higher-level code to handle it while preserving the original traceback 
 
 It links a new exception to the original cause using `raise ... from ...`, preserving debugging information.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -889,9 +891,10 @@ It links a new exception to the original cause using `raise ... from ...`, prese
 
 ### Answer
 
-Because it catches exceptions such as `KeyboardInterrupt` and `SystemExit`, making programs difficult to terminate correctly.
+Because it catches exceptions such as `KeyboardInterrupt` and `SystemExit`, making programs difficult to terminate
+correctly.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -953,7 +956,7 @@ Observe:
 - Logging at different layers.
 - The final traceback.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -963,9 +966,10 @@ What is the difference between `except Exception` and `except BaseException`?
 
 ### Answer
 
-`Exception` catches application-level runtime errors, whereas `BaseException` also catches system-level exceptions such as `KeyboardInterrupt` and `SystemExit`, which are usually not intended to be intercepted.
+`Exception` catches application-level runtime errors, whereas `BaseException` also catches system-level exceptions such
+as `KeyboardInterrupt` and `SystemExit`, which are usually not intended to be intercepted.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -973,9 +977,10 @@ When should `finally` be used?
 
 ### Answer
 
-Whenever resources such as files, sockets, database connections, or locks must be released regardless of success or failure.
+Whenever resources such as files, sockets, database connections, or locks must be released regardless of success or
+failure.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -985,7 +990,7 @@ Why is exception chaining important?
 
 It preserves the original cause of a failure while allowing higher layers to raise more meaningful exceptions.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -995,7 +1000,7 @@ Why should applications avoid silent exception handling?
 
 Because hidden failures make debugging, monitoring, and recovery significantly more difficult.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1003,9 +1008,10 @@ How should exceptions flow through a layered backend architecture?
 
 ### Answer
 
-Lower layers should raise or translate technical exceptions, while higher layers should convert them into user-facing responses, retries, or operational actions.
+Lower layers should raise or translate technical exceptions, while higher layers should convert them into user-facing
+responses, retries, or operational actions.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -1023,13 +1029,13 @@ Translate it in the service.
 
 Handle it in the API.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
 Rewrite code that returns error codes (`None`, `-1`, etc.) to use exceptions instead.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -1042,7 +1048,7 @@ Create an example demonstrating:
 
 Explain the execution order.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -1057,7 +1063,7 @@ Identify where exceptions are:
 
 Suggest improvements based on this lesson.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1072,9 +1078,8 @@ In this lesson, you learned:
 - ✅ Production exception handling strategies.
 - ✅ Common anti-patterns and best practices.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[58-production-python-part-03-custom-exceptions](58-production-python-part-03-custom-exceptions.md)
+**File:** [58-production-python-part-03-custom-exceptions](58-production-python-part-03-custom-exceptions.md)

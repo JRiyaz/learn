@@ -1,6 +1,7 @@
 # File: python/02-reference-counting-and-garbage-collection-part-2.md
 
 # Python Advanced - Lesson 02 (Part 2)
+
 # Shallow Copy, Deep Copy & The Mutable Default Argument Bug
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 60-75 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -26,7 +27,7 @@ By the end of this lesson, you will understand:
 - The famous mutable default argument bug
 - How to avoid accidental shared state in production code
 
----
+______________________________________________________________________
 
 # Theory
 
@@ -51,7 +52,7 @@ However, not all copies are the same.
 
 Understanding the difference is extremely important because many production bugs happen due to incorrect copying.
 
----
+______________________________________________________________________
 
 # Example 1 — Assignment is NOT Copying
 
@@ -92,7 +93,7 @@ Visualization
 
 There is still only one list.
 
----
+______________________________________________________________________
 
 # Example 2 — Creating a Shallow Copy
 
@@ -141,7 +142,7 @@ backup
 
 Now there are two different list objects.
 
----
+______________________________________________________________________
 
 # Another Way
 
@@ -157,7 +158,7 @@ backup = users[:]
 
 All three create a **shallow copy**.
 
----
+______________________________________________________________________
 
 # What is a Shallow Copy?
 
@@ -168,7 +169,7 @@ A shallow copy creates
 
 Let's see why that matters.
 
----
+______________________________________________________________________
 
 # Example 3 — Nested Lists
 
@@ -204,7 +205,7 @@ We copied it!
 
 Why did both change?
 
----
+______________________________________________________________________
 
 Visualization
 
@@ -240,7 +241,7 @@ The inner lists are still shared.
 
 This is exactly what a **shallow copy** means.
 
----
+______________________________________________________________________
 
 # Deep Copy
 
@@ -258,7 +259,7 @@ copy.deepcopy()
 
 to recursively copy everything.
 
----
+______________________________________________________________________
 
 # Example 4
 
@@ -318,7 +319,7 @@ Another Set of Inner Lists
 
 Nothing is shared anymore.
 
----
+______________________________________________________________________
 
 # When Should You Use Shallow Copy?
 
@@ -339,7 +340,7 @@ backup = colors.copy()
 
 Perfectly fine.
 
----
+______________________________________________________________________
 
 # When Should You Use Deep Copy?
 
@@ -383,7 +384,7 @@ Lists
 
 Deep copy prevents accidental modification of shared data.
 
----
+______________________________________________________________________
 
 # The Famous Mutable Default Argument Bug
 
@@ -439,7 +440,7 @@ Most developers expect
 
 Why didn't that happen?
 
----
+______________________________________________________________________
 
 # Why?
 
@@ -463,7 +464,7 @@ users
 
 Every function call reuses that same list.
 
----
+______________________________________________________________________
 
 # Correct Solution
 
@@ -506,7 +507,7 @@ Output
 
 Every call gets a new list.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -546,7 +547,7 @@ def create_filters(filters=None):
 
 Whenever you see a mutable default argument (`[]`, `{}`, `set()`), treat it as a warning sign.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -558,7 +559,7 @@ Whenever you see a mutable default argument (`[]`, `{}`, `set()`), treat it as a
 
 > A shallow copy creates a new outer container but keeps references to the nested objects. Therefore, changes to nested mutable objects are reflected in both copies. A deep copy recursively duplicates every nested object, ensuring the copied structure is completely independent of the original.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -568,7 +569,7 @@ Whenever you see a mutable default argument (`[]`, `{}`, `set()`), treat it as a
 
 > Default arguments are evaluated only once when the function is defined, not every time it is called. If the default value is mutable, such as a list or dictionary, every function call shares the same object, which can lead to unexpected state being preserved across calls.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -623,7 +624,7 @@ Observe carefully:
 
 Understanding this example will make shallow vs deep copy intuitive.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -637,7 +638,7 @@ Only the outer container is copied.
 
 Nested mutable objects are still shared between the original and the copy.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -645,9 +646,10 @@ When should you use `deepcopy()`?
 
 ### Answer
 
-When the object contains nested mutable objects (lists, dictionaries, sets, custom objects) that must be completely independent from the original.
+When the object contains nested mutable objects (lists, dictionaries, sets, custom objects) that must be completely
+independent from the original.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -664,7 +666,7 @@ Because the list is created only once when the function is defined.
 
 Every function call shares the same list, leading to unexpected behaviour.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -678,7 +680,7 @@ It performs a shallow copy.
 
 Only the outer list is copied.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -694,7 +696,7 @@ list(original)
 original[:]
 ```
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -708,7 +710,7 @@ Modify an inner list.
 
 Observe the result.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -716,7 +718,7 @@ Repeat Exercise 1 using `copy.deepcopy()`.
 
 Observe the difference.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -728,7 +730,7 @@ Explain why the output changes.
 
 Then rewrite the function using `None` as the default argument.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -741,12 +743,11 @@ In this lesson, you learned:
 - ✅ Mutable default arguments are evaluated only once.
 - ✅ Using `None` as a default argument avoids shared state bugs.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[03-LEGB-Scope-and-Variable-Resolution-part-1](03-legb-scope-and-variable-resolution-part-1.md)
+**File:** [03-LEGB-Scope-and-Variable-Resolution-part-1](03-legb-scope-and-variable-resolution-part-1.md)
 
 Topics:
 

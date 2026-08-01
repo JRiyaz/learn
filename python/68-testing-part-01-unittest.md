@@ -1,6 +1,7 @@
 # File: python/67-testing-part-01-unittest.md
 
 # Testing
+
 # Part 1: unittest – Writing Reliable Automated Tests in Python
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 8–10 Hours
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -31,7 +32,7 @@ By the end of this lesson, you will understand:
 - Best practices
 - Common mistakes
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -69,7 +70,7 @@ But the behaviour is now incorrect.
 
 Testing helps us detect these regressions automatically.
 
----
+______________________________________________________________________
 
 # What is Testing?
 
@@ -91,7 +92,7 @@ Pass / Fail
 
 A passing test increases confidence that the code behaves correctly.
 
----
+______________________________________________________________________
 
 # Why Automated Testing?
 
@@ -112,7 +113,7 @@ Automated tests provide:
 - Reliability
 - Confidence during refactoring
 
----
+______________________________________________________________________
 
 # Manual vs Automated Testing
 
@@ -154,7 +155,7 @@ Pass / Fail
 
 Automation allows tests to be executed frequently and consistently.
 
----
+______________________________________________________________________
 
 # Types of Testing
 
@@ -174,7 +175,7 @@ Unit Tests
 
 Each level answers a different question.
 
----
+______________________________________________________________________
 
 ## Unit Tests
 
@@ -190,7 +191,7 @@ calculate_tax()
 
 Only this function is tested.
 
----
+______________________________________________________________________
 
 ## Integration Tests
 
@@ -216,7 +217,7 @@ Redis
 Message Queue
 ```
 
----
+______________________________________________________________________
 
 ## End-to-End Tests
 
@@ -248,7 +249,7 @@ Response
 
 These tests are slower but validate the entire workflow.
 
----
+______________________________________________________________________
 
 # The Test Pyramid
 
@@ -272,7 +273,7 @@ Characteristics:
 
 Most tests should be unit tests because they execute quickly and isolate failures.
 
----
+______________________________________________________________________
 
 # Why unittest?
 
@@ -290,9 +291,10 @@ Advantages:
 - Well documented
 - Object-oriented design
 
-Although many modern projects use `pytest`, understanding `unittest` provides a solid foundation because `pytest` builds upon many of the same testing concepts.
+Although many modern projects use `pytest`, understanding `unittest` provides a solid foundation because `pytest` builds
+upon many of the same testing concepts.
 
----
+______________________________________________________________________
 
 # Your First Test
 
@@ -350,7 +352,7 @@ Ran 1 test
 OK
 ```
 
----
+______________________________________________________________________
 
 # Understanding TestCase
 
@@ -369,7 +371,7 @@ It provides:
 
 Think of it as the foundation for all unit tests.
 
----
+______________________________________________________________________
 
 # Test Naming
 
@@ -393,7 +395,7 @@ def login_test():
 
 The framework discovers tests based on this naming convention.
 
----
+______________________________________________________________________
 
 # Assertions
 
@@ -422,7 +424,7 @@ If they match:
 Test Passes
 ```
 
----
+______________________________________________________________________
 
 # Common Assertions
 
@@ -437,7 +439,7 @@ Test Passes
 | `assertIn()` | Membership |
 | `assertRaises()` | Exception checking |
 
----
+______________________________________________________________________
 
 # Testing Exceptions
 
@@ -471,7 +473,7 @@ class TestMath(
 
 The test passes only if the expected exception is raised.
 
----
+______________________________________________________________________
 
 # Test Lifecycle
 
@@ -493,7 +495,7 @@ tearDown()
 
 This prevents one test from affecting another.
 
----
+______________________________________________________________________
 
 # setUp()
 
@@ -513,7 +515,7 @@ class TestUser(
 
 Each test begins with a fresh list.
 
----
+______________________________________________________________________
 
 # tearDown()
 
@@ -529,7 +531,7 @@ def tearDown(self):
 
 Useful for cleaning temporary resources.
 
----
+______________________________________________________________________
 
 # Running Tests
 
@@ -553,7 +555,7 @@ python -m unittest discover
 
 The framework automatically finds test files following its naming conventions.
 
----
+______________________________________________________________________
 
 # Backend Example
 
@@ -605,7 +607,7 @@ class TestUserService(
 
 Each rule is verified independently.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -613,31 +615,31 @@ Each rule is verified independently.
 
 Testing multiple behaviours in one test.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
 Tests depending on execution order.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
 Sharing mutable state between tests.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
 Writing overly complex tests.
 
----
+______________________________________________________________________
 
 ## Mistake 5
 
 Skipping edge cases such as empty inputs, invalid values, and exceptions.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -655,7 +657,7 @@ Skipping edge cases such as empty inputs, invalid values, and exceptions.
 
 ❌ Don't duplicate production logic inside tests.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -689,7 +691,7 @@ If the tests fail, the deployment pipeline usually stops automatically.
 
 Testing therefore becomes part of the delivery process rather than an afterthought.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -701,7 +703,7 @@ Testing therefore becomes part of the delivery process rather than an afterthoug
 
 To verify that a small, isolated piece of code behaves correctly.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -711,7 +713,7 @@ To verify that a small, isolated piece of code behaves correctly.
 
 Independent tests can run in any order and failures are easier to diagnose.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -721,7 +723,7 @@ Independent tests can run in any order and failures are easier to diagnose.
 
 Assertions compare the actual result with the expected result and determine whether the test passes or fails.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -731,7 +733,7 @@ Assertions compare the actual result with the expected result and determine whet
 
 It prepares a fresh environment before each test method executes.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -741,7 +743,7 @@ It prepares a fresh environment before each test method executes.
 
 Because they execute quickly, are inexpensive to maintain, and isolate failures effectively.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -776,7 +778,7 @@ Run the tests using:
 python -m unittest
 ```
 
----
+______________________________________________________________________
 
 # Knowledge Check
 
@@ -788,7 +790,7 @@ Why is automated testing preferred over manual testing for regression testing?
 
 Because automated tests can be executed repeatedly, consistently, and quickly after every code change.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -798,7 +800,7 @@ What makes a good unit test?
 
 A good unit test is small, independent, deterministic, easy to read, and verifies one specific behaviour.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -806,9 +808,10 @@ Why should production logic not be duplicated inside tests?
 
 ### Answer
 
-If the test repeats the same logic as the implementation, both may contain the same defect, reducing the test's effectiveness.
+If the test repeats the same logic as the implementation, both may contain the same defect, reducing the test's
+effectiveness.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -816,9 +819,10 @@ What role does `unittest.TestCase` play?
 
 ### Answer
 
-It provides the base functionality for writing tests, including assertions, setup and teardown methods, and integration with the test runner.
+It provides the base functionality for writing tests, including assertions, setup and teardown methods, and integration
+with the test runner.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -828,7 +832,7 @@ Why should edge cases be included in unit tests?
 
 Because many defects occur at boundaries or under unusual inputs rather than during typical execution.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -838,7 +842,7 @@ Write unit tests for a utility module from one of your existing projects.
 
 Aim for at least 15 independent test cases.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -846,7 +850,7 @@ Identify three edge cases that your current project does not test.
 
 Add unit tests for each.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -854,7 +858,7 @@ Refactor one function in your project.
 
 Run the tests before and after the change to verify that behaviour remains unchanged.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -865,7 +869,7 @@ Review your test suite and answer:
 - Are exception cases covered?
 - Are boundary conditions tested?
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -880,9 +884,8 @@ In this lesson, you learned:
 - ✅ Test discovery.
 - ✅ Production testing practices.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[69-testing-part-02-pytest](69-testing-part-02-pytest.md)
+**File:** [69-testing-part-02-pytest](69-testing-part-02-pytest.md)

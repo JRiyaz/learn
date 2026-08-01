@@ -1,6 +1,7 @@
 # File: python/03-legb-scope-and-variable-resolution-part-1.md
 
 # Python Advanced - Lesson 03 (Part 1)
+
 # LEGB Scope & Variable Resolution
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 60 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -29,7 +30,7 @@ By the end of this lesson, you will understand:
 - Variable Shadowing
 - How Python decides which variable to use
 
----
+______________________________________________________________________
 
 # Why Should You Learn Scope?
 
@@ -54,7 +55,7 @@ Understanding it is essential because it directly affects:
 - Async Programming
 - Class Design
 
----
+______________________________________________________________________
 
 # What is Scope?
 
@@ -78,7 +79,7 @@ Outside the kitchen, you cannot.
 
 Variables work exactly the same way.
 
----
+______________________________________________________________________
 
 # Example 1
 
@@ -105,7 +106,7 @@ Because Python searched outside the function after not finding a local variable.
 
 We'll soon learn the exact order.
 
----
+______________________________________________________________________
 
 # The LEGB Rule
 
@@ -151,7 +152,7 @@ The moment Python finds the variable,
 
 it stops searching.
 
----
+______________________________________________________________________
 
 # 1. Local Scope
 
@@ -186,7 +187,7 @@ message
 
 Only this function can access `message`.
 
----
+______________________________________________________________________
 
 # Example 2
 
@@ -213,7 +214,7 @@ When the function finishes,
 
 its local scope disappears.
 
----
+______________________________________________________________________
 
 # Local Variables Live Only During Function Execution
 
@@ -235,7 +236,7 @@ Python destroys the local scope.
 
 This is one reason local variables are memory efficient.
 
----
+______________________________________________________________________
 
 # 2. Global Scope
 
@@ -289,7 +290,7 @@ Looks in Global Scope
 Found
 ```
 
----
+______________________________________________________________________
 
 # Example 3
 
@@ -317,7 +318,7 @@ Global
 Found
 ```
 
----
+______________________________________________________________________
 
 # 3. Built-in Scope
 
@@ -391,7 +392,7 @@ type
 
 Every Python program automatically has access to them.
 
----
+______________________________________________________________________
 
 # Example 4
 
@@ -419,7 +420,7 @@ Built-in
 Found
 ```
 
----
+______________________________________________________________________
 
 # Variable Shadowing
 
@@ -487,7 +488,7 @@ the global variable.
 
 Python always checks Local Scope first.
 
----
+______________________________________________________________________
 
 # Example 5
 
@@ -515,7 +516,7 @@ Bangalore
 
 Two completely different variables.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -549,7 +550,7 @@ The application continues using the original global configuration, leading to co
 
 Understanding scope helps avoid mistakes like these.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -561,7 +562,7 @@ Understanding scope helps avoid mistakes like these.
 
 > Python resolves variables using the LEGB Rule. It first searches the Local scope, then the Enclosing scope, followed by the Global scope, and finally the Built-in scope. The search stops as soon as the variable is found.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -571,7 +572,7 @@ Understanding scope helps avoid mistakes like these.
 
 > Variable shadowing occurs when a variable in an inner scope has the same name as one in an outer scope. The inner variable temporarily hides the outer variable within that scope, but it does not modify or replace the outer variable.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -611,7 +612,7 @@ predict every output.
 
 Then execute it and compare your prediction.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -628,7 +629,7 @@ What does LEGB stand for?
 
 This is the exact order Python follows when resolving variable names.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -640,7 +641,7 @@ Yes.
 
 If Python does not find the variable in the local scope, it searches the global scope.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -664,7 +665,7 @@ It only exists while `greet()` is executing.
 
 After the function finishes, the local scope is destroyed.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -676,7 +677,7 @@ Variable shadowing occurs when a variable in an inner scope has the same name as
 
 The inner variable hides the outer variable within that scope.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -688,7 +689,7 @@ Where does `len()` come from?
 
 It is automatically available in every Python program.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -698,7 +699,7 @@ Create one global variable and one local variable with the same name.
 
 Predict the output before executing the program.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -710,7 +711,7 @@ Use the following built-in functions and identify which scope they belong to:
 - `max()`
 - `range()`
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -720,7 +721,7 @@ Give each one a variable named `count`.
 
 Verify that changing one does not affect the others.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -735,12 +736,11 @@ In this lesson, you learned:
 - ✅ Variable Shadowing.
 - ✅ How Python resolves variable names.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[03-LEGB-Scope-and-Variable-Resolution-part-2](03-legb-scope-and-variable-resolution-part-2.md)
+**File:** [03-LEGB-Scope-and-Variable-Resolution-part-2](03-legb-scope-and-variable-resolution-part-2.md)
 
 Topics:
 

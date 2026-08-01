@@ -1,6 +1,7 @@
 # File: python/04-first-class-functions-and-higher-order-functions-part-2.md
 
 # Python Advanced - Lesson 04 (Part 2)
+
 # Lambda Functions, Built-in Higher-Order Functions & Callbacks
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 75 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -29,7 +30,7 @@ By the end of this lesson, you will understand:
 - How these concepts are used in backend applications
 - Why decorators are built on these concepts
 
----
+______________________________________________________________________
 
 # Theory
 
@@ -43,7 +44,7 @@ That means we can:
 
 Now let's look at some powerful tools that use this feature.
 
----
+______________________________________________________________________
 
 # Lambda Functions
 
@@ -74,7 +75,7 @@ Output
 25
 ```
 
----
+______________________________________________________________________
 
 # Lambda Syntax
 
@@ -96,7 +97,7 @@ Output
 20
 ```
 
----
+______________________________________________________________________
 
 # When Should You Use Lambda?
 
@@ -116,7 +117,7 @@ Avoid lambda for:
 
 If the function is longer than one expression, use `def`.
 
----
+______________________________________________________________________
 
 # Example 1 - Sorting by Age
 
@@ -153,7 +154,7 @@ Output
 
 Without lambda, you would need another function just to return the age.
 
----
+______________________________________________________________________
 
 # The map() Function
 
@@ -165,7 +166,7 @@ General syntax:
 map(function, iterable)
 ```
 
----
+______________________________________________________________________
 
 # Example 2
 
@@ -196,7 +197,7 @@ Visualization
                   16
 ```
 
----
+______________________________________________________________________
 
 # Using Lambda with map()
 
@@ -214,7 +215,7 @@ Output
 [1, 4, 9, 16]
 ```
 
----
+______________________________________________________________________
 
 # The filter() Function
 
@@ -231,7 +232,7 @@ The function must return:
 - `True` → Keep the item
 - `False` → Remove the item
 
----
+______________________________________________________________________
 
 # Example 3
 
@@ -268,7 +269,7 @@ Visualization
 6 → True ✅
 ```
 
----
+______________________________________________________________________
 
 # Using Lambda with filter()
 
@@ -291,7 +292,7 @@ Output
 [2, 4, 6]
 ```
 
----
+______________________________________________________________________
 
 # The sorted() Function
 
@@ -315,7 +316,7 @@ Output
 
 The original list remains unchanged.
 
----
+______________________________________________________________________
 
 # Example 4 - Sorting by Name Length
 
@@ -347,7 +348,7 @@ Output
 
 The `key` function tells Python **how** to compare items.
 
----
+______________________________________________________________________
 
 # Callbacks
 
@@ -382,7 +383,7 @@ Here,
 
 `notify` is the callback.
 
----
+______________________________________________________________________
 
 # Example 5 - Payment Processing
 
@@ -415,7 +416,7 @@ Email sent to customer.
 
 Callbacks are everywhere in backend systems.
 
----
+______________________________________________________________________
 
 # Why Not Just Use a Normal Function?
 
@@ -453,7 +454,7 @@ Only the callback changes.
 
 This makes code reusable and flexible.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -502,7 +503,7 @@ This pattern is extremely common in:
 
 Decorators use exactly the same idea.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -514,7 +515,7 @@ Decorators use exactly the same idea.
 
 > A lambda function is an anonymous function defined using the `lambda` keyword. It consists of a single expression and is commonly used for short-lived operations such as sorting, mapping and filtering. For complex logic, a normal function defined with `def` is preferred.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -524,7 +525,7 @@ Decorators use exactly the same idea.
 
 > `map()` transforms every element in an iterable by applying a function to each item. `filter()` removes elements that do not satisfy a condition. Both return iterator objects in Python 3.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -534,7 +535,7 @@ Decorators use exactly the same idea.
 
 > A callback is a function passed as an argument to another function so that it can be executed later. Callbacks allow behaviour to be customised without modifying the calling function.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -596,7 +597,7 @@ def send_push_notification():
 
 Use it with `notify()` without modifying the `notify()` function.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -606,9 +607,10 @@ What is a lambda function?
 
 ### Answer
 
-A lambda function is an anonymous function that contains a single expression. It is commonly used for short, simple operations.
+A lambda function is an anonymous function that contains a single expression. It is commonly used for short, simple
+operations.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -616,9 +618,10 @@ When should you use a normal function instead of a lambda?
 
 ### Answer
 
-Use a normal function when the logic is complex, spans multiple statements, or requires documentation and better readability.
+Use a normal function when the logic is complex, spans multiple statements, or requires documentation and better
+readability.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -636,7 +639,7 @@ result = map(str, [1, 2, 3])
 print(list(result))
 ```
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -646,7 +649,7 @@ What is the purpose of `filter()`?
 
 `filter()` removes elements that do not satisfy a condition. The filtering function must return `True` or `False`.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -654,9 +657,10 @@ What is a callback?
 
 ### Answer
 
-A callback is a function passed to another function so it can be executed later, allowing the caller to customise behaviour without changing the implementation.
+A callback is a function passed to another function so it can be executed later, allowing the caller to customise
+behaviour without changing the implementation.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -666,19 +670,19 @@ Create a list of dictionaries representing employees.
 
 Sort them by salary using `sorted()` and a lambda function.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
 Use `map()` to convert a list of temperatures from Celsius to Fahrenheit.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
 Use `filter()` to extract only users whose age is greater than 18.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -692,7 +696,7 @@ Write three callbacks:
 
 Pass each callback to `process_order()`.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -706,12 +710,11 @@ In this lesson, you learned:
 - ✅ What callbacks are.
 - ✅ Why callbacks and higher-order functions are widely used in backend development.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[05-Decorators-part-1](05-decorators-part-1.md)
+**File:** [05-Decorators-part-1](05-decorators-part-1.md)
 
 Topics:
 

@@ -1,6 +1,7 @@
 # File: python/08-lambda-functions.md
 
 # Python Advanced - Lesson 08
+
 # Lambda Functions - Anonymous Functions in Python
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 60 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -27,7 +28,7 @@ By the end of this lesson, you will understand:
 - Production use cases
 - Common interview questions and mistakes
 
----
+______________________________________________________________________
 
 # Theory
 
@@ -60,7 +61,7 @@ Output
 25
 ```
 
----
+______________________________________________________________________
 
 # Why Do Lambda Functions Exist?
 
@@ -95,7 +96,7 @@ Lambda avoids creating a temporary function.
 users.sort(key=lambda user: user["age"])
 ```
 
----
+______________________________________________________________________
 
 # Lambda Syntax
 
@@ -123,7 +124,7 @@ Three arguments
 average = lambda a, b, c: (a + b + c) / 3
 ```
 
----
+______________________________________________________________________
 
 # Lambda Can Only Contain One Expression
 
@@ -145,7 +146,7 @@ lambda x:
 
 If you need multiple statements, use `def`.
 
----
+______________________________________________________________________
 
 # Lambda with sorted()
 
@@ -166,7 +167,7 @@ result = sorted(
 print(result)
 ```
 
----
+______________________________________________________________________
 
 # Sorting by Multiple Fields
 
@@ -183,7 +184,7 @@ users = [
 Sort by:
 
 1. Age
-2. Name
+1. Name
 
 ```python
 result = sorted(
@@ -196,7 +197,7 @@ print(result)
 
 Python compares tuples from left to right.
 
----
+______________________________________________________________________
 
 # Lambda with map()
 
@@ -217,7 +218,7 @@ Output
 [118.0, 236.0, 354.0]
 ```
 
----
+______________________________________________________________________
 
 # Lambda with filter()
 
@@ -238,7 +239,7 @@ Output
 [2,4,6]
 ```
 
----
+______________________________________________________________________
 
 # Lambda with max()
 
@@ -263,7 +264,7 @@ Output
 {'name': 'Bob', 'salary': 75000}
 ```
 
----
+______________________________________________________________________
 
 # Lambda with min()
 
@@ -274,7 +275,7 @@ cheapest = min(
 )
 ```
 
----
+______________________________________________________________________
 
 # Lambda with Multiple Iterables
 
@@ -297,7 +298,7 @@ Output
 [11,22,33]
 ```
 
----
+______________________________________________________________________
 
 # Lambda vs def
 
@@ -321,7 +322,7 @@ A good rule is:
 
 > If you can't understand the lambda at a glance, use `def`.
 
----
+______________________________________________________________________
 
 # Common Mistake
 
@@ -349,7 +350,7 @@ def calculate(x):
 
 Readable code is easier to maintain.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -364,9 +365,10 @@ Examples include:
 - Background task scheduling
 - Event processing
 
-Although lambdas are common, production code should favour readability over brevity. Many engineering teams discourage complex lambdas in code reviews.
+Although lambdas are common, production code should favour readability over brevity. Many engineering teams discourage
+complex lambdas in code reviews.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -376,9 +378,10 @@ Although lambdas are common, production code should favour readability over brev
 
 ### Answer
 
-Use a lambda for short, single-expression functions that are used temporarily, such as sorting, filtering or mapping. For reusable or complex logic, use a normal function defined with `def`.
+Use a lambda for short, single-expression functions that are used temporarily, such as sorting, filtering or mapping.
+For reusable or complex logic, use a normal function defined with `def`.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -386,9 +389,10 @@ Use a lambda for short, single-expression functions that are used temporarily, s
 
 ### Answer
 
-Python intentionally restricts lambda functions to a single expression to keep them concise and readable. Multi-step logic should be written using `def`.
+Python intentionally restricts lambda functions to a single expression to keep them concise and readable. Multi-step
+logic should be written using `def`.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -396,9 +400,10 @@ Python intentionally restricts lambda functions to a single expression to keep t
 
 ### Answer
 
-No. Lambda functions and normal functions are implemented similarly. The choice between them is about readability and convenience, not performance.
+No. Lambda functions and normal functions are implemented similarly. The choice between them is about readability and
+convenience, not performance.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -429,7 +434,7 @@ Modify the program to:
 - Sort employees by name.
 - Sort employees by salary in descending order.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -441,7 +446,7 @@ What is a lambda function?
 
 A lambda function is an anonymous function that consists of a single expression and returns its result automatically.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -451,7 +456,7 @@ Can a lambda contain multiple statements?
 
 No. A lambda can contain only one expression.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -461,7 +466,7 @@ What is the most common use of lambda functions?
 
 Providing short callback functions for operations such as `sorted()`, `map()`, `filter()`, `min()` and `max()`.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -471,7 +476,7 @@ Should complex business logic be written using lambda?
 
 No. Complex or reusable logic should be implemented with a normal function using `def`.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -479,9 +484,10 @@ Does a lambda function have a name?
 
 ### Answer
 
-A lambda function is anonymous. Although it can be assigned to a variable, it is created without an explicit function name.
+A lambda function is anonymous. Although it can be assigned to a variable, it is created without an explicit function
+name.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -489,19 +495,19 @@ A lambda function is anonymous. Although it can be assigned to a variable, it is
 
 Sort a list of dictionaries by two different fields using a lambda.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
 Use `map()` with two lists to calculate the product of corresponding values.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
 Use `max()` and `min()` with a lambda to find the highest and lowest scoring students from a list of dictionaries.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -514,12 +520,11 @@ In this lesson, you learned:
 - ✅ Using lambdas with `map()`, `filter()`, `max()` and `min()`.
 - ✅ Production best practices.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[09-Context-Managers-part-1](09-context-managers-part-1.md)
+**File:** [09-Context-Managers-part-1](09-context-managers-part-1.md)
 
 Topics:
 

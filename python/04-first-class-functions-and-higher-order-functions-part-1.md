@@ -1,6 +1,7 @@
 # File: python/04-first-class-functions-and-higher-order-functions-part-1.md
 
 # Python Advanced - Lesson 04 (Part 1)
+
 # First-Class Functions & Higher-Order Functions
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 60 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -27,7 +28,7 @@ By the end of this lesson, you will understand:
 - What higher-order functions are
 - Why these concepts are the foundation of decorators
 
----
+______________________________________________________________________
 
 # Why Should You Learn This?
 
@@ -46,7 +47,7 @@ Once you understand this, concepts like:
 
 become much easier to understand.
 
----
+______________________________________________________________________
 
 # Theory
 
@@ -79,7 +80,7 @@ Function Object
 greet
 ```
 
----
+______________________________________________________________________
 
 # Example 1 - Functions are Objects
 
@@ -119,7 +120,7 @@ Output
 Hello!
 ```
 
----
+______________________________________________________________________
 
 # Function vs Function Call
 
@@ -167,7 +168,7 @@ Owning the remote isn't the same as pressing the button.
 
 Similarly, referring to a function isn't the same as calling it.
 
----
+______________________________________________________________________
 
 # Example 2 - Assigning a Function to a Variable
 
@@ -200,7 +201,7 @@ Visualization
 
 Both variables point to the same function object.
 
----
+______________________________________________________________________
 
 # Example 3 - Multiple References
 
@@ -225,7 +226,7 @@ no new function was created.
 
 Only another reference.
 
----
+______________________________________________________________________
 
 # Passing Functions as Arguments
 
@@ -269,7 +270,7 @@ Because we want to pass the function itself,
 
 not the result of executing it.
 
----
+______________________________________________________________________
 
 # Example 4
 
@@ -316,7 +317,7 @@ The `calculate()` function doesn't know how to square numbers.
 
 It simply executes whichever function it receives.
 
----
+______________________________________________________________________
 
 # Returning Functions
 
@@ -351,7 +352,7 @@ Here,
 
 It does **not** execute it.
 
----
+______________________________________________________________________
 
 # Higher-Order Functions
 
@@ -376,7 +377,7 @@ custom decorators
 
 All of these are higher-order functions.
 
----
+______________________________________________________________________
 
 # Example 5
 
@@ -398,7 +399,7 @@ Output
 
 The `process()` function is a higher-order function because it accepts another function.
 
----
+______________________________________________________________________
 
 # Why Are Higher-Order Functions Useful?
 
@@ -434,7 +435,7 @@ This makes code:
 - Flexible
 - Easier to maintain
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -491,7 +492,7 @@ This pattern is widely used in:
 
 In the next lesson, you'll see that **decorators are built using this exact idea**.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -503,7 +504,7 @@ In the next lesson, you'll see that **decorators are built using this exact idea
 
 > In Python, functions are first-class objects, meaning they can be treated like any other object. They can be assigned to variables, passed as arguments, returned from other functions and stored inside data structures. This flexibility enables powerful features such as decorators, callbacks and dependency injection.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -513,7 +514,7 @@ In the next lesson, you'll see that **decorators are built using this exact idea
 
 > A higher-order function is a function that either accepts another function as an argument or returns a function. Python's `map()`, `filter()` and custom decorators are common examples.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -563,8 +564,7 @@ Without changing `calculate()`,
 
 use it to multiply two numbers.
 
----
-
+______________________________________________________________________
 
 # Practical Example - Dependency Injection Using Closures
 
@@ -574,7 +574,7 @@ Many functions need access to a database connection.
 
 Instead of creating the database connection inside every function, we can inject it.
 
----
+______________________________________________________________________
 
 ## Without Dependency Injection
 
@@ -606,7 +606,7 @@ print(get_users())
 - Cannot easily replace the database
 - Function is tightly coupled to one implementation
 
----
+______________________________________________________________________
 
 ## Manual Dependency Injection
 
@@ -643,7 +643,7 @@ It simply uses the object it receives.
 
 This is Dependency Injection.
 
----
+______________________________________________________________________
 
 ## Dependency Injection Using Closures
 
@@ -707,9 +707,10 @@ user_service()
 database.get_users()
 ```
 
-The `user_service` function continues to access the same `database` object even after `create_user_service()` has finished executing.
+The `user_service` function continues to access the same `database` object even after `create_user_service()` has
+finished executing.
 
----
+______________________________________________________________________
 
 ## Why Is This Useful?
 
@@ -743,7 +744,7 @@ Only the injected dependency changed.
 
 This makes testing much easier.
 
----
+______________________________________________________________________
 
 # How FastAPI Uses This Idea
 
@@ -767,10 +768,10 @@ def get_users(db: Database = Depends(get_database)):
 Here's what happens behind the scenes:
 
 1. A request comes to `/users`.
-2. FastAPI sees `Depends(get_database)`.
-3. It calls `get_database()` to create or retrieve a `Database` instance.
-4. It passes that instance as the `db` argument.
-5. Your `get_users()` function simply uses `db`.
+1. FastAPI sees `Depends(get_database)`.
+1. It calls `get_database()` to create or retrieve a `Database` instance.
+1. It passes that instance as the `db` argument.
+1. Your `get_users()` function simply uses `db`.
 
 Conceptually, it's similar to this manual version:
 
@@ -782,7 +783,7 @@ get_users(db)
 
 FastAPI just performs these steps automatically.
 
----
+______________________________________________________________________
 
 # Key Takeaway
 
@@ -790,9 +791,8 @@ Dependency Injection is not about a special library.
 
 It's a design pattern where a function receives the objects it needs instead of creating them itself.
 
-Closures demonstrate how dependencies can be "remembered" and reused, while frameworks like FastAPI automate the injection process to keep your code clean, testable, and loosely coupled.
-
-
+Closures demonstrate how dependencies can be "remembered" and reused, while frameworks like FastAPI automate the
+injection process to keep your code clean, testable, and loosely coupled.
 
 # Questions
 
@@ -802,9 +802,10 @@ What are first-class functions?
 
 ### Answer
 
-First-class functions are functions that can be treated like any other object. They can be assigned to variables, passed as arguments, returned from functions and stored in collections.
+First-class functions are functions that can be treated like any other object. They can be assigned to variables, passed
+as arguments, returned from functions and stored in collections.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -816,7 +817,7 @@ What is the difference between `greet` and `greet()`?
 
 `greet()` executes the function and returns its result.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -826,7 +827,7 @@ What is a higher-order function?
 
 A higher-order function is a function that accepts another function as an argument, returns a function, or both.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -838,7 +839,7 @@ Why do we pass `square` instead of `square()`?
 
 `square()` executes the function immediately and passes its return value instead.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -846,9 +847,10 @@ Are all higher-order functions first-class functions?
 
 ### Answer
 
-Higher-order functions rely on Python's support for first-class functions. A higher-order function is simply a function that uses first-class functions by accepting or returning them.
+Higher-order functions rely on Python's support for first-class functions. A higher-order function is simply a function
+that uses first-class functions by accepting or returning them.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -862,7 +864,7 @@ Create three mathematical functions:
 
 Write one generic function that accepts any of these operations as an argument.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -870,7 +872,7 @@ Store three functions inside a list.
 
 Iterate through the list and execute each function.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -890,7 +892,7 @@ Expected Output
 15
 ```
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -903,7 +905,7 @@ In this lesson, you learned:
 - ✅ Higher-order functions either accept or return functions.
 - ✅ These concepts form the foundation for decorators and many backend frameworks.
 
----
+______________________________________________________________________
 
 # What's Next
 

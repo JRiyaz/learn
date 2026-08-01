@@ -1,6 +1,7 @@
 # File: python/63-production-python-part-09-packaging.md
 
 # Production Python
+
 # Part 8: Packaging – Building Installable and Reusable Python Projects
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 8–10 Hours
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -33,7 +34,7 @@ By the end of this lesson, you will understand:
 - Best practices
 - Common mistakes
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -59,7 +60,7 @@ No.
 
 Instead, Python allows applications and libraries to be **packaged**.
 
----
+______________________________________________________________________
 
 # What is Packaging?
 
@@ -85,7 +86,7 @@ You simply install the package.
 pip install my-package
 ```
 
----
+______________________________________________________________________
 
 # Package vs Distribution
 
@@ -119,7 +120,7 @@ One is source code.
 
 The other is something that can be installed.
 
----
+______________________________________________________________________
 
 # Modern Python Packaging
 
@@ -139,7 +140,7 @@ This file describes:
 
 It is now the standard entry point for Python packaging.
 
----
+______________________________________________________________________
 
 # Example `pyproject.toml`
 
@@ -159,7 +160,7 @@ dependencies = [
 
 This file replaces much of the older packaging configuration that used multiple files.
 
----
+______________________________________________________________________
 
 # Build Systems
 
@@ -174,7 +175,7 @@ Common build backends include:
 
 Your choice of backend does not usually affect how users install your package.
 
----
+______________________________________________________________________
 
 # Installing Local Projects
 
@@ -190,7 +191,7 @@ This:
 - Installs it into the active virtual environment.
 - Makes it available like any other installed package.
 
----
+______________________________________________________________________
 
 # Editable Installation
 
@@ -220,7 +221,7 @@ Changes to your code are immediately reflected without reinstalling the package.
 
 This is how most developers work on local projects.
 
----
+______________________________________________________________________
 
 # Source Distribution (sdist)
 
@@ -238,7 +239,7 @@ Typical extension:
 
 Users build and install it on their own machine.
 
----
+______________________________________________________________________
 
 # Wheel
 
@@ -258,7 +259,7 @@ Advantages:
 
 Whenever possible, users install wheels rather than building from source.
 
----
+______________________________________________________________________
 
 # Dependency Management
 
@@ -277,7 +278,7 @@ Avoid asking users to install dependencies manually.
 
 Packaging should describe everything required to run the project.
 
----
+______________________________________________________________________
 
 # Versioning
 
@@ -303,7 +304,7 @@ Major.Minor.Patch
 
 This helps users understand upgrade compatibility.
 
----
+______________________________________________________________________
 
 # Optional Dependencies
 
@@ -333,7 +334,7 @@ pip install .[dev]
 
 Production deployments can omit development tools.
 
----
+______________________________________________________________________
 
 # Entry Points
 
@@ -357,7 +358,7 @@ runs your application's `main()` function.
 
 This removes the need to execute Python files directly.
 
----
+______________________________________________________________________
 
 # Backend Example
 
@@ -387,7 +388,7 @@ Updates are centralised.
 
 Bug fixes propagate through version upgrades.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -395,19 +396,19 @@ Bug fixes propagate through version upgrades.
 
 Copying shared code between repositories.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
 Not specifying dependency versions.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
 Confusing packages with distributions.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -415,7 +416,7 @@ Using editable installs in production.
 
 Editable installs are intended for development.
 
----
+______________________________________________________________________
 
 ## Mistake 5
 
@@ -427,7 +428,7 @@ Prefer modern packaging centred around:
 pyproject.toml
 ```
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -445,7 +446,7 @@ pyproject.toml
 
 ❌ Don't modify installed packages manually.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -463,7 +464,7 @@ Examples include:
 
 Packaging allows these components to be versioned, tested, and reused consistently across multiple services.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -473,9 +474,10 @@ Packaging allows these components to be versioned, tested, and reused consistent
 
 ### Answer
 
-A package is Python source code organised into modules, while a distribution is the installable artifact, such as a wheel or source distribution.
+A package is Python source code organised into modules, while a distribution is the installable artifact, such as a
+wheel or source distribution.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -485,7 +487,7 @@ A package is Python source code organised into modules, while a distribution is 
 
 It provides a standard place to define project metadata, dependencies, and build configuration.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -493,9 +495,10 @@ It provides a standard place to define project metadata, dependencies, and build
 
 ### Answer
 
-An editable installation links the installed package directly to the project source, allowing code changes to take effect immediately without reinstalling.
+An editable installation links the installed package directly to the project source, allowing code changes to take
+effect immediately without reinstalling.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -505,7 +508,7 @@ An editable installation links the installed package directly to the project sou
 
 They are pre-built, install quickly, and avoid building from source during installation.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -515,7 +518,7 @@ They are pre-built, install quickly, and avoid building from source during insta
 
 Packaging promotes reuse, consistent versioning, easier maintenance, and simpler updates across multiple projects.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -536,18 +539,18 @@ calculator-lib/
 Complete the following steps:
 
 1. Add project metadata to `pyproject.toml`.
-2. Install the project using:
+1. Install the project using:
 
 ```bash
 pip install -e .
 ```
 
 3. Create another Python script outside the package.
-4. Import and use the installed package.
-5. Modify the source code.
-6. Verify that the changes are immediately available because of the editable installation.
+1. Import and use the installed package.
+1. Modify the source code.
+1. Verify that the changes are immediately available because of the editable installation.
 
----
+______________________________________________________________________
 
 # Knowledge Check
 
@@ -559,7 +562,7 @@ Why should reusable code be packaged instead of copied?
 
 Packaging creates a single source of truth, making updates, maintenance, testing, and versioning much easier.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -567,9 +570,10 @@ When should editable installations be used?
 
 ### Answer
 
-During development, when the source code changes frequently and reinstalling after every modification would be inefficient.
+During development, when the source code changes frequently and reinstalling after every modification would be
+inefficient.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -579,7 +583,7 @@ Why are wheels commonly distributed?
 
 Because they install quickly without requiring the package to be built on the target machine.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -589,7 +593,7 @@ What role does `pyproject.toml` play?
 
 It serves as the central configuration file for project metadata, dependencies, and the build system.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -597,9 +601,10 @@ Why is semantic versioning important?
 
 ### Answer
 
-It communicates the impact of a release, helping users understand whether an upgrade contains bug fixes, new features, or breaking changes.
+It communicates the impact of a release, helping users understand whether an upgrade contains bug fixes, new features,
+or breaking changes.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -609,7 +614,7 @@ Create a small reusable Python library.
 
 Package it using `pyproject.toml`.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -621,7 +626,7 @@ pip install -e .
 
 Modify the source code and verify that the changes are reflected immediately.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -629,7 +634,7 @@ Review one of your existing backend projects.
 
 Identify whether any duplicated code could be extracted into a reusable package.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -642,7 +647,7 @@ Inspect its `pyproject.toml` and identify:
 - Optional dependencies
 - Build backend
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -657,9 +662,8 @@ In this lesson, you learned:
 - ✅ Semantic versioning.
 - ✅ Packaging best practices.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[65-production-python-part-10-dependency-injection](65-production-python-part-10-dependency-injection.md)
+**File:** [65-production-python-part-10-dependency-injection](65-production-python-part-10-dependency-injection.md)

@@ -1,6 +1,7 @@
 # File: python/09-context-managers-part-2.md
 
 # Python Advanced - Lesson 09 (Part 2)
+
 # Advanced Context Managers - Exception Handling & `contextlib`
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 90 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -26,7 +27,7 @@ By the end of this lesson, you will understand:
 - Real-world database transaction patterns
 - Best practices for writing production-ready context managers
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -58,7 +59,7 @@ Even if an exception occurs,
 
 Now let's see how exceptions are handled.
 
----
+______________________________________________________________________
 
 # Understanding __exit__()
 
@@ -88,7 +89,7 @@ resource.__exit__(
 
 The exception information is passed into `__exit__()`.
 
----
+______________________________________________________________________
 
 # Example 1 - Inspecting Exceptions
 
@@ -134,7 +135,7 @@ Traceback...
 
 The exception still propagates after `__exit__()` finishes.
 
----
+______________________________________________________________________
 
 # Suppressing Exceptions
 
@@ -187,7 +188,7 @@ Program Continues
 
 No exception reaches the caller.
 
----
+______________________________________________________________________
 
 # When Should You Suppress Exceptions?
 
@@ -203,7 +204,7 @@ Avoid suppressing exceptions simply to prevent a program from crashing.
 
 Hidden errors are difficult to debug.
 
----
+______________________________________________________________________
 
 # Multiple Context Managers
 
@@ -258,7 +259,7 @@ Close File A
 
 This is similar to the order in which function calls are unwound from the call stack.
 
----
+______________________________________________________________________
 
 # Nested Context Managers
 
@@ -296,7 +297,7 @@ Database.__exit__()
 
 Each context manager is responsible only for its own resource.
 
----
+______________________________________________________________________
 
 # Creating Context Managers with contextlib
 
@@ -310,7 +311,7 @@ from contextlib import contextmanager
 
 This decorator converts a generator into a context manager.
 
----
+______________________________________________________________________
 
 # Example 2
 
@@ -348,7 +349,7 @@ Disconnecting
 
 Only a few lines of code are needed.
 
----
+______________________________________________________________________
 
 # How Does It Work?
 
@@ -396,7 +397,7 @@ Resume After yield
 Exit Context
 ```
 
----
+______________________________________________________________________
 
 # Handling Exceptions with contextmanager
 
@@ -438,7 +439,7 @@ RuntimeError...
 
 This pattern is very common in production code.
 
----
+______________________________________________________________________
 
 # Real-World Example - Database Transaction
 
@@ -514,7 +515,7 @@ Rollback Transaction
 
 This is conceptually how many ORM libraries such as SQLAlchemy manage transactions.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -563,7 +564,7 @@ Developers don't need to remember to release resources manually.
 
 Python guarantees cleanup.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -573,9 +574,10 @@ Python guarantees cleanup.
 
 ### Answer
 
-Returning `True` tells Python that the exception has been handled. The exception is suppressed and does not propagate outside the `with` block.
+Returning `True` tells Python that the exception has been handled. The exception is suppressed and does not propagate
+outside the `with` block.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -583,9 +585,10 @@ Returning `True` tells Python that the exception has been handled. The exception
 
 ### Answer
 
-It allows a generator function to be used as a context manager. Code before `yield` acts like `__enter__()`, while code after `yield` acts like `__exit__()`.
+It allows a generator function to be used as a context manager. Code before `yield` acts like `__enter__()`, while code
+after `yield` acts like `__exit__()`.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -593,9 +596,10 @@ It allows a generator function to be used as a context manager. Code before `yie
 
 ### Answer
 
-They guarantee that transactions are either committed when operations succeed or rolled back if an exception occurs, ensuring data consistency.
+They guarantee that transactions are either committed when operations succeed or rolled back if an exception occurs,
+ensuring data consistency.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -645,7 +649,7 @@ with Transaction():
 
 Observe the difference between **Commit** and **Rollback**.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -655,9 +659,10 @@ What information is passed to `__exit__()` when an exception occurs?
 
 ### Answer
 
-Python passes the exception type, exception instance and traceback object. These allow the context manager to inspect or handle the exception.
+Python passes the exception type, exception instance and traceback object. These allow the context manager to inspect or
+handle the exception.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -667,7 +672,7 @@ What happens when `__exit__()` returns `True`?
 
 Python suppresses the exception, treating it as handled, and execution continues after the `with` block.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -675,9 +680,10 @@ Why is `contextlib.contextmanager` useful?
 
 ### Answer
 
-It simplifies creating context managers by allowing a generator function with a single `yield` to replace a full class implementing `__enter__()` and `__exit__()`.
+It simplifies creating context managers by allowing a generator function with a single `yield` to replace a full class
+implementing `__enter__()` and `__exit__()`.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -687,7 +693,7 @@ In what order are multiple context managers cleaned up?
 
 They are cleaned up in reverse order of acquisition. The last resource acquired is the first one released.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -695,9 +701,10 @@ Why are context managers important in production applications?
 
 ### Answer
 
-They ensure reliable resource management, prevent leaks, simplify cleanup logic and make code easier to read and maintain.
+They ensure reliable resource management, prevent leaks, simplify cleanup logic and make code easier to read and
+maintain.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -719,7 +726,7 @@ after it completes.
 
 Implement it using `contextlib.contextmanager`.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -730,7 +737,7 @@ Print:
 - `Commit` if the block succeeds.
 - `Rollback` if an exception occurs.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -738,7 +745,7 @@ Open two files using a single `with` statement.
 
 Read data from both and explain why Python closes them in reverse order.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -751,9 +758,8 @@ In this lesson, you learned:
 - ✅ How context managers are used for database transactions.
 - ✅ Why context managers are essential for writing reliable backend applications.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[10-Magic-Methods-part-1](10-magic-methods-part-1.md)
+**File:** [10-Magic-Methods-part-1](10-magic-methods-part-1.md)

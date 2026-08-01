@@ -1,6 +1,7 @@
 # File: python/40-algorithms-with-python-collections.md
 
 # Python Algorithms
+
 # Algorithms with Python Collections: Solving Real Backend Problems
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 6 Hours
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -25,7 +26,7 @@
 | `Counter` | Python 2.7 |
 | `defaultdict` | Python 2.5 |
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -42,7 +43,7 @@ By the end of this lesson, you will understand:
 - Caching
 - Production backend applications
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -68,23 +69,23 @@ O(n)
 
 without changing the business logic.
 
----
+______________________________________________________________________
 
 # Think Like an Engineer
 
 Before writing code, ask:
 
 1. Do I need ordering?
-2. Do I need uniqueness?
-3. Do I need fast lookup?
-4. Do I need counting?
-5. Do I need grouping?
-6. Do I need queue behaviour?
-7. Do I need stack behaviour?
+1. Do I need uniqueness?
+1. Do I need fast lookup?
+1. Do I need counting?
+1. Do I need grouping?
+1. Do I need queue behaviour?
+1. Do I need stack behaviour?
 
 Choosing the answer usually determines the data structure.
 
----
+______________________________________________________________________
 
 # Data Structure Selection Guide
 
@@ -100,7 +101,7 @@ Choosing the answer usually determines the data structure.
 
 This table is worth memorising.
 
----
+______________________________________________________________________
 
 # Pattern 1: Fast Lookups
 
@@ -131,7 +132,7 @@ Complexity
 O(n)
 ```
 
----
+______________________________________________________________________
 
 # Better Solution
 
@@ -158,7 +159,7 @@ Lookup:
 O(1)
 ```
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -182,7 +183,7 @@ user_lookup = {
 
 Thousands of lookups become nearly instantaneous.
 
----
+______________________________________________________________________
 
 # Pattern 2: Duplicate Detection
 
@@ -221,7 +222,7 @@ Complexity
 O(n²)
 ```
 
----
+______________________________________________________________________
 
 # Better
 
@@ -247,7 +248,7 @@ Complexity
 O(n)
 ```
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -267,7 +268,7 @@ else:
 
 Very common.
 
----
+______________________________________________________________________
 
 # Pattern 3: Frequency Counting
 
@@ -309,7 +310,7 @@ Cleaner.
 
 Less error-prone.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -339,7 +340,7 @@ Counter({
 })
 ```
 
----
+______________________________________________________________________
 
 # Pattern 4: Grouping
 
@@ -376,7 +377,7 @@ HR
 Bob
 ```
 
----
+______________________________________________________________________
 
 # Using defaultdict
 
@@ -412,7 +413,7 @@ Complexity
 O(n)
 ```
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -428,7 +429,7 @@ for order in orders:
     ].append(order)
 ```
 
----
+______________________________________________________________________
 
 # Pattern 5: Sliding Window
 
@@ -462,7 +463,7 @@ recent.append(request)
 
 Old entries disappear automatically.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -482,7 +483,7 @@ Perfect use case for
 deque(maxlen=1000)
 ```
 
----
+______________________________________________________________________
 
 # Pattern 6: Top-K Problems
 
@@ -522,7 +523,7 @@ Output
 ]
 ```
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -534,7 +535,7 @@ Most common
 - Browsers
 - Errors
 
----
+______________________________________________________________________
 
 # Pattern 7: Breadth-First Search (BFS)
 
@@ -549,7 +550,7 @@ Examples
 
 BFS requires a queue.
 
----
+______________________________________________________________________
 
 # Why Not a List?
 
@@ -575,7 +576,7 @@ popleft()
 O(1)
 ```
 
----
+______________________________________________________________________
 
 # BFS Example
 
@@ -614,7 +615,7 @@ C
 D
 ```
 
----
+______________________________________________________________________
 
 # Pattern 8: Caching
 
@@ -634,7 +635,7 @@ takes
 
 Repeated calls waste resources.
 
----
+______________________________________________________________________
 
 # Simple Cache
 
@@ -660,7 +661,7 @@ Lookup
 O(1)
 ```
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -688,7 +689,7 @@ Database Metadata
 
 Almost always backed by dictionaries.
 
----
+______________________________________________________________________
 
 # Pattern 9: Membership Filtering
 
@@ -732,7 +733,7 @@ Complexity
 Average O(1)
 ```
 
----
+______________________________________________________________________
 
 # Choosing the Right Collection
 
@@ -747,7 +748,7 @@ Average O(1)
 
 Notice that "wrong" often means "less suitable", not "incorrect".
 
----
+______________________________________________________________________
 
 # Performance Comparison
 
@@ -760,7 +761,7 @@ Notice that "wrong" often means "less suitable", not "incorrect".
 | Grouping | Verbose | O(n) |
 | Counting | Manual | O(n) |
 
----
+______________________________________________________________________
 
 # Real Backend Case Study
 
@@ -798,7 +799,7 @@ Five specialised collections.
 
 Each solves one problem efficiently.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -808,7 +809,7 @@ Using a list everywhere.
 
 Python provides specialised data structures for a reason.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -816,7 +817,7 @@ Optimising too early.
 
 Don't introduce complexity unless the workload requires it.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -824,7 +825,7 @@ Ignoring algorithmic complexity.
 
 Replacing an O(n²) solution with O(n) often has a greater impact than micro-optimisations.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -832,7 +833,7 @@ Building lookup dictionaries repeatedly.
 
 If the underlying data hasn't changed, reuse the lookup table.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -852,11 +853,12 @@ If the underlying data hasn't changed, reuse the lookup table.
 
 ❌ Don't choose a collection because it's familiar; choose it because it matches the algorithm.
 
----
+______________________________________________________________________
 
 # Production Insight
 
-Many backend performance improvements come from selecting the right collection—not from changing programming languages or adding hardware.
+Many backend performance improvements come from selecting the right collection—not from changing programming languages
+or adding hardware.
 
 For example:
 
@@ -866,7 +868,7 @@ For example:
 
 These improvements are simple, readable, and scale well.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -876,9 +878,10 @@ These improvements are simple, readable, and scale well.
 
 ### Answer
 
-Build a dictionary keyed by the unique identifier. This converts repeated O(n) searches into O(1) average-case lookups after an initial O(n) preprocessing step.
+Build a dictionary keyed by the unique identifier. This converts repeated O(n) searches into O(1) average-case lookups
+after an initial O(n) preprocessing step.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -886,9 +889,10 @@ Build a dictionary keyed by the unique identifier. This converts repeated O(n) s
 
 ### Answer
 
-When uniqueness or frequent membership testing is required. Sets provide average O(1) membership tests compared with O(n) for lists.
+When uniqueness or frequent membership testing is required. Sets provide average O(1) membership tests compared with
+O(n) for lists.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -896,9 +900,10 @@ When uniqueness or frequent membership testing is required. Sets provide average
 
 ### Answer
 
-Breadth-first search repeatedly removes elements from the front of a queue. `deque.popleft()` is O(1), while `list.pop(0)` is O(n).
+Breadth-first search repeatedly removes elements from the front of a queue. `deque.popleft()` is O(1), while
+`list.pop(0)` is O(n).
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -908,7 +913,7 @@ Breadth-first search repeatedly removes elements from the front of a queue. `deq
 
 Use `defaultdict(list)` and append each row to the list associated with its customer ID.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -916,9 +921,10 @@ Use `defaultdict(list)` and append each row to the list associated with its cust
 
 ### Answer
 
-Choosing the correct data structure and algorithm. Reducing time complexity from O(n²) to O(n) usually has a much larger impact than low-level code optimisations.
+Choosing the correct data structure and algorithm. Reducing time complexity from O(n²) to O(n) usually has a much larger
+impact than low-level code optimisations.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -1006,7 +1012,7 @@ defaultdict(
 deque([2, 3, 4], maxlen=3)
 ```
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1018,7 +1024,7 @@ How do you optimise repeated lookups in a collection?
 
 Create a dictionary keyed by a unique identifier to achieve average O(1) lookups.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -1028,7 +1034,7 @@ Why is a `set` ideal for duplicate detection?
 
 Because membership tests and insertions are average O(1), allowing duplicate detection in linear time.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -1038,7 +1044,7 @@ When should `Counter` be preferred over a normal dictionary?
 
 When counting frequencies, as it simplifies the code and provides useful methods such as `most_common()`.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -1048,7 +1054,7 @@ What is the ideal data structure for implementing a queue?
 
 `collections.deque`, because it supports O(1) insertion and removal from both ends.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1056,9 +1062,10 @@ Why is choosing the correct data structure often more important than micro-optim
 
 ### Answer
 
-Because improving an algorithm's time complexity (for example, O(n²) to O(n)) typically provides much greater performance gains than small implementation tweaks.
+Because improving an algorithm's time complexity (for example, O(n²) to O(n)) typically provides much greater
+performance gains than small implementation tweaks.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -1074,7 +1081,7 @@ Implement:
 
 Choose the appropriate collection for each task and explain why.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -1088,7 +1095,7 @@ Requirements:
 
 Use `deque(maxlen=100)`.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -1100,7 +1107,7 @@ Given a list of products:
 
 Use `defaultdict` and `Counter`.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -1112,7 +1119,7 @@ Requirements:
 - Track visited nodes using a `set`.
 - Explain why each collection was chosen.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1129,7 +1136,7 @@ In this lesson, you learned:
 - ✅ Caching strategies.
 - ✅ Performance-oriented thinking.
 
----
+______________________________________________________________________
 
 # Module Summary – Built-in Types, Collections & Algorithms
 
@@ -1144,16 +1151,16 @@ Lessons **29–40** covered:
 - The `collections` module
 - Practical algorithmic patterns
 
-You now have a solid understanding of Python's core data structures, their internal behaviour, and how to apply them effectively in production backend systems.
+You now have a solid understanding of Python's core data structures, their internal behaviour, and how to apply them
+effectively in production backend systems.
 
----
+______________________________________________________________________
 
 # What's Next
 
 **Phase 2 – Advanced Python Runtime & Concurrency**
 
-**File:**
-[41-Concurrency-part-1-Processes-vs-Threads](41-concurrency-part-1-processes-vs-threads.md)
+**File:** [41-Concurrency-part-1-Processes-vs-Threads](41-concurrency-part-1-processes-vs-threads.md)
 
 Topics:
 

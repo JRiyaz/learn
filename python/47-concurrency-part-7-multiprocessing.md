@@ -1,6 +1,7 @@
 # File: python/47-concurrency-part-7-multiprocessing.md
 
 # Advanced Python Runtime & Concurrency
+
 # Concurrency Part 7: Multiprocessing - True Parallelism in Python
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 8 Hours
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -25,7 +26,7 @@
 | `multiprocessing.Manager` | Python 2.6 |
 | `multiprocessing.shared_memory` | Python 3.8 |
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -44,7 +45,7 @@ By the end of this lesson, you will understand:
 - Best practices
 - questions
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -74,7 +75,7 @@ The answer is:
 Multiprocessing
 ```
 
----
+______________________________________________________________________
 
 # Why Multiprocessing?
 
@@ -97,7 +98,7 @@ Threads cannot execute Python bytecode on all eight cores simultaneously because
 
 Processes can.
 
----
+______________________________________________________________________
 
 # What is Multiprocessing?
 
@@ -114,7 +115,7 @@ Each process has:
 
 Because each process owns its own interpreter, multiple CPU cores can execute Python code at the same time.
 
----
+______________________________________________________________________
 
 # Visualisation
 
@@ -156,7 +157,7 @@ Unlike threads,
 
 these processes execute truly in parallel.
 
----
+______________________________________________________________________
 
 # Threads vs Processes
 
@@ -186,7 +187,7 @@ Multiple GILs
 True Parallelism
 ```
 
----
+______________________________________________________________________
 
 # Introducing `multiprocessing`
 
@@ -200,7 +201,7 @@ If you've learned threads,
 
 many concepts will already feel familiar.
 
----
+______________________________________________________________________
 
 # Your First Process
 
@@ -226,7 +227,7 @@ Output
 Worker process
 ```
 
----
+______________________________________________________________________
 
 # Understanding `Process`
 
@@ -250,7 +251,7 @@ process.start()
 
 is called.
 
----
+______________________________________________________________________
 
 # Process Lifecycle
 
@@ -278,7 +279,7 @@ Terminated
 
 A process can only be started once.
 
----
+______________________________________________________________________
 
 # Parent and Child Processes
 
@@ -298,9 +299,10 @@ Parent Process
 Child Process
 ```
 
-The child inherits part of the parent's execution context depending on the operating system's process creation method, which we'll study later.
+The child inherits part of the parent's execution context depending on the operating system's process creation method,
+which we'll study later.
 
----
+______________________________________________________________________
 
 # Process IDs (PID)
 
@@ -318,7 +320,7 @@ Example
 18452
 ```
 
----
+______________________________________________________________________
 
 # Parent Process ID
 
@@ -336,7 +338,7 @@ Example
 
 This identifies the process that created the current one.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -375,7 +377,7 @@ Child PID: 10415
 Parent PID: 10401
 ```
 
----
+______________________________________________________________________
 
 # Multiple Processes
 
@@ -413,7 +415,7 @@ If your machine has multiple CPU cores,
 
 these processes may execute simultaneously.
 
----
+______________________________________________________________________
 
 # Process Isolation
 
@@ -441,7 +443,7 @@ No.
 
 Each process has its own memory.
 
----
+______________________________________________________________________
 
 # Demonstration
 
@@ -479,7 +481,7 @@ Output
 
 The parent process remains unchanged.
 
----
+______________________________________________________________________
 
 # Why?
 
@@ -502,7 +504,7 @@ counter = 1
 
 They are different variables in different memory spaces.
 
----
+______________________________________________________________________
 
 # Sharing Data
 
@@ -535,7 +537,7 @@ We'll study:
 
 in upcoming lessons.
 
----
+______________________________________________________________________
 
 # Process Startup Cost
 
@@ -553,7 +555,7 @@ Because the operating system must allocate:
 
 Threads reuse existing process resources.
 
----
+______________________________________________________________________
 
 # Memory Usage
 
@@ -569,7 +571,7 @@ multiprocessing consumes more memory than multithreading.
 
 This is one of the trade-offs for achieving true parallelism.
 
----
+______________________________________________________________________
 
 # Process Termination
 
@@ -587,7 +589,7 @@ Use this carefully.
 
 Forcefully terminating a process may leave files, sockets, or other resources in an inconsistent state.
 
----
+______________________________________________________________________
 
 # Checking Process Status
 
@@ -607,7 +609,7 @@ or
 False
 ```
 
----
+______________________________________________________________________
 
 # Daemon Processes
 
@@ -623,7 +625,7 @@ daemon processes terminate automatically when their parent process exits.
 
 Daemon processes are generally used only for background helper tasks.
 
----
+______________________________________________________________________
 
 # Multiprocessing vs Threading
 
@@ -637,7 +639,7 @@ Daemon processes are generally used only for background helper tasks.
 | Memory Usage | Low | Higher |
 | Communication | Easy | More complex |
 
----
+______________________________________________________________________
 
 # When Should You Use Multiprocessing?
 
@@ -652,7 +654,7 @@ Ideal workloads include:
 - Numerical computation
 - Large-scale data transformation
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -690,7 +692,7 @@ Each stage performs heavy CPU computation.
 
 Running these tasks in separate processes allows multiple CPU cores to work simultaneously.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -702,7 +704,7 @@ Database operations are I/O-bound.
 
 Threads or asynchronous programming are usually more appropriate.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -712,7 +714,7 @@ They do not.
 
 Explicit communication is required.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -720,7 +722,7 @@ Creating too many processes.
 
 More processes than CPU cores often increase scheduling overhead without improving performance.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -728,7 +730,7 @@ Ignoring process startup cost.
 
 Short-lived tasks may spend more time creating processes than performing useful work.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -744,7 +746,7 @@ Short-lived tasks may spend more time creating processes than performing useful 
 
 ❌ Don't assume memory is shared.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -765,7 +767,7 @@ Each worker process provides:
 
 This architecture is one reason Python performs well in production despite the GIL.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -775,9 +777,10 @@ This architecture is one reason Python performs well in production despite the G
 
 ### Answer
 
-Each process has its own Python interpreter and its own Global Interpreter Lock, allowing multiple CPU cores to execute Python bytecode simultaneously.
+Each process has its own Python interpreter and its own Global Interpreter Lock, allowing multiple CPU cores to execute
+Python bytecode simultaneously.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -787,7 +790,7 @@ Each process has its own Python interpreter and its own Global Interpreter Lock,
 
 Each process has an independent memory space created by the operating system.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -797,7 +800,7 @@ Each process has an independent memory space created by the operating system.
 
 For CPU-bound workloads such as image processing, encryption, numerical computation, and machine learning.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -807,7 +810,7 @@ For CPU-bound workloads such as image processing, encryption, numerical computat
 
 Because every process requires its own memory, interpreter, operating system resources, and scheduling information.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -817,7 +820,7 @@ Because every process requires its own memory, interpreter, operating system res
 
 A parent process is the process that creates another process, known as the child process.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -872,7 +875,7 @@ Run the program and observe:
 - Concurrent execution
 - Independent worker processes
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -882,9 +885,10 @@ What is multiprocessing?
 
 ### Answer
 
-Multiprocessing is the execution of multiple independent processes simultaneously, allowing true parallelism across CPU cores.
+Multiprocessing is the execution of multiple independent processes simultaneously, allowing true parallelism across CPU
+cores.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -894,7 +898,7 @@ Why is multiprocessing better for CPU-bound tasks?
 
 Because each process has its own interpreter and GIL, allowing multiple CPU cores to execute Python code in parallel.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -904,7 +908,7 @@ Do processes share memory by default?
 
 No. Each process has its own independent address space.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -914,7 +918,7 @@ What is the purpose of `join()`?
 
 It blocks until the child process completes execution.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -924,7 +928,7 @@ Why is multiprocessing more memory-intensive than threading?
 
 Because every process maintains its own interpreter, memory space, stacks, heaps, and operating system resources.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -936,7 +940,7 @@ Measure the total execution time.
 
 Compare it with a sequential implementation.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -949,7 +953,7 @@ Modify the example so that every child process prints:
 
 Explain how this demonstrates parallel execution.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -959,7 +963,7 @@ Attempt to modify a shared global variable.
 
 Document why the parent's variable remains unchanged.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -969,7 +973,7 @@ Explain whether multiprocessing would improve its performance.
 
 Justify your answer based on CPU usage, memory requirements, and communication overhead.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -985,11 +989,12 @@ In this lesson, you learned:
 - ✅ Memory separation.
 - ✅ Production multiprocessing patterns.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[48-concurrency-part-8-process-communication](48-concurrency-part-8-process-communication.md)
+**File:** [48-concurrency-part-8-process-communication](48-concurrency-part-8-process-communication.md)
 
-In the next lesson, you'll learn how separate processes communicate safely using Pipes, Queues, Managers, shared memory, and other Inter-Process Communication (IPC) mechanisms. We'll also discuss serialization, pickling, performance considerations, and production design patterns for multi-process applications.
+In the next lesson, you'll learn how separate processes communicate safely using Pipes, Queues, Managers, shared memory,
+and other Inter-Process Communication (IPC) mechanisms. We'll also discuss serialization, pickling, performance
+considerations, and production design patterns for multi-process applications.

@@ -1,6 +1,7 @@
 # File: python/70-testing-part-03-fixtures.md
 
 # Testing
+
 # Part 3: Fixtures – Reusable Test Setup with pytest
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 10–12 Hours
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -31,7 +32,7 @@ By the end of this lesson, you will understand:
 - Best practices
 - Common mistakes
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -69,7 +70,7 @@ The same setup code is repeated everywhere.
 
 This duplication makes tests harder to maintain.
 
----
+______________________________________________________________________
 
 # What is a Fixture?
 
@@ -91,7 +92,7 @@ Test Uses Resource
 
 Instead of each test creating its own setup, pytest creates it automatically.
 
----
+______________________________________________________________________
 
 # Your First Fixture
 
@@ -128,7 +129,7 @@ number()
 
 Pytest injects the fixture automatically.
 
----
+______________________________________________________________________
 
 # How Fixture Injection Works
 
@@ -166,7 +167,7 @@ Run Test
 
 The parameter names determine which fixtures are used.
 
----
+______________________________________________________________________
 
 # Why Fixtures are Better
 
@@ -202,7 +203,7 @@ database
 
 The setup exists in one place.
 
----
+______________________________________________________________________
 
 # Fixtures Can Depend on Other Fixtures
 
@@ -242,7 +243,7 @@ Database
 Test
 ```
 
----
+______________________________________________________________________
 
 # Multiple Fixtures
 
@@ -264,7 +265,7 @@ def test_order(
 
 Pytest resolves every dependency before executing the test.
 
----
+______________________________________________________________________
 
 # Fixture Scope
 
@@ -286,7 +287,7 @@ Other scopes are available.
 | package | Once per package |
 | session | Entire test session |
 
----
+______________________________________________________________________
 
 # Function Scope
 
@@ -318,7 +319,7 @@ Every test starts with a fresh resource.
 
 This is the safest option.
 
----
+______________________________________________________________________
 
 # Session Scope
 
@@ -356,7 +357,7 @@ Destroy Config
 
 Ideal for immutable shared resources.
 
----
+______________________________________________________________________
 
 # Cleanup with yield
 
@@ -399,7 +400,7 @@ Cleanup
 
 Everything after `yield` executes after the test finishes, even if the test fails.
 
----
+______________________________________________________________________
 
 # Temporary Files
 
@@ -425,7 +426,7 @@ def temp_file():
 
 The cleanup happens automatically.
 
----
+______________________________________________________________________
 
 # conftest.py
 
@@ -470,7 +471,7 @@ config
 
 without importing it.
 
----
+______________________________________________________________________
 
 # Built-in Fixtures
 
@@ -498,7 +499,7 @@ Modify objects during tests.
 
 We will study `monkeypatch` in a dedicated lesson.
 
----
+______________________________________________________________________
 
 # Backend Example
 
@@ -550,7 +551,7 @@ def cache():
 
 Each test simply requests the required resources.
 
----
+______________________________________________________________________
 
 # Fixture Dependency Graph
 
@@ -600,7 +601,7 @@ Database
 Config
 ```
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -608,7 +609,7 @@ Config
 
 Duplicating setup code in every test.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -616,7 +617,7 @@ Using session-scoped fixtures for mutable objects.
 
 This can cause tests to influence one another.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -624,19 +625,19 @@ Putting unrelated fixtures into one large fixture.
 
 Prefer small, reusable fixtures.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
 Forgetting cleanup for files, sockets, or database connections.
 
----
+______________________________________________________________________
 
 ## Mistake 5
 
 Creating fixtures that perform unnecessary work for tests that don't use them.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -654,7 +655,7 @@ Creating fixtures that perform unnecessary work for tests that don't use them.
 
 ❌ Don't share mutable state unnecessarily.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -686,7 +687,7 @@ Service Fixture
 
 When the database configuration changes, only the fixture needs updating rather than every test.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -698,7 +699,7 @@ When the database configuration changes, only the fixture needs updating rather 
 
 A fixture is reusable setup code that prepares resources required by one or more tests.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -708,7 +709,7 @@ A fixture is reusable setup code that prepares resources required by one or more
 
 They eliminate duplicated setup code, improve readability, and make tests easier to maintain.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -718,7 +719,7 @@ They eliminate duplicated setup code, improve readability, and make tests easier
 
 Pytest matches test function parameters to fixture names and creates the required resources before running the test.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -728,7 +729,7 @@ Pytest matches test function parameters to fixture names and creates the require
 
 When a resource needs cleanup after the test, such as closing files, sockets, or database connections.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -738,7 +739,7 @@ When a resource needs cleanup after the test, such as closing files, sockets, or
 
 Because it provides complete isolation by creating a fresh fixture instance for every test.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -767,7 +768,7 @@ Verify that:
 - Fixtures are reused correctly.
 - Cleanup executes after every test.
 
----
+______________________________________________________________________
 
 # Knowledge Check
 
@@ -777,9 +778,10 @@ Why are fixtures considered a form of Dependency Injection?
 
 ### Answer
 
-Because pytest creates the required objects and injects them into test functions rather than having tests construct those objects themselves.
+Because pytest creates the required objects and injects them into test functions rather than having tests construct
+those objects themselves.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -787,9 +789,10 @@ Why should mutable fixtures rarely use session scope?
 
 ### Answer
 
-Because shared mutable state can make tests influence one another, leading to unreliable and difficult-to-debug failures.
+Because shared mutable state can make tests influence one another, leading to unreliable and difficult-to-debug
+failures.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -797,9 +800,10 @@ What is the purpose of `conftest.py`?
 
 ### Answer
 
-It stores shared fixtures that pytest automatically discovers and makes available to tests in the same directory hierarchy.
+It stores shared fixtures that pytest automatically discovers and makes available to tests in the same directory
+hierarchy.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -809,7 +813,7 @@ In what order are dependent fixtures cleaned up?
 
 Fixtures are cleaned up in the reverse order of their creation, ensuring dependent resources are released safely.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -817,9 +821,10 @@ What characteristics make a good fixture?
 
 ### Answer
 
-A good fixture is focused, reusable, independent, appropriately scoped, and performs only the setup required for the tests that use it.
+A good fixture is focused, reusable, independent, appropriately scoped, and performs only the setup required for the
+tests that use it.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -827,7 +832,7 @@ A good fixture is focused, reusable, independent, appropriately scoped, and perf
 
 Refactor an existing pytest project to replace duplicated setup code with reusable fixtures.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -835,7 +840,7 @@ Move all common fixtures into `conftest.py`.
 
 Verify that no explicit imports are required in the test files.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -847,15 +852,16 @@ Create fixtures with the following scopes:
 
 Add logging statements to observe when each fixture is created and destroyed.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
-Create a fixture that opens a temporary file, writes test data, yields the file object, and removes the file during cleanup.
+Create a fixture that opens a temporary file, writes test data, yields the file object, and removes the file during
+cleanup.
 
 Confirm that cleanup occurs even when the test intentionally fails.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -870,9 +876,8 @@ In this lesson, you learned:
 - ✅ Built-in pytest fixtures.
 - ✅ Production testing practices using fixtures.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[71-testing-part-04-mocking](71-testing-part-04-mocking.md)
+**File:** [71-testing-part-04-mocking](71-testing-part-04-mocking.md)

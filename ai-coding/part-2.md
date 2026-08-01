@@ -6,20 +6,20 @@
 
 > This document explains how modern AI coding assistants understand your repository, what project instruction files they support, and how to organize your repository for each tool.
 
----
+______________________________________________________________________
 
 # Table of Contents
 
 1. How AI Coding Assistants Work
-2. Context Loading
-3. Claude Code
-4. GitHub Copilot
-5. Antigravity
-6. Comparison Matrix
-7. Best Practices
-8. Recommended Repository Layout
+1. Context Loading
+1. Claude Code
+1. GitHub Copilot
+1. Antigravity
+1. Comparison Matrix
+1. Best Practices
+1. Recommended Repository Layout
 
----
+______________________________________________________________________
 
 # 1. How AI Coding Assistants Work
 
@@ -67,7 +67,7 @@ The better your repository is organized,
 
 the less context needs to be loaded.
 
----
+______________________________________________________________________
 
 # Context Priority
 
@@ -99,7 +99,7 @@ Remaining Repository
 
 Instruction files therefore become extremely important because they influence nearly every response.
 
----
+______________________________________________________________________
 
 # 2. Claude Code
 
@@ -111,7 +111,7 @@ Unlike traditional chat interfaces,
 
 Claude Code attempts to maintain project-level understanding.
 
----
+______________________________________________________________________
 
 ## Primary Instruction File
 
@@ -127,7 +127,7 @@ project/
     CLAUDE.md
 ```
 
----
+______________________________________________________________________
 
 ## Purpose
 
@@ -139,22 +139,22 @@ It should contain stable information.
 
 Good examples
 
-* project purpose
-* architecture overview
-* coding standards
-* constraints
-* preferred libraries
-* testing requirements
-* naming conventions
+- project purpose
+- architecture overview
+- coding standards
+- constraints
+- preferred libraries
+- testing requirements
+- naming conventions
 
 Avoid
 
-* TODOs
-* temporary bugs
-* sprint planning
-* implementation details
+- TODOs
+- temporary bugs
+- sprint planning
+- implementation details
 
----
+______________________________________________________________________
 
 ## Example Sections
 
@@ -178,7 +178,7 @@ No need to write implementation details.
 
 Just enough for Claude to understand the project.
 
----
+______________________________________________________________________
 
 ## Typical Repository
 
@@ -196,7 +196,7 @@ src/
 tests/
 ```
 
----
+______________________________________________________________________
 
 ## Context Flow
 
@@ -224,7 +224,7 @@ Relevant source
 Response
 ```
 
----
+______________________________________________________________________
 
 ## Best Practices
 
@@ -238,37 +238,37 @@ High-level
 
 Do not turn it into another README.
 
----
+______________________________________________________________________
 
 ## Things NOT to Put
 
 Don't put
 
-* bug history
-* meeting notes
-* release notes
-* temporary work
-* huge architecture explanations
+- bug history
+- meeting notes
+- release notes
+- temporary work
+- huge architecture explanations
 
 Those belong elsewhere.
 
----
+______________________________________________________________________
 
 ## When to Update
 
 Update CLAUDE.md when
 
-* architecture changes
+- architecture changes
 
-* coding standards change
+- coding standards change
 
-* supported Python version changes
+- supported Python version changes
 
-* project constraints change
+- project constraints change
 
 Not every day.
 
----
+______________________________________________________________________
 
 # 3. GitHub Copilot
 
@@ -280,7 +280,7 @@ Copilot is primarily completion-oriented,
 
 although newer versions include chat and agent features.
 
----
+______________________________________________________________________
 
 ## Primary Instruction File
 
@@ -290,7 +290,7 @@ although newer versions include chat and agent features.
     copilot-instructions.md
 ```
 
----
+______________________________________________________________________
 
 ## Purpose
 
@@ -298,19 +298,19 @@ Guide Copilot's code generation.
 
 Good information
 
-* coding conventions
+- coding conventions
 
-* preferred patterns
+- preferred patterns
 
-* formatting
+- formatting
 
-* naming
+- naming
 
-* testing
+- testing
 
-* review expectations
+- review expectations
 
----
+______________________________________________________________________
 
 ## Example Sections
 
@@ -328,7 +328,7 @@ Naming
 Architecture Notes
 ```
 
----
+______________________________________________________________________
 
 ## Context Flow
 
@@ -362,7 +362,7 @@ If a file isn't open,
 
 Copilot may rely less on it.
 
----
+______________________________________________________________________
 
 ## Best Practices
 
@@ -388,7 +388,7 @@ Entire Architecture
 300 pages
 ```
 
----
+______________________________________________________________________
 
 ## Things NOT to Put
 
@@ -400,7 +400,7 @@ Meeting notes
 
 Design discussions
 
----
+______________________________________________________________________
 
 # 4. Antigravity
 
@@ -414,7 +414,7 @@ there is currently **no widely adopted standard instruction file** comparable to
 
 Always check the latest Antigravity documentation, as support may change over time.
 
----
+______________________________________________________________________
 
 ## Current Behaviour
 
@@ -434,7 +434,7 @@ It also benefits greatly from
 
 well-organized documentation.
 
----
+______________________________________________________________________
 
 ## Repository Recommendations
 
@@ -450,7 +450,7 @@ clean.
 
 Because Antigravity uses repository context extensively.
 
----
+______________________________________________________________________
 
 ## Best Practices
 
@@ -464,7 +464,7 @@ Examples.
 
 Consistent naming.
 
----
+______________________________________________________________________
 
 ## Things to Avoid
 
@@ -474,21 +474,21 @@ Duplicated documentation.
 
 Outdated documents.
 
----
+______________________________________________________________________
 
 # 5. Comparison Matrix
 
-| Feature                    | Claude Code    | GitHub Copilot            | Antigravity                |
+| Feature | Claude Code | GitHub Copilot | Antigravity |
 | -------------------------- | -------------- | ------------------------- | -------------------------- |
-| Repository Understanding   | Excellent      | Good                      | Good                       |
-| Dedicated Instruction File | ✔ CLAUDE.md    | ✔ copilot-instructions.md | No widely adopted standard |
-| Reads README               | Yes            | Yes                       | Yes                        |
-| Reads Documentation        | Yes            | Limited                   | Yes                        |
-| Uses Open Files            | Yes            | Heavy                     | Heavy                      |
-| Large Repository Support   | Excellent      | Good                      | Good                       |
-| Best For                   | Large Projects | Coding Assistance         | Repository Navigation      |
+| Repository Understanding | Excellent | Good | Good |
+| Dedicated Instruction File | ✔ CLAUDE.md | ✔ copilot-instructions.md | No widely adopted standard |
+| Reads README | Yes | Yes | Yes |
+| Reads Documentation | Yes | Limited | Yes |
+| Uses Open Files | Yes | Heavy | Heavy |
+| Large Repository Support | Excellent | Good | Good |
+| Best For | Large Projects | Coding Assistance | Repository Navigation |
 
----
+______________________________________________________________________
 
 # Repository Layout
 
@@ -530,24 +530,24 @@ examples/
 configs/
 ```
 
----
+______________________________________________________________________
 
 # What Goes Where?
 
-| File                    | Purpose                  |
+| File | Purpose |
 | ----------------------- | ------------------------ |
-| README.md               | Project overview         |
-| CLAUDE.md               | Claude project memory    |
-| copilot-instructions.md | Copilot coding rules     |
-| architecture.md         | High-level design        |
-| protocol.md             | Communication protocol   |
-| worker.md               | Worker lifecycle         |
-| manager.md              | Manager responsibilities |
-| testing.md              | Testing strategy         |
-| deployment.md           | Deployment               |
-| decisions.md            | Architecture decisions   |
+| README.md | Project overview |
+| CLAUDE.md | Claude project memory |
+| copilot-instructions.md | Copilot coding rules |
+| architecture.md | High-level design |
+| protocol.md | Communication protocol |
+| worker.md | Worker lifecycle |
+| manager.md | Manager responsibilities |
+| testing.md | Testing strategy |
+| deployment.md | Deployment |
+| decisions.md | Architecture decisions |
 
----
+______________________________________________________________________
 
 # Should Information Be Duplicated?
 
@@ -573,7 +573,7 @@ Instead
 
 Reference it.
 
----
+______________________________________________________________________
 
 # Documentation Flow
 
@@ -601,7 +601,7 @@ Testing
 Deployment
 ```
 
----
+______________________________________________________________________
 
 # AI Friendly Repository
 
@@ -643,7 +643,7 @@ Troubleshooting
 4000 lines
 ```
 
----
+______________________________________________________________________
 
 # Token Optimization
 
@@ -659,7 +659,7 @@ Well-organized repository
 
 Not from prompt engineering.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -677,7 +677,7 @@ Not from prompt engineering.
 
 ❌ Temporary notes inside instruction files
 
----
+______________________________________________________________________
 
 # Enterprise Recommendation
 
@@ -707,7 +707,7 @@ Every layer has a single responsibility.
 
 This makes it easier for both developers and AI assistants.
 
----
+______________________________________________________________________
 
 # Final Recommendations
 
@@ -715,19 +715,19 @@ This makes it easier for both developers and AI assistants.
 
 Project introduction.
 
----
+______________________________________________________________________
 
 ## Use CLAUDE.md for
 
 Stable Claude-specific project instructions.
 
----
+______________________________________________________________________
 
 ## Use copilot-instructions.md for
 
 Coding conventions.
 
----
+______________________________________________________________________
 
 ## Use docs/
 
@@ -741,7 +741,7 @@ Testing.
 
 Design decisions.
 
----
+______________________________________________________________________
 
 ## Never Use Instruction Files For
 
@@ -757,17 +757,20 @@ Release notes
 
 Large architecture explanations
 
----
+______________________________________________________________________
 
 # Summary
 
-A repository optimized for AI assistants is one that minimizes duplicated information and keeps long-lived knowledge in stable, discoverable locations.
+A repository optimized for AI assistants is one that minimizes duplicated information and keeps long-lived knowledge in
+stable, discoverable locations.
 
-* **Claude Code** benefits most from a concise `CLAUDE.md` plus modular documentation.
-* **GitHub Copilot** is guided by `.github/copilot-instructions.md` and the files currently open in your IDE.
-* **Antigravity** relies heavily on overall repository organization and documentation quality, without a standardized project instruction file.
+- **Claude Code** benefits most from a concise `CLAUDE.md` plus modular documentation.
+- **GitHub Copilot** is guided by `.github/copilot-instructions.md` and the files currently open in your IDE.
+- **Antigravity** relies heavily on overall repository organization and documentation quality, without a standardized project instruction file.
 
-The common principle across all tools is the same: keep documentation focused, avoid duplication, and let the repository carry the project context so prompts can remain short and task-specific.
+The common principle across all tools is the same: keep documentation focused, avoid duplication, and let the repository
+carry the project context so prompts can remain short and task-specific.
 
 ## Next
+
 [AI-Friendly Repository Structure & Context Engineering](part-3.md)

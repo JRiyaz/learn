@@ -1,6 +1,7 @@
 # File: python/30-string-deep-dive-part-2.md
 
 # Python Built-in Types
+
 # String (`str`) Deep Dive - Part 2: Methods, Formatting & Encoding
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 3 Hours
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -33,7 +34,7 @@
 - `.format()` was introduced to provide a more flexible formatting API.
 - **f-strings** are now the preferred formatting approach because they are concise, readable and generally the fastest.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -50,7 +51,7 @@ By the end of this lesson, you will understand:
 - Common production patterns
 - Performance best practices
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -68,7 +69,7 @@ Previously we learned:
 
 Now we'll learn how professional backend engineers manipulate strings every day.
 
----
+______________________________________________________________________
 
 # Why Learn String Methods?
 
@@ -100,7 +101,7 @@ Needs to become
 
 String methods solve these everyday problems.
 
----
+______________________________________________________________________
 
 # strip()
 
@@ -124,7 +125,7 @@ Notice
 
 The original string is unchanged.
 
----
+______________________________________________________________________
 
 # lstrip()
 
@@ -142,7 +143,7 @@ Output
 Python
 ```
 
----
+______________________________________________________________________
 
 # rstrip()
 
@@ -160,7 +161,7 @@ Output
 Python
 ```
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -182,7 +183,7 @@ Without `.strip()`
 
 A simple trailing space could cause authentication failures.
 
----
+______________________________________________________________________
 
 # split()
 
@@ -200,7 +201,7 @@ Output
 ['apple', 'banana', 'orange']
 ```
 
----
+______________________________________________________________________
 
 # Default Behaviour
 
@@ -220,7 +221,7 @@ Output
 
 Multiple spaces are handled automatically.
 
----
+______________________________________________________________________
 
 # maxsplit
 
@@ -238,7 +239,7 @@ Output
 
 Only two splits occur.
 
----
+______________________________________________________________________
 
 # rsplit()
 
@@ -258,7 +259,7 @@ Output
 
 Useful for file paths.
 
----
+______________________________________________________________________
 
 # splitlines()
 
@@ -278,7 +279,7 @@ Output
 
 Common when reading log files.
 
----
+______________________________________________________________________
 
 # join()
 
@@ -304,7 +305,7 @@ Output
 Python Backend API
 ```
 
----
+______________________________________________________________________
 
 # Why Doesn't join() Belong to list?
 
@@ -336,7 +337,7 @@ Separator
 Insert Between Items
 ```
 
----
+______________________________________________________________________
 
 # join() vs +
 
@@ -372,7 +373,7 @@ ABCD
 
 Many temporary strings are created.
 
----
+______________________________________________________________________
 
 # Efficient Version
 
@@ -382,7 +383,7 @@ result = "".join(words)
 
 Python calculates the required memory once and builds the final string efficiently.
 
----
+______________________________________________________________________
 
 # Favourite Questions
 
@@ -396,7 +397,7 @@ faster?
 
 Because it allocates memory once instead of repeatedly creating intermediate strings.
 
----
+______________________________________________________________________
 
 # replace()
 
@@ -424,7 +425,7 @@ Output
 Hello Python
 ```
 
----
+______________________________________________________________________
 
 # Replace Limited Occurrences
 
@@ -452,7 +453,7 @@ Output
 two two one
 ```
 
----
+______________________________________________________________________
 
 # find()
 
@@ -478,7 +479,7 @@ Output
 8
 ```
 
----
+______________________________________________________________________
 
 # Missing Substring
 
@@ -502,7 +503,7 @@ Output
 
 No exception is raised.
 
----
+______________________________________________________________________
 
 # index()
 
@@ -538,7 +539,7 @@ Output
 ValueError
 ```
 
----
+______________________________________________________________________
 
 # find() vs index()
 
@@ -565,7 +566,7 @@ use
 index()
 ```
 
----
+______________________________________________________________________
 
 # count()
 
@@ -585,7 +586,7 @@ Output
 3
 ```
 
----
+______________________________________________________________________
 
 # startswith()
 
@@ -609,7 +610,7 @@ Output
 True
 ```
 
----
+______________________________________________________________________
 
 # endswith()
 
@@ -631,7 +632,7 @@ Output
 True
 ```
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -645,7 +646,7 @@ if not filename.endswith(".csv"):
 
 > **Note:** In production, don't rely solely on the filename extension. Validate the file's content or MIME type as well.
 
----
+______________________________________________________________________
 
 # removeprefix()
 
@@ -671,7 +672,7 @@ Output
 example.com
 ```
 
----
+______________________________________________________________________
 
 # removesuffix()
 
@@ -697,7 +698,7 @@ report
 
 Cleaner than manual slicing.
 
----
+______________________________________________________________________
 
 # partition()
 
@@ -727,7 +728,7 @@ Output
 )
 ```
 
----
+______________________________________________________________________
 
 # Why Use partition()?
 
@@ -741,7 +742,7 @@ the result always contains exactly three elements.
 
 Very useful when parsing key-value strings.
 
----
+______________________________________________________________________
 
 # String Formatting
 
@@ -759,7 +760,7 @@ format()
 f-string
 ```
 
----
+______________________________________________________________________
 
 # Old Style (%)
 
@@ -781,7 +782,7 @@ Hello Alice
 
 Still found in older codebases.
 
----
+______________________________________________________________________
 
 # format()
 
@@ -809,7 +810,7 @@ Output
 Name: Alice, Age: 30
 ```
 
----
+______________________________________________________________________
 
 # Named Arguments
 
@@ -829,7 +830,7 @@ print(
 
 More readable.
 
----
+______________________________________________________________________
 
 # f-Strings
 
@@ -853,7 +854,7 @@ Output
 Alice is 30 years old
 ```
 
----
+______________________________________________________________________
 
 # Why f-Strings?
 
@@ -884,7 +885,7 @@ Output
 Total = 55
 ```
 
----
+______________________________________________________________________
 
 # Formatting Numbers
 
@@ -900,7 +901,7 @@ Output
 1234.57
 ```
 
----
+______________________________________________________________________
 
 # Thousands Separator
 
@@ -916,7 +917,7 @@ Output
 1,000,000
 ```
 
----
+______________________________________________________________________
 
 # Alignment
 
@@ -938,7 +939,7 @@ Output
 
 Useful when generating reports.
 
----
+______________________________________________________________________
 
 # Encoding
 
@@ -956,7 +957,7 @@ Before sending data over a network,
 
 Python converts it into bytes.
 
----
+______________________________________________________________________
 
 # encode()
 
@@ -974,7 +975,7 @@ Output
 b'Hello'
 ```
 
----
+______________________________________________________________________
 
 # decode()
 
@@ -998,7 +999,7 @@ Output
 Hello
 ```
 
----
+______________________________________________________________________
 
 # Visualising
 
@@ -1028,7 +1029,7 @@ String
 
 This process occurs constantly in web applications.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -1068,7 +1069,7 @@ Client
 
 Understanding this flow helps explain why encoding errors occur.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -1082,7 +1083,7 @@ Prefer
 "".join(...)
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -1096,7 +1097,7 @@ find()
 
 instead.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -1110,7 +1111,7 @@ b"Hello"
 "Hello"
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -1118,7 +1119,7 @@ Using old `%` formatting in new projects.
 
 Prefer f-strings.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -1134,7 +1135,7 @@ Prefer f-strings.
 
 ✅ Encode at system boundaries and decode immediately after reading bytes.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -1154,7 +1155,7 @@ Backend developers constantly use these methods:
 
 These account for the majority of string manipulation in production applications.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1166,7 +1167,7 @@ These account for the majority of string manipulation in production applications
 
 Because `join()` allocates memory once for the final string, whereas repeated `+` creates many temporary string objects.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1176,7 +1177,7 @@ Because `join()` allocates memory once for the final string, whereas repeated `+
 
 `find()` returns `-1` if the substring is absent, while `index()` raises a `ValueError`.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1186,7 +1187,7 @@ Because `join()` allocates memory once for the final string, whereas repeated `+
 
 They are more readable, generally faster and support inline expressions.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1196,7 +1197,7 @@ They are more readable, generally faster and support inline expressions.
 
 Encoding converts a Unicode string into bytes, while decoding converts bytes back into a Unicode string.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -1269,7 +1270,7 @@ b'Hello'
 Hello
 ```
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1281,7 +1282,7 @@ Why is `join()` generally preferred over repeated string concatenation?
 
 It performs a single memory allocation, making it more efficient for combining many strings.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -1291,7 +1292,7 @@ When should you use `partition()` instead of `split()`?
 
 When you need exactly one split and a guaranteed three-element result.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -1301,7 +1302,7 @@ What is the difference between `split()` and `splitlines()`?
 
 `split()` separates text using a specified delimiter, while `splitlines()` separates text based on line boundaries.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -1309,9 +1310,10 @@ Why are `encode()` and `decode()` important in backend development?
 
 ### Answer
 
-Network communication, files and many external systems operate on bytes, while Python application logic typically uses Unicode strings.
+Network communication, files and many external systems operate on bytes, while Python application logic typically uses
+Unicode strings.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1321,7 +1323,7 @@ Which string formatting method should modern Python projects prefer?
 
 f-strings, because they are concise, readable and generally offer the best performance.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -1341,7 +1343,7 @@ Produce:
 
 using appropriate string methods.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -1353,7 +1355,7 @@ Write a program that extracts the username and domain from:
 
 using `partition()`.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -1366,13 +1368,14 @@ Create a formatted invoice using f-strings that displays:
 - Two decimal places
 - Right-aligned columns
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
-Read a UTF-8 encoded text file, decode its contents, replace every occurrence of `"ERROR"` with `"WARNING"`, and write the modified content back using UTF-8 encoding.
+Read a UTF-8 encoded text file, decode its contents, replace every occurrence of `"ERROR"` with `"WARNING"`, and write
+the modified content back using UTF-8 encoding.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1386,12 +1389,11 @@ In this lesson, you learned:
 - ✅ Unicode encoding and decoding.
 - ✅ Common production patterns for backend applications.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[31-String-Deep-Dive-part-3](31-string-deep-dive-part-3.md)
+**File:** [31-String-Deep-Dive-part-3](31-string-deep-dive-part-3.md)
 
 Topics:
 
@@ -1406,4 +1408,5 @@ Topics:
 - Advanced interview questions
 - Final string assignments
 
+```
 ```

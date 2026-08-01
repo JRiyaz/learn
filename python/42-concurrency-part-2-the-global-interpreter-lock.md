@@ -1,6 +1,7 @@
 # File: python/42-concurrency-part-2-the-global-interpreter-lock.md
 
 # Advanced Python Runtime & Concurrency
+
 # Concurrency Part 2: The Global Interpreter Lock (GIL)
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 6–7 Hours
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -25,7 +26,7 @@
 
 > **Important:** The GIL is an implementation detail of **CPython**, not of the Python language itself. Other Python implementations may use different concurrency models.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -42,7 +43,7 @@ By the end of this lesson, you will understand:
 - Common misconceptions
 - Production implications
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -63,7 +64,7 @@ The answer lies in one of CPython's most important design decisions:
 
 **The Global Interpreter Lock (GIL).**
 
----
+______________________________________________________________________
 
 # What is the GIL?
 
@@ -86,7 +87,7 @@ It only applies to:
 One CPython Process
 ```
 
----
+______________________________________________________________________
 
 # Why Does the GIL Exist?
 
@@ -128,7 +129,7 @@ Reference Count--
 
 These operations happen constantly.
 
----
+______________________________________________________________________
 
 # Imagine Two Threads
 
@@ -194,7 +195,7 @@ Eventually:
 - Crashes
 - Objects freed too early
 
----
+______________________________________________________________________
 
 # The Original Design Decision
 
@@ -216,7 +217,7 @@ The trade-off:
 
 Reduced CPU parallelism.
 
----
+______________________________________________________________________
 
 # What Does the GIL Actually Lock?
 
@@ -240,7 +241,7 @@ Python Bytecode Execution
 
 Only one thread may execute Python bytecode at any instant.
 
----
+______________________________________________________________________
 
 # Visualisation
 
@@ -266,7 +267,7 @@ Python Interpreter
 
 Only one thread passes through the lock at a time.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -313,7 +314,7 @@ Thread A + Thread B
 Running Together
 ```
 
----
+______________________________________________________________________
 
 # Does the GIL Affect Processes?
 
@@ -340,7 +341,7 @@ Multiple processes can execute simultaneously on different CPU cores.
 
 This is why multiprocessing achieves real parallelism.
 
----
+______________________________________________________________________
 
 # CPU-Bound Example
 
@@ -371,7 +372,7 @@ Almost no improvement.
 
 Sometimes it is even slower because of context switching.
 
----
+______________________________________________________________________
 
 # Why?
 
@@ -395,7 +396,7 @@ Acquire Again
 
 Only one thread is making progress at a time.
 
----
+______________________________________________________________________
 
 # I/O-Bound Example
 
@@ -427,7 +428,7 @@ CPython can safely release the GIL.
 
 Another thread begins running.
 
----
+______________________________________________________________________
 
 # When Does Python Release the GIL?
 
@@ -441,7 +442,7 @@ The GIL is commonly released during blocking operations such as:
 
 This allows another thread to execute while the current thread waits.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -464,9 +465,10 @@ t1.join()
 t2.join()
 ```
 
-Although both threads call `sleep()`, the program finishes in approximately two seconds rather than four because `time.sleep()` releases the GIL while waiting.
+Although both threads call `sleep()`, the program finishes in approximately two seconds rather than four because
+`time.sleep()` releases the GIL while waiting.
 
----
+______________________________________________________________________
 
 # Thread Switching
 
@@ -496,7 +498,7 @@ This is not a guarantee that threads switch every 5 ms.
 
 It is the interpreter's scheduling interval.
 
----
+______________________________________________________________________
 
 # Does Every Python Operation Hold the GIL?
 
@@ -513,7 +515,7 @@ Examples include:
 
 These libraries perform heavy computation in native code, allowing true CPU parallelism internally.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -539,7 +541,7 @@ Multiple CPU Cores
 
 This is one reason scientific Python performs so well.
 
----
+______________________________________________________________________
 
 # Common Misconception #1
 
@@ -558,7 +560,7 @@ They are extremely useful for:
 
 These are mostly I/O-bound.
 
----
+______________________________________________________________________
 
 # Common Misconception #2
 
@@ -578,7 +580,7 @@ During these waits, other threads can run.
 
 The GIL is rarely the primary bottleneck in typical web applications.
 
----
+______________________________________________________________________
 
 # Common Misconception #3
 
@@ -595,7 +597,7 @@ Removing the GIL introduces:
 
 The design trade-offs are significant.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -639,7 +641,7 @@ Not computing.
 
 Therefore, threads remain effective despite the GIL.
 
----
+______________________________________________________________________
 
 # When Should You Use Threads?
 
@@ -654,7 +656,7 @@ Ideal for:
 - Kafka consumers
 - Web scraping
 
----
+______________________________________________________________________
 
 # When Should You Use Processes?
 
@@ -667,7 +669,7 @@ Ideal for:
 - Image processing
 - Large numerical calculations
 
----
+______________________________________________________________________
 
 # Threads vs Processes
 
@@ -680,7 +682,7 @@ Ideal for:
 | Video transcoding | Processes |
 | Scientific calculations | Processes |
 
----
+______________________________________________________________________
 
 # CPython Internals
 
@@ -716,7 +718,7 @@ Another Thread Runs
 
 This cycle repeats continuously throughout program execution.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -726,7 +728,7 @@ Expecting CPU-bound threads to scale across multiple CPU cores.
 
 Use processes instead.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -734,7 +736,7 @@ Assuming every library behaves identically.
 
 Many C extensions release the GIL internally.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -742,7 +744,7 @@ Creating hundreds of threads for CPU-intensive work.
 
 This often increases overhead without improving throughput.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -750,7 +752,7 @@ Blaming every performance issue on the GIL.
 
 Always profile your application before drawing conclusions.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -768,7 +770,7 @@ Always profile your application before drawing conclusions.
 
 ❌ Don't optimise for the GIL without measuring real bottlenecks.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -785,7 +787,7 @@ This is why frameworks such as FastAPI, Django, and Flask continue to perform we
 
 Understanding where your application spends its time is far more valuable than simply knowing that the GIL exists.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -797,7 +799,7 @@ Understanding where your application spends its time is far more valuable than s
 
 The GIL is a mutex in CPython that allows only one thread at a time to execute Python bytecode within a single process.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -805,9 +807,10 @@ The GIL is a mutex in CPython that allows only one thread at a time to execute P
 
 ### Answer
 
-It simplifies memory management, particularly reference counting, making the interpreter easier to implement and thread-safe.
+It simplifies memory management, particularly reference counting, making the interpreter easier to implement and
+thread-safe.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -817,7 +820,7 @@ It simplifies memory management, particularly reference counting, making the int
 
 Because only one thread can execute Python bytecode at a time within a process due to the GIL.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -825,9 +828,10 @@ Because only one thread can execute Python bytecode at a time within a process d
 
 ### Answer
 
-Because they perform well for I/O-bound workloads where threads spend much of their time waiting for external resources, allowing other threads to execute.
+Because they perform well for I/O-bound workloads where threads spend much of their time waiting for external resources,
+allowing other threads to execute.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -837,7 +841,7 @@ Because they perform well for I/O-bound workloads where threads spend much of th
 
 Yes. Each process has its own Python interpreter and its own GIL, enabling true parallel execution across CPU cores.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -896,7 +900,7 @@ Observe that:
 - The CPU-bound section gains little benefit from threading.
 - The I/O-bound section completes in roughly the same time as a single `sleep(2)` because both threads wait concurrently.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -908,7 +912,7 @@ Why does the GIL exist?
 
 To simplify CPython's memory management and make reference counting thread-safe.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -918,7 +922,7 @@ Does the GIL prevent multiprocessing?
 
 No. Each process has its own interpreter and its own GIL.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -926,9 +930,10 @@ When is the GIL typically released?
 
 ### Answer
 
-During blocking operations such as network I/O, file I/O, database operations, `time.sleep()`, and many native C extension calls.
+During blocking operations such as network I/O, file I/O, database operations, `time.sleep()`, and many native C
+extension calls.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -936,9 +941,10 @@ Why are threads suitable for web servers?
 
 ### Answer
 
-Because web servers spend much of their time waiting for external resources, allowing other threads to execute while one thread is blocked.
+Because web servers spend much of their time waiting for external resources, allowing other threads to execute while one
+thread is blocked.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -948,7 +954,7 @@ What is the biggest misconception about the GIL?
 
 That it makes Python threads useless. In reality, threads are highly effective for I/O-bound applications.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -964,7 +970,7 @@ Record:
 
 Explain why the results differ.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -975,7 +981,7 @@ For each library, explain:
 - What it does
 - Why releasing the GIL improves performance
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -986,7 +992,7 @@ Take one of your existing FastAPI endpoints and identify:
 
 Suggest whether threads or processes would be more appropriate for each.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -998,7 +1004,7 @@ Draw a diagram illustrating:
 - Blocking I/O
 - GIL release and reacquisition
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1014,11 +1020,12 @@ In this lesson, you learned:
 - ✅ Production implications of the GIL.
 - ✅ Senior backend interview topics.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[43-Concurrency-part-3-Threading-Module](43-concurrency-part-3-threading-module.md)
+**File:** [43-Concurrency-part-3-Threading-Module](43-concurrency-part-3-threading-module.md)
 
-In the next lesson, we'll move from theory to implementation. You'll learn how to create and manage threads using Python's `threading` module, including thread lifecycle, daemon threads, thread naming, `join()`, communication patterns, and production-ready threading practices.
+In the next lesson, we'll move from theory to implementation. You'll learn how to create and manage threads using
+Python's `threading` module, including thread lifecycle, daemon threads, thread naming, `join()`, communication
+patterns, and production-ready threading practices.

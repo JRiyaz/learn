@@ -1,6 +1,7 @@
 # File: python/27-itertools-part-1.md
 
 # Python Functional Programming - Part 5
+
 # `itertools` Part 1 - Infinite Iterators and Iterator Building Blocks
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 170 Minutes
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -32,7 +33,7 @@
 - They are implemented in highly optimised **C code**, making them faster than equivalent pure Python implementations in many scenarios.
 - The biggest advantage of `itertools` is **lazy evaluation**, allowing you to process datasets much larger than available memory.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -50,7 +51,7 @@ By the end of this lesson, you will understand:
 - Production use cases
 - Performance considerations
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -76,7 +77,7 @@ itertools
 
 Many experienced Python developers consider it one of the most valuable modules to master.
 
----
+______________________________________________________________________
 
 # Why Does itertools Exist?
 
@@ -124,7 +125,7 @@ Next Row
 
 This streaming approach is exactly what `itertools` enables.
 
----
+______________________________________________________________________
 
 # Philosophy of itertools
 
@@ -162,7 +163,7 @@ islice()
 Output
 ```
 
----
+______________________________________________________________________
 
 # Categories of itertools
 
@@ -184,7 +185,7 @@ Today we'll study the first two groups.
 
 Combinatoric iterators deserve an entire lesson of their own.
 
----
+______________________________________________________________________
 
 # Lazy Evaluation Refresher
 
@@ -206,11 +207,11 @@ All of them are lazy.
 
 Nothing happens until values are requested.
 
----
+______________________________________________________________________
 
 # Part 1 — count()
 
----
+______________________________________________________________________
 
 # What is count()?
 
@@ -250,7 +251,7 @@ Notice
 
 The iterator never ends.
 
----
+______________________________________________________________________
 
 # Starting Value
 
@@ -284,7 +285,7 @@ Output
 101
 ```
 
----
+______________________________________________________________________
 
 # Step Size
 
@@ -314,7 +315,7 @@ Output
 20
 ```
 
----
+______________________________________________________________________
 
 # Visualising count()
 
@@ -346,7 +347,7 @@ count()
 ∞
 ```
 
----
+______________________________________________________________________
 
 # Why Is It Infinite?
 
@@ -356,7 +357,7 @@ Internally,
 
 Python simply keeps adding the step value.
 
----
+______________________________________________________________________
 
 # Danger
 
@@ -370,7 +371,7 @@ It never finishes.
 
 Your program will eventually exhaust available memory.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -392,11 +393,11 @@ Output
 
 Each request receives a unique sequential identifier.
 
----
+______________________________________________________________________
 
 # Part 2 — cycle()
 
----
+______________________________________________________________________
 
 # What is cycle()?
 
@@ -450,7 +451,7 @@ Blue
 
 Forever.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -490,7 +491,7 @@ Blue
 Red
 ```
 
----
+______________________________________________________________________
 
 # Visualising cycle()
 
@@ -514,7 +515,7 @@ Back to Red
 Repeat Forever
 ```
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -554,7 +555,7 @@ cycle(servers)
 
 makes this trivial.
 
----
+______________________________________________________________________
 
 # Important Note
 
@@ -564,11 +565,11 @@ For huge iterables,
 
 this may consume significant memory.
 
----
+______________________________________________________________________
 
 # Part 3 — repeat()
 
----
+______________________________________________________________________
 
 # What is repeat()?
 
@@ -588,7 +589,7 @@ we can use
 repeat()
 ```
 
----
+______________________________________________________________________
 
 # Example
 
@@ -620,7 +621,7 @@ Output
 ]
 ```
 
----
+______________________________________________________________________
 
 # Infinite repeat()
 
@@ -646,7 +647,7 @@ A
 
 forever.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -672,11 +673,11 @@ for url, timeout in zip(
 
 Every URL receives the same timeout value without constructing a second list.
 
----
+______________________________________________________________________
 
 # Part 4 — chain()
 
----
+______________________________________________________________________
 
 # The Problem
 
@@ -721,7 +722,7 @@ Works,
 
 but creates a new list.
 
----
+______________________________________________________________________
 
 # chain()
 
@@ -759,7 +760,7 @@ Output
 ]
 ```
 
----
+______________________________________________________________________
 
 # Visualising chain()
 
@@ -779,7 +780,7 @@ Iterator C
 Single Stream
 ```
 
----
+______________________________________________________________________
 
 # Why Is chain Better?
 
@@ -809,7 +810,7 @@ No Copy
 
 It simply visits one iterable after another.
 
----
+______________________________________________________________________
 
 # chain.from_iterable()
 
@@ -865,7 +866,7 @@ Output
 
 This is especially useful when the number of iterables is unknown.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -895,11 +896,11 @@ for user in chain(
     process(user)
 ```
 
----
+______________________________________________________________________
 
 # Part 5 — islice()
 
----
+______________________________________________________________________
 
 # The Problem
 
@@ -921,7 +922,7 @@ list(count())
 
 is impossible.
 
----
+______________________________________________________________________
 
 # islice()
 
@@ -967,7 +968,7 @@ Output
 ]
 ```
 
----
+______________________________________________________________________
 
 # Visualising islice()
 
@@ -983,7 +984,7 @@ Take First 5
 Stop
 ```
 
----
+______________________________________________________________________
 
 # Start and Stop
 
@@ -1040,7 +1041,7 @@ range(
 
 but works with any iterator.
 
----
+______________________________________________________________________
 
 # Step
 
@@ -1086,7 +1087,7 @@ Output
 ]
 ```
 
----
+______________________________________________________________________
 
 # Iterator Pipeline
 
@@ -1145,7 +1146,7 @@ Stop
 
 No unnecessary work is performed.
 
----
+______________________________________________________________________
 
 # Why Not Use range()?
 
@@ -1187,7 +1188,7 @@ Examples
 - `map()`
 - `filter()`
 
----
+______________________________________________________________________
 
 # Performance Considerations
 
@@ -1200,7 +1201,7 @@ All these tools
 
 They are particularly valuable when processing large datasets.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -1214,7 +1215,7 @@ list(count())
 
 on an infinite iterator.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -1222,7 +1223,7 @@ Assuming `cycle()` does not use additional memory.
 
 It stores previously seen values.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -1230,7 +1231,7 @@ Using `chain()` after converting everything into lists first.
 
 You lose its memory benefits.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -1247,7 +1248,7 @@ print(list(islice(numbers, 2)))  # [1, 2]
 print(list(numbers))             # [3, 4, 5]
 ```
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -1263,7 +1264,7 @@ print(list(numbers))             # [3, 4, 5]
 
 ❌ Don't assume every `itertools` function is memory-free—understand each one's behaviour.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -1278,9 +1279,10 @@ Common examples include:
 - Message queue consumers.
 - Event processing systems.
 
-The ability to process one item at a time keeps memory usage low and allows applications to scale to datasets that would never fit into RAM.
+The ability to process one item at a time keeps memory usage low and allows applications to scale to datasets that would
+never fit into RAM.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1290,9 +1292,10 @@ The ability to process one item at a time keeps memory usage low and allows appl
 
 ### Answer
 
-Most `itertools` functions return lazy iterators that generate values only when requested instead of creating entire collections in memory.
+Most `itertools` functions return lazy iterators that generate values only when requested instead of creating entire
+collections in memory.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1302,7 +1305,7 @@ Most `itertools` functions return lazy iterators that generate values only when 
 
 `+` creates a new list by copying elements, whereas `chain()` lazily iterates through each iterable without copying.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1312,7 +1315,7 @@ Most `itertools` functions return lazy iterators that generate values only when 
 
 Because `count()` produces an infinite sequence, so iteration never terminates and memory usage will continue growing.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1320,9 +1323,10 @@ Because `count()` produces an infinite sequence, so iteration never terminates a
 
 ### Answer
 
-When working with iterators or generators that don't support normal slicing, allowing lazy extraction of a subset of values.
+When working with iterators or generators that don't support normal slicing, allowing lazy extraction of a subset of
+values.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -1392,7 +1396,7 @@ Red
 [0, 1, 2, 3, 4]
 ```
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1404,7 +1408,7 @@ Why is `itertools` faster than many equivalent Python implementations?
 
 Many `itertools` functions are implemented in C and avoid creating unnecessary intermediate collections.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -1412,9 +1416,10 @@ What is the purpose of `count()`?
 
 ### Answer
 
-It creates an infinite iterator that generates sequential values starting from a specified number and incrementing by a configurable step.
+It creates an infinite iterator that generates sequential values starting from a specified number and incrementing by a
+configurable step.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -1422,9 +1427,10 @@ What is the difference between `chain()` and `chain.from_iterable()`?
 
 ### Answer
 
-`chain()` accepts multiple iterables as separate arguments, while `chain.from_iterable()` accepts a single iterable whose elements are themselves iterables.
+`chain()` accepts multiple iterables as separate arguments, while `chain.from_iterable()` accepts a single iterable
+whose elements are themselves iterables.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -1434,7 +1440,7 @@ Why is `cycle()` potentially memory intensive?
 
 It stores the values it has already seen so that it can repeat them indefinitely.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1444,7 +1450,7 @@ What makes `islice()` different from normal slicing?
 
 `islice()` works lazily with any iterator, while normal slicing requires a sequence type that supports indexing.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -1452,7 +1458,7 @@ What makes `islice()` different from normal slicing?
 
 Use `count()` and `islice()` to generate the first 20 multiples of 7.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -1460,7 +1466,7 @@ Create a round-robin task scheduler using `cycle()` for three worker names.
 
 Stop after assigning 15 tasks.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -1474,18 +1480,18 @@ cache_users = ["David", "Emma"]
 
 Explain when `chain.from_iterable()` is preferable.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
 Build a processing pipeline that:
 
 1. Generates numbers using `count(1)`.
-2. Squares each number using a generator expression.
-3. Uses `islice()` to return the first 25 squared values.
-4. Prints the result without creating unnecessary intermediate lists.
+1. Squares each number using a generator expression.
+1. Uses `islice()` to return the first 25 squared values.
+1. Prints the result without creating unnecessary intermediate lists.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1499,12 +1505,11 @@ In this lesson, you learned:
 - ✅ Common production use cases for iterator pipelines.
 - ✅ Performance characteristics and common pitfalls.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[28-Itertools-part-2](28-itertools-part-2.md)
+**File:** [28-Itertools-part-2](28-itertools-part-2.md)
 
 Topics:
 

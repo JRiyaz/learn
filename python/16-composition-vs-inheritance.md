@@ -1,6 +1,7 @@
 # File: python/16-composition-vs-inheritance.md
 
 # Python Advanced - Lesson 16
+
 # Composition vs Inheritance - Designing Flexible Object-Oriented Systems
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 90 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -28,7 +29,7 @@ By the end of this lesson, you will understand:
 - Common design mistakes
 - Production best practices
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -52,11 +53,12 @@ Instead, it **has-a** another object.
 
 This is where **composition** comes in.
 
----
+______________________________________________________________________
 
 # What is Composition?
 
-Composition is an object-oriented design technique where one object contains another object instead of inheriting from it.
+Composition is an object-oriented design technique where one object contains another object instead of inheriting from
+it.
 
 Instead of saying:
 
@@ -80,7 +82,7 @@ A developer **has a** database connection.
 
 A developer is **not** a database connection.
 
----
+______________________________________________________________________
 
 # Understanding "Has-a"
 
@@ -94,7 +96,7 @@ Engine
 
 A car **has an** engine.
 
----
+______________________________________________________________________
 
 ```
 Order
@@ -104,7 +106,7 @@ Payment
 
 An order **has a** payment.
 
----
+______________________________________________________________________
 
 ```
 Laptop
@@ -114,7 +116,7 @@ Battery
 
 A laptop **has a** battery.
 
----
+______________________________________________________________________
 
 ```
 UserService
@@ -124,7 +126,7 @@ Database
 
 A service **has a** database.
 
----
+______________________________________________________________________
 
 # A Bad Design
 
@@ -166,7 +168,7 @@ is not true.
 
 The relationship is incorrect.
 
----
+______________________________________________________________________
 
 # Correct Design Using Composition
 
@@ -212,7 +214,7 @@ HAS A
 Database
 ```
 
----
+______________________________________________________________________
 
 # Visualising Composition
 
@@ -230,7 +232,7 @@ The service owns a database object.
 
 It does not inherit from it.
 
----
+______________________________________________________________________
 
 # Why Composition is Better
 
@@ -256,7 +258,7 @@ only one object changes.
 
 The service remains the same.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -282,7 +284,7 @@ The service can simply use a different database object.
 
 No inheritance changes are required.
 
----
+______________________________________________________________________
 
 # Dependency Injection
 
@@ -318,7 +320,7 @@ service = UserService(database)
 
 This is called **Dependency Injection (DI).**
 
----
+______________________________________________________________________
 
 # Why Dependency Injection?
 
@@ -360,7 +362,7 @@ Fake Database
 
 This makes unit testing much easier.
 
----
+______________________________________________________________________
 
 # Real Backend Example
 
@@ -386,7 +388,7 @@ The service doesn't know whether the repository uses:
 
 It simply calls repository methods.
 
----
+______________________________________________________________________
 
 # Composition Chain
 
@@ -410,7 +412,7 @@ Every layer has one responsibility.
 
 This is called **Separation of Concerns.**
 
----
+______________________________________________________________________
 
 # Composition vs Inheritance
 
@@ -422,7 +424,7 @@ This is called **Separation of Concerns.**
 | Easy to replace dependencies | Parent changes affect children |
 | Preferred in modern software | Useful for genuine hierarchies |
 
----
+______________________________________________________________________
 
 # Real Example
 
@@ -448,7 +450,7 @@ Penguins cannot fly.
 
 The hierarchy is wrong.
 
----
+______________________________________________________________________
 
 Composition
 
@@ -478,7 +480,7 @@ class Eagle:
 
 Now behaviour is composed instead of inherited.
 
----
+______________________________________________________________________
 
 # The "Favor Composition Over Inheritance" Principle
 
@@ -495,7 +497,7 @@ It means:
 
 This produces software that is easier to extend and maintain.
 
----
+______________________________________________________________________
 
 # Production Example - Payment Gateway
 
@@ -532,7 +534,7 @@ can be injected.
 
 No changes are needed in the service.
 
----
+______________________________________________________________________
 
 # Production Example - Logging
 
@@ -568,7 +570,7 @@ CloudLogger
 
 The service remains unchanged.
 
----
+______________________________________________________________________
 
 # Composition in Popular Frameworks
 
@@ -616,7 +618,7 @@ Repository
 
 Almost every modern backend architecture relies heavily on composition.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -630,7 +632,7 @@ UserService(Database)
 
 Wrong.
 
----
+______________________________________________________________________
 
 ### Mistake 2
 
@@ -662,7 +664,7 @@ F
 
 These are difficult to understand and maintain.
 
----
+______________________________________________________________________
 
 ### Mistake 3
 
@@ -680,7 +682,7 @@ This tightly couples the service to a specific implementation.
 
 Inject dependencies instead.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -698,7 +700,7 @@ Inject dependencies instead.
 
 ❌ Don't tightly couple business logic to infrastructure.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -735,7 +737,7 @@ This design makes it easy to:
 
 Composition is one of the key reasons modern backend systems remain maintainable as they grow.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -745,9 +747,10 @@ Composition is one of the key reasons modern backend systems remain maintainable
 
 ### Answer
 
-Composition is an object-oriented design technique where one object contains another object to reuse functionality. It represents a "has-a" relationship.
+Composition is an object-oriented design technique where one object contains another object to reuse functionality. It
+represents a "has-a" relationship.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -755,9 +758,10 @@ Composition is an object-oriented design technique where one object contains ano
 
 ### Answer
 
-Inheritance models an "is-a" relationship and allows one class to extend another. Composition models a "has-a" relationship by combining objects. Composition generally provides greater flexibility and lower coupling.
+Inheritance models an "is-a" relationship and allows one class to extend another. Composition models a "has-a"
+relationship by combining objects. Composition generally provides greater flexibility and lower coupling.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -765,9 +769,10 @@ Inheritance models an "is-a" relationship and allows one class to extend another
 
 ### Answer
 
-Composition allows components to be replaced, tested and extended independently. It reduces coupling, improves maintainability and aligns well with principles such as dependency injection and single responsibility.
+Composition allows components to be replaced, tested and extended independently. It reduces coupling, improves
+maintainability and aligns well with principles such as dependency injection and single responsibility.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -828,7 +833,7 @@ Fetching users
 
 Observe how each object depends on another through composition instead of inheritance.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -838,9 +843,10 @@ What is composition?
 
 ### Answer
 
-Composition is an object-oriented design pattern where a class contains instances of other classes to reuse functionality. It represents a "has-a" relationship.
+Composition is an object-oriented design pattern where a class contains instances of other classes to reuse
+functionality. It represents a "has-a" relationship.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -848,9 +854,10 @@ When should inheritance be used?
 
 ### Answer
 
-Inheritance should be used only when there is a genuine "is-a" relationship and the child is a specialised version of the parent.
+Inheritance should be used only when there is a genuine "is-a" relationship and the child is a specialised version of
+the parent.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -860,7 +867,7 @@ Why is composition generally preferred?
 
 Composition creates loosely coupled systems that are easier to maintain, extend and test.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -868,9 +875,10 @@ What is dependency injection?
 
 ### Answer
 
-Dependency injection is the practice of providing dependencies to an object from the outside rather than allowing the object to create them itself.
+Dependency injection is the practice of providing dependencies to an object from the outside rather than allowing the
+object to create them itself.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -880,7 +888,7 @@ Why does dependency injection improve testing?
 
 It allows real dependencies to be replaced with mock or fake implementations, enabling fast and isolated unit tests.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -894,7 +902,7 @@ Create:
 
 Use composition to connect all three.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -902,7 +910,7 @@ Replace the real database with a `FakeDatabase`.
 
 Verify that the service continues to work without modification.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -916,7 +924,7 @@ Create:
 
 Inject different notifier implementations into the service.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -924,7 +932,7 @@ Take one of your previous inheritance examples and redesign it using composition
 
 Explain why the new design is more flexible.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -937,12 +945,11 @@ In this lesson, you learned:
 - ✅ How backend architectures use composition extensively.
 - ✅ Production best practices for building loosely coupled systems.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[17-Abstract-Base-Classes](17-abstract-base-classes.md)
+**File:** [17-Abstract-Base-Classes](17-abstract-base-classes.md)
 
 Topics:
 

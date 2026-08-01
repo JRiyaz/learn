@@ -1,6 +1,7 @@
 # File: python/46-concurrency-part-6-threadpoolexecutor.md
 
 # Advanced Python Runtime & Concurrency
+
 # Concurrency Part 6: ThreadPoolExecutor & Futures
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 7–8 Hours
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -23,7 +24,7 @@
 | `ThreadPoolExecutor` | Python 3.2 |
 | `Future` | Python 3.2 |
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -41,7 +42,7 @@ By the end of this lesson, you will understand:
 - Cancelling tasks
 - Production best practices
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -66,7 +67,7 @@ Should we create 10,000 threads?
 
 Absolutely not.
 
----
+______________________________________________________________________
 
 # The Problem with Manual Threads
 
@@ -93,7 +94,7 @@ Problems:
 - Difficult lifecycle management
 - Poor scalability
 
----
+______________________________________________________________________
 
 # Real-World Analogy
 
@@ -113,7 +114,7 @@ Hire one chef for every customer.
 
 Ridiculous.
 
----
+______________________________________________________________________
 
 Option 2:
 
@@ -135,7 +136,7 @@ The chefs continuously take new orders.
 
 That's a thread pool.
 
----
+______________________________________________________________________
 
 # What is a Thread Pool?
 
@@ -163,7 +164,7 @@ Worker Threads
 Results
 ```
 
----
+______________________________________________________________________
 
 # Introducing `ThreadPoolExecutor`
 
@@ -181,7 +182,7 @@ It manages:
 - Shutdown
 - Error propagation
 
----
+______________________________________________________________________
 
 # Creating a Thread Pool
 
@@ -201,7 +202,7 @@ The context manager ensures:
 - Threads are cleaned up
 - Resources are released
 
----
+______________________________________________________________________
 
 # First Example
 
@@ -250,7 +251,7 @@ Notice:
 
 Only three workers execute simultaneously.
 
----
+______________________________________________________________________
 
 # How It Works
 
@@ -286,7 +287,7 @@ When Worker 1 finishes,
 
 it automatically receives another task.
 
----
+______________________________________________________________________
 
 # `submit()`
 
@@ -305,7 +306,7 @@ It immediately returns a:
 Future
 ```
 
----
+______________________________________________________________________
 
 # What is a Future?
 
@@ -331,7 +332,7 @@ Finished
 Result Available
 ```
 
----
+______________________________________________________________________
 
 # Retrieving Results
 
@@ -356,7 +357,7 @@ If the task hasn't finished,
 
 `result()` waits.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -385,7 +386,7 @@ Output
 64
 ```
 
----
+______________________________________________________________________
 
 # Multiple Futures
 
@@ -405,7 +406,7 @@ for future in futures:
     print(future.result())
 ```
 
----
+______________________________________________________________________
 
 # Processing Results as They Finish
 
@@ -419,7 +420,7 @@ use:
 from concurrent.futures import as_completed
 ```
 
----
+______________________________________________________________________
 
 # Example
 
@@ -458,7 +459,7 @@ as each task completes,
 
 not submission order.
 
----
+______________________________________________________________________
 
 # `map()`
 
@@ -480,7 +481,7 @@ Use
 executor.map()
 ```
 
----
+______________________________________________________________________
 
 # Example
 
@@ -513,7 +514,7 @@ Unlike `as_completed()`,
 
 `map()` preserves input order.
 
----
+______________________________________________________________________
 
 # `submit()` vs `map()`
 
@@ -525,7 +526,7 @@ Unlike `as_completed()`,
 | Preserves order | No | Yes |
 | Best for | Flexible workflows | Bulk processing |
 
----
+______________________________________________________________________
 
 # Handling Exceptions
 
@@ -545,7 +546,7 @@ One task receives:
 
 The exception is stored inside the `Future`.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -570,7 +571,7 @@ The exception isn't raised during `submit()`.
 
 It appears when retrieving the result.
 
----
+______________________________________________________________________
 
 # Checking Completion
 
@@ -590,7 +591,7 @@ or
 False
 ```
 
----
+______________________________________________________________________
 
 # Cancelling Tasks
 
@@ -608,7 +609,7 @@ Check using
 future.cancelled()
 ```
 
----
+______________________________________________________________________
 
 # Thread Pool Lifecycle
 
@@ -636,7 +637,7 @@ Results Returned
 Shutdown
 ```
 
----
+______________________________________________________________________
 
 # Choosing `max_workers`
 
@@ -670,7 +671,7 @@ The optimal value depends on:
 - Memory
 - External services
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -705,7 +706,7 @@ Thread pool
 
 assuming each task is I/O-bound.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -715,7 +716,7 @@ Creating a new thread pool for every small function call.
 
 Pools are designed to be reused.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -725,7 +726,7 @@ For CPU-intensive tasks,
 
 prefer `ProcessPoolExecutor`.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -739,7 +740,7 @@ future.result()
 
 or inspect the future.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -747,7 +748,7 @@ Using an excessively large number of workers.
 
 More threads do not necessarily improve performance.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -765,7 +766,7 @@ More threads do not necessarily improve performance.
 
 ❌ Don't create thousands of workers.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -787,9 +788,10 @@ thread pools are commonly used for:
 - Uploading objects to cloud storage
 - Background notifications
 
-However, long-running background jobs are generally delegated to dedicated worker systems such as Celery or distributed task queues.
+However, long-running background jobs are generally delegated to dedicated worker systems such as Celery or distributed
+task queues.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -799,9 +801,10 @@ However, long-running background jobs are generally delegated to dedicated worke
 
 ### Answer
 
-A thread pool reuses a fixed number of worker threads, reducing memory usage, thread creation overhead, and context switching.
+A thread pool reuses a fixed number of worker threads, reducing memory usage, thread creation overhead, and context
+switching.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -811,7 +814,7 @@ A thread pool reuses a fixed number of worker threads, reducing memory usage, th
 
 A `Future` is an object representing the eventual result or exception of an asynchronous task.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -821,7 +824,7 @@ A `Future` is an object representing the eventual result or exception of an asyn
 
 When tasks require different arguments, individual tracking, cancellation, or flexible scheduling.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -831,7 +834,7 @@ When tasks require different arguments, individual tracking, cancellation, or fl
 
 Because the associated task may still be running when the result is requested.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -839,9 +842,10 @@ Because the associated task may still be running when the result is requested.
 
 ### Answer
 
-Because CPU-bound threads still compete for the GIL. `ProcessPoolExecutor` is generally a better choice for CPU-intensive work.
+Because CPU-bound threads still compete for the GIL. `ProcessPoolExecutor` is generally a better choice for
+CPU-intensive work.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -892,7 +896,7 @@ Fetching user 3
 ...
 ```
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -904,7 +908,7 @@ What is a thread pool?
 
 A collection of reusable worker threads that execute submitted tasks.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -914,7 +918,7 @@ What is the purpose of a `Future`?
 
 It represents the eventual result or exception of an asynchronous operation.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -922,9 +926,10 @@ What is the difference between `submit()` and `map()`?
 
 ### Answer
 
-`submit()` returns individual `Future` objects and offers greater flexibility, while `map()` applies the same function to an iterable and preserves input order.
+`submit()` returns individual `Future` objects and offers greater flexibility, while `map()` applies the same function
+to an iterable and preserves input order.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -934,7 +939,7 @@ When does `future.result()` raise an exception?
 
 When the task executed by the future raised an exception.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -944,7 +949,7 @@ When should `ThreadPoolExecutor` be preferred?
 
 For managing many independent I/O-bound tasks efficiently without manually creating and managing threads.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -956,7 +961,7 @@ Limit the pool to four workers.
 
 Measure the execution time.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -964,7 +969,7 @@ Modify one task so it raises an exception.
 
 Handle the exception gracefully without stopping the remaining tasks.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -976,7 +981,7 @@ Compare:
 
 Measure execution time and memory usage for an I/O-bound workload.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -986,7 +991,7 @@ Identify three independent I/O operations that could execute concurrently using 
 
 Explain the expected performance improvement and any limitations.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1002,11 +1007,12 @@ In this lesson, you learned:
 - ✅ Exception handling and task cancellation.
 - ✅ Production thread pool patterns.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[47-concurrency-part-7-multiprocessing](47-concurrency-part-7-multiprocessing.md)
+**File:** [47-concurrency-part-7-multiprocessing](47-concurrency-part-7-multiprocessing.md)
 
-In the next lesson, you'll learn how Python achieves true parallelism using the `multiprocessing` module. We'll cover process creation, process lifecycle, process communication, shared memory, IPC mechanisms, start methods (`fork`, `spawn`, `forkserver`), and when multiprocessing is the right choice over threading.
+In the next lesson, you'll learn how Python achieves true parallelism using the `multiprocessing` module. We'll cover
+process creation, process lifecycle, process communication, shared memory, IPC mechanisms, start methods (`fork`,
+`spawn`, `forkserver`), and when multiprocessing is the right choice over threading.

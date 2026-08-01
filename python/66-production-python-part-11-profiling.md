@@ -1,6 +1,7 @@
 # File: python/65-production-python-part-11-profiling.md
 
 # Production Python
+
 # Part 10: Profiling – Finding Performance Bottlenecks in Python Applications
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 10–12 Hours
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -32,7 +33,7 @@ By the end of this lesson, you will understand:
 - Common mistakes
 - Best practices
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -70,7 +71,7 @@ Without measurement, we're only guessing.
 
 This is why profiling exists.
 
----
+______________________________________________________________________
 
 # What is Profiling?
 
@@ -116,7 +117,7 @@ Profiling answers questions such as:
 - How much memory is allocated?
 - Which part of the application should be optimised first?
 
----
+______________________________________________________________________
 
 # Why Profiling Matters
 
@@ -174,7 +175,7 @@ Serialization  45 ms
 
 Clearly, optimising business logic would have little impact.
 
----
+______________________________________________________________________
 
 # Measure Before Optimising
 
@@ -190,7 +191,7 @@ Premature optimisation often:
 
 Profiling identifies the actual bottleneck.
 
----
+______________________________________________________________________
 
 # CPU-bound vs I/O-bound
 
@@ -207,7 +208,7 @@ Examples:
 
 The CPU performs most of the work.
 
----
+______________________________________________________________________
 
 ### I/O-bound
 
@@ -223,7 +224,7 @@ The program spends most of its time waiting.
 
 Optimising CPU code rarely improves I/O bottlenecks.
 
----
+______________________________________________________________________
 
 # Time Measurement
 
@@ -243,7 +244,7 @@ print(end - start)
 
 `perf_counter()` provides a high-resolution timer suitable for benchmarking elapsed time.
 
----
+______________________________________________________________________
 
 # cProfile
 
@@ -279,7 +280,7 @@ Important columns:
 
 `cumtime` often helps identify the real bottlenecks.
 
----
+______________________________________________________________________
 
 # Profiling a Function
 
@@ -293,7 +294,7 @@ cProfile.run("process_orders()")
 
 This keeps reports focused and easier to analyse.
 
----
+______________________________________________________________________
 
 # Reading a Profile
 
@@ -331,7 +332,7 @@ will likely have little effect.
 
 Always optimise the deepest bottleneck first.
 
----
+______________________________________________________________________
 
 # Line Profiling
 
@@ -365,7 +366,7 @@ It doesn't reveal which line is expensive.
 
 Line profilers measure execution time line by line, making them useful for analysing complex functions.
 
----
+______________________________________________________________________
 
 # Memory Profiling
 
@@ -385,7 +386,7 @@ Memory profiling answers questions such as:
 - Are objects released?
 - Is memory continuously increasing?
 
----
+______________________________________________________________________
 
 # Memory Leaks
 
@@ -400,7 +401,7 @@ Examples:
 
 Profiling memory helps detect these issues.
 
----
+______________________________________________________________________
 
 # Statistical Profiling
 
@@ -427,7 +428,7 @@ Advantages:
 
 This approach is commonly used in production monitoring tools.
 
----
+______________________________________________________________________
 
 # Profiling Web Applications
 
@@ -445,7 +446,7 @@ Profiling can determine which component dominates request latency.
 
 Optimisation efforts can then focus on the correct layer.
 
----
+______________________________________________________________________
 
 # Profiling Production Systems
 
@@ -465,7 +466,7 @@ Production environments often use:
 
 The goal is to minimise overhead while collecting useful data.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -473,13 +474,13 @@ The goal is to minimise overhead while collecting useful data.
 
 Optimising without measuring.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
 Optimising the wrong function.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -487,13 +488,13 @@ Ignoring database performance.
 
 Many backend bottlenecks originate outside Python.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
 Running profilers continuously in production.
 
----
+______________________________________________________________________
 
 ## Mistake 5
 
@@ -501,7 +502,7 @@ Focusing only on execution time.
 
 Memory usage, allocations, and I/O behaviour are equally important.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -519,7 +520,7 @@ Memory usage, allocations, and I/O behaviour are equally important.
 
 ❌ Don't assume Python code is always the bottleneck.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -541,11 +542,13 @@ Logs
 Profiling
 ```
 
-For example, distributed tracing may show that an API endpoint spends 85% of its time waiting for PostgreSQL. Profiling the Python code alone would not solve the problem.
+For example, distributed tracing may show that an API endpoint spends 85% of its time waiting for PostgreSQL. Profiling
+the Python code alone would not solve the problem.
 
-Profiling is most effective when combined with monitoring, logging, and tracing to build a complete picture of application behaviour.
+Profiling is most effective when combined with monitoring, logging, and tracing to build a complete picture of
+application behaviour.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -555,9 +558,10 @@ Profiling is most effective when combined with monitoring, logging, and tracing 
 
 ### Answer
 
-Profiling measures where an application spends its execution time and resources, helping identify real performance bottlenecks.
+Profiling measures where an application spends its execution time and resources, helping identify real performance
+bottlenecks.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -567,7 +571,7 @@ Profiling measures where an application spends its execution time and resources,
 
 Without measurements, developers risk spending time improving code that has little impact on overall performance.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -577,7 +581,7 @@ Without measurements, developers risk spending time improving code that has litt
 
 `tottime` measures time spent in the function itself, while `cumtime` includes time spent in functions that it calls.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -587,7 +591,7 @@ Without measurements, developers risk spending time improving code that has litt
 
 When a single function is identified as slow and you need to determine which specific lines consume the most time.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -597,15 +601,15 @@ When a single function is identified as slow and you need to determine which spe
 
 Because sampling introduces much lower overhead than tracing every function call, making it safer for live systems.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
 Create a simple FastAPI endpoint that:
 
 1. Loads data.
-2. Processes it.
-3. Returns a JSON response.
+1. Processes it.
+1. Returns a JSON response.
 
 Complete the following tasks:
 
@@ -617,7 +621,7 @@ Complete the following tasks:
 
 Document your findings, including why the optimisation helped (or didn't).
 
----
+______________________________________________________________________
 
 # Knowledge Check
 
@@ -627,9 +631,10 @@ What problem does profiling solve?
 
 ### Answer
 
-It replaces guesswork with measurable evidence, allowing developers to optimise the parts of the application that actually affect performance.
+It replaces guesswork with measurable evidence, allowing developers to optimise the parts of the application that
+actually affect performance.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -639,7 +644,7 @@ Why is `cumtime` often more useful than `tottime`?
 
 Because it reflects the total cost of a function, including the work performed by the functions it calls.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -649,7 +654,7 @@ Why should realistic workloads be used during profiling?
 
 Small or artificial datasets may hide bottlenecks that only appear under production-like conditions.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -657,9 +662,10 @@ Why isn't profiling alone sufficient for diagnosing slow APIs?
 
 ### Answer
 
-Many performance issues originate in databases, caches, networks, or external services, requiring metrics and tracing alongside profiling.
+Many performance issues originate in databases, caches, networks, or external services, requiring metrics and tracing
+alongside profiling.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -669,7 +675,7 @@ What is the biggest mistake developers make when improving performance?
 
 Optimising code before identifying the actual bottleneck through measurement.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -679,7 +685,7 @@ Profile one of your existing Flask or FastAPI projects using `cProfile`.
 
 Identify the five functions with the highest cumulative execution time.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -689,17 +695,19 @@ Optimise it and compare the profiling results before and after the change.
 
 Explain whether the optimisation had a measurable impact.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
 Review one API endpoint in your project.
 
-List every stage involved in handling the request (authentication, validation, database, business logic, serialization, etc.).
+List every stage involved in handling the request (authentication, validation, database, business logic, serialization,
+etc.).
 
-Estimate which stages are CPU-bound and which are I/O-bound, then verify your assumptions through measurement where possible.
+Estimate which stages are CPU-bound and which are I/O-bound, then verify your assumptions through measurement where
+possible.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -710,7 +718,7 @@ Write a short report answering:
 - Which optimisation produced the greatest improvement?
 - What evidence supports your conclusion?
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -727,9 +735,8 @@ In this lesson, you learned:
 - ✅ Profiling production services safely.
 - ✅ Performance best practices.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[67-production-python-part-12-memory-optimization](67-production-python-part-12-memory-optimization.md)
+**File:** [67-production-python-part-12-memory-optimization](67-production-python-part-12-memory-optimization.md)

@@ -1,6 +1,7 @@
 # File: python/78-networking-part-03-multi-client-tcp-server.md
 
 # Computer Networking
+
 # Part 3: Building a Multi-Client TCP Server – Handling Multiple Connections
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 14–16 Hours
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -31,7 +32,7 @@ By the end of this lesson, you will understand:
 - Common concurrency issues
 - Production best practices
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -59,7 +60,7 @@ It worked perfectly.
 
 But only for **one client at a time**.
 
----
+______________________________________________________________________
 
 # The Problem
 
@@ -87,7 +88,7 @@ The server cannot serve Client B until Client A disconnects.
 
 For a real backend application, this is unacceptable.
 
----
+______________________________________________________________________
 
 # Real Backend Servers
 
@@ -119,7 +120,7 @@ Server
 
 The server must handle many connections concurrently.
 
----
+______________________________________________________________________
 
 # Sequential Server
 
@@ -143,7 +144,7 @@ Repeat
 
 Only one client is processed at any given time.
 
----
+______________________________________________________________________
 
 # Concurrent Server
 
@@ -175,7 +176,7 @@ Create Thread
 
 Each client receives its own execution context.
 
----
+______________________________________________________________________
 
 # Thread-per-Client Model
 
@@ -215,7 +216,7 @@ Client B
 
 Each client communicates independently.
 
----
+______________________________________________________________________
 
 # Server Architecture
 
@@ -243,7 +244,7 @@ The main thread accepts connections.
 
 Worker threads perform communication.
 
----
+______________________________________________________________________
 
 # Client Handler Function
 
@@ -279,7 +280,7 @@ def handle_client(
 
 Each thread executes this function independently.
 
----
+______________________________________________________________________
 
 # Starting a Thread
 
@@ -305,7 +306,7 @@ accept()
 
 allowing additional clients to connect.
 
----
+______________________________________________________________________
 
 # Complete Multi-Client Server
 
@@ -371,7 +372,7 @@ while True:
 
 Now multiple clients can communicate simultaneously.
 
----
+______________________________________________________________________
 
 # What Happens Internally?
 
@@ -427,7 +428,7 @@ Client C
 
 Each thread blocks independently while waiting for network data.
 
----
+______________________________________________________________________
 
 # Why Threads Work Well Here
 
@@ -455,7 +456,7 @@ This allows other threads to continue executing.
 
 This is why thread-per-client servers can scale surprisingly well for moderate workloads.
 
----
+______________________________________________________________________
 
 # Daemon Threads
 
@@ -477,7 +478,7 @@ Useful for experiments.
 
 Less common for production servers where graceful shutdown is preferred.
 
----
+______________________________________________________________________
 
 # Problems with Thread-per-Client
 
@@ -513,7 +514,7 @@ Problems:
 
 Eventually the operating system becomes the bottleneck.
 
----
+______________________________________________________________________
 
 # Thread Pools
 
@@ -541,7 +542,7 @@ ThreadPoolExecutor
 
 Although simple socket servers often create threads manually, thread pools are useful when tasks are short-lived.
 
----
+______________________________________________________________________
 
 # Graceful Shutdown
 
@@ -571,7 +572,7 @@ Exit
 
 Graceful shutdown prevents lost data and corrupted connections.
 
----
+______________________________________________________________________
 
 # Socket Timeouts
 
@@ -593,7 +594,7 @@ is raised.
 
 This prevents idle clients from occupying server resources indefinitely.
 
----
+______________________________________________________________________
 
 # Broadcasting Messages
 
@@ -633,7 +634,7 @@ clients = []
 
 Each client socket is added when connected and removed when disconnected.
 
----
+______________________________________________________________________
 
 # Shared State
 
@@ -659,7 +660,7 @@ Potential issues:
 
 Locks may be required.
 
----
+______________________________________________________________________
 
 # Backend Example
 
@@ -689,7 +690,7 @@ Each thread handles one user's connection.
 
 The backend services remain shared.
 
----
+______________________________________________________________________
 
 # Architecture Limitations
 
@@ -714,7 +715,7 @@ These allow tens of thousands of concurrent connections with relatively few thre
 
 We'll study those in the next lesson.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -722,31 +723,31 @@ We'll study those in the next lesson.
 
 Creating unlimited threads.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
 Ignoring socket timeouts.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
 Not closing client sockets.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
 Sharing mutable state without synchronization.
 
----
+______________________________________________________________________
 
 ## Mistake 5
 
 Performing long CPU-intensive work inside client threads.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -764,7 +765,7 @@ Performing long CPU-intensive work inside client threads.
 
 ❌ Don't ignore exceptions inside worker threads.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -804,9 +805,10 @@ asyncio
 Thousands Of Connections
 ```
 
-Nevertheless, understanding the thread-per-client model is valuable because it clearly illustrates how concurrent servers evolved and why event loops became necessary.
+Nevertheless, understanding the thread-per-client model is valuable because it clearly illustrates how concurrent
+servers evolved and why event loops became necessary.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -816,9 +818,10 @@ Nevertheless, understanding the thread-per-client model is valuable because it c
 
 ### Answer
 
-Because it blocks while communicating with one client, preventing other clients from being served until the current interaction completes.
+Because it blocks while communicating with one client, preventing other clients from being served until the current
+interaction completes.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -826,9 +829,10 @@ Because it blocks while communicating with one client, preventing other clients 
 
 ### Answer
 
-Each client can block independently while waiting for network I/O, allowing the server to continue accepting and servicing other connections.
+Each client can block independently while waiting for network I/O, allowing the server to continue accepting and
+servicing other connections.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -838,7 +842,7 @@ Each client can block independently while waiting for network I/O, allowing the 
 
 Most of their time is spent waiting for data to arrive over the network rather than performing intensive computations.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -846,9 +850,10 @@ Most of their time is spent waiting for data to arrive over the network rather t
 
 ### Answer
 
-Memory consumption, context switching, and operating system scheduling overhead increase significantly, reducing scalability.
+Memory consumption, context switching, and operating system scheduling overhead increase significantly, reducing
+scalability.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -856,9 +861,10 @@ Memory consumption, context switching, and operating system scheduling overhead 
 
 ### Answer
 
-Because event-driven architectures can handle far more concurrent connections with fewer threads and lower resource usage.
+Because event-driven architectures can handle far more concurrent connections with fewer threads and lower resource
+usage.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -889,7 +895,7 @@ Then extend the server to:
 
 Finally, connect three terminal windows simultaneously and verify that messages are broadcast correctly.
 
----
+______________________________________________________________________
 
 # Knowledge Check
 
@@ -899,9 +905,10 @@ Why is a dedicated client handler function preferable to putting all logic in th
 
 ### Answer
 
-It separates connection acceptance from client communication, making the server easier to maintain and allowing each client to execute independently.
+It separates connection acceptance from client communication, making the server easier to maintain and allowing each
+client to execute independently.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -911,7 +918,7 @@ Why do threads perform reasonably well for socket servers despite the GIL?
 
 Because blocking socket operations release the GIL, allowing other threads to continue processing network I/O.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -921,7 +928,7 @@ Why can broadcasting messages introduce race conditions?
 
 Multiple client threads may modify or iterate over the shared collection of connected clients simultaneously.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -931,7 +938,7 @@ When should a thread pool be considered?
 
 When many short-lived tasks need to be processed while limiting the number of active threads.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -939,9 +946,10 @@ Why is graceful shutdown important?
 
 ### Answer
 
-It allows active connections to complete cleanly, releases resources properly, and prevents abrupt termination of client communications.
+It allows active connections to complete cleanly, releases resources properly, and prevents abrupt termination of client
+communications.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -949,13 +957,13 @@ It allows active connections to complete cleanly, releases resources properly, a
 
 Convert your single-client TCP server into a thread-per-client server.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
 Implement a simple multi-client chat server with broadcasting.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -966,7 +974,7 @@ Add logging that records:
 - Disconnection time.
 - Number of bytes received.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -976,7 +984,7 @@ Observe CPU usage, memory consumption, and thread count.
 
 Explain why this architecture eventually becomes inefficient as the number of concurrent clients grows.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -991,7 +999,7 @@ In this lesson, you learned:
 - ✅ Thread pools.
 - ✅ Why modern servers prefer event-driven architectures.
 
----
+______________________________________________________________________
 
 # Next Lesson
 

@@ -1,6 +1,7 @@
 # File: python/53-concurrency-part-13-asyncio-gather-wait-and-as_completed.md
 
 # Advanced Python Runtime & Concurrency
+
 # Concurrency Part 13: Coordinating Multiple Tasks with `asyncio.gather()`, `wait()` & `as_completed()`
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 10 Hours
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -23,7 +24,7 @@
 | `asyncio.wait()` | Python 3.4 |
 | `asyncio.as_completed()` | Python 3.4 |
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -42,7 +43,7 @@ By the end of this lesson, you will understand:
 - Best practices
 - questions
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -75,7 +76,7 @@ await task3
 
 There are much better solutions.
 
----
+______________________________________________________________________
 
 # The Problem
 
@@ -101,7 +102,7 @@ Instead,
 
 they should execute concurrently.
 
----
+______________________________________________________________________
 
 # Sequential Approach
 
@@ -127,7 +128,7 @@ Orders
 Notifications
 ```
 
----
+______________________________________________________________________
 
 # Concurrent Approach
 
@@ -155,7 +156,7 @@ instead of
 Sum Of All Tasks
 ```
 
----
+______________________________________________________________________
 
 # Introducing `asyncio.gather()`
 
@@ -169,7 +170,7 @@ results = await asyncio.gather(
 )
 ```
 
----
+______________________________________________________________________
 
 # First Example
 
@@ -220,7 +221,7 @@ Finished Products
 ['Users', 'Orders', 'Products']
 ```
 
----
+______________________________________________________________________
 
 # What Happens?
 
@@ -268,7 +269,7 @@ Internally,
 
 `gather()` automatically schedules the coroutines as tasks.
 
----
+______________________________________________________________________
 
 # Result Ordering
 
@@ -314,7 +315,7 @@ Results always follow the **input order**,
 
 not completion order.
 
----
+______________________________________________________________________
 
 # Exception Behaviour
 
@@ -353,7 +354,7 @@ gather Raises Exception
 Caller Receives Error
 ```
 
----
+______________________________________________________________________
 
 # `return_exceptions=True`
 
@@ -391,7 +392,7 @@ Example
 ]
 ```
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -410,7 +411,7 @@ you may still return partial data.
 
 allows graceful degradation.
 
----
+______________________________________________________________________
 
 # Introducing `asyncio.wait()`
 
@@ -434,7 +435,7 @@ Completed Tasks
 Pending Tasks
 ```
 
----
+______________________________________________________________________
 
 # Example
 
@@ -452,13 +453,13 @@ done, pending = await asyncio.wait(
 )
 ```
 
----
+______________________________________________________________________
 
 # Return Conditions
 
 `wait()` supports multiple stopping conditions.
 
----
+______________________________________________________________________
 
 ## Wait For Everything
 
@@ -468,7 +469,7 @@ asyncio.ALL_COMPLETED
 
 Default behaviour.
 
----
+______________________________________________________________________
 
 ## Wait For First Task
 
@@ -490,7 +491,7 @@ First Finishes
 Return Immediately
 ```
 
----
+______________________________________________________________________
 
 ## Wait For First Exception
 
@@ -502,7 +503,7 @@ Returns immediately
 
 if any task fails.
 
----
+______________________________________________________________________
 
 # Timeouts
 
@@ -529,7 +530,7 @@ Tasks still running after three seconds remain inside
 pending
 ```
 
----
+______________________________________________________________________
 
 # Cancelling Pending Tasks
 
@@ -541,7 +542,7 @@ for task in pending:
 
 Very common in production systems.
 
----
+______________________________________________________________________
 
 # Introducing `asyncio.as_completed()`
 
@@ -561,7 +562,7 @@ asyncio.as_completed()
 
 provides.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -581,7 +582,7 @@ for completed in asyncio.as_completed(tasks):
     print(result)
 ```
 
----
+______________________________________________________________________
 
 # Execution
 
@@ -619,7 +620,7 @@ Results arrive immediately.
 
 No waiting for slower tasks.
 
----
+______________________________________________________________________
 
 # Comparison
 
@@ -637,7 +638,7 @@ Wait Everything
 Return List
 ```
 
----
+______________________________________________________________________
 
 ## `wait()`
 
@@ -657,7 +658,7 @@ Done
 Pending
 ```
 
----
+______________________________________________________________________
 
 ## `as_completed()`
 
@@ -677,7 +678,7 @@ One By One
 Completion Order
 ```
 
----
+______________________________________________________________________
 
 # Choosing the Right Tool
 
@@ -689,7 +690,7 @@ Completion Order
 | Need timeout handling | `wait()` |
 | Need ordered results | `gather()` |
 
----
+______________________________________________________________________
 
 # Backend Example
 
@@ -739,7 +740,7 @@ the response becomes approximately
 
 assuming all requests are independent.
 
----
+______________________________________________________________________
 
 # Processing Large Downloads
 
@@ -761,7 +762,7 @@ the first completed download immediately,
 
 without waiting for the remaining ninety-nine.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -779,7 +780,7 @@ await task
 
 This often removes concurrency.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -793,7 +794,7 @@ Sometimes
 
 provides a better user experience.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -805,7 +806,7 @@ Always decide whether they should:
 - Be cancelled
 - Be retried
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -817,7 +818,7 @@ in completion order.
 
 It doesn't.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -835,7 +836,7 @@ It doesn't.
 
 ❌ Don't ignore failed tasks.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -893,7 +894,7 @@ Single Response
 
 This pattern dramatically reduces response time while keeping the code readable.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -905,7 +906,7 @@ This pattern dramatically reduces response time while keeping the code readable.
 
 It schedules multiple coroutines concurrently and returns their results in the same order they were provided.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -915,7 +916,7 @@ It schedules multiple coroutines concurrently and returns their results in the s
 
 When you need finer control over task completion, timeouts, or partial results.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -925,7 +926,7 @@ When you need finer control over task completion, timeouts, or partial results.
 
 It allows processing task results immediately as each task finishes instead of waiting for all tasks.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -935,7 +936,7 @@ It allows processing task results immediately as each task finishes instead of w
 
 No. It preserves the order of the input coroutines.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -943,9 +944,10 @@ No. It preserves the order of the input coroutines.
 
 ### Answer
 
-By default, the exception is propagated to the caller. Using `return_exceptions=True` allows all tasks to complete and returns exceptions as results.
+By default, the exception is propagated to the caller. Using `return_exceptions=True` allows all tasks to complete and
+returns exceptions as results.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -1004,7 +1006,7 @@ Compare:
 - Execution flow
 - Readability
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1014,9 +1016,10 @@ What is the difference between `gather()` and `wait()`?
 
 ### Answer
 
-`gather()` returns the results of all coroutines in input order, while `wait()` returns two sets containing completed and pending tasks, providing greater control over execution.
+`gather()` returns the results of all coroutines in input order, while `wait()` returns two sets containing completed
+and pending tasks, providing greater control over execution.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -1026,7 +1029,7 @@ When should `as_completed()` be preferred?
 
 When results should be processed immediately as tasks finish rather than waiting for all tasks to complete.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -1034,9 +1037,10 @@ How does `return_exceptions=True` change the behaviour of `gather()`?
 
 ### Answer
 
-Instead of immediately propagating exceptions, it includes them in the returned result list, allowing all tasks to finish.
+Instead of immediately propagating exceptions, it includes them in the returned result list, allowing all tasks to
+finish.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -1044,9 +1048,10 @@ Why is `wait()` useful for implementing timeouts?
 
 ### Answer
 
-Because it separates completed and pending tasks, allowing applications to cancel, retry, or continue processing outstanding work after a timeout.
+Because it separates completed and pending tasks, allowing applications to cancel, retry, or continue processing
+outstanding work after a timeout.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1054,9 +1059,10 @@ Why do many FastAPI endpoints use `asyncio.gather()`?
 
 ### Answer
 
-Because they often need to perform several independent I/O operations concurrently, reducing overall response time without increasing thread usage.
+Because they often need to perform several independent I/O operations concurrently, reducing overall response time
+without increasing thread usage.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -1071,7 +1077,7 @@ Execute them:
 
 Measure and compare execution time.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -1081,7 +1087,7 @@ Print each result immediately as it becomes available.
 
 Observe the difference in output ordering.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -1094,7 +1100,7 @@ Print:
 - Completed tasks
 - Cancelled tasks
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -1113,7 +1119,7 @@ Explain:
 - How exceptions should be handled
 - Whether partial responses should be returned if one dependency fails
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1126,11 +1132,14 @@ In this lesson, you learned:
 - ✅ How `asyncio.as_completed()` streams results as tasks finish.
 - ✅ Production coordination patterns used in modern async backend services.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
 **File:**
 [54-concurrency-part-14-asyncio-synchronization-primitives](54-concurrency-part-14-asyncio-synchronization-primitives.md)
 
-In the next lesson, you'll learn how asyncio handles synchronization using `asyncio.Lock`, `Event`, `Condition`, `Semaphore`, `BoundedSemaphore`, and `Queue`. We'll explore race conditions in asynchronous code, resource limiting, producer-consumer patterns, and the synchronization techniques used in production FastAPI and asynchronous backend applications.
+In the next lesson, you'll learn how asyncio handles synchronization using `asyncio.Lock`, `Event`, `Condition`,
+`Semaphore`, `BoundedSemaphore`, and `Queue`. We'll explore race conditions in asynchronous code, resource limiting,
+producer-consumer patterns, and the synchronization techniques used in production FastAPI and asynchronous backend
+applications.

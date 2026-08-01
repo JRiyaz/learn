@@ -1,6 +1,7 @@
 # File: python/15-multiple-inheritance-mro.md
 
 # Python Advanced - Lesson 15
+
 # Multiple Inheritance & Method Resolution Order (MRO)
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 100 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -28,7 +29,7 @@ By the end of this lesson, you will understand:
 - Production use cases
 - Best practices
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -62,7 +63,7 @@ One class can inherit from multiple parent classes.
 
 This is called **Multiple Inheritance**.
 
----
+______________________________________________________________________
 
 # Why Multiple Inheritance Exists
 
@@ -96,7 +97,7 @@ APIService
 
 Each parent contributes behaviour.
 
----
+______________________________________________________________________
 
 # Basic Example
 
@@ -147,7 +148,7 @@ User Authenticated
 
 The child inherited methods from both parents.
 
----
+______________________________________________________________________
 
 # What Happens When Parents Have the Same Method?
 
@@ -204,7 +205,7 @@ Python follows a specific search order.
 
 This is called the **Method Resolution Order (MRO).**
 
----
+______________________________________________________________________
 
 # What is MRO?
 
@@ -244,7 +245,7 @@ object
 
 The first matching method wins.
 
----
+______________________________________________________________________
 
 # Inspecting the MRO
 
@@ -273,7 +274,7 @@ print(APIService.__mro__)
 
 Both produce the same information.
 
----
+______________________________________________________________________
 
 # The Diamond Problem
 
@@ -307,7 +308,7 @@ which version should Python use?
 
 This is known as the **Diamond Problem**.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -362,7 +363,7 @@ Python follows the MRO.
 
 It does **not** call both methods automatically.
 
----
+______________________________________________________________________
 
 # How Python Calculates MRO
 
@@ -382,7 +383,7 @@ Python guarantees that:
 - Local inheritance order is respected.
 - Every class appears only once.
 
----
+______________________________________________________________________
 
 # super() in Multiple Inheritance
 
@@ -404,7 +405,7 @@ It actually means
 
 This distinction is extremely important.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -481,7 +482,7 @@ Why?
 
 Because `C` is next in the MRO.
 
----
+______________________________________________________________________
 
 # Visualising the Call Chain
 
@@ -515,7 +516,7 @@ object
 
 Every `super()` call follows this chain.
 
----
+______________________________________________________________________
 
 # Cooperative Multiple Inheritance
 
@@ -549,7 +550,7 @@ This is called
 
 **Cooperative Multiple Inheritance.**
 
----
+______________________________________________________________________
 
 # What Happens Without super()?
 
@@ -585,7 +586,7 @@ Classes after `B`
 
 never execute.
 
----
+______________________________________________________________________
 
 # When Should You Use Multiple Inheritance?
 
@@ -611,7 +612,7 @@ If the relationship doesn't make sense,
 
 don't use inheritance.
 
----
+______________________________________________________________________
 
 # Production Example - Mixins
 
@@ -641,7 +642,7 @@ Each mixin contributes a small piece of behaviour.
 
 We'll study mixins in detail later.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -674,7 +675,7 @@ Each concern remains independent.
 
 The final class combines them.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -690,7 +691,7 @@ The final class combines them.
 
 ❌ Don't build deep inheritance trees.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -700,9 +701,10 @@ The final class combines them.
 
 ### Answer
 
-Multiple inheritance allows a class to inherit attributes and methods from more than one parent class. Python resolves conflicts using the Method Resolution Order (MRO).
+Multiple inheritance allows a class to inherit attributes and methods from more than one parent class. Python resolves
+conflicts using the Method Resolution Order (MRO).
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -710,9 +712,10 @@ Multiple inheritance allows a class to inherit attributes and methods from more 
 
 ### Answer
 
-The Diamond Problem occurs when a class inherits from two classes that both inherit from the same parent. Python resolves method lookup using its MRO algorithm, ensuring every class is visited only once.
+The Diamond Problem occurs when a class inherits from two classes that both inherit from the same parent. Python
+resolves method lookup using its MRO algorithm, ensuring every class is visited only once.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -720,9 +723,10 @@ The Diamond Problem occurs when a class inherits from two classes that both inhe
 
 ### Answer
 
-No. `super()` calls the next class in the Method Resolution Order, not necessarily the immediate parent. This behaviour enables cooperative multiple inheritance.
+No. `super()` calls the next class in the Method Resolution Order, not necessarily the immediate parent. This behaviour
+enables cooperative multiple inheritance.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -792,7 +796,7 @@ print(D.mro())
 
 Observe the order that Python follows.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -804,7 +808,7 @@ What is multiple inheritance?
 
 Multiple inheritance allows a class to inherit behaviour from more than one parent class.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -814,7 +818,7 @@ What is Method Resolution Order (MRO)?
 
 MRO is the order in which Python searches classes to resolve methods and attributes during inheritance.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -822,9 +826,10 @@ What is the Diamond Problem?
 
 ### Answer
 
-It occurs when two parent classes inherit from the same base class and a child inherits from both parents. Python resolves this ambiguity using its C3 Linearization algorithm.
+It occurs when two parent classes inherit from the same base class and a child inherits from both parents. Python
+resolves this ambiguity using its C3 Linearization algorithm.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -834,7 +839,7 @@ Does `super()` always call the parent class?
 
 No. `super()` calls the next class in the Method Resolution Order, which may not be the immediate parent.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -842,9 +847,10 @@ Why is cooperative multiple inheritance important?
 
 ### Answer
 
-It ensures every class in the inheritance chain gets an opportunity to execute its implementation by consistently calling `super()`.
+It ensures every class in the inheritance chain gets an opportunity to execute its implementation by consistently
+calling `super()`.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -860,7 +866,7 @@ Make `APIService` inherit from both.
 
 Verify that methods from both parent classes are available.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -878,7 +884,7 @@ Implement a method called `display()` in every class.
 
 Use `super()` and observe the execution order.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -896,7 +902,7 @@ D.__mro__
 
 Compare the results.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -906,7 +912,7 @@ Observe how the cooperative inheritance chain breaks.
 
 Explain why.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -920,12 +926,11 @@ In this lesson, you learned:
 - ✅ Production use cases such as mixins.
 - ✅ Best practices for designing inheritance hierarchies.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[16-Composition-vs-Inheritance](16-composition-vs-inheritance.md)
+**File:** [16-Composition-vs-Inheritance](16-composition-vs-inheritance.md)
 
 Topics:
 

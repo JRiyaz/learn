@@ -1,6 +1,7 @@
 # File: python/45-concurrency-part-5-thread-communication.md
 
 # Advanced Python Runtime & Concurrency
+
 # Concurrency Part 5: Thread Communication - Queue, Event, Condition & Semaphore
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 7–8 Hours
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -24,7 +25,7 @@
 | `threading.Condition` | Python 2.3 |
 | `threading.Semaphore` | Python 2.3 |
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -41,7 +42,7 @@ By the end of this lesson, you will understand:
 - Production backend examples
 - Best practices
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -55,7 +56,7 @@ Now we need to answer another question:
 
 > **How do threads communicate with each other safely?**
 
----
+______________________________________________________________________
 
 # Why Communication Matters
 
@@ -85,7 +86,7 @@ That wastes CPU time.
 
 Instead, threads should communicate efficiently.
 
----
+______________________________________________________________________
 
 # Problems with Shared Variables
 
@@ -118,7 +119,7 @@ Problems:
 
 Python provides better tools.
 
----
+______________________________________________________________________
 
 # Producer-Consumer Pattern
 
@@ -142,7 +143,7 @@ The consumer processes work.
 
 Neither thread needs to know how fast the other runs.
 
----
+______________________________________________________________________
 
 # Introducing `queue.Queue`
 
@@ -160,7 +161,7 @@ It handles synchronization internally.
 
 No manual locking required.
 
----
+______________________________________________________________________
 
 # Creating a Queue
 
@@ -176,7 +177,7 @@ Initially:
 Empty
 ```
 
----
+______________________________________________________________________
 
 # Putting Data
 
@@ -203,7 +204,7 @@ Front
 Back
 ```
 
----
+______________________________________________________________________
 
 # Getting Data
 
@@ -219,7 +220,7 @@ Order #101
 
 The first inserted item.
 
----
+______________________________________________________________________
 
 # Blocking Behaviour
 
@@ -245,7 +246,7 @@ queue.put(...)
 
 The waiting thread wakes automatically.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -290,7 +291,7 @@ producer_thread.join()
 queue.join()
 ```
 
----
+______________________________________________________________________
 
 # Why `task_done()`?
 
@@ -316,7 +317,7 @@ queue.join()
 
 waits forever.
 
----
+______________________________________________________________________
 
 # Queue Lifecycle
 
@@ -344,7 +345,7 @@ Consumer
 task_done()
 ```
 
----
+______________________________________________________________________
 
 # `threading.Event`
 
@@ -366,7 +367,7 @@ Start Workers
 
 This is exactly what `Event` is for.
 
----
+______________________________________________________________________
 
 # Creating an Event
 
@@ -380,7 +381,7 @@ Initially
 Not Set
 ```
 
----
+______________________________________________________________________
 
 # Waiting
 
@@ -390,7 +391,7 @@ event.wait()
 
 Thread pauses until another thread signals it.
 
----
+______________________________________________________________________
 
 # Sending the Signal
 
@@ -400,7 +401,7 @@ event.set()
 
 Every waiting thread continues.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -435,7 +436,7 @@ Waiting...
 Started!
 ```
 
----
+______________________________________________________________________
 
 # Event Lifecycle
 
@@ -455,7 +456,7 @@ set()
 All Waiting Threads Continue
 ```
 
----
+______________________________________________________________________
 
 # `Condition`
 
@@ -471,7 +472,7 @@ A simple lock cannot express this.
 
 A condition variable can.
 
----
+______________________________________________________________________
 
 # Creating a Condition
 
@@ -485,7 +486,7 @@ A condition combines:
 - Waiting queue
 - Notification mechanism
 
----
+______________________________________________________________________
 
 # Waiting
 
@@ -495,7 +496,7 @@ with condition:
     condition.wait()
 ```
 
----
+______________________________________________________________________
 
 # Notification
 
@@ -511,7 +512,7 @@ or
 condition.notify_all()
 ```
 
----
+______________________________________________________________________
 
 # Example Use Cases
 
@@ -520,7 +521,7 @@ condition.notify_all()
 - Cache refresh
 - Resource availability
 
----
+______________________________________________________________________
 
 # `Semaphore`
 
@@ -538,7 +539,7 @@ No.
 
 It should wait.
 
----
+______________________________________________________________________
 
 # Creating a Semaphore
 
@@ -554,7 +555,7 @@ Only
 
 may enter simultaneously.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -568,7 +569,7 @@ When three threads are already inside,
 
 the fourth waits.
 
----
+______________________________________________________________________
 
 # Lock vs Semaphore
 
@@ -577,7 +578,7 @@ the fourth waits.
 | Maximum holders | 1 | Many |
 | Use case | Critical section | Limited resources |
 
----
+______________________________________________________________________
 
 # Which Primitive Should You Use?
 
@@ -589,7 +590,7 @@ the fourth waits.
 | Resource pool | Semaphore |
 | Wait for state | Condition |
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -626,7 +627,7 @@ This pattern appears in:
 - Kafka consumers
 - Background processing systems
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -636,7 +637,7 @@ Using lists instead of `Queue`.
 
 `Queue` is already thread-safe.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -651,7 +652,7 @@ while not ready:
 
 Use `Event` or `Condition`.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -659,7 +660,7 @@ Forgetting `task_done()`.
 
 This causes `queue.join()` to block forever.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -667,7 +668,7 @@ Using a semaphore where a lock is sufficient.
 
 Choose the simplest synchronization primitive that solves the problem.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -683,7 +684,7 @@ Choose the simplest synchronization primitive that solves the problem.
 
 ❌ Avoid manually implementing thread-safe queues.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -698,7 +699,7 @@ Examples:
 
 Even if you later adopt Celery, Kafka, or asyncio, these underlying concepts remain the same.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -710,7 +711,7 @@ Even if you later adopt Celery, Kafka, or asyncio, these underlying concepts rem
 
 Because `Queue` is thread-safe, blocks efficiently when empty, and eliminates the need for manual synchronization.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -720,7 +721,7 @@ Because `Queue` is thread-safe, blocks efficiently when empty, and eliminates th
 
 When one or more threads need to wait until another thread signals that a condition has occurred.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -730,7 +731,7 @@ When one or more threads need to wait until another thread signals that a condit
 
 It limits the number of threads that can access a finite resource simultaneously.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -740,7 +741,7 @@ It limits the number of threads that can access a finite resource simultaneously
 
 A condition allows threads to wait until a particular state becomes true, whereas a lock only provides mutual exclusion.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -748,9 +749,10 @@ A condition allows threads to wait until a particular state becomes true, wherea
 
 ### Answer
 
-A design pattern where producer threads generate work and consumer threads process it asynchronously using a shared queue.
+A design pattern where producer threads generate work and consumer threads process it asynchronously using a shared
+queue.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -808,7 +810,7 @@ print("All jobs processed.")
 
 Observe how the producer and consumer run independently while the queue coordinates communication.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -820,7 +822,7 @@ Why should `Queue` be preferred over a list for thread communication?
 
 Because `Queue` provides built-in thread safety and blocking operations.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -830,7 +832,7 @@ What is the purpose of `task_done()`?
 
 It informs the queue that a retrieved task has finished processing.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -840,7 +842,7 @@ When should `Event` be used?
 
 When one thread needs to signal one or more waiting threads.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -850,7 +852,7 @@ When is a semaphore useful?
 
 When limiting concurrent access to a finite number of resources such as database connections.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -858,9 +860,10 @@ What is the difference between `Condition` and `Event`?
 
 ### Answer
 
-An `Event` represents a simple on/off signal, whereas a `Condition` allows threads to wait for and be notified about specific state changes while coordinating with a lock.
+An `Event` represents a simple on/off signal, whereas a `Condition` allows threads to wait for and be notified about
+specific state changes while coordinating with a lock.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -874,25 +877,26 @@ Implement a producer-consumer system with:
 
 Record how work is distributed.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
 Simulate a database connection pool using a semaphore with a maximum of three concurrent connections.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
 Create an `Event` that delays worker threads until application configuration has finished loading.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
-Implement a bounded queue where producers wait when the queue is full and consumers notify producers when space becomes available.
+Implement a bounded queue where producers wait when the queue is full and consumers notify producers when space becomes
+available.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -907,11 +911,12 @@ In this lesson, you learned:
 - ✅ Production communication patterns.
 - ✅ Common interview topics.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[46-concurrency-part-6-threadpoolexecutor](46-concurrency-part-6-threadpoolexecutor.md)
+**File:** [46-concurrency-part-6-threadpoolexecutor](46-concurrency-part-6-threadpoolexecutor.md)
 
-In the next lesson, you'll learn about thread pools and the `concurrent.futures.ThreadPoolExecutor`. We'll cover task submission, futures, result handling, exception propagation, cancellation, performance considerations, and why thread pools are preferred over manually creating large numbers of threads in production systems.
+In the next lesson, you'll learn about thread pools and the `concurrent.futures.ThreadPoolExecutor`. We'll cover task
+submission, futures, result handling, exception propagation, cancellation, performance considerations, and why thread
+pools are preferred over manually creating large numbers of threads in production systems.

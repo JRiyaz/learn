@@ -1,6 +1,7 @@
 # File: python/52-concurrency-part-12-event-loop-and-tasks.md
 
 # Advanced Python Runtime & Concurrency
+
 # Concurrency Part 12: Event Loop, Tasks & Scheduling
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 9–10 Hours
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -24,7 +25,7 @@
 | `asyncio.all_tasks()` | Python 3.7 |
 | `Task.cancel()` | Python 3.4 |
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -42,7 +43,7 @@ By the end of this lesson, you will understand:
 - Best practices
 - questions
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -75,7 +76,7 @@ The Event Loop
 
 Today we'll understand exactly how.
 
----
+______________________________________________________________________
 
 # The Event Loop
 
@@ -96,7 +97,7 @@ Its responsibilities include:
 
 Everything in asyncio revolves around the event loop.
 
----
+______________________________________________________________________
 
 # A Simple View
 
@@ -126,7 +127,7 @@ The event loop repeatedly asks:
 Which coroutine is ready to run?
 ```
 
----
+______________________________________________________________________
 
 # Infinite Loop
 
@@ -148,7 +149,7 @@ while application_running:
 
 This repeats thousands of times every second.
 
----
+______________________________________________________________________
 
 # Coroutines Are Passive
 
@@ -178,7 +179,7 @@ Coroutine Object
 
 The coroutine simply waits.
 
----
+______________________________________________________________________
 
 # How Coroutines Execute
 
@@ -208,7 +209,7 @@ Notice the missing piece.
 Task
 ```
 
----
+______________________________________________________________________
 
 # What is a Task?
 
@@ -222,7 +223,7 @@ Without a task,
 
 the event loop has nothing to schedule.
 
----
+______________________________________________________________________
 
 # Creating a Task
 
@@ -253,7 +254,7 @@ Output
 Hello
 ```
 
----
+______________________________________________________________________
 
 # Why Use `create_task()`?
 
@@ -283,7 +284,7 @@ Products
 
 Sequential.
 
----
+______________________________________________________________________
 
 Using tasks
 
@@ -311,7 +312,7 @@ Concurrent Execution
 
 Much more efficient.
 
----
+______________________________________________________________________
 
 # Task Lifecycle
 
@@ -353,7 +354,7 @@ Or
 Failed
 ```
 
----
+______________________________________________________________________
 
 # Example
 
@@ -382,7 +383,7 @@ async def main():
 asyncio.run(main())
 ```
 
----
+______________________________________________________________________
 
 # Multiple Tasks
 
@@ -439,7 +440,7 @@ Notice
 
 all tasks started immediately.
 
----
+______________________________________________________________________
 
 # Visualising Scheduling
 
@@ -480,7 +481,7 @@ Choose Ready Task
 
 The event loop continuously switches between tasks whenever they reach an `await`.
 
----
+______________________________________________________________________
 
 # Awaiting a Task
 
@@ -498,7 +499,7 @@ Importantly,
 
 other tasks continue running.
 
----
+______________________________________________________________________
 
 # Fire-and-Forget
 
@@ -516,7 +517,7 @@ Be careful:
 
 The task should eventually be awaited or otherwise managed to avoid unnoticed exceptions.
 
----
+______________________________________________________________________
 
 # `asyncio.current_task()`
 
@@ -544,7 +545,7 @@ Useful for:
 - Logging
 - Diagnostics
 
----
+______________________________________________________________________
 
 # `asyncio.all_tasks()`
 
@@ -560,7 +561,7 @@ tasks = asyncio.all_tasks()
 
 Useful when debugging hanging applications.
 
----
+______________________________________________________________________
 
 # Task Completion
 
@@ -580,7 +581,7 @@ or
 False
 ```
 
----
+______________________________________________________________________
 
 # Retrieving Results
 
@@ -612,7 +613,7 @@ Output
 25
 ```
 
----
+______________________________________________________________________
 
 # Handling Exceptions
 
@@ -640,7 +641,7 @@ ZeroDivisionError
 
 The exception is stored inside the task until awaited.
 
----
+______________________________________________________________________
 
 # Cancelling Tasks
 
@@ -660,7 +661,7 @@ asyncio.CancelledError
 
 at its next suspension point.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -717,7 +718,7 @@ Cleaning up...
 Task cancelled.
 ```
 
----
+______________________________________________________________________
 
 # Why Cancellation Matters
 
@@ -739,7 +740,7 @@ The task should be cancelled,
 
 freeing resources for other requests.
 
----
+______________________________________________________________________
 
 # Tasks vs Threads
 
@@ -751,7 +752,7 @@ freeing resources for other requests.
 | Low memory usage | Higher memory usage |
 | Ideal for I/O | General concurrency |
 
----
+______________________________________________________________________
 
 # Event Loop Timeline
 
@@ -795,7 +796,7 @@ The event loop continually executes whichever task becomes ready first.
 
 No thread switching occurs.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -826,7 +827,7 @@ All I/O operations proceed concurrently,
 
 reducing response time.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -848,7 +849,7 @@ inside a loop.
 
 This often eliminates concurrency.
 
----
+______________________________________________________________________
 
 Example
 
@@ -864,7 +865,7 @@ for user in users:
 
 This runs sequentially.
 
----
+______________________________________________________________________
 
 Better
 
@@ -881,7 +882,7 @@ for task in tasks:
     await task
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -889,7 +890,7 @@ Ignoring background tasks.
 
 Unobserved exceptions may go unnoticed.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -903,7 +904,7 @@ time.sleep(5)
 
 inside async code.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -919,7 +920,7 @@ await function()
 
 may be clearer.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -937,7 +938,7 @@ may be clearer.
 
 ❌ Don't block the event loop.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -977,9 +978,10 @@ Response
 
 A busy FastAPI application may have thousands of active tasks while using only a handful of operating system threads.
 
-Understanding tasks is essential before learning advanced async patterns such as `asyncio.gather()`, timeouts, queues, and structured concurrency.
+Understanding tasks is essential before learning advanced async patterns such as `asyncio.gather()`, timeouts, queues,
+and structured concurrency.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -991,7 +993,7 @@ Understanding tasks is essential before learning advanced async patterns such as
 
 A Task is a wrapper around a coroutine that schedules it for execution by the event loop.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1001,7 +1003,7 @@ A Task is a wrapper around a coroutine that schedules it for execution by the ev
 
 To schedule multiple coroutines so they can execute concurrently instead of sequentially.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1011,7 +1013,7 @@ To schedule multiple coroutines so they can execute concurrently instead of sequ
 
 The task voluntarily suspends execution, allowing the event loop to run another ready task.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1021,7 +1023,7 @@ The task voluntarily suspends execution, allowing the event loop to run another 
 
 Exceptions are stored within the task and raised when the task is awaited.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1029,9 +1031,10 @@ Exceptions are stored within the task and raised when the task is awaited.
 
 ### Answer
 
-It allows applications to stop unnecessary work, release resources, and respond to changing conditions such as client disconnections.
+It allows applications to stop unnecessary work, release resources, and respond to changing conditions such as client
+disconnections.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -1084,7 +1087,7 @@ Observe:
 - The event loop switches between them while they wait.
 - Results are retrieved when each task completes.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1096,7 +1099,7 @@ What is the difference between a coroutine and a task?
 
 A coroutine defines asynchronous work, while a task wraps a coroutine and schedules it for execution by the event loop.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -1104,9 +1107,10 @@ Why is `create_task()` necessary?
 
 ### Answer
 
-Because simply calling a coroutine creates a coroutine object. `create_task()` schedules that coroutine to run concurrently.
+Because simply calling a coroutine creates a coroutine object. `create_task()` schedules that coroutine to run
+concurrently.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -1114,9 +1118,10 @@ What happens when a task is cancelled?
 
 ### Answer
 
-The event loop injects an `asyncio.CancelledError` into the coroutine at its next suspension point, giving it an opportunity to perform cleanup.
+The event loop injects an `asyncio.CancelledError` into the coroutine at its next suspension point, giving it an
+opportunity to perform cleanup.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -1124,9 +1129,10 @@ Can thousands of asyncio tasks run simultaneously?
 
 ### Answer
 
-Thousands of tasks can be active concurrently, but only one task executes Python code at a time within a single event loop thread.
+Thousands of tasks can be active concurrently, but only one task executes Python code at a time within a single event
+loop thread.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1134,9 +1140,10 @@ Why shouldn't blocking functions be used inside async code?
 
 ### Answer
 
-Blocking functions prevent the event loop from scheduling other tasks, reducing concurrency and degrading application performance.
+Blocking functions prevent the event loop from scheduling other tasks, reducing concurrency and degrading application
+performance.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -1148,7 +1155,7 @@ Schedule them using `create_task()`.
 
 Compare the execution time with sequential execution.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -1156,7 +1163,7 @@ Modify one task to raise an exception.
 
 Observe how the exception propagates when the task is awaited.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -1166,7 +1173,7 @@ Cancel it after three seconds.
 
 Handle `asyncio.CancelledError` and perform cleanup before exiting.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -1181,7 +1188,7 @@ Draw a diagram illustrating:
 - Endpoint Function
 - Response
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1196,11 +1203,13 @@ In this lesson, you learned:
 - ✅ Task inspection.
 - ✅ Production scheduling patterns used by modern ASGI applications.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
 **File:**
 [53-concurrency-part-13-asyncio-gather-wait-and-as_completed](53-concurrency-part-13-asyncio-gather-wait-and-as_completed.md)
 
-In the next lesson, you'll learn how to coordinate multiple asynchronous operations using `asyncio.gather()`, `asyncio.wait()`, and `asyncio.as_completed()`. We'll explore result aggregation, exception propagation, timeouts, partial completion, and the concurrency patterns used in high-performance backend services.
+In the next lesson, you'll learn how to coordinate multiple asynchronous operations using `asyncio.gather()`,
+`asyncio.wait()`, and `asyncio.as_completed()`. We'll explore result aggregation, exception propagation, timeouts,
+partial completion, and the concurrency patterns used in high-performance backend services.

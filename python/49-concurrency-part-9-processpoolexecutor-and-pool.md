@@ -1,6 +1,7 @@
 # File: python/49-concurrency-part-9-processpoolexecutor-and-pool.md
 
 # Advanced Python Runtime & Concurrency
+
 # Concurrency Part 9: Process Pools - `multiprocessing.Pool` & `ProcessPoolExecutor`
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 8–9 Hours
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -22,7 +23,7 @@
 | `multiprocessing.Pool` | Python 2.6 |
 | `concurrent.futures.ProcessPoolExecutor` | Python 3.2 |
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -42,7 +43,7 @@ By the end of this lesson, you will understand:
 - Production best practices
 - questions
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -74,7 +75,7 @@ Just as threads have thread pools,
 
 processes have process pools.
 
----
+______________________________________________________________________
 
 # Why Process Pools?
 
@@ -104,7 +105,7 @@ Reuse Them
 Submit Tasks
 ```
 
----
+______________________________________________________________________
 
 # Real-World Analogy
 
@@ -140,7 +141,7 @@ Workers Reuse Existing Equipment
 
 A process pool works the same way.
 
----
+______________________________________________________________________
 
 # What is a Process Pool?
 
@@ -164,7 +165,7 @@ Worker Processes
 Results
 ```
 
----
+______________________________________________________________________
 
 # `multiprocessing.Pool`
 
@@ -174,7 +175,7 @@ The original multiprocessing API.
 from multiprocessing import Pool
 ```
 
----
+______________________________________________________________________
 
 # Creating a Pool
 
@@ -192,7 +193,7 @@ The context manager automatically:
 - Cleans up workers
 - Releases resources
 
----
+______________________________________________________________________
 
 # First Example
 
@@ -221,7 +222,7 @@ Output
 [1, 4, 9, 16]
 ```
 
----
+______________________________________________________________________
 
 # How `map()` Works
 
@@ -257,7 +258,7 @@ Results
 
 The order of results always matches the input order.
 
----
+______________________________________________________________________
 
 # `apply()`
 
@@ -282,7 +283,7 @@ Unlike `map()`,
 
 this blocks until completion.
 
----
+______________________________________________________________________
 
 # `apply_async()`
 
@@ -307,7 +308,7 @@ print(
 
 This behaves similarly to a Future.
 
----
+______________________________________________________________________
 
 # `imap()`
 
@@ -331,7 +332,7 @@ returns an iterator.
 
 Results are produced lazily.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -366,7 +367,7 @@ Output
 
 Useful for very large datasets.
 
----
+______________________________________________________________________
 
 # `ProcessPoolExecutor`
 
@@ -384,7 +385,7 @@ ThreadPoolExecutor
 
 making it easier to learn.
 
----
+______________________________________________________________________
 
 # Creating a Process Pool
 
@@ -398,7 +399,7 @@ with ProcessPoolExecutor(
     ...
 ```
 
----
+______________________________________________________________________
 
 # Using `submit()`
 
@@ -421,7 +422,7 @@ Output
 
 This should feel familiar from the previous lesson.
 
----
+______________________________________________________________________
 
 # Multiple Tasks
 
@@ -448,7 +449,7 @@ with ProcessPoolExecutor() as executor:
         print(future.result())
 ```
 
----
+______________________________________________________________________
 
 # `map()`
 
@@ -477,7 +478,7 @@ Output
 [0, 1, 8, 27, 64]
 ```
 
----
+______________________________________________________________________
 
 # Handling Exceptions
 
@@ -509,7 +510,7 @@ Raises
 ZeroDivisionError
 ```
 
----
+______________________________________________________________________
 
 # Pool Lifecycle
 
@@ -537,7 +538,7 @@ Return Results
 Shutdown
 ```
 
----
+______________________________________________________________________
 
 # Choosing Worker Count
 
@@ -572,7 +573,7 @@ Factors include:
 - Cache locality
 - Serialization overhead
 
----
+______________________________________________________________________
 
 # Pool vs Executor
 
@@ -585,7 +586,7 @@ Factors include:
 | Exception handling | Basic | Modern |
 | Similar to ThreadPoolExecutor | ❌ | ✅ |
 
----
+______________________________________________________________________
 
 # Which Should You Use?
 
@@ -606,7 +607,7 @@ Reasons:
 
 `multiprocessing.Pool` is still common in older codebases and remains fully supported.
 
----
+______________________________________________________________________
 
 # Performance Considerations
 
@@ -636,7 +637,7 @@ Return Result
 
 Very small tasks may spend more time communicating than computing.
 
----
+______________________________________________________________________
 
 # Task Granularity
 
@@ -654,7 +655,7 @@ Better
 
 Reducing IPC overhead often improves performance.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -695,7 +696,7 @@ Process 4
 
 Each worker continuously processes images until the queue is empty.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -705,7 +706,7 @@ Creating a new process pool inside a loop.
 
 Pools should generally be created once and reused.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -713,7 +714,7 @@ Submitting extremely small tasks.
 
 IPC overhead can exceed computation time.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -723,7 +724,7 @@ Database operations are primarily I/O-bound.
 
 Threads or asynchronous programming are usually better.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -731,7 +732,7 @@ Ignoring exceptions from futures.
 
 Always retrieve results.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -749,7 +750,7 @@ Always retrieve results.
 
 ❌ Don't use multiprocessing without measuring performance.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -771,7 +772,7 @@ Frameworks like Celery often combine:
 
 The same principles learned here apply at much larger scales.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -783,7 +784,7 @@ The same principles learned here apply at much larger scales.
 
 A process pool reuses worker processes, reducing process creation overhead and improving throughput.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -793,7 +794,7 @@ A process pool reuses worker processes, reducing process creation overhead and i
 
 For modern Python applications that require a clean API, futures, and consistency with `ThreadPoolExecutor`.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -803,7 +804,7 @@ For modern Python applications that require a clean API, futures, and consistenc
 
 Because serialization and inter-process communication may take longer than the computation itself.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -813,7 +814,7 @@ Because serialization and inter-process communication may take longer than the c
 
 It efficiently applies the same function to multiple inputs while preserving result order.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -821,9 +822,10 @@ It efficiently applies the same function to multiple inputs while preserving res
 
 ### Answer
 
-Not always. It is a good starting point, but the optimal value depends on workload characteristics and should be determined through benchmarking.
+Not always. It is a good starting point, but the optimal value depends on workload characteristics and should be
+determined through benchmarking.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -874,7 +876,7 @@ Compare:
 - CPU utilisation
 - Memory usage
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -886,7 +888,7 @@ What is a process pool?
 
 A collection of reusable worker processes that execute submitted CPU-bound tasks.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -896,7 +898,7 @@ Why is `ProcessPoolExecutor` generally preferred over `multiprocessing.Pool`?
 
 Because it provides a modern Future-based API that is consistent with other executor implementations.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -906,7 +908,7 @@ What is the disadvantage of submitting very small tasks?
 
 Serialization and IPC overhead may outweigh the cost of computation.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -916,7 +918,7 @@ What kind of workloads benefit most from process pools?
 
 CPU-intensive workloads such as image processing, encryption, numerical computation, and scientific simulations.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -924,9 +926,10 @@ Why shouldn't process pools be used for most database operations?
 
 ### Answer
 
-Because database access is typically I/O-bound, making threads or asynchronous programming more efficient and less resource-intensive.
+Because database access is typically I/O-bound, making threads or asynchronous programming more efficient and less
+resource-intensive.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -948,7 +951,7 @@ Record:
 
 Explain the results.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -956,7 +959,7 @@ Modify the process pool example so one task raises an exception.
 
 Handle the exception gracefully without stopping the remaining tasks.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -969,7 +972,7 @@ Experiment with:
 
 Measure execution time and determine the optimal worker count for your machine.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -984,7 +987,7 @@ Explain:
 - Potential drawbacks
 - How results would be collected
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -999,11 +1002,13 @@ In this lesson, you learned:
 - ✅ Performance considerations.
 - ✅ Production process pool patterns.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[50-concurrency-part-10-process-start-methods](50-concurrency-part-10-process-start-methods.md)
+**File:** [50-concurrency-part-10-process-start-methods](50-concurrency-part-10-process-start-methods.md)
 
-In the next lesson, you'll learn one of the most important and frequently misunderstood multiprocessing topics: **process start methods**. We'll cover `fork`, `spawn`, and `forkserver`, platform differences (Linux, macOS, Windows), memory implications, copy-on-write, process initialization, and why choosing the correct start method is critical for building reliable production applications.
+In the next lesson, you'll learn one of the most important and frequently misunderstood multiprocessing topics:
+**process start methods**. We'll cover `fork`, `spawn`, and `forkserver`, platform differences (Linux, macOS, Windows),
+memory implications, copy-on-write, process initialization, and why choosing the correct start method is critical for
+building reliable production applications.

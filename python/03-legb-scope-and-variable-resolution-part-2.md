@@ -1,6 +1,7 @@
 # File: python/03-legb-scope-and-variable-resolution-part-2.md
 
 # Python Advanced - Lesson 03 (Part 2)
+
 # Enclosing Scope, `global`, `nonlocal` & Closures
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 60-75 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -27,7 +28,7 @@ By the end of this lesson, you will understand:
 - What a Closure is
 - Where closures are used in real backend applications
 
----
+______________________________________________________________________
 
 # Theory
 
@@ -52,7 +53,7 @@ Now let's learn the missing piece:
 
 **Enclosing Scope**
 
----
+______________________________________________________________________
 
 # What is Enclosing Scope?
 
@@ -85,7 +86,7 @@ How can `inner()` access `message`?
 
 Because `message` belongs to the **enclosing function**.
 
----
+______________________________________________________________________
 
 Visualization
 
@@ -119,7 +120,7 @@ Enclosing
 Found
 ```
 
----
+______________________________________________________________________
 
 # Example 1
 
@@ -157,7 +158,7 @@ Enclosing
 Found
 ```
 
----
+______________________________________________________________________
 
 # Nested Functions
 
@@ -192,7 +193,7 @@ Nested functions are commonly used for:
 - Encapsulation
 - Helper functions
 
----
+______________________________________________________________________
 
 # What Happens if Python Cannot Find a Variable?
 
@@ -234,7 +235,7 @@ Found
 
 This demonstrates the complete LEGB search order.
 
----
+______________________________________________________________________
 
 # Modifying a Global Variable
 
@@ -268,7 +269,7 @@ and assumes `count` is a **local variable** because it is assigned inside the fu
 
 However, it tries to read it before it has been assigned.
 
----
+______________________________________________________________________
 
 # The `global` Keyword
 
@@ -296,7 +297,7 @@ Output
 
 Now Python knows you mean the global variable.
 
----
+______________________________________________________________________
 
 Visualization
 
@@ -320,7 +321,7 @@ global count
 Modify Global Variable
 ```
 
----
+______________________________________________________________________
 
 # When Should You Use `global`?
 
@@ -343,7 +344,7 @@ Instead, prefer:
 - Classes
 - Dependency Injection
 
----
+______________________________________________________________________
 
 # The `nonlocal` Keyword
 
@@ -380,7 +381,7 @@ Output
 
 Without `nonlocal`, this raises an error for the same reason we saw with `global`.
 
----
+______________________________________________________________________
 
 Visualization
 
@@ -404,7 +405,7 @@ nonlocal count
 Modify Enclosing Variable
 ```
 
----
+______________________________________________________________________
 
 # Difference Between `global` and `nonlocal`
 
@@ -431,7 +432,7 @@ nonlocal
 Enclosing Scope
 ```
 
----
+______________________________________________________________________
 
 # What is a Closure?
 
@@ -445,7 +446,7 @@ This sounds complicated.
 
 Let's understand it with an example.
 
----
+______________________________________________________________________
 
 # Example 2
 
@@ -477,7 +478,7 @@ How does `say_hello()` still know `message`?
 
 Because Python stored that variable inside the closure.
 
----
+______________________________________________________________________
 
 Visualization
 
@@ -503,7 +504,7 @@ say_hello still remembers message
 
 This "remembering" behaviour is called a **closure**.
 
----
+______________________________________________________________________
 
 # Example 3 — Creating a Counter
 
@@ -543,7 +544,7 @@ Output
 
 Even though `counter()` finished long ago, the variable `count` still exists because the closure keeps it alive.
 
----
+______________________________________________________________________
 
 # Why Are Closures Useful?
 
@@ -558,7 +559,7 @@ They are commonly used in:
 - Dependency injection
 - Caching
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -603,7 +604,7 @@ Nothing outside the closure can modify it directly.
 
 Closures are also heavily used when writing decorators, which you'll learn in the next lessons.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -615,7 +616,7 @@ Closures are also heavily used when writing decorators, which you'll learn in th
 
 > `global` allows a function to modify variables defined at the module level. `nonlocal` allows an inner function to modify variables defined in its enclosing function. `nonlocal` only works inside nested functions.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -625,7 +626,7 @@ Closures are also heavily used when writing decorators, which you'll learn in th
 
 > A closure is a function that retains access to variables from its enclosing scope even after the enclosing function has completed execution. This allows the function to maintain state without relying on global variables.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -671,7 +672,7 @@ quadruple = multiplier(4)
 
 Predict the output before running it.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -681,9 +682,10 @@ What is an enclosing scope?
 
 ### Answer
 
-An enclosing scope is the scope of an outer function that contains a nested function. Inner functions can access variables defined in this scope.
+An enclosing scope is the scope of an outer function that contains a nested function. Inner functions can access
+variables defined in this scope.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -693,7 +695,7 @@ What does the `global` keyword do?
 
 It tells Python that a variable refers to the module-level global variable, allowing the function to modify it.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -703,7 +705,7 @@ What does the `nonlocal` keyword do?
 
 It allows a nested function to modify a variable defined in its enclosing function.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -711,9 +713,10 @@ What is a closure?
 
 ### Answer
 
-A closure is a function that remembers and retains access to variables from its enclosing scope even after the enclosing function has finished executing.
+A closure is a function that remembers and retains access to variables from its enclosing scope even after the enclosing
+function has finished executing.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -727,7 +730,7 @@ No.
 
 To modify a global variable, use `global`.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -735,7 +738,7 @@ To modify a global variable, use `global`.
 
 Write a nested function where the inner function reads a variable from the enclosing function.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -751,7 +754,7 @@ Create a counter using a closure that returns:
 
 each time it is called.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -779,7 +782,7 @@ Expected Output
 
 Implement it using a closure.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -793,7 +796,7 @@ In this lesson, you learned:
 - ✅ What closures are and how they preserve state.
 - ✅ Why closures are widely used in decorators, callbacks and backend applications.
 
----
+______________________________________________________________________
 
 # What's Next
 

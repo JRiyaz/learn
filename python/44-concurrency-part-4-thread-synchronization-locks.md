@@ -1,6 +1,7 @@
 # File: python/44-concurrency-part-4-thread-synchronization-locks.md
 
 # Advanced Python Runtime & Concurrency
+
 # Concurrency Part 4: Thread Synchronization - Locks, Race Conditions & Deadlocks
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 7 Hours
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -23,7 +24,7 @@
 | `threading.RLock` | Python 2.4 |
 | Context Manager Support (`with`) | Python 2.5 |
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -40,7 +41,7 @@ By the end of this lesson, you will understand:
 - Thread-safe programming
 - Production best practices
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -60,7 +61,7 @@ What happens?
 
 The answer introduces one of the most important topics in concurrent programming.
 
----
+______________________________________________________________________
 
 # Shared Memory
 
@@ -90,7 +91,7 @@ That sounds convenient.
 
 It is also dangerous.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -122,7 +123,7 @@ Can we guarantee that?
 
 No.
 
----
+______________________________________________________________________
 
 # The Problem
 
@@ -148,7 +149,7 @@ If another thread runs between them,
 
 the result may become incorrect.
 
----
+______________________________________________________________________
 
 # Race Condition
 
@@ -212,7 +213,7 @@ Correct answer
 
 One update was lost.
 
----
+______________________________________________________________________
 
 # Another Example
 
@@ -250,7 +251,7 @@ Maybe
 
 It varies.
 
----
+______________________________________________________________________
 
 # Why?
 
@@ -280,7 +281,7 @@ Multiple steps.
 
 Another thread can interrupt.
 
----
+______________________________________________________________________
 
 # Critical Section
 
@@ -296,7 +297,7 @@ balance -= amount
 
 Only one thread should execute this at a time.
 
----
+______________________________________________________________________
 
 # Mutual Exclusion
 
@@ -320,7 +321,7 @@ One Thread
 At A Time
 ```
 
----
+______________________________________________________________________
 
 # Introducing `Lock`
 
@@ -332,7 +333,7 @@ threading.Lock()
 
 A lock protects critical sections.
 
----
+______________________________________________________________________
 
 # Creating a Lock
 
@@ -348,7 +349,7 @@ Initially
 Unlocked
 ```
 
----
+______________________________________________________________________
 
 # Acquiring a Lock
 
@@ -390,7 +391,7 @@ Execute
 
 Only one thread enters.
 
----
+______________________________________________________________________
 
 # Using `with`
 
@@ -415,7 +416,7 @@ finally:
 
 Using `with` prevents accidentally forgetting to release the lock.
 
----
+______________________________________________________________________
 
 # Thread-Safe Counter
 
@@ -441,7 +442,7 @@ Now,
 
 every update is protected.
 
----
+______________________________________________________________________
 
 # Multiple Threads
 
@@ -473,7 +474,7 @@ Output
 
 Every time.
 
----
+______________________________________________________________________
 
 # Lock Behaviour
 
@@ -504,7 +505,7 @@ Wait...
 
 Thread B blocks until Thread A releases the lock.
 
----
+______________________________________________________________________
 
 # Is Locking Free?
 
@@ -518,7 +519,7 @@ Too much locking can reduce performance.
 
 Always keep critical sections as small as possible.
 
----
+______________________________________________________________________
 
 # Good Locking
 
@@ -530,7 +531,7 @@ with lock:
 
 Very small.
 
----
+______________________________________________________________________
 
 # Poor Locking
 
@@ -548,7 +549,7 @@ with lock:
 
 Every other thread waits unnecessarily.
 
----
+______________________________________________________________________
 
 # Lock Granularity
 
@@ -574,7 +575,7 @@ Less Concurrency
 
 Finding the right balance is an important design skill.
 
----
+______________________________________________________________________
 
 # Lock Isn't Magic
 
@@ -600,7 +601,7 @@ The race condition still exists.
 
 Every access to shared mutable state must follow the same synchronization strategy.
 
----
+______________________________________________________________________
 
 # Reentrant Lock (`RLock`)
 
@@ -622,7 +623,7 @@ With a normal `Lock`
 Deadlock
 ```
 
----
+______________________________________________________________________
 
 # Example
 
@@ -648,7 +649,7 @@ The thread waits forever.
 
 It already owns the lock.
 
----
+______________________________________________________________________
 
 # Introducing `RLock`
 
@@ -685,7 +686,7 @@ Internally it keeps:
 
 The lock is released only when the acquisition count reaches zero.
 
----
+______________________________________________________________________
 
 # When Should You Use `RLock`?
 
@@ -701,7 +702,7 @@ prefer a normal `Lock`.
 
 It is simpler and slightly faster.
 
----
+______________________________________________________________________
 
 # Deadlock
 
@@ -711,7 +712,7 @@ Two or more threads wait forever.
 
 No thread can continue.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -749,7 +750,7 @@ Result
 Forever Waiting
 ```
 
----
+______________________________________________________________________
 
 # Visualisation
 
@@ -778,7 +779,7 @@ Waiting for Lock A
 
 Neither thread can continue.
 
----
+______________________________________________________________________
 
 # Preventing Deadlocks
 
@@ -808,25 +809,25 @@ Lock B
 Lock A
 ```
 
----
+______________________________________________________________________
 
 Rule 2
 
 Keep locks for the shortest possible time.
 
----
+______________________________________________________________________
 
 Rule 3
 
 Avoid nested locks when possible.
 
----
+______________________________________________________________________
 
 Rule 4
 
 Prefer higher-level synchronization primitives if they better express the problem.
 
----
+______________________________________________________________________
 
 # Lock Timeout
 
@@ -850,7 +851,7 @@ False
 
 Useful when deadlocks must be detected or avoided.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -902,7 +903,7 @@ The second purchase correctly observes the updated stock.
 
 > **Note:** In distributed systems, this problem is often solved using database transactions or distributed locks rather than Python thread locks. However, understanding thread synchronization is the foundation for those more advanced concepts.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -916,7 +917,7 @@ The GIL only ensures one thread executes Python bytecode at a time.
 
 Multiple bytecode operations can still interleave.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -930,7 +931,7 @@ with lock:
 
 instead of manually calling `acquire()` and `release()`.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -944,7 +945,7 @@ Examples:
 
 This blocks every other waiting thread.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -952,7 +953,7 @@ Using many nested locks without a consistent acquisition order.
 
 This is one of the most common causes of deadlocks.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -972,7 +973,7 @@ This is one of the most common causes of deadlocks.
 
 ❌ Don't ignore deadlock risks.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -998,7 +999,7 @@ The same principles still apply:
 
 Only one actor should modify shared state at a time.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1008,9 +1009,10 @@ Only one actor should modify shared state at a time.
 
 ### Answer
 
-A race condition occurs when multiple threads access shared mutable data and the program's correctness depends on the unpredictable order of execution.
+A race condition occurs when multiple threads access shared mutable data and the program's correctness depends on the
+unpredictable order of execution.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1018,9 +1020,10 @@ A race condition occurs when multiple threads access shared mutable data and the
 
 ### Answer
 
-A critical section is a portion of code that accesses shared mutable state and must not be executed concurrently by multiple threads.
+A critical section is a portion of code that accesses shared mutable state and must not be executed concurrently by
+multiple threads.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1028,9 +1031,10 @@ A critical section is a portion of code that accesses shared mutable state and m
 
 ### Answer
 
-Because it guarantees that the lock is released even if an exception occurs, reducing the risk of deadlocks caused by forgotten `release()` calls.
+Because it guarantees that the lock is released even if an exception occurs, reducing the risk of deadlocks caused by
+forgotten `release()` calls.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1038,9 +1042,10 @@ Because it guarantees that the lock is released even if an exception occurs, red
 
 ### Answer
 
-`Lock` can only be acquired once by a thread before being released. `RLock` allows the owning thread to acquire the same lock multiple times, tracking the acquisition count internally.
+`Lock` can only be acquired once by a thread before being released. `RLock` allows the owning thread to acquire the same
+lock multiple times, tracking the acquisition count internally.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1048,9 +1053,10 @@ Because it guarantees that the lock is released even if an exception occurs, red
 
 ### Answer
 
-No. Multiple bytecode operations can still interleave, so shared mutable data must still be synchronized using locks or other mechanisms.
+No. Multiple bytecode operations can still interleave, so shared mutable data must still be synchronized using locks or
+other mechanisms.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -1105,7 +1111,7 @@ Run the program several times.
 
 Observe how the final value changes unpredictably.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1117,7 +1123,7 @@ What problem does a lock solve?
 
 It prevents multiple threads from entering a critical section simultaneously, avoiding race conditions.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -1127,7 +1133,7 @@ Why doesn't the GIL eliminate the need for locks?
 
 Because many operations consist of multiple bytecode instructions that can still interleave between threads.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -1135,9 +1141,10 @@ When should you use an `RLock`?
 
 ### Answer
 
-When the same thread may need to acquire the same lock multiple times, such as during recursive or nested function calls.
+When the same thread may need to acquire the same lock multiple times, such as during recursive or nested function
+calls.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -1147,7 +1154,7 @@ What is a deadlock?
 
 A situation where two or more threads wait indefinitely for resources held by each other, preventing all progress.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1155,9 +1162,10 @@ How can deadlocks be reduced?
 
 ### Answer
 
-Acquire locks in a consistent order, keep critical sections short, avoid unnecessary nested locks, and use timeouts or higher-level synchronization primitives where appropriate.
+Acquire locks in a consistent order, keep critical sections short, avoid unnecessary nested locks, and use timeouts or
+higher-level synchronization primitives where appropriate.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -1175,7 +1183,7 @@ Use `threading.Lock`.
 
 Verify that concurrent transactions always produce the correct balance.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -1186,7 +1194,7 @@ Create two versions of a shared counter:
 
 Measure the results over multiple runs and explain the differences.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -1196,7 +1204,7 @@ Then fix it by acquiring the locks in a consistent order.
 
 Document what changed.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -1206,7 +1214,7 @@ Demonstrate why `Lock` fails and `RLock` succeeds.
 
 Explain the internal acquisition count maintained by `RLock`.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1222,11 +1230,12 @@ In this lesson, you learned:
 - ✅ Strategies for preventing deadlocks.
 - ✅ Production synchronization practices.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[ß45-concurrency-part-5-thread-communication](45-concurrency-part-5-thread-communication.md)
+**File:** [ß45-concurrency-part-5-thread-communication](45-concurrency-part-5-thread-communication.md)
 
-In the next lesson, you'll learn how threads communicate safely without relying on shared global variables. We'll cover `Queue`, `Event`, `Condition`, `Semaphore`, producer-consumer patterns, coordination techniques, and production-ready thread communication patterns.
+In the next lesson, you'll learn how threads communicate safely without relying on shared global variables. We'll cover
+`Queue`, `Event`, `Condition`, `Semaphore`, producer-consumer patterns, coordination techniques, and production-ready
+thread communication patterns.

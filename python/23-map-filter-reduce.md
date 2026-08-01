@@ -1,6 +1,7 @@
 # File: python/23-map-filter-reduce.md
 
 # Python Functional Programming - Part 1
+
 # Functional Programming Fundamentals, `map()`, `filter()` and `reduce()`
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 120 Minutes
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -49,7 +50,7 @@ This change significantly reduced memory usage when processing large datasets.
 
 Since almost all production systems today use Python 3, this course focuses exclusively on Python 3 behaviour.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -68,7 +69,7 @@ By the end of this lesson, you will understand:
 - Performance considerations
 - Production use cases
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -100,7 +101,7 @@ Besides OOP, it also supports:
 
 A good Python developer knows when each style is appropriate.
 
----
+______________________________________________________________________
 
 # What is Functional Programming?
 
@@ -126,7 +127,7 @@ new_salary = increase_salary(employee.salary)
 
 The original value is left unchanged.
 
----
+______________________________________________________________________
 
 # Core Ideas of Functional Programming
 
@@ -142,7 +143,7 @@ Python doesn't enforce these rules,
 
 but encourages them.
 
----
+______________________________________________________________________
 
 # What is a Pure Function?
 
@@ -150,7 +151,7 @@ A pure function has two properties.
 
 1. Same input → same output.
 
-2. No side effects.
+1. No side effects.
 
 Example
 
@@ -174,7 +175,7 @@ Output
 
 Every call with `5` always returns `25`.
 
----
+______________________________________________________________________
 
 # Impure Function
 
@@ -203,7 +204,7 @@ Output
 
 The same function call produces different results because it depends on external state.
 
----
+______________________________________________________________________
 
 # Why Pure Functions Matter
 
@@ -218,7 +219,7 @@ Pure functions are:
 
 Large backend systems often favour pure business logic whenever possible.
 
----
+______________________________________________________________________
 
 # Side Effects
 
@@ -243,7 +244,7 @@ def save_user(user):
 
 This function has side effects.
 
----
+______________________________________________________________________
 
 # Immutability
 
@@ -269,7 +270,7 @@ new_numbers = numbers + (4,)
 
 The original tuple remains unchanged.
 
----
+______________________________________________________________________
 
 # Why Immutability?
 
@@ -289,7 +290,7 @@ Python provides several immutable types:
 - `float`
 - `bool`
 
----
+______________________________________________________________________
 
 # Higher-Order Functions
 
@@ -309,7 +310,7 @@ Examples include:
 - `sorted()`
 - `reduce()`
 
----
+______________________________________________________________________
 
 # Introducing map()
 
@@ -344,7 +345,7 @@ Notice
 
 No list is returned.
 
----
+______________________________________________________________________
 
 # Why?
 
@@ -362,7 +363,7 @@ Output
 [2, 4, 6, 8]
 ```
 
----
+______________________________________________________________________
 
 # Visualising map()
 
@@ -396,7 +397,7 @@ Output
 8
 ```
 
----
+______________________________________________________________________
 
 # Using a Normal Function
 
@@ -422,7 +423,7 @@ Output
 [1, 4, 9]
 ```
 
----
+______________________________________________________________________
 
 # map() with Multiple Iterables
 
@@ -453,7 +454,7 @@ Output
 
 Python stops when the shortest iterable ends.
 
----
+______________________________________________________________________
 
 # Introducing filter()
 
@@ -487,7 +488,7 @@ Output
 [2, 4, 6]
 ```
 
----
+______________________________________________________________________
 
 # Visualising filter()
 
@@ -523,7 +524,7 @@ Output
 6
 ```
 
----
+______________________________________________________________________
 
 # filter(None, iterable)
 
@@ -557,7 +558,7 @@ Output
 
 `None` tells `filter()` to remove values that evaluate to `False`.
 
----
+______________________________________________________________________
 
 # Introducing reduce()
 
@@ -577,7 +578,7 @@ Syntax
 reduce(function, iterable)
 ```
 
----
+______________________________________________________________________
 
 # Example
 
@@ -604,7 +605,7 @@ Output
 10
 ```
 
----
+______________________________________________________________________
 
 # How reduce() Works
 
@@ -622,7 +623,7 @@ Output
 
 The accumulated value is passed into the next call.
 
----
+______________________________________________________________________
 
 # reduce() with an Initial Value
 
@@ -665,7 +666,7 @@ Steps
 103 + 3 = 106
 ```
 
----
+______________________________________________________________________
 
 # map() vs filter() vs reduce()
 
@@ -675,7 +676,7 @@ Steps
 | `filter()` | Select matching items | Iterator |
 | `reduce()` | Combine everything | Single value |
 
----
+______________________________________________________________________
 
 # Chaining Functional Operations
 
@@ -746,7 +747,7 @@ reduce()
 Result
 ```
 
----
+______________________________________________________________________
 
 # Lazy Evaluation
 
@@ -793,7 +794,7 @@ is executed does processing begin.
 
 This makes these functions memory-efficient for large datasets.
 
----
+______________________________________________________________________
 
 # Functional Programming vs Loops
 
@@ -822,7 +823,7 @@ Both are valid.
 
 Python values readability over strict functional style.
 
----
+______________________________________________________________________
 
 # Should You Always Use map()?
 
@@ -858,7 +859,7 @@ The comprehension is often considered easier to read.
 
 We'll compare these approaches in the next lesson.
 
----
+______________________________________________________________________
 
 # Production Example - API Data Transformation
 
@@ -894,7 +895,7 @@ names = map(
 )
 ```
 
----
+______________________________________________________________________
 
 # Production Example - Validation
 
@@ -910,7 +911,7 @@ active_users = filter(
 )
 ```
 
----
+______________________________________________________________________
 
 # Production Example - Calculating Totals
 
@@ -941,7 +942,7 @@ total = reduce(
 )
 ```
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -959,7 +960,7 @@ prints
 <map object ...>
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -979,7 +980,7 @@ sum(numbers)
 
 It is simpler and faster.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -995,7 +996,7 @@ def square():
 
 is much easier to understand.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -1013,7 +1014,7 @@ is much easier to understand.
 
 ❌ Don't chain many nested lambdas.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -1026,9 +1027,10 @@ You'll commonly see:
 - `reduce()` less frequently, often replaced by built-in functions such as `sum()`.
 - Generator expressions and comprehensions even more frequently because they are concise and highly readable.
 
-Libraries such as Pandas, FastAPI, Airflow and ETL frameworks often build data-processing pipelines using functional concepts, even if they don't explicitly use `map()` or `reduce()`.
+Libraries such as Pandas, FastAPI, Airflow and ETL frameworks often build data-processing pipelines using functional
+concepts, even if they don't explicitly use `map()` or `reduce()`.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1040,7 +1042,7 @@ Libraries such as Pandas, FastAPI, Airflow and ETL frameworks often build data-p
 
 A pure function always produces the same output for the same input and has no observable side effects.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1050,7 +1052,7 @@ A pure function always produces the same output for the same input and has no ob
 
 Returning an iterator enables lazy evaluation, reducing memory usage by processing items only when needed.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1058,9 +1060,10 @@ Returning an iterator enables lazy evaluation, reducing memory usage by processi
 
 ### Answer
 
-`map()` transforms each element, `filter()` selects elements that satisfy a condition, and `reduce()` combines all elements into a single value.
+`map()` transforms each element, `filter()` selects elements that satisfy a condition, and `reduce()` combines all
+elements into a single value.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1068,9 +1071,10 @@ Returning an iterator enables lazy evaluation, reducing memory usage by processi
 
 ### Answer
 
-Many common reductions are better expressed using specialised built-in functions like `sum()`, `max()`, `min()` or `any()`, which are clearer and often more efficient.
+Many common reductions are better expressed using specialised built-in functions like `sum()`, `max()`, `min()` or
+`any()`, which are clearer and often more efficient.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -1133,7 +1137,7 @@ Expected Output
 15
 ```
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1145,7 +1149,7 @@ What is a pure function?
 
 A pure function always returns the same output for the same input and does not produce side effects.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -1155,7 +1159,7 @@ Why does `map()` return an iterator in Python 3?
 
 To enable lazy evaluation, reducing memory usage and allowing efficient processing of large datasets.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -1165,7 +1169,7 @@ What does `filter()` do?
 
 It returns an iterator containing only the elements for which the filtering function evaluates to `True`.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -1173,9 +1177,10 @@ Why is `reduce()` located in `functools`?
 
 ### Answer
 
-It was moved from the built-in namespace to `functools` in Python 3 because it is a specialised function used less frequently than other built-ins.
+It was moved from the built-in namespace to `functools` in Python 3 because it is a specialised function used less
+frequently than other built-ins.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1185,7 +1190,7 @@ When would you avoid using `reduce()`?
 
 When a dedicated built-in function such as `sum()`, `max()` or `any()` provides a simpler and more readable solution.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -1201,7 +1206,7 @@ numbers = [5, 10, 15, 20, 25]
 - Use `filter()` to keep only values greater than 30.
 - Use `reduce()` to calculate the total.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -1218,7 +1223,7 @@ users = [
 - Use `filter()` to keep only active users.
 - Use `map()` to extract their names.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -1226,13 +1231,14 @@ Rewrite all the examples in this lesson using traditional `for` loops.
 
 Compare readability and performance.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
-Research why Guido van Rossum has stated that list comprehensions are often preferred over `map()` and `filter()` for simple transformations. Summarise the reasons in your own words.
+Research why Guido van Rossum has stated that list comprehensions are often preferred over `map()` and `filter()` for
+simple transformations. Summarise the reasons in your own words.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1247,12 +1253,11 @@ In this lesson, you learned:
 - ✅ Why lazy evaluation matters.
 - ✅ When functional programming is appropriate in production Python.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[24-Comprehensions-vs-Map-Filter](24-comprehensions-vs-map-filter.md)
+**File:** [24-Comprehensions-vs-Map-Filter](24-comprehensions-vs-map-filter.md)
 
 Topics:
 

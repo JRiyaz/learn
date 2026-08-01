@@ -1,6 +1,7 @@
 # File: python/31-string-deep-dive-part-3.md
 
 # Python Built-in Types
+
 # String (`str`) Deep Dive - Part 3: Performance, Regular Expressions & Production Best Practices
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 3.5 Hours
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -24,7 +25,7 @@
 | Raw strings (`r""`) | Python 1.5 |
 | f-strings | Python 3.6 |
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -42,7 +43,7 @@ By the end of this lesson, you will understand:
 - Logging best practices
 - Production patterns
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -63,7 +64,7 @@ In Part 2 we learned:
 
 Now we'll focus on writing production-quality code.
 
----
+______________________________________________________________________
 
 # Why Performance Matters
 
@@ -78,7 +79,7 @@ Thousands of string operations happen every second.
 
 Poor string handling can become a performance bottleneck.
 
----
+______________________________________________________________________
 
 # String Concatenation
 
@@ -95,7 +96,7 @@ Looks harmless.
 
 But internally Python repeatedly creates new strings.
 
----
+______________________________________________________________________
 
 # What Actually Happens?
 
@@ -133,7 +134,7 @@ Each step creates a completely new string.
 
 Old strings become garbage.
 
----
+______________________________________________________________________
 
 # Complexity
 
@@ -145,7 +146,7 @@ O(n²)
 
 because data is copied repeatedly.
 
----
+______________________________________________________________________
 
 # join()
 
@@ -175,7 +176,7 @@ Complexity
 O(n)
 ```
 
----
+______________________________________________________________________
 
 # Which Should You Use?
 
@@ -195,7 +196,7 @@ Large loops
 
 Always preferred.
 
----
+______________________________________________________________________
 
 # StringIO
 
@@ -227,7 +228,7 @@ for row in rows:
 report = buffer.getvalue()
 ```
 
----
+______________________________________________________________________
 
 # Why StringIO?
 
@@ -247,7 +248,7 @@ Single Final String
 
 No repeated string copying.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -275,7 +276,7 @@ Alice,30
 Bob,28
 ```
 
----
+______________________________________________________________________
 
 # Regular Expressions
 
@@ -299,7 +300,7 @@ Or
 
 Regular Expressions.
 
----
+______________________________________________________________________
 
 # Import
 
@@ -307,7 +308,7 @@ Regular Expressions.
 import re
 ```
 
----
+______________________________________________________________________
 
 # Searching
 
@@ -327,7 +328,7 @@ Output
 948372
 ```
 
----
+______________________________________________________________________
 
 # Why r""?
 
@@ -373,7 +374,7 @@ it remains
 
 This is why almost every regex uses raw strings.
 
----
+______________________________________________________________________
 
 # Common Regex Patterns
 
@@ -401,7 +402,7 @@ Email (simple example)
 r"\S+@\S+"
 ```
 
----
+______________________________________________________________________
 
 # Finding Multiple Matches
 
@@ -429,7 +430,7 @@ Output
 ['10', '20', '30']
 ```
 
----
+______________________________________________________________________
 
 # Replacing with Regex
 
@@ -461,7 +462,7 @@ Phone: **********
 
 Useful for masking sensitive data.
 
----
+______________________________________________________________________
 
 # When NOT to Use Regex
 
@@ -493,11 +494,11 @@ Use string methods first.
 
 Use regex only when the pattern becomes complex.
 
----
+______________________________________________________________________
 
 # Common String Algorithms
 
----
+______________________________________________________________________
 
 # Reverse
 
@@ -513,7 +514,7 @@ Output
 nohtyP
 ```
 
----
+______________________________________________________________________
 
 # Palindrome
 
@@ -535,7 +536,7 @@ True
 
 favourite Questions.
 
----
+______________________________________________________________________
 
 # Count Characters
 
@@ -565,7 +566,7 @@ Output
 }
 ```
 
----
+______________________________________________________________________
 
 # Remove Duplicate Characters
 
@@ -593,13 +594,13 @@ Output
 progamin
 ```
 
----
+______________________________________________________________________
 
 # Security
 
 Backend engineers must treat every string from users as untrusted.
 
----
+______________________________________________________________________
 
 # SQL Injection
 
@@ -631,7 +632,7 @@ SELECT * FROM users WHERE username='' OR 1=1 --
 
 Every row may be returned.
 
----
+______________________________________________________________________
 
 # Correct Approach
 
@@ -651,7 +652,7 @@ cursor.execute(
 
 Always let the database driver escape values.
 
----
+______________________________________________________________________
 
 # HTML Escaping
 
@@ -667,7 +668,7 @@ Frameworks like Django and Jinja escape HTML automatically in templates.
 
 Avoid manually building HTML with untrusted strings.
 
----
+______________________________________________________________________
 
 # JSON
 
@@ -704,7 +705,7 @@ json.dumps(
 
 This correctly escapes special characters.
 
----
+______________________________________________________________________
 
 # Logging
 
@@ -742,7 +743,7 @@ Python doesn't waste time formatting the string.
 
 Most logging libraries perform lazy formatting.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -762,7 +763,7 @@ Readable.
 
 Efficient.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -790,7 +791,7 @@ Content-Type
 application/json
 ```
 
----
+______________________________________________________________________
 
 # Performance Summary
 
@@ -804,7 +805,7 @@ application/json
 | `join()` | O(n) |
 | Regex Search | Depends on Pattern |
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -828,7 +829,7 @@ endswith()
 
 whenever possible.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -836,7 +837,7 @@ Building SQL queries with string concatenation.
 
 Always use parameterised queries.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -848,7 +849,7 @@ Use
 json.dumps()
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -864,7 +865,7 @@ or
 StringIO
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 5
 
@@ -888,7 +889,7 @@ logger.info(
 )
 ```
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -908,7 +909,7 @@ logger.info(
 
 ✅ Never trust user input.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -928,7 +929,7 @@ Examples include:
 
 Writing efficient and secure string code is a core backend engineering skill.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -938,9 +939,10 @@ Writing efficient and secure string code is a core backend engineering skill.
 
 ### Answer
 
-`join()` allocates memory once and copies each string only once, whereas repeated `+` creates many intermediate string objects.
+`join()` allocates memory once and copies each string only once, whereas repeated `+` creates many intermediate string
+objects.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -948,9 +950,10 @@ Writing efficient and secure string code is a core backend engineering skill.
 
 ### Answer
 
-When string methods cannot express the required pattern clearly, such as validating complex formats or extracting structured text.
+When string methods cannot express the required pattern clearly, such as validating complex formats or extracting
+structured text.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -960,7 +963,7 @@ When string methods cannot express the required pattern clearly, such as validat
 
 It exposes the application to SQL injection attacks. Parameterised queries separate SQL code from user data.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -970,7 +973,7 @@ It exposes the application to SQL injection attacks. Parameterised queries separ
 
 It efficiently builds large strings incrementally without repeated memory allocation.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -980,7 +983,7 @@ It efficiently builds large strings incrementally without repeated memory alloca
 
 Logging frameworks defer formatting until needed, avoiding unnecessary work when the message won't be emitted.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -1046,7 +1049,7 @@ Line 2
 INFO:__main__:User alice logged in
 ```
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1058,7 +1061,7 @@ Why is `join()` preferred for concatenating many strings?
 
 It performs a single allocation and avoids repeatedly copying intermediate strings.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -1068,7 +1071,7 @@ When should you choose regex over string methods?
 
 When matching or extracting complex patterns that cannot be expressed cleanly using built-in string methods.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -1078,7 +1081,7 @@ Why is `StringIO` useful?
 
 It efficiently accumulates text by writing into an internal buffer before producing the final string.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -1088,7 +1091,7 @@ How do you prevent SQL injection?
 
 Always use parameterised queries provided by the database driver instead of concatenating user input into SQL strings.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1096,9 +1099,10 @@ Why shouldn't you build JSON manually?
 
 ### Answer
 
-Manual construction can produce invalid JSON and fail to escape special characters correctly. `json.dumps()` handles escaping safely.
+Manual construction can produce invalid JSON and fail to escape special characters correctly. `json.dumps()` handles
+escaping safely.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -1110,7 +1114,7 @@ Read a log file and:
 - Extract all IP addresses using regex.
 - Count how many times each IP appears.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -1122,7 +1126,7 @@ Generate a CSV report for 10,000 users using:
 
 Compare readability and performance.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -1134,13 +1138,14 @@ Write a password validator using regex that checks:
 - At least one digit.
 - At least one special character.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
-Write a function that safely inserts a new user into a database using a parameterised SQL query. Explain why this approach prevents SQL injection.
+Write a function that safely inserts a new user into a database using a parameterised SQL query. Explain why this
+approach prevents SQL injection.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1155,7 +1160,7 @@ In this lesson, you learned:
 - ✅ Efficient logging patterns.
 - ✅ Performance characteristics of common string operations.
 
----
+______________________________________________________________________
 
 # String Module Complete 🎉
 
@@ -1173,12 +1178,11 @@ You now have a strong understanding of Python strings, including:
 
 This is the level of string knowledge expected from a professional backend engineer.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[32-List-Deep-Dive](32-list-deep-dive.md)
+**File:** [32-List-Deep-Dive](32-list-deep-dive.md)
 
 Topics:
 
@@ -1193,4 +1197,5 @@ Topics:
 - Performance pitfalls
 - Production examples
 
+```
 ```

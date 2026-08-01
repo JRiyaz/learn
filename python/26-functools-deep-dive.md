@@ -1,6 +1,7 @@
 # File: python/26-functools-deep-dive.md
 
 # Python Functional Programming - Part 4
+
 # Deep Dive into the `functools` Module
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 160 Minutes
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -36,7 +37,7 @@
 - `singledispatch()` enables a form of function overloading based on argument types.
 - Most production projects running Python 3.10+ use these utilities extensively.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -54,7 +55,7 @@ By the end of this lesson, you will understand:
 - Production use cases
 - Performance considerations
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -79,7 +80,7 @@ functools
 
 Many popular frameworks rely on it internally.
 
----
+______________________________________________________________________
 
 # Why Does functools Exist?
 
@@ -99,7 +100,7 @@ The standard library collected these utilities into one module.
 functools
 ```
 
----
+______________________________________________________________________
 
 # Overview
 
@@ -125,11 +126,11 @@ functools
 
 We'll study each one.
 
----
+______________________________________________________________________
 
 # Part 1 — functools.wraps()
 
----
+______________________________________________________________________
 
 # The Problem
 
@@ -168,7 +169,7 @@ Problem.
 
 The original function name has disappeared.
 
----
+______________________________________________________________________
 
 # Why Does This Matter?
 
@@ -186,7 +187,7 @@ If metadata disappears,
 
 frameworks may behave incorrectly.
 
----
+______________________________________________________________________
 
 # Enter wraps()
 
@@ -216,7 +217,7 @@ Output
 calculate
 ```
 
----
+______________________________________________________________________
 
 # What Does wraps() Copy?
 
@@ -230,7 +231,7 @@ It preserves
 
 Always use it when writing decorators.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -244,11 +245,11 @@ GET /users
 
 may appear with incorrect metadata.
 
----
+______________________________________________________________________
 
 # Part 2 — functools.partial()
 
----
+______________________________________________________________________
 
 # The Problem
 
@@ -272,7 +273,7 @@ power(9, 2)
 
 The exponent never changes.
 
----
+______________________________________________________________________
 
 # partial()
 
@@ -307,7 +308,7 @@ square(5)
 power(5, 2)
 ```
 
----
+______________________________________________________________________
 
 # Another Example
 
@@ -329,7 +330,7 @@ Output
 64
 ```
 
----
+______________________________________________________________________
 
 # Visualising partial()
 
@@ -349,7 +350,7 @@ New Function
 square(base)
 ```
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -381,7 +382,7 @@ timeout=5
 
 > **Note:** We'll cover the `requests` library later in the course. This example illustrates the concept of partially applying keyword arguments.
 
----
+______________________________________________________________________
 
 # Part 3 — Memoisation
 
@@ -423,7 +424,7 @@ Store
 Reuse
 ```
 
----
+______________________________________________________________________
 
 # Expensive Function
 
@@ -453,7 +454,7 @@ fibonacci(40)
 
 Python performs millions of repeated calculations.
 
----
+______________________________________________________________________
 
 # lru_cache()
 
@@ -483,7 +484,7 @@ The code barely changes,
 
 but performance improves dramatically.
 
----
+______________________________________________________________________
 
 # Why?
 
@@ -527,7 +528,7 @@ Reuse later
 
 Every input is calculated only once.
 
----
+______________________________________________________________________
 
 # Cache Statistics
 
@@ -557,7 +558,7 @@ CacheInfo(
 
 Useful for debugging.
 
----
+______________________________________________________________________
 
 # Clearing the Cache
 
@@ -567,7 +568,7 @@ fibonacci.cache_clear()
 
 Removes all cached values.
 
----
+______________________________________________________________________
 
 # maxsize
 
@@ -601,7 +602,7 @@ Use unlimited caching carefully,
 
 as memory usage can grow without bound.
 
----
+______________________________________________________________________
 
 # Important Restriction
 
@@ -623,7 +624,7 @@ calculate({})
 
 Lists and dictionaries cannot be used as cache keys.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -638,11 +639,11 @@ Caching
 
 Never cache rapidly changing database queries unless stale data is acceptable.
 
----
+______________________________________________________________________
 
 # Part 4 — cached_property
 
----
+______________________________________________________________________
 
 # The Problem
 
@@ -663,7 +664,7 @@ If calculation is expensive,
 
 this wastes CPU time.
 
----
+______________________________________________________________________
 
 # cached_property
 
@@ -711,7 +712,7 @@ Notice
 
 The calculation runs only once.
 
----
+______________________________________________________________________
 
 # How Does It Work?
 
@@ -737,7 +738,7 @@ Return Stored Value
 
 No recalculation.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -748,7 +749,7 @@ Cache
 - Expensive database metadata
 - Configuration parsing
 
----
+______________________________________________________________________
 
 # cached_property vs property
 
@@ -758,11 +759,11 @@ Cache
 | No caching | Stores result |
 | Lower memory | Higher memory |
 
----
+______________________________________________________________________
 
 # Part 5 — singledispatch()
 
----
+______________________________________________________________________
 
 # The Problem
 
@@ -789,7 +790,7 @@ def print_value(
 
 The second definition replaces the first.
 
----
+______________________________________________________________________
 
 # singledispatch()
 
@@ -837,7 +838,7 @@ Integer
 String
 ```
 
----
+______________________________________________________________________
 
 # Why Is This Useful?
 
@@ -853,7 +854,7 @@ elif ...
 
 dispatch happens automatically.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -869,11 +870,11 @@ serialize(product)
 
 Each type gets its own implementation.
 
----
+______________________________________________________________________
 
 # Part 6 — total_ordering()
 
----
+______________________________________________________________________
 
 # The Problem
 
@@ -899,7 +900,7 @@ needs
 
 Implementing every comparison becomes repetitive.
 
----
+______________________________________________________________________
 
 # total_ordering()
 
@@ -961,7 +962,7 @@ __lt__
 
 were required.
 
----
+______________________________________________________________________
 
 # How Does It Work?
 
@@ -989,7 +990,7 @@ Python derives
 
 This reduces boilerplate.
 
----
+______________________________________________________________________
 
 # Performance Consideration
 
@@ -1003,7 +1004,7 @@ For extremely performance-critical classes,
 
 implement every comparison method manually.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -1013,7 +1014,7 @@ Forgetting `@wraps` inside decorators.
 
 Frameworks may lose important metadata.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -1025,7 +1026,7 @@ maxsize=None
 
 without considering memory usage.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -1033,19 +1034,19 @@ Caching mutable or frequently changing data.
 
 Old values may become stale.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
 Using `cached_property` for values that should change over the lifetime of an object.
 
----
+______________________________________________________________________
 
 ## Mistake 5
 
 Using `singledispatch` when simple polymorphism or class methods would be clearer.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -1063,7 +1064,7 @@ Using `singledispatch` when simple polymorphism or class methods would be cleare
 
 ❌ Don't use `partial()` when a small wrapper function would be clearer.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -1071,13 +1072,14 @@ The most commonly used `functools` features in backend engineering are:
 
 1. **`@wraps`** — Essential whenever writing decorators. You'll see it in authentication, logging, tracing and retry decorators.
 
-2. **`@lru_cache`** — Frequently used to cache expensive computations or configuration loading.
+1. **`@lru_cache`** — Frequently used to cache expensive computations or configuration loading.
 
-3. **`cached_property`** — Common in ORMs and API clients for lazily computing expensive object attributes.
+1. **`cached_property`** — Common in ORMs and API clients for lazily computing expensive object attributes.
 
-`partial()`, `singledispatch()` and `total_ordering()` are valuable tools, but they appear less frequently in everyday backend code than the three features above.
+`partial()`, `singledispatch()` and `total_ordering()` are valuable tools, but they appear less frequently in everyday
+backend code than the three features above.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1087,9 +1089,10 @@ The most commonly used `functools` features in backend engineering are:
 
 ### Answer
 
-It preserves the original function's metadata, including its name, documentation and annotations, which many frameworks rely on.
+It preserves the original function's metadata, including its name, documentation and annotations, which many frameworks
+rely on.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1099,7 +1102,7 @@ It preserves the original function's metadata, including its name, documentation
 
 It avoids repeated computation by caching function results for previously seen arguments.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1107,9 +1110,10 @@ It avoids repeated computation by caching function results for previously seen a
 
 ### Answer
 
-Memoisation is the technique of storing the results of expensive function calls so they can be reused for identical inputs.
+Memoisation is the technique of storing the results of expensive function calls so they can be reused for identical
+inputs.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1119,7 +1123,7 @@ Memoisation is the technique of storing the results of expensive function calls 
 
 When an object's property is expensive to compute but unlikely to change during the object's lifetime.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1129,7 +1133,7 @@ When an object's property is expensive to compute but unlikely to change during 
 
 It allows different implementations of a function to be selected automatically based on the type of the first argument.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -1233,7 +1237,7 @@ Loading configuration...
 
 Notice that **"Loading configuration..."** is printed only once.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1245,7 +1249,7 @@ Why is `@wraps` important?
 
 It preserves the original function's metadata after decoration.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -1255,7 +1259,7 @@ When is `lru_cache()` most effective?
 
 For deterministic functions that are expensive to compute and are called repeatedly with the same arguments.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -1265,7 +1269,7 @@ Why can't `lru_cache()` cache functions that receive lists?
 
 Because lists are mutable and unhashable, so they cannot be used as dictionary keys for the cache.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -1275,7 +1279,7 @@ What is the advantage of `cached_property` over `property`?
 
 It computes the value only once and reuses the cached result for subsequent accesses.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1285,15 +1289,16 @@ What problem does `partial()` solve?
 
 It creates a new callable with some arguments already fixed, reducing repeated code.
 
----
+______________________________________________________________________
 
 # Assignment
 
 ## Exercise 1
 
-Create a decorator that logs a function's execution time using `time.perf_counter()`. Ensure you preserve the original function's metadata with `@wraps`.
+Create a decorator that logs a function's execution time using `time.perf_counter()`. Ensure you preserve the original
+function's metadata with `@wraps`.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -1304,13 +1309,14 @@ Write a recursive function to calculate Fibonacci numbers.
 - Measure the execution time again.
 - Compare the results.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
-Create a `DatabaseConfig` class with a `cached_property` that simulates loading configuration from a file. Verify that the configuration is loaded only once.
+Create a `DatabaseConfig` class with a `cached_property` that simulates loading configuration from a file. Verify that
+the configuration is loaded only once.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -1323,7 +1329,7 @@ Create a `@singledispatch` function called `to_json()` that behaves differently 
 
 Explain why this approach is preferable to a long chain of `isinstance()` checks.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1338,12 +1344,11 @@ In this lesson, you learned:
 - ✅ How `total_ordering()` reduces boilerplate.
 - ✅ Which `functools` features are most valuable in production backend applications.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[27-Itertools-part-1](27-itertools-part-1.md)
+**File:** [27-Itertools-part-1](27-itertools-part-1.md)
 
 Topics:
 

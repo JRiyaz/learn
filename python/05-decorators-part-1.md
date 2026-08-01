@@ -1,6 +1,7 @@
 # File: python/05-decorators-part-1.md
 
 # Python Advanced - Lesson 05 (Part 1)
+
 # Decorators - Why They Exist & How They Work
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 75 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -27,7 +28,7 @@ By the end of this lesson, you will understand:
 - How decorators preserve function behaviour
 - Why frameworks like FastAPI and Flask use decorators everywhere
 
----
+______________________________________________________________________
 
 # Prerequisites
 
@@ -40,7 +41,7 @@ Before learning decorators, you should already understand:
 
 Decorators combine all of these concepts into one powerful feature.
 
----
+______________________________________________________________________
 
 # Theory
 
@@ -122,7 +123,7 @@ This violates the **Single Responsibility Principle (SRP)**.
 
 Decorators solve this problem.
 
----
+______________________________________________________________________
 
 # What is a Decorator?
 
@@ -152,7 +153,7 @@ The original function remains focused on its job.
 
 The decorator adds extra behaviour around it.
 
----
+______________________________________________________________________
 
 # Function Wrapping
 
@@ -200,7 +201,7 @@ The wrapper only works for `greet()`.
 
 It isn't reusable.
 
----
+______________________________________________________________________
 
 # Writing Your First Decorator
 
@@ -273,7 +274,7 @@ Finished.
 
 This is the core idea behind every decorator in Python.
 
----
+______________________________________________________________________
 
 # The @ Syntax
 
@@ -325,9 +326,9 @@ greet = logger(greet)
 
 This is one of the most common Python interview questions.
 
----
+______________________________________________________________________
 
-# Why Do We Need *args and **kwargs?
+# Why Do We Need \*args and \*\*kwargs?
 
 Let's modify our function.
 
@@ -364,7 +365,7 @@ def wrapper():
 
 But `greet()` expects one.
 
----
+______________________________________________________________________
 
 # The Solution
 
@@ -407,7 +408,7 @@ Finished.
 
 Now the decorator works for **any function signature**.
 
----
+______________________________________________________________________
 
 # Multiple Arguments
 
@@ -437,7 +438,7 @@ No changes to the decorator were needed.
 
 `**kwargs` collects keyword arguments.
 
----
+______________________________________________________________________
 
 # Returning Values
 
@@ -478,7 +479,7 @@ None
 
 Where did `30` go?
 
----
+______________________________________________________________________
 
 # Why?
 
@@ -490,7 +491,7 @@ function(*args, **kwargs)
 
 The return value was ignored.
 
----
+______________________________________________________________________
 
 # Correct Decorator
 
@@ -533,7 +534,7 @@ Finished.
 
 Always return the wrapped function's result unless you intentionally want to change it.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -588,7 +589,7 @@ This is exactly how frameworks implement:
 - Exception handling
 - Transaction management
 
----
+______________________________________________________________________
 
 # FastAPI Example
 
@@ -620,7 +621,7 @@ def get_users():
     ...
 ```
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -632,7 +633,7 @@ def get_users():
 
 > A decorator is a higher-order function that accepts another function, wraps it with additional behaviour, and returns a new function. It allows cross-cutting concerns such as logging, authentication, caching and timing to be added without modifying the original business logic.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -657,7 +658,7 @@ def func():
 func = decorator(func)
 ```
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -667,7 +668,7 @@ func = decorator(func)
 
 > Decorators should work with functions that have different parameter lists. Using `*args` and `**kwargs` allows the wrapper to forward any positional and keyword arguments to the original function without knowing its signature in advance.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -730,7 +731,7 @@ Welcome Alice!
 === Finished ===
 ```
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -740,9 +741,10 @@ What is a decorator?
 
 ### Answer
 
-A decorator is a function that accepts another function, adds extra behaviour before or after it executes, and returns a new wrapped function.
+A decorator is a function that accepts another function, adds extra behaviour before or after it executes, and returns a
+new wrapped function.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -750,9 +752,10 @@ Why are decorators useful?
 
 ### Answer
 
-They allow common functionality such as logging, authentication, caching and validation to be written once and reused across many functions without modifying the business logic.
+They allow common functionality such as logging, authentication, caching and validation to be written once and reused
+across many functions without modifying the business logic.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -768,7 +771,7 @@ function = logger(function)
 
 Python automatically performs this assignment when the function is defined.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -778,7 +781,7 @@ Why do decorators usually use `*args` and `**kwargs`?
 
 To make the decorator reusable for functions with different parameter lists.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -786,9 +789,10 @@ Why should a decorator return the wrapped function's result?
 
 ### Answer
 
-If the wrapper doesn't return the result, the decorated function returns `None` by default, causing the original return value to be lost.
+If the wrapper doesn't return the result, the decorated function returns `None` by default, causing the original return
+value to be lost.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -808,7 +812,7 @@ Function Ended
 
 after execution.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -820,7 +824,7 @@ Decorate three different functions:
 
 Verify that the same decorator works for all of them.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -844,7 +848,7 @@ Called 3 time(s)
 
 (Hint: You'll use a **closure** and `nonlocal`.)
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -858,12 +862,11 @@ In this lesson, you learned:
 - ✅ Why returning the original result matters.
 - ✅ How frameworks like FastAPI and Flask use decorators.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[05-Decorators-part-2](05-decorators-part-2.md)
+**File:** [05-Decorators-part-2](05-decorators-part-2.md)
 
 Topics:
 

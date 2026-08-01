@@ -1,6 +1,7 @@
 # File: python/63-production-python-part-08-project-structure-and-packaging.md
 
 # Production Python
+
 # Part 1: Project Structure, Packages & Production-Grade Code Organization
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 8–10 Hours
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -30,7 +31,7 @@ By the end of this lesson, you will understand:
 - Circular import problems
 - Best practices used in large backend applications
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -58,7 +59,7 @@ Instead, a production project might look like this:
 
 Poor organisation makes systems difficult to maintain, test, and extend.
 
----
+______________________________________________________________________
 
 # Why Project Structure Matters
 
@@ -99,7 +100,7 @@ As the application grows:
 
 A good project structure solves these problems.
 
----
+______________________________________________________________________
 
 # Module vs Package
 
@@ -129,7 +130,7 @@ users/
 
 Packages help group related functionality.
 
----
+______________________________________________________________________
 
 # How Imports Work
 
@@ -142,15 +143,15 @@ from users.service import create_user
 It searches:
 
 1. Built-in modules
-2. Current project
-3. Installed packages
-4. `sys.path`
+1. Current project
+1. Installed packages
+1. `sys.path`
 
 Python does **not** search the entire filesystem.
 
 Understanding this search order helps explain many import errors.
 
----
+______________________________________________________________________
 
 # The Role of `__init__.py`
 
@@ -174,7 +175,7 @@ from .service import UserService
 __all__ = ["UserService"]
 ```
 
----
+______________________________________________________________________
 
 # Absolute Imports
 
@@ -191,7 +192,7 @@ Advantages:
 - Easier to refactor
 - Preferred in large codebases
 
----
+______________________________________________________________________
 
 # Relative Imports
 
@@ -211,7 +212,7 @@ from ....database.connection import Database
 
 These quickly become difficult to read.
 
----
+______________________________________________________________________
 
 # A Typical Production Layout
 
@@ -241,7 +242,7 @@ my_app/
 
 Every directory has a clear responsibility.
 
----
+______________________________________________________________________
 
 # Layered Architecture
 
@@ -269,7 +270,7 @@ Database
 
 Each layer has a single responsibility.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -305,7 +306,7 @@ Notice that:
 
 This separation makes applications easier to test and maintain.
 
----
+______________________________________________________________________
 
 # Circular Imports
 
@@ -347,7 +348,7 @@ AttributeError
 (partially initialized module)
 ```
 
----
+______________________________________________________________________
 
 # How to Avoid Circular Imports
 
@@ -370,7 +371,7 @@ General strategies:
 - Import locally only when appropriate.
 - Design clear module boundaries.
 
----
+______________________________________________________________________
 
 # Naming Packages
 
@@ -394,7 +395,7 @@ random
 
 Package names should describe a business capability or technical responsibility.
 
----
+______________________________________________________________________
 
 # Configuration Files
 
@@ -413,7 +414,7 @@ This file can define:
 
 It has become the standard entry point for modern Python projects.
 
----
+______________________________________________________________________
 
 # Repository Layout Example
 
@@ -440,7 +441,7 @@ inventory-service/
 
 This structure scales well from small services to large backend systems.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -452,7 +453,7 @@ Putting all code into:
 app.py
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -466,19 +467,19 @@ common/
 
 without clear ownership.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
 Mixing HTTP logic, business rules, and database code in the same module.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
 Ignoring circular dependencies until they become difficult to untangle.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -496,7 +497,7 @@ Ignoring circular dependencies until they become difficult to untangle.
 
 ❌ Don't mix unrelated responsibilities.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -512,7 +513,7 @@ A well-structured codebase enables:
 
 Many production issues are caused not by incorrect algorithms, but by unclear architecture and tightly coupled code.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -524,7 +525,7 @@ Many production issues are caused not by incorrect algorithms, but by unclear ar
 
 A module is a single Python file, while a package is a directory that groups related modules into a logical unit.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -534,7 +535,7 @@ A module is a single Python file, while a package is a directory that groups rel
 
 They are more explicit, easier to understand, and less fragile during refactoring.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -542,9 +543,10 @@ They are more explicit, easier to understand, and less fragile during refactorin
 
 ### Answer
 
-They occur when two or more modules depend on each other during import, preventing Python from completing module initialisation.
+They occur when two or more modules depend on each other during import, preventing Python from completing module
+initialisation.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -552,9 +554,10 @@ They occur when two or more modules depend on each other during import, preventi
 
 ### Answer
 
-Services implement business logic, while repositories handle data persistence. Separating them improves maintainability and testability.
+Services implement business logic, while repositories handle data persistence. Separating them improves maintainability
+and testability.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -562,9 +565,10 @@ Services implement business logic, while repositories handle data persistence. S
 
 ### Answer
 
-A good structure reduces complexity, clarifies responsibilities, and allows a codebase to scale as the application grows.
+A good structure reduces complexity, clarifies responsibilities, and allows a codebase to scale as the application
+grows.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -592,11 +596,11 @@ bookstore/
 Then:
 
 1. Create a `BookService`.
-2. Create a `BookRepository`.
-3. Add a simple `Book` model.
-4. Keep each layer responsible for only one concern.
+1. Create a `BookRepository`.
+1. Add a simple `Book` model.
+1. Keep each layer responsible for only one concern.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -608,7 +612,7 @@ Why is layered architecture beneficial in backend applications?
 
 It separates concerns, making the codebase easier to maintain, test, and extend.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -618,7 +622,7 @@ What are the advantages of packages over large individual modules?
 
 Packages group related functionality, reduce complexity, improve discoverability, and encourage modular design.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -628,7 +632,7 @@ How can circular imports be avoided?
 
 By designing one-directional dependencies, extracting shared logic, and maintaining clear module boundaries.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -638,7 +642,7 @@ Why are generic folders like `helpers` discouraged?
 
 Because they accumulate unrelated functionality, making ownership and discoverability unclear.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -648,7 +652,7 @@ What role does `pyproject.toml` play in modern Python projects?
 
 It serves as the standard configuration file for project metadata, dependencies, builds, and development tools.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -656,19 +660,19 @@ It serves as the standard configuration file for project metadata, dependencies,
 
 Restructure one of your existing Flask or FastAPI projects into a layered architecture.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
 Identify any circular dependencies in your project and propose a redesign.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
 Create a package with multiple modules and expose only its public API through `__init__.py`.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -681,7 +685,7 @@ Draw the architecture of one of your backend services, showing:
 
 Explain the responsibility of each layer.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -695,9 +699,8 @@ In this lesson, you learned:
 - ✅ Production project organisation.
 - ✅ Best practices for scalable backend applications.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[64-production-python-part-09-packaging](64-production-python-part-09-packaging.md)
+**File:** [64-production-python-part-09-packaging](64-production-python-part-09-packaging.md)

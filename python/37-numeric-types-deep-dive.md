@@ -1,6 +1,7 @@
 # File: python/37-numeric-types-deep-dive.md
 
 # Python Built-in Types
+
 # Numeric Types Deep Dive (`int`, `float`, `bool`, `Decimal`, `Fraction`, `complex`)
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 5 Hours
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -33,7 +34,7 @@
 - Floating-point numbers still follow the IEEE 754 double-precision standard.
 - `Decimal` and `Fraction` remain specialised numeric types for high-precision calculations.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -52,7 +53,7 @@ By the end of this lesson, you will understand:
 - Numeric performance
 - Production best practices
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -64,9 +65,10 @@ In the previous lesson, we covered:
 - Membership testing
 - Set operations
 
-Now we'll explore Python's numeric types and understand why choosing the correct numeric type matters in production systems.
+Now we'll explore Python's numeric types and understand why choosing the correct numeric type matters in production
+systems.
 
----
+______________________________________________________________________
 
 # Why Should Backend Engineers Care?
 
@@ -87,7 +89,7 @@ Examples:
 
 Choosing the wrong numeric type can introduce subtle production bugs.
 
----
+______________________________________________________________________
 
 # Python's Numeric Hierarchy
 
@@ -119,7 +121,7 @@ Interestingly,
 
 We'll see why shortly.
 
----
+______________________________________________________________________
 
 # Integer (`int`)
 
@@ -137,7 +139,7 @@ Unlike many languages,
 
 Python integers have **no fixed size**.
 
----
+______________________________________________________________________
 
 # Python 2 vs Python 3
 
@@ -169,7 +171,7 @@ Unlimited size
 
 This simplifies programming considerably.
 
----
+______________________________________________________________________
 
 # Arbitrary Precision Integers
 
@@ -191,7 +193,7 @@ Python handles this automatically.
 
 Many languages would overflow.
 
----
+______________________________________________________________________
 
 # How Does Python Store Large Integers?
 
@@ -225,7 +227,7 @@ As numbers grow,
 
 memory usage and computation time also grow.
 
----
+______________________________________________________________________
 
 # Integer Operations
 
@@ -258,7 +260,7 @@ Output
 64000000
 ```
 
----
+______________________________________________________________________
 
 # Integer Division
 
@@ -288,7 +290,7 @@ Output
 2
 ```
 
----
+______________________________________________________________________
 
 # Negative Floor Division
 
@@ -332,7 +334,7 @@ Floor
 -3
 ```
 
----
+______________________________________________________________________
 
 # Float (`float`)
 
@@ -346,7 +348,7 @@ pi = 3.14159
 
 Python uses the IEEE 754 double-precision standard.
 
----
+______________________________________________________________________
 
 # IEEE 754
 
@@ -364,7 +366,7 @@ You don't need to memorise the bit layout,
 
 but you should understand that floating-point numbers are approximations.
 
----
+______________________________________________________________________
 
 # The Famous Example
 
@@ -382,7 +384,7 @@ Many new Python developers think this is a bug.
 
 It isn't.
 
----
+______________________________________________________________________
 
 # Why Does This Happen?
 
@@ -404,7 +406,7 @@ numbers like `0.1` cannot be represented exactly in binary.
 
 Python stores the nearest representable value.
 
----
+______________________________________________________________________
 
 # Visualising
 
@@ -428,7 +430,7 @@ The error is tiny,
 
 but repeated calculations can accumulate it.
 
----
+______________________________________________________________________
 
 # Never Compare Floats Directly
 
@@ -453,7 +455,7 @@ Output
 True
 ```
 
----
+______________________________________________________________________
 
 # Why is `math.isclose()` Better?
 
@@ -461,7 +463,7 @@ Floating-point calculations often differ by extremely small amounts.
 
 `math.isclose()` compares numbers within a configurable tolerance rather than requiring exact equality.
 
----
+______________________________________________________________________
 
 # Decimal
 
@@ -481,7 +483,7 @@ Instead,
 
 use `Decimal`.
 
----
+______________________________________________________________________
 
 # Using Decimal
 
@@ -505,7 +507,7 @@ Notice
 
 The values are created from **strings**.
 
----
+______________________________________________________________________
 
 # Why Strings?
 
@@ -525,7 +527,7 @@ Decimal("0.1")
 
 This preserves the exact decimal value.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -549,7 +551,7 @@ Output
 
 Financial systems should prefer `Decimal`.
 
----
+______________________________________________________________________
 
 # Fraction
 
@@ -583,7 +585,7 @@ Output
 1/2
 ```
 
----
+______________________________________________________________________
 
 # Complex Numbers
 
@@ -614,7 +616,7 @@ Complex numbers are mainly used in:
 
 Rarely used in backend applications.
 
----
+______________________________________________________________________
 
 # Bool
 
@@ -654,7 +656,7 @@ Output
 
 This behaviour exists largely for historical compatibility and makes boolean arithmetic possible.
 
----
+______________________________________________________________________
 
 # Numeric Conversions
 
@@ -680,7 +682,7 @@ True
 False
 ```
 
----
+______________________________________________________________________
 
 # Truthiness
 
@@ -708,7 +710,7 @@ set()
 
 Everything else is truthy unless the object defines otherwise.
 
----
+______________________________________________________________________
 
 # Numeric Performance
 
@@ -738,21 +740,21 @@ Fraction
 
 Choose them only when precision matters.
 
----
+______________________________________________________________________
 
 # Time Complexity
 
 | Operation | Complexity |
 |------------|------------|
-| Integer Addition | O(1)* |
-| Integer Multiplication | O(1)* |
+| Integer Addition | O(1)\* |
+| Integer Multiplication | O(1)\* |
 | Float Addition | O(1) |
 | Decimal Addition | O(n) |
 | Fraction Addition | O(n) |
 
 \*For typical machine-sized integers. Very large integers require more work as the number of digits increases.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -772,7 +774,7 @@ from decimal import Decimal
 balance = Decimal("19.99")
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -790,7 +792,7 @@ Better
 math.isclose(a, b)
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -808,7 +810,7 @@ Correct
 Decimal("0.1")
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -816,7 +818,7 @@ Assuming Python integers overflow.
 
 Python integers automatically grow to accommodate larger values, limited only by available memory.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -836,7 +838,7 @@ Python integers automatically grow to accommodate larger values, limited only by
 
 ❌ Don't assume all numeric types have identical performance.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -876,7 +878,7 @@ measurement = 0.00000452
 
 Senior engineers choose the numeric type based on correctness first and performance second.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -886,9 +888,10 @@ Senior engineers choose the numeric type based on correctness first and performa
 
 ### Answer
 
-Floats use binary floating-point representation, which cannot exactly represent many decimal values. Small rounding errors accumulate over time, making `Decimal` a safer choice for financial data.
+Floats use binary floating-point representation, which cannot exactly represent many decimal values. Small rounding
+errors accumulate over time, making `Decimal` a safer choice for financial data.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -896,9 +899,10 @@ Floats use binary floating-point representation, which cannot exactly represent 
 
 ### Answer
 
-Because `0.1` and `0.2` cannot be represented exactly in binary. Python stores the closest representable values, leading to tiny rounding errors.
+Because `0.1` and `0.2` cannot be represented exactly in binary. Python stores the closest representable values, leading
+to tiny rounding errors.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -906,9 +910,10 @@ Because `0.1` and `0.2` cannot be represented exactly in binary. Python stores t
 
 ### Answer
 
-Python 3 integers use arbitrary-precision arithmetic, allocating additional memory as needed instead of overflowing fixed-size integer types.
+Python 3 integers use arbitrary-precision arithmetic, allocating additional memory as needed instead of overflowing
+fixed-size integer types.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -916,9 +921,10 @@ Python 3 integers use arbitrary-precision arithmetic, allocating additional memo
 
 ### Answer
 
-Python represents `False` as `0` and `True` as `1`, allowing booleans to participate naturally in arithmetic while maintaining backwards compatibility.
+Python represents `False` as `0` and `True` as `1`, allowing booleans to participate naturally in arithmetic while
+maintaining backwards compatibility.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -926,9 +932,10 @@ Python represents `False` as `0` and `True` as `1`, allowing booleans to partici
 
 ### Answer
 
-Use `Fraction` when exact rational arithmetic is required, such as symbolic mathematics or algorithms that depend on exact fractional values rather than decimal approximations.
+Use `Fraction` when exact rational arithmetic is required, such as symbolic mathematics or algorithms that depend on
+exact fractional values rather than decimal approximations.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -980,7 +987,7 @@ True
 2
 ```
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -992,7 +999,7 @@ Why should financial software use `Decimal` instead of `float`?
 
 `Decimal` represents decimal values exactly, avoiding the binary floating-point rounding errors that occur with `float`.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -1002,7 +1009,7 @@ Why are Python integers called arbitrary-precision integers?
 
 Because they automatically expand to accommodate larger values instead of overflowing fixed-size integer storage.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -1012,7 +1019,7 @@ Why should floats rarely be compared using `==`?
 
 Floating-point values often differ by tiny rounding errors. `math.isclose()` is usually a safer comparison.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -1022,7 +1029,7 @@ What is the relationship between `bool` and `int`?
 
 `bool` is a subclass of `int`, where `False` behaves as `0` and `True` behaves as `1`.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1032,7 +1039,7 @@ When should you use `Fraction`?
 
 When calculations require exact rational values rather than approximate decimal representations.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -1049,7 +1056,7 @@ using `Decimal`.
 
 Compare the result with an implementation using `float`.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -1057,7 +1064,7 @@ Write a function that compares two floating-point values safely using `math.iscl
 
 Allow callers to customise the relative and absolute tolerance.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -1072,7 +1079,7 @@ using appropriate numeric types.
 
 Explain why you chose each type.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -1082,7 +1089,7 @@ Research IEEE 754 and explain:
 - What the mantissa and exponent represent.
 - Why floating-point arithmetic is still the standard choice for scientific computing.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1099,12 +1106,11 @@ In this lesson, you learned:
 - ✅ Production best practices.
 - ✅ Senior backend interview topics.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[38-Collections-Module-part-1](38-collections-module-part-1.md)
+**File:** [38-Collections-Module-part-1](38-collections-module-part-1.md)
 
 Topics:
 

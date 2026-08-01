@@ -1,6 +1,7 @@
 # File: python/33-tuple-deep-dive.md
 
 # Python Built-in Types
+
 # Tuple (`tuple`) Deep Dive
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 3 Hours
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -30,7 +31,7 @@
 - Python 3 introduced **extended unpacking** (`*rest`), making tuple unpacking much more flexible.
 - Tuples are still one of the fastest and most memory-efficient built-in data structures.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -48,7 +49,7 @@ By the end of this lesson, you will understand:
 - Performance considerations
 - Production best practices
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -66,7 +67,7 @@ Although tuples look very similar to lists, they serve a completely different pu
 
 Understanding when to use each is a common senior backend interview topic.
 
----
+______________________________________________________________________
 
 # Why Do Tuples Exist?
 
@@ -89,7 +90,7 @@ Examples:
 
 If the data should remain constant, a tuple communicates that intent.
 
----
+______________________________________________________________________
 
 # What is a Tuple?
 
@@ -118,7 +119,7 @@ Like lists, tuples:
 
 Unlike lists, they **cannot be modified** after creation.
 
----
+______________________________________________________________________
 
 # Tuple Characteristics
 
@@ -134,7 +135,7 @@ Tuples are:
 
 ✅ Hashable (if all elements are hashable)
 
----
+______________________________________________________________________
 
 # Internal Representation
 
@@ -166,7 +167,7 @@ This is similar to lists.
 
 The major difference is that the tuple's size cannot change after creation.
 
----
+______________________________________________________________________
 
 # Why Are Tuples Immutable?
 
@@ -194,7 +195,7 @@ This gives several advantages:
 - Hashability
 - Performance optimisations
 
----
+______________________________________________________________________
 
 # Creating Tuples
 
@@ -224,7 +225,7 @@ Output
 ('P', 'y', 't', 'h', 'o', 'n')
 ```
 
----
+______________________________________________________________________
 
 # Single Element Tuple
 
@@ -262,7 +263,7 @@ The comma creates the tuple.
 
 Not the parentheses.
 
----
+______________________________________________________________________
 
 # Empty Tuple
 
@@ -278,7 +279,7 @@ Output
 <class 'tuple'>
 ```
 
----
+______________________________________________________________________
 
 # Indexing
 
@@ -314,7 +315,7 @@ Output
 Rust
 ```
 
----
+______________________________________________________________________
 
 # Slicing
 
@@ -346,7 +347,7 @@ Like strings,
 
 slicing creates a new tuple.
 
----
+______________________________________________________________________
 
 # Tuple Packing
 
@@ -370,7 +371,7 @@ No parentheses are required.
 
 The comma performs the packing.
 
----
+______________________________________________________________________
 
 # Tuple Unpacking
 
@@ -394,7 +395,7 @@ Alice
 
 Very common in production code.
 
----
+______________________________________________________________________
 
 # Extended Unpacking
 
@@ -424,7 +425,7 @@ Notice
 
 Not a tuple.
 
----
+______________________________________________________________________
 
 # Swapping Variables
 
@@ -451,7 +452,7 @@ Internally,
 
 Python uses tuple packing and unpacking.
 
----
+______________________________________________________________________
 
 # Returning Multiple Values
 
@@ -474,13 +475,13 @@ print(age)
 
 Python automatically packs the return values into a tuple.
 
----
+______________________________________________________________________
 
 # Tuple Methods
 
 Tuples have only two methods.
 
----
+______________________________________________________________________
 
 # count()
 
@@ -496,7 +497,7 @@ Output
 2
 ```
 
----
+______________________________________________________________________
 
 # index()
 
@@ -512,7 +513,7 @@ Output
 1
 ```
 
----
+______________________________________________________________________
 
 # Why So Few Methods?
 
@@ -531,7 +532,7 @@ methods like
 
 do not exist.
 
----
+______________________________________________________________________
 
 # Tuple Concatenation
 
@@ -551,7 +552,7 @@ Output
 
 A new tuple is created.
 
----
+______________________________________________________________________
 
 # Tuple Repetition
 
@@ -565,7 +566,7 @@ Output
 ('Hi', 'Hi', 'Hi')
 ```
 
----
+______________________________________________________________________
 
 # Membership Testing
 
@@ -597,7 +598,7 @@ Like lists,
 
 membership requires sequential search.
 
----
+______________________________________________________________________
 
 # Hashability
 
@@ -642,7 +643,7 @@ Output
 {(1, 2): 'Admin'}
 ```
 
----
+______________________________________________________________________
 
 # Why Are Tuples Hashable?
 
@@ -652,7 +653,7 @@ If an object changed after being used as a dictionary key,
 
 the dictionary would become inconsistent.
 
----
+______________________________________________________________________
 
 # Nested Mutable Objects
 
@@ -688,7 +689,7 @@ but the list inside it is still mutable.
 
 This is a favourite interview question.
 
----
+______________________________________________________________________
 
 # Tuple vs List
 
@@ -703,7 +704,7 @@ This is a favourite interview question.
 | Insert | ❌ | ✅ |
 | Remove | ❌ | ✅ |
 
----
+______________________________________________________________________
 
 # Performance
 
@@ -717,7 +718,7 @@ choose a tuple **because it represents immutable data**, not just because it's s
 
 Readability and correctness matter more than micro-optimisations.
 
----
+______________________________________________________________________
 
 # Time Complexity
 
@@ -730,7 +731,7 @@ Readability and correctness matter more than micro-optimisations.
 | Concatenation | O(n) |
 | Membership | O(n) |
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -750,7 +751,7 @@ Correct
 item = (5,)
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -766,7 +767,7 @@ Produces
 TypeError
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -776,7 +777,7 @@ Only the tuple itself is immutable.
 
 Objects inside it may still change.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -786,7 +787,7 @@ Choose tuples because the data should remain constant,
 
 not because they are slightly faster.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -802,7 +803,7 @@ not because they are slightly faster.
 
 ❌ Don't rely on tuple immutability if it contains mutable objects.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -841,9 +842,10 @@ for name, age in users:
     print(name, age)
 ```
 
-Python's own standard library returns tuples in many APIs because they clearly communicate that the returned values should not be modified.
+Python's own standard library returns tuples in many APIs because they clearly communicate that the returned values
+should not be modified.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -853,9 +855,10 @@ Python's own standard library returns tuples in many APIs because they clearly c
 
 ### Answer
 
-A tuple is immutable and generally more memory-efficient, while a list is mutable and designed for collections that change over time.
+A tuple is immutable and generally more memory-efficient, while a list is mutable and designed for collections that
+change over time.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -863,9 +866,10 @@ A tuple is immutable and generally more memory-efficient, while a list is mutabl
 
 ### Answer
 
-Tuples are immutable and hashable (provided all their elements are hashable), making them safe dictionary keys. Lists are mutable, so their hash value could change.
+Tuples are immutable and hashable (provided all their elements are hashable), making them safe dictionary keys. Lists
+are mutable, so their hash value could change.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -875,7 +879,7 @@ Tuples are immutable and hashable (provided all their elements are hashable), ma
 
 No. If a tuple contains mutable objects such as lists, those objects can still be modified.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -883,9 +887,10 @@ No. If a tuple contains mutable objects such as lists, those objects can still b
 
 ### Answer
 
-Tuples provide a simple and efficient way to return multiple related values while signalling that the returned structure itself should not be modified.
+Tuples provide a simple and efficient way to return multiple related values while signalling that the returned structure
+itself should not be modified.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -946,7 +951,7 @@ Cached Response
 ([1, 2, 3],)
 ```
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -956,9 +961,10 @@ Why are tuples immutable?
 
 ### Answer
 
-Immutability provides predictable behaviour, enables hashing, reduces memory overhead and makes tuples suitable for fixed collections of data.
+Immutability provides predictable behaviour, enables hashing, reduces memory overhead and makes tuples suitable for
+fixed collections of data.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -968,7 +974,7 @@ What is tuple packing?
 
 Packing is the automatic creation of a tuple from multiple comma-separated values.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -978,7 +984,7 @@ What is tuple unpacking?
 
 Unpacking assigns individual tuple elements to separate variables in a single statement.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -988,7 +994,7 @@ Can a tuple contain mutable objects?
 
 Yes. The tuple itself cannot change, but mutable objects stored inside it can still be modified.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -996,9 +1002,10 @@ When should you choose a tuple over a list?
 
 ### Answer
 
-When the collection represents fixed, unchanging data or needs to be hashable for use as a dictionary key or set element.
+When the collection represents fixed, unchanging data or needs to be hashable for use as a dictionary key or set
+element.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -1012,7 +1019,7 @@ Write a function that returns a student's:
 
 using a tuple, then unpack the returned values.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -1024,19 +1031,20 @@ Implement a simple cache where the key is a tuple of:
 
 Store and retrieve cached responses.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
-Demonstrate the difference between a tuple containing integers and a tuple containing lists. Explain why one is completely immutable while the other is not.
+Demonstrate the difference between a tuple containing integers and a tuple containing lists. Explain why one is
+completely immutable while the other is not.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
 Create a program that swaps the values of three variables using tuple unpacking without using a temporary variable.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1051,12 +1059,11 @@ In this lesson, you learned:
 - ✅ Common interview topics.
 - ✅ Production use cases.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[34-Dict-Deep-Dive-part-1](34-dict-deep-dive-part-1.md)
+**File:** [34-Dict-Deep-Dive-part-1](34-dict-deep-dive-part-1.md)
 
 Topics:
 

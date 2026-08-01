@@ -2,7 +2,7 @@
 
 **Python Version Introduced:** Python 3.x
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -17,7 +17,7 @@ By the end of this lesson, you will be able to:
 - Recognize when vectorization is beneficial and when it is not.
 - Apply production-ready optimization techniques without sacrificing readability.
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -35,7 +35,7 @@ Now we'll answer an engineering question:
 
 > **How do we make NumPy code as fast and memory-efficient as possible?**
 
----
+______________________________________________________________________
 
 # Performance Before Optimization
 
@@ -63,7 +63,7 @@ Measure Again
 
 This principle applies to every production system.
 
----
+______________________________________________________________________
 
 # Where Does NumPy Get Its Speed?
 
@@ -104,7 +104,7 @@ Key reasons:
 - Vectorized operations
 - Optimized BLAS/LAPACK routines (for many linear algebra operations)
 
----
+______________________________________________________________________
 
 # Measuring Performance
 
@@ -112,7 +112,7 @@ Never rely on intuition.
 
 Instead, measure.
 
----
+______________________________________________________________________
 
 ## Using `timeit`
 
@@ -136,7 +136,7 @@ Why `timeit`?
 - Reduces measurement noise
 - More reliable than manual timing for small benchmarks
 
----
+______________________________________________________________________
 
 ## Why Not `time.time()`?
 
@@ -157,7 +157,7 @@ Use:
 - `timeit` for micro-benchmarks
 - Profilers for large applications
 
----
+______________________________________________________________________
 
 # Vectorization vs Python Loops
 
@@ -182,9 +182,10 @@ Vectorized
 result = numbers * 2
 ```
 
-The second version is dramatically faster because the loop executes in optimized compiled code rather than the Python interpreter.
+The second version is dramatically faster because the loop executes in optimized compiled code rather than the Python
+interpreter.
 
----
+______________________________________________________________________
 
 # Avoid Python Loops
 
@@ -205,7 +206,7 @@ total = arr.sum()
 
 NumPy operations are almost always preferable for numerical workloads.
 
----
+______________________________________________________________________
 
 # Memory Allocation
 
@@ -223,7 +224,7 @@ Sometimes that's unavoidable.
 
 Sometimes it isn't.
 
----
+______________________________________________________________________
 
 # In-Place Operations
 
@@ -245,7 +246,7 @@ Benefits:
 - Less memory usage
 - Often faster
 
----
+______________________________________________________________________
 
 ## Example
 
@@ -263,7 +264,7 @@ Output
 [ 0 10 20 30 40]
 ```
 
----
+______________________________________________________________________
 
 # Temporary Arrays
 
@@ -301,7 +302,7 @@ The temporary array increases memory usage.
 
 For very large datasets, this matters.
 
----
+______________________________________________________________________
 
 ## Reducing Temporaries
 
@@ -317,7 +318,7 @@ arr *= 10
 
 Whether this is appropriate depends on whether modifying the original data is acceptable.
 
----
+______________________________________________________________________
 
 # Choosing the Right Data Type
 
@@ -355,7 +356,7 @@ int32
 
 Choosing an appropriate dtype can halve memory usage.
 
----
+______________________________________________________________________
 
 ## Floating Point Types
 
@@ -371,7 +372,7 @@ Choose based on:
 - Memory constraints
 - Compatibility with downstream libraries
 
----
+______________________________________________________________________
 
 # Cache-Friendly Access
 
@@ -389,7 +390,7 @@ Jumping randomly across memory causes more cache misses.
 
 NumPy's contiguous arrays take advantage of this.
 
----
+______________________________________________________________________
 
 # Contiguous vs Non-Contiguous Arrays
 
@@ -421,7 +422,7 @@ C_CONTIGUOUS : False
 
 Some operations on non-contiguous arrays can be slower because memory is accessed with larger strides.
 
----
+______________________________________________________________________
 
 # Copy Only When Necessary
 
@@ -447,7 +448,7 @@ Ask yourself:
 
 If not, prefer views.
 
----
+______________________________________________________________________
 
 # Broadcasting Saves Memory
 
@@ -477,7 +478,7 @@ of the vector.
 
 This saves both memory and execution time.
 
----
+______________________________________________________________________
 
 # Avoid Repeated Computation
 
@@ -500,7 +501,7 @@ for _ in range(100):
     print(mean)
 ```
 
----
+______________________________________________________________________
 
 # Preallocation
 
@@ -530,7 +531,7 @@ Even better,
 
 if possible, eliminate the loop entirely using vectorized operations.
 
----
+______________________________________________________________________
 
 # Profiling Before Optimizing
 
@@ -566,22 +567,16 @@ Useful tools include:
 
 Always identify the actual bottleneck before making changes.
 
----
+______________________________________________________________________
 
 # Performance Summary
 
-Technique | Benefit
-----------|---------
-Vectorization | Eliminates Python loops
-Views | Avoid unnecessary copies
-Broadcasting | Avoids duplicated data
-In-place operations | Reduces memory allocations
-Appropriate dtype | Lowers memory usage
-Contiguous memory | Better cache performance
-Preallocation | Avoids repeated reallocations
-Profiling | Optimizes the correct code
+Technique | Benefit ----------|--------- Vectorization | Eliminates Python loops Views | Avoid unnecessary copies
+Broadcasting | Avoids duplicated data In-place operations | Reduces memory allocations Appropriate dtype | Lowers memory
+usage Contiguous memory | Better cache performance Preallocation | Avoids repeated reallocations Profiling | Optimizes
+the correct code
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -591,7 +586,7 @@ Optimizing before measuring.
 
 Always benchmark first.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -599,7 +594,7 @@ Using Python loops for numerical operations.
 
 Prefer vectorized NumPy functions.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -607,13 +602,13 @@ Calling `np.append()` repeatedly in a loop.
 
 It reallocates memory every time.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
 Using `float64` or `int64` without considering whether a smaller dtype is sufficient.
 
----
+______________________________________________________________________
 
 ## Mistake 5
 
@@ -621,7 +616,7 @@ Creating unnecessary copies with `.copy()`.
 
 Only create copies when independent data ownership is required.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -634,13 +629,15 @@ Only create copies when independent data ownership is required.
 - Avoid repeated memory allocations.
 - Keep code readable; optimize only where it matters.
 
----
+______________________________________________________________________
 
 # Production Insight
 
 Performance optimization is about balancing speed, memory, and maintainability.
 
-Large-scale data processing systems often spend more time moving data than performing arithmetic. Efficient NumPy code minimizes unnecessary memory allocations, maximizes cache locality, and expresses computations using vectorized operations.
+Large-scale data processing systems often spend more time moving data than performing arithmetic. Efficient NumPy code
+minimizes unnecessary memory allocations, maximizes cache locality, and expresses computations using vectorized
+operations.
 
 Examples include:
 
@@ -650,9 +647,10 @@ Examples include:
 - Scientific simulations.
 - Image and video processing.
 
-The fastest code is not always the most valuable. Production systems prioritize correctness, maintainability, and measurable performance improvements.
+The fastest code is not always the most valuable. Production systems prioritize correctness, maintainability, and
+measurable performance improvements.
 
----
+______________________________________________________________________
 
 ```markdown id="y5p8nl"
 # Questions
@@ -696,7 +694,7 @@ It performs the operation in place, avoiding an additional array allocation when
 Because it duplicates memory. Views are usually more memory-efficient when independent ownership is unnecessary.
 ```
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -713,20 +711,20 @@ Perform the following tasks:
 1. Measure the execution time of:
    - A Python loop doubling every value.
    - A vectorized multiplication (`arr * 2`).
-2. Compare:
+1. Compare:
    - `arr = arr * 2`
    - `arr *= 2`
-3. Create:
+1. Create:
    - A view using slicing.
    - A copy using `.copy()`.
-   Verify memory sharing using `np.shares_memory()`.
-4. Compare the memory usage of:
+Verify memory sharing using `np.shares_memory()`.
+1. Compare the memory usage of:
    - `int64`
    - `int32`
    - `float32`
-5. Demonstrate broadcasting by adding a vector to a large matrix and explain why the vector is not duplicated in memory.
+1. Demonstrate broadcasting by adding a vector to a large matrix and explain why the vector is not duplicated in memory.
 
----
+______________________________________________________________________
 
 ```markdown id="c4w7tm"
 # Knowledge Check
@@ -810,39 +808,42 @@ What are the three major goals of performance optimization?
 Improve execution speed, reduce memory usage, and maintain code correctness and readability.
 ```
 
----
+______________________________________________________________________
 
 # Assignment
 
 Build a performance comparison report.
 
 1. Create arrays containing **10 million** elements.
-2. Benchmark:
+1. Benchmark:
    - Python loop vs vectorized multiplication.
    - `arr = arr * 2` vs `arr *= 2`.
-3. Compare memory consumption of:
+1. Compare memory consumption of:
    - `int32`
    - `int64`
    - `float32`
    - `float64`
-4. Demonstrate:
+1. Demonstrate:
    - View vs copy.
    - Contiguous vs transposed arrays.
    - Broadcasting without data duplication.
-5. Produce a table summarizing:
+1. Produce a table summarizing:
    - Execution time.
    - Memory usage.
    - Whether temporary arrays were created.
    - Whether the operation returned a view or a copy.
-6. Conclude with recommendations for writing high-performance NumPy code suitable for production environments.
+1. Conclude with recommendations for writing high-performance NumPy code suitable for production environments.
 
----
+______________________________________________________________________
 
 # Summary
 
-In this lesson, you learned the engineering principles behind writing efficient NumPy code. You explored how to measure performance using `timeit`, why vectorization outperforms Python loops, how in-place operations and appropriate data types reduce memory usage, and how views, broadcasting, and contiguous memory improve efficiency. Most importantly, you learned that optimization should always be guided by measurement and profiling rather than assumptions.
+In this lesson, you learned the engineering principles behind writing efficient NumPy code. You explored how to measure
+performance using `timeit`, why vectorization outperforms Python loops, how in-place operations and appropriate data
+types reduce memory usage, and how views, broadcasting, and contiguous memory improve efficiency. Most importantly, you
+learned that optimization should always be guided by measurement and profiling rather than assumptions.
 
----
+______________________________________________________________________
 
 # Next Lesson
 

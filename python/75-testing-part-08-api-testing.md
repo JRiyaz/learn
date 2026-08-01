@@ -1,6 +1,7 @@
 # File: python/75-testing-part-08-api-testing.md
 
 # Testing
+
 # Part 8: API Testing – Testing REST APIs with FastAPI and Flask
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 14–16 Hours
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -31,7 +32,7 @@ By the end of this lesson, you will understand:
 - Best practices for API testing
 - Production testing strategies
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -77,7 +78,7 @@ HTTP Response
 
 API tests verify the behaviour of your application from a client's perspective.
 
----
+______________________________________________________________________
 
 # What is API Testing?
 
@@ -107,7 +108,7 @@ The internal implementation is irrelevant.
 
 Only the observable behaviour matters.
 
----
+______________________________________________________________________
 
 # Where API Testing Fits
 
@@ -129,7 +130,7 @@ Only the observable behaviour matters.
 
 Each layer provides a different level of confidence.
 
----
+______________________________________________________________________
 
 # What Should an API Test Verify?
 
@@ -144,7 +145,7 @@ A good API test should verify:
 - Database changes
 - Error handling
 
----
+______________________________________________________________________
 
 # FastAPI TestClient
 
@@ -166,7 +167,7 @@ client = TestClient(app)
 
 Requests are made exactly like real HTTP requests.
 
----
+______________________________________________________________________
 
 # Your First API Test
 
@@ -204,7 +205,7 @@ def test_health():
     }
 ```
 
----
+______________________________________________________________________
 
 # Testing POST Requests
 
@@ -236,7 +237,7 @@ assert response.status_code == 201
 
 The `json=` argument automatically serialises the payload.
 
----
+______________________________________________________________________
 
 # Testing Response Headers
 
@@ -254,7 +255,7 @@ assert (
 
 Headers are part of the API contract and should be verified when important.
 
----
+______________________________________________________________________
 
 # Testing JSON Responses
 
@@ -272,7 +273,7 @@ Avoid comparing large JSON documents unless necessary.
 
 Instead, verify the fields relevant to the test.
 
----
+______________________________________________________________________
 
 # Testing Path Parameters
 
@@ -304,7 +305,7 @@ Unknown ID
 404 Not Found
 ```
 
----
+______________________________________________________________________
 
 # Testing Query Parameters
 
@@ -334,7 +335,7 @@ response = client.get(
 assert response.status_code == 200
 ```
 
----
+______________________________________________________________________
 
 # Testing Validation
 
@@ -366,7 +367,7 @@ assert response.status_code == 422
 
 Validation failures should be tested just as carefully as successful requests.
 
----
+______________________________________________________________________
 
 # Testing Authentication
 
@@ -422,7 +423,7 @@ Expired Token
 401 Unauthorized
 ```
 
----
+______________________________________________________________________
 
 # Testing Error Responses
 
@@ -444,7 +445,7 @@ Verify the response body as well.
 assert response.json()["detail"] == "User not found"
 ```
 
----
+______________________________________________________________________
 
 # Testing CRUD APIs
 
@@ -484,7 +485,7 @@ Delete User
 
 A complete API test suite should verify each operation.
 
----
+______________________________________________________________________
 
 # Testing Database Changes
 
@@ -512,7 +513,7 @@ User Exists
 
 Checking only the HTTP response is often insufficient.
 
----
+______________________________________________________________________
 
 # Flask Testing Client
 
@@ -538,7 +539,7 @@ assert response.status_code == 200
 
 The testing concepts are the same as FastAPI.
 
----
+______________________________________________________________________
 
 # API Test Structure
 
@@ -568,7 +569,7 @@ Assert:
 
 - Verify response and side effects.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -578,13 +579,13 @@ Testing only successful responses.
 
 Always include failure scenarios.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
 Ignoring response headers.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -592,13 +593,13 @@ Using production databases.
 
 Always use test databases.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
 Depending on test execution order.
 
----
+______________________________________________________________________
 
 ## Mistake 5
 
@@ -606,7 +607,7 @@ Making assertions on unnecessary fields.
 
 Focus on the behaviour relevant to the test.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -628,7 +629,7 @@ Focus on the behaviour relevant to the test.
 
 ❌ Don't rely on external APIs during API tests.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -664,11 +665,13 @@ Deploy
 
 API tests validate the application's public contract.
 
-If an endpoint accidentally changes its status code, response structure, validation rules, or authentication behaviour, the pipeline detects the regression before deployment.
+If an endpoint accidentally changes its status code, response structure, validation rules, or authentication behaviour,
+the pipeline detects the regression before deployment.
 
-This is particularly important because frontend applications, mobile apps, and third-party integrations all depend on that contract remaining stable.
+This is particularly important because frontend applications, mobile apps, and third-party integrations all depend on
+that contract remaining stable.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -680,7 +683,7 @@ This is particularly important because frontend applications, mobile apps, and t
 
 To verify that an application's HTTP interface behaves correctly from the perspective of an API client.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -688,9 +691,10 @@ To verify that an application's HTTP interface behaves correctly from the perspe
 
 ### Answer
 
-Because a successful HTTP response does not necessarily guarantee that the expected data was actually stored or modified correctly.
+Because a successful HTTP response does not necessarily guarantee that the expected data was actually stored or modified
+correctly.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -700,7 +704,7 @@ Because a successful HTTP response does not necessarily guarantee that the expec
 
 To ensure invalid input is rejected consistently and appropriate error responses are returned.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -708,9 +712,10 @@ To ensure invalid input is rejected consistently and appropriate error responses
 
 ### Answer
 
-They verify that protected endpoints cannot be accessed without valid credentials and that authorised users receive the expected responses.
+They verify that protected endpoints cannot be accessed without valid credentials and that authorised users receive the
+expected responses.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -720,7 +725,7 @@ They verify that protected endpoints cannot be accessed without valid credential
 
 Independent tests are repeatable, can run in any order, and are easier to debug when failures occur.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -752,7 +757,7 @@ Write API tests that verify:
 
 Use a dedicated test database and ensure each test runs in isolation.
 
----
+______________________________________________________________________
 
 # Knowledge Check
 
@@ -762,9 +767,10 @@ How does API testing differ from integration testing?
 
 ### Answer
 
-Integration testing focuses on interactions between internal components, while API testing verifies the application's public HTTP interface as experienced by clients.
+Integration testing focuses on interactions between internal components, while API testing verifies the application's
+public HTTP interface as experienced by clients.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -772,9 +778,10 @@ Why should API tests include negative scenarios?
 
 ### Answer
 
-Because clients frequently send invalid requests, and the application must respond with correct status codes and error messages.
+Because clients frequently send invalid requests, and the application must respond with correct status codes and error
+messages.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -784,7 +791,7 @@ What should always be verified after a successful `POST` request?
 
 The status code, response body, and any expected side effects, such as records being created in the database.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -792,9 +799,10 @@ Why are status codes part of the API contract?
 
 ### Answer
 
-Clients rely on them to determine whether a request succeeded, failed due to validation, lacked authentication, or encountered another error.
+Clients rely on them to determine whether a request succeeded, failed due to validation, lacked authentication, or
+encountered another error.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -802,9 +810,10 @@ Why are API tests valuable in CI/CD pipelines?
 
 ### Answer
 
-They detect regressions in endpoint behaviour, request validation, authentication, and response formats before changes are deployed.
+They detect regressions in endpoint behaviour, request validation, authentication, and response formats before changes
+are deployed.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -814,7 +823,7 @@ Write API tests for every endpoint in one of your existing FastAPI or Flask proj
 
 Ensure both successful and unsuccessful scenarios are covered.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -827,7 +836,7 @@ For every endpoint, create tests covering:
 - Resource not found.
 - Unexpected server error (where applicable).
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -838,19 +847,19 @@ Implement authentication for one endpoint and write tests for:
 - Invalid token.
 - Expired token.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
 Configure your CI pipeline to run:
 
 1. Unit tests.
-2. Integration tests.
-3. API tests.
+1. Integration tests.
+1. API tests.
 
 Verify that the build fails if any API contract is broken.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -865,9 +874,8 @@ In this lesson, you learned:
 - ✅ Verifying database side effects.
 - ✅ Production best practices for API testing.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[76-networking-part-01-tcp-sockets](76-networking-part-01-tcp-sockets.md)
+**File:** [76-networking-part-01-tcp-sockets](76-networking-part-01-tcp-sockets.md)

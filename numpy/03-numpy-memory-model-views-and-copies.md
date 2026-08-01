@@ -2,7 +2,7 @@
 
 **Python Version Introduced:** Python 3.x
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -17,7 +17,7 @@ By the end of this lesson, you will be able to:
 - Avoid common bugs caused by shared memory.
 - Write more memory-efficient NumPy code.
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -36,7 +36,7 @@ You also saw that some functions may create a copy while others try to reuse exi
 
 This lesson explains **why**.
 
----
+______________________________________________________________________
 
 # Why Should You Care?
 
@@ -70,7 +70,7 @@ Because **there is only one array in memory**.
 
 Understanding this behaviour prevents some of the most common NumPy bugs.
 
----
+______________________________________________________________________
 
 # ndarray Has Two Parts
 
@@ -106,7 +106,7 @@ Multiple arrays can point to the same data buffer.
 
 This is the foundation of Views.
 
----
+______________________________________________________________________
 
 # Assignment vs Copy
 
@@ -114,7 +114,7 @@ These two lines look similar.
 
 They are completely different.
 
----
+______________________________________________________________________
 
 ## Assignment
 
@@ -153,7 +153,7 @@ Output
 [100   2   3]
 ```
 
----
+______________________________________________________________________
 
 ## Copy
 
@@ -185,7 +185,7 @@ Output
 [1 2 3]
 ```
 
----
+______________________________________________________________________
 
 # What Is a View?
 
@@ -213,7 +213,7 @@ Original
 
 Only one copy of the data exists.
 
----
+______________________________________________________________________
 
 # Creating a View
 
@@ -239,7 +239,7 @@ Output
 
 Both arrays share memory.
 
----
+______________________________________________________________________
 
 # What Is a Copy?
 
@@ -274,7 +274,7 @@ Output
 [500   1   2   3   4   5]
 ```
 
----
+______________________________________________________________________
 
 # How to Check Whether Memory Is Shared
 
@@ -314,7 +314,7 @@ None
 
 A copied array owns its own memory.
 
----
+______________________________________________________________________
 
 # Using `np.shares_memory()`
 
@@ -348,7 +348,7 @@ Output
 False
 ```
 
----
+______________________________________________________________________
 
 # Using `np.may_share_memory()`
 
@@ -376,7 +376,7 @@ For everyday development, prefer:
 np.shares_memory()
 ```
 
----
+______________________________________________________________________
 
 # Memory Ownership
 
@@ -403,7 +403,7 @@ The most important flag for now is:
 OWNDATA
 ```
 
----
+______________________________________________________________________
 
 ## What Does `OWNDATA` Mean?
 
@@ -451,7 +451,7 @@ False
 
 The view borrows memory from another array.
 
----
+______________________________________________________________________
 
 # Contiguous Arrays
 
@@ -485,7 +485,7 @@ Output
 True
 ```
 
----
+______________________________________________________________________
 
 # Non-Contiguous Arrays
 
@@ -527,7 +527,7 @@ Output
 False
 ```
 
----
+______________________________________________________________________
 
 # Why Does This Matter?
 
@@ -542,7 +542,7 @@ We'll encounter this with:
 - `flatten()`
 - `ravel()`
 
----
+______________________________________________________________________
 
 # Which Operations Usually Return Views?
 
@@ -555,7 +555,7 @@ We'll encounter this with:
 | `transpose()` | Usually | Sometimes |
 | `ravel()` | Usually | Sometimes |
 
----
+______________________________________________________________________
 
 # Which Operations Usually Return Copies?
 
@@ -569,7 +569,7 @@ We'll encounter this with:
 
 We'll explain each of these in detail in later lessons.
 
----
+______________________________________________________________________
 
 # Common Bug #1
 
@@ -593,7 +593,7 @@ Why?
 
 Because slicing returned a **View**.
 
----
+______________________________________________________________________
 
 # Common Bug #2
 
@@ -615,7 +615,7 @@ Output
 
 Nothing happened to the original.
 
----
+______________________________________________________________________
 
 # Common Bug #3
 
@@ -641,7 +641,7 @@ Assignment does **not** create another array.
 
 It creates another reference.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -652,7 +652,7 @@ It creates another reference.
 - Avoid unnecessary copies when working with large datasets.
 - Be cautious when passing arrays between functions that modify data in place.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -662,11 +662,13 @@ Creating unnecessary copies could double memory usage to 10 GB, leading to slowe
 
 On the other hand, accidentally modifying a shared view could corrupt data used elsewhere in your application.
 
-Experienced NumPy users consciously choose between views and copies based on whether they prioritise memory efficiency or data isolation.
+Experienced NumPy users consciously choose between views and copies based on whether they prioritise memory efficiency
+or data isolation.
 
-Understanding this trade-off is essential when working with large-scale data processing, scientific computing, and machine learning.
+Understanding this trade-off is essential when working with large-scale data processing, scientific computing, and
+machine learning.
 
----
+______________________________________________________________________
 
 ```markdown id="k4q8bn"
 # Questions
@@ -710,25 +712,25 @@ The array does not own its data buffer. It is using memory owned by another arra
 Because they reuse the existing data buffer instead of allocating new memory.
 ```
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
 Write a program that:
 
 1. Creates an array using `np.arange(10)`.
-2. Creates:
+1. Creates:
    - An assignment (`=`).
    - A view using `.view()`.
    - A copy using `.copy()`.
-3. Modify each array and observe how the original changes.
-4. Check:
+1. Modify each array and observe how the original changes.
+1. Check:
    - `.base`
    - `OWNDATA`
    - `np.shares_memory()`
-5. Create a slice (`arr[::2]`) and determine whether it is contiguous by checking `C_CONTIGUOUS`.
+1. Create a slice (`arr[::2]`) and determine whether it is contiguous by checking `C_CONTIGUOUS`.
 
----
+______________________________________________________________________
 
 ```markdown id="z8m1yf"
 # Knowledge Check
@@ -792,7 +794,7 @@ Why can views improve performance?
 Views reuse the existing data buffer, avoiding additional memory allocation and data copying.
 ```
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -800,20 +802,23 @@ Views reuse the existing data buffer, avoiding additional memory allocation and 
    - An assignment.
    - A view.
    - A copy.
-2. Modify each one and record how the original array changes.
-3. Use `.base`, `OWNDATA`, `np.shares_memory()`, and `np.may_share_memory()` to investigate the relationships between the arrays.
-4. Create several slices (`arr[1:5]`, `arr[::2]`, `arr[::-1]`) and determine:
+1. Modify each one and record how the original array changes.
+1. Use `.base`, `OWNDATA`, `np.shares_memory()`, and `np.may_share_memory()` to investigate the relationships between the arrays.
+1. Create several slices (`arr[1:5]`, `arr[::2]`, `arr[::-1]`) and determine:
    - Whether they share memory.
    - Whether they are contiguous.
-5. Write a short explanation of when you would choose a view instead of a copy in a real-world application.
+1. Write a short explanation of when you would choose a view instead of a copy in a real-world application.
 
----
+______________________________________________________________________
 
 # Summary
 
-In this lesson, you learned how NumPy stores data internally and why understanding its memory model is essential. You explored the difference between assignment, views, and copies, learned how to inspect memory ownership using `.base` and `OWNDATA`, and used `np.shares_memory()` to determine whether arrays share the same underlying data. These concepts form the foundation for understanding indexing, slicing, reshaping, and many performance characteristics of NumPy.
+In this lesson, you learned how NumPy stores data internally and why understanding its memory model is essential. You
+explored the difference between assignment, views, and copies, learned how to inspect memory ownership using `.base` and
+`OWNDATA`, and used `np.shares_memory()` to determine whether arrays share the same underlying data. These concepts form
+the foundation for understanding indexing, slicing, reshaping, and many performance characteristics of NumPy.
 
----
+______________________________________________________________________
 
 # Next Lesson
 

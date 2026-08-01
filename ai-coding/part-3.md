@@ -4,24 +4,24 @@
 
 > **Audience:** Software Engineers using AI coding assistants such as Claude Code, GitHub Copilot, Antigravity, Codex, Cursor, Aider, and similar tools.
 
----
+______________________________________________________________________
 
 # Table of Contents
 
 1. Introduction
-2. Prompt Engineering vs Context Engineering
-3. Goals of an AI-Friendly Repository
-4. Repository Structure
-5. Common Repository Files
-6. Documentation Strategy
-7. Architecture Documentation
-8. Design Decision Records (ADR)
-9. Best Practices
-10. Token Optimization
-11. Common Mistakes
-12. Repository Checklist
+1. Prompt Engineering vs Context Engineering
+1. Goals of an AI-Friendly Repository
+1. Repository Structure
+1. Common Repository Files
+1. Documentation Strategy
+1. Architecture Documentation
+1. Design Decision Records (ADR)
+1. Best Practices
+1. Token Optimization
+1. Common Mistakes
+1. Repository Checklist
 
----
+______________________________________________________________________
 
 # 1. Introduction
 
@@ -29,19 +29,19 @@ Modern AI coding assistants do much more than generate code.
 
 They attempt to understand:
 
-* Repository structure
-* Documentation
-* Architecture
-* Source code
-* Configuration
-* Coding conventions
-* Design decisions
+- Repository structure
+- Documentation
+- Architecture
+- Source code
+- Configuration
+- Coding conventions
+- Design decisions
 
 A well-organized repository produces significantly better AI-generated code than a poorly documented one.
 
 Think of your repository as **long-term memory** for the AI.
 
----
+______________________________________________________________________
 
 # Prompt Engineering vs Context Engineering
 
@@ -64,7 +64,7 @@ Use retry logic.
 
 This wastes tokens.
 
----
+______________________________________________________________________
 
 ## Context Engineering
 
@@ -80,29 +80,29 @@ Implement startup synchronization.
 
 The AI already understands:
 
-* coding standards
-* architecture
-* naming conventions
-* project constraints
-* testing requirements
+- coding standards
+- architecture
+- naming conventions
+- project constraints
+- testing requirements
 
 This is called **Context Engineering**.
 
 Modern AI development is moving from Prompt Engineering to Context Engineering.
 
----
+______________________________________________________________________
 
 # Benefits
 
-* Smaller prompts
-* Lower token consumption
-* Better consistency
-* Better architecture decisions
-* Less repeated explanations
-* Easier onboarding
-* Better documentation
+- Smaller prompts
+- Lower token consumption
+- Better consistency
+- Better architecture decisions
+- Less repeated explanations
+- Easier onboarding
+- Better documentation
 
----
+______________________________________________________________________
 
 # 2. Goals of an AI-Friendly Repository
 
@@ -126,7 +126,7 @@ A repository should provide:
 
 ✓ Easy navigation
 
----
+______________________________________________________________________
 
 # 3. Recommended Repository Structure
 
@@ -157,7 +157,7 @@ project/
 └── examples/
 ```
 
----
+______________________________________________________________________
 
 ## Repository Layers
 
@@ -179,13 +179,13 @@ project/
 
 Every directory should have a clear responsibility.
 
----
+______________________________________________________________________
 
 # 4. Common Repository Files
 
 These files are useful regardless of which AI assistant you use.
 
----
+______________________________________________________________________
 
 ## README.md
 
@@ -197,13 +197,13 @@ Usually the first document read by developers and AI.
 
 ### Typical Information
 
-* Project overview
-* Installation
-* Running
-* Configuration
-* Features
-* Folder structure
-* High-level architecture
+- Project overview
+- Installation
+- Running
+- Configuration
+- Features
+- Folder structure
+- High-level architecture
 
 ### Example Headings
 
@@ -223,7 +223,7 @@ Testing
 Contributing
 ```
 
----
+______________________________________________________________________
 
 ## docs/
 
@@ -257,52 +257,52 @@ Everything.md
 
 Smaller documents improve retrieval quality.
 
----
+______________________________________________________________________
 
 ## tests/
 
 Contains
 
-* Unit tests
-* Integration tests
-* Fixtures
-* Test utilities
+- Unit tests
+- Integration tests
+- Fixtures
+- Test utilities
 
----
+______________________________________________________________________
 
 ## configs/
 
 Contains
 
-* Example configurations
-* Environment templates
-* Production samples
+- Example configurations
+- Environment templates
+- Production samples
 
----
+______________________________________________________________________
 
 ## examples/
 
 Contains
 
-* Example usage
-* Sample applications
-* Tutorials
-* Quick starts
+- Example usage
+- Sample applications
+- Tutorials
+- Quick starts
 
 Examples help AI understand intended usage patterns.
 
----
+______________________________________________________________________
 
 ## scripts/
 
 Contains
 
-* Build scripts
-* Deployment scripts
-* Helper utilities
-* Release automation
+- Build scripts
+- Deployment scripts
+- Helper utilities
+- Release automation
 
----
+______________________________________________________________________
 
 # 5. Documentation Strategy
 
@@ -334,25 +334,25 @@ Each document should answer one question.
 
 Example
 
-| Question                   | Document        |
+| Question | Document |
 | -------------------------- | --------------- |
-| How does the system work?  | architecture.md |
-| How does replication work? | protocol.md     |
-| How do workers behave?     | worker.md       |
-| How are deployments done?  | deployment.md   |
-| How is testing performed?  | testing.md      |
+| How does the system work? | architecture.md |
+| How does replication work? | protocol.md |
+| How do workers behave? | worker.md |
+| How are deployments done? | deployment.md |
+| How is testing performed? | testing.md |
 
----
+______________________________________________________________________
 
 # 6. Architecture Documentation
 
 The architecture document should explain
 
-* Components
-* Responsibilities
-* Data flow
-* Communication
-* High-level diagrams
+- Components
+- Responsibilities
+- Data flow
+- Communication
+- High-level diagrams
 
 Example
 
@@ -378,12 +378,12 @@ Storage
 
 Avoid
 
-* TODOs
-* Bug history
-* Meeting notes
-* Temporary decisions
+- TODOs
+- Bug history
+- Meeting notes
+- Temporary decisions
 
----
+______________________________________________________________________
 
 # 7. Design Decision Records (ADR)
 
@@ -393,9 +393,9 @@ Purpose
 
 Explain
 
-* Why a decision was made
-* Alternatives considered
-* Why alternatives were rejected
+- Why a decision was made
+- Alternatives considered
+- Why alternatives were rejected
 
 Example
 
@@ -427,7 +427,7 @@ the AI can simply read
 docs/decisions.md
 ```
 
----
+______________________________________________________________________
 
 # 8. Best Practices
 
@@ -441,7 +441,7 @@ Avoid
 
 2000-line markdown files.
 
----
+______________________________________________________________________
 
 ## One Responsibility Per Document
 
@@ -457,7 +457,7 @@ Bad
 EverythingAboutWorkersManagersArchitecture.md
 ```
 
----
+______________________________________________________________________
 
 ## Avoid Duplicate Information
 
@@ -469,13 +469,13 @@ architecture.md
 
 don't repeat it in
 
-* README
-* testing
-* deployment
+- README
+- testing
+- deployment
 
 Reference instead of copying.
 
----
+______________________________________________________________________
 
 ## Keep Documentation Updated
 
@@ -485,7 +485,7 @@ update documentation.
 
 Documentation should never lag behind implementation.
 
----
+______________________________________________________________________
 
 ## Use Consistent Terminology
 
@@ -513,7 +513,7 @@ Listener
 
 All referring to the same component.
 
----
+______________________________________________________________________
 
 # 9. Token Optimization
 
@@ -543,13 +543,13 @@ Implement startup synchronization.
 
 AI retrieves
 
-* architecture.md
-* worker.md
-* protocol.md
+- architecture.md
+- worker.md
+- protocol.md
 
 instead.
 
----
+______________________________________________________________________
 
 ## Techniques
 
@@ -573,26 +573,26 @@ Architecture.md
 4000 lines
 ```
 
----
+______________________________________________________________________
 
 ### Don't Repeat Information
 
 Reference documents instead.
 
----
+______________________________________________________________________
 
 ### Keep Stable Knowledge in Documentation
 
 Examples
 
-* Architecture
-* Coding standards
-* Constraints
-* Design decisions
+- Architecture
+- Coding standards
+- Constraints
+- Design decisions
 
 Avoid placing these repeatedly in prompts.
 
----
+______________________________________________________________________
 
 ### Use Consistent Folder Names
 
@@ -608,7 +608,7 @@ configs/
 
 Avoid confusing structures.
 
----
+______________________________________________________________________
 
 # 10. Common Mistakes
 
@@ -630,57 +630,59 @@ Avoid confusing structures.
 
 ❌ Inconsistent naming
 
----
+______________________________________________________________________
 
 # 11. Repository Checklist
 
 ## Repository
 
-* [ ] README.md
-* [ ] docs/
-* [ ] src/
-* [ ] tests/
-* [ ] examples/
-* [ ] configs/
-* [ ] scripts/
+- [ ] README.md
+- [ ] docs/
+- [ ] src/
+- [ ] tests/
+- [ ] examples/
+- [ ] configs/
+- [ ] scripts/
 
----
+______________________________________________________________________
 
 ## Documentation
 
-* [ ] architecture.md
-* [ ] coding-guidelines.md
-* [ ] testing.md
-* [ ] deployment.md
-* [ ] troubleshooting.md
-* [ ] protocol.md (if applicable)
-* [ ] decisions.md
+- [ ] architecture.md
+- [ ] coding-guidelines.md
+- [ ] testing.md
+- [ ] deployment.md
+- [ ] troubleshooting.md
+- [ ] protocol.md (if applicable)
+- [ ] decisions.md
 
----
+______________________________________________________________________
 
 ## Quality
 
-* [ ] Small focused documents
-* [ ] No duplication
-* [ ] Consistent terminology
-* [ ] Updated regularly
-* [ ] Architecture diagrams included
+- [ ] Small focused documents
+- [ ] No duplication
+- [ ] Consistent terminology
+- [ ] Updated regularly
+- [ ] Architecture diagrams included
 
----
+______________________________________________________________________
 
 # Summary
 
-An AI-friendly repository is one where the **repository itself provides the context**, allowing AI assistants to focus on the task instead of reconstructing project knowledge from every prompt.
+An AI-friendly repository is one where the **repository itself provides the context**, allowing AI assistants to focus
+on the task instead of reconstructing project knowledge from every prompt.
 
 The key principles are:
 
-* Organize documentation into small, focused files.
-* Separate architecture, implementation, deployment, and testing.
-* Record important design decisions.
-* Keep documentation current.
-* Let the repository provide context so prompts remain concise.
+- Organize documentation into small, focused files.
+- Separate architecture, implementation, deployment, and testing.
+- Record important design decisions.
+- Keep documentation current.
+- Let the repository provide context so prompts remain concise.
 
 This foundation works with virtually every modern AI coding assistant, regardless of vendor or IDE.
 
 ## Next
+
 [Claude Code Complete Guide](part-4.md)

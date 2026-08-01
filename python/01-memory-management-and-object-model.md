@@ -1,6 +1,7 @@
 # File: python/01-memory-management-and-object-model.md
 
 # Python Advanced - Lesson 01
+
 # Memory Management & Python Object Model
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 45-60 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -27,7 +28,7 @@ By the end of this lesson you will understand:
 - Why modifying one variable sometimes changes another
 - Common interview questions around object references
 
----
+______________________________________________________________________
 
 # Prerequisites
 
@@ -37,7 +38,7 @@ By the end of this lesson you will understand:
 - Lists
 - Dictionaries
 
----
+______________________________________________________________________
 
 # Why This Topic Matters
 
@@ -54,7 +55,7 @@ Understanding Python's object model helps you:
 
 This lesson is the foundation for everything we'll learn later.
 
----
+______________________________________________________________________
 
 # 1. Everything in Python is an Object
 
@@ -79,7 +80,7 @@ MyClass
 
 Everything above is an object.
 
----
+______________________________________________________________________
 
 ## What is an Object?
 
@@ -105,7 +106,7 @@ Type     : int
 Value    : 25
 ```
 
----
+______________________________________________________________________
 
 # 2. Variables Don't Store Data
 
@@ -143,7 +144,7 @@ It only points to an object.
 
 Think of a variable as a **label**.
 
----
+______________________________________________________________________
 
 # Example 1
 
@@ -179,7 +180,7 @@ Visualization:
               x      y
 ```
 
----
+______________________________________________________________________
 
 # 3. Understanding id()
 
@@ -214,7 +215,7 @@ The **address** is the object's identity.
 
 `id()` returns the address (identity), **not** the value.
 
----
+______________________________________________________________________
 
 # 4. Lists Behave Differently
 
@@ -252,7 +253,7 @@ Visualization:
 
 Only one list exists.
 
----
+______________________________________________________________________
 
 # Example 2
 
@@ -288,13 +289,13 @@ Because there is only one list.
           numbers   another
 ```
 
----
+______________________________________________________________________
 
 # 5. Mutable vs Immutable Objects
 
 This is one of the most asked interview topics.
 
----
+______________________________________________________________________
 
 ## Immutable Objects
 
@@ -325,7 +326,7 @@ TypeError
 
 Because strings cannot be modified.
 
----
+______________________________________________________________________
 
 ## Mutable Objects
 
@@ -355,7 +356,7 @@ Output:
 
 The original object changed.
 
----
+______________________________________________________________________
 
 # 6. Immutable Objects Create New Objects
 
@@ -400,7 +401,7 @@ The integer `10` never changed.
 
 Python created a new object `11`.
 
----
+______________________________________________________________________
 
 # 7. == vs is
 
@@ -440,7 +441,7 @@ Compares values.
 Same contents
 ```
 
----
+______________________________________________________________________
 
 ### is
 
@@ -456,7 +457,7 @@ Different objects
 
 Even if two objects contain the same data, they are still different objects.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -480,7 +481,7 @@ True
 
 Both variables point to the exact same object.
 
----
+______________________________________________________________________
 
 # Best Practice
 
@@ -504,7 +505,7 @@ There is only one `None` object.
 
 Identity comparison is the recommended Python style.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -529,7 +530,7 @@ The cache has now changed because both variables reference the same list.
 
 This is a common source of bugs in production systems.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -549,7 +550,7 @@ Correct understanding:
 b points to the same object as a
 ```
 
----
+______________________________________________________________________
 
 ### Mistake 2
 
@@ -567,7 +568,7 @@ Correct:
 name1 == name2
 ```
 
----
+______________________________________________________________________
 
 ### Mistake 3
 
@@ -587,7 +588,7 @@ Correct:
 11 is a brand new object
 ```
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -605,7 +606,7 @@ x.append(3)
 print(y)
 ```
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -621,7 +622,7 @@ print(a == b)
 print(a is b)
 ```
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -641,7 +642,7 @@ Will the IDs be the same?
 
 Why?
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -657,7 +658,7 @@ y["age"] = 28
 print(x)
 ```
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -675,20 +676,20 @@ if value == None:
     ...
 ```
 
----
+______________________________________________________________________
 
 # Assignment
 
 Without using Google, answer these questions in your own words:
 
 1. What is an object?
-2. What does a variable store?
-3. Why are lists mutable?
-4. Why are strings immutable?
-5. Difference between `==` and `is`.
-6. Why did `numbers` change when `another.append()` was called?
+1. What does a variable store?
+1. Why are lists mutable?
+1. Why are strings immutable?
+1. Difference between `==` and `is`.
+1. Why did `numbers` change when `another.append()` was called?
 
----
+______________________________________________________________________
 
 # Answers
 
@@ -706,7 +707,7 @@ Output:
 
 Calling `append()` modifies the existing list instead of creating a new one.
 
----
+______________________________________________________________________
 
 ## Answer 2
 
@@ -726,7 +727,7 @@ False
 
 The two lists contain the same values but are different objects in memory.
 
----
+______________________________________________________________________
 
 ## Answer 3
 
@@ -742,9 +743,10 @@ When you write:
 name = name + "3"
 ```
 
-Python creates a brand-new string object (`"Python3"`). The original `"Python"` object is unchanged, and `name` now points to the new object.
+Python creates a brand-new string object (`"Python3"`). The original `"Python"` object is unchanged, and `name` now
+points to the new object.
 
----
+______________________________________________________________________
 
 ## Answer 4
 
@@ -756,9 +758,10 @@ Output:
 
 ### Explanation
 
-`x` and `y` reference the same dictionary object. Updating the dictionary through `y` changes the shared object, so `x` sees the update as well.
+`x` and `y` reference the same dictionary object. Updating the dictionary through `y` changes the shared object, so `x`
+sees the update as well.
 
----
+______________________________________________________________________
 
 ## Answer 5
 
@@ -766,7 +769,7 @@ Output:
 
 Using `is` checks whether the object is that exact singleton, making it both idiomatic and reliable.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -781,7 +784,7 @@ In this lesson you learned:
 - ✅ `==` compares values, while `is` compares object identity.
 - ✅ `is None` is the recommended way to check for `None`.
 
----
+______________________________________________________________________
 
 # Key Takeaways
 
@@ -794,12 +797,11 @@ Before moving on, make sure you can confidently explain:
 
 If you can explain these concepts without looking at the notes, you're ready for the next lesson.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[02-Reference-Counting-and-Garbage-Collection-part-1](02-reference-counting-and-garbage-collection-part-1.md)
+**File:** [02-Reference-Counting-and-Garbage-Collection-part-1](02-reference-counting-and-garbage-collection-part-1.md)
 
 Topics:
 

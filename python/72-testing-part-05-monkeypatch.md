@@ -1,6 +1,7 @@
 # File: python/72-testing-part-05-monkeypatch.md
 
 # Testing
+
 # Part 5: monkeypatch – Temporarily Modifying Runtime Behaviour in Tests
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 10–12 Hours
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -32,7 +33,7 @@ By the end of this lesson, you will understand:
 - Common mistakes
 - Production best practices
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -60,7 +61,7 @@ Unlike `Mock`, `monkeypatch` is designed to **temporarily modify the runtime env
 
 After the test finishes, pytest automatically restores everything.
 
----
+______________________________________________________________________
 
 # What is monkeypatch?
 
@@ -84,7 +85,7 @@ Original State
 Automatically Restored
 ```
 
----
+______________________________________________________________________
 
 # Why Use monkeypatch?
 
@@ -120,7 +121,7 @@ Restore
 
 This keeps tests isolated.
 
----
+______________________________________________________________________
 
 # The monkeypatch Fixture
 
@@ -140,7 +141,7 @@ No imports are required.
 
 Pytest automatically provides the fixture.
 
----
+______________________________________________________________________
 
 # Replacing Attributes
 
@@ -186,7 +187,7 @@ returns to:
 False
 ```
 
----
+______________________________________________________________________
 
 # Replacing Functions
 
@@ -224,7 +225,7 @@ monkeypatch.setattr(
 
 Now every call uses the fake implementation.
 
----
+______________________________________________________________________
 
 # Mocking Environment Variables
 
@@ -271,7 +272,7 @@ def test_database(
 
 The real environment remains untouched.
 
----
+______________________________________________________________________
 
 # Removing Environment Variables
 
@@ -289,7 +290,7 @@ monkeypatch.delenv(
 
 Useful when verifying startup validation.
 
----
+______________________________________________________________________
 
 # Modifying Dictionaries
 
@@ -327,7 +328,7 @@ Dictionary
 Automatically Restored
 ```
 
----
+______________________________________________________________________
 
 # Removing Dictionary Entries
 
@@ -347,7 +348,7 @@ monkeypatch.delitem(
 
 Helpful when testing missing configuration values.
 
----
+______________________________________________________________________
 
 # Changing the Current Directory
 
@@ -369,7 +370,7 @@ monkeypatch.chdir(
 
 The test executes in a temporary directory.
 
----
+______________________________________________________________________
 
 # sys.path Modification
 
@@ -384,7 +385,7 @@ monkeypatch.syspath_prepend(
 
 The path exists only for the duration of the test.
 
----
+______________________________________________________________________
 
 # Replacing Instance Methods
 
@@ -440,7 +441,7 @@ fake_send()
 
 until the test ends.
 
----
+______________________________________________________________________
 
 # monkeypatch vs patch()
 
@@ -458,7 +459,7 @@ Use:
 
 Many projects use both together.
 
----
+______________________________________________________________________
 
 # Backend Example
 
@@ -500,7 +501,7 @@ Restore
 
 No production configuration is modified.
 
----
+______________________________________________________________________
 
 # Example: Mocking an API Function
 
@@ -553,7 +554,7 @@ def test_weather(
 
 No HTTP request is made.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -561,7 +562,7 @@ No HTTP request is made.
 
 Using `monkeypatch` when dependency injection would be simpler.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -569,7 +570,7 @@ Replacing the wrong attribute.
 
 Always patch the object actually used by the code under test.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -577,13 +578,13 @@ Using `monkeypatch` to hide design problems.
 
 Frequent monkeypatching may indicate that dependencies are tightly coupled.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
 Mixing permanent state changes with temporary patches.
 
----
+______________________________________________________________________
 
 ## Mistake 5
 
@@ -591,7 +592,7 @@ Using `monkeypatch` outside pytest.
 
 It is a pytest fixture and is not available in plain Python scripts.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -609,7 +610,7 @@ It is a pytest fixture and is not available in plain Python scripts.
 
 ❌ Don't overuse monkeypatch to compensate for poor design.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -623,9 +624,10 @@ Modern backend applications often depend on:
 
 Tests should never modify the developer's machine or CI environment permanently.
 
-`monkeypatch` allows runtime behaviour to be modified safely while guaranteeing that the original state is restored after each test.
+`monkeypatch` allows runtime behaviour to be modified safely while guaranteeing that the original state is restored
+after each test.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -635,9 +637,10 @@ Tests should never modify the developer's machine or CI environment permanently.
 
 ### Answer
 
-`monkeypatch` is a built-in pytest fixture that temporarily modifies objects, environment variables, dictionaries, or other runtime state during a test.
+`monkeypatch` is a built-in pytest fixture that temporarily modifies objects, environment variables, dictionaries, or
+other runtime state during a test.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -647,7 +650,7 @@ Tests should never modify the developer's machine or CI environment permanently.
 
 It allows tests to simulate different environments without changing the real operating system environment.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -655,9 +658,10 @@ It allows tests to simulate different environments without changing the real ope
 
 ### Answer
 
-It is particularly useful for temporarily modifying runtime state such as environment variables, object attributes, or the current working directory.
+It is particularly useful for temporarily modifying runtime state such as environment variables, object attributes, or
+the current working directory.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -667,7 +671,7 @@ It is particularly useful for temporarily modifying runtime state such as enviro
 
 Yes. Pytest restores the original state after each test, ensuring isolation.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -675,9 +679,10 @@ Yes. Pytest restores the original state after each test, ensuring isolation.
 
 ### Answer
 
-If many tests require extensive monkeypatching, it often indicates that the code has tightly coupled dependencies and could benefit from dependency injection or better separation of concerns.
+If many tests require extensive monkeypatching, it often indicates that the code has tightly coupled dependencies and
+could benefit from dependency injection or better separation of concerns.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -698,14 +703,14 @@ config_app/
 Implement tests that:
 
 1. Replace an environment variable using `setenv()`.
-2. Remove an environment variable using `delenv()`.
-3. Replace a function using `setattr()`.
-4. Modify a dictionary using `setitem()`.
-5. Change the working directory using `chdir()`.
+1. Remove an environment variable using `delenv()`.
+1. Replace a function using `setattr()`.
+1. Modify a dictionary using `setitem()`.
+1. Change the working directory using `chdir()`.
 
 Verify that every modification is automatically restored after each test.
 
----
+______________________________________________________________________
 
 # Knowledge Check
 
@@ -715,9 +720,10 @@ Why is `monkeypatch` considered safer than manually changing global state?
 
 ### Answer
 
-Because pytest automatically restores the original state after the test completes, preventing changes from affecting other tests.
+Because pytest automatically restores the original state after the test completes, preventing changes from affecting
+other tests.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -725,9 +731,10 @@ What types of runtime state can `monkeypatch` modify?
 
 ### Answer
 
-It can modify object attributes, functions, methods, environment variables, dictionary entries, the current working directory, and Python's import path.
+It can modify object attributes, functions, methods, environment variables, dictionary entries, the current working
+directory, and Python's import path.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -735,9 +742,10 @@ Why is `monkeypatch.setenv()` commonly used in backend testing?
 
 ### Answer
 
-Backend applications frequently rely on environment variables for configuration, and `setenv()` allows tests to simulate different deployment configurations safely.
+Backend applications frequently rely on environment variables for configuration, and `setenv()` allows tests to simulate
+different deployment configurations safely.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -745,9 +753,10 @@ When is dependency injection preferable to `monkeypatch`?
 
 ### Answer
 
-When dependencies can be supplied directly to the code under test, resulting in simpler, more explicit, and easier-to-maintain tests.
+When dependencies can be supplied directly to the code under test, resulting in simpler, more explicit, and
+easier-to-maintain tests.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -755,9 +764,10 @@ Can `monkeypatch` and `Mock` be used together?
 
 ### Answer
 
-Yes. `monkeypatch` can replace an object with a `Mock`, combining temporary runtime modification with interaction verification.
+Yes. `monkeypatch` can replace an object with a `Mock`, combining temporary runtime modification with interaction
+verification.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -767,7 +777,7 @@ Take one of your FastAPI or Flask projects.
 
 Replace all environment-variable setup in tests with `monkeypatch.setenv()`.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -779,7 +789,7 @@ Write tests that simulate:
 
 using only `monkeypatch`.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -787,7 +797,7 @@ Replace a function that normally performs an HTTP request with a fake implementa
 
 Verify that the application behaves correctly without making a network call.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -797,7 +807,7 @@ Identify every place where `patch()` is being used solely to change runtime stat
 
 Determine whether `monkeypatch` would provide a simpler solution.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -812,9 +822,8 @@ In this lesson, you learned:
 - ✅ Managing `sys.path`.
 - ✅ Production testing practices using `monkeypatch`.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[73-testing-part-06-coverage](73-testing-part-06-coverage.md)
+**File:** [73-testing-part-06-coverage](73-testing-part-06-coverage.md)

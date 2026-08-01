@@ -1,6 +1,7 @@
 # File: python/61-production-python-part-06-environment-variables.md
 
 # Production Python
+
 # Part 6: Environment Variables – Secure and Flexible Application Configuration
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 8–10 Hours
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -31,7 +32,7 @@ By the end of this lesson, you will understand:
 - Common mistakes
 - Production best practices
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -47,11 +48,12 @@ DATABASE_URL = "postgresql://localhost/shop"
 
 we allow the operating system to provide the value.
 
----
+______________________________________________________________________
 
 # What is an Environment Variable?
 
-An environment variable is a **key-value pair** maintained by the operating system and inherited by a process when it starts.
+An environment variable is a **key-value pair** maintained by the operating system and inherited by a process when it
+starts.
 
 Example:
 
@@ -61,7 +63,7 @@ DATABASE_URL=postgresql://db:5432/shop
 
 Your Python application simply reads this value.
 
----
+______________________________________________________________________
 
 # Why Use Environment Variables?
 
@@ -77,7 +79,7 @@ Example:
 
 The application code never changes.
 
----
+______________________________________________________________________
 
 # Accessing Environment Variables
 
@@ -99,7 +101,7 @@ None
 
 is returned.
 
----
+______________________________________________________________________
 
 # Providing Default Values
 
@@ -121,7 +123,7 @@ is used.
 
 Use defaults only when appropriate.
 
----
+______________________________________________________________________
 
 # Required Variables
 
@@ -145,7 +147,7 @@ if secret is None:
 
 Fail during startup rather than after serving requests.
 
----
+______________________________________________________________________
 
 # Environment Variables are Strings
 
@@ -171,7 +173,7 @@ timeout = float(
 
 Always validate conversions.
 
----
+______________________________________________________________________
 
 # Boolean Values
 
@@ -207,15 +209,16 @@ DEBUG = (
 )
 ```
 
----
+______________________________________________________________________
 
 # Local Development
 
 During development, developers often create environment variables manually or use tools that load them automatically.
 
-Regardless of how they are provided, the application should always access them through the same configuration layer rather than scattering `os.getenv()` calls throughout the codebase.
+Regardless of how they are provided, the application should always access them through the same configuration layer
+rather than scattering `os.getenv()` calls throughout the codebase.
 
----
+______________________________________________________________________
 
 # Docker
 
@@ -239,7 +242,7 @@ Application Starts
 
 The Docker image remains identical across environments.
 
----
+______________________________________________________________________
 
 # Kubernetes
 
@@ -250,7 +253,7 @@ Kubernetes commonly provides environment variables from:
 
 This allows operations teams to update deployment configuration without rebuilding the application.
 
----
+______________________________________________________________________
 
 # Secrets
 
@@ -265,7 +268,7 @@ Although environment variables are widely used, remember that they are **configu
 
 Access should still be restricted and secrets should be managed appropriately.
 
----
+______________________________________________________________________
 
 # Example Project Structure
 
@@ -295,7 +298,7 @@ os.getenv()
 
 Other modules import configuration from there.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -303,31 +306,31 @@ Other modules import configuration from there.
 
 Hardcoding secrets.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
 Calling `os.getenv()` throughout the project.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
 Assuming environment variables already have the correct type.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
 Not validating required configuration.
 
----
+______________________________________________________________________
 
 ## Mistake 5
 
 Depending on hidden defaults for critical settings.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -345,7 +348,7 @@ Depending on hidden defaults for critical settings.
 
 ❌ Don't duplicate configuration logic.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -361,7 +364,7 @@ The deployment environment supplies:
 
 This approach enables immutable deployments and reliable CI/CD pipelines.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -373,7 +376,7 @@ This approach enables immutable deployments and reliable CI/CD pipelines.
 
 Because they allow configuration to change between environments without modifying or rebuilding the application.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -383,7 +386,7 @@ Because they allow configuration to change between environments without modifyin
 
 To create a single source of truth, simplify maintenance, and avoid inconsistent configuration.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -393,7 +396,7 @@ To create a single source of truth, simplify maintenance, and avoid inconsistent
 
 Because environment variables are external input and may be missing, malformed, or contain unexpected values.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -403,7 +406,7 @@ Because environment variables are external input and may be missing, malformed, 
 
 Because every non-empty string evaluates to `True`, including the string `"False"`.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -413,7 +416,7 @@ Because every non-empty string evaluates to `True`, including the string `"False
 
 Because they are difficult to rotate, may leak through version control, and create unnecessary security risks.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -434,7 +437,7 @@ Implement a configuration class that loads:
 
 Validate required settings and convert values to their correct types before the application starts.
 
----
+______________________________________________________________________
 
 # Knowledge Check
 
@@ -446,7 +449,7 @@ Why are environment variables widely used in cloud deployments?
 
 They allow deployment-specific configuration without changing application code or rebuilding deployment artifacts.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -454,9 +457,10 @@ Why should applications fail during startup when required environment variables 
 
 ### Answer
 
-Because configuration problems are deployment issues that should be detected before the application begins serving requests.
+Because configuration problems are deployment issues that should be detected before the application begins serving
+requests.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -466,7 +470,7 @@ Why should environment variables be converted to appropriate data types?
 
 Because operating systems expose them as strings regardless of their intended meaning.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -474,9 +478,10 @@ Why is a central configuration module recommended?
 
 ### Answer
 
-It avoids duplicated configuration logic, improves maintainability, and ensures consistent behaviour across the application.
+It avoids duplicated configuration logic, improves maintainability, and ensures consistent behaviour across the
+application.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -484,9 +489,10 @@ What kinds of information are commonly stored in environment variables?
 
 ### Answer
 
-Database connection strings, service endpoints, API keys, feature flags, logging configuration, and other deployment-specific settings.
+Database connection strings, service endpoints, API keys, feature flags, logging configuration, and other
+deployment-specific settings.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -494,19 +500,19 @@ Database connection strings, service endpoints, API keys, feature flags, logging
 
 Move every `os.getenv()` call in one of your projects into a single configuration module.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
 Implement validation for all required environment variables.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
 Convert all numeric and boolean environment variables to their appropriate Python types.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -517,7 +523,7 @@ Create documentation listing every environment variable your application require
 - Secret
 - Environment-specific
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -531,9 +537,8 @@ In this lesson, you learned:
 - ✅ Secret management principles.
 - ✅ Production best practices.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[62-production-python-part-07-virtual-environments](62-production-python-part-07-virtual-environments.md)
+**File:** [62-production-python-part-07-virtual-environments](62-production-python-part-07-virtual-environments.md)

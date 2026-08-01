@@ -1,6 +1,7 @@
 # File: python/76-networking-part-01-tcp-sockets.md
 
 # Computer Networking
+
 # Part 2: TCP Sockets – How Applications Communicate Over the Network
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 14–16 Hours
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -32,7 +33,7 @@ By the end of this lesson, you will understand:
 - Common socket errors
 - Production best practices
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -82,7 +83,7 @@ The answer is:
 
 **Sockets.**
 
----
+______________________________________________________________________
 
 # What is a Socket?
 
@@ -114,7 +115,7 @@ Applications do not communicate directly with each other.
 
 They communicate through sockets managed by the operating system.
 
----
+______________________________________________________________________
 
 # A Real-World Analogy
 
@@ -142,7 +143,7 @@ The telephones provide the communication channel.
 
 A socket plays the role of the telephone.
 
----
+______________________________________________________________________
 
 # Why Do We Need Sockets?
 
@@ -182,7 +183,7 @@ Program B
 
 The operating system handles routing, buffering, retransmission, and connection management.
 
----
+______________________________________________________________________
 
 # Socket Types
 
@@ -202,7 +203,7 @@ Fast, connectionless communication.
 
 This lesson focuses on **TCP**.
 
----
+______________________________________________________________________
 
 # TCP Characteristics
 
@@ -236,7 +237,7 @@ Receiver
 
 The receiver gets the data in the correct order.
 
----
+______________________________________________________________________
 
 # Client–Server Model
 
@@ -262,7 +263,7 @@ Examples:
 - FastAPI → PostgreSQL
 - Redis Client → Redis Server
 
----
+______________________________________________________________________
 
 # Socket Lifecycle
 
@@ -298,7 +299,7 @@ close()
 
 Understanding this lifecycle is fundamental to network programming.
 
----
+______________________________________________________________________
 
 # Creating a Socket
 
@@ -316,7 +317,7 @@ Explanation:
 - `AF_INET` specifies IPv4.
 - `SOCK_STREAM` specifies TCP.
 
----
+______________________________________________________________________
 
 # Binding
 
@@ -330,7 +331,7 @@ This tells the operating system:
 
 > "Deliver connections for port 8000 to this socket."
 
----
+______________________________________________________________________
 
 # Listening
 
@@ -354,7 +355,7 @@ Server
 
 The operating system maintains a backlog of pending connections.
 
----
+______________________________________________________________________
 
 # Accepting Connections
 
@@ -371,7 +372,7 @@ It returns:
 
 The original listening socket continues accepting future connections.
 
----
+______________________________________________________________________
 
 # Receiving Data
 
@@ -393,7 +394,7 @@ Output:
 b"Hello"
 ```
 
----
+______________________________________________________________________
 
 # Sending Data
 
@@ -415,7 +416,7 @@ client_socket.send(
 )
 ```
 
----
+______________________________________________________________________
 
 # Closing Connections
 
@@ -429,7 +430,7 @@ server.close()
 
 Closing sockets frees operating system resources and notifies the peer that communication has ended.
 
----
+______________________________________________________________________
 
 # Complete Echo Server
 
@@ -465,7 +466,7 @@ server.close()
 
 This server echoes every message it receives.
 
----
+______________________________________________________________________
 
 # Client Example
 
@@ -488,7 +489,7 @@ print(response.decode())
 client.close()
 ```
 
----
+______________________________________________________________________
 
 # What Actually Happens?
 
@@ -533,7 +534,7 @@ Although the code appears simple, the operating system performs:
 - Packet retransmission
 - Connection teardown
 
----
+______________________________________________________________________
 
 # Common Socket Errors
 
@@ -547,7 +548,7 @@ Address already in use
 
 Another process is already bound to the port.
 
----
+______________________________________________________________________
 
 ## Connection Refused
 
@@ -557,19 +558,19 @@ ConnectionRefusedError
 
 No server is listening on the destination port.
 
----
+______________________________________________________________________
 
 ## Timeout
 
 The peer does not respond within the configured time.
 
----
+______________________________________________________________________
 
 ## Broken Pipe
 
 The remote peer closed the connection while data was being sent.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -587,7 +588,7 @@ The remote peer closed the connection while data was being sent.
 
 ❌ Don't ignore partial sends or receives in production code.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -629,11 +630,13 @@ Socket
 PostgreSQL
 ```
 
-Frameworks such as Flask and FastAPI hide socket management, but underneath they still use the same operating system socket APIs.
+Frameworks such as Flask and FastAPI hide socket management, but underneath they still use the same operating system
+socket APIs.
 
-Understanding sockets helps explain how web servers, databases, proxies, message brokers, and distributed systems communicate.
+Understanding sockets helps explain how web servers, databases, proxies, message brokers, and distributed systems
+communicate.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -645,7 +648,7 @@ Understanding sockets helps explain how web servers, databases, proxies, message
 
 A socket is an operating system abstraction that provides an endpoint for network communication between processes.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -653,9 +656,10 @@ A socket is an operating system abstraction that provides an endpoint for networ
 
 ### Answer
 
-To associate a socket with a specific IP address and port so the operating system knows where to deliver incoming connections.
+To associate a socket with a specific IP address and port so the operating system knows where to deliver incoming
+connections.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -663,9 +667,10 @@ To associate a socket with a specific IP address and port so the operating syste
 
 ### Answer
 
-The listening socket continues accepting new clients, while each connected client receives its own dedicated communication socket.
+The listening socket continues accepting new clients, while each connected client receives its own dedicated
+communication socket.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -675,7 +680,7 @@ The listening socket continues accepting new clients, while each connected clien
 
 Networks transmit raw bytes. Applications are responsible for encoding and decoding text or other data formats.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -685,7 +690,7 @@ Networks transmit raw bytes. Applications are responsible for encoding and decod
 
 Because it provides reliable, ordered, and error-checked delivery, ensuring requests and responses arrive correctly.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -711,7 +716,7 @@ Implement:
 
 Then extend the server to support multiple sequential client connections (one client at a time).
 
----
+______________________________________________________________________
 
 # Knowledge Check
 
@@ -723,7 +728,7 @@ Why is TCP described as connection-oriented?
 
 Because a connection is established between the client and server before application data is exchanged.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -731,9 +736,10 @@ Why should developers not assume one `recv()` call contains an entire message?
 
 ### Answer
 
-TCP is a byte stream, not a message protocol. Large messages may arrive in multiple reads, and multiple small messages may be combined into one read.
+TCP is a byte stream, not a message protocol. Large messages may arrive in multiple reads, and multiple small messages
+may be combined into one read.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -741,9 +747,10 @@ What is the difference between the listening socket and the socket returned by `
 
 ### Answer
 
-The listening socket waits for new connections, while the socket returned by `accept()` is dedicated to communicating with a single connected client.
+The listening socket waits for new connections, while the socket returned by `accept()` is dedicated to communicating
+with a single connected client.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -753,7 +760,7 @@ Why must applications encode strings before sending them over a socket?
 
 Sockets transmit bytes. Strings must be converted to bytes using an encoding such as UTF-8 before transmission.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -761,9 +768,10 @@ How do sockets relate to web frameworks like FastAPI?
 
 ### Answer
 
-FastAPI does not communicate directly with the network. It runs on servers such as Uvicorn, which use operating system sockets to receive HTTP requests and send responses.
+FastAPI does not communicate directly with the network. It runs on servers such as Uvicorn, which use operating system
+sockets to receive HTTP requests and send responses.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -773,19 +781,19 @@ Implement a TCP echo server and client.
 
 Verify that messages sent by the client are echoed back correctly.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
 Modify the server to log each client's IP address and port.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
 Add socket timeouts and handle connection failures gracefully.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -793,7 +801,7 @@ Experiment with sending messages larger than 1 KB.
 
 Observe how many `recv()` calls are required and explain why this happens.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -806,9 +814,8 @@ In this lesson, you learned:
 - ✅ Common socket errors.
 - ✅ Why sockets are the foundation of networked applications.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[77-networking-part-02-udp-sockets](77-networking-part-02-udp-sockets.md)
+**File:** [77-networking-part-02-udp-sockets](77-networking-part-02-udp-sockets.md)

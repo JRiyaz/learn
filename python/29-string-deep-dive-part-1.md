@@ -1,6 +1,7 @@
 # File: python/29-string-deep-dive-part-1.md
 
 # Python Built-in Types
+
 # String (`str`) Deep Dive - Part 1: Foundations & Internals
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 2.5 Hours
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -37,7 +38,7 @@ Python 3 simplified this:
 
 Understanding this distinction is essential when working with APIs, databases, files and network programming.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -56,7 +57,7 @@ By the end of this lesson you will understand:
 - Time complexity
 - Production best practices
 
----
+______________________________________________________________________
 
 # Why Are Strings Important?
 
@@ -78,7 +79,7 @@ Examples include:
 
 A solid understanding of strings improves both correctness and performance.
 
----
+______________________________________________________________________
 
 # What Is a String?
 
@@ -104,7 +105,7 @@ Sequence
 
 Unlike a list, each character cannot be modified after the string is created.
 
----
+______________________________________________________________________
 
 # Unicode
 
@@ -129,7 +130,7 @@ emoji = "😀"
 currency = "₹"
 ```
 
----
+______________________________________________________________________
 
 # Unicode vs Encoding
 
@@ -163,7 +164,7 @@ Python automatically converts between Unicode strings and bytes when you explici
 
 We'll cover encoding in depth in Part 2.
 
----
+______________________________________________________________________
 
 # str vs bytes
 
@@ -209,7 +210,7 @@ Raw binary data
 
 When reading a file or receiving data from a socket, you often get bytes that must be decoded into a string.
 
----
+______________________________________________________________________
 
 # Why Are Strings Immutable?
 
@@ -245,7 +246,7 @@ Blice
 
 A new string object is created.
 
----
+______________________________________________________________________
 
 # Benefits of Immutability
 
@@ -266,7 +267,7 @@ users = {
 }
 ```
 
----
+______________________________________________________________________
 
 # String Interning
 
@@ -287,7 +288,7 @@ True
 
 Both variables often reference the same object.
 
----
+______________________________________________________________________
 
 # Why Intern Strings?
 
@@ -323,7 +324,7 @@ a      b
 
 This reduces memory usage and speeds up comparisons.
 
----
+______________________________________________________________________
 
 # sys.intern()
 
@@ -346,7 +347,7 @@ True
 
 Interning is useful when the same strings occur many thousands of times (e.g. identifiers or tokens).
 
----
+______________________________________________________________________
 
 # Identity vs Equality
 
@@ -387,7 +388,7 @@ Do not rely on:
 is
 ```
 
----
+______________________________________________________________________
 
 # Indexing
 
@@ -431,7 +432,7 @@ Output:
 o
 ```
 
----
+______________________________________________________________________
 
 # Slicing
 
@@ -455,7 +456,7 @@ Output:
 Back
 ```
 
----
+______________________________________________________________________
 
 # Omitting Values
 
@@ -477,7 +478,7 @@ Entire string:
 text[:]
 ```
 
----
+______________________________________________________________________
 
 # Step
 
@@ -505,7 +506,7 @@ Output:
 dnekcaB
 ```
 
----
+______________________________________________________________________
 
 # Why Doesn't Slicing Modify the Original String?
 
@@ -531,7 +532,7 @@ New String
 
 Strings are immutable, so slicing always creates a new string object.
 
----
+______________________________________________________________________
 
 # Iterating Over Strings
 
@@ -552,7 +553,7 @@ I
 
 This works because strings implement the iterator protocol.
 
----
+______________________________________________________________________
 
 # Membership Testing
 
@@ -582,7 +583,7 @@ True
 
 Membership testing is highly optimised in CPython.
 
----
+______________________________________________________________________
 
 # String Comparison
 
@@ -612,7 +613,7 @@ Output:
 True
 ```
 
----
+______________________________________________________________________
 
 # Time Complexity
 
@@ -627,7 +628,7 @@ True
 
 Understanding these complexities helps you write efficient code.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -647,7 +648,7 @@ Use:
 if username == "admin":
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -655,7 +656,7 @@ Assuming slicing modifies the original string.
 
 It always creates a new string.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -679,7 +680,7 @@ Binary
 bytes
 ```
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -693,7 +694,7 @@ bytes
 
 ✅ Learn slicing well—it appears frequently in interviews.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -709,7 +710,7 @@ Backend engineers work with strings constantly:
 
 A strong understanding of string fundamentals makes all of these tasks easier and less error-prone.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -721,7 +722,7 @@ A strong understanding of string fundamentals makes all of these tasks easier an
 
 Immutability makes strings hashable, thread-safe and allows CPython to optimise memory usage and cache hash values.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -729,9 +730,10 @@ Immutability makes strings hashable, thread-safe and allows CPython to optimise 
 
 ### Answer
 
-`str` represents Unicode text, while `bytes` represents raw binary data. Text must be encoded into bytes before transmission or storage and decoded back into text when read.
+`str` represents Unicode text, while `bytes` represents raw binary data. Text must be encoded into bytes before
+transmission or storage and decoded back into text when read.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -739,9 +741,10 @@ Immutability makes strings hashable, thread-safe and allows CPython to optimise 
 
 ### Answer
 
-String interning is an optimisation where identical strings share the same object in memory, reducing memory usage and improving comparison performance.
+String interning is an optimisation where identical strings share the same object in memory, reducing memory usage and
+improving comparison performance.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -751,17 +754,17 @@ String interning is an optimisation where identical strings share the same objec
 
 Indexing directly accesses one character, while slicing creates a new string by copying `k` characters.
 
----
+______________________________________________________________________
 
 # Assignment
 
 1. Explain the difference between `==` and `is` using string examples.
-2. Write a program that reverses a string using slicing.
-3. Demonstrate positive and negative indexing on the string `"OpenAI"`.
-4. Create examples showing why strings can be used as dictionary keys.
-5. Experiment with `sys.intern()` and observe object identities using `id()`.
+1. Write a program that reverses a string using slicing.
+1. Demonstrate positive and negative indexing on the string `"OpenAI"`.
+1. Create examples showing why strings can be used as dictionary keys.
+1. Experiment with `sys.intern()` and observe object identities using `id()`.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -778,12 +781,11 @@ In this lesson, you learned:
 - ✅ Time complexity of common operations.
 - ✅ Production and interview insights.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[30-String-Deep-Dive-part-2](30-string-deep-dive-part-2.md)
+**File:** [30-String-Deep-Dive-part-2](30-string-deep-dive-part-2.md)
 
 Topics:
 

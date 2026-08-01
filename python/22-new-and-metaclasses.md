@@ -1,6 +1,7 @@
 # File: python/22-new-and-metaclasses.md
 
 # Python Advanced - Lesson 22
+
 # `__new__` and Metaclasses - How Python Creates Classes and Objects
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 140 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -30,7 +31,7 @@ By the end of this lesson, you will understand:
 - How custom metaclasses work
 - Production use cases
 
----
+______________________________________________________________________
 
 # Congratulations
 
@@ -51,7 +52,7 @@ You've learned about:
 
 Today's lesson ties everything together by exploring what happens **before an object even exists**.
 
----
+______________________________________________________________________
 
 # The Object Creation Process
 
@@ -101,7 +102,7 @@ Returns Object
 
 Understanding this lifecycle is essential for advanced Python.
 
----
+______________________________________________________________________
 
 # What is `__new__`?
 
@@ -111,7 +112,7 @@ It runs **before** `__init__`.
 
 Its job is to return a new instance.
 
----
+______________________________________________________________________
 
 # What is `__init__`?
 
@@ -123,7 +124,7 @@ it configures an object that already exists.
 
 This distinction is one of the most common interview questions.
 
----
+______________________________________________________________________
 
 # A Simple Example
 
@@ -157,7 +158,7 @@ Initialising object
 
 Notice the order.
 
----
+______________________________________________________________________
 
 # Visualising the Lifecycle
 
@@ -185,7 +186,7 @@ __init__()
 Ready to Use
 ```
 
----
+______________________________________________________________________
 
 # Why Does `__new__` Return an Object?
 
@@ -229,7 +230,7 @@ Returning integer
 
 `__init__` never runs.
 
----
+______________________________________________________________________
 
 # Why Override `__new__`?
 
@@ -243,7 +244,7 @@ Typical reasons include:
 - Custom object creation
 - Advanced libraries
 
----
+______________________________________________________________________
 
 # Immutable Objects
 
@@ -264,7 +265,7 @@ their value must be determined **during object creation**.
 
 That means `__new__`.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -301,7 +302,7 @@ Because `int` is immutable,
 
 changing it inside `__init__` would be too late.
 
----
+______________________________________________________________________
 
 # Object Caching
 
@@ -333,7 +334,7 @@ Although implementation details vary by Python version,
 
 this demonstrates that Python may reuse objects instead of creating new ones.
 
----
+______________________________________________________________________
 
 # Singleton Pattern
 
@@ -373,7 +374,7 @@ True
 
 Both variables reference the same object.
 
----
+______________________________________________________________________
 
 # A Common Problem
 
@@ -419,7 +420,7 @@ The object wasn't recreated,
 
 but it was reinitialised.
 
----
+______________________________________________________________________
 
 # Preventing Reinitialisation
 
@@ -451,7 +452,7 @@ class Database:
 
 Now initialisation happens only once.
 
----
+______________________________________________________________________
 
 # Should You Use the Singleton Pattern?
 
@@ -465,7 +466,7 @@ Singletons can introduce hidden global state and make testing more difficult.
 
 Use them only when there is a clear requirement.
 
----
+______________________________________________________________________
 
 # Introducing Metaclasses
 
@@ -481,7 +482,7 @@ Answer:
 
 **Metaclasses.**
 
----
+______________________________________________________________________
 
 # Everything is an Object
 
@@ -509,7 +510,7 @@ The class `User` is itself an object.
 
 It was created by `type`.
 
----
+______________________________________________________________________
 
 # `type`
 
@@ -541,9 +542,9 @@ So `type` has two jobs.
 
 1. Determine an object's type.
 
-2. Create classes.
+1. Create classes.
 
----
+______________________________________________________________________
 
 # Creating a Class Without class
 
@@ -598,7 +599,7 @@ Hello
 
 This demonstrates that classes are created programmatically.
 
----
+______________________________________________________________________
 
 # What is a Metaclass?
 
@@ -632,7 +633,7 @@ User
 type
 ```
 
----
+______________________________________________________________________
 
 # Why Use Metaclasses?
 
@@ -646,7 +647,7 @@ Instead of checking manually,
 
 a metaclass can enforce the rule.
 
----
+______________________________________________________________________
 
 # Simple Metaclass
 
@@ -700,7 +701,7 @@ Creating User
 
 The metaclass executes **when the class is created**, not when instances are created.
 
----
+______________________________________________________________________
 
 # Understanding the Parameters
 
@@ -725,7 +726,7 @@ def __new__(
 | `bases` | Parent classes |
 | `namespace` | Class attributes and methods |
 
----
+______________________________________________________________________
 
 # Enforcing Rules
 
@@ -798,7 +799,7 @@ table_name required
 
 The error occurs when the class is defined.
 
----
+______________________________________________________________________
 
 # Where Are Metaclasses Used?
 
@@ -815,9 +816,10 @@ Examples include:
 - Enum
 - Abstract Base Classes (`ABCMeta`)
 
-Whenever a framework automatically registers classes, validates definitions or builds metadata, a metaclass is often involved.
+Whenever a framework automatically registers classes, validates definitions or builds metadata, a metaclass is often
+involved.
 
----
+______________________________________________________________________
 
 # Metaclasses vs Class Decorators
 
@@ -832,7 +834,7 @@ Rule of thumb:
 - Modify existing class → Class decorator
 - Control class creation → Metaclass
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -844,7 +846,7 @@ Most initialisation belongs in `__init__`.
 
 Override `__new__` only when object creation itself must change.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -852,7 +854,7 @@ Using metaclasses for ordinary problems.
 
 Most applications never require a custom metaclass.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -860,7 +862,7 @@ Returning the wrong object from `__new__`.
 
 If `__new__` doesn't return an instance of the class (or a compatible object), `__init__` may never execute.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -876,11 +878,12 @@ If `__new__` doesn't return an instance of the class (or a compatible object), `
 
 ❌ Don't use `__new__` when `__init__` is sufficient.
 
----
+______________________________________________________________________
 
 # Production Insight
 
-Although custom metaclasses are uncommon in everyday backend development, you'll frequently **use** classes that rely on them.
+Although custom metaclasses are uncommon in everyday backend development, you'll frequently **use** classes that rely on
+them.
 
 For example:
 
@@ -889,9 +892,10 @@ For example:
 - Enums automatically register their members.
 - Abstract Base Classes enforce interface contracts through `ABCMeta`.
 
-Most backend engineers don't write metaclasses regularly, but understanding them helps explain how these frameworks provide powerful, declarative APIs.
+Most backend engineers don't write metaclasses regularly, but understanding them helps explain how these frameworks
+provide powerful, declarative APIs.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -903,7 +907,7 @@ Most backend engineers don't write metaclasses regularly, but understanding them
 
 `__new__` creates and returns a new object. `__init__` initialises an object that has already been created.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -911,9 +915,10 @@ Most backend engineers don't write metaclasses regularly, but understanding them
 
 ### Answer
 
-Typically when subclassing immutable types, implementing specialised object creation or controlling instance creation, such as caching or Singleton patterns.
+Typically when subclassing immutable types, implementing specialised object creation or controlling instance creation,
+such as caching or Singleton patterns.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -923,7 +928,7 @@ Typically when subclassing immutable types, implementing specialised object crea
 
 A metaclass is the class responsible for creating classes. In Python, the default metaclass is `type`.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -931,9 +936,10 @@ A metaclass is the class responsible for creating classes. In Python, the defaul
 
 ### Answer
 
-Examples include Django's ORM, SQLAlchemy, Pydantic, Python's `Enum` implementation and Abstract Base Classes through `ABCMeta`.
+Examples include Django's ORM, SQLAlchemy, Pydantic, Python's `Enum` implementation and Abstract Base Classes through
+`ABCMeta`.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -1028,7 +1034,7 @@ Expected Output
 
 Observe that the registry is populated **when the classes are defined**, before any objects are created.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1040,7 +1046,7 @@ What is the purpose of `__new__`?
 
 `__new__` is responsible for creating and returning a new object before `__init__` is called.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -1048,9 +1054,10 @@ Why is `__new__` important when subclassing immutable types?
 
 ### Answer
 
-Immutable objects cannot be modified after creation, so any changes to their value must occur during object creation inside `__new__`.
+Immutable objects cannot be modified after creation, so any changes to their value must occur during object creation
+inside `__new__`.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -1060,7 +1067,7 @@ What is the default metaclass in Python?
 
 The default metaclass is `type`, which is responsible for creating classes.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -1070,7 +1077,7 @@ When are metaclass methods executed?
 
 Metaclass methods execute when a class is created, not when instances of that class are created.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1080,7 +1087,7 @@ Should most backend developers write custom metaclasses?
 
 No. Most developers interact with frameworks that use metaclasses internally but rarely need to create their own.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -1102,13 +1109,13 @@ Expected Output
 Alice
 ```
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
 Implement a thread-safe Singleton class and explain why thread safety matters in multi-threaded applications.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -1120,7 +1127,7 @@ version = "1.0"
 
 to every class that uses it.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -1128,7 +1135,7 @@ Create a metaclass that registers every subclass into a dictionary keyed by the 
 
 Explain how this pattern could be useful for plugin systems or command registries.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1143,7 +1150,7 @@ In this lesson, you learned:
 - ✅ What metaclasses are and when they're used.
 - ✅ Why frameworks like Django and Pydantic rely on metaclasses.
 
----
+______________________________________________________________________
 
 # 🎉 Module Complete - Advanced OOP
 
@@ -1164,16 +1171,16 @@ Topics mastered:
 - ✅ `__new__`
 - ✅ Metaclasses
 
-These concepts form the foundation of Python's object model and explain many of the "magic" behaviours used by modern frameworks.
+These concepts form the foundation of Python's object model and explain many of the "magic" behaviours used by modern
+frameworks.
 
----
+______________________________________________________________________
 
 # What's Next
 
 **Module 3 – Functional Python**
 
-**File:**
-[23-Map-Filter-Reduce](23-map-filter-reduce.md)
+**File:** [23-Map-Filter-Reduce](23-map-filter-reduce.md)
 
 Topics:
 

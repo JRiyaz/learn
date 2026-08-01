@@ -2,7 +2,7 @@
 
 **Python Version Introduced:** Python 3.x
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -17,7 +17,7 @@ By the end of this lesson, you will be able to:
 - Choose appropriate random distributions for different problems.
 - Apply best practices for production-quality random number generation.
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -40,7 +40,7 @@ However, machine learning also depends on **randomness** for tasks such as:
 - Simulating systems
 - Running Monte Carlo algorithms
 
----
+______________________________________________________________________
 
 # Why Random Numbers Matter
 
@@ -63,7 +63,7 @@ Examples include:
 
 Without high-quality random number generation, many algorithms become biased or difficult to reproduce.
 
----
+______________________________________________________________________
 
 # True Random vs Pseudorandom
 
@@ -103,7 +103,7 @@ Seed
 
 Using the same seed always produces the same sequence.
 
----
+______________________________________________________________________
 
 # Legacy vs Modern API
 
@@ -130,7 +130,7 @@ Why?
 
 For new code, prefer the `Generator` API.
 
----
+______________________________________________________________________
 
 # Creating a Random Generator
 
@@ -142,7 +142,7 @@ rng = np.random.default_rng()
 
 Now generate random numbers using `rng`.
 
----
+______________________________________________________________________
 
 # Reproducibility with Seeds
 
@@ -162,7 +162,7 @@ Every execution produces different results.
 
 This makes debugging difficult.
 
----
+______________________________________________________________________
 
 With a seed:
 
@@ -176,7 +176,7 @@ Every execution produces the same sequence.
 
 This is called **reproducibility**.
 
----
+______________________________________________________________________
 
 ## Best Practice
 
@@ -189,7 +189,7 @@ Use fixed seeds for:
 
 Avoid fixed seeds in production systems that require fresh randomness.
 
----
+______________________________________________________________________
 
 # `random()`
 
@@ -197,7 +197,7 @@ Avoid fixed seeds in production systems that require fresh randomness.
 
 Generates floating-point numbers uniformly distributed between 0 (inclusive) and 1 (exclusive).
 
----
+______________________________________________________________________
 
 ## Syntax
 
@@ -205,7 +205,7 @@ Generates floating-point numbers uniformly distributed between 0 (inclusive) and
 rng.random(size=None)
 ```
 
----
+______________________________________________________________________
 
 ## Parameters
 
@@ -213,13 +213,13 @@ rng.random(size=None)
 |-----------|-------------|
 | `size` | Shape of the output |
 
----
+______________________________________________________________________
 
 ## Return Value
 
 An array (or scalar) of floating-point numbers.
 
----
+______________________________________________________________________
 
 ## Example
 
@@ -235,7 +235,7 @@ Example output
 [0.77395605 0.43887844 0.85859792 0.69736803 0.09417735]
 ```
 
----
+______________________________________________________________________
 
 # `integers()`
 
@@ -243,7 +243,7 @@ Example output
 
 Generates random integers.
 
----
+______________________________________________________________________
 
 ## Syntax
 
@@ -251,7 +251,7 @@ Generates random integers.
 rng.integers(low, high=None, size=None)
 ```
 
----
+______________________________________________________________________
 
 ## Parameters
 
@@ -261,7 +261,7 @@ rng.integers(low, high=None, size=None)
 | `high` | Highest value (exclusive) |
 | `size` | Output shape |
 
----
+______________________________________________________________________
 
 ## Example
 
@@ -291,7 +291,7 @@ Notice:
 
 is excluded.
 
----
+______________________________________________________________________
 
 # Random Arrays
 
@@ -315,7 +315,7 @@ This is useful for:
 - Initializing weights
 - Testing algorithms
 
----
+______________________________________________________________________
 
 # Common Probability Distributions
 
@@ -323,7 +323,7 @@ Real-world data rarely follows a uniform distribution.
 
 NumPy provides many probability distributions.
 
----
+______________________________________________________________________
 
 # Uniform Distribution
 
@@ -345,7 +345,7 @@ Applications:
 - Simulations
 - Random initialization
 
----
+______________________________________________________________________
 
 # Normal Distribution
 
@@ -375,7 +375,7 @@ Applications:
 - Machine learning
 - Statistical modeling
 
----
+______________________________________________________________________
 
 # Binomial Distribution
 
@@ -395,7 +395,7 @@ Applications:
 - Success/failure experiments
 - Reliability analysis
 
----
+______________________________________________________________________
 
 # Choice Sampling
 
@@ -403,7 +403,7 @@ Applications:
 
 Randomly selects values from an array.
 
----
+______________________________________________________________________
 
 ## Syntax
 
@@ -415,7 +415,7 @@ rng.choice(
 )
 ```
 
----
+______________________________________________________________________
 
 ## Example
 
@@ -441,7 +441,7 @@ Example output
 ['Blue' 'Black']
 ```
 
----
+______________________________________________________________________
 
 ## Sampling Without Replacement
 
@@ -457,7 +457,7 @@ Each value appears at most once.
 
 This is useful for train/test splitting and random selection.
 
----
+______________________________________________________________________
 
 # Shuffling
 
@@ -475,7 +475,7 @@ print(arr)
 
 The original array changes.
 
----
+______________________________________________________________________
 
 ## `permutation()`
 
@@ -492,7 +492,7 @@ print(arr)
 
 The original array remains unchanged.
 
----
+______________________________________________________________________
 
 # Random Booleans
 
@@ -515,22 +515,17 @@ Applications:
 - Data augmentation
 - Feature selection
 
----
+______________________________________________________________________
 
 # Performance Notes
 
-Operation | Typical Complexity | Notes
-----------|--------------------|------
-`random()` | O(n) | Uniform floats
-`integers()` | O(n) | Random integers
-`choice()` | O(k) to O(n)* | Depends on replacement strategy
-`shuffle()` | O(n) | In-place
-`permutation()` | O(n) | Returns a copy
-Distribution sampling | O(n) | Depends on algorithm
+Operation | Typical Complexity | Notes ----------|--------------------|------ `random()` | O(n) | Uniform floats
+`integers()` | O(n) | Random integers `choice()` | O(k) to O(n)\* | Depends on replacement strategy `shuffle()` | O(n) |
+In-place `permutation()` | O(n) | Returns a copy Distribution sampling | O(n) | Depends on algorithm
 
 \*Sampling without replacement may require additional work depending on the requested sample size.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -550,7 +545,7 @@ instead of
 np.random.seed()
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -560,7 +555,7 @@ Without a fixed seed,
 
 results change every execution.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -582,7 +577,7 @@ through
 
 The upper bound is excluded.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -590,7 +585,7 @@ Using `shuffle()` when the original array must remain unchanged.
 
 Use `permutation()` instead.
 
----
+______________________________________________________________________
 
 ## Mistake 5
 
@@ -600,7 +595,7 @@ Uniform and normal distributions model very different types of data.
 
 Always choose the distribution that matches the problem domain.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -611,7 +606,7 @@ Always choose the distribution that matches the problem domain.
 - Use `permutation()` when the original data must be preserved.
 - Understand the statistical assumptions behind each probability distribution.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -630,7 +625,7 @@ Examples include:
 
 Poor random number management can make experiments impossible to reproduce or introduce subtle statistical bias.
 
----
+______________________________________________________________________
 
 ```markdown id="f3k8wp"
 # Questions
@@ -674,7 +669,7 @@ It ensures reproducible sequences of pseudorandom numbers, making experiments an
 The normal (Gaussian) distribution.
 ```
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -689,16 +684,16 @@ Complete the following tasks:
 1. Generate:
    - Ten random floating-point numbers.
    - Ten random integers between 50 and 100.
-2. Create a `5 × 5` matrix of random floating-point numbers.
-3. Generate:
+1. Create a `5 × 5` matrix of random floating-point numbers.
+1. Generate:
    - Five samples from a normal distribution with mean `100` and standard deviation `15`.
    - Five samples from a uniform distribution between `0` and `1`.
-4. Randomly select five unique values from `np.arange(20)`.
-5. Shuffle an array in place and compare it with using `permutation()`.
-6. Create a random Boolean mask of length `20`.
-7. Run the program twice with the same seed and verify that the outputs are identical.
+1. Randomly select five unique values from `np.arange(20)`.
+1. Shuffle an array in place and compare it with using `permutation()`.
+1. Create a random Boolean mask of length `20`.
+1. Run the program twice with the same seed and verify that the outputs are identical.
 
----
+______________________________________________________________________
 
 ```markdown id="u9m2rd"
 # Knowledge Check
@@ -782,37 +777,41 @@ Should production systems always use a fixed random seed?
 No. Fixed seeds are valuable for testing and experiments, but production systems often require fresh randomness depending on the application.
 ```
 
----
+______________________________________________________________________
 
 # Assignment
 
 Build a simple simulation toolkit.
 
 1. Create a reusable `Generator` using `np.random.default_rng(42)`.
-2. Generate:
+1. Generate:
    - A `100 × 5` matrix of random features.
    - A vector of random binary labels.
-3. Simulate rolling two dice 100,000 times and calculate:
+1. Simulate rolling two dice 100,000 times and calculate:
    - Frequency of each possible sum.
    - Probability of rolling a sum of 7.
-4. Randomly split a dataset of 1,000 samples into:
+1. Randomly split a dataset of 1,000 samples into:
    - 80% training
    - 20% testing
-   without replacement.
-5. Compare samples generated from:
+without replacement.
+1. Compare samples generated from:
    - Uniform distribution
    - Normal distribution
    - Binomial distribution
-   and explain appropriate real-world use cases for each.
-6. Ensure the entire simulation is reproducible by rerunning it with the same seed and verifying identical results.
+and explain appropriate real-world use cases for each.
+1. Ensure the entire simulation is reproducible by rerunning it with the same seed and verifying identical results.
 
----
+______________________________________________________________________
 
 # Summary
 
-In this lesson, you learned how NumPy generates pseudorandom numbers using its modern `Generator` API. You explored reproducibility through seeds, generated random integers and floating-point numbers, sampled from common probability distributions, randomly selected and shuffled data, and learned the difference between in-place and copy-based randomization. These concepts are fundamental to simulations, testing, statistical analysis, and machine learning workflows.
+In this lesson, you learned how NumPy generates pseudorandom numbers using its modern `Generator` API. You explored
+reproducibility through seeds, generated random integers and floating-point numbers, sampled from common probability
+distributions, randomly selected and shuffled data, and learned the difference between in-place and copy-based
+randomization. These concepts are fundamental to simulations, testing, statistical analysis, and machine learning
+workflows.
 
----
+______________________________________________________________________
 
 # Next Lesson
 

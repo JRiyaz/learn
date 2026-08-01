@@ -1,6 +1,7 @@
 # File: python/10-magic-methods-part-1.md
 
 # Python Advanced - Lesson 10 (Part 1)
+
 # Magic Methods - Understanding Python's Object Model
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 90 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -28,7 +29,7 @@ By the end of this lesson, you will understand:
 - The order in which these methods are executed
 - Real-world backend use cases
 
----
+______________________________________________________________________
 
 # Why Learn Magic Methods?
 
@@ -58,7 +59,7 @@ Magic methods are one of Python's core language features.
 
 They allow your own objects to behave like Python's built-in objects.
 
----
+______________________________________________________________________
 
 # What Are Magic Methods?
 
@@ -91,7 +92,7 @@ Python automatically calls them at the appropriate time.
 
 You almost never call them directly.
 
----
+______________________________________________________________________
 
 # Why Do They Exist?
 
@@ -134,7 +135,7 @@ Return Object
 
 Magic methods allow us to customise each step.
 
----
+______________________________________________________________________
 
 # The Object Lifecycle
 
@@ -176,7 +177,7 @@ Object Destroyed
 
 Let's understand each step.
 
----
+______________________________________________________________________
 
 # __new__()
 
@@ -221,7 +222,7 @@ __new__()
 __init__()
 ```
 
----
+______________________________________________________________________
 
 # What Does cls Mean?
 
@@ -253,7 +254,7 @@ Python hasn't created the object yet.
 
 So `self` doesn't exist.
 
----
+______________________________________________________________________
 
 # Why Must __new__ Return an Object?
 
@@ -275,7 +276,7 @@ Without it,
 
 there is no object for Python to initialise.
 
----
+______________________________________________________________________
 
 # What Happens If __new__ Doesn't Return an Object?
 
@@ -312,7 +313,7 @@ This demonstrates an important rule:
 
 > `__init__()` only runs if `__new__()` successfully returns an instance.
 
----
+______________________________________________________________________
 
 # __init__()
 
@@ -365,7 +366,7 @@ Ready to Live
 
 `__init__()` arranges the furniture.
 
----
+______________________________________________________________________
 
 # __new__ vs __init__
 
@@ -393,7 +394,7 @@ Object Exists
 __init__()
 ```
 
----
+______________________________________________________________________
 
 # __del__()
 
@@ -428,7 +429,7 @@ Object Destroyed
 
 Notice the word **possible**.
 
----
+______________________________________________________________________
 
 # Why "Possible"?
 
@@ -446,7 +447,7 @@ This depends on:
 
 We studied these earlier in the course.
 
----
+______________________________________________________________________
 
 # Should You Use __del__?
 
@@ -470,7 +471,7 @@ Context managers provide deterministic cleanup.
 
 `__del__()` does not.
 
----
+______________________________________________________________________
 
 # Example - Object Lifecycle
 
@@ -509,7 +510,7 @@ Possible Output
 
 This demonstrates the complete lifecycle of a Python object.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -533,7 +534,7 @@ class UserService:
 
 This is constructor-based dependency injection.
 
----
+______________________________________________________________________
 
 `__new__()` is far less common.
 
@@ -544,7 +545,7 @@ It is mainly used for advanced scenarios such as:
 - Object caching
 - Metaclasses
 
----
+______________________________________________________________________
 
 `__del__()` is rarely used in production.
 
@@ -556,7 +557,7 @@ with ...
 
 or explicit `close()` methods.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -566,9 +567,11 @@ or explicit `close()` methods.
 
 ### Answer
 
-`__new__()` creates and returns a new object. It executes before `__init__()`. Once the object has been created, `__init__()` initialises its attributes. If `__new__()` does not return an instance of the class, `__init__()` is never called.
+`__new__()` creates and returns a new object. It executes before `__init__()`. Once the object has been created,
+`__init__()` initialises its attributes. If `__new__()` does not return an instance of the class, `__init__()` is never
+called.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -576,9 +579,10 @@ or explicit `close()` methods.
 
 ### Answer
 
-Most classes only need custom initialisation, which is handled by `__init__()`. Overriding `__new__()` is typically reserved for advanced cases such as immutable objects, object caching, singletons or metaclasses.
+Most classes only need custom initialisation, which is handled by `__init__()`. Overriding `__new__()` is typically
+reserved for advanced cases such as immutable objects, object caching, singletons or metaclasses.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -586,9 +590,10 @@ Most classes only need custom initialisation, which is handled by `__init__()`. 
 
 ### Answer
 
-`__del__()` is not guaranteed to execute at a predictable time because object destruction depends on Python's memory management and garbage collector. Context managers provide a safer and more reliable mechanism for resource cleanup.
+`__del__()` is not guaranteed to execute at a predictable time because object destruction depends on Python's memory
+management and garbage collector. Context managers provide a safer and more reliable mechanism for resource cleanup.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -639,7 +644,7 @@ Destroying Employee
 
 Depending on the Python implementation, the final message may appear immediately or later.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -649,9 +654,10 @@ What are magic methods?
 
 ### Answer
 
-Magic methods are special methods with names surrounded by double underscores. Python calls them automatically to customise the behaviour of objects.
+Magic methods are special methods with names surrounded by double underscores. Python calls them automatically to
+customise the behaviour of objects.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -661,7 +667,7 @@ Which method creates an object?
 
 `__new__()` creates and returns a new object before `__init__()` is called.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -671,7 +677,7 @@ What is the purpose of `__init__()`?
 
 `__init__()` initialises a newly created object by assigning values to its attributes and preparing it for use.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -681,7 +687,7 @@ Can `__init__()` return an object?
 
 No. `__init__()` must return `None`. Object creation is the responsibility of `__new__()`.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -689,9 +695,10 @@ Why should `__del__()` generally be avoided for resource cleanup?
 
 ### Answer
 
-Because its execution is not deterministic. Python decides when objects are destroyed, so important cleanup should be performed using context managers or explicit cleanup methods.
+Because its execution is not deterministic. Python decides when objects are destroyed, so important cleanup should be
+performed using context managers or explicit cleanup methods.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -701,7 +708,7 @@ Create a class that prints a message from both `__new__()` and `__init__()`.
 
 Observe the order in which they execute.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -709,7 +716,7 @@ Modify `__new__()` to return `None`.
 
 Observe whether `__init__()` is called and explain why.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -717,7 +724,7 @@ Create a class that defines `__del__()`.
 
 Create and delete several objects, and observe when `__del__()` is executed.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -731,12 +738,11 @@ In this lesson, you learned:
 - ✅ Why `__del__()` should not be relied upon for resource management.
 - ✅ Where these methods are used in production code.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[10-Magic-Methods-part-2](10-magic-methods-part-2.md)
+**File:** [10-Magic-Methods-part-2](10-magic-methods-part-2.md)
 
 Topics:
 

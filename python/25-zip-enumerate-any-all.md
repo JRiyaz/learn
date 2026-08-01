@@ -1,6 +1,7 @@
 # File: python/25-zip-enumerate-any-all.md
 
 # Python Functional Programming - Part 3
+
 # `zip()`, `enumerate()`, `any()` and `all()`
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 120 Minutes
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -31,7 +32,7 @@
 - `any()` and `all()` short-circuit as soon as the answer is known.
 - Because `zip()` is lazy, it is much more memory-efficient for large datasets.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -49,7 +50,7 @@ By the end of this lesson, you will understand:
 - Production examples
 - Performance considerations
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -71,11 +72,11 @@ You'll see them in
 - Data processing
 - Testing
 
----
+______________________________________________________________________
 
 # Part 1 — zip()
 
----
+______________________________________________________________________
 
 # The Problem
 
@@ -129,7 +130,7 @@ Works,
 
 but it's not ideal.
 
----
+______________________________________________________________________
 
 # Enter zip()
 
@@ -155,7 +156,7 @@ Remember...
 
 Python 3 returns an iterator.
 
----
+______________________________________________________________________
 
 # Convert to a List
 
@@ -181,7 +182,7 @@ Output
 ]
 ```
 
----
+______________________________________________________________________
 
 # Visualising zip()
 
@@ -235,7 +236,7 @@ Charlie,
 )
 ```
 
----
+______________________________________________________________________
 
 # Iterating Directly
 
@@ -269,7 +270,7 @@ Charlie 95
 
 This is the most common usage.
 
----
+______________________________________________________________________
 
 # Multiple Iterables
 
@@ -337,7 +338,7 @@ Output
 )
 ```
 
----
+______________________________________________________________________
 
 # Different Lengths
 
@@ -395,7 +396,7 @@ Output
 
 `zip()` stops when the shortest iterable ends.
 
----
+______________________________________________________________________
 
 # Why?
 
@@ -423,7 +424,7 @@ There is no score for Charlie.
 
 Python safely stops.
 
----
+______________________________________________________________________
 
 # zip_longest()
 
@@ -475,7 +476,7 @@ Output
 
 We'll study `itertools` in detail later.
 
----
+______________________________________________________________________
 
 # Unzipping
 
@@ -531,7 +532,7 @@ Output
 
 The `*` operator performs unpacking.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -563,11 +564,11 @@ for username, email in zip(
     )
 ```
 
----
+______________________________________________________________________
 
 # Part 2 — enumerate()
 
----
+______________________________________________________________________
 
 # The Problem
 
@@ -593,7 +594,7 @@ for i in range(
 
 Python offers something cleaner.
 
----
+______________________________________________________________________
 
 # enumerate()
 
@@ -623,7 +624,7 @@ Output
 2 Charlie
 ```
 
----
+______________________________________________________________________
 
 # Why is enumerate Better?
 
@@ -637,7 +638,7 @@ Cleaner.
 
 Safer.
 
----
+______________________________________________________________________
 
 # Starting at Another Number
 
@@ -671,7 +672,7 @@ Output
 
 Very common when displaying numbered menus.
 
----
+______________________________________________________________________
 
 # What Does enumerate() Return?
 
@@ -693,7 +694,7 @@ value
 )
 ```
 
----
+______________________________________________________________________
 
 # Visualising enumerate()
 
@@ -735,7 +736,7 @@ Charlie
 )
 ```
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -757,11 +758,11 @@ If validation fails,
 
 you know exactly which row caused the problem.
 
----
+______________________________________________________________________
 
 # Part 3 — any()
 
----
+______________________________________________________________________
 
 # The Problem
 
@@ -789,7 +790,7 @@ Python provides
 any()
 ```
 
----
+______________________________________________________________________
 
 # any()
 
@@ -831,7 +832,7 @@ Because
 
 is truthy.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -865,7 +866,7 @@ True
 
 Only one value needs to be truthy.
 
----
+______________________________________________________________________
 
 # Short-Circuit Evaluation
 
@@ -901,7 +902,7 @@ This makes `any()` efficient.
 
 > **Note:** The example above is conceptual. In a real list literal, `expensive_check()` would already have been called while building the list. To benefit from short-circuiting, use a generator expression, as shown below.
 
----
+______________________________________________________________________
 
 # Real Production Pattern
 
@@ -917,11 +918,11 @@ has_admin = any(
 
 The generator expression produces values lazily, allowing `any()` to stop as soon as an administrator is found.
 
----
+______________________________________________________________________
 
 # Part 4 — all()
 
----
+______________________________________________________________________
 
 # all()
 
@@ -935,7 +936,7 @@ It checks
 
 "Are **all** values true?"
 
----
+______________________________________________________________________
 
 # Example
 
@@ -967,7 +968,7 @@ Output
 True
 ```
 
----
+______________________________________________________________________
 
 # Another Example
 
@@ -1007,7 +1008,7 @@ Because
 
 is falsy.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -1029,7 +1030,7 @@ As soon as one validation fails,
 
 `all()` stops.
 
----
+______________________________________________________________________
 
 # Truthy and Falsy Values
 
@@ -1073,7 +1074,7 @@ Output
 False
 ```
 
----
+______________________________________________________________________
 
 # Combining zip() and enumerate()
 
@@ -1131,7 +1132,7 @@ Output
 
 This pattern appears frequently in CSV processing.
 
----
+______________________________________________________________________
 
 # Performance Considerations
 
@@ -1143,7 +1144,7 @@ This pattern appears frequently in CSV processing.
 
 They are generally faster and more memory-efficient than equivalent manual Python loops.
 
----
+______________________________________________________________________
 
 # Production Example - FastAPI
 
@@ -1165,7 +1166,7 @@ if not all(
     )
 ```
 
----
+______________________________________________________________________
 
 # Production Example - CSV Import
 
@@ -1183,7 +1184,7 @@ for row_number, row in enumerate(
 
 Starting at 2 matches spreadsheet row numbers after a header row.
 
----
+______________________________________________________________________
 
 # Production Example - Database Migration
 
@@ -1215,7 +1216,7 @@ for user_id, email in zip(
     )
 ```
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -1237,7 +1238,7 @@ instead of
 enumerate()
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -1249,7 +1250,7 @@ zip()
 
 to continue after the shortest iterable ends.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -1264,7 +1265,7 @@ list(
 
 for huge datasets when direct iteration would suffice.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -1284,7 +1285,7 @@ work with truthiness,
 
 not only booleans.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -1302,7 +1303,7 @@ not only booleans.
 
 ❌ Don't convert lazy iterators into lists unnecessarily.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -1344,7 +1345,7 @@ for index, record in enumerate(
 
 Writing code this way makes it more idiomatic, concise and easier for other Python developers to understand.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1354,9 +1355,10 @@ Writing code this way makes it more idiomatic, concise and easier for other Pyth
 
 ### Answer
 
-`zip()` stops when the shortest iterable is exhausted. If you need to continue until the longest iterable ends, use `itertools.zip_longest()`.
+`zip()` stops when the shortest iterable is exhausted. If you need to continue until the longest iterable ends, use
+`itertools.zip_longest()`.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1366,7 +1368,7 @@ Writing code this way makes it more idiomatic, concise and easier for other Pyth
 
 It is cleaner, avoids manual indexing and reduces the chance of index-related errors.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1376,7 +1378,7 @@ It is cleaner, avoids manual indexing and reduces the chance of index-related er
 
 `any()` returns `True` if at least one element is truthy. `all()` returns `True` only if every element is truthy.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1386,7 +1388,7 @@ It is cleaner, avoids manual indexing and reduces the chance of index-related er
 
 Generator expressions allow lazy evaluation so these functions can short-circuit without evaluating every element.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -1436,7 +1438,7 @@ True
 True
 ```
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1448,7 +1450,7 @@ What does `zip()` return in Python 3?
 
 A lazy iterator that produces tuples containing corresponding elements from each iterable.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -1458,7 +1460,7 @@ Why is `enumerate()` preferred over `range(len(...))`?
 
 It provides indexes and values together without manual indexing, making the code clearer and less error-prone.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -1468,7 +1470,7 @@ What happens if `zip()` receives iterables of different lengths?
 
 Iteration stops when the shortest iterable is exhausted.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -1478,7 +1480,7 @@ What is short-circuit evaluation in `any()` and `all()`?
 
 `any()` stops when it finds the first truthy value, while `all()` stops when it finds the first falsy value.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1486,9 +1488,10 @@ Why are generator expressions commonly used with `any()` and `all()`?
 
 ### Answer
 
-They avoid creating intermediate collections and allow these functions to terminate early when the result is already known.
+They avoid creating intermediate collections and allow these functions to terminate early when the result is already
+known.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -1510,7 +1513,7 @@ Use `zip()` to produce
 
 for every record.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -1530,7 +1533,7 @@ Print
 
 using `enumerate()`.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -1551,13 +1554,14 @@ Determine
 
 Use `all()` and `any()` with generator expressions.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
-Research the implementation of `zip()` and explain why it is considered lazy. Compare its memory usage with creating a list of tuples for a dataset containing one million elements.
+Research the implementation of `zip()` and explain why it is considered lazy. Compare its memory usage with creating a
+list of tuples for a dataset containing one million elements.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1571,12 +1575,11 @@ In this lesson, you learned:
 - ✅ How lazy evaluation and short-circuiting improve efficiency.
 - ✅ Common production patterns using these built-in functions.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[26-Functools-Deep-Dive](26-functools-deep-dive.md)
+**File:** [26-Functools-Deep-Dive](26-functools-deep-dive.md)
 
 Topics:
 

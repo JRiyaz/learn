@@ -1,6 +1,7 @@
 # File: python/50-concurrency-part-10-process-start-methods.md
 
 # Advanced Python Runtime & Concurrency
+
 # Concurrency Part 10: Process Start Methods (`fork`, `spawn`, and `forkserver`)
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 8–10 Hours
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -23,7 +24,7 @@
 | `multiprocessing.get_start_method()` | Python 3.4 |
 | `forkserver` | Python 3.4 (Unix) |
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -40,7 +41,7 @@ By the end of this lesson, you will understand:
 - Production best practices
 - questions
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -62,7 +63,7 @@ How does the operating system create a new Python process?
 
 The answer depends on the **start method**.
 
----
+______________________________________________________________________
 
 # Why Start Methods Exist
 
@@ -76,7 +77,7 @@ When Python creates a child process, it must answer several questions:
 
 Different operating systems answer these questions differently.
 
----
+______________________________________________________________________
 
 # Three Start Methods
 
@@ -92,7 +93,7 @@ forkserver
 
 Not every operating system supports all three.
 
----
+______________________________________________________________________
 
 # Operating System Support
 
@@ -104,7 +105,7 @@ Not every operating system supports all three.
 
 Notice that Windows does **not** support `fork`.
 
----
+______________________________________________________________________
 
 # Checking the Current Start Method
 
@@ -130,7 +131,7 @@ spawn
 
 depending on your platform.
 
----
+______________________________________________________________________
 
 # Setting the Start Method
 
@@ -146,7 +147,7 @@ This must be called before creating any child processes.
 
 Only one start method may be selected for a program.
 
----
+______________________________________________________________________
 
 # Understanding `fork`
 
@@ -168,7 +169,7 @@ Initially,
 
 the child appears to be an exact copy of the parent.
 
----
+______________________________________________________________________
 
 # What Gets Copied?
 
@@ -208,7 +209,7 @@ Child
 
 The child starts with almost the same state.
 
----
+______________________________________________________________________
 
 # Is Memory Really Copied?
 
@@ -220,7 +221,7 @@ Modern operating systems use:
 Copy-on-Write (CoW)
 ```
 
----
+______________________________________________________________________
 
 # Copy-on-Write
 
@@ -242,7 +243,7 @@ Child
 
 No actual copying occurs.
 
----
+______________________________________________________________________
 
 # What Happens on Modification?
 
@@ -276,7 +277,7 @@ This optimisation is called:
 Copy-on-Write
 ```
 
----
+______________________________________________________________________
 
 # Advantages of `fork`
 
@@ -285,7 +286,7 @@ Copy-on-Write
 - Minimal startup overhead
 - Excellent for CPU-bound workloads
 
----
+______________________________________________________________________
 
 # Disadvantages of `fork`
 
@@ -298,7 +299,7 @@ Copying an already-running process also copies:
 
 This can introduce subtle bugs.
 
----
+______________________________________________________________________
 
 # Threads and `fork`
 
@@ -324,7 +325,7 @@ their locks and shared resources may remain in inconsistent states.
 
 This is why combining threads and `fork` requires great care.
 
----
+______________________________________________________________________
 
 # Understanding `spawn`
 
@@ -350,7 +351,7 @@ Run Target Function
 
 Nothing is copied from the running interpreter.
 
----
+______________________________________________________________________
 
 # What Happens During `spawn`?
 
@@ -369,7 +370,7 @@ python app.py
 
 again.
 
----
+______________________________________________________________________
 
 # Advantages of `spawn`
 
@@ -378,7 +379,7 @@ again.
 - Predictable behaviour
 - Platform independent
 
----
+______________________________________________________________________
 
 # Disadvantages of `spawn`
 
@@ -390,7 +391,7 @@ Every child must:
 
 This makes it slower than `fork`.
 
----
+______________________________________________________________________
 
 # Why `spawn` Requires Pickling
 
@@ -426,7 +427,7 @@ Therefore,
 
 only picklable objects can be passed.
 
----
+______________________________________________________________________
 
 # Understanding `forkserver`
 
@@ -448,7 +449,7 @@ Instead of every process calling `fork()`,
 
 a dedicated server creates child processes.
 
----
+______________________________________________________________________
 
 # Why Use `forkserver`?
 
@@ -460,7 +461,7 @@ all new worker processes are created from this clean server.
 
 This reduces many of the problems associated with calling `fork()` in a multithreaded program.
 
----
+______________________________________________________________________
 
 # Choosing a Start Method
 
@@ -471,7 +472,7 @@ This reduces many of the problems associated with calling `fork()` in a multithr
 | Thread-heavy Unix application | `forkserver` |
 | Windows | `spawn` |
 
----
+______________________________________________________________________
 
 # The `__main__` Guard
 
@@ -484,7 +485,7 @@ if __name__ == "__main__":
     ...
 ```
 
----
+______________________________________________________________________
 
 # Why Is It Necessary?
 
@@ -528,7 +529,7 @@ Without protection,
 
 the program repeatedly creates new processes.
 
----
+______________________________________________________________________
 
 # Correct Example
 
@@ -552,7 +553,7 @@ if __name__ == "__main__":
 
 This prevents recursive process creation.
 
----
+______________________________________________________________________
 
 # Incorrect Example
 
@@ -574,7 +575,7 @@ This may work with `fork`,
 
 but usually fails on Windows and with `spawn`.
 
----
+______________________________________________________________________
 
 # Process Creation Comparison
 
@@ -592,7 +593,7 @@ Copy Process
 Run Child
 ```
 
----
+______________________________________________________________________
 
 ## `spawn`
 
@@ -612,7 +613,7 @@ Import Module
 Execute Child
 ```
 
----
+______________________________________________________________________
 
 ## `forkserver`
 
@@ -632,7 +633,7 @@ Create Worker
 Execute
 ```
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -663,7 +664,7 @@ Choosing the wrong process creation method may cause:
 
 Understanding process creation is essential for diagnosing production issues.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -677,7 +678,7 @@ if __name__ == "__main__":
 
 This is one of the most common multiprocessing errors.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -685,7 +686,7 @@ Assuming `fork` works everywhere.
 
 Windows only supports `spawn`.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -700,13 +701,13 @@ Examples include:
 
 These cannot usually be transferred to spawned processes.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
 Using `fork` in applications with many threads without understanding the risks.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -722,11 +723,12 @@ Using `fork` in applications with many threads without understanding the risks.
 
 ❌ Don't rely on Linux-only behaviour if your application must run on Windows or macOS.
 
----
+______________________________________________________________________
 
 # Production Insight
 
-Many production bugs appear only after deployment because development often occurs on one operating system while production runs on another.
+Many production bugs appear only after deployment because development often occurs on one operating system while
+production runs on another.
 
 Example:
 
@@ -734,9 +736,10 @@ Example:
 - CI pipeline: Linux (`fork`)
 - Customer environment: Windows (`spawn`)
 
-Writing multiprocessing code that works correctly with `spawn` generally leads to more portable and reliable applications.
+Writing multiprocessing code that works correctly with `spawn` generally leads to more portable and reliable
+applications.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -746,9 +749,10 @@ Writing multiprocessing code that works correctly with `spawn` generally leads t
 
 ### Answer
 
-Because `fork` initially shares the parent's memory using Copy-on-Write instead of starting a completely new interpreter.
+Because `fork` initially shares the parent's memory using Copy-on-Write instead of starting a completely new
+interpreter.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -758,7 +762,7 @@ Because `fork` initially shares the parent's memory using Copy-on-Write instead 
 
 Because every child starts with a fresh interpreter, avoiding inherited locks, threads, and inconsistent runtime state.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -766,9 +770,10 @@ Because every child starts with a fresh interpreter, avoiding inherited locks, t
 
 ### Answer
 
-A memory optimisation where parent and child initially share memory pages until one process modifies them, at which point only the modified pages are copied.
+A memory optimisation where parent and child initially share memory pages until one process modifies them, at which
+point only the modified pages are copied.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -778,7 +783,7 @@ A memory optimisation where parent and child initially share memory pages until 
 
 It prevents recursive process creation when using the `spawn` start method.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -788,7 +793,7 @@ It prevents recursive process creation when using the `spawn` start method.
 
 `spawn`, because it is supported on all major platforms and provides consistent behaviour.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -846,7 +851,7 @@ Observe:
 - Platform differences
 - Performance differences
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -856,9 +861,10 @@ Why does Python support multiple process start methods?
 
 ### Answer
 
-Different operating systems provide different process creation mechanisms, each with unique trade-offs in performance, safety, and compatibility.
+Different operating systems provide different process creation mechanisms, each with unique trade-offs in performance,
+safety, and compatibility.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -868,7 +874,7 @@ What is the main difference between `fork` and `spawn`?
 
 `fork` duplicates the current process using Copy-on-Write, while `spawn` starts a completely new Python interpreter.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -878,7 +884,7 @@ Why is `spawn` slower?
 
 Because every child process must start a new interpreter, import modules, and reconstruct the execution environment.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -886,9 +892,10 @@ Why is the `__main__` guard essential?
 
 ### Answer
 
-It prevents child processes created with `spawn` from repeatedly executing top-level code and recursively creating more child processes.
+It prevents child processes created with `spawn` from repeatedly executing top-level code and recursively creating more
+child processes.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -896,9 +903,10 @@ What is the purpose of `forkserver`?
 
 ### Answer
 
-It uses a dedicated server process to safely create new child processes, reducing issues associated with calling `fork()` from multithreaded applications.
+It uses a dedicated server process to safely create new child processes, reducing issues associated with calling
+`fork()` from multithreaded applications.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -908,7 +916,7 @@ Print the current multiprocessing start method on your operating system.
 
 Research why it is the default.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -920,7 +928,7 @@ Run the same multiprocessing program on:
 
 Compare the observed behaviour.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -930,7 +938,7 @@ Observe what happens using the `spawn` method.
 
 Restore the guard afterwards.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -942,7 +950,7 @@ Explain:
 - When memory is actually copied
 - Why it benefits `fork`
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -956,11 +964,14 @@ In this lesson, you learned:
 - ✅ Production implications of each start method.
 - ✅ Best practices for writing portable multiprocessing applications.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[51-concurrency-part-11-asyncio-fundamentals](51-concurrency-part-11-asyncio-fundamentals.md)
+**File:** [51-concurrency-part-11-asyncio-fundamentals](51-concurrency-part-11-asyncio-fundamentals.md)
 
-In the next lesson, we'll begin one of the most important modules for modern backend development: **Async Programming with `asyncio`**. You'll learn what asynchronous programming is, why it exists, the event loop, coroutines, cooperative multitasking, and how `asyncio` differs fundamentally from threading and multiprocessing. This marks the transition into the concurrency model used by modern frameworks such as FastAPI, Starlette, Uvicorn, and many high-performance Python services.
+In the next lesson, we'll begin one of the most important modules for modern backend development: **Async Programming
+with `asyncio`**. You'll learn what asynchronous programming is, why it exists, the event loop, coroutines, cooperative
+multitasking, and how `asyncio` differs fundamentally from threading and multiprocessing. This marks the transition into
+the concurrency model used by modern frameworks such as FastAPI, Starlette, Uvicorn, and many high-performance Python
+services.

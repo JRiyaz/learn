@@ -1,6 +1,7 @@
 # File: python/13-enums.md
 
 # Python Advanced - Lesson 13
+
 # Enums - Creating Meaningful Constants in Python
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 80 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -32,7 +33,7 @@ By the end of this lesson, you will understand:
 - Enum vs constants
 - Production use cases
 
----
+______________________________________________________________________
 
 # Why Do Enums Exist?
 
@@ -71,7 +72,7 @@ Python won't stop you.
 
 Your program may now behave incorrectly.
 
----
+______________________________________________________________________
 
 # Another Common Example
 
@@ -98,7 +99,7 @@ Nobody knows without documentation.
 
 These are called **magic values**.
 
----
+______________________________________________________________________
 
 # What Are Magic Values?
 
@@ -118,7 +119,7 @@ Good code should be self-explanatory.
 
 Enums solve this problem.
 
----
+______________________________________________________________________
 
 # Introducing Enum
 
@@ -159,7 +160,7 @@ Output
 OrderStatus.PENDING
 ```
 
----
+______________________________________________________________________
 
 # Accessing Values
 
@@ -205,7 +206,7 @@ PAID
 2
 ```
 
----
+______________________________________________________________________
 
 # Comparing Enums
 
@@ -225,7 +226,7 @@ if status.value == "PENDING":
 
 Using enum members is safer and more readable.
 
----
+______________________________________________________________________
 
 # Iterating Over Enums
 
@@ -249,7 +250,7 @@ OrderStatus.SHIPPED
 OrderStatus.DELIVERED
 ```
 
----
+______________________________________________________________________
 
 # auto()
 
@@ -284,7 +285,7 @@ print(Priority.HIGH.value)
 3
 ```
 
----
+______________________________________________________________________
 
 # Why Use auto()?
 
@@ -318,7 +319,7 @@ CRITICAL = auto()
 
 Python handles numbering automatically.
 
----
+______________________________________________________________________
 
 # IntEnum
 
@@ -359,7 +360,7 @@ Unlike `Enum`,
 
 `IntEnum` behaves as an integer.
 
----
+______________________________________________________________________
 
 # Enum vs IntEnum
 
@@ -389,7 +390,7 @@ True
 
 Use `IntEnum` only when integer compatibility is required.
 
----
+______________________________________________________________________
 
 # StrEnum
 
@@ -428,7 +429,7 @@ production
 
 It behaves like both a string and an enum.
 
----
+______________________________________________________________________
 
 # Flag
 
@@ -480,7 +481,7 @@ Output
 Can Read
 ```
 
----
+______________________________________________________________________
 
 # IntFlag
 
@@ -494,7 +495,7 @@ Useful when working with:
 - Bitmasks
 - Low-level APIs
 
----
+______________________________________________________________________
 
 # Enum vs Constants
 
@@ -523,7 +524,7 @@ Enums provide:
 - Autocompletion
 - Easier maintenance
 
----
+______________________________________________________________________
 
 # Production Example - Payment Status
 
@@ -554,7 +555,7 @@ def process_payment(status):
 
 This is much safer than comparing raw strings.
 
----
+______________________________________________________________________
 
 # Production Example - FastAPI
 
@@ -580,7 +581,7 @@ Only valid roles are accepted.
 
 Invalid values produce validation errors automatically.
 
----
+______________________________________________________________________
 
 # Production Example - SQLAlchemy
 
@@ -604,7 +605,7 @@ if order.status == OrderStatus.SHIPPED:
     notify_customer()
 ```
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -620,7 +621,7 @@ if order.status == OrderStatus.SHIPPED:
 
 ❌ Don't use enums for values that change dynamically.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -630,9 +631,10 @@ if order.status == OrderStatus.SHIPPED:
 
 ### Answer
 
-Enums provide meaningful names, improve readability, reduce typographical errors, enable IDE autocompletion and group related constants into a single type.
+Enums provide meaningful names, improve readability, reduce typographical errors, enable IDE autocompletion and group
+related constants into a single type.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -640,9 +642,10 @@ Enums provide meaningful names, improve readability, reduce typographical errors
 
 ### Answer
 
-`Enum` members are compared only with other members of the same enum, while `IntEnum` members also behave like integers and can be compared directly with integer values.
+`Enum` members are compared only with other members of the same enum, while `IntEnum` members also behave like integers
+and can be compared directly with integer values.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -650,9 +653,10 @@ Enums provide meaningful names, improve readability, reduce typographical errors
 
 ### Answer
 
-Use `auto()` when the actual numeric value is not important. It allows Python to assign values automatically, making enums easier to maintain.
+Use `auto()` when the actual numeric value is not important. It allows Python to assign values automatically, making
+enums easier to maintain.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -702,7 +706,7 @@ for status in TicketStatus:
     print(status.name)
 ```
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -714,7 +718,7 @@ Why were enums introduced?
 
 Enums provide meaningful, type-safe names for fixed sets of constants, making code easier to read and maintain.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -724,7 +728,7 @@ What is the difference between `.name` and `.value`?
 
 `.name` returns the enum member's identifier, while `.value` returns the associated value assigned to that member.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -734,7 +738,7 @@ When should you use `StrEnum`?
 
 Use `StrEnum` when enum values need to behave like strings, such as in APIs, JSON payloads or configuration values.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -742,9 +746,10 @@ What is `Flag` used for?
 
 ### Answer
 
-`Flag` allows multiple enum members to be combined using bitwise operators, making it useful for permissions and feature flags.
+`Flag` allows multiple enum members to be combined using bitwise operators, making it useful for permissions and feature
+flags.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -754,7 +759,7 @@ Why is `auto()` useful?
 
 It automatically assigns values to enum members, reducing manual work and preventing numbering mistakes.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -768,7 +773,7 @@ Create an enum called `TrafficLight` with:
 
 Print the name and value of each member.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -776,7 +781,7 @@ Create an `IntEnum` representing HTTP status codes.
 
 Compare an enum member with its corresponding integer.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -784,7 +789,7 @@ Create a `Permission` enum using `Flag`.
 
 Combine multiple permissions and check whether a specific permission is present.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -800,7 +805,7 @@ ROLE_MANAGER = "manager"
 
 Rewrite the application logic to use enum members instead of raw strings.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -815,7 +820,7 @@ In this lesson, you learned:
 - ✅ Production use cases in backend systems.
 - ✅ Best practices for writing maintainable code.
 
----
+______________________________________________________________________
 
 # Module Complete 🎉
 
@@ -846,12 +851,11 @@ You have covered:
 - ✅ NamedTuple
 - ✅ Enums
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[14-Inheritance](14-inheritance.md)
+**File:** [14-Inheritance](14-inheritance.md)
 
 Topics:
 

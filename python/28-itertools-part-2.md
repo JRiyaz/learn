@@ -1,6 +1,7 @@
 # File: python/28-itertools-part-2.md
 
 # Python Functional Programming - Part 6
+
 # `itertools` Part 2 - Combinatorics, Grouping and Advanced Iterator Patterns
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 180 Minutes
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -35,7 +36,7 @@
 - Some operations can generate **enormous numbers of results**, so understanding computational complexity is essential.
 - `pairwise()` is only available in **Python 3.10+**.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -52,7 +53,7 @@ By the end of this lesson, you will understand:
 - Time and memory considerations
 - Production examples
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -77,7 +78,7 @@ Many of these are used in:
 - Machine Learning
 - Data Engineering
 
----
+______________________________________________________________________
 
 # Overview
 
@@ -105,11 +106,11 @@ itertools
 └── pairwise()
 ```
 
----
+______________________________________________________________________
 
 # Part 1 — product()
 
----
+______________________________________________________________________
 
 # What is product()?
 
@@ -123,7 +124,7 @@ this is similar to a
 CROSS JOIN
 ```
 
----
+______________________________________________________________________
 
 # What is a Cartesian Product?
 
@@ -160,7 +161,7 @@ Blue M
 
 Every colour is paired with every size.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -194,7 +195,7 @@ Output
 ]
 ```
 
----
+______________________________________________________________________
 
 # Visualising product()
 
@@ -232,7 +233,7 @@ Blue S
 Blue M
 ```
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -252,7 +253,7 @@ variants = product(
 )
 ```
 
----
+______________________________________________________________________
 
 # Repeated Product
 
@@ -298,7 +299,7 @@ BBB
 
 Useful for brute-force search or generating fixed-length combinations.
 
----
+______________________________________________________________________
 
 # Complexity Warning
 
@@ -316,11 +317,11 @@ Possible outputs
 
 The number of combinations grows exponentially.
 
----
+______________________________________________________________________
 
 # Part 2 — permutations()
 
----
+______________________________________________________________________
 
 # What is a Permutation?
 
@@ -348,7 +349,7 @@ CBA
 
 All six are different.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -410,7 +411,7 @@ There are
 
 permutations.
 
----
+______________________________________________________________________
 
 # Choosing Length
 
@@ -448,7 +449,7 @@ CA
 CB
 ```
 
----
+______________________________________________________________________
 
 # When Do We Use Permutations?
 
@@ -465,11 +466,11 @@ Examples
 - Route optimisation
 - Task ordering
 
----
+______________________________________________________________________
 
 # Part 3 — combinations()
 
----
+______________________________________________________________________
 
 # What is a Combination?
 
@@ -489,7 +490,7 @@ BA
 
 These are considered identical.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -545,7 +546,7 @@ CB
 
 do not appear.
 
----
+______________________________________________________________________
 
 # Visualising
 
@@ -569,7 +570,7 @@ AC
 BC
 ```
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -596,11 +597,11 @@ combinations(
 )
 ```
 
----
+______________________________________________________________________
 
 # Part 4 — combinations_with_replacement()
 
----
+______________________________________________________________________
 
 # What Changes?
 
@@ -618,7 +619,7 @@ AA
 
 Replacement allows repeated values.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -660,7 +661,7 @@ AB
 BB
 ```
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -676,11 +677,11 @@ as a valid two-scoop order.
 
 Replacement is allowed.
 
----
+______________________________________________________________________
 
 # Part 5 — accumulate()
 
----
+______________________________________________________________________
 
 # The Problem
 
@@ -714,7 +715,7 @@ We want
 
 Running totals.
 
----
+______________________________________________________________________
 
 # accumulate()
 
@@ -764,7 +765,7 @@ Output
 ]
 ```
 
----
+______________________________________________________________________
 
 # Visualising
 
@@ -800,7 +801,7 @@ Output
 100
 ```
 
----
+______________________________________________________________________
 
 # Custom Operation
 
@@ -848,7 +849,7 @@ Output
 24
 ```
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -874,11 +875,11 @@ Balances
 125
 ```
 
----
+______________________________________________________________________
 
 # Part 6 — groupby()
 
----
+______________________________________________________________________
 
 # The Biggest Misunderstanding
 
@@ -896,7 +897,7 @@ GROUP BY
 
 It does not.
 
----
+______________________________________________________________________
 
 # Why?
 
@@ -949,7 +950,7 @@ The final
 
 creates a new group.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -995,7 +996,7 @@ Output
 1 [1]
 ```
 
----
+______________________________________________________________________
 
 # Sorting First
 
@@ -1033,17 +1034,17 @@ Now all departments are adjacent.
 
 > **Important:** Unlike SQL, `itertools.groupby()` **does not** collect identical keys from the entire iterable. It only groups consecutive items with the same key.
 
----
+______________________________________________________________________
 
 # Production Example
 
 Grouping log entries by date after sorting.
 
----
+______________________________________________________________________
 
 # Part 7 — tee()
 
----
+______________________________________________________________________
 
 # The Problem
 
@@ -1078,7 +1079,7 @@ Output
 
 The iterator is exhausted.
 
----
+______________________________________________________________________
 
 # tee()
 
@@ -1107,7 +1108,7 @@ Output
 [1, 2, 3]
 ```
 
----
+______________________________________________________________________
 
 # How Does tee() Work?
 
@@ -1119,7 +1120,7 @@ Python buffers values as needed.
 
 This means memory usage grows if one iterator runs far ahead of the other.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -1137,11 +1138,11 @@ Database Insert
 
 Without reading the source twice.
 
----
+______________________________________________________________________
 
 # Part 8 — pairwise()
 
----
+______________________________________________________________________
 
 # What is pairwise()?
 
@@ -1149,7 +1150,7 @@ Added in Python 3.10.
 
 Produces consecutive pairs.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -1211,7 +1212,7 @@ Output
 )
 ```
 
----
+______________________________________________________________________
 
 # Visualising
 
@@ -1237,7 +1238,7 @@ Output
 (30,40)
 ```
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -1258,7 +1259,7 @@ timestamps = [
 
 Compare consecutive timestamps.
 
----
+______________________________________________________________________
 
 # Complexity Summary
 
@@ -1274,7 +1275,7 @@ Compare consecutive timestamps.
 
 Understanding these complexities is important when working with large datasets.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -1290,7 +1291,7 @@ without sorting.
 
 Groups may appear split unexpectedly.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -1306,7 +1307,7 @@ Generating huge permutation sets.
 
 results.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -1320,7 +1321,7 @@ duplicates data without additional memory usage.
 
 It buffers values internally.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -1332,7 +1333,7 @@ product()
 
 without considering exponential growth.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -1348,11 +1349,12 @@ without considering exponential growth.
 
 ❌ Don't materialise millions of permutations into a list unless absolutely necessary.
 
----
+______________________________________________________________________
 
 # Production Insight
 
-The combinatoric functions in `itertools` are powerful, but they're also among the easiest ways to accidentally create performance problems.
+The combinatoric functions in `itertools` are powerful, but they're also among the easiest ways to accidentally create
+performance problems.
 
 For example:
 
@@ -1361,9 +1363,10 @@ For example:
 
 In production systems, these functions are usually consumed lazily inside pipelines rather than converted into lists.
 
-Functions such as `groupby()`, `accumulate()` and `pairwise()` are much more common in everyday backend applications because they process data incrementally without explosive growth.
+Functions such as `groupby()`, `accumulate()` and `pairwise()` are much more common in everyday backend applications
+because they process data incrementally without explosive growth.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1375,7 +1378,7 @@ Functions such as `groupby()`, `accumulate()` and `pairwise()` are much more com
 
 `permutations()` treats different orders as distinct results, while `combinations()` ignores ordering.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1385,7 +1388,7 @@ Functions such as `groupby()`, `accumulate()` and `pairwise()` are much more com
 
 Because it groups only consecutive items with the same key rather than all matching items throughout the iterable.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1395,7 +1398,7 @@ Because it groups only consecutive items with the same key rather than all match
 
 It allows multiple independent iterators to consume the same input iterator without rereading the original data source.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1405,7 +1408,7 @@ It allows multiple independent iterators to consume the same input iterator with
 
 When calculating running totals, cumulative products or other incremental aggregations.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -1471,7 +1474,7 @@ Expected Output
 [(10, 20), (20, 30), (30, 40)]
 ```
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1481,9 +1484,10 @@ What is the difference between `product()` and `combinations()`?
 
 ### Answer
 
-`product()` generates every possible pairing between iterables, while `combinations()` selects unique groups of a specified size from a single iterable without considering order.
+`product()` generates every possible pairing between iterables, while `combinations()` selects unique groups of a
+specified size from a single iterable without considering order.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -1493,7 +1497,7 @@ Why should you be careful when using `permutations()`?
 
 The number of permutations grows factorially, becoming extremely large even for modest input sizes.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -1501,9 +1505,10 @@ Why does `groupby()` sometimes produce multiple groups with the same key?
 
 ### Answer
 
-Because it groups only adjacent elements. If identical keys are separated, each consecutive block becomes a separate group.
+Because it groups only adjacent elements. If identical keys are separated, each consecutive block becomes a separate
+group.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -1513,7 +1518,7 @@ When is `pairwise()` useful?
 
 When comparing consecutive elements, such as calculating time differences, detecting trends or validating ordered data.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1521,9 +1526,10 @@ What is the trade-off when using `tee()`?
 
 ### Answer
 
-It avoids rereading the original iterator but buffers values internally, which can increase memory usage if the duplicated iterators are consumed at different speeds.
+It avoids rereading the original iterator but buffers values internally, which can increase memory usage if the
+duplicated iterators are consumed at different speeds.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -1538,7 +1544,7 @@ sizes = ["S", "M", "L"]
 
 using `product()`.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -1554,7 +1560,7 @@ Then generate every possible batting order using `permutations()`.
 
 Compare the number of outputs.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -1568,7 +1574,7 @@ Use `accumulate()` to calculate cumulative sales.
 
 Then repeat using multiplication to observe the difference.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -1588,7 +1594,7 @@ Sort the logs appropriately and use `groupby()` to group entries by log level.
 
 Explain why sorting is required.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1603,7 +1609,7 @@ In this lesson, you learned:
 - ✅ How `pairwise()` simplifies adjacent comparisons.
 - ✅ The computational complexity of combinatoric iterator functions.
 
----
+______________________________________________________________________
 
 # Module Complete – Functional Python 🎉
 
@@ -1626,13 +1632,13 @@ Topics mastered:
 - ✅ `functools`
 - ✅ `itertools`
 
-You now have a strong understanding of Python's functional programming toolkit and lazy evaluation model—concepts that appear frequently in production backend systems and technical interviews.
+You now have a strong understanding of Python's functional programming toolkit and lazy evaluation model—concepts that
+appear frequently in production backend systems and technical interviews.
 
----
+______________________________________________________________________
 
 # What's Next
 
 **Module 4 – Concurrency & Parallelism**
 
-**File:**
-[29-String-Deep-Dive-part-1](29-string-deep-dive-part-1.md)
+**File:** [29-String-Deep-Dive-part-1](29-string-deep-dive-part-1.md)

@@ -1,6 +1,7 @@
 # File: python/12-namedtuple.md
 
 # Python Advanced - Lesson 12
+
 # NamedTuple - Lightweight Immutable Data Structures
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 75 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -29,7 +30,7 @@ By the end of this lesson, you will understand:
 - NamedTuple vs Dataclass
 - Production use cases
 
----
+______________________________________________________________________
 
 # Why Does NamedTuple Exist?
 
@@ -63,7 +64,7 @@ Engineering
 
 But there's a problem.
 
----
+______________________________________________________________________
 
 # The Problem with Regular Tuples
 
@@ -96,7 +97,7 @@ employee.id
 
 This is exactly the problem `namedtuple` solves.
 
----
+______________________________________________________________________
 
 # Introducing namedtuple
 
@@ -125,7 +126,7 @@ employee = Employee(
 )
 ```
 
----
+______________________________________________________________________
 
 # Accessing Fields
 
@@ -153,7 +154,7 @@ Engineering
 
 Much easier to understand.
 
----
+______________________________________________________________________
 
 # NamedTuple is Still a Tuple
 
@@ -189,7 +190,7 @@ Alice
 
 You get the best of both worlds.
 
----
+______________________________________________________________________
 
 # Immutability
 
@@ -212,7 +213,7 @@ Like normal tuples,
 
 named tuples are immutable.
 
----
+______________________________________________________________________
 
 # Why is Immutability Useful?
 
@@ -228,9 +229,9 @@ In backend systems,
 
 immutable data structures reduce unexpected side effects.
 
----
+______________________________________________________________________
 
-# _fields
+# \_fields
 
 Every named tuple exposes its field names.
 
@@ -250,9 +251,9 @@ Useful for:
 - Serialisation
 - Debugging
 
----
+______________________________________________________________________
 
-# _asdict()
+# \_asdict()
 
 Convert a named tuple into a dictionary.
 
@@ -278,9 +279,9 @@ Output
 
 This is useful when converting data into JSON-friendly formats.
 
----
+______________________________________________________________________
 
-# _replace()
+# \_replace()
 
 Since named tuples are immutable,
 
@@ -308,7 +309,7 @@ Employee(id=101,
 
 The original object remains unchanged.
 
----
+______________________________________________________________________
 
 # Unpacking
 
@@ -332,7 +333,7 @@ Output
 101
 ```
 
----
+______________________________________________________________________
 
 # typing.NamedTuple
 
@@ -376,7 +377,7 @@ Advantages include:
 
 Modern Python projects generally prefer this version.
 
----
+______________________________________________________________________
 
 # collections.namedtuple vs typing.NamedTuple
 
@@ -387,7 +388,7 @@ Modern Python projects generally prefer this version.
 | Limited typing | Full type hints |
 | Still widely used | Preferred in new code |
 
----
+______________________________________________________________________
 
 # NamedTuple vs Dataclass
 
@@ -401,7 +402,7 @@ This is a very common interview question.
 | Very memory efficient | Slightly larger memory footprint |
 | Best for fixed data | Best for business objects |
 
----
+______________________________________________________________________
 
 # When Should You Use NamedTuple?
 
@@ -420,7 +421,7 @@ Use a dataclass when:
 - Validation is required.
 - Methods are needed.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -472,7 +473,7 @@ Although dataclasses have become more popular,
 
 named tuples are still common in libraries that return immutable records.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -486,7 +487,7 @@ named tuples are still common in libraries that return immutable records.
 
 ❌ Don't use named tuples when frequent updates are required.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -496,9 +497,10 @@ named tuples are still common in libraries that return immutable records.
 
 ### Answer
 
-A named tuple provides meaningful attribute names while retaining the efficiency and immutability of a tuple. This makes code more readable and less error-prone.
+A named tuple provides meaningful attribute names while retaining the efficiency and immutability of a tuple. This makes
+code more readable and less error-prone.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -506,9 +508,10 @@ A named tuple provides meaningful attribute names while retaining the efficiency
 
 ### Answer
 
-A named tuple is immutable, lightweight and behaves like a tuple. A dataclass is more flexible, mutable by default and designed for objects that may contain behaviour as well as data.
+A named tuple is immutable, lightweight and behaves like a tuple. A dataclass is more flexible, mutable by default and
+designed for objects that may contain behaviour as well as data.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -516,9 +519,10 @@ A named tuple is immutable, lightweight and behaves like a tuple. A dataclass is
 
 ### Answer
 
-`typing.NamedTuple` supports type annotations, integrates better with static type checkers and IDEs, and provides a cleaner class-based syntax.
+`typing.NamedTuple` supports type annotations, integrates better with static type checkers and IDEs, and provides a
+cleaner class-based syntax.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -578,7 +582,7 @@ print(updated)
 
 Observe that the original object remains unchanged.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -588,9 +592,10 @@ What problem does `namedtuple` solve?
 
 ### Answer
 
-It provides meaningful field names for tuple elements, making code more readable while preserving tuple behaviour and immutability.
+It provides meaningful field names for tuple elements, making code more readable while preserving tuple behaviour and
+immutability.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -600,7 +605,7 @@ Can a named tuple be modified?
 
 No. Named tuples are immutable. Any change requires creating a new instance, often using `_replace()`.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -610,7 +615,7 @@ What does `_asdict()` do?
 
 It returns a dictionary containing the named tuple's field names and values.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -620,7 +625,7 @@ What does `_fields` return?
 
 It returns a tuple containing the names of all fields defined in the named tuple.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -628,9 +633,10 @@ When should you use a named tuple instead of a dataclass?
 
 ### Answer
 
-Use a named tuple when you need a lightweight, immutable data structure with tuple behaviour. Use a dataclass when you need mutable objects, richer behaviour or additional features.
+Use a named tuple when you need a lightweight, immutable data structure with tuple behaviour. Use a dataclass when you
+need mutable objects, richer behaviour or additional features.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -644,7 +650,7 @@ Create a `Book` named tuple with:
 
 Print each field using attribute access.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -652,13 +658,13 @@ Use `_replace()` to create a new book with an updated price.
 
 Verify that the original object has not changed.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
 Convert a named tuple into a dictionary using `_asdict()` and print the result.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -671,7 +677,7 @@ Compare:
 - Readability
 - Ease of modification
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -685,12 +691,11 @@ In this lesson, you learned:
 - ✅ When to choose a named tuple over a dataclass.
 - ✅ Production use cases and best practices.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[13-Enums](13-enums.md)
+**File:** [13-Enums](13-enums.md)
 
 Topics:
 
@@ -705,4 +710,5 @@ Topics:
 - Enum vs Constants
 - Production Examples
 
+```
 ```

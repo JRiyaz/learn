@@ -1,6 +1,7 @@
 # File: python/73-testing-part-06-coverage.md
 
 # Testing
+
 # Part 6: Test Coverage – Measuring What Your Tests Actually Execute
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 8–10 Hours
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -31,7 +32,7 @@ By the end of this lesson, you will understand:
 - Coverage limitations
 - Production best practices
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -61,7 +62,7 @@ Not necessarily.
 
 This is where **test coverage** becomes valuable.
 
----
+______________________________________________________________________
 
 # What is Test Coverage?
 
@@ -89,7 +90,7 @@ Coverage answers questions such as:
 - Which lines were never executed?
 - Which branches were skipped?
 
----
+______________________________________________________________________
 
 # Why Coverage Matters
 
@@ -124,7 +125,7 @@ has never been executed.
 
 Coverage highlights this missing path.
 
----
+______________________________________________________________________
 
 # Coverage is Not the Same as Quality
 
@@ -166,13 +167,13 @@ def test_add():
 
 Coverage measures execution, not correctness.
 
----
+______________________________________________________________________
 
 # Types of Coverage
 
 Several metrics are commonly used.
 
----
+______________________________________________________________________
 
 ## Line Coverage
 
@@ -209,7 +210,7 @@ Most lines executed
 Return path partially tested
 ```
 
----
+______________________________________________________________________
 
 ## Branch Coverage
 
@@ -247,7 +248,7 @@ deny()
 
 Every branch must execute.
 
----
+______________________________________________________________________
 
 ## Statement Coverage
 
@@ -255,7 +256,7 @@ Statement coverage measures whether each executable statement has been run at le
 
 Although similar to line coverage, branch coverage provides a more complete picture for conditional logic.
 
----
+______________________________________________________________________
 
 # Installing coverage.py
 
@@ -289,7 +290,7 @@ service.py            80      6    92%
 models.py             40      0   100%
 ```
 
----
+______________________________________________________________________
 
 # HTML Reports
 
@@ -321,7 +322,7 @@ The report displays:
 
 This makes it easy to identify untested code.
 
----
+______________________________________________________________________
 
 # Using pytest-cov
 
@@ -353,7 +354,7 @@ Generate HTML:
 pytest --cov=app --cov-report=html
 ```
 
----
+______________________________________________________________________
 
 # Reading a Coverage Report
 
@@ -378,7 +379,7 @@ Questions to ask:
 
 Coverage reports help prioritise new tests.
 
----
+______________________________________________________________________
 
 # Missing Branches
 
@@ -408,7 +409,7 @@ validate(-1)
 
 Coverage identifies the missing branch.
 
----
+______________________________________________________________________
 
 # Backend Example
 
@@ -462,7 +463,7 @@ Not Found
 
 A complete test suite should exercise all meaningful paths.
 
----
+______________________________________________________________________
 
 # Excluding Code
 
@@ -488,7 +489,7 @@ Coverage tools support exclusion rules for such cases.
 
 Use exclusions sparingly and document why they exist.
 
----
+______________________________________________________________________
 
 # Setting Coverage Thresholds
 
@@ -510,7 +511,7 @@ the build fails.
 
 This prevents test quality from gradually declining.
 
----
+______________________________________________________________________
 
 # Why 100% Coverage Isn't Always Necessary
 
@@ -540,7 +541,7 @@ Aim to cover:
 
 rather than chasing a perfect percentage.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -548,31 +549,31 @@ rather than chasing a perfect percentage.
 
 Treating coverage percentage as the only quality metric.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
 Writing meaningless tests just to increase coverage.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
 Ignoring uncovered error paths.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
 Never reviewing HTML reports.
 
----
+______________________________________________________________________
 
 ## Mistake 5
 
 Assuming 100% coverage guarantees bug-free software.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -590,7 +591,7 @@ Assuming 100% coverage guarantees bug-free software.
 
 ❌ Don't ignore low coverage in critical modules.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -621,7 +622,7 @@ A typical pipeline may require:
 
 Coverage becomes a continuous quality metric rather than a one-time report.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -633,7 +634,7 @@ Coverage becomes a continuous quality metric rather than a one-time report.
 
 It measures which parts of the source code are executed while running the test suite.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -643,7 +644,7 @@ It measures which parts of the source code are executed while running the test s
 
 No. Coverage only measures execution, not whether the tests verify correct behaviour.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -653,7 +654,7 @@ No. Coverage only measures execution, not whether the tests verify correct behav
 
 Because it verifies that all decision paths, such as both sides of an `if` statement, have been exercised.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -663,7 +664,7 @@ Because it verifies that all decision paths, such as both sides of an `if` state
 
 They visually identify uncovered lines and branches, making it easier to prioritise additional tests.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -673,7 +674,7 @@ They visually identify uncovered lines and branches, making it easier to priorit
 
 They prevent overall test coverage from decreasing over time as the codebase evolves.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -715,7 +716,7 @@ Open the HTML report and identify:
 
 Then write additional tests until all meaningful branches are exercised.
 
----
+______________________________________________________________________
 
 # Knowledge Check
 
@@ -727,7 +728,7 @@ Why is 100% line coverage not sufficient?
 
 Because code may execute without being meaningfully verified, and many logical branches may still remain untested.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -735,9 +736,10 @@ What is the main benefit of branch coverage?
 
 ### Answer
 
-It ensures that different execution paths through conditional logic are tested, increasing confidence in program behaviour.
+It ensures that different execution paths through conditional logic are tested, increasing confidence in program
+behaviour.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -747,7 +749,7 @@ When should uncovered code be investigated?
 
 Whenever it belongs to important business logic, validation, error handling, or frequently used functionality.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -757,7 +759,7 @@ Why should coverage reports be included in CI pipelines?
 
 They provide continuous feedback about testing quality and prevent coverage from decreasing as new code is added.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -767,7 +769,7 @@ How should developers use coverage metrics responsibly?
 
 As a tool for identifying testing gaps rather than as the sole measure of software quality.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -777,7 +779,7 @@ Install `pytest-cov` in one of your existing projects.
 
 Generate both terminal and HTML coverage reports.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -785,7 +787,7 @@ Identify the five least-covered functions in your project.
 
 Write meaningful tests for each and compare the reports before and after.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -793,7 +795,7 @@ Configure your project so that the test suite fails when coverage drops below 90
 
 Verify the behaviour by intentionally removing a test.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -807,7 +809,7 @@ For every uncovered branch, decide whether it should:
 
 Document your reasoning.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -822,9 +824,8 @@ In this lesson, you learned:
 - ✅ How CI pipelines enforce coverage thresholds.
 - ✅ Production best practices for maintaining healthy test coverage.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[74-testing-part-07-integration-testing](74-testing-part-07-integration-testing.md)
+**File:** [74-testing-part-07-integration-testing](74-testing-part-07-integration-testing.md)

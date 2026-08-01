@@ -1,6 +1,7 @@
 # File: python/09-context-managers-part-1.md
 
 # Python Advanced - Lesson 09 (Part 1)
+
 # Context Managers - Managing Resources Safely with `with`
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 75 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -27,7 +28,7 @@ By the end of this lesson, you will understand:
 - How to build your first custom context manager
 - Real-world backend use cases
 
----
+______________________________________________________________________
 
 # Prerequisites
 
@@ -39,7 +40,7 @@ Before starting this lesson, you should understand:
 
 Don't worry if you haven't studied OOP deeply yet. We'll only use simple classes in this lesson.
 
----
+______________________________________________________________________
 
 # Why Do Context Managers Exist?
 
@@ -89,7 +90,7 @@ The file remains open until Python eventually cleans it up.
 
 This is called a **resource leak**.
 
----
+______________________________________________________________________
 
 # What is a Resource?
 
@@ -111,7 +112,7 @@ If resources are not released properly, your application can:
 - Exhaust database connections
 - Slow down or crash
 
----
+______________________________________________________________________
 
 # The Traditional Solution
 
@@ -139,7 +140,7 @@ Even if an exception occurs.
 
 This works well, but it's repetitive.
 
----
+______________________________________________________________________
 
 # The with Statement
 
@@ -175,7 +176,7 @@ Python automatically closes the file.
 
 Even if an exception occurs.
 
----
+______________________________________________________________________
 
 # Visualising the with Statement
 
@@ -205,7 +206,7 @@ Continue
 
 This automatic cleanup is the main purpose of a context manager.
 
----
+______________________________________________________________________
 
 # What is a Context Manager?
 
@@ -214,11 +215,11 @@ A context manager is an object that manages a resource.
 It has two responsibilities:
 
 1. Acquire the resource.
-2. Release the resource.
+1. Release the resource.
 
 Python performs these steps automatically.
 
----
+______________________________________________________________________
 
 # The Context Manager Protocol
 
@@ -232,7 +233,7 @@ __exit__()
 
 These methods form the **Context Manager Protocol**.
 
----
+______________________________________________________________________
 
 # __enter__()
 
@@ -259,7 +260,7 @@ Its job is usually to:
 - Acquire a lock
 - Allocate a resource
 
----
+______________________________________________________________________
 
 # __exit__()
 
@@ -285,7 +286,7 @@ __exit__()
 
 Its job is to clean up resources.
 
----
+______________________________________________________________________
 
 # Building Your First Context Manager
 
@@ -327,7 +328,7 @@ Notice that:
 
 `__exit__()` runs automatically.
 
----
+______________________________________________________________________
 
 # Returning a Value from __enter__()
 
@@ -371,7 +372,7 @@ Disconnected
 
 The value returned by `__enter__()` becomes the variable after `as`.
 
----
+______________________________________________________________________
 
 # What Happens if an Exception Occurs?
 
@@ -417,7 +418,7 @@ Even though an exception occurred,
 
 This is the guarantee provided by context managers.
 
----
+______________________________________________________________________
 
 # Understanding the Parameters of __exit__()
 
@@ -439,7 +440,7 @@ If no exception occurs,
 
 all three parameters are `None`.
 
----
+______________________________________________________________________
 
 # What Happens Internally?
 
@@ -469,7 +470,7 @@ finally:
 
 The real implementation is more sophisticated because it also handles exceptions, but this is the basic idea.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -513,7 +514,7 @@ with requests.Session() as session:
 
 In all of these cases, the context manager ensures that resources are cleaned up properly, even if errors occur.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -523,9 +524,10 @@ In all of these cases, the context manager ensures that resources are cleaned up
 
 ### Answer
 
-The `with` statement guarantees that resources are released correctly, even if an exception occurs. It reduces boilerplate code and prevents resource leaks.
+The `with` statement guarantees that resources are released correctly, even if an exception occurs. It reduces
+boilerplate code and prevents resource leaks.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -533,9 +535,10 @@ The `with` statement guarantees that resources are released correctly, even if a
 
 ### Answer
 
-A context manager implements `__enter__()` and `__exit__()`. `__enter__()` prepares the resource and returns the object used inside the `with` block. `__exit__()` performs cleanup when the block finishes.
+A context manager implements `__enter__()` and `__exit__()`. `__enter__()` prepares the resource and returns the object
+used inside the `with` block. `__exit__()` performs cleanup when the block finishes.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -543,9 +546,10 @@ A context manager implements `__enter__()` and `__exit__()`. `__enter__()` prepa
 
 ### Answer
 
-Python passes the exception type, exception instance and traceback if an exception occurs. If the block exits normally, all three arguments are `None`.
+Python passes the exception type, exception instance and traceback if an exception occurs. If the block exits normally,
+all three arguments are `None`.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -588,7 +592,7 @@ Now modify the `with` block to raise an exception.
 
 Observe that `__exit__()` still executes.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -598,9 +602,10 @@ What problem do context managers solve?
 
 ### Answer
 
-They ensure that resources such as files, database connections and locks are always released correctly, even when exceptions occur.
+They ensure that resources such as files, database connections and locks are always released correctly, even when
+exceptions occur.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -610,7 +615,7 @@ When is `__enter__()` executed?
 
 It is executed immediately before entering the `with` block and usually acquires or prepares the resource.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -620,7 +625,7 @@ When is `__exit__()` executed?
 
 It is executed whenever the `with` block finishes, whether normally or because of an exception.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -630,7 +635,7 @@ What does `__enter__()` usually return?
 
 It typically returns the resource or object that will be assigned to the variable following the `as` keyword.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -640,7 +645,7 @@ Why is the `with` statement safer than manually calling `close()`?
 
 Because cleanup is guaranteed to happen even if an exception interrupts the normal flow of execution.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -656,7 +661,7 @@ Leaving
 
 around a block of code.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -664,13 +669,13 @@ Modify your context manager to return a string from `__enter__()`.
 
 Print the returned value inside the `with` block.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
 Raise an exception inside the `with` block and verify that `__exit__()` is still executed.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -684,12 +689,11 @@ In this lesson, you learned:
 - ✅ How Python guarantees resource cleanup.
 - ✅ Why context managers are essential in backend applications.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[09-Context-Managers-part-2](09-context-managers-part-2.md)
+**File:** [09-Context-Managers-part-2](09-context-managers-part-2.md)
 
 Topics:
 

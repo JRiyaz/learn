@@ -2,7 +2,7 @@
 
 **Python Version Introduced:** Python 3.x
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -19,7 +19,7 @@ By the end of this lesson, you will be able to:
 - Understand when **not** to compute matrix inverses.
 - Apply linear algebra operations in production systems.
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -33,9 +33,10 @@ In the previous lesson, you learned how to:
 
 Those operations help prepare data.
 
-This lesson focuses on **transforming data mathematically**, which is the foundation of machine learning, optimization, simulations, computer graphics, robotics, and scientific computing.
+This lesson focuses on **transforming data mathematically**, which is the foundation of machine learning, optimization,
+simulations, computer graphics, robotics, and scientific computing.
 
----
+______________________________________________________________________
 
 # Why Linear Algebra?
 
@@ -93,7 +94,7 @@ Rotation / Scaling
 
 Without linear algebra, modern machine learning would not exist.
 
----
+______________________________________________________________________
 
 # Scalars, Vectors, and Matrices
 
@@ -111,7 +112,7 @@ x = 5
 5
 ```
 
----
+______________________________________________________________________
 
 ### Vector
 
@@ -131,7 +132,7 @@ Shape
 (3,)
 ```
 
----
+______________________________________________________________________
 
 ### Matrix
 
@@ -156,7 +157,7 @@ Shape
 (2,2)
 ```
 
----
+______________________________________________________________________
 
 # Element-wise Multiplication
 
@@ -191,7 +192,7 @@ Each element is multiplied independently.
 
 This is **not** matrix multiplication.
 
----
+______________________________________________________________________
 
 # Matrix Multiplication
 
@@ -235,7 +236,7 @@ Result
 43 50
 ```
 
----
+______________________________________________________________________
 
 # Matrix Multiplication with `@`
 
@@ -243,7 +244,7 @@ Result
 
 Performs matrix multiplication.
 
----
+______________________________________________________________________
 
 ## Syntax
 
@@ -251,7 +252,7 @@ Performs matrix multiplication.
 A @ B
 ```
 
----
+______________________________________________________________________
 
 ## Example
 
@@ -276,7 +277,7 @@ Output
  [43 50]]
 ```
 
----
+______________________________________________________________________
 
 # `np.matmul()`
 
@@ -295,7 +296,7 @@ Output
 
 The `@` operator internally calls matrix multiplication and is generally preferred for readability.
 
----
+______________________________________________________________________
 
 # Matrix Multiplication Rules
 
@@ -325,7 +326,7 @@ The result has shape
 (m × q)
 ```
 
----
+______________________________________________________________________
 
 Example
 
@@ -343,7 +344,7 @@ Example
 
 Valid.
 
----
+______________________________________________________________________
 
 Example
 
@@ -365,7 +366,7 @@ NumPy raises
 ValueError
 ```
 
----
+______________________________________________________________________
 
 # `dot()`
 
@@ -375,7 +376,7 @@ Computes the dot product.
 
 Its behavior depends on the dimensions of the inputs.
 
----
+______________________________________________________________________
 
 ## Syntax
 
@@ -383,7 +384,7 @@ Its behavior depends on the dimensions of the inputs.
 np.dot(a, b)
 ```
 
----
+______________________________________________________________________
 
 ### Vector Dot Product
 
@@ -419,7 +420,7 @@ Calculation
 32
 ```
 
----
+______________________________________________________________________
 
 ### Matrix Dot Product
 
@@ -429,7 +430,7 @@ print(np.dot(A,B))
 
 Produces the same result as matrix multiplication for two 2D arrays.
 
----
+______________________________________________________________________
 
 # `@` vs `dot()`
 
@@ -441,7 +442,7 @@ Produces the same result as matrix multiplication for two 2D arrays.
 
 For modern code, prefer `@` for matrix multiplication because it clearly expresses mathematical intent.
 
----
+______________________________________________________________________
 
 # Matrix Transpose
 
@@ -474,7 +475,7 @@ Shape changes
 (3,2)
 ```
 
----
+______________________________________________________________________
 
 # Identity Matrix
 
@@ -510,7 +511,7 @@ Property
 A @ I = A
 ```
 
----
+______________________________________________________________________
 
 # Matrix Inverse
 
@@ -518,7 +519,7 @@ A @ I = A
 
 Computes the inverse of a square matrix.
 
----
+______________________________________________________________________
 
 ## Syntax
 
@@ -526,7 +527,7 @@ Computes the inverse of a square matrix.
 np.linalg.inv(matrix)
 ```
 
----
+______________________________________________________________________
 
 Example
 
@@ -561,7 +562,7 @@ Output (approximately)
 
 Small floating-point errors are expected.
 
----
+______________________________________________________________________
 
 # When Can a Matrix Be Inverted?
 
@@ -579,7 +580,7 @@ raises
 LinAlgError
 ```
 
----
+______________________________________________________________________
 
 # Determinant
 
@@ -587,7 +588,7 @@ LinAlgError
 
 Measures certain mathematical properties of a square matrix, including whether it is invertible.
 
----
+______________________________________________________________________
 
 ## Syntax
 
@@ -595,7 +596,7 @@ Measures certain mathematical properties of a square matrix, including whether i
 np.linalg.det(matrix)
 ```
 
----
+______________________________________________________________________
 
 Example
 
@@ -618,7 +619,7 @@ Since the determinant is not zero,
 
 the matrix is invertible.
 
----
+______________________________________________________________________
 
 # Solving Linear Equations
 
@@ -658,7 +659,7 @@ Output
 [1.8 1.4]
 ```
 
----
+______________________________________________________________________
 
 # Why Not Use the Inverse?
 
@@ -687,13 +688,13 @@ Reasons:
 
 This is an important production practice.
 
----
+______________________________________________________________________
 
 # Norm
 
 A norm measures the "size" or "length" of a vector.
 
----
+______________________________________________________________________
 
 ## Syntax
 
@@ -701,7 +702,7 @@ A norm measures the "size" or "length" of a vector.
 np.linalg.norm(vector)
 ```
 
----
+______________________________________________________________________
 
 Example
 
@@ -724,22 +725,17 @@ Applications
 - Similarity measures
 - Optimization
 
----
+______________________________________________________________________
 
 # Performance Notes
 
-Operation | Complexity (Typical)
-----------|----------------------
-Transpose | O(1) (metadata change)
-Dot Product | O(n)
-Matrix Multiplication | O(n³) for dense square matrices (naïve; optimized libraries may perform better)
-Determinant | O(n³)
-Inverse | O(n³)
-Solve Linear System | O(n³)
+Operation | Complexity (Typical) ----------|---------------------- Transpose | O(1) (metadata change) Dot Product | O(n)
+Matrix Multiplication | O(n³) for dense square matrices (naïve; optimized libraries may perform better) Determinant |
+O(n³) Inverse | O(n³) Solve Linear System | O(n³)
 
 The exact performance depends on the underlying BLAS/LAPACK implementation and matrix characteristics.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -761,7 +757,7 @@ A @ B
 
 instead.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -773,7 +769,7 @@ Prefer
 np.linalg.solve()
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -788,7 +784,7 @@ print(B.shape)
 
 before multiplication.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -802,7 +798,7 @@ np.allclose()
 
 when checking results that involve floating-point arithmetic.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -813,7 +809,7 @@ when checking results that involve floating-point arithmetic.
 - Use `np.allclose()` when validating numerical results.
 - Keep matrix operations vectorized instead of using nested Python loops.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -830,9 +826,11 @@ Examples include:
 - Computer vision
 - Robotics
 
-In production systems, matrix multiplication and solving linear systems are often delegated to highly optimized numerical libraries. Writing NumPy code that expresses operations in terms of matrices allows these optimizations to be utilized automatically.
+In production systems, matrix multiplication and solving linear systems are often delegated to highly optimized
+numerical libraries. Writing NumPy code that expresses operations in terms of matrices allows these optimizations to be
+utilized automatically.
 
----
+______________________________________________________________________
 
 ```markdown id="m2v7kp"
 # Questions
@@ -876,7 +874,7 @@ Only when it is square and has a non-zero determinant.
 The length (or magnitude) of a vector.
 ```
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -899,15 +897,15 @@ b = np.array([7, 19])
 Complete the following tasks:
 
 1. Perform element-wise multiplication.
-2. Perform matrix multiplication using both `@` and `np.matmul()`.
-3. Compute the transpose of `A`.
-4. Calculate the determinant of `A`.
-5. Compute the inverse of `A`.
-6. Verify that `A @ inverse(A)` is approximately equal to the identity matrix using `np.allclose()`.
-7. Solve the linear system `A × x = b`.
-8. Compute the Euclidean norm of each row of `A`.
+1. Perform matrix multiplication using both `@` and `np.matmul()`.
+1. Compute the transpose of `A`.
+1. Calculate the determinant of `A`.
+1. Compute the inverse of `A`.
+1. Verify that `A @ inverse(A)` is approximately equal to the identity matrix using `np.allclose()`.
+1. Solve the linear system `A × x = b`.
+1. Compute the Euclidean norm of each row of `A`.
 
----
+______________________________________________________________________
 
 ```markdown id="q5r9dz"
 # Knowledge Check
@@ -991,30 +989,34 @@ What is the typical time complexity of dense matrix multiplication?
 Approximately `O(n³)` (though optimized numerical libraries may use more advanced algorithms internally).
 ```
 
----
+______________________________________________________________________
 
 # Assignment
 
 1. Create two compatible random matrices using `np.random.randint()`.
-2. Perform:
+1. Perform:
    - Element-wise multiplication.
    - Matrix multiplication.
    - Matrix transpose.
-3. Generate a random invertible `3 × 3` matrix.
-4. Compute:
+1. Generate a random invertible `3 × 3` matrix.
+1. Compute:
    - Determinant.
    - Inverse.
    - Verify the inverse using `np.allclose(A @ inv(A), np.eye(3))`.
-5. Create and solve at least three different systems of linear equations using `np.linalg.solve()`.
-6. Compare solving with `np.linalg.solve()` and `np.linalg.inv(A) @ b`, and explain why the former is preferred in production code.
+1. Create and solve at least three different systems of linear equations using `np.linalg.solve()`.
+1. Compare solving with `np.linalg.solve()` and `np.linalg.inv(A) @ b`, and explain why the former is preferred in production code.
 
----
+______________________________________________________________________
 
 # Summary
 
-In this lesson, you learned the core linear algebra operations provided by NumPy. You explored matrix multiplication using `@` and `np.matmul()`, dot products, transposition, determinants, inverses, norms, and solving systems of linear equations. You also learned an important engineering practice: avoid computing matrix inverses when solving equations—use `np.linalg.solve()` instead. These concepts form the mathematical backbone of machine learning, computer graphics, optimization, and scientific computing.
+In this lesson, you learned the core linear algebra operations provided by NumPy. You explored matrix multiplication
+using `@` and `np.matmul()`, dot products, transposition, determinants, inverses, norms, and solving systems of linear
+equations. You also learned an important engineering practice: avoid computing matrix inverses when solving
+equations—use `np.linalg.solve()` instead. These concepts form the mathematical backbone of machine learning, computer
+graphics, optimization, and scientific computing.
 
----
+______________________________________________________________________
 
 # Next Lesson
 

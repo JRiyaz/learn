@@ -2,7 +2,7 @@
 
 **Python Version Introduced:** Python 3.x
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -15,7 +15,7 @@ By the end of this lesson, you will be able to:
 - Identify common anti-patterns and avoid them.
 - Know when NumPy is the right tool—and when it is not.
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -37,7 +37,7 @@ Over the past eleven lessons, you learned:
 
 Now it's time to combine these concepts into a realistic engineering workflow.
 
----
+______________________________________________________________________
 
 # Project Scenario
 
@@ -78,7 +78,7 @@ The data has already been loaded into NumPy arrays.
 
 Your task is to process it efficiently.
 
----
+______________________________________________________________________
 
 # Step 1 — Generate Sample Data
 
@@ -112,7 +112,7 @@ sensor_ids = np.arange(num_sensors)
 
 This simulates one reading from every sensor.
 
----
+______________________________________________________________________
 
 # Step 2 — Basic Statistics
 
@@ -134,7 +134,7 @@ Typical engineering questions:
 - Are there abnormal spikes?
 - Is variability increasing over time?
 
----
+______________________________________________________________________
 
 # Step 3 — Detect Faulty Sensors
 
@@ -164,7 +164,7 @@ print(faulty_ids)
 
 No Python loop is required.
 
----
+______________________________________________________________________
 
 # Step 4 — Battery Monitoring
 
@@ -204,7 +204,7 @@ False
 0
 ```
 
----
+______________________________________________________________________
 
 # Step 5 — Combine Conditions
 
@@ -226,7 +226,7 @@ maintenance = (
 maintenance_ids = sensor_ids[maintenance]
 ```
 
----
+______________________________________________________________________
 
 # Step 6 — Sort by Temperature
 
@@ -244,7 +244,7 @@ sorted_temp = temperature[order]
 
 Because `argsort()` returns indices, related arrays stay aligned.
 
----
+______________________________________________________________________
 
 # Step 7 — Normalize Data
 
@@ -267,7 +267,7 @@ Mean ≈ 0
 Standard Deviation ≈ 1
 ```
 
----
+______________________________________________________________________
 
 # Step 8 — Simulate Missing Values
 
@@ -308,7 +308,7 @@ NumPy provides a family of `nan*` functions such as:
 
 These ignore missing values.
 
----
+______________________________________________________________________
 
 # Step 9 — Reshape Data
 
@@ -325,7 +325,7 @@ daily = hourly.reshape(
 
 Reshaping allows data to be viewed differently without moving memory when possible.
 
----
+______________________________________________________________________
 
 # Step 10 — Performance Improvements
 
@@ -354,7 +354,7 @@ The second version is:
 - More readable
 - More memory efficient
 
----
+______________________________________________________________________
 
 # End-to-End Pipeline
 
@@ -398,7 +398,7 @@ Reports / Predictions
 
 NumPy forms the computational foundation of many of these stages.
 
----
+______________________________________________________________________
 
 # NumPy Best Practices
 
@@ -417,7 +417,7 @@ Use
 arr * 2
 ```
 
----
+______________________________________________________________________
 
 ## 2. Understand Views vs Copies
 
@@ -425,7 +425,7 @@ Avoid unnecessary `.copy()` calls.
 
 Views reduce memory usage.
 
----
+______________________________________________________________________
 
 ## 3. Choose Appropriate Data Types
 
@@ -445,7 +445,7 @@ when precision requirements allow.
 
 This can significantly reduce memory consumption.
 
----
+______________________________________________________________________
 
 ## 4. Use Broadcasting
 
@@ -455,7 +455,7 @@ allow NumPy to broadcast.
 
 Broadcasting is both cleaner and more memory efficient.
 
----
+______________________________________________________________________
 
 ## 5. Profile Before Optimizing
 
@@ -468,7 +468,7 @@ Useful tools:
 - `timeit`
 - `cProfile`
 
----
+______________________________________________________________________
 
 ## 6. Avoid Growing Arrays
 
@@ -486,7 +486,7 @@ Better
 - Vectorize.
 - Build Python lists first if the final size is unknown, then convert once to a NumPy array.
 
----
+______________________________________________________________________
 
 ## 7. Prefer Modern Random API
 
@@ -498,7 +498,7 @@ rng = np.random.default_rng()
 
 instead of the legacy random API.
 
----
+______________________________________________________________________
 
 ## 8. Use Boolean Masks
 
@@ -512,7 +512,7 @@ arr[arr > 50]
 
 This is faster and easier to read.
 
----
+______________________________________________________________________
 
 ## 9. Use the Right Tool
 
@@ -532,7 +532,7 @@ NumPy is **not** ideal for:
 
 Choosing the right abstraction is an important engineering decision.
 
----
+______________________________________________________________________
 
 ## 10. Write Readable Code
 
@@ -550,7 +550,7 @@ is clearer than a complex loop.
 
 Readable code is easier to maintain, debug, and optimize.
 
----
+______________________________________________________________________
 
 # Common Anti-Patterns
 
@@ -566,7 +566,7 @@ Avoid these patterns in production.
 | Sorting values when indices are needed | Use `argsort()` |
 | Using legacy random APIs | Use `default_rng()` |
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -606,11 +606,12 @@ Prediction
 
 Notice that NumPy often sits at the center of the computational workflow.
 
-Many libraries—including Pandas, SciPy, Scikit-learn, XGBoost, TensorFlow, and PyTorch—either build on NumPy concepts or provide interoperability with NumPy arrays.
+Many libraries—including Pandas, SciPy, Scikit-learn, XGBoost, TensorFlow, and PyTorch—either build on NumPy concepts or
+provide interoperability with NumPy arrays.
 
 Understanding NumPy well makes learning the rest of the Python data ecosystem significantly easier.
 
----
+______________________________________________________________________
 
 ```markdown id="w6m9ta"
 # Questions
@@ -654,7 +655,7 @@ Because they are vectorized, concise, and execute efficiently in optimized compi
 When working primarily with labeled, heterogeneous tabular data that requires indexing, grouping, joins, or missing-value handling.
 ```
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -677,15 +678,15 @@ Create arrays for:
 Perform the following tasks:
 
 1. Compute summary statistics for every measurement.
-2. Detect:
+1. Detect:
    - High temperatures (`> 35°C`)
    - Low battery (`< 20%`)
    - Weak signal (`< 30%`)
-3. Identify sensors satisfying multiple fault conditions.
-4. Sort sensors by temperature and battery level.
-5. Normalize temperature values.
-6. Introduce missing values and compute statistics using the `nan*` functions.
-7. Produce a summary report containing:
+1. Identify sensors satisfying multiple fault conditions.
+1. Sort sensors by temperature and battery level.
+1. Normalize temperature values.
+1. Introduce missing values and compute statistics using the `nan*` functions.
+1. Produce a summary report containing:
    - Total sensors
    - Faulty sensors
    - Sensors requiring maintenance
@@ -694,7 +695,7 @@ Perform the following tasks:
 
 Implement the solution without explicit Python loops over the sensor arrays.
 
----
+______________________________________________________________________
 
 ```markdown id="r2k8pf"
 # Knowledge Check
@@ -778,7 +779,7 @@ What are the three most important principles for writing efficient NumPy code?
 Vectorize operations, minimize unnecessary memory allocations, and measure performance before optimizing.
 ```
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -792,33 +793,36 @@ Requirements:
    - Humidity
    - Battery level
    - Pressure
-2. Perform:
+1. Perform:
    - Data validation
    - Statistical summaries
    - Outlier detection
    - Boolean filtering
    - Sorting and ranking
    - Feature normalization
-3. Generate:
+1. Generate:
    - Daily operational summary
    - Maintenance report
    - Top 20 hottest sensors
    - Lowest battery sensors
-4. Benchmark the pipeline using `timeit`.
-5. Ensure the implementation:
+1. Benchmark the pipeline using `timeit`.
+1. Ensure the implementation:
    - Uses vectorized operations.
    - Avoids unnecessary copies.
    - Uses appropriate dtypes.
    - Uses the modern random number generator.
-6. Document the design decisions and explain why each NumPy operation was chosen.
+1. Document the design decisions and explain why each NumPy operation was chosen.
 
----
+______________________________________________________________________
 
 # Summary
 
 Congratulations! You have completed the NumPy curriculum.
 
-Across twelve lessons, you progressed from understanding the `ndarray` memory model to building a production-style data processing pipeline. Along the way, you learned array creation, memory management, indexing, reshaping, vectorization, broadcasting, statistical operations, searching and sorting, linear algebra, random number generation, and performance optimization.
+Across twelve lessons, you progressed from understanding the `ndarray` memory model to building a production-style data
+processing pipeline. Along the way, you learned array creation, memory management, indexing, reshaping, vectorization,
+broadcasting, statistical operations, searching and sorting, linear algebra, random number generation, and performance
+optimization.
 
 More importantly, you learned the engineering principles behind NumPy:
 
@@ -829,7 +833,7 @@ More importantly, you learned the engineering principles behind NumPy:
 
 These concepts provide the foundation for the rest of the Python data ecosystem.
 
----
+______________________________________________________________________
 
 # Next Lesson
 

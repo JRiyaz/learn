@@ -1,6 +1,7 @@
 # File: python/77-networking-part-02-udp-sockets.md
 
 # Computer Networking
+
 # Part 2: UDP Sockets – Fast, Connectionless Communication
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 10–12 Hours
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -31,7 +32,7 @@ By the end of this lesson, you will understand:
 - When to use UDP
 - Production best practices
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -59,7 +60,7 @@ Examples include:
 
 These commonly use **UDP**.
 
----
+______________________________________________________________________
 
 # What is UDP?
 
@@ -94,7 +95,7 @@ UDP Socket
 Application
 ```
 
----
+______________________________________________________________________
 
 # TCP vs UDP
 
@@ -108,7 +109,7 @@ Application
 | Streaming | Byte stream | Datagram |
 | Typical use | HTTP, PostgreSQL | DNS, VoIP, Gaming |
 
----
+______________________________________________________________________
 
 # Why Use UDP?
 
@@ -130,7 +131,7 @@ TCP would retransmit.
 
 UDP simply continues.
 
----
+______________________________________________________________________
 
 # UDP Socket Lifecycle
 
@@ -164,7 +165,7 @@ Notice what's missing:
 
 There is no persistent connection.
 
----
+______________________________________________________________________
 
 # Creating a UDP Socket
 
@@ -185,7 +186,7 @@ SOCK_DGRAM
 
 which creates a UDP socket.
 
----
+______________________________________________________________________
 
 # Binding
 
@@ -197,7 +198,7 @@ server.bind(("127.0.0.1", 9000))
 
 The operating system delivers UDP datagrams sent to that port.
 
----
+______________________________________________________________________
 
 # Receiving Data
 
@@ -210,7 +211,7 @@ Unlike TCP:
 - The sender's address is returned with each datagram.
 - There is no dedicated client socket.
 
----
+______________________________________________________________________
 
 # Sending Data
 
@@ -223,7 +224,7 @@ server.sendto(
 
 The destination address must be supplied for every datagram.
 
----
+______________________________________________________________________
 
 # UDP Server Example
 
@@ -252,7 +253,7 @@ while True:
     )
 ```
 
----
+______________________________________________________________________
 
 # UDP Client Example
 
@@ -276,7 +277,7 @@ print(data.decode())
 client.close()
 ```
 
----
+______________________________________________________________________
 
 # Datagram Behaviour
 
@@ -318,7 +319,7 @@ if one packet is lost.
 
 Applications using UDP must tolerate this.
 
----
+______________________________________________________________________
 
 # Packet Loss
 
@@ -340,7 +341,7 @@ No automatic retry occurs.
 
 If reliability is required, the application must implement it.
 
----
+______________________________________________________________________
 
 # Broadcast Communication
 
@@ -354,7 +355,7 @@ Example use cases:
 - Multiplayer game discovery
 - Network services
 
----
+______________________________________________________________________
 
 # Backend Examples
 
@@ -370,7 +371,7 @@ Examples:
 
 Understanding UDP helps explain why these systems prioritise low latency over guaranteed delivery.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -378,31 +379,31 @@ Understanding UDP helps explain why these systems prioritise low latency over gu
 
 Assuming packets always arrive.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
 Assuming packets arrive in order.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
 Sending messages larger than the network can efficiently handle.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
 Using UDP when reliable delivery is required.
 
----
+______________________________________________________________________
 
 ## Mistake 5
 
 Treating UDP like TCP.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -418,7 +419,7 @@ Treating UDP like TCP.
 
 ❌ Don't assume ordering.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -450,7 +451,7 @@ Database (TCP)
 
 A single request may involve both TCP and UDP, each chosen for its strengths.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -460,9 +461,10 @@ A single request may involve both TCP and UDP, each chosen for its strengths.
 
 ### Answer
 
-Because UDP is connectionless. The server receives independent datagrams rather than maintaining dedicated client connections.
+Because UDP is connectionless. The server receives independent datagrams rather than maintaining dedicated client
+connections.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -472,7 +474,7 @@ Because UDP is connectionless. The server receives independent datagrams rather 
 
 Since there is no established connection, the server must know where to send the reply.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -480,9 +482,10 @@ Since there is no established connection, the server must know where to send the
 
 ### Answer
 
-It avoids connection establishment, acknowledgements, retransmissions, and ordering guarantees, reducing protocol overhead.
+It avoids connection establishment, acknowledgements, retransmissions, and ordering guarantees, reducing protocol
+overhead.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -492,7 +495,7 @@ It avoids connection establishment, acknowledgements, retransmissions, and order
 
 When reliable, ordered delivery is essential, such as file transfers, HTTP requests, or database communication.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -502,7 +505,7 @@ When reliable, ordered delivery is essential, such as file transfers, HTTP reque
 
 Yes. The network may deliver packets in a different order or drop them entirely.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -526,7 +529,7 @@ Implement:
 
 Then intentionally stop the server while the client is running and observe how UDP behaves compared with TCP.
 
----
+______________________________________________________________________
 
 # Knowledge Check
 
@@ -538,7 +541,7 @@ What is the primary advantage of UDP?
 
 Low latency and minimal protocol overhead, making it suitable for time-sensitive communication.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -548,7 +551,7 @@ Why can't applications rely on UDP packet ordering?
 
 The protocol provides no ordering guarantees; packets may arrive out of sequence or not at all.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -558,7 +561,7 @@ What is a datagram?
 
 A self-contained packet of data sent independently over the network using UDP.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -566,9 +569,10 @@ Why is DNS commonly implemented over UDP?
 
 ### Answer
 
-DNS queries and responses are typically small, and avoiding TCP's connection overhead reduces latency for frequent lookups.
+DNS queries and responses are typically small, and avoiding TCP's connection overhead reduces latency for frequent
+lookups.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -576,9 +580,10 @@ How should applications handle important data when using UDP?
 
 ### Answer
 
-If reliable delivery is required, the application must implement acknowledgements, retries, sequencing, or choose TCP instead.
+If reliable delivery is required, the application must implement acknowledgements, retries, sequencing, or choose TCP
+instead.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -586,25 +591,26 @@ If reliable delivery is required, the application must implement acknowledgement
 
 Build a UDP echo server and client.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
 Extend the server to log the IP address and port of every sender.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
 Modify the client to send 100 datagrams and observe how the server processes them.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
-Research one real-world protocol that uses UDP (for example, DNS or DHCP) and explain why UDP is more suitable than TCP for that protocol.
+Research one real-world protocol that uses UDP (for example, DNS or DHCP) and explain why UDP is more suitable than TCP
+for that protocol.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -618,9 +624,8 @@ In this lesson, you learned:
 - ✅ Broadcast communication.
 - ✅ Production use cases for UDP.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[78-networking-part-03-multi-client-tcp-server](78-networking-part-03-multi-client-tcp-server.md)
+**File:** [78-networking-part-03-multi-client-tcp-server](78-networking-part-03-multi-client-tcp-server.md)

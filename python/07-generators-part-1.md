@@ -1,6 +1,7 @@
 # File: python/07-generators-part-1.md
 
 # Python Advanced - Lesson 07 (Part 1)
+
 # Generators - Why They Exist & How `yield` Works
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 75 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -27,7 +28,7 @@ By the end of this lesson, you will understand:
 - Why generators are memory efficient
 - Where generators are used in backend development
 
----
+______________________________________________________________________
 
 # Prerequisites
 
@@ -39,7 +40,7 @@ Before starting this lesson, you should understand:
 
 Generators are Python's way of making custom iterators much easier to write.
 
----
+______________________________________________________________________
 
 # Why Do Generators Exist?
 
@@ -81,7 +82,7 @@ That's a lot of code for a simple task.
 
 Generators solve this problem.
 
----
+______________________________________________________________________
 
 # Your First Generator
 
@@ -122,7 +123,7 @@ The result is identical to our custom iterator.
 
 However, we wrote only a few lines of code.
 
----
+______________________________________________________________________
 
 # Is a Generator a Function?
 
@@ -152,7 +153,7 @@ The function **does not execute immediately**.
 
 Instead, Python creates a **generator object**.
 
----
+______________________________________________________________________
 
 # Generator Function vs Generator Object
 
@@ -168,7 +169,7 @@ def counter():
     yield 1
 ```
 
----
+______________________________________________________________________
 
 ## Generator Object
 
@@ -200,7 +201,7 @@ next(generator)
 
 works.
 
----
+______________________________________________________________________
 
 # Using next()
 
@@ -224,7 +225,7 @@ Output
 
 Just like any other iterator.
 
----
+______________________________________________________________________
 
 # What Does `yield` Actually Do?
 
@@ -276,7 +277,7 @@ Why?
 
 Because execution paused at `yield`.
 
----
+______________________________________________________________________
 
 # Execution Resumes
 
@@ -298,7 +299,7 @@ Execution resumed **exactly where it stopped**.
 
 This is the key difference between generators and normal functions.
 
----
+______________________________________________________________________
 
 # Visualising `yield`
 
@@ -346,7 +347,7 @@ A generator remembers:
 
 without requiring you to manage them manually.
 
----
+______________________________________________________________________
 
 # `yield` vs `return`
 
@@ -374,7 +375,7 @@ Once `return` executes,
 
 the function finishes permanently.
 
----
+______________________________________________________________________
 
 Now compare it with:
 
@@ -412,7 +413,7 @@ Instead of ending,
 
 the function pauses after each `yield`.
 
----
+______________________________________________________________________
 
 # Multiple `yield` Statements
 
@@ -447,7 +448,7 @@ Wednesday
 
 Each iteration continues from the previous `yield`.
 
----
+______________________________________________________________________
 
 # Memory Efficiency
 
@@ -471,7 +472,7 @@ This creates **every number** immediately.
 
 Memory usage grows with the size of the list.
 
----
+______________________________________________________________________
 
 A generator does something different.
 
@@ -511,7 +512,7 @@ Discard
 
 Memory stays almost constant regardless of how many values are produced.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -548,7 +549,7 @@ You'll encounter generators in:
 - ETL pipelines
 - Background job processing
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -558,9 +559,10 @@ You'll encounter generators in:
 
 ### Answer
 
-Generators provide a simpler way to create iterators. Instead of implementing `__iter__()` and `__next__()` manually, a generator function uses `yield`, and Python automatically creates an iterator that maintains its execution state.
+Generators provide a simpler way to create iterators. Instead of implementing `__iter__()` and `__next__()` manually, a
+generator function uses `yield`, and Python automatically creates an iterator that maintains its execution state.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -568,9 +570,10 @@ Generators provide a simpler way to create iterators. Instead of implementing `_
 
 ### Answer
 
-`return` immediately terminates a function and optionally returns a value. `yield` pauses execution, returns a value to the caller, and allows the function to resume from the same point when the next value is requested.
+`return` immediately terminates a function and optionally returns a value. `yield` pauses execution, returns a value to
+the caller, and allows the function to resume from the same point when the next value is requested.
 
----
+______________________________________________________________________
 
 ### Questions
 
@@ -578,9 +581,10 @@ Generators provide a simpler way to create iterators. Instead of implementing `_
 
 ### Answer
 
-Generators produce values lazily, creating each value only when it is needed instead of storing the entire sequence in memory. This makes them ideal for processing large datasets or streams.
+Generators produce values lazily, creating each value only when it is needed instead of storing the entire sequence in
+memory. This makes them ideal for processing large datasets or streams.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -625,7 +629,7 @@ Expected Output
 
 Now replace the `for` loop with repeated calls to `next()` and observe where `StopIteration` occurs.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -635,9 +639,10 @@ What is a generator function?
 
 ### Answer
 
-A generator function is a function that contains one or more `yield` statements. Calling it returns a generator object instead of executing the function immediately.
+A generator function is a function that contains one or more `yield` statements. Calling it returns a generator object
+instead of executing the function immediately.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -645,9 +650,10 @@ What is a generator object?
 
 ### Answer
 
-A generator object is an iterator created by calling a generator function. It produces values one at a time and remembers its execution state between calls.
+A generator object is an iterator created by calling a generator function. It produces values one at a time and
+remembers its execution state between calls.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -655,9 +661,10 @@ Does calling a generator function execute its body?
 
 ### Answer
 
-No. Calling a generator function creates a generator object. The function body starts executing only when iteration begins, such as through `next()` or a `for` loop.
+No. Calling a generator function creates a generator object. The function body starts executing only when iteration
+begins, such as through `next()` or a `for` loop.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -665,9 +672,10 @@ Why does a generator pause at `yield`?
 
 ### Answer
 
-The `yield` keyword saves the function's current state and returns a value. Execution resumes from the same point when the next value is requested.
+The `yield` keyword saves the function's current state and returns a value. Execution resumes from the same point when
+the next value is requested.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -675,9 +683,10 @@ When would you choose a generator instead of a list?
 
 ### Answer
 
-Use a generator when processing large datasets, files or streams where holding every value in memory is unnecessary. Generators produce values lazily and use significantly less memory.
+Use a generator when processing large datasets, files or streams where holding every value in memory is unnecessary.
+Generators produce values lazily and use significantly less memory.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -685,7 +694,7 @@ Use a generator when processing large datasets, files or streams where holding e
 
 Create a generator that yields the first ten even numbers.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -708,7 +717,7 @@ o
 n
 ```
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -716,7 +725,7 @@ Create a generator that yields the square of numbers from **1** to **20**.
 
 Print the values using a `for` loop.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -730,12 +739,11 @@ In this lesson, you learned:
 - ✅ Why generators are memory efficient.
 - ✅ Where generators are used in production backend systems.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[07-Generators-part-2](07-generators-part-2.md)
+**File:** [07-Generators-part-2](07-generators-part-2.md)
 
 Topics:
 

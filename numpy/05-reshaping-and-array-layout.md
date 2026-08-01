@@ -2,7 +2,7 @@
 
 **Python Version Introduced:** Python 3.x
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -16,7 +16,7 @@ By the end of this lesson, you will be able to:
 - Choose the most memory-efficient reshaping operation.
 - Avoid common reshaping mistakes.
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -30,7 +30,7 @@ In the previous lesson, you learned:
 
 Those concepts are essential because reshaping also depends heavily on how an array is stored in memory.
 
----
+______________________________________________________________________
 
 # Why Reshape Arrays?
 
@@ -65,7 +65,7 @@ Although the data is the same, different algorithms expect different shapes.
 
 Reshaping lets us change how NumPy interprets the same memory without changing the underlying values.
 
----
+______________________________________________________________________
 
 # Shape vs Data
 
@@ -115,7 +115,7 @@ No.
 
 Only NumPy's interpretation of the memory changed.
 
----
+______________________________________________________________________
 
 # reshape()
 
@@ -125,7 +125,7 @@ Returns an array with a new shape.
 
 Whenever possible, it **does not copy the data**.
 
----
+______________________________________________________________________
 
 ## Syntax
 
@@ -139,7 +139,7 @@ or
 array.reshape(rows, columns)
 ```
 
----
+______________________________________________________________________
 
 ## Parameters
 
@@ -147,13 +147,13 @@ array.reshape(rows, columns)
 |-----------|-------------|
 | shape | New dimensions |
 
----
+______________________________________________________________________
 
 ## Return Value
 
 Returns a reshaped ndarray.
 
----
+______________________________________________________________________
 
 ## Example
 
@@ -173,7 +173,7 @@ Output
  [ 8  9 10 11]]
 ```
 
----
+______________________________________________________________________
 
 # Number of Elements Must Stay the Same
 
@@ -211,7 +211,7 @@ Because
 
 NumPy cannot invent or discard data.
 
----
+______________________________________________________________________
 
 # Using -1
 
@@ -235,7 +235,7 @@ Output
 
 NumPy calculates the missing dimension.
 
----
+______________________________________________________________________
 
 # Copy or View?
 
@@ -263,9 +263,10 @@ Most reshapes return a **View**.
 
 However, this is **not guaranteed**.
 
-If the requested shape cannot be represented using the existing memory layout, NumPy may create a copy or raise an error, depending on the operation.
+If the requested shape cannot be represented using the existing memory layout, NumPy may create a copy or raise an
+error, depending on the operation.
 
----
+______________________________________________________________________
 
 # resize()
 
@@ -275,7 +276,7 @@ Changes the size of the array itself.
 
 Unlike `reshape()`, it can change the total number of elements.
 
----
+______________________________________________________________________
 
 ## Syntax
 
@@ -283,7 +284,7 @@ Unlike `reshape()`, it can change the total number of elements.
 array.resize(new_shape)
 ```
 
----
+______________________________________________________________________
 
 ## Example
 
@@ -305,7 +306,7 @@ Output
 
 New elements are filled with zeros.
 
----
+______________________________________________________________________
 
 ## Shrinking
 
@@ -325,7 +326,7 @@ Output
 
 Extra elements are discarded.
 
----
+______________________________________________________________________
 
 ## Important Difference
 
@@ -334,7 +335,7 @@ Extra elements are discarded.
 | Returns new view/array | Modifies original array |
 | Number of elements unchanged | Number of elements may change |
 
----
+______________________________________________________________________
 
 # flatten()
 
@@ -342,7 +343,7 @@ Extra elements are discarded.
 
 Returns a one-dimensional version of an array.
 
----
+______________________________________________________________________
 
 ## Syntax
 
@@ -350,7 +351,7 @@ Returns a one-dimensional version of an array.
 array.flatten()
 ```
 
----
+______________________________________________________________________
 
 ## Example
 
@@ -371,7 +372,7 @@ Output
 [1 2 3 4]
 ```
 
----
+______________________________________________________________________
 
 ## Copy or View?
 
@@ -392,7 +393,7 @@ Output
 
 The original array is unchanged.
 
----
+______________________________________________________________________
 
 # ravel()
 
@@ -402,7 +403,7 @@ Returns a flattened array.
 
 Unlike `flatten()`, it tries to avoid copying.
 
----
+______________________________________________________________________
 
 ## Example
 
@@ -410,7 +411,7 @@ Unlike `flatten()`, it tries to avoid copying.
 flat = matrix.ravel()
 ```
 
----
+______________________________________________________________________
 
 ## Copy or View?
 
@@ -430,7 +431,7 @@ Often
 True
 ```
 
----
+______________________________________________________________________
 
 # flatten() vs ravel()
 
@@ -440,7 +441,7 @@ True
 | More memory | Less memory |
 | Safer | Faster |
 
----
+______________________________________________________________________
 
 # transpose()
 
@@ -448,7 +449,7 @@ True
 
 Swaps rows and columns.
 
----
+______________________________________________________________________
 
 ## Syntax
 
@@ -462,7 +463,7 @@ or
 array.T
 ```
 
----
+______________________________________________________________________
 
 Example.
 
@@ -483,7 +484,7 @@ Output
  [3 6]]
 ```
 
----
+______________________________________________________________________
 
 ## Copy or View?
 
@@ -501,7 +502,7 @@ Usually
 True
 ```
 
----
+______________________________________________________________________
 
 # swapaxes()
 
@@ -523,7 +524,7 @@ Output
 (4,3,2)
 ```
 
----
+______________________________________________________________________
 
 # moveaxis()
 
@@ -551,7 +552,7 @@ Useful in:
 - Image Processing
 - Scientific Computing
 
----
+______________________________________________________________________
 
 # expand_dims()
 
@@ -587,9 +588,10 @@ Output
 (3,1)
 ```
 
-Useful for converting vectors into row or column matrices and preparing data for broadcasting or machine learning models.
+Useful for converting vectors into row or column matrices and preparing data for broadcasting or machine learning
+models.
 
----
+______________________________________________________________________
 
 # squeeze()
 
@@ -621,7 +623,7 @@ Output
 (3,)
 ```
 
----
+______________________________________________________________________
 
 # C-Order vs Fortran-Order
 
@@ -664,22 +666,17 @@ Most NumPy code uses C-order.
 
 Some scientific libraries use Fortran-order.
 
----
+______________________________________________________________________
 
 # Performance Notes
 
-Operation | Usually Copy? | Complexity | Memory
-----------|---------------|------------|--------
-reshape() | Usually No | O(1) | O(1)
-flatten() | Yes | O(n) | O(n)
-ravel() | Usually No | O(1) | O(1)
-transpose() | Usually No | O(1) | O(1)
-expand_dims() | No | O(1) | O(1)
-squeeze() | No | O(1) | O(1)
+Operation | Usually Copy? | Complexity | Memory ----------|---------------|------------|-------- reshape() | Usually No
+| O(1) | O(1) flatten() | Yes | O(n) | O(n) ravel() | Usually No | O(1) | O(1) transpose() | Usually No | O(1) | O(1)
+expand_dims() | No | O(1) | O(1) squeeze() | No | O(1) | O(1)
 
 When an operation can return a view, it is generally much faster because it avoids copying the underlying data.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -689,7 +686,7 @@ Using `flatten()` when `ravel()` is sufficient.
 
 This creates unnecessary copies.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -701,7 +698,7 @@ np.arange(10).reshape(3,4)
 
 Raises a `ValueError`.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -709,7 +706,7 @@ Assuming `reshape()` always returns a View.
 
 It usually does, but not in every situation.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -719,7 +716,7 @@ Confusing `resize()` and `reshape()`.
 
 `reshape()` returns a reshaped array.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -730,7 +727,7 @@ Confusing `resize()` and `reshape()`.
 - Use `.T` or `transpose()` to swap rows and columns.
 - Verify memory sharing with `np.shares_memory()` when performance matters.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -743,9 +740,10 @@ Examples include:
 - Transforming one-dimensional sensor data into two-dimensional matrices for visualization.
 - Preparing batches of data for GPU processing.
 
-Efficient reshaping operations that reuse existing memory help reduce memory consumption and improve overall performance, especially when working with large datasets.
+Efficient reshaping operations that reuse existing memory help reduce memory consumption and improve overall
+performance, especially when working with large datasets.
 
----
+______________________________________________________________________
 
 ```markdown id="m6t2kp"
 # Questions
@@ -789,7 +787,7 @@ NumPy automatically calculates the missing dimension while ensuring the total nu
 `resize()` modifies the original array, whereas `reshape()` returns a reshaped array.
 ```
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -804,14 +802,14 @@ Complete these tasks:
 1. Reshape it into:
    - `(4, 6)`
    - `(2, 3, 4)`
-2. Use `-1` to infer one dimension automatically.
-3. Flatten the array using both `flatten()` and `ravel()`.
-4. Check whether each flattened array shares memory with the original.
-5. Transpose a 3×4 matrix and verify whether it shares memory.
-6. Add and remove dimensions using `expand_dims()` and `squeeze()`.
-7. Inspect the array's `C_CONTIGUOUS` and `F_CONTIGUOUS` flags before and after transposing.
+1. Use `-1` to infer one dimension automatically.
+1. Flatten the array using both `flatten()` and `ravel()`.
+1. Check whether each flattened array shares memory with the original.
+1. Transpose a 3×4 matrix and verify whether it shares memory.
+1. Add and remove dimensions using `expand_dims()` and `squeeze()`.
+1. Inspect the array's `C_CONTIGUOUS` and `F_CONTIGUOUS` flags before and after transposing.
 
----
+______________________________________________________________________
 
 ```markdown id="p3w8nc"
 # Knowledge Check
@@ -895,31 +893,35 @@ Why is `ravel()` generally more memory-efficient than `flatten()`?
 Because it reuses the existing data buffer whenever possible instead of creating a new copy.
 ```
 
----
+______________________________________________________________________
 
 # Assignment
 
 1. Create a 3×4 matrix using `np.arange()`.
-2. Perform the following operations:
+1. Perform the following operations:
    - Reshape it into `(2, 6)` and `(4, 3)`.
    - Flatten it using both `flatten()` and `ravel()`.
    - Transpose the matrix.
    - Add a new dimension at the beginning and end using `expand_dims()`.
    - Remove singleton dimensions using `squeeze()`.
-3. For each resulting array, record:
+1. For each resulting array, record:
    - Shape
    - `C_CONTIGUOUS`
    - `F_CONTIGUOUS`
    - Whether it shares memory with the original array
-4. Create a comparison table showing which operations returned views and which returned copies, and explain why each behavior is beneficial in real-world applications.
+1. Create a comparison table showing which operations returned views and which returned copies, and explain why each behavior is beneficial in real-world applications.
 
----
+______________________________________________________________________
 
 # Summary
 
-In this lesson, you learned how NumPy changes the interpretation of array data through reshaping operations without necessarily moving data in memory. You explored `reshape()`, `resize()`, `flatten()`, `ravel()`, `transpose()`, `swapaxes()`, `moveaxis()`, `expand_dims()`, and `squeeze()`, while understanding when these operations return views or copies. You also learned about C-order and Fortran-order memory layouts and why choosing the right reshaping operation is important for both performance and memory efficiency.
+In this lesson, you learned how NumPy changes the interpretation of array data through reshaping operations without
+necessarily moving data in memory. You explored `reshape()`, `resize()`, `flatten()`, `ravel()`, `transpose()`,
+`swapaxes()`, `moveaxis()`, `expand_dims()`, and `squeeze()`, while understanding when these operations return views or
+copies. You also learned about C-order and Fortran-order memory layouts and why choosing the right reshaping operation
+is important for both performance and memory efficiency.
 
----
+______________________________________________________________________
 
 # Next Lesson
 

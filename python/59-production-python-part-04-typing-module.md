@@ -1,6 +1,7 @@
 # File: python/59-production-python-part-04-typing-module.md
 
 # Production Python
+
 # Part 4: The `typing` Module – Writing Self-Documenting and Maintainable Code
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 10–12 Hours
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -41,7 +42,7 @@ By the end of this lesson, you will understand:
 >
 > This lesson intentionally focuses on the **`typing` module**. A deeper lesson on **Type Hinting** and static type checkers (such as `mypy` and `pyright`) has been deferred and will be covered later alongside FastAPI.
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -63,7 +64,7 @@ The `typing` module does **not** change this behaviour.
 
 Instead, it provides a common language for describing expected types.
 
----
+______________________________________________________________________
 
 # Why Does `typing` Exist?
 
@@ -86,7 +87,7 @@ The function signature does not communicate intent.
 
 Using `typing` makes expectations explicit.
 
----
+______________________________________________________________________
 
 # Type Annotations Are Metadata
 
@@ -122,7 +123,7 @@ Annotations are metadata.
 
 Python does not enforce them at runtime.
 
----
+______________________________________________________________________
 
 # Where Are Annotations Stored?
 
@@ -155,7 +156,7 @@ Output:
 
 Frameworks such as FastAPI, Pydantic and dependency injection systems inspect this metadata.
 
----
+______________________________________________________________________
 
 # Built-in Generic Types
 
@@ -187,7 +188,7 @@ set[str]
 
 The older forms remain supported but are gradually being replaced.
 
----
+______________________________________________________________________
 
 # Optional
 
@@ -220,7 +221,7 @@ The function returns either:
 - `str`
 - `None`
 
----
+______________________________________________________________________
 
 # Union
 
@@ -246,7 +247,7 @@ Modern syntax:
 int | float
 ```
 
----
+______________________________________________________________________
 
 # Literal
 
@@ -275,7 +276,7 @@ def set_log_level(
 
 This communicates the allowed values clearly.
 
----
+______________________________________________________________________
 
 # Callable
 
@@ -313,7 +314,7 @@ and returns:
 str
 ```
 
----
+______________________________________________________________________
 
 # TypedDict
 
@@ -356,7 +357,7 @@ def load_user() -> UserDict:
 
 The expected dictionary structure becomes explicit.
 
----
+______________________________________________________________________
 
 # Protocol
 
@@ -398,7 +399,7 @@ even if it inherits from nothing.
 
 This is known as **structural typing**.
 
----
+______________________________________________________________________
 
 # TypeVar
 
@@ -440,7 +441,7 @@ the return type is inferred as:
 int
 ```
 
----
+______________________________________________________________________
 
 # Generic Classes
 
@@ -483,7 +484,7 @@ Repository[Product]
 
 without rewriting the class.
 
----
+______________________________________________________________________
 
 # Type Aliases
 
@@ -515,7 +516,7 @@ def calculate(
 
 The code becomes more expressive.
 
----
+______________________________________________________________________
 
 # Runtime Inspection
 
@@ -535,7 +536,7 @@ hints = get_type_hints(
 
 Many frameworks use this function to inspect application code.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -574,7 +575,7 @@ API layer immediately knows:
 
 without additional documentation.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -582,7 +583,7 @@ without additional documentation.
 
 Assuming annotations are enforced at runtime.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -602,7 +603,7 @@ list[int]
 
 when targeting Python 3.9+.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -624,7 +625,7 @@ dict[
 
 Consider using type aliases.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -632,7 +633,7 @@ Using `Any` everywhere.
 
 Doing so removes most of the value of typing.
 
----
+______________________________________________________________________
 
 ## Mistake 5
 
@@ -640,7 +641,7 @@ Ignoring protocols in favour of unnecessary inheritance.
 
 Sometimes behaviour is more important than class hierarchy.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -658,7 +659,7 @@ Sometimes behaviour is more important than class hierarchy.
 
 ❌ Don't overcomplicate type definitions.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -672,9 +673,10 @@ Examples include:
 - Data validation libraries
 - API documentation generators
 
-Even when runtime validation is handled elsewhere, rich type metadata improves tooling, documentation, IDE support, and framework integration.
+Even when runtime validation is handled elsewhere, rich type metadata improves tooling, documentation, IDE support, and
+framework integration.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -684,9 +686,10 @@ Even when runtime validation is handled elsewhere, rich type metadata improves t
 
 ### Answer
 
-No. It provides metadata that tools and frameworks can use, but Python itself does not enforce type annotations during normal execution.
+No. It provides metadata that tools and frameworks can use, but Python itself does not enforce type annotations during
+normal execution.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -696,7 +699,7 @@ No. It provides metadata that tools and frameworks can use, but Python itself do
 
 To describe the expected structure of dictionaries, making APIs and function contracts clearer.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -704,9 +707,10 @@ To describe the expected structure of dictionaries, making APIs and function con
 
 ### Answer
 
-A protocol defines required behaviour rather than inheritance. Any object implementing the required methods satisfies the protocol.
+A protocol defines required behaviour rather than inheritance. Any object implementing the required methods satisfies
+the protocol.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -716,7 +720,7 @@ A protocol defines required behaviour rather than inheritance. Any object implem
 
 It allows generic functions and classes to preserve relationships between input and output types.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -726,7 +730,7 @@ It allows generic functions and classes to preserve relationships between input 
 
 They improve readability by giving meaningful names to complex type expressions.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -756,7 +760,7 @@ get_type_hints()
 
 Observe how metadata can be accessed at runtime.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -766,9 +770,10 @@ Why does the `typing` module exist if Python is dynamically typed?
 
 ### Answer
 
-It provides a standard way to describe expected types, improving readability, tooling, documentation, and framework integration without changing Python's runtime behaviour.
+It provides a standard way to describe expected types, improving readability, tooling, documentation, and framework
+integration without changing Python's runtime behaviour.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -778,7 +783,7 @@ When should `TypedDict` be preferred over a normal dictionary?
 
 When the dictionary has a well-defined structure that should be documented and consistently used across an application.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -786,9 +791,10 @@ What is the advantage of `Protocol` over inheritance?
 
 ### Answer
 
-Protocols support structural typing, allowing unrelated classes to satisfy an interface simply by implementing the required behaviour.
+Protocols support structural typing, allowing unrelated classes to satisfy an interface simply by implementing the
+required behaviour.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -798,7 +804,7 @@ What is the difference between `TypeVar` and `Generic`?
 
 `TypeVar` defines a type parameter, while `Generic` uses those parameters to build reusable generic classes.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -808,7 +814,7 @@ Why is `Any` generally discouraged?
 
 Because it disables meaningful type information, reducing the benefits of documentation, tooling, and static analysis.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -816,13 +822,13 @@ Because it disables meaningful type information, reducing the benefits of docume
 
 Replace informal dictionary return values with `TypedDict` definitions.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
 Implement a generic repository using `TypeVar` and `Generic`.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -830,7 +836,7 @@ Define a `Protocol` for a notification service.
 
 Create two classes that satisfy it without inheriting from a common base class.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -845,7 +851,7 @@ Identify places where:
 
 could improve readability and maintainability.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -860,10 +866,12 @@ In this lesson, you learned:
 - ✅ Type aliases.
 - ✅ Production use cases and best practices.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
 **File:**
 [60-production-python-part-05-configuration-management](60-production-python-part-05-configuration-management.md)
+
+```
 ```

@@ -4,24 +4,25 @@
 
 > **Audience:** Software Engineers using GitHub Copilot and Antigravity for professional software development.
 
-This guide explains how GitHub Copilot and Antigravity understand your repository, what project instruction files they support, how they differ from Claude Code, and the best practices for each tool.
+This guide explains how GitHub Copilot and Antigravity understand your repository, what project instruction files they
+support, how they differ from Claude Code, and the best practices for each tool.
 
----
+______________________________________________________________________
 
 # Table of Contents
 
 1. GitHub Copilot
-2. Copilot Repository Understanding
-3. copilot-instructions.md
-4. Copilot Best Practices
-5. Antigravity
-6. Antigravity Repository Understanding
-7. Antigravity Best Practices
-8. Claude vs Copilot vs Antigravity
-9. Recommended Multi-AI Repository
-10. Final Recommendations
+1. Copilot Repository Understanding
+1. copilot-instructions.md
+1. Copilot Best Practices
+1. Antigravity
+1. Antigravity Repository Understanding
+1. Antigravity Best Practices
+1. Claude vs Copilot vs Antigravity
+1. Recommended Multi-AI Repository
+1. Final Recommendations
 
----
+______________________________________________________________________
 
 # 1. GitHub Copilot
 
@@ -31,17 +32,17 @@ Unlike Claude Code, Copilot spends most of its time helping while you write code
 
 Typical use cases
 
-* Autocomplete
-* Small implementations
-* Unit tests
-* Refactoring
-* Documentation
-* Code explanation
-* Pull Request assistance
+- Autocomplete
+- Small implementations
+- Unit tests
+- Refactoring
+- Documentation
+- Code explanation
+- Pull Request assistance
 
 Modern versions also provide Chat and Agent capabilities.
 
----
+______________________________________________________________________
 
 # How Copilot Thinks
 
@@ -85,7 +86,7 @@ LLM
 
 The **currently opened editor** has a huge influence.
 
----
+______________________________________________________________________
 
 # Context Priority
 
@@ -115,7 +116,7 @@ Notice
 
 Current editor context is very important.
 
----
+______________________________________________________________________
 
 # 2. copilot-instructions.md
 
@@ -129,7 +130,7 @@ Typical location
     copilot-instructions.md
 ```
 
----
+______________________________________________________________________
 
 # Purpose
 
@@ -145,7 +146,7 @@ Not
 
 How does the architecture work?
 
----
+______________________________________________________________________
 
 # Good Information
 
@@ -165,7 +166,7 @@ Preferred libraries
 
 Documentation expectations
 
----
+______________________________________________________________________
 
 # Avoid
 
@@ -183,7 +184,7 @@ Sprint notes
 
 Temporary discussions
 
----
+______________________________________________________________________
 
 # Example Structure
 
@@ -205,7 +206,7 @@ Review Expectations
 
 Keep it concise.
 
----
+______________________________________________________________________
 
 # Good Example
 
@@ -223,7 +224,7 @@ Use f-strings.
 Document public APIs.
 ```
 
----
+______________________________________________________________________
 
 # Bad Example
 
@@ -239,7 +240,7 @@ Networking
 5000 lines...
 ```
 
----
+______________________________________________________________________
 
 # Working with Copilot
 
@@ -269,7 +270,7 @@ Open the files related to your task.
 
 Copilot performs significantly better.
 
----
+______________________________________________________________________
 
 # Working with Large Projects
 
@@ -295,7 +296,7 @@ storage/
 
 Smaller modules help both developers and AI.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -309,7 +310,7 @@ Run tests.
 
 Update documentation.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -323,7 +324,7 @@ Update documentation.
 
 ❌ Inconsistent naming
 
----
+______________________________________________________________________
 
 # 3. Antigravity
 
@@ -339,7 +340,7 @@ CLAUDE.md
 
 Always refer to the latest Antigravity documentation, as features evolve rapidly.
 
----
+______________________________________________________________________
 
 # How Antigravity Understands Projects
 
@@ -373,7 +374,7 @@ Notice
 
 Documentation quality becomes very important.
 
----
+______________________________________________________________________
 
 # Repository Recommendations
 
@@ -395,7 +396,7 @@ It benefits greatly from
 
 well-structured repositories.
 
----
+______________________________________________________________________
 
 # Good Repository
 
@@ -415,7 +416,7 @@ Subsystem Docs
 Source
 ```
 
----
+______________________________________________________________________
 
 # Poor Repository
 
@@ -435,7 +436,7 @@ Examples
 500 pages
 ```
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -449,7 +450,7 @@ Examples.
 
 Clear module boundaries.
 
----
+______________________________________________________________________
 
 # Things to Avoid
 
@@ -461,31 +462,31 @@ Duplicated documentation.
 
 Mixing architecture with deployment.
 
----
+______________________________________________________________________
 
 # 4. Claude vs Copilot vs Antigravity
 
 ## Repository Understanding
 
-| Capability                     | Claude Code | GitHub Copilot | Antigravity |
+| Capability | Claude Code | GitHub Copilot | Antigravity |
 | ------------------------------ | ----------- | -------------- | ----------- |
-| Project understanding          | Excellent   | Good           | Good        |
-| Large repository support       | Excellent   | Good           | Good        |
-| Long architectural discussions | Excellent   | Moderate       | Moderate    |
-| IDE integration                | Good        | Excellent      | Good        |
-| Autocomplete                   | Good        | Excellent      | Good        |
+| Project understanding | Excellent | Good | Good |
+| Large repository support | Excellent | Good | Good |
+| Long architectural discussions | Excellent | Moderate | Moderate |
+| IDE integration | Good | Excellent | Good |
+| Autocomplete | Good | Excellent | Good |
 
----
+______________________________________________________________________
 
 ## Instruction Files
 
-| Tool           | Instruction File                |
+| Tool | Instruction File |
 | -------------- | ------------------------------- |
-| Claude Code    | CLAUDE.md                       |
+| Claude Code | CLAUDE.md |
 | GitHub Copilot | .github/copilot-instructions.md |
-| Antigravity    | No widely adopted standard      |
+| Antigravity | No widely adopted standard |
 
----
+______________________________________________________________________
 
 ## Best Use Cases
 
@@ -493,37 +494,37 @@ Mixing architecture with deployment.
 
 Excellent for
 
-* System Design
-* Architecture
-* Large Refactoring
-* Code Review
-* Documentation
-* Complex Features
+- System Design
+- Architecture
+- Large Refactoring
+- Code Review
+- Documentation
+- Complex Features
 
----
+______________________________________________________________________
 
 ### GitHub Copilot
 
 Excellent for
 
-* Daily Coding
-* Autocomplete
-* Unit Tests
-* Boilerplate
-* Small Features
+- Daily Coding
+- Autocomplete
+- Unit Tests
+- Boilerplate
+- Small Features
 
----
+______________________________________________________________________
 
 ### Antigravity
 
 Excellent for
 
-* Repository navigation
-* Feature implementation
-* Understanding existing projects
-* Documentation-assisted development
+- Repository navigation
+- Feature implementation
+- Understanding existing projects
+- Documentation-assisted development
 
----
+______________________________________________________________________
 
 # 5. Multi-AI Repository
 
@@ -567,7 +568,7 @@ Each tool simply consumes
 
 the files it understands.
 
----
+______________________________________________________________________
 
 # Shared Documentation
 
@@ -587,7 +588,7 @@ Decision Records
 
 Only the instruction files differ.
 
----
+______________________________________________________________________
 
 # Documentation Flow
 
@@ -617,7 +618,7 @@ Instruction files simply provide
 
 additional guidance.
 
----
+______________________________________________________________________
 
 # Daily Development Workflow
 
@@ -649,7 +650,7 @@ AI should assist
 
 every stage.
 
----
+______________________________________________________________________
 
 # Repository Maintenance
 
@@ -673,7 +674,7 @@ Temporary notes
 
 Duplicate information
 
----
+______________________________________________________________________
 
 # Final Recommendations
 
@@ -689,7 +690,7 @@ for
 
 stable project memory.
 
----
+______________________________________________________________________
 
 ## For GitHub Copilot
 
@@ -703,7 +704,7 @@ for
 
 coding conventions.
 
----
+______________________________________________________________________
 
 ## For Antigravity
 
@@ -713,7 +714,7 @@ repository organization
 
 rather than tool-specific instruction files.
 
----
+______________________________________________________________________
 
 ## Universal Principles
 
@@ -721,25 +722,29 @@ Regardless of the AI assistant,
 
 the following practices consistently improve results:
 
-* Keep documentation modular.
-* Separate architecture from implementation.
-* Maintain examples and design decisions.
-* Avoid duplication.
-* Use consistent terminology.
-* Keep instruction files concise and stable.
-* Treat the repository as the project's long-term knowledge base.
+- Keep documentation modular.
+- Separate architecture from implementation.
+- Maintain examples and design decisions.
+- Avoid duplication.
+- Use consistent terminology.
+- Keep instruction files concise and stable.
+- Treat the repository as the project's long-term knowledge base.
 
----
+______________________________________________________________________
 
 # Summary
 
 Each AI assistant has different strengths:
 
-* **Claude Code** excels at understanding large codebases, architecture, and long-running engineering tasks.
-* **GitHub Copilot** excels at interactive coding, autocomplete, and IDE-assisted development.
-* **Antigravity** benefits from clean repository organization and high-quality documentation, even without a standardized project instruction file.
+- **Claude Code** excels at understanding large codebases, architecture, and long-running engineering tasks.
+- **GitHub Copilot** excels at interactive coding, autocomplete, and IDE-assisted development.
+- **Antigravity** benefits from clean repository organization and high-quality documentation, even without a standardized project instruction file.
 
-A well-structured repository allows all three tools to work together effectively without requiring duplicate documentation or tool-specific repository layouts. By separating permanent knowledge (documentation and instruction files) from temporary work (prompts and conversations), you can achieve better code quality, lower token usage, and a more maintainable development workflow.
+A well-structured repository allows all three tools to work together effectively without requiring duplicate
+documentation or tool-specific repository layouts. By separating permanent knowledge (documentation and instruction
+files) from temporary work (prompts and conversations), you can achieve better code quality, lower token usage, and a
+more maintainable development workflow.
 
 ## Next
+
 [Advanced Context Engineering & Token Optimization](part-6.md)

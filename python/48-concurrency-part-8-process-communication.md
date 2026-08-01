@@ -1,6 +1,7 @@
 # File: python/48-concurrency-part-8-process-communication.md
 
 # Advanced Python Runtime & Concurrency
+
 # Concurrency Part 8: Inter-Process Communication (IPC) - Pipes, Queues, Managers & Shared Memory
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 8–9 Hours
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -26,7 +27,7 @@
 | `multiprocessing.Array` | Python 2.6 |
 | `multiprocessing.shared_memory` | Python 3.8 |
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -45,7 +46,7 @@ By the end of this lesson, you will understand:
 - Best practices
 - questions
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -74,7 +75,7 @@ The answer is:
 Inter-Process Communication (IPC)
 ```
 
----
+______________________________________________________________________
 
 # What is IPC?
 
@@ -93,7 +94,7 @@ It refers to techniques that allow separate processes to exchange:
 
 without directly sharing their memory.
 
----
+______________________________________________________________________
 
 # Why is IPC Needed?
 
@@ -127,7 +128,7 @@ inside Process A.
 
 The data must be communicated explicitly.
 
----
+______________________________________________________________________
 
 # IPC Overview
 
@@ -143,7 +144,7 @@ Python provides several IPC mechanisms.
 
 Each has different trade-offs.
 
----
+______________________________________________________________________
 
 # Serialization
 
@@ -180,7 +181,7 @@ serialization is usually performed using:
 Pickle
 ```
 
----
+______________________________________________________________________
 
 # Pickling
 
@@ -210,7 +211,7 @@ Python Object
 
 This happens automatically for most multiprocessing communication.
 
----
+______________________________________________________________________
 
 # Why Serialization Matters
 
@@ -224,7 +225,7 @@ Complex objects require:
 
 Large objects may become expensive to transfer.
 
----
+______________________________________________________________________
 
 # Introducing `multiprocessing.Queue`
 
@@ -242,7 +243,7 @@ this queue communicates across
 
 different processes.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -285,7 +286,7 @@ Output
 Hello
 ```
 
----
+______________________________________________________________________
 
 # Queue Workflow
 
@@ -315,7 +316,7 @@ Python handles:
 - Serialization
 - Process safety
 
----
+______________________________________________________________________
 
 # Queue Advantages
 
@@ -325,7 +326,7 @@ Python handles:
 - Multiple producers
 - Multiple consumers
 
----
+______________________________________________________________________
 
 # Queue Disadvantages
 
@@ -345,7 +346,7 @@ Deserialized
 
 Large objects increase overhead.
 
----
+______________________________________________________________________
 
 # Introducing `Pipe`
 
@@ -359,7 +360,7 @@ Process A
 Process B
 ```
 
----
+______________________________________________________________________
 
 # Creating a Pipe
 
@@ -374,7 +375,7 @@ Both ends can:
 - Send
 - Receive
 
----
+______________________________________________________________________
 
 # Example
 
@@ -410,7 +411,7 @@ Output
 Hello
 ```
 
----
+______________________________________________________________________
 
 # Pipe Workflow
 
@@ -438,7 +439,7 @@ Unlike a Queue,
 
 a Pipe is designed primarily for communication between two endpoints.
 
----
+______________________________________________________________________
 
 # Queue vs Pipe
 
@@ -449,7 +450,7 @@ a Pipe is designed primarily for communication between two endpoints.
 | Simplicity | High | Medium |
 | Typical Use | Work queues | Direct communication |
 
----
+______________________________________________________________________
 
 # Introducing `Manager`
 
@@ -465,7 +466,7 @@ Instead,
 
 Python provides a Manager.
 
----
+______________________________________________________________________
 
 # Creating a Manager List
 
@@ -483,7 +484,7 @@ multiple processes may safely modify
 
 the same logical list.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -518,7 +519,7 @@ Output
 ['Alice']
 ```
 
----
+______________________________________________________________________
 
 # How Manager Works
 
@@ -542,7 +543,7 @@ Worker B
 
 All operations go through this server.
 
----
+______________________________________________________________________
 
 # Manager Advantages
 
@@ -552,7 +553,7 @@ All operations go through this server.
 - Shared sets
 - Easy API
 
----
+______________________________________________________________________
 
 # Manager Disadvantages
 
@@ -566,7 +567,7 @@ Managers are convenient,
 
 but not the fastest solution.
 
----
+______________________________________________________________________
 
 # Shared Memory
 
@@ -586,7 +587,7 @@ Python 3.8 introduced:
 multiprocessing.shared_memory
 ```
 
----
+______________________________________________________________________
 
 # Concept
 
@@ -610,7 +611,7 @@ One copy of the data.
 
 No repeated serialization.
 
----
+______________________________________________________________________
 
 # Value
 
@@ -638,7 +639,7 @@ i
 Signed Integer
 ```
 
----
+______________________________________________________________________
 
 # Example
 
@@ -677,7 +678,7 @@ Notice
 
 `Value` includes an associated lock by default.
 
----
+______________________________________________________________________
 
 # Array
 
@@ -700,7 +701,7 @@ numbers = Array(
 
 All processes can access the same memory.
 
----
+______________________________________________________________________
 
 # Choosing an IPC Mechanism
 
@@ -713,7 +714,7 @@ All processes can access the same memory.
 | Shared array | Array |
 | Large binary data | Shared Memory |
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -747,7 +748,7 @@ The queue distributes work.
 
 Large image buffers may be stored in shared memory to avoid repeated copying.
 
----
+______________________________________________________________________
 
 # Serialization Cost
 
@@ -769,7 +770,7 @@ Serialization becomes expensive.
 
 Choosing the right IPC mechanism can significantly improve performance.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -779,7 +780,7 @@ Assuming global variables are shared.
 
 Each process has its own memory.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -787,7 +788,7 @@ Using `Manager` for high-performance workloads.
 
 Managers are convenient but slower than shared memory.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -795,7 +796,7 @@ Passing extremely large objects through queues repeatedly.
 
 Serialization overhead can dominate execution time.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -803,7 +804,7 @@ Ignoring synchronization when using shared memory.
 
 Shared memory still requires coordination if multiple processes modify the same data concurrently.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -821,7 +822,7 @@ Shared memory still requires coordination if multiple processes modify the same 
 
 ❌ Don't choose the most complex mechanism unless necessary.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -841,7 +842,7 @@ these systems behave like distributed queues.
 
 Understanding local IPC makes distributed messaging systems much easier to learn.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -853,7 +854,7 @@ Understanding local IPC makes distributed messaging systems much easier to learn
 
 Because each process has its own isolated memory space managed by the operating system.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -861,9 +862,10 @@ Because each process has its own isolated memory space managed by the operating 
 
 ### Answer
 
-Serialization converts Python objects into a transferable byte representation so they can be sent between processes or stored.
+Serialization converts Python objects into a transferable byte representation so they can be sent between processes or
+stored.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -871,9 +873,10 @@ Serialization converts Python objects into a transferable byte representation so
 
 ### Answer
 
-It provides safe, process-aware communication between multiple producers and consumers while handling synchronization and serialization automatically.
+It provides safe, process-aware communication between multiple producers and consumers while handling synchronization
+and serialization automatically.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -883,7 +886,7 @@ It provides safe, process-aware communication between multiple producers and con
 
 When processes need efficient access to large datasets without repeatedly serializing and copying them.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -891,9 +894,10 @@ When processes need efficient access to large datasets without repeatedly serial
 
 ### Answer
 
-Because every operation is routed through a manager server process and involves inter-process communication and serialization.
+Because every operation is routed through a manager server process and involves inter-process communication and
+serialization.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -961,7 +965,7 @@ Consumed: 1
 ...
 ```
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -971,9 +975,10 @@ What is IPC?
 
 ### Answer
 
-IPC (Inter-Process Communication) is a collection of mechanisms that allow separate processes to exchange data and coordinate execution.
+IPC (Inter-Process Communication) is a collection of mechanisms that allow separate processes to exchange data and
+coordinate execution.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -983,7 +988,7 @@ Why is serialization necessary in multiprocessing?
 
 Because processes do not share memory, objects must be converted into bytes before being transmitted between them.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -993,7 +998,7 @@ When should you use a Pipe instead of a Queue?
 
 When communication is primarily between two processes and a simple direct channel is sufficient.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -1003,7 +1008,7 @@ What is the advantage of shared memory?
 
 It allows multiple processes to access the same memory without repeatedly serializing and copying large objects.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1011,9 +1016,10 @@ When should a Manager be used?
 
 ### Answer
 
-When multiple processes need to share familiar Python objects such as lists or dictionaries and convenience is more important than maximum performance.
+When multiple processes need to share familiar Python objects such as lists or dictionaries and convenience is more
+important than maximum performance.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -1026,7 +1032,7 @@ Implement a producer-consumer system using `multiprocessing.Queue` with:
 
 Measure throughput.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -1034,7 +1040,7 @@ Build a simple chat application between two processes using `Pipe`.
 
 Each process should send and receive multiple messages.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -1044,7 +1050,7 @@ Spawn four processes that increment the counter safely.
 
 Verify the final value.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -1056,7 +1062,7 @@ Explain:
 - Why it is faster for large datasets
 - When it should be avoided
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1071,11 +1077,13 @@ In this lesson, you learned:
 - ✅ Performance trade-offs between IPC mechanisms.
 - ✅ Production IPC patterns.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[49-concurrency-part-9-processpoolexecutor-and-pool](49-concurrency-part-9-processpoolexecutor-and-pool.md)
+**File:** [49-concurrency-part-9-processpoolexecutor-and-pool](49-concurrency-part-9-processpoolexecutor-and-pool.md)
 
-In the next lesson, you'll learn how to efficiently manage multiple worker processes using `multiprocessing.Pool` and `concurrent.futures.ProcessPoolExecutor`. We'll compare both APIs, explore task scheduling, futures, result handling, exception propagation, performance tuning, and learn why process pools are the standard solution for CPU-bound workloads in production.
+In the next lesson, you'll learn how to efficiently manage multiple worker processes using `multiprocessing.Pool` and
+`concurrent.futures.ProcessPoolExecutor`. We'll compare both APIs, explore task scheduling, futures, result handling,
+exception propagation, performance tuning, and learn why process pools are the standard solution for CPU-bound workloads
+in production.

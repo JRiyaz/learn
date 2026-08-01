@@ -1,6 +1,7 @@
 # File: python/79-networking-part-04-non-blocking-sockets-and-selectors.md
 
 # Computer Networking
+
 # Part 4: Non-Blocking Sockets & Selectors – Building High-Concurrency Servers
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 16–20 Hours
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -30,7 +31,7 @@ By the end of this lesson, you will understand:
 - Operating system polling mechanisms
 - Production best practices
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -86,7 +87,7 @@ is impractical.
 
 Instead of creating more threads, modern servers use **event-driven I/O**.
 
----
+______________________________________________________________________
 
 # The Problem with Blocking Sockets
 
@@ -126,7 +127,7 @@ Thousands of threads are sleeping.
 
 Most server resources are wasted.
 
----
+______________________________________________________________________
 
 # Blocking I/O
 
@@ -152,7 +153,7 @@ Continue
 
 Every blocking call consumes a thread.
 
----
+______________________________________________________________________
 
 # Non-Blocking I/O
 
@@ -176,7 +177,7 @@ Continue Doing Other Work
 
 The application never waits unnecessarily.
 
----
+______________________________________________________________________
 
 # Creating a Non-Blocking Socket
 
@@ -206,7 +207,7 @@ BlockingIOError
 
 is raised immediately.
 
----
+______________________________________________________________________
 
 # Why Non-Blocking Alone Isn't Enough
 
@@ -252,7 +253,7 @@ CPU usage becomes extremely high.
 
 We need a better solution.
 
----
+______________________________________________________________________
 
 # Enter Selectors
 
@@ -274,7 +275,7 @@ Ask the operating system:
 
 This is exactly what **selectors** does.
 
----
+______________________________________________________________________
 
 # What is a Selector?
 
@@ -298,7 +299,7 @@ Application
 
 No CPU is wasted checking idle sockets.
 
----
+______________________________________________________________________
 
 # The selectors Module
 
@@ -316,7 +317,7 @@ selector = selectors.DefaultSelector()
 
 `DefaultSelector` automatically chooses the best implementation for your operating system.
 
----
+______________________________________________________________________
 
 # Registering a Socket
 
@@ -333,7 +334,7 @@ This tells the selector:
 
 > Notify me when this socket becomes readable.
 
----
+______________________________________________________________________
 
 # Waiting for Events
 
@@ -365,7 +366,7 @@ Wake Up
 
 The application sleeps efficiently until work exists.
 
----
+______________________________________________________________________
 
 # Event Types
 
@@ -385,7 +386,7 @@ EVENT_WRITE
 
 Data can be written.
 
----
+______________________________________________________________________
 
 # Accepting New Clients
 
@@ -415,7 +416,7 @@ We call:
 accept()
 ```
 
----
+______________________________________________________________________
 
 # Registering Client Sockets
 
@@ -441,7 +442,7 @@ Now the selector watches both:
 - Server socket
 - Client sockets
 
----
+______________________________________________________________________
 
 # Event Loop
 
@@ -465,7 +466,7 @@ Repeat
 
 Only sockets with work pending are processed.
 
----
+______________________________________________________________________
 
 # Minimal Event Loop
 
@@ -483,7 +484,7 @@ while True:
 
 Each socket has an associated callback function.
 
----
+______________________________________________________________________
 
 # Complete Server Architecture
 
@@ -511,7 +512,7 @@ One thread.
 
 Many connections.
 
----
+______________________________________________________________________
 
 # Why This Scales
 
@@ -543,7 +544,7 @@ Memory usage drops dramatically.
 
 Context switching almost disappears.
 
----
+______________________________________________________________________
 
 # Behind the Scenes
 
@@ -569,7 +570,7 @@ select()
 
 Python hides these differences behind one interface.
 
----
+______________________________________________________________________
 
 # Callback Example
 
@@ -602,7 +603,7 @@ read()
 
 when data arrives.
 
----
+______________________________________________________________________
 
 # Reading Client Data
 
@@ -632,7 +633,7 @@ No thread creation.
 
 No blocking.
 
----
+______________________________________________________________________
 
 # Event-Driven Programming
 
@@ -668,7 +669,7 @@ The flow is inverted.
 
 This programming model is the foundation of many modern frameworks.
 
----
+______________________________________________________________________
 
 # selectors and asyncio
 
@@ -698,7 +699,7 @@ Operating System
 
 Understanding selectors makes `asyncio` much easier to understand.
 
----
+______________________________________________________________________
 
 # Backend Example
 
@@ -730,7 +731,7 @@ HTTP Response
 
 Thousands of connections are handled by a small number of threads.
 
----
+______________________________________________________________________
 
 # Threads vs Selectors
 
@@ -743,7 +744,7 @@ Thousands of connections are handled by a small number of threads.
 | Easier to understand | More complex |
 | Moderate scalability | Very high scalability |
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -751,25 +752,25 @@ Thousands of connections are handled by a small number of threads.
 
 Using non-blocking sockets without a selector.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
 Busy waiting in a loop.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
 Forgetting to unregister closed sockets.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
 Blocking inside callback functions.
 
----
+______________________________________________________________________
 
 ## Mistake 5
 
@@ -777,7 +778,7 @@ Assuming selectors eliminate all scalability limits.
 
 CPU-intensive work still requires worker threads or processes.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -795,7 +796,7 @@ CPU-intensive work still requires worker threads or processes.
 
 ❌ Don't perform long database queries synchronously inside callbacks.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -859,7 +860,7 @@ Although the implementations differ, the underlying idea is the same:
 
 > Wait efficiently until the operating system reports that work is available.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -869,9 +870,10 @@ Although the implementations differ, the underlying idea is the same:
 
 ### Answer
 
-Because each blocked socket typically occupies a thread that cannot perform other work while waiting for network activity.
+Because each blocked socket typically occupies a thread that cannot perform other work while waiting for network
+activity.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -881,7 +883,7 @@ Because each blocked socket typically occupies a thread that cannot perform othe
 
 A selector allows one thread to efficiently monitor many sockets and wake up only when one or more become ready for I/O.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -891,7 +893,7 @@ A selector allows one thread to efficiently monitor many sockets and wake up onl
 
 Because it repeatedly checks sockets even when no work exists, wasting CPU time.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -899,9 +901,10 @@ Because it repeatedly checks sockets even when no work exists, wasting CPU time.
 
 ### Answer
 
-While one callback is executing, the event loop cannot process other ready events. Long-running callbacks reduce responsiveness.
+While one callback is executing, the event loop cannot process other ready events. Long-running callbacks reduce
+responsiveness.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -911,7 +914,7 @@ While one callback is executing, the event loop cannot process other ready event
 
 It automatically chooses the most appropriate I/O multiplexing mechanism for the current operating system.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -940,7 +943,7 @@ Then connect multiple terminal clients simultaneously and verify that:
 - No additional threads are created for each client.
 - Idle clients consume minimal CPU resources.
 
----
+______________________________________________________________________
 
 # Knowledge Check
 
@@ -950,9 +953,10 @@ Why do event-driven servers generally scale better than thread-per-client server
 
 ### Answer
 
-Because they can manage many concurrent connections using a small number of threads, avoiding excessive memory usage and context switching.
+Because they can manage many concurrent connections using a small number of threads, avoiding excessive memory usage and
+context switching.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -960,9 +964,10 @@ What role does the operating system play in a selector-based server?
 
 ### Answer
 
-The operating system monitors sockets and notifies the application only when I/O operations can proceed without blocking.
+The operating system monitors sockets and notifies the application only when I/O operations can proceed without
+blocking.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -970,9 +975,10 @@ Why is `selectors` considered an abstraction layer?
 
 ### Answer
 
-Because it presents a consistent Python interface while using different platform-specific mechanisms such as `epoll`, `kqueue`, or `select()` underneath.
+Because it presents a consistent Python interface while using different platform-specific mechanisms such as `epoll`,
+`kqueue`, or `select()` underneath.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -980,9 +986,10 @@ Why should blocking operations be avoided inside the event loop?
 
 ### Answer
 
-A blocking operation prevents the event loop from processing other ready sockets, reducing throughput and increasing latency.
+A blocking operation prevents the event loop from processing other ready sockets, reducing throughput and increasing
+latency.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -990,9 +997,10 @@ How does this lesson prepare you for learning `asyncio`?
 
 ### Answer
 
-`asyncio` builds on the same event-driven model, using selectors internally to schedule and manage asynchronous I/O operations efficiently.
+`asyncio` builds on the same event-driven model, using selectors internally to schedule and manage asynchronous I/O
+operations efficiently.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -1000,7 +1008,7 @@ How does this lesson prepare you for learning `asyncio`?
 
 Convert your thread-per-client echo server into a selector-based server.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -1011,13 +1019,13 @@ Add logging that records when sockets are:
 - Closed.
 - Unregistered.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
 Modify the server to broadcast messages to all connected clients using a single event loop.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -1034,7 +1042,7 @@ Measure:
 
 Explain why the selector-based implementation scales more effectively.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1049,9 +1057,8 @@ In this lesson, you learned:
 - ✅ Why modern web servers use event loops.
 - ✅ Production best practices for high-concurrency network applications.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[80-networking-part-05-websockets](80-networking-part-05-websockets.md)
+**File:** [80-networking-part-05-websockets](80-networking-part-05-websockets.md)

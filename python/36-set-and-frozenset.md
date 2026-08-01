@@ -1,6 +1,7 @@
 # File: python/36-set-and-frozenset.md
 
 # Python Built-in Types
+
 # Set (`set`) & FrozenSet (`frozenset`) Deep Dive
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 4 Hours
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -30,7 +31,7 @@
 - Modern Python sets are highly optimised hash-table based data structures.
 - Like dictionaries, sets benefit from continuous performance improvements in CPython.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -47,7 +48,7 @@ By the end of this lesson, you will understand:
 - Production use cases
 - Best practices
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -77,7 +78,7 @@ and a set as:
 Value
 ```
 
----
+______________________________________________________________________
 
 # Why Do Sets Exist?
 
@@ -119,7 +120,7 @@ The code looks identical.
 
 The performance difference is enormous.
 
----
+______________________________________________________________________
 
 # What is a Set?
 
@@ -143,7 +144,7 @@ Notice
 
 No duplicate values.
 
----
+______________________________________________________________________
 
 # Duplicate Removal
 
@@ -175,7 +176,7 @@ Output
 
 Duplicates are automatically removed.
 
----
+______________________________________________________________________
 
 # Characteristics
 
@@ -191,7 +192,7 @@ Sets are:
 
 ✅ Built on hash tables
 
----
+______________________________________________________________________
 
 # Internal Representation
 
@@ -234,7 +235,7 @@ Set
 Value
 ```
 
----
+______________________________________________________________________
 
 # Why Are Sets Unordered?
 
@@ -262,7 +263,7 @@ languages = {
 
 The printed order may differ from what you wrote.
 
----
+______________________________________________________________________
 
 # Creating Sets
 
@@ -304,7 +305,7 @@ Output
 {'a', 'b', 'n'}
 ```
 
----
+______________________________________________________________________
 
 # Empty Set
 
@@ -338,7 +339,7 @@ Output
 <class 'set'>
 ```
 
----
+______________________________________________________________________
 
 # Hashable Elements
 
@@ -372,7 +373,7 @@ points = {
 }
 ```
 
----
+______________________________________________________________________
 
 # Invalid Elements
 
@@ -393,7 +394,7 @@ unhashable type: 'list'
 
 Lists are mutable.
 
----
+______________________________________________________________________
 
 # add()
 
@@ -409,7 +410,7 @@ users.add("Bob")
 print(users)
 ```
 
----
+______________________________________________________________________
 
 # update()
 
@@ -437,7 +438,7 @@ users.update(
 print(users)
 ```
 
----
+______________________________________________________________________
 
 # remove()
 
@@ -463,7 +464,7 @@ Python raises
 KeyError
 ```
 
----
+______________________________________________________________________
 
 # discard()
 
@@ -477,7 +478,7 @@ No exception.
 
 Very useful when removal is optional.
 
----
+______________________________________________________________________
 
 # pop()
 
@@ -503,7 +504,7 @@ Important
 
 Do **not** assume which element will be removed.
 
----
+______________________________________________________________________
 
 # clear()
 
@@ -519,7 +520,7 @@ Output
 set()
 ```
 
----
+______________________________________________________________________
 
 # Membership Testing
 
@@ -547,7 +548,7 @@ Complexity
 Average O(1)
 ```
 
----
+______________________________________________________________________
 
 # Union
 
@@ -589,7 +590,7 @@ Equivalent
 backend.union(frontend)
 ```
 
----
+______________________________________________________________________
 
 # Intersection
 
@@ -631,7 +632,7 @@ Equivalent
 a.intersection(b)
 ```
 
----
+______________________________________________________________________
 
 # Difference
 
@@ -665,7 +666,7 @@ Output
 {1}
 ```
 
----
+______________________________________________________________________
 
 # Symmetric Difference
 
@@ -701,7 +702,7 @@ Output
 {1, 2, 4, 5}
 ```
 
----
+______________________________________________________________________
 
 # Visualising Set Operations
 
@@ -731,7 +732,7 @@ Symmetric Difference
 {1,2,4,5}
 ```
 
----
+______________________________________________________________________
 
 # Subset
 
@@ -769,7 +770,7 @@ Equivalent
 a.issubset(b)
 ```
 
----
+______________________________________________________________________
 
 # Superset
 
@@ -783,7 +784,7 @@ Equivalent
 b.issuperset(a)
 ```
 
----
+______________________________________________________________________
 
 # Disjoint
 
@@ -819,7 +820,7 @@ Output
 True
 ```
 
----
+______________________________________________________________________
 
 # Set Comprehensions
 
@@ -841,7 +842,7 @@ Output
 {0, 1, 4, 9, 16}
 ```
 
----
+______________________________________________________________________
 
 # FrozenSet
 
@@ -869,7 +870,7 @@ Unlike sets,
 
 elements cannot be added or removed.
 
----
+______________________________________________________________________
 
 # Why Does FrozenSet Exist?
 
@@ -899,7 +900,7 @@ is valid.
 
 Normal sets cannot be elements of another set.
 
----
+______________________________________________________________________
 
 # Set vs FrozenSet
 
@@ -911,7 +912,7 @@ Normal sets cannot be elements of another set.
 | Remove Elements | ✅ | ❌ |
 | Dictionary Key | ❌ | ✅ |
 
----
+______________________________________________________________________
 
 # Time Complexity
 
@@ -925,7 +926,7 @@ Normal sets cannot be elements of another set.
 | Difference | O(len(a)) |
 | Iteration | O(n) |
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -945,7 +946,7 @@ Correct
 set()
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -965,7 +966,7 @@ Produces
 TypeError
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -973,7 +974,7 @@ Assuming sets preserve order.
 
 Never depend on iteration order.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -987,7 +988,7 @@ discard()
 
 if missing elements are acceptable.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -1007,7 +1008,7 @@ if missing elements are acceptable.
 
 ❌ Don't store mutable objects in sets.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -1069,7 +1070,7 @@ if message.id not in processed:
 
 Backend engineers frequently use sets to reduce algorithms from **O(n²)** to **O(n)**.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1081,7 +1082,7 @@ Backend engineers frequently use sets to reduce algorithms from **O(n²)** to **
 
 Sets use hash tables, allowing average O(1) lookups. Lists perform sequential searches, resulting in O(n) time.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1091,7 +1092,7 @@ Sets use hash tables, allowing average O(1) lookups. Lists perform sequential se
 
 Lists are mutable and therefore unhashable. Set elements must have stable hash values.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1101,7 +1102,7 @@ Lists are mutable and therefore unhashable. Set elements must have stable hash v
 
 When you need an immutable set that can be used as a dictionary key, cached safely, or shared without modification.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1111,7 +1112,7 @@ When you need an immutable set that can be used as a dictionary key, cached safe
 
 Sets are unordered collections. `pop()` removes an arbitrary element rather than the first inserted one.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1119,9 +1120,10 @@ Sets are unordered collections. `pop()` removes an arbitrary element rather than
 
 ### Answer
 
-Sets are commonly used for duplicate detection, permission checks, cache lookups, and fast membership testing in large datasets.
+Sets are commonly used for duplicate detection, permission checks, cache lookups, and fast membership testing in large
+datasets.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -1181,7 +1183,7 @@ Duplicate: 2
 frozenset({'read', 'write'})
 ```
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1193,7 +1195,7 @@ Why are sets faster than lists for membership testing?
 
 Because sets use hash tables, allowing average O(1) lookups, whereas lists require sequential searches.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -1203,7 +1205,7 @@ What is the difference between `remove()` and `discard()`?
 
 `remove()` raises a `KeyError` if the element is missing, while `discard()` silently does nothing.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -1211,9 +1213,10 @@ When should you use a `frozenset`?
 
 ### Answer
 
-Use a `frozenset` when the collection should be immutable and hashable, such as when using it as a dictionary key or set element.
+Use a `frozenset` when the collection should be immutable and hashable, such as when using it as a dictionary key or set
+element.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -1223,7 +1226,7 @@ Can a set contain duplicate values?
 
 No. Duplicate values are automatically removed when inserted.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1233,7 +1236,7 @@ When should you use a set instead of a list?
 
 When uniqueness is required or when frequent membership testing is needed for better performance.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -1247,7 +1250,7 @@ Given two large lists of user IDs:
 
 Implement the solution using set operations.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -1255,7 +1258,7 @@ Implement a duplicate file detector.
 
 Given a list of file hashes, identify duplicate files efficiently using sets.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -1271,13 +1274,14 @@ Implement checks for:
 
 using set operations.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
-Given a stream of API request IDs, detect duplicate requests in real time using a set. Compare the algorithm with an equivalent list-based implementation and explain the difference in time complexity.
+Given a stream of API request IDs, detect duplicate requests in real time using a set. Compare the algorithm with an
+equivalent list-based implementation and explain the difference in time complexity.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1293,12 +1297,11 @@ In this lesson, you learned:
 - ✅ Best practices.
 - ✅ Senior backend interview topics.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[37-Numeric-Types-Deep-Dive](37-numeric-types-deep-dive.md)
+**File:** [37-Numeric-Types-Deep-Dive](37-numeric-types-deep-dive.md)
 
 Topics:
 

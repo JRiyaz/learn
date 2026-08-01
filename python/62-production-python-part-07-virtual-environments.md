@@ -1,6 +1,7 @@
 # File: python/62-production-python-part-07-virtual-environments.md
 
 # Production Python
+
 # Part 7: Virtual Environments – Isolating Python Projects
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 5–6 Hours
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -29,7 +30,7 @@ By the end of this lesson, you will understand:
 - Common mistakes
 - Production best practices
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -59,7 +60,7 @@ If both projects share the same global Python installation, dependency conflicts
 
 Virtual environments solve this problem by isolating each project's dependencies.
 
----
+______________________________________________________________________
 
 # What is a Virtual Environment?
 
@@ -71,7 +72,7 @@ A virtual environment is an isolated Python environment containing:
 
 Each project can therefore manage its dependencies independently.
 
----
+______________________________________________________________________
 
 # Why Isolation Matters
 
@@ -123,7 +124,7 @@ Packages
 
 Each project has its own isolated environment.
 
----
+______________________________________________________________________
 
 # Creating a Virtual Environment
 
@@ -141,7 +142,7 @@ This creates a directory named:
 
 containing the isolated environment.
 
----
+______________________________________________________________________
 
 # Typical Structure
 
@@ -161,7 +162,7 @@ project/
 
 The `.venv` directory should not be committed to version control.
 
----
+______________________________________________________________________
 
 # Activating the Environment
 
@@ -185,7 +186,7 @@ source .venv/bin/activate
 
 Once activated, `python` and `pip` refer to the virtual environment rather than the global installation.
 
----
+______________________________________________________________________
 
 # Installing Packages
 
@@ -197,7 +198,7 @@ The package is installed only inside the active virtual environment.
 
 Other projects remain unaffected.
 
----
+______________________________________________________________________
 
 # Recording Dependencies
 
@@ -221,7 +222,7 @@ Another developer can recreate the environment using:
 pip install -r requirements.txt
 ```
 
----
+______________________________________________________________________
 
 # Reproducible Environments
 
@@ -235,7 +236,7 @@ requirements.txt
 
 This ensures everyone develops against the same versions.
 
----
+______________________________________________________________________
 
 # Updating Dependencies
 
@@ -253,7 +254,7 @@ pip freeze > requirements.txt
 
 Commit the updated file along with your code changes.
 
----
+______________________________________________________________________
 
 # Version Control
 
@@ -273,7 +274,7 @@ Never commit:
 
 Only commit dependency declarations such as `requirements.txt`.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -281,31 +282,31 @@ Only commit dependency declarations such as `requirements.txt`.
 
 Installing packages globally.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
 Forgetting to activate the virtual environment before installing packages.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
 Committing `.venv` to Git.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
 Forgetting to update `requirements.txt`.
 
----
+______________________________________________________________________
 
 ## Mistake 5
 
 Assuming another developer has the same packages installed.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -321,7 +322,7 @@ Assuming another developer has the same packages installed.
 
 ❌ Don't rely on globally installed packages.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -335,7 +336,7 @@ In production, dependency isolation is often provided by:
 
 Even then, the application's dependencies should still be declared explicitly so deployments remain reproducible.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -347,7 +348,7 @@ Even then, the application's dependencies should still be declared explicitly so
 
 They isolate project dependencies, preventing version conflicts between different Python projects.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -357,7 +358,7 @@ They isolate project dependencies, preventing version conflicts between differen
 
 It is platform-specific, can be recreated easily, and unnecessarily increases repository size.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -367,7 +368,7 @@ It is platform-specific, can be recreated easily, and unnecessarily increases re
 
 It records project dependencies so the environment can be reproduced consistently on another machine.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -377,7 +378,7 @@ It records project dependencies so the environment can be reproduced consistentl
 
 Activation ensures Python and `pip` use the project's isolated environment instead of the global installation.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -385,9 +386,10 @@ Activation ensures Python and `pip` use the project's isolated environment inste
 
 ### Answer
 
-Usually not. Production environments often use containers or virtual machines, but dependency declarations remain essential.
+Usually not. Production environments often use containers or virtual machines, but dependency declarations remain
+essential.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -400,15 +402,15 @@ inventory-service/
 Complete the following steps:
 
 1. Create a virtual environment.
-2. Activate it.
-3. Install `fastapi`, `uvicorn`, and `sqlalchemy`.
-4. Export dependencies to `requirements.txt`.
-5. Add `.venv/` to `.gitignore`.
-6. Delete the virtual environment and recreate it using `requirements.txt`.
+1. Activate it.
+1. Install `fastapi`, `uvicorn`, and `sqlalchemy`.
+1. Export dependencies to `requirements.txt`.
+1. Add `.venv/` to `.gitignore`.
+1. Delete the virtual environment and recreate it using `requirements.txt`.
 
 Observe that the recreated environment behaves identically.
 
----
+______________________________________________________________________
 
 # Knowledge Check
 
@@ -420,7 +422,7 @@ Why are global package installations discouraged?
 
 Because projects often require different dependency versions, leading to conflicts and unpredictable behaviour.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -430,7 +432,7 @@ Why should dependency versions be recorded?
 
 To ensure every developer and deployment uses compatible package versions.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -440,7 +442,7 @@ What does activating a virtual environment change?
 
 It changes the Python interpreter and package installation path to the project's isolated environment.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -450,7 +452,7 @@ Why shouldn't virtual environments be committed to source control?
 
 They are machine-specific, easily recreated, and unnecessarily increase repository size.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -460,7 +462,7 @@ How do virtual environments contribute to reproducible development?
 
 They ensure each project uses its own isolated dependencies, avoiding interference from globally installed packages.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -468,13 +470,13 @@ They ensure each project uses its own isolated dependencies, avoiding interferen
 
 Create a new virtual environment for one of your existing projects.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
 Delete and recreate the environment using only `requirements.txt`.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -488,7 +490,7 @@ which python
 
 before and after activating the virtual environment.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -500,7 +502,7 @@ Verify that:
 - Dependencies are version-pinned.
 - Another developer could recreate the environment using only the repository contents.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -513,7 +515,7 @@ In this lesson, you learned:
 - ✅ Using `requirements.txt`.
 - ✅ Best practices for reproducible development.
 
----
+______________________________________________________________________
 
 # Next Lesson
 

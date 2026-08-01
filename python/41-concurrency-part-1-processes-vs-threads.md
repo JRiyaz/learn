@@ -1,6 +1,7 @@
 # File: python/41-concurrency-part-1-processes-vs-threads.md
 
 # Advanced Python Runtime & Concurrency
+
 # Concurrency Part 1: Processes vs Threads
 
 > **Course:** Backend Engineering Roadmap
@@ -13,11 +14,12 @@
 >
 > **Estimated Time:** 6 Hours
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
-Concurrency itself is not tied to a specific Python version, but the major modules discussed in this lesson have been available for many years.
+Concurrency itself is not tied to a specific Python version, but the major modules discussed in this lesson have been
+available for many years.
 
 | Feature | Python Version |
 |----------|----------------|
@@ -25,7 +27,7 @@ Concurrency itself is not tied to a specific Python version, but the major modul
 | `multiprocessing` | Python 2.6 |
 | `concurrent.futures` | Python 3.2 |
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -43,7 +45,7 @@ By the end of this lesson, you will understand:
 - Choosing the right execution model
 - Backend production examples
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -55,7 +57,7 @@ This module focuses on **how work is executed**.
 
 Understanding concurrency is one of the biggest differences between a mid-level and senior backend engineer.
 
----
+______________________________________________________________________
 
 # Why Does Concurrency Matter?
 
@@ -91,7 +93,7 @@ Modern backend systems handle many requests simultaneously.
 
 That requires concurrency.
 
----
+______________________________________________________________________
 
 # What Is Concurrency?
 
@@ -131,7 +133,7 @@ Task A
 
 All tasks make progress.
 
----
+______________________________________________________________________
 
 # What Is Parallelism?
 
@@ -163,7 +165,7 @@ Task C
 
 Tasks are literally running simultaneously.
 
----
+______________________________________________________________________
 
 # Concurrency vs Parallelism
 
@@ -203,7 +205,7 @@ Think of it this way:
 - Concurrency is about **structure**
 - Parallelism is about **execution**
 
----
+______________________________________________________________________
 
 # Real-World Analogy
 
@@ -222,7 +224,7 @@ One person.
 
 Many tasks.
 
----
+______________________________________________________________________
 
 ## Parallelism
 
@@ -232,7 +234,7 @@ Each cooks one dish.
 
 Everything happens simultaneously.
 
----
+______________________________________________________________________
 
 # Why Backend Applications Need Concurrency
 
@@ -250,13 +252,13 @@ Waiting wastes resources.
 
 Concurrency allows the application to perform other work while waiting.
 
----
+______________________________________________________________________
 
 # CPU-Bound vs I/O-Bound Workloads
 
 This distinction is one of the most common interview topics.
 
----
+______________________________________________________________________
 
 # CPU-Bound
 
@@ -273,7 +275,7 @@ Examples:
 
 The CPU is the bottleneck.
 
----
+______________________________________________________________________
 
 # I/O-Bound
 
@@ -292,7 +294,7 @@ Examples:
 
 Most backend applications are primarily I/O-bound.
 
----
+______________________________________________________________________
 
 # Visual Comparison
 
@@ -316,7 +318,7 @@ Compute
 
 Little waiting.
 
----
+______________________________________________________________________
 
 I/O-bound
 
@@ -346,7 +348,7 @@ Process
 
 Most time is spent waiting.
 
----
+______________________________________________________________________
 
 # Processes
 
@@ -375,7 +377,7 @@ Python
 
 Each is a separate process.
 
----
+______________________________________________________________________
 
 # Process Isolation
 
@@ -397,7 +399,7 @@ These are completely different lists.
 
 Changing one does not affect the other.
 
----
+______________________________________________________________________
 
 # Process Memory
 
@@ -421,7 +423,7 @@ Changing one does not affect the other.
 
 Memory is isolated.
 
----
+______________________________________________________________________
 
 # Advantages of Processes
 
@@ -430,7 +432,7 @@ Memory is isolated.
 - True parallel execution
 - Suitable for CPU-heavy workloads
 
----
+______________________________________________________________________
 
 # Disadvantages of Processes
 
@@ -439,7 +441,7 @@ Memory is isolated.
 - More expensive communication
 - Data sharing requires special mechanisms
 
----
+______________________________________________________________________
 
 # Threads
 
@@ -459,7 +461,7 @@ Python Process
 ├── Thread 3
 ```
 
----
+______________________________________________________________________
 
 # Shared Memory
 
@@ -474,7 +476,7 @@ threads share:
 
 Only their call stacks are separate.
 
----
+______________________________________________________________________
 
 # Thread Example
 
@@ -496,7 +498,7 @@ Thread C
 
 Every thread can access the same objects.
 
----
+______________________________________________________________________
 
 # Advantages of Threads
 
@@ -505,7 +507,7 @@ Every thread can access the same objects.
 - Shared memory
 - Efficient for I/O-bound work
 
----
+______________________________________________________________________
 
 # Disadvantages of Threads
 
@@ -516,7 +518,7 @@ Every thread can access the same objects.
 
 We'll study these problems later in the module.
 
----
+______________________________________________________________________
 
 # Context Switching
 
@@ -548,7 +550,7 @@ Task A
 
 This is called **context switching**.
 
----
+______________________________________________________________________
 
 # What Gets Saved?
 
@@ -563,7 +565,7 @@ Later, it restores them.
 
 The paused task continues as if nothing happened.
 
----
+______________________________________________________________________
 
 # Is Context Switching Free?
 
@@ -575,7 +577,7 @@ Too many context switches can reduce performance.
 
 This is one reason why creating thousands of threads unnecessarily is a bad idea.
 
----
+______________________________________________________________________
 
 # How the Operating System Schedules Work
 
@@ -609,7 +611,7 @@ Python does **not** directly schedule threads or processes.
 
 The operating system does.
 
----
+______________________________________________________________________
 
 # Backend Example
 
@@ -638,7 +640,7 @@ POST /login
 
 This improves throughput.
 
----
+______________________________________________________________________
 
 # Choosing Between Processes and Threads
 
@@ -651,7 +653,7 @@ This improves throughput.
 | Crash Impact | Limited | Shared process affected |
 | Best For | CPU-bound | I/O-bound |
 
----
+______________________________________________________________________
 
 # Production Examples
 
@@ -662,7 +664,7 @@ This improves throughput.
 - PDF generation
 - Data science workloads
 
----
+______________________________________________________________________
 
 ## Threads
 
@@ -673,7 +675,7 @@ This improves throughput.
 - Log processing
 - Email sending
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -683,7 +685,7 @@ Assuming concurrency always means faster execution.
 
 If work is CPU-bound, adding threads may not improve performance.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -691,7 +693,7 @@ Using processes for every problem.
 
 Processes consume more memory and have higher startup costs.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -699,15 +701,16 @@ Ignoring workload type.
 
 The best solution depends on whether the application is CPU-bound or I/O-bound.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
 Assuming threads automatically run simultaneously.
 
-Whether they truly execute in parallel depends on the runtime, operating system, hardware, and (in Python) the Global Interpreter Lock, which we'll study next.
+Whether they truly execute in parallel depends on the runtime, operating system, hardware, and (in Python) the Global
+Interpreter Lock, which we'll study next.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -723,11 +726,12 @@ Whether they truly execute in parallel depends on the runtime, operating system,
 
 ❌ Don't assume more threads always increase throughput.
 
----
+______________________________________________________________________
 
 # Production Insight
 
-If you inspect a production FastAPI or Django deployment, you'll often find multiple worker **processes**, each handling many concurrent requests.
+If you inspect a production FastAPI or Django deployment, you'll often find multiple worker **processes**, each handling
+many concurrent requests.
 
 For example:
 
@@ -757,9 +761,10 @@ This hybrid approach combines:
 - Better CPU utilisation
 - Efficient handling of I/O-bound requests
 
-Understanding why this architecture is used will become clearer as we explore the Global Interpreter Lock and asynchronous programming.
+Understanding why this architecture is used will become clearer as we explore the Global Interpreter Lock and
+asynchronous programming.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -769,9 +774,10 @@ Understanding why this architecture is used will become clearer as we explore th
 
 ### Answer
 
-Concurrency is the ability to make progress on multiple tasks during the same period, while parallelism means multiple tasks execute simultaneously on different CPU cores.
+Concurrency is the ability to make progress on multiple tasks during the same period, while parallelism means multiple
+tasks execute simultaneously on different CPU cores.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -779,9 +785,10 @@ Concurrency is the ability to make progress on multiple tasks during the same pe
 
 ### Answer
 
-Processes are preferred for CPU-bound workloads because they provide separate memory spaces and can execute truly in parallel on multiple CPU cores.
+Processes are preferred for CPU-bound workloads because they provide separate memory spaces and can execute truly in
+parallel on multiple CPU cores.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -789,9 +796,10 @@ Processes are preferred for CPU-bound workloads because they provide separate me
 
 ### Answer
 
-Web applications spend much of their time waiting for databases, files, or network responses. Threads allow other requests to be processed while one thread is waiting.
+Web applications spend much of their time waiting for databases, files, or network responses. Threads allow other
+requests to be processed while one thread is waiting.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -799,9 +807,10 @@ Web applications spend much of their time waiting for databases, files, or netwo
 
 ### Answer
 
-Context switching is the operating system's process of saving the state of one task and restoring another so multiple tasks can share CPU time.
+Context switching is the operating system's process of saving the state of one task and restoring another so multiple
+tasks can share CPU time.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -811,7 +820,7 @@ Context switching is the operating system's process of saving the state of one t
 
 Each process has its own address space and interpreter, whereas threads share most resources within the same process.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -865,9 +874,10 @@ Waiting for external resource...
 Finished waiting
 ```
 
-Although both tasks take time, the CPU task spends nearly all of its time computing, while the I/O task spends most of its time waiting.
+Although both tasks take time, the CPU task spends nearly all of its time computing, while the I/O task spends most of
+its time waiting.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -879,7 +889,7 @@ What is the difference between a process and a thread?
 
 A process has its own memory and resources, while threads execute within a process and share its memory.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -889,7 +899,7 @@ What is a CPU-bound workload?
 
 A workload where computation is the primary bottleneck, such as encryption or image processing.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -899,7 +909,7 @@ What is an I/O-bound workload?
 
 A workload that spends most of its time waiting for external operations like databases, files, or network communication.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -909,7 +919,7 @@ Why is context switching necessary?
 
 It allows multiple tasks to share CPU time by pausing one task and resuming another.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -917,9 +927,10 @@ Why are backend APIs usually considered I/O-bound?
 
 ### Answer
 
-Because they spend much of their execution time waiting for databases, caches, external APIs, file systems, or message brokers.
+Because they spend much of their execution time waiting for databases, caches, external APIs, file systems, or message
+brokers.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -936,7 +947,7 @@ Classify the following as **CPU-bound** or **I/O-bound** and explain why:
 - Redis lookup
 - Sending an email
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -949,7 +960,7 @@ Draw a diagram showing the relationship between:
 
 Explain how they interact.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -961,15 +972,16 @@ Write a one-page summary describing:
 - Context switching
 - Priority scheduling
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
-Take a typical FastAPI endpoint from one of your projects and identify every operation that is CPU-bound and every operation that is I/O-bound.
+Take a typical FastAPI endpoint from one of your projects and identify every operation that is CPU-bound and every
+operation that is I/O-bound.
 
 Suggest which concurrency model would best suit each operation.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -985,11 +997,12 @@ In this lesson, you learned:
 - ✅ Operating system scheduling.
 - ✅ When to choose processes versus threads.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[42-Concurrency-part-2-The-Global-Interpreter-Lock](42-concurrency-part-2-the-global-interpreter-lock.md)
+**File:** [42-Concurrency-part-2-The-Global-Interpreter-Lock](42-concurrency-part-2-the-global-interpreter-lock.md)
 
-In the next lesson, we'll explore one of the most misunderstood aspects of Python: the **Global Interpreter Lock (GIL)**. You'll learn why CPU-bound threads often fail to scale, how the GIL works internally in CPython, when it is released, common misconceptions, and how it influences the design of production Python applications.
+In the next lesson, we'll explore one of the most misunderstood aspects of Python: the **Global Interpreter Lock
+(GIL)**. You'll learn why CPU-bound threads often fail to scale, how the GIL works internally in CPython, when it is
+released, common misconceptions, and how it influences the design of production Python applications.

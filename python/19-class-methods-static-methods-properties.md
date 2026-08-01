@@ -1,6 +1,7 @@
 # File: python/19-class-methods-static-methods-properties.md
 
 # Python Advanced - Lesson 19
+
 # Instance Methods, Class Methods, Static Methods & Properties
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 110 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -29,7 +30,7 @@ By the end of this lesson, you will understand:
 - When to use each method type
 - Production examples
 
----
+______________________________________________________________________
 
 # Why Does Python Have Different Method Types?
 
@@ -63,7 +64,7 @@ validate_email()
 
 Python provides different method types because they operate on different kinds of data.
 
----
+______________________________________________________________________
 
 # The Three Method Types
 
@@ -99,7 +100,7 @@ Independent Utility
 Static Method
 ```
 
----
+______________________________________________________________________
 
 # Instance Methods
 
@@ -133,7 +134,7 @@ Output
 My name is Alice
 ```
 
----
+______________________________________________________________________
 
 # Understanding self
 
@@ -157,7 +158,7 @@ self
 
 is simply the current object.
 
----
+______________________________________________________________________
 
 # Class Variables
 
@@ -191,7 +192,7 @@ OpenAI
 OpenAI
 ```
 
----
+______________________________________________________________________
 
 # Instance Variables vs Class Variables
 
@@ -217,7 +218,7 @@ All objects share
 company
 ```
 
----
+______________________________________________________________________
 
 # Class Methods
 
@@ -254,7 +255,7 @@ Output
 OpenAI
 ```
 
----
+______________________________________________________________________
 
 # Understanding cls
 
@@ -278,7 +279,7 @@ cls
 
 is the class itself.
 
----
+______________________________________________________________________
 
 # Counting Objects
 
@@ -317,7 +318,7 @@ Output
 2
 ```
 
----
+______________________________________________________________________
 
 # Alternative Constructors
 
@@ -370,7 +371,7 @@ Alice
 30
 ```
 
----
+______________________________________________________________________
 
 # Why Use cls Instead of Employee?
 
@@ -416,7 +417,7 @@ not an `Employee`.
 
 This is why `cls` is preferred.
 
----
+______________________________________________________________________
 
 # Static Methods
 
@@ -458,7 +459,7 @@ Output
 True
 ```
 
----
+______________________________________________________________________
 
 # Why Not Use a Normal Function?
 
@@ -476,7 +477,7 @@ if the function logically belongs to the class,
 
 keeping it there improves organisation.
 
----
+______________________________________________________________________
 
 # Comparing Method Types
 
@@ -504,7 +505,7 @@ class Example:
 | Class | ❌ | ✅ |
 | Static | ❌ | ❌ |
 
----
+______________________________________________________________________
 
 # Introducing @property
 
@@ -538,7 +539,7 @@ area behaves like an attribute,
 
 not an action.
 
----
+______________________________________________________________________
 
 # Using @property
 
@@ -573,7 +574,7 @@ Notice
 
 No parentheses.
 
----
+______________________________________________________________________
 
 # Why Use Properties?
 
@@ -593,7 +594,7 @@ circle.area()
 
 The implementation remains hidden.
 
----
+______________________________________________________________________
 
 # Property Setter
 
@@ -643,9 +644,9 @@ Raises
 ValueError
 ```
 
----
+______________________________________________________________________
 
-# Why Use _radius?
+# Why Use \_radius?
 
 Notice
 
@@ -673,7 +674,7 @@ creating infinite recursion.
 
 The underscore indicates an internal implementation detail.
 
----
+______________________________________________________________________
 
 # Read-Only Properties
 
@@ -714,7 +715,7 @@ raises
 AttributeError
 ```
 
----
+______________________________________________________________________
 
 # Property Deleter
 
@@ -756,7 +757,7 @@ Removing email
 
 Deleters are relatively uncommon in production code.
 
----
+______________________________________________________________________
 
 # Production Example - Validation
 
@@ -786,7 +787,7 @@ class Product:
 
 Validation now happens automatically.
 
----
+______________________________________________________________________
 
 # Production Example - Alternative Constructors
 
@@ -819,7 +820,7 @@ class User:
 
 Many frameworks use this pattern.
 
----
+______________________________________________________________________
 
 # Production Example - Static Methods
 
@@ -838,7 +839,7 @@ The validation belongs conceptually to the class,
 
 but doesn't require object state.
 
----
+______________________________________________________________________
 
 # Choosing the Right Method
 
@@ -851,7 +852,7 @@ but doesn't require object state.
 | Computed attribute | Property |
 | Attribute validation | Property Setter |
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -868,7 +869,7 @@ def greet():
 
 This fails because `self` doesn't exist.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -886,7 +887,7 @@ return cls(...)
 
 This supports inheritance.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -903,7 +904,7 @@ Properties should generally feel like attribute access.
 
 If a property performs slow network or database operations, the API can become surprising.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -921,7 +922,7 @@ If a property performs slow network or database operations, the API can become s
 
 ❌ Don't hide expensive operations behind properties.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -952,7 +953,7 @@ Properties are widely used for:
 - Derived values
 - Backward-compatible APIs
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -962,9 +963,10 @@ Properties are widely used for:
 
 ### Answer
 
-An instance method operates on an object and receives `self`. A class method operates on the class and receives `cls`. A static method receives neither and is used for utility behaviour logically related to the class.
+An instance method operates on an object and receives `self`. A class method operates on the class and receives `cls`. A
+static method receives neither and is used for utility behaviour logically related to the class.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -972,9 +974,10 @@ An instance method operates on an object and receives `self`. A class method ope
 
 ### Answer
 
-Class methods are commonly used for alternative constructors, operations involving class-level state and behaviour that should respect inheritance by using `cls`.
+Class methods are commonly used for alternative constructors, operations involving class-level state and behaviour that
+should respect inheritance by using `cls`.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -982,9 +985,10 @@ Class methods are commonly used for alternative constructors, operations involvi
 
 ### Answer
 
-`@property` provides a clean attribute-style interface while allowing validation or computed values behind the scenes. It also lets the implementation evolve without changing the public API.
+`@property` provides a clean attribute-style interface while allowing validation or computed values behind the scenes.
+It also lets the implementation evolve without changing the public API.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -992,9 +996,10 @@ Class methods are commonly used for alternative constructors, operations involvi
 
 ### Answer
 
-Using `cls` allows subclasses to inherit the method correctly. Calling the method on a subclass returns an instance of that subclass instead of always creating the base class.
+Using `cls` allows subclasses to inherit the method correctly. Calling the method on a subclass returns an instance of
+that subclass instead of always creating the base class.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -1062,7 +1067,7 @@ I am Alice
 True
 ```
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1074,7 +1079,7 @@ What is an instance method?
 
 An instance method operates on a specific object and receives `self` as its first parameter.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -1082,9 +1087,10 @@ When should you use a class method?
 
 ### Answer
 
-Use a class method for alternative constructors, operations on class-level state or behaviour that should work correctly with inheritance.
+Use a class method for alternative constructors, operations on class-level state or behaviour that should work correctly
+with inheritance.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -1092,9 +1098,10 @@ When should you use a static method?
 
 ### Answer
 
-Use a static method for utility functionality that logically belongs to a class but does not require access to either the instance or the class.
+Use a static method for utility functionality that logically belongs to a class but does not require access to either
+the instance or the class.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -1102,9 +1109,10 @@ What problem does `@property` solve?
 
 ### Answer
 
-It allows methods to be exposed as attributes while supporting validation, computed values and implementation changes without affecting callers.
+It allows methods to be exposed as attributes while supporting validation, computed values and implementation changes
+without affecting callers.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1112,9 +1120,10 @@ Why is `cls` preferred over the class name inside a class method?
 
 ### Answer
 
-Because `cls` supports inheritance. Calling the method on a subclass creates instances of that subclass instead of always creating the base class.
+Because `cls` supports inheritance. Calling the method on a subclass creates instances of that subclass instead of
+always creating the base class.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -1128,7 +1137,7 @@ Create a `Student` class with:
 
 Test each method.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -1136,13 +1145,13 @@ Create a `BankAccount` class with a `balance` property.
 
 Use a setter to prevent negative balances.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
 Implement a read-only `full_name` property for a `Person` class using `first_name` and `last_name`.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -1153,7 +1162,7 @@ Explain why the following should be an instance method, class method or static m
 - Validate an email address format.
 - Return the company's registered name.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1168,12 +1177,11 @@ In this lesson, you learned:
 - ✅ When to create read-only properties.
 - ✅ Production best practices for method design.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[20-Descriptors](20-descriptors.md)
+**File:** [20-Descriptors](20-descriptors.md)
 
 Topics:
 

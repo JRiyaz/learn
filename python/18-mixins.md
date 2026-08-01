@@ -1,6 +1,7 @@
 # File: python/18-mixins.md
 
 # Python Advanced - Lesson 18
+
 # Mixins - Reusing Small, Focused Behaviours
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 90 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -29,7 +30,7 @@ By the end of this lesson, you will understand:
 - Common mistakes
 - Production best practices
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -45,7 +46,7 @@ One major use case for multiple inheritance is **Mixins**.
 
 Many Python frameworks use mixins extensively.
 
----
+______________________________________________________________________
 
 # What is a Mixin?
 
@@ -57,7 +58,7 @@ Instead, it represents a capability.
 
 Think of it as adding a feature.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -99,7 +100,7 @@ Instead of rewriting the same code,
 
 we create a mixin.
 
----
+______________________________________________________________________
 
 # First Mixin
 
@@ -136,7 +137,7 @@ print(user.created_at)
 
 The `User` class gained timestamp functionality without duplicating code.
 
----
+______________________________________________________________________
 
 # Why Not Use a Parent Class?
 
@@ -164,7 +165,7 @@ Instead,
 
 `TimestampMixin` simply contributes behaviour.
 
----
+______________________________________________________________________
 
 # A Good Mixin Has One Responsibility
 
@@ -196,7 +197,7 @@ If a mixin performs many unrelated tasks,
 
 it is no longer a mixin.
 
----
+______________________________________________________________________
 
 # Multiple Mixins
 
@@ -248,7 +249,7 @@ Logging
 Valid
 ```
 
----
+______________________________________________________________________
 
 # Mixins and MRO
 
@@ -294,7 +295,7 @@ A
 
 The mixin participates in the Method Resolution Order.
 
----
+______________________________________________________________________
 
 # Cooperative Mixins
 
@@ -370,7 +371,7 @@ Saving
 
 Each class contributes one part of the operation.
 
----
+______________________________________________________________________
 
 # What Happens Without super()?
 
@@ -402,7 +403,7 @@ Neither `LoggingMixin` nor `Repository` executes.
 
 This is why cooperative inheritance is important.
 
----
+______________________________________________________________________
 
 # Mixins vs Normal Inheritance
 
@@ -436,7 +437,7 @@ A user is **not** a logging system.
 
 The mixins simply add behaviour.
 
----
+______________________________________________________________________
 
 # Mixins vs Composition
 
@@ -468,7 +469,7 @@ Composition injects another object.
 
 Mixins reuse methods through inheritance.
 
----
+______________________________________________________________________
 
 # When Should You Choose a Mixin?
 
@@ -487,7 +488,7 @@ Examples
 - Permissions
 - Serialisation
 
----
+______________________________________________________________________
 
 # When Should You Avoid Mixins?
 
@@ -500,7 +501,7 @@ Avoid mixins when:
 
 Those situations are often better handled using composition.
 
----
+______________________________________________________________________
 
 # Production Example - Django
 
@@ -532,7 +533,7 @@ class DashboardView(
 
 Each mixin contributes one capability.
 
----
+______________________________________________________________________
 
 # Production Example - SQLAlchemy
 
@@ -554,7 +555,7 @@ class SoftDeleteMixin:
 
 Models inherit these reusable features instead of repeating them.
 
----
+______________________________________________________________________
 
 # Production Example - FastAPI
 
@@ -578,9 +579,10 @@ class UserService(
     ...
 ```
 
-Although FastAPI itself relies more heavily on dependency injection than mixins, you'll still encounter mixins in supporting libraries and larger applications.
+Although FastAPI itself relies more heavily on dependency injection than mixins, you'll still encounter mixins in
+supporting libraries and larger applications.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -606,7 +608,7 @@ One Mixin
 
 This violates the Single Responsibility Principle.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -620,7 +622,7 @@ A customer is not reusable behaviour.
 
 This should be a normal class.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -628,7 +630,7 @@ Not using `super()`.
 
 Breaking the MRO prevents other mixins from participating.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -648,7 +650,7 @@ Breaking the MRO prevents other mixins from participating.
 
 ❌ Don't replace composition with mixins everywhere.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -688,7 +690,7 @@ Benefits include:
 
 This is why Django, SQLAlchemy and many internal enterprise frameworks rely heavily on mixins.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -698,9 +700,10 @@ This is why Django, SQLAlchemy and many internal enterprise frameworks rely heav
 
 ### Answer
 
-A mixin is a small class designed to provide a single reusable behaviour that can be inherited by multiple unrelated classes. It is intended to add capabilities rather than model an "is-a" relationship.
+A mixin is a small class designed to provide a single reusable behaviour that can be inherited by multiple unrelated
+classes. It is intended to add capabilities rather than model an "is-a" relationship.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -708,9 +711,10 @@ A mixin is a small class designed to provide a single reusable behaviour that ca
 
 ### Answer
 
-A normal parent class represents a domain relationship, such as `Car` inheriting from `Vehicle`. A mixin exists solely to provide reusable behaviour and is not intended to represent a standalone domain object.
+A normal parent class represents a domain relationship, such as `Car` inheriting from `Vehicle`. A mixin exists solely
+to provide reusable behaviour and is not intended to represent a standalone domain object.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -718,9 +722,10 @@ A normal parent class represents a domain relationship, such as `Car` inheriting
 
 ### Answer
 
-Mixins participate in cooperative multiple inheritance. Calling `super()` ensures every class in the Method Resolution Order has an opportunity to contribute its behaviour.
+Mixins participate in cooperative multiple inheritance. Calling `super()` ensures every class in the Method Resolution
+Order has an opportunity to contribute its behaviour.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -728,9 +733,10 @@ Mixins participate in cooperative multiple inheritance. Calling `super()` ensure
 
 ### Answer
 
-Choose composition when functionality depends on another object or maintains significant state. Composition creates looser coupling and is often more flexible than inheritance.
+Choose composition when functionality depends on another object or maintains significant state. Composition creates
+looser coupling and is often more flexible than inheritance.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -819,7 +825,7 @@ print(UserRepository.mro())
 
 Notice how the inheritance order directly affects execution.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -831,7 +837,7 @@ What is a mixin?
 
 A mixin is a small reusable class that provides one specific behaviour to multiple classes through inheritance.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -841,7 +847,7 @@ Why are mixins commonly used with multiple inheritance?
 
 Multiple inheritance allows a class to combine several independent behaviours, each provided by a different mixin.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -849,9 +855,10 @@ Why should mixins usually call `super()`?
 
 ### Answer
 
-Calling `super()` allows cooperative multiple inheritance, ensuring every class in the MRO has an opportunity to execute.
+Calling `super()` allows cooperative multiple inheritance, ensuring every class in the MRO has an opportunity to
+execute.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -861,7 +868,7 @@ Should a mixin represent a business entity?
 
 No. A mixin should represent reusable behaviour, not a domain model or business object.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -869,9 +876,10 @@ When should composition be preferred over mixins?
 
 ### Answer
 
-Composition should be preferred when behaviour depends on another object, requires significant state, or when loose coupling is more important than code reuse through inheritance.
+Composition should be preferred when behaviour depends on another object, requires significant state, or when loose
+coupling is more important than code reuse through inheritance.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -887,7 +895,7 @@ Combine all three in a `ProductService`.
 
 Verify the execution order using `super()`.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -895,7 +903,7 @@ Print the MRO for your `ProductService`.
 
 Explain why the methods execute in that order.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -905,7 +913,7 @@ Observe which methods no longer execute.
 
 Explain why the chain breaks.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -919,7 +927,7 @@ Use it in two unrelated classes:
 - `User`
 - `Order`
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -933,12 +941,11 @@ In this lesson, you learned:
 - ✅ Real-world usage in frameworks like Django and SQLAlchemy.
 - ✅ Best practices for designing reusable behaviours.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[19-Class-Methods-Static-Methods-Properties](19-class-methods-static-methods-properties.md)
+**File:** [19-Class-Methods-Static-Methods-Properties](19-class-methods-static-methods-properties.md)
 
 Topics:
 

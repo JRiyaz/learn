@@ -1,7 +1,9 @@
 # File:
+
 python/python-80-networking-part-05-websockets.md
 
 # Computer Networking
+
 # Part 5: WebSockets – Real-Time Communication for Modern Applications
 
 > **Course:** Backend Engineering Roadmap
@@ -14,7 +16,7 @@ python/python-80-networking-part-05-websockets.md
 >
 > **Estimated Time:** 16–20 Hours
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -32,7 +34,7 @@ By the end of this lesson, you will understand:
 - Connection management
 - Production best practices
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -71,7 +73,7 @@ Examples include:
 
 HTTP alone is not enough.
 
----
+______________________________________________________________________
 
 # The Problem with HTTP
 
@@ -117,7 +119,7 @@ The server cannot send it.
 
 The browser must ask again.
 
----
+______________________________________________________________________
 
 # Polling
 
@@ -165,7 +167,7 @@ Problems:
 - Increased latency
 - Higher server load
 
----
+______________________________________________________________________
 
 # Long Polling
 
@@ -205,7 +207,7 @@ Better than polling.
 
 Still based on repeated HTTP requests.
 
----
+______________________________________________________________________
 
 # WebSockets
 
@@ -231,7 +233,7 @@ Server
 
 Both sides can send messages at any time.
 
----
+______________________________________________________________________
 
 # Full-Duplex Communication
 
@@ -263,7 +265,7 @@ Both sides communicate independently.
 
 This is called **full-duplex communication**.
 
----
+______________________________________________________________________
 
 # WebSocket Lifecycle
 
@@ -289,7 +291,7 @@ Connection Closed
 
 Unlike HTTP, the connection stays open.
 
----
+______________________________________________________________________
 
 # The Handshake
 
@@ -323,7 +325,7 @@ HTTP Ends
 WebSocket Begins
 ```
 
----
+______________________________________________________________________
 
 # Visualising the Upgrade
 
@@ -351,7 +353,7 @@ Server
 Persistent WebSocket Connection
 ```
 
----
+______________________________________________________________________
 
 # Messages Instead of Requests
 
@@ -391,7 +393,7 @@ Message
 Close
 ```
 
----
+______________________________________________________________________
 
 # WebSocket Frames
 
@@ -415,7 +417,7 @@ The receiving endpoint reconstructs the original message.
 
 Applications usually work with complete messages rather than individual frames.
 
----
+______________________________________________________________________
 
 # FastAPI WebSocket Endpoint
 
@@ -441,7 +443,7 @@ Notice:
 
 There is no `GET` or `POST`.
 
----
+______________________________________________________________________
 
 # Accepting a Connection
 
@@ -455,7 +457,7 @@ The handshake completes.
 
 The connection becomes active.
 
----
+______________________________________________________________________
 
 # Receiving Messages
 
@@ -469,7 +471,7 @@ Unlike HTTP:
 
 The same connection remains open.
 
----
+______________________________________________________________________
 
 # Sending Messages
 
@@ -483,7 +485,7 @@ await websocket.send_text(
 
 The server may send messages whenever appropriate.
 
----
+______________________________________________________________________
 
 # Echo Server
 
@@ -516,7 +518,7 @@ async def echo(
 
 The connection remains active until one side disconnects.
 
----
+______________________________________________________________________
 
 # Multiple Clients
 
@@ -560,7 +562,7 @@ Server
 
 Each client has its own WebSocket connection.
 
----
+______________________________________________________________________
 
 # Connection Manager
 
@@ -581,7 +583,7 @@ Responsibilities include:
 - Removing disconnected clients.
 - Broadcasting messages.
 
----
+______________________________________________________________________
 
 # Connecting Clients
 
@@ -603,7 +605,7 @@ async def connect(
     )
 ```
 
----
+______________________________________________________________________
 
 # Disconnecting Clients
 
@@ -625,7 +627,7 @@ def disconnect(
 
 Always remove disconnected clients to avoid stale references.
 
----
+______________________________________________________________________
 
 # Broadcasting Messages
 
@@ -649,7 +651,7 @@ async def broadcast(
 
 Every connected client receives the same message.
 
----
+______________________________________________________________________
 
 # Handling Disconnects
 
@@ -682,7 +684,7 @@ except WebSocketDisconnect:
     manager.disconnect(websocket)
 ```
 
----
+______________________________________________________________________
 
 # Authentication
 
@@ -718,7 +720,7 @@ Accept Connection
 
 Never trust client identity without verification.
 
----
+______________________________________________________________________
 
 # Heartbeats
 
@@ -742,7 +744,7 @@ Close Connection
 
 Heartbeats help detect dead connections.
 
----
+______________________________________________________________________
 
 # Common Use Cases
 
@@ -758,7 +760,7 @@ WebSockets are ideal for:
 
 They are usually unnecessary for standard CRUD APIs.
 
----
+______________________________________________________________________
 
 # Backend Architecture Example
 
@@ -792,7 +794,7 @@ FastAPI receives them.
 
 Connected clients receive updates instantly.
 
----
+______________________________________________________________________
 
 # WebSockets vs HTTP
 
@@ -805,7 +807,7 @@ Connected clients receive updates instantly.
 | CRUD APIs | Real-time communication |
 | One response per request | Unlimited messages |
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -813,31 +815,31 @@ Connected clients receive updates instantly.
 
 Using WebSockets for ordinary CRUD operations.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
 Forgetting to handle client disconnects.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
 Never removing inactive connections.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
 Performing blocking operations inside WebSocket handlers.
 
----
+______________________________________________________________________
 
 ## Mistake 5
 
 Ignoring authentication.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -857,7 +859,7 @@ Ignoring authentication.
 
 ❌ Don't block the event loop.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -899,9 +901,10 @@ WebSocket Gateway
 Users
 ```
 
-Separating message production from message delivery improves scalability and allows multiple WebSocket servers to serve the same application.
+Separating message production from message delivery improves scalability and allows multiple WebSocket servers to serve
+the same application.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -911,9 +914,10 @@ Separating message production from message delivery improves scalability and all
 
 ### Answer
 
-Because HTTP is request-response based. Once the server sends a response, it cannot continue sending updates without the client making another request.
+Because HTTP is request-response based. Once the server sends a response, it cannot continue sending updates without the
+client making another request.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -923,7 +927,7 @@ Because HTTP is request-response based. Once the server sends a response, it can
 
 A communication model where both the client and server can send messages independently over the same connection.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -931,9 +935,10 @@ A communication model where both the client and server can send messages indepen
 
 ### Answer
 
-The HTTP request performs the protocol upgrade, allowing existing web infrastructure to establish a WebSocket connection using the standard HTTP port.
+The HTTP request performs the protocol upgrade, allowing existing web infrastructure to establish a WebSocket connection
+using the standard HTTP port.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -943,7 +948,7 @@ The HTTP request performs the protocol upgrade, allowing existing web infrastruc
 
 It centralises connection tracking, broadcasting, and cleanup logic, making the application easier to maintain.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -953,7 +958,7 @@ It centralises connection tracking, broadcasting, and cleanup logic, making the 
 
 They help detect broken or inactive connections so server resources can be released promptly.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -983,7 +988,7 @@ Then open the HTML page in multiple browser windows and verify that:
 - New users can join.
 - Disconnected users are removed correctly.
 
----
+______________________________________________________________________
 
 # Knowledge Check
 
@@ -993,9 +998,10 @@ Why is WebSocket considered stateful while HTTP is generally stateless?
 
 ### Answer
 
-A WebSocket connection remains open and maintains state about the connected client, whereas HTTP typically treats each request independently.
+A WebSocket connection remains open and maintains state about the connected client, whereas HTTP typically treats each
+request independently.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -1005,7 +1011,7 @@ What is the purpose of the HTTP 101 response?
 
 It confirms that the server has agreed to switch from the HTTP protocol to the WebSocket protocol.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -1013,9 +1019,10 @@ Why should blocking database operations be avoided inside a WebSocket handler?
 
 ### Answer
 
-Blocking operations prevent the event loop from processing messages for other connected clients, reducing responsiveness.
+Blocking operations prevent the event loop from processing messages for other connected clients, reducing
+responsiveness.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -1023,9 +1030,10 @@ Why is broadcasting easier with a connection manager?
 
 ### Answer
 
-Because all active WebSocket connections are tracked in one place, allowing messages to be sent to every connected client efficiently.
+Because all active WebSocket connections are tracked in one place, allowing messages to be sent to every connected
+client efficiently.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1035,7 +1043,7 @@ When should you choose WebSockets instead of HTTP?
 
 When the application requires low-latency, bidirectional, real-time communication between clients and the server.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -1043,25 +1051,26 @@ When the application requires low-latency, bidirectional, real-time communicatio
 
 Build a real-time chat application using FastAPI WebSockets.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
 Add usernames so each broadcast includes the sender's name.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
 Implement authentication using a JWT before accepting a WebSocket connection.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
-Integrate Redis Pub/Sub so that messages published by one application instance are broadcast to clients connected to every WebSocket server instance.
+Integrate Redis Pub/Sub so that messages published by one application instance are broadcast to clients connected to
+every WebSocket server instance.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1077,9 +1086,8 @@ In this lesson, you learned:
 - ✅ Handling disconnects and authentication.
 - ✅ Production architectures using Redis Pub/Sub.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[Questions-Part-1](81.questions-part-1.md)
+**File:** [Questions-Part-1](81.questions-part-1.md)

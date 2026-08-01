@@ -1,6 +1,7 @@
 # File: python/55-concurrency-part-15-asyncio-timeouts-cancellation-and-shielding.md
 
 # Advanced Python Runtime & Concurrency
+
 # Concurrency Part 15: Timeouts, Cancellation & Shielding in `asyncio`
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 10–12 Hours
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -23,7 +24,7 @@
 | `asyncio.shield()` | Python 3.4 |
 | `asyncio.timeout()` | Python 3.11 |
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -42,7 +43,7 @@ By the end of this lesson, you will understand:
 - Best practices
 - questions
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -77,16 +78,16 @@ Without a timeout:
 
 Production systems must assume that every network call can fail or stall.
 
----
+______________________________________________________________________
 
 # Why Timeouts Matter
 
 Consider an endpoint that performs:
 
 1. Read from PostgreSQL
-2. Call a payment provider
-3. Store audit logs
-4. Return a response
+1. Call a payment provider
+1. Store audit logs
+1. Return a response
 
 If the payment provider never replies, should the request remain active forever?
 
@@ -94,7 +95,7 @@ No.
 
 Every external dependency should have an appropriate timeout.
 
----
+______________________________________________________________________
 
 # Cooperative Cancellation
 
@@ -122,7 +123,7 @@ The coroutine can then:
 - Release resources
 - Re-raise the exception
 
----
+______________________________________________________________________
 
 # Example
 
@@ -167,7 +168,7 @@ async def main():
 asyncio.run(main())
 ```
 
----
+______________________________________________________________________
 
 # `asyncio.wait_for()`
 
@@ -190,7 +191,7 @@ Internally,
 
 `wait_for()` also cancels the underlying task.
 
----
+______________________________________________________________________
 
 # Timeline
 
@@ -214,7 +215,7 @@ Cancel Task
 Raise TimeoutError
 ```
 
----
+______________________________________________________________________
 
 # Example
 
@@ -247,7 +248,7 @@ async def main():
 asyncio.run(main())
 ```
 
----
+______________________________________________________________________
 
 # `asyncio.timeout()` (Python 3.11+)
 
@@ -265,7 +266,7 @@ Every await inside the block shares the timeout budget.
 
 This is often more readable than nesting multiple `wait_for()` calls.
 
----
+______________________________________________________________________
 
 # `asyncio.shield()`
 
@@ -285,7 +286,7 @@ await asyncio.shield(commit_transaction())
 
 If the outer coroutine is cancelled, the commit can still complete.
 
----
+______________________________________________________________________
 
 # Cancellation Propagation
 
@@ -305,7 +306,7 @@ Task B is usually cancelled as well.
 
 Cancellation propagates through await chains unless shielding or other control mechanisms are used.
 
----
+______________________________________________________________________
 
 # Writing Cancellation-Safe Code
 
@@ -335,7 +336,7 @@ except asyncio.CancelledError:
 
 Never swallow `CancelledError` unless you intentionally want to suppress cancellation.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -362,7 +363,7 @@ Your coroutine should:
 - Remove temporary files.
 - Stop background processing if appropriate.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -370,25 +371,25 @@ Your coroutine should:
 
 Ignoring timeouts for external APIs.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
 Suppressing `CancelledError` without re-raising it.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
 Using very large timeout values "just to be safe."
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
 Forgetting cleanup when cancellation occurs.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -404,7 +405,7 @@ Forgetting cleanup when cancellation occurs.
 
 ❌ Don't block the event loop during cleanup.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -418,7 +419,7 @@ In production systems, cancellations happen frequently:
 
 Robust async services treat cancellation as a normal control flow rather than an exceptional event.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -430,7 +431,7 @@ Robust async services treat cancellation as a normal control flow rather than an
 
 Because the coroutine decides when it can be interrupted—typically at the next `await`—allowing it to clean up safely.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -440,7 +441,7 @@ Because the coroutine decides when it can be interrupted—typically at the next
 
 It waits for an awaitable to finish within a specified timeout and cancels it if the timeout expires.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -448,9 +449,10 @@ It waits for an awaitable to finish within a specified timeout and cancels it if
 
 ### Answer
 
-When an operation, such as committing a transaction or writing an audit log, must complete even if the caller is cancelled.
+When an operation, such as committing a transaction or writing an audit log, must complete even if the caller is
+cancelled.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -460,7 +462,7 @@ When an operation, such as committing a transaction or writing an audit log, mus
 
 Without a timeout, stalled services can consume resources indefinitely and reduce system reliability.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -468,9 +470,10 @@ Without a timeout, stalled services can consume resources indefinitely and reduc
 
 ### Answer
 
-Use `try`/`finally` or handle `asyncio.CancelledError` explicitly, ensuring cleanup always occurs before re-raising the exception.
+Use `try`/`finally` or handle `asyncio.CancelledError` explicitly, ensuring cleanup always occurs before re-raising the
+exception.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -490,7 +493,7 @@ Implement:
 
 Observe how cancellation and cleanup interact.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -502,7 +505,7 @@ What happens internally when `asyncio.wait_for()` times out?
 
 It cancels the awaited task and raises `asyncio.TimeoutError` to the caller.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -510,9 +513,10 @@ Why should `CancelledError` usually be re-raised?
 
 ### Answer
 
-Because it signals normal cancellation to the event loop and higher-level code. Suppressing it can leave tasks in an inconsistent state.
+Because it signals normal cancellation to the event loop and higher-level code. Suppressing it can leave tasks in an
+inconsistent state.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -520,9 +524,10 @@ What is the difference between `wait_for()` and `timeout()`?
 
 ### Answer
 
-`wait_for()` wraps a single awaitable, while `asyncio.timeout()` provides a context manager that applies a shared timeout to all await operations within its block.
+`wait_for()` wraps a single awaitable, while `asyncio.timeout()` provides a context manager that applies a shared
+timeout to all await operations within its block.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -530,9 +535,10 @@ When is `asyncio.shield()` appropriate?
 
 ### Answer
 
-When a critical operation must not be cancelled by its caller, such as finalising a transaction or persisting an audit record.
+When a critical operation must not be cancelled by its caller, such as finalising a transaction or persisting an audit
+record.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -540,9 +546,10 @@ Why are timeouts considered mandatory in production systems?
 
 ### Answer
 
-Because networks and external services are unreliable. Timeouts prevent resource exhaustion and allow systems to fail fast and recover gracefully.
+Because networks and external services are unreliable. Timeouts prevent resource exhaustion and allow systems to fail
+fast and recover gracefully.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -552,7 +559,7 @@ Wrap multiple simulated API calls with `asyncio.timeout()`.
 
 Observe how the shared timeout behaves.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -562,7 +569,7 @@ Cancel it after three seconds.
 
 Ensure all resources are cleaned up correctly.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -570,7 +577,7 @@ Protect a simulated "commit transaction" coroutine using `asyncio.shield()`.
 
 Cancel the outer task and verify that the commit still completes.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -584,7 +591,7 @@ Document:
 - Which operations should be shielded.
 - Which operations should be cancelled immediately on client disconnect.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -599,9 +606,8 @@ In this lesson, you learned:
 - ✅ Cleanup patterns.
 - ✅ Production timeout strategies.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[56-production-python-part-01-logging](56-production-python-part-01-logging.md)
+**File:** [56-production-python-part-01-logging](56-production-python-part-01-logging.md)

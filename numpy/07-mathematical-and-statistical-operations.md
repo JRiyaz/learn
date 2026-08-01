@@ -2,7 +2,7 @@
 
 **Python Version Introduced:** Python 3.x
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -16,7 +16,7 @@ By the end of this lesson, you will be able to:
 - Understand performance considerations of aggregation operations.
 - Apply these operations to real-world datasets.
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -32,7 +32,7 @@ Those concepts allow NumPy to process arrays efficiently.
 
 This lesson focuses on **summarizing and analyzing numerical data**.
 
----
+______________________________________________________________________
 
 # Why Mathematical Operations Matter
 
@@ -54,7 +54,7 @@ Instead, we ask questions such as:
 
 These questions are answered using aggregation functions.
 
----
+______________________________________________________________________
 
 # Sample Dataset
 
@@ -76,7 +76,7 @@ Rows   → Stores
 Columns → Months
 ```
 
----
+______________________________________________________________________
 
 # Understanding the `axis` Parameter
 
@@ -118,7 +118,7 @@ Axis 0 moves **down the rows**.
 
 Aggregation happens **column-wise**.
 
----
+______________________________________________________________________
 
 Axis 1
 
@@ -139,7 +139,7 @@ A simple way to remember:
 | 0 | Down the rows (column results) |
 | 1 | Across the columns (row results) |
 
----
+______________________________________________________________________
 
 # `sum()`
 
@@ -147,7 +147,7 @@ A simple way to remember:
 
 Returns the sum of array elements.
 
----
+______________________________________________________________________
 
 ## Syntax
 
@@ -161,7 +161,7 @@ or
 array.sum(axis=None)
 ```
 
----
+______________________________________________________________________
 
 ## Parameters
 
@@ -169,13 +169,13 @@ array.sum(axis=None)
 |-----------|-------------|
 | `axis` | Axis along which to compute the sum. If omitted, sums all elements. |
 
----
+______________________________________________________________________
 
 ## Return Value
 
 A scalar if `axis=None`; otherwise an array with one value per aggregation axis.
 
----
+______________________________________________________________________
 
 ## Examples
 
@@ -191,7 +191,7 @@ Output
 1605
 ```
 
----
+______________________________________________________________________
 
 Column totals.
 
@@ -205,7 +205,7 @@ Output
 [480 535 590]
 ```
 
----
+______________________________________________________________________
 
 Row totals.
 
@@ -219,7 +219,7 @@ Output
 [450 565 590]
 ```
 
----
+______________________________________________________________________
 
 ## Copy or View
 
@@ -227,7 +227,7 @@ No copy or view is returned.
 
 The function computes and returns a new result.
 
----
+______________________________________________________________________
 
 ## Time Complexity
 
@@ -237,7 +237,7 @@ O(n)
 
 Every element is visited once.
 
----
+______________________________________________________________________
 
 ## Memory Complexity
 
@@ -247,31 +247,32 @@ O(1)
 
 for a scalar result, or proportional to the size of the output when using an axis.
 
----
+______________________________________________________________________
 
 ## Performance Notes
 
-Aggregation functions are implemented in optimized compiled code and are significantly faster than equivalent Python loops.
+Aggregation functions are implemented in optimized compiled code and are significantly faster than equivalent Python
+loops.
 
----
+______________________________________________________________________
 
 ## Common Mistakes
 
 Confusing the `axis` parameter.
 
----
+______________________________________________________________________
 
 ## Best Practices
 
 Use the `axis` parameter explicitly to improve readability.
 
----
+______________________________________________________________________
 
 ## Production Insight
 
 Daily sales, total revenue, total website visits, and financial summaries commonly use `sum()`.
 
----
+______________________________________________________________________
 
 # `mean()`
 
@@ -279,7 +280,7 @@ Daily sales, total revenue, total website visits, and financial summaries common
 
 Computes the arithmetic mean.
 
----
+______________________________________________________________________
 
 ## Syntax
 
@@ -287,7 +288,7 @@ Computes the arithmetic mean.
 array.mean(axis=None)
 ```
 
----
+______________________________________________________________________
 
 ## Example
 
@@ -303,7 +304,7 @@ Output
 178.33
 ```
 
----
+______________________________________________________________________
 
 Average for each month.
 
@@ -317,7 +318,7 @@ Output
 [160.0 178.33 196.67]
 ```
 
----
+______________________________________________________________________
 
 Average sales for each store.
 
@@ -331,7 +332,7 @@ Output
 [150.0 188.33 196.67]
 ```
 
----
+______________________________________________________________________
 
 ## Time Complexity
 
@@ -339,13 +340,13 @@ Output
 O(n)
 ```
 
----
+______________________________________________________________________
 
 ## Production Insight
 
 Averages are used in dashboards, KPI reports, forecasting, and feature engineering.
 
----
+______________________________________________________________________
 
 # `median()`
 
@@ -353,7 +354,7 @@ Averages are used in dashboards, KPI reports, forecasting, and feature engineeri
 
 Returns the middle value after sorting.
 
----
+______________________________________________________________________
 
 ## Syntax
 
@@ -361,7 +362,7 @@ Returns the middle value after sorting.
 np.median(array, axis=None)
 ```
 
----
+______________________________________________________________________
 
 Example.
 
@@ -377,7 +378,7 @@ Output
 70
 ```
 
----
+______________________________________________________________________
 
 Why use the median?
 
@@ -399,7 +400,7 @@ Median
 Hardly changes
 ```
 
----
+______________________________________________________________________
 
 # `std()`
 
@@ -407,7 +408,7 @@ Hardly changes
 
 Computes the standard deviation.
 
----
+______________________________________________________________________
 
 ## Syntax
 
@@ -415,7 +416,7 @@ Computes the standard deviation.
 array.std(axis=None)
 ```
 
----
+______________________________________________________________________
 
 Example.
 
@@ -425,7 +426,7 @@ values = np.array([10,12,14,16])
 print(values.std())
 ```
 
----
+______________________________________________________________________
 
 Why is it useful?
 
@@ -433,7 +434,7 @@ A low standard deviation means values are close together.
 
 A high standard deviation indicates greater variability.
 
----
+______________________________________________________________________
 
 # `var()`
 
@@ -441,7 +442,7 @@ A high standard deviation indicates greater variability.
 
 Computes the variance.
 
----
+______________________________________________________________________
 
 ## Syntax
 
@@ -451,7 +452,7 @@ array.var(axis=None)
 
 Variance is simply the square of the standard deviation.
 
----
+______________________________________________________________________
 
 # `min()` and `max()`
 
@@ -459,7 +460,7 @@ Variance is simply the square of the standard deviation.
 
 Return the smallest and largest values.
 
----
+______________________________________________________________________
 
 Example.
 
@@ -483,7 +484,7 @@ Output
 220
 ```
 
----
+______________________________________________________________________
 
 Using `axis`.
 
@@ -499,13 +500,13 @@ Output
 
 Each value is the maximum for a column.
 
----
+______________________________________________________________________
 
 # `argmin()` and `argmax()`
 
 Sometimes we need the **position**, not the value.
 
----
+______________________________________________________________________
 
 Example.
 
@@ -545,7 +546,7 @@ Output
 2
 ```
 
----
+______________________________________________________________________
 
 Using `axis`.
 
@@ -561,13 +562,13 @@ Output
 
 This tells us which row contains the maximum value for each column.
 
----
+______________________________________________________________________
 
 # Cumulative Operations
 
 Sometimes we want a running total instead of a single result.
 
----
+______________________________________________________________________
 
 # `cumsum()`
 
@@ -575,7 +576,7 @@ Sometimes we want a running total instead of a single result.
 
 Computes the cumulative sum.
 
----
+______________________________________________________________________
 
 Example.
 
@@ -597,7 +598,7 @@ Applications:
 - Running inventory
 - Running balances
 
----
+______________________________________________________________________
 
 # `cumprod()`
 
@@ -605,7 +606,7 @@ Applications:
 
 Computes the cumulative product.
 
----
+______________________________________________________________________
 
 Example.
 
@@ -627,7 +628,7 @@ Applications:
 - Investment returns
 - Probability calculations
 
----
+______________________________________________________________________
 
 # Combining Aggregations
 
@@ -651,25 +652,18 @@ Minimum: [120 175 160]
 
 This pattern is common in analytics pipelines.
 
----
+______________________________________________________________________
 
 # Performance Notes
 
-Operation | Complexity | Output Size
-----------|------------|------------
-sum() | O(n) | Scalar or reduced array
-mean() | O(n) | Scalar or reduced array
-median() | O(n log n)* | Scalar or reduced array
-std() | O(n) | Scalar or reduced array
-var() | O(n) | Scalar or reduced array
-min()/max() | O(n) | Scalar or reduced array
-argmin()/argmax() | O(n) | Scalar or reduced array
-cumsum() | O(n) | Same size as input
-cumprod() | O(n) | Same size as input
+Operation | Complexity | Output Size ----------|------------|------------ sum() | O(n) | Scalar or reduced array mean()
+| O(n) | Scalar or reduced array median() | O(n log n)\* | Scalar or reduced array std() | O(n) | Scalar or reduced
+array var() | O(n) | Scalar or reduced array min()/max() | O(n) | Scalar or reduced array argmin()/argmax() | O(n) |
+Scalar or reduced array cumsum() | O(n) | Same size as input cumprod() | O(n) | Same size as input
 
 \*The exact implementation may vary, but conceptually the median requires identifying the middle value.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -689,7 +683,7 @@ If you wanted monthly totals, use:
 sales.sum(axis=0)
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -707,7 +701,7 @@ argmax()
 
 returns the index.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -725,7 +719,7 @@ array.sum()
 
 These are optimized for NumPy arrays.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -733,7 +727,7 @@ Using `mean()` when the dataset contains extreme outliers.
 
 In such cases, `median()` may provide a more representative measure of central tendency.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -743,7 +737,7 @@ In such cases, `median()` may provide a more representative measure of central t
 - Use cumulative functions for running totals and growth calculations.
 - Prefer NumPy methods (`array.sum()`) or functions (`np.sum()`) for clarity and performance.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -759,7 +753,7 @@ Examples include:
 
 These operations often process millions of values, making NumPy's optimized implementations essential for performance.
 
----
+______________________________________________________________________
 
 ```markdown id="g7n5tv"
 # Questions
@@ -803,7 +797,7 @@ When the data contains significant outliers, because the median is less affected
 It computes the running cumulative sum of the elements.
 ```
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -821,14 +815,14 @@ sales = np.array([
 Perform the following tasks:
 
 1. Calculate the total sales for each month.
-2. Calculate the total sales for each store.
-3. Compute the average sales by month and by store.
-4. Find the highest and lowest sales values for each month.
-5. Identify which store achieved the highest sales in each month using `argmax()`.
-6. Compute the cumulative monthly sales using `cumsum()`.
-7. Compare the mean and median of the entire dataset and explain the difference.
+1. Calculate the total sales for each store.
+1. Compute the average sales by month and by store.
+1. Find the highest and lowest sales values for each month.
+1. Identify which store achieved the highest sales in each month using `argmax()`.
+1. Compute the cumulative monthly sales using `cumsum()`.
+1. Compare the mean and median of the entire dataset and explain the difference.
 
----
+______________________________________________________________________
 
 ```markdown id="t9k4wm"
 # Knowledge Check
@@ -912,35 +906,39 @@ Does `sum()` return a view or a copy?
 Neither. It computes and returns a new aggregated result.
 ```
 
----
+______________________________________________________________________
 
 # Assignment
 
 1. Create a `(6, 4)` array using `np.random.randint()`.
-2. Calculate:
+1. Calculate:
    - Total sum
    - Row-wise sums
    - Column-wise sums
    - Overall mean
    - Row-wise means
    - Column-wise means
-3. Determine:
+1. Determine:
    - Minimum and maximum values.
    - Their indices using `argmin()` and `argmax()`.
-4. Compute:
+1. Compute:
    - Standard deviation
    - Variance
    - Cumulative sums
    - Cumulative products
-5. Create a summary report showing all statistics and explain what each metric reveals about the dataset.
+1. Create a summary report showing all statistics and explain what each metric reveals about the dataset.
 
----
+______________________________________________________________________
 
 # Summary
 
-In this lesson, you learned how to summarize and analyze numerical data using NumPy's aggregation functions. You explored `sum()`, `mean()`, `median()`, `std()`, `var()`, `min()`, `max()`, `argmin()`, `argmax()`, `cumsum()`, and `cumprod()`, while gaining a solid understanding of the `axis` parameter. These operations are fundamental for analytics, scientific computing, and machine learning, where large datasets must be reduced into meaningful statistics efficiently.
+In this lesson, you learned how to summarize and analyze numerical data using NumPy's aggregation functions. You
+explored `sum()`, `mean()`, `median()`, `std()`, `var()`, `min()`, `max()`, `argmin()`, `argmax()`, `cumsum()`, and
+`cumprod()`, while gaining a solid understanding of the `axis` parameter. These operations are fundamental for
+analytics, scientific computing, and machine learning, where large datasets must be reduced into meaningful statistics
+efficiently.
 
----
+______________________________________________________________________
 
 # Next Lesson
 

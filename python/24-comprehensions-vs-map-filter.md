@@ -1,6 +1,7 @@
 # File: python/24-comprehensions-vs-map-filter.md
 
 # Python Functional Programming - Part 2
+
 # Comprehensions vs `map()` and `filter()`
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 130 Minutes
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -34,7 +35,7 @@
 
 These improvements make Python 3 comprehensions both safer and more memory efficient.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -51,7 +52,7 @@ By the end of this lesson, you will understand:
 - Performance considerations
 - Production best practices
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -79,7 +80,7 @@ list comprehensions appear far more often than `map()`.
 
 Understanding why is important.
 
----
+______________________________________________________________________
 
 # What is a Comprehension?
 
@@ -109,7 +110,7 @@ result = [
 
 The result is identical.
 
----
+______________________________________________________________________
 
 # Why Were Comprehensions Introduced?
 
@@ -133,7 +134,7 @@ more readable,
 
 and often slightly faster.
 
----
+______________________________________________________________________
 
 # List Comprehension Syntax
 
@@ -161,7 +162,7 @@ Apply expression
 Build list
 ```
 
----
+______________________________________________________________________
 
 # Example
 
@@ -185,7 +186,7 @@ Output
 [1, 4, 9, 16]
 ```
 
----
+______________________________________________________________________
 
 # Equivalent Loop
 
@@ -203,7 +204,7 @@ for number in numbers:
 
 Both produce the same result.
 
----
+______________________________________________________________________
 
 # Filtering in a Comprehension
 
@@ -245,7 +246,7 @@ Output
 [2, 4, 6]
 ```
 
----
+______________________________________________________________________
 
 # Visualising a List Comprehension
 
@@ -265,7 +266,7 @@ Transform
 New List
 ```
 
----
+______________________________________________________________________
 
 # Transform and Filter Together
 
@@ -301,7 +302,7 @@ Output
 [20, 40]
 ```
 
----
+______________________________________________________________________
 
 # Conditional Expressions
 
@@ -373,7 +374,7 @@ Conditional expression
 
 This distinction is a common interview question.
 
----
+______________________________________________________________________
 
 # Nested Comprehensions
 
@@ -423,7 +424,7 @@ Each Value
 Append
 ```
 
----
+______________________________________________________________________
 
 # When Nested Comprehensions Become Hard to Read
 
@@ -462,7 +463,7 @@ prefer normal loops.
 
 Readability always wins.
 
----
+______________________________________________________________________
 
 # Dictionary Comprehensions
 
@@ -514,7 +515,7 @@ Output
 }
 ```
 
----
+______________________________________________________________________
 
 # Filtering Dictionaries
 
@@ -550,7 +551,7 @@ Output
 }
 ```
 
----
+______________________________________________________________________
 
 # Set Comprehensions
 
@@ -612,7 +613,7 @@ Output
 
 Duplicate values are automatically removed.
 
----
+______________________________________________________________________
 
 # Generator Expressions
 
@@ -658,7 +659,7 @@ Just like `map()`,
 
 generators are lazy.
 
----
+______________________________________________________________________
 
 # Why Use Generator Expressions?
 
@@ -694,7 +695,7 @@ Next value
 
 This dramatically reduces memory usage.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -728,7 +729,7 @@ Output
 
 Values are produced one at a time.
 
----
+______________________________________________________________________
 
 # Comprehensions vs map()
 
@@ -764,7 +765,7 @@ result = [
 
 The comprehension is generally easier to read.
 
----
+______________________________________________________________________
 
 # Comprehensions vs filter()
 
@@ -802,7 +803,7 @@ Again,
 
 the comprehension is often preferred.
 
----
+______________________________________________________________________
 
 # When map() Is Better
 
@@ -828,7 +829,7 @@ result = map(
 
 is concise and avoids introducing a lambda.
 
----
+______________________________________________________________________
 
 # When Comprehensions Are Better
 
@@ -856,7 +857,7 @@ map(
 )
 ```
 
----
+______________________________________________________________________
 
 # Generator Expression vs List Comprehension
 
@@ -896,7 +897,7 @@ One value at a time
 
 Choose based on whether you need random access or sequential processing.
 
----
+______________________________________________________________________
 
 # Performance Considerations
 
@@ -909,7 +910,7 @@ Generally
 
 Always benchmark critical code instead of assuming.
 
----
+______________________________________________________________________
 
 # Production Example - API Response
 
@@ -949,7 +950,7 @@ names = [
 ]
 ```
 
----
+______________________________________________________________________
 
 # Production Example - File Processing
 
@@ -975,7 +976,7 @@ Memory usage stays low.
 
 > **Note:** We'll later learn that opening files should normally use a context manager (`with open(...)`) to ensure the file is closed correctly. This example focuses on generator expressions.
 
----
+______________________________________________________________________
 
 # Production Example - FastAPI
 
@@ -1000,7 +1001,7 @@ available = [
 
 This pattern is common in service layers.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -1012,7 +1013,7 @@ If it spans several conditions and loops,
 
 consider using a normal loop.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -1032,7 +1033,7 @@ Comprehensions should build collections,
 
 not perform actions.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -1050,7 +1051,7 @@ list(
 
 This often defeats the memory benefits of a generator.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -1068,7 +1069,7 @@ This often defeats the memory benefits of a generator.
 
 ❌ Don't use comprehensions solely for side effects.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -1101,9 +1102,10 @@ You'll frequently encounter:
 )
 ```
 
-Frameworks such as Django, FastAPI, SQLAlchemy and Pandas often use comprehensions to transform query results, API responses and collections.
+Frameworks such as Django, FastAPI, SQLAlchemy and Pandas often use comprehensions to transform query results, API
+responses and collections.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1113,9 +1115,10 @@ Frameworks such as Django, FastAPI, SQLAlchemy and Pandas often use comprehensio
 
 ### Answer
 
-A list comprehension creates the entire list immediately, while a generator expression produces values lazily, one at a time, making it more memory efficient.
+A list comprehension creates the entire list immediately, while a generator expression produces values lazily, one at a
+time, making it more memory efficient.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1123,9 +1126,10 @@ A list comprehension creates the entire list immediately, while a generator expr
 
 ### Answer
 
-For simple transformations and filtering, comprehensions are usually more readable and are considered more idiomatic in modern Python.
+For simple transformations and filtering, comprehensions are usually more readable and are considered more idiomatic in
+modern Python.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1133,9 +1137,10 @@ For simple transformations and filtering, comprehensions are usually more readab
 
 ### Answer
 
-When applying an existing named function to every element or when working with multiple iterables, `map()` can be concise and efficient.
+When applying an existing named function to every element or when working with multiple iterables, `map()` can be
+concise and efficient.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1143,9 +1148,10 @@ When applying an existing named function to every element or when working with m
 
 ### Answer
 
-Their purpose is to create collections. Using them only to execute actions wastes memory and makes the code less clear than a standard loop.
+Their purpose is to create collections. Using them only to execute actions wastes memory and makes the code less clear
+than a standard loop.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -1250,7 +1256,7 @@ Expected Output
 16
 ```
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1260,9 +1266,10 @@ What is a list comprehension?
 
 ### Answer
 
-A concise syntax for creating a new list by iterating over an iterable and optionally filtering or transforming its elements.
+A concise syntax for creating a new list by iterating over an iterable and optionally filtering or transforming its
+elements.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -1272,7 +1279,7 @@ When should you use a generator expression?
 
 When processing large datasets sequentially without needing all values in memory at once.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -1280,9 +1287,10 @@ What is the difference between filtering and a conditional expression inside a c
 
 ### Answer
 
-A filtering `if` determines whether an element is included, while an inline `if...else` chooses which value is produced for every element.
+A filtering `if` determines whether an element is included, while an inline `if...else` chooses which value is produced
+for every element.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -1290,9 +1298,10 @@ Why are dictionary comprehensions useful?
 
 ### Answer
 
-They provide a concise and efficient way to construct dictionaries from existing iterables while optionally transforming keys and values.
+They provide a concise and efficient way to construct dictionaries from existing iterables while optionally transforming
+keys and values.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1302,7 +1311,7 @@ Why are list comprehensions generally preferred over `map()` with `lambda`?
 
 They are usually easier to read, more idiomatic and often perform similarly or better for simple transformations.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -1320,7 +1329,7 @@ Create:
 - A list containing only odd numbers.
 - A list that labels each number as `"Even"` or `"Odd"`.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -1336,13 +1345,13 @@ employees = {
 
 Create a dictionary containing only employees earning at least `50000`.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
 Read a text file and create a generator expression that yields only non-empty, stripped lines.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -1360,7 +1369,7 @@ numbers = [10, 20, 30]
 
 Compare readability and explain which version you would use in production.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1373,12 +1382,11 @@ In this lesson, you learned:
 - ✅ Performance and memory trade-offs.
 - ✅ Production best practices for writing idiomatic Python.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[25-Zip-Enumerate-Any-All](25-zip-enumerate-any-all.md)
+**File:** [25-Zip-Enumerate-Any-All](25-zip-enumerate-any-all.md)
 
 Topics:
 

@@ -1,6 +1,7 @@
 # File: python/06-iterators-and-iterables-part-2.md
 
 # Python Advanced - Lesson 06 (Part 2)
+
 # The Iterator Protocol & Building Custom Iterators
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 75 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -26,7 +27,7 @@ By the end of this lesson, you will understand:
 - The difference between custom iterators and generators
 - Where custom iterators are used in backend applications
 
----
+______________________________________________________________________
 
 # Theory
 
@@ -51,7 +52,7 @@ The answer is:
 
 **The Iterator Protocol.**
 
----
+______________________________________________________________________
 
 # What is the Iterator Protocol?
 
@@ -70,7 +71,7 @@ These methods tell Python:
 - How to start iteration
 - How to get the next value
 
----
+______________________________________________________________________
 
 # __iter__()
 
@@ -106,7 +107,7 @@ numbers.__iter__()
 
 These are equivalent.
 
----
+______________________________________________________________________
 
 # __next__()
 
@@ -144,7 +145,7 @@ Python internally calls:
 iterator.__next__()
 ```
 
----
+______________________________________________________________________
 
 # Building Your First Iterator
 
@@ -164,7 +165,7 @@ The goal:
 5
 ```
 
----
+______________________________________________________________________
 
 # Example 1
 
@@ -220,7 +221,7 @@ Output
 5
 ```
 
----
+______________________________________________________________________
 
 # Understanding the Flow
 
@@ -273,7 +274,7 @@ Nothing magical happens.
 
 The `for` loop simply follows the Iterator Protocol.
 
----
+______________________________________________________________________
 
 # Why Does __iter__ Return self?
 
@@ -289,9 +290,10 @@ def __iter__(self):
     return self
 ```
 
-Some objects return a **different iterator object**, but returning `self` is common when the object already implements `__next__()`.
+Some objects return a **different iterator object**, but returning `self` is common when the object already implements
+`__next__()`.
 
----
+______________________________________________________________________
 
 # Example 2 - Even Numbers Iterator
 
@@ -337,7 +339,7 @@ Output
 
 Notice how we completely control what values are produced.
 
----
+______________________________________________________________________
 
 # Infinite Iterators
 
@@ -378,7 +380,7 @@ for number in InfiniteCounter():
 
 would run forever.
 
----
+______________________________________________________________________
 
 # Limiting an Infinite Iterator
 
@@ -407,7 +409,7 @@ Output
 5
 ```
 
----
+______________________________________________________________________
 
 # Iterator vs Generator
 
@@ -452,7 +454,7 @@ The difference is:
 
 We'll study generators in the next lesson.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -483,7 +485,7 @@ Other real-world examples include:
 
 Using iterators allows applications to process huge datasets efficiently without exhausting memory.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -493,9 +495,10 @@ Using iterators allows applications to process huge datasets efficiently without
 
 ### Answer
 
-A custom iterator must implement `__iter__()` and `__next__()`. The `__iter__()` method returns the iterator object, while `__next__()` returns the next value and raises `StopIteration` when there are no more values.
+A custom iterator must implement `__iter__()` and `__next__()`. The `__iter__()` method returns the iterator object,
+while `__next__()` returns the next value and raises `StopIteration` when there are no more values.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -503,9 +506,10 @@ A custom iterator must implement `__iter__()` and `__next__()`. The `__iter__()`
 
 ### Answer
 
-`StopIteration` signals that the iterator has been exhausted. Python's `for` loop catches this exception internally and ends the iteration gracefully.
+`StopIteration` signals that the iterator has been exhausted. Python's `for` loop catches this exception internally and
+ends the iteration gracefully.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -513,9 +517,10 @@ A custom iterator must implement `__iter__()` and `__next__()`. The `__iter__()`
 
 ### Answer
 
-An iterable can produce an iterator using `iter()`. An iterator maintains iteration state and produces one value at a time using `next()`.
+An iterable can produce an iterator using `iter()`. An iterator maintains iteration state and produces one value at a
+time using `next()`.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -569,7 +574,7 @@ Expected Output
 
 Now modify the iterator so that it counts down by **2** instead of **1**.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -579,9 +584,10 @@ What is the Iterator Protocol?
 
 ### Answer
 
-The Iterator Protocol is a set of rules that allows Python to iterate over objects. An iterator must implement `__iter__()` and `__next__()`.
+The Iterator Protocol is a set of rules that allows Python to iterate over objects. An iterator must implement
+`__iter__()` and `__next__()`.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -591,7 +597,7 @@ What should `__iter__()` return?
 
 It should return an iterator object. If the object itself is an iterator, it usually returns `self`.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -601,7 +607,7 @@ When should `__next__()` raise `StopIteration`?
 
 It should raise `StopIteration` when there are no more values to produce.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -611,7 +617,7 @@ Can an iterator be infinite?
 
 Yes. An iterator can continue producing values indefinitely if it never raises `StopIteration`.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -619,9 +625,10 @@ Why are generators often preferred over custom iterators?
 
 ### Answer
 
-Generators are easier to write and automatically implement the Iterator Protocol. They provide the same lazy evaluation with much less code.
+Generators are easier to write and automatically implement the Iterator Protocol. They provide the same lazy evaluation
+with much less code.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -641,13 +648,13 @@ Create a custom iterator that returns:
 50
 ```
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
 Create an iterator that returns the characters of your name one at a time.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -655,7 +662,7 @@ Create an infinite iterator that generates even numbers.
 
 Use `next()` to print only the first ten values.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -668,12 +675,11 @@ In this lesson, you learned:
 - ✅ How infinite iterators work.
 - ✅ The difference between iterators and generators.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[07-Generators-part-1](07-generators-part-1.md)
+**File:** [07-Generators-part-1](07-generators-part-1.md)
 
 Topics:
 

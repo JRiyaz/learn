@@ -1,6 +1,7 @@
 # File: python/20-descriptors.md
 
 # Python Advanced - Lesson 20
+
 # Descriptors - The Hidden Engine Behind Python Attributes
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 120 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -30,7 +31,7 @@ By the end of this lesson, you will understand:
 - How `@property` works internally
 - Production use cases
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -57,9 +58,10 @@ Today you'll discover that **it isn't magic at all**.
 
 `property` is implemented using **Descriptors**.
 
-Descriptors are one of the most powerful features in Python and are used throughout the language and many major frameworks.
+Descriptors are one of the most powerful features in Python and are used throughout the language and many major
+frameworks.
 
----
+______________________________________________________________________
 
 # What is a Descriptor?
 
@@ -87,7 +89,7 @@ Descriptor
 Actual Value
 ```
 
----
+______________________________________________________________________
 
 # Why Were Descriptors Introduced?
 
@@ -139,7 +141,7 @@ The validation is duplicated everywhere.
 
 Descriptors let us write the validation once and reuse it across many classes.
 
----
+______________________________________________________________________
 
 # The Descriptor Protocol
 
@@ -155,7 +157,7 @@ __delete__()
 
 These methods form the **descriptor protocol**.
 
----
+______________________________________________________________________
 
 # The Simplest Descriptor
 
@@ -192,7 +194,7 @@ Getting value
 
 Python automatically calls `__get__()`.
 
----
+______________________________________________________________________
 
 # Understanding __get__()
 
@@ -214,7 +216,7 @@ Parameters
 | `instance` | Instance being accessed |
 | `owner` | Class that owns the descriptor |
 
----
+______________________________________________________________________
 
 # Example
 
@@ -255,7 +257,7 @@ Output
 Alice
 ```
 
----
+______________________________________________________________________
 
 # __set__()
 
@@ -294,7 +296,7 @@ Output
 Setting Alice
 ```
 
----
+______________________________________________________________________
 
 # __delete__()
 
@@ -323,7 +325,7 @@ Output
 Deleting
 ```
 
----
+______________________________________________________________________
 
 # Building a Real Descriptor
 
@@ -395,7 +397,7 @@ Output
 50
 ```
 
----
+______________________________________________________________________
 
 # Understanding __set_name__()
 
@@ -428,7 +430,7 @@ descriptor.__set_name__(
 
 This allows the descriptor to know it manages the `price` attribute.
 
----
+______________________________________________________________________
 
 # Why Use getattr() and setattr()?
 
@@ -462,13 +464,13 @@ creating infinite recursion.
 
 Using a different internal attribute avoids this problem.
 
----
+______________________________________________________________________
 
 # Data vs Non-Data Descriptors
 
 This is a favourite interview topic.
 
----
+______________________________________________________________________
 
 # Non-Data Descriptor
 
@@ -490,7 +492,7 @@ class Example:
         ...
 ```
 
----
+______________________________________________________________________
 
 # Data Descriptor
 
@@ -522,7 +524,7 @@ class Example:
         ...
 ```
 
----
+______________________________________________________________________
 
 # Why Does This Matter?
 
@@ -532,7 +534,7 @@ Data descriptors have higher priority than instance attributes.
 
 Non-data descriptors do not.
 
----
+______________________________________________________________________
 
 # Attribute Lookup Order
 
@@ -566,7 +568,7 @@ it follows this order.
 
 Understanding this explains many "strange" attribute behaviours.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -604,7 +606,7 @@ Instance
 
 Because this descriptor is **non-data**, the instance attribute wins.
 
----
+______________________________________________________________________
 
 Now implement `__set__()`.
 
@@ -630,7 +632,7 @@ returns the descriptor's value.
 
 The data descriptor now takes priority.
 
----
+______________________________________________________________________
 
 # How @property Works
 
@@ -667,7 +669,7 @@ product.price
 
 automatically calls the property's getter.
 
----
+______________________________________________________________________
 
 # Built-in Descriptors
 
@@ -717,7 +719,7 @@ SQLAlchemy
 
 Descriptors are everywhere.
 
----
+______________________________________________________________________
 
 # Production Example - Validation
 
@@ -743,7 +745,7 @@ customer.email = ...
 
 One implementation serves every class.
 
----
+______________________________________________________________________
 
 # Production Example - ORM
 
@@ -770,7 +772,7 @@ The ORM descriptor may:
 
 This is one reason ORMs feel "magical."
 
----
+______________________________________________________________________
 
 # Production Example - Lazy Loading
 
@@ -791,7 +793,7 @@ Later accesses return the cached value.
 
 The caller never knows a descriptor is involved.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -807,7 +809,7 @@ One descriptor instance is shared across all objects.
 
 Store values on the instance instead.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -823,7 +825,7 @@ This causes infinite recursion.
 
 Use `setattr()` with a different internal attribute name.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -833,7 +835,7 @@ Descriptors are powerful,
 
 but they also add complexity.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -849,7 +851,7 @@ but they also add complexity.
 
 ❌ Don't over-engineer simple classes.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -870,7 +872,7 @@ Many senior Python developers use descriptors rarely,
 
 but they benefit from understanding them because so many libraries depend on them.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -880,9 +882,10 @@ but they benefit from understanding them because so many libraries depend on the
 
 ### Answer
 
-A descriptor is an object that defines one or more of `__get__()`, `__set__()` or `__delete__()` to customise how another object's attributes are accessed, assigned or deleted.
+A descriptor is an object that defines one or more of `__get__()`, `__set__()` or `__delete__()` to customise how
+another object's attributes are accessed, assigned or deleted.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -890,9 +893,10 @@ A descriptor is an object that defines one or more of `__get__()`, `__set__()` o
 
 ### Answer
 
-The descriptor protocol consists of the methods `__get__()`, `__set__()` and `__delete__()`. Implementing these methods allows an object to participate in Python's attribute access mechanism.
+The descriptor protocol consists of the methods `__get__()`, `__set__()` and `__delete__()`. Implementing these methods
+allows an object to participate in Python's attribute access mechanism.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -900,9 +904,11 @@ The descriptor protocol consists of the methods `__get__()`, `__set__()` and `__
 
 ### Answer
 
-A data descriptor implements `__set__()` or `__delete__()` in addition to `__get__()`. It takes precedence over instance attributes during attribute lookup. A non-data descriptor implements only `__get__()` and has lower priority than instance attributes.
+A data descriptor implements `__set__()` or `__delete__()` in addition to `__get__()`. It takes precedence over instance
+attributes during attribute lookup. A non-data descriptor implements only `__get__()` and has lower priority than
+instance attributes.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -910,9 +916,10 @@ A data descriptor implements `__set__()` or `__delete__()` in addition to `__get
 
 ### Answer
 
-The `property` class is itself a descriptor. It implements the descriptor protocol so that reading, writing or deleting an attribute invokes the corresponding property methods.
+The `property` class is itself a descriptor. It implements the descriptor protocol so that reading, writing or deleting
+an attribute invokes the corresponding property methods.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -988,7 +995,7 @@ product.stock = -5
 
 Observe the validation error generated by the descriptor.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -998,9 +1005,10 @@ What is a descriptor?
 
 ### Answer
 
-A descriptor is an object that customises attribute access by implementing one or more methods from the descriptor protocol.
+A descriptor is an object that customises attribute access by implementing one or more methods from the descriptor
+protocol.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -1010,7 +1018,7 @@ What methods make up the descriptor protocol?
 
 `__get__()`, `__set__()` and `__delete__()`.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -1020,7 +1028,7 @@ What is the purpose of `__set_name__()`?
 
 It allows a descriptor to discover the attribute name it is assigned to when the owning class is created.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -1028,9 +1036,10 @@ What is the difference between a data descriptor and a non-data descriptor?
 
 ### Answer
 
-A data descriptor implements `__set__()` or `__delete__()` and takes priority over instance attributes. A non-data descriptor implements only `__get__()` and has lower lookup priority.
+A data descriptor implements `__set__()` or `__delete__()` and takes priority over instance attributes. A non-data
+descriptor implements only `__get__()` and has lower lookup priority.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1038,9 +1047,10 @@ Why don't most Python developers write descriptors every day?
 
 ### Answer
 
-Because higher-level features such as `@property`, dataclasses and ORMs already use descriptors internally. Developers benefit more from understanding descriptors than from writing them frequently.
+Because higher-level features such as `@property`, dataclasses and ORMs already use descriptors internally. Developers
+benefit more from understanding descriptors than from writing them frequently.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -1054,7 +1064,7 @@ Use it to validate:
 - Employee salary
 - Account balance
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -1072,13 +1082,13 @@ Should store
 INDIA
 ```
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
 Create an `EmailDescriptor` that validates an email address contains exactly one `@` before storing it.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -1090,7 +1100,7 @@ user.name
 
 Describe each step Python performs before returning the value.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1105,12 +1115,11 @@ In this lesson, you learned:
 - ✅ Why descriptors power frameworks like SQLAlchemy and Pydantic.
 - ✅ Best practices for designing reusable attribute behaviour.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[21-Slots](21-slots.md)
+**File:** [21-Slots](21-slots.md)
 
 Topics:
 

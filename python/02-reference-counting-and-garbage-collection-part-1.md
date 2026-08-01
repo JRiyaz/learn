@@ -1,6 +1,7 @@
 # File: python/02-reference-counting-garbage-collection-and-copying.md
 
 # Python Advanced - Lesson 02 (Part 1)
+
 # Reference Counting & Garbage Collection
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 45-60 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -26,7 +27,7 @@ By the end of this lesson, you will understand:
 - What Garbage Collection is
 - Difference between Reference Counting and Garbage Collection
 
----
+______________________________________________________________________
 
 # Why Should You Learn This?
 
@@ -45,7 +46,7 @@ Understanding memory management helps you:
 - Write efficient applications
 - Answer advanced Python interview questions
 
----
+______________________________________________________________________
 
 # 1. What Happens When You Create an Object?
 
@@ -82,7 +83,7 @@ Every Python object keeps track of **how many variables are pointing to it**.
 
 This is called **Reference Counting**.
 
----
+______________________________________________________________________
 
 # 2. What is Reference Counting?
 
@@ -132,7 +133,7 @@ No new list was created.
 
 Only the reference count increased.
 
----
+______________________________________________________________________
 
 # Example 1
 
@@ -156,7 +157,7 @@ Output:
 
 Although there are two variables, there is only **one object**.
 
----
+______________________________________________________________________
 
 # 3. Checking Reference Count
 
@@ -208,7 +209,7 @@ sys.getrefcount()
 
 So don't expect the "real" count directly.
 
----
+______________________________________________________________________
 
 # Example 2
 
@@ -234,7 +235,7 @@ After assignment: 3
 
 Notice how assigning `another = numbers` increased the count.
 
----
+______________________________________________________________________
 
 # 4. What Happens When a Variable Goes Away?
 
@@ -282,7 +283,7 @@ numbers
 
 The object still exists because `numbers` is still pointing to it.
 
----
+______________________________________________________________________
 
 # Example 3
 
@@ -306,7 +307,7 @@ The object wasn't deleted.
 
 Only one reference disappeared.
 
----
+______________________________________________________________________
 
 # 5. When Does Python Delete an Object?
 
@@ -336,7 +337,7 @@ No variable points to the object anymore.
 
 Python immediately frees that memory.
 
----
+______________________________________________________________________
 
 # Example 4
 
@@ -352,7 +353,7 @@ print("Deleted")
 
 After `del numbers`, the list object is eligible to be destroyed because nothing references it anymore.
 
----
+______________________________________________________________________
 
 # Important Note About `del`
 
@@ -372,7 +373,7 @@ Delete Reference
 
 Whether the object disappears depends on whether any references remain.
 
----
+______________________________________________________________________
 
 # 6. Why Isn't Reference Counting Enough?
 
@@ -444,7 +445,7 @@ This is called a **circular reference**.
 
 Reference counting alone cannot clean this up.
 
----
+______________________________________________________________________
 
 # 7. Garbage Collector to the Rescue
 
@@ -482,7 +483,7 @@ Garbage Collection runs periodically.
 
 Together, they keep Python's memory healthy.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -509,11 +510,12 @@ After the request finishes:
 - Their reference counts drop.
 - Most objects are destroyed immediately.
 
-If objects accidentally keep references to each other (for example, through callbacks, caches, or event handlers), the Garbage Collector helps clean them up.
+If objects accidentally keep references to each other (for example, through callbacks, caches, or event handlers), the
+Garbage Collector helps clean them up.
 
 Understanding this helps you reason about memory usage in long-running applications.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -527,7 +529,7 @@ Understanding this helps you reason about memory usage in long-running applicati
 
 This answer shows that you understand **both** mechanisms and how they complement each other.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -561,7 +563,7 @@ Observe how the reference count changes as references are added and removed.
 
 Try adding a third variable and predict the output before running it.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -575,7 +577,7 @@ What does `del` actually delete?
 
 The object is destroyed only if no references remain.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -585,7 +587,7 @@ When does Python destroy an object?
 
 When its reference count reaches **zero**, meaning no variables or objects reference it anymore.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -595,9 +597,10 @@ Why isn't reference counting enough?
 
 Because it cannot detect **circular references**.
 
-Two or more objects can keep referencing each other, preventing their reference counts from reaching zero even though they are no longer accessible from the program.
+Two or more objects can keep referencing each other, preventing their reference counts from reaching zero even though
+they are no longer accessible from the program.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -605,9 +608,10 @@ What is the purpose of the Garbage Collector?
 
 ### Answer
 
-The Garbage Collector identifies and removes unreachable objects involved in circular references, which reference counting alone cannot clean up.
+The Garbage Collector identifies and removes unreachable objects involved in circular references, which reference
+counting alone cannot clean up.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -615,19 +619,20 @@ Why does `sys.getrefcount()` usually return one more reference than expected?
 
 ### Answer
 
-Because the object is temporarily passed as an argument to `sys.getrefcount()`, creating an additional temporary reference during the function call.
+Because the object is temporarily passed as an argument to `sys.getrefcount()`, creating an additional temporary
+reference during the function call.
 
----
+______________________________________________________________________
 
 # Assignment
 
 1. Create a list and assign it to three different variables.
-2. Print its reference count after each assignment.
-3. Remove one variable using `del`.
-4. Print the reference count again.
-5. Explain why the count changes after each step.
+1. Print its reference count after each assignment.
+1. Remove one variable using `del`.
+1. Print the reference count again.
+1. Explain why the count changes after each step.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -640,12 +645,11 @@ In this lesson, you learned:
 - ✅ Circular references cannot be cleaned up using reference counting alone.
 - ✅ Python's Garbage Collector detects and removes unreachable circular references.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[02-Reference-Counting-and-Garbage-Collection-part-2](02-reference-counting-and-garbage-collection-part-2.md)
+**File:** [02-Reference-Counting-and-Garbage-Collection-part-2](02-reference-counting-and-garbage-collection-part-2.md)
 
 Topics:
 

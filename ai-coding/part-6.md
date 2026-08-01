@@ -4,25 +4,26 @@
 
 > **Audience:** Software Engineers building medium to large software projects with AI coding assistants.
 
-This guide explains how experienced engineers structure repositories and workflows to reduce token usage, improve response quality, and keep AI assistants productive over long-running projects.
+This guide explains how experienced engineers structure repositories and workflows to reduce token usage, improve
+response quality, and keep AI assistants productive over long-running projects.
 
----
+______________________________________________________________________
 
 # Table of Contents
 
 1. Context Engineering
-2. How AI Uses Context
-3. Context Layers
-4. Stable vs Dynamic Context
-5. Token Optimization
-6. Repository Design
-7. AI Development Workflows
-8. Large Project Strategy
-9. Documentation Strategy
-10. Context Anti-Patterns
-11. Future of AI Development
+1. How AI Uses Context
+1. Context Layers
+1. Stable vs Dynamic Context
+1. Token Optimization
+1. Repository Design
+1. AI Development Workflows
+1. Large Project Strategy
+1. Documentation Strategy
+1. Context Anti-Patterns
+1. Future of AI Development
 
----
+______________________________________________________________________
 
 # 1. What is Context Engineering?
 
@@ -54,7 +55,7 @@ Implement startup synchronization.
 
 Everything else already exists inside the repository.
 
----
+______________________________________________________________________
 
 # Prompt vs Context
 
@@ -80,7 +81,7 @@ Rich Repository
 
 Context Engineering scales much better.
 
----
+______________________________________________________________________
 
 # 2. How AI Uses Context
 
@@ -124,7 +125,7 @@ Notice
 
 The prompt is actually one of the smallest parts.
 
----
+______________________________________________________________________
 
 # 3. Context Layers
 
@@ -138,7 +139,7 @@ Example
 Implement startup synchronization.
 ```
 
----
+______________________________________________________________________
 
 Layer 2
 
@@ -152,7 +153,7 @@ CLAUDE.md
 copilot-instructions.md
 ```
 
----
+______________________________________________________________________
 
 Layer 3
 
@@ -168,7 +169,7 @@ worker.md
 protocol.md
 ```
 
----
+______________________________________________________________________
 
 Layer 4
 
@@ -182,7 +183,7 @@ Functions
 
 Modules
 
----
+______________________________________________________________________
 
 Layer 5
 
@@ -194,13 +195,13 @@ Current design
 
 Current feature
 
----
+______________________________________________________________________
 
 # 4. Stable vs Dynamic Context
 
 One of the biggest mistakes is mixing these.
 
----
+______________________________________________________________________
 
 ## Stable Context
 
@@ -224,7 +225,7 @@ Deployment strategy
 
 Store these inside the repository.
 
----
+______________________________________________________________________
 
 ## Dynamic Context
 
@@ -244,13 +245,13 @@ Current discussion
 
 These belong in the conversation.
 
----
+______________________________________________________________________
 
 # Rule
 
 Never put temporary information into permanent documentation.
 
----
+______________________________________________________________________
 
 # 5. Token Optimization
 
@@ -258,7 +259,7 @@ Most developers try to reduce tokens by shortening prompts.
 
 Experienced teams reduce tokens by improving repositories.
 
----
+______________________________________________________________________
 
 ## Rule 1
 
@@ -284,7 +285,7 @@ Good
 Implement startup synchronization.
 ```
 
----
+______________________________________________________________________
 
 ## Rule 2
 
@@ -304,7 +305,7 @@ Good
 Review ReplicaWorker.notify().
 ```
 
----
+______________________________________________________________________
 
 ## Rule 3
 
@@ -328,7 +329,7 @@ Architecture.md
 5000 lines
 ```
 
----
+______________________________________________________________________
 
 ## Rule 4
 
@@ -338,7 +339,7 @@ One document
 
 One purpose.
 
----
+______________________________________________________________________
 
 ## Rule 5
 
@@ -356,7 +357,7 @@ Feature Summary
 
 Future AI sessions become dramatically cheaper.
 
----
+______________________________________________________________________
 
 ## Rule 6
 
@@ -376,7 +377,7 @@ Instead
 docs/decisions.md
 ```
 
----
+______________________________________________________________________
 
 ## Rule 7
 
@@ -384,7 +385,7 @@ Use examples.
 
 AI understands examples better than abstract descriptions.
 
----
+______________________________________________________________________
 
 ## Rule 8
 
@@ -410,7 +411,7 @@ Worker
 
 everywhere.
 
----
+______________________________________________________________________
 
 ## Rule 9
 
@@ -418,7 +419,7 @@ Avoid duplicate documentation.
 
 One source of truth.
 
----
+______________________________________________________________________
 
 ## Rule 10
 
@@ -436,7 +437,7 @@ Outputs
 
 Guarantees
 
----
+______________________________________________________________________
 
 # 6. Repository Design
 
@@ -464,7 +465,7 @@ storage.py
 
 Smaller modules improve AI retrieval.
 
----
+______________________________________________________________________
 
 # Feature-Based Organization
 
@@ -492,7 +493,7 @@ monitoring/
 
 AI understands features better than arbitrary folders.
 
----
+______________________________________________________________________
 
 # 7. AI Development Workflow
 
@@ -528,7 +529,7 @@ Commit
 
 Do not jump directly into coding.
 
----
+______________________________________________________________________
 
 # Feature Workflow
 
@@ -556,7 +557,7 @@ Documentation
 Optimization
 ```
 
----
+______________________________________________________________________
 
 # Bug Fix Workflow
 
@@ -584,7 +585,7 @@ Tests
 Documentation
 ```
 
----
+______________________________________________________________________
 
 # Refactoring Workflow
 
@@ -608,7 +609,7 @@ Tests
 Review
 ```
 
----
+______________________________________________________________________
 
 # Architecture Workflow
 
@@ -634,7 +635,7 @@ Implementation
 
 Document the decision.
 
----
+______________________________________________________________________
 
 # 8. Large Project Strategy
 
@@ -682,7 +683,7 @@ Operations
 Monitoring
 ```
 
----
+______________________________________________________________________
 
 # Documentation Hierarchy
 
@@ -716,7 +717,7 @@ Implementation
 
 Never skip levels.
 
----
+______________________________________________________________________
 
 # 9. Context Anti-Patterns
 
@@ -738,7 +739,7 @@ Never skip levels.
 
 ❌ Poor naming
 
----
+______________________________________________________________________
 
 # 10. Future of AI Development
 
@@ -770,59 +771,62 @@ AI
 
 Developer
 
----
+______________________________________________________________________
 
 Emerging trends include
 
-* Context Engineering
-* Retrieval-Augmented Development
-* Agentic coding workflows
-* Repository memory
-* Model Context Protocol (MCP)
-* Multi-agent software engineering
+- Context Engineering
+- Retrieval-Augmented Development
+- Agentic coding workflows
+- Repository memory
+- Model Context Protocol (MCP)
+- Multi-agent software engineering
 
-The repository itself is becoming the primary source of truth, with prompts serving mainly to express the immediate task.
+The repository itself is becoming the primary source of truth, with prompts serving mainly to express the immediate
+task.
 
----
+______________________________________________________________________
 
 # Practical Checklist
 
 ## Repository
 
-* [ ] Modular documentation
-* [ ] Architecture diagrams
-* [ ] ADRs
-* [ ] Examples
-* [ ] Tests
-* [ ] Consistent naming
+- [ ] Modular documentation
+- [ ] Architecture diagrams
+- [ ] ADRs
+- [ ] Examples
+- [ ] Tests
+- [ ] Consistent naming
 
 ## Prompts
 
-* [ ] Focused on one task
-* [ ] Do not repeat architecture
-* [ ] Do not paste large files
-* [ ] Reference documentation when appropriate
+- [ ] Focused on one task
+- [ ] Do not repeat architecture
+- [ ] Do not paste large files
+- [ ] Reference documentation when appropriate
 
 ## Documentation
 
-* [ ] One topic per document
-* [ ] No duplication
-* [ ] Updated after architectural changes
-* [ ] Includes examples where useful
+- [ ] One topic per document
+- [ ] No duplication
+- [ ] Updated after architectural changes
+- [ ] Includes examples where useful
 
----
+______________________________________________________________________
 
 # Key Takeaways
 
 1. Optimize the repository before optimizing prompts.
-2. Keep permanent knowledge in documentation, not in conversations.
-3. Separate stable context from dynamic context.
-4. Prefer many focused documents over a few large ones.
-5. Use Architecture Decision Records to preserve design rationale.
-6. Let AI retrieve context instead of manually providing it.
-7. Build repositories that are easy for both humans and AI to understand.
+1. Keep permanent knowledge in documentation, not in conversations.
+1. Separate stable context from dynamic context.
+1. Prefer many focused documents over a few large ones.
+1. Use Architecture Decision Records to preserve design rationale.
+1. Let AI retrieve context instead of manually providing it.
+1. Build repositories that are easy for both humans and AI to understand.
 
-A well-designed repository can reduce prompt size dramatically, improve consistency across AI sessions, and make long-term software development significantly more efficient.
+A well-designed repository can reduce prompt size dramatically, improve consistency across AI sessions, and make
+long-term software development significantly more efficient.
 
 ## Next
+
 [AI Tool Ecosystem & Choosing the Right Tool](part-7.md)

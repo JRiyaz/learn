@@ -1,6 +1,7 @@
 # File: python/58-production-python-part-03-custom-exceptions.md
 
 # Production Python
+
 # Part 3: Custom Exceptions – Designing Domain-Specific Error Handling
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 8–10 Hours
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -30,7 +31,7 @@ By the end of this lesson, you will understand:
 - Best practices
 - questions
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -59,7 +60,7 @@ KeyError
 
 Instead, they define exceptions that represent the **business domain**.
 
----
+______________________________________________________________________
 
 # Why Custom Exceptions?
 
@@ -91,7 +92,7 @@ No.
 
 The exception should describe **what actually happened**.
 
----
+______________________________________________________________________
 
 # The Problem with Built-in Exceptions
 
@@ -112,7 +113,7 @@ What does that mean?
 
 The exception carries very little meaning.
 
----
+______________________________________________________________________
 
 # Domain-Specific Exceptions
 
@@ -134,7 +135,7 @@ This improves:
 - API responses
 - Testing
 
----
+______________________________________________________________________
 
 # Creating Your First Custom Exception
 
@@ -153,7 +154,7 @@ raise ProductError(
 
 Your exception behaves exactly like built-in exceptions.
 
----
+______________________________________________________________________
 
 # Why Inherit from `Exception`?
 
@@ -174,7 +175,7 @@ because it represents exceptions that control Python's execution, such as:
 - `KeyboardInterrupt`
 - `SystemExit`
 
----
+______________________________________________________________________
 
 # Exception Hierarchies
 
@@ -214,7 +215,7 @@ except ProductOutOfStockError:
 
 depending on the required level of specificity.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -239,7 +240,7 @@ raise ProductOutOfStockError(
 )
 ```
 
----
+______________________________________________________________________
 
 # Catching Parent Exceptions
 
@@ -264,7 +265,7 @@ because both inherit from:
 ProductError
 ```
 
----
+______________________________________________________________________
 
 # Adding Context
 
@@ -306,7 +307,7 @@ Product 101 not found.
 
 Now the exception contains structured information.
 
----
+______________________________________________________________________
 
 # Accessing Exception Data
 
@@ -333,7 +334,7 @@ This is useful for:
 - Retry logic
 - API responses
 
----
+______________________________________________________________________
 
 # Backend Example
 
@@ -375,7 +376,7 @@ The API layer now depends only on your application's exception hierarchy,
 
 not on PostgreSQL internals.
 
----
+______________________________________________________________________
 
 # Exception Translation
 
@@ -409,7 +410,7 @@ HTTP 503
 
 Each layer speaks its own language.
 
----
+______________________________________________________________________
 
 # Avoid Database Exceptions in Business Logic
 
@@ -433,7 +434,7 @@ except UserAlreadyExistsError:
 
 The service layer should not know which database engine you use.
 
----
+______________________________________________________________________
 
 # Mapping Exceptions to HTTP Responses
 
@@ -489,7 +490,7 @@ DatabaseUnavailableError
 
 Your API becomes predictable.
 
----
+______________________________________________________________________
 
 # Base Application Exception
 
@@ -526,7 +527,7 @@ ApplicationError
 └── InventoryError
 ```
 
----
+______________________________________________________________________
 
 # Custom Exception with Metadata
 
@@ -572,7 +573,7 @@ raise PaymentDeclinedError(
 )
 ```
 
----
+______________________________________________________________________
 
 # Logging Custom Exceptions
 
@@ -600,7 +601,7 @@ The logger records:
 
 This is much more useful than generic errors.
 
----
+______________________________________________________________________
 
 # Testing Custom Exceptions
 
@@ -621,7 +622,7 @@ def test_invalid_product():
 
 Custom exceptions make tests more expressive.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -643,13 +644,13 @@ ValidationError
 
 would suffice.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
 Using built-in exceptions for business logic.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -659,13 +660,13 @@ Losing the original cause by not using
 raise ... from ...
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
 Creating unrelated exceptions without a common base class.
 
----
+______________________________________________________________________
 
 ## Mistake 5
 
@@ -675,7 +676,7 @@ Not every error requires its own exception type.
 
 Design a hierarchy that reflects the business domain.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -693,7 +694,7 @@ Design a hierarchy that reflects the business domain.
 
 ❌ Don't create dozens of tiny exception classes without clear value.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -739,7 +740,7 @@ HTTP 409 Conflict
 
 This decouples your application from implementation details and makes future migrations much easier.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -749,9 +750,10 @@ This decouples your application from implementation details and makes future mig
 
 ### Answer
 
-Because they communicate domain-specific failures more clearly than generic built-in exceptions and make applications easier to understand and maintain.
+Because they communicate domain-specific failures more clearly than generic built-in exceptions and make applications
+easier to understand and maintain.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -759,9 +761,10 @@ Because they communicate domain-specific failures more clearly than generic buil
 
 ### Answer
 
-It allows related exceptions to be grouped together so callers can handle either specific failures or broader categories of errors.
+It allows related exceptions to be grouped together so callers can handle either specific failures or broader categories
+of errors.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -769,9 +772,10 @@ It allows related exceptions to be grouped together so callers can handle either
 
 ### Answer
 
-Because business logic should depend on domain concepts rather than implementation details of a specific database or library.
+Because business logic should depend on domain concepts rather than implementation details of a specific database or
+library.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -779,9 +783,10 @@ Because business logic should depend on domain concepts rather than implementati
 
 ### Answer
 
-To preserve the original cause of a failure while presenting a more meaningful exception at a higher architectural layer.
+To preserve the original cause of a failure while presenting a more meaningful exception at a higher architectural
+layer.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -789,9 +794,10 @@ To preserve the original cause of a failure while presenting a more meaningful e
 
 ### Answer
 
-Only information that helps callers, logs, or monitoring systems understand and respond to the failure, such as identifiers or error reasons.
+Only information that helps callers, logs, or monitoring systems understand and respond to the failure, such as
+identifiers or error reasons.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -846,9 +852,10 @@ class ProductOutOfStockError(InventoryError):
         )
 ```
 
-Create a service that raises these exceptions and an API layer that catches them and converts them into simulated HTTP responses.
+Create a service that raises these exceptions and an API layer that catches them and converts them into simulated HTTP
+responses.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -860,7 +867,7 @@ Why are custom exceptions preferred over generic exceptions in business logic?
 
 They express domain-specific failures, improve readability, and make error handling more precise and maintainable.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -870,7 +877,7 @@ What are the benefits of an exception hierarchy?
 
 It enables callers to catch either broad categories of errors or specific exceptions while keeping the design organised.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -878,9 +885,10 @@ Why should infrastructure exceptions be translated?
 
 ### Answer
 
-To prevent implementation details from leaking into higher layers and to keep business logic independent of external libraries.
+To prevent implementation details from leaking into higher layers and to keep business logic independent of external
+libraries.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -888,9 +896,10 @@ Should every possible failure have its own exception class?
 
 ### Answer
 
-No. Exceptions should represent meaningful business concepts. Too many highly specific exceptions make systems harder to maintain.
+No. Exceptions should represent meaningful business concepts. Too many highly specific exceptions make systems harder to
+maintain.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -898,9 +907,10 @@ What is the purpose of a base `ApplicationError`?
 
 ### Answer
 
-It provides a single root for all application-specific exceptions, making global handling, logging, and monitoring much easier.
+It provides a single root for all application-specific exceptions, making global handling, logging, and monitoring much
+easier.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -918,7 +928,7 @@ Include:
 - Order
 - Shipping
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -926,7 +936,7 @@ Modify one of your Flask or FastAPI projects.
 
 Replace generic exceptions with domain-specific exceptions.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -934,7 +944,7 @@ Translate database exceptions into application exceptions in the repository laye
 
 Ensure the service layer never catches database-specific exceptions directly.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -942,7 +952,7 @@ Implement a global exception handler that maps your custom exceptions to simulat
 
 Document why each mapping is appropriate.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -956,9 +966,8 @@ In this lesson, you learned:
 - ✅ Testing and logging custom exceptions.
 - ✅ Best practices for maintainable error handling.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[59-production-python-part-04-typing-module](59-production-python-part-04-typing-module.md)
+**File:** [59-production-python-part-04-typing-module](59-production-python-part-04-typing-module.md)

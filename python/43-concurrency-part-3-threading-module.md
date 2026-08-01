@@ -1,6 +1,7 @@
 # File: python/43-concurrency-part-3-threading-module.md
 
 # Advanced Python Runtime & Concurrency
+
 # Concurrency Part 3: The `threading` Module
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 6–7 Hours
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -24,7 +25,7 @@
 | `current_thread()` | Python 2.3 |
 | `main_thread()` | Python 3.4 |
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -41,7 +42,7 @@ By the end of this lesson, you will understand:
 - Thread-safe design principles
 - Production use cases
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -55,7 +56,7 @@ We discovered:
 
 Now it's time to start writing multithreaded programs.
 
----
+______________________________________________________________________
 
 # What is the `threading` Module?
 
@@ -67,7 +68,7 @@ Instead of dealing directly with operating system APIs, Python gives us a clean 
 import threading
 ```
 
----
+______________________________________________________________________
 
 # Your First Thread
 
@@ -92,7 +93,7 @@ Worker thread running
 
 This is the smallest useful multithreaded Python program.
 
----
+______________________________________________________________________
 
 # Understanding `Thread`
 
@@ -110,7 +111,7 @@ Here:
 
 Think of this as creating a process description.
 
----
+______________________________________________________________________
 
 # `start()` vs Calling the Function
 
@@ -134,7 +135,7 @@ This tells the operating system:
 
 This distinction is extremely important.
 
----
+______________________________________________________________________
 
 # Common Beginner Mistake
 
@@ -170,7 +171,7 @@ Notice:
 
 No parentheses.
 
----
+______________________________________________________________________
 
 # Thread Lifecycle
 
@@ -198,7 +199,7 @@ Finished
 
 Once a thread finishes, it cannot be restarted.
 
----
+______________________________________________________________________
 
 # Demonstration
 
@@ -238,7 +239,7 @@ Worker Executes
 Worker Ends
 ```
 
----
+______________________________________________________________________
 
 # The Main Thread
 
@@ -254,7 +255,7 @@ Main Thread
 
 Even programs that never use `threading` are running inside the main thread.
 
----
+______________________________________________________________________
 
 # Identifying the Current Thread
 
@@ -270,7 +271,7 @@ Example output
 <_MainThread(MainThread, started ...)>
 ```
 
----
+______________________________________________________________________
 
 # Naming Threads
 
@@ -313,7 +314,7 @@ Useful for:
 - Debugging
 - Monitoring
 
----
+______________________________________________________________________
 
 # Passing Arguments
 
@@ -345,7 +346,7 @@ Notice
 
 A single-element tuple requires a trailing comma.
 
----
+______________________________________________________________________
 
 # Multiple Arguments
 
@@ -360,7 +361,7 @@ thread = threading.Thread(
 )
 ```
 
----
+______________________________________________________________________
 
 # Keyword Arguments
 
@@ -378,7 +379,7 @@ thread = threading.Thread(
 )
 ```
 
----
+______________________________________________________________________
 
 # Waiting for a Thread
 
@@ -394,7 +395,7 @@ No.
 
 It continues immediately.
 
----
+______________________________________________________________________
 
 # `join()`
 
@@ -442,7 +443,7 @@ Start Thread
 Continue Immediately
 ```
 
----
+______________________________________________________________________
 
 # Multiple Threads
 
@@ -478,7 +479,7 @@ for thread in threads:
 print("All workers completed")
 ```
 
----
+______________________________________________________________________
 
 # Parallel Waiting
 
@@ -508,7 +509,7 @@ approximately
 
 Because sleeping releases the GIL.
 
----
+______________________________________________________________________
 
 # Daemon Threads
 
@@ -522,7 +523,7 @@ Example:
 
 These are called daemon threads.
 
----
+______________________________________________________________________
 
 # Creating a Daemon Thread
 
@@ -537,7 +538,7 @@ If the main program exits,
 
 daemon threads terminate automatically.
 
----
+______________________________________________________________________
 
 # Non-Daemon Threads
 
@@ -567,7 +568,7 @@ Python Waits
 Program Exits
 ```
 
----
+______________________________________________________________________
 
 # Daemon vs Non-Daemon
 
@@ -577,7 +578,7 @@ Program Exits
 | Suitable for background work | ✅ | Sometimes |
 | Automatically terminated | ✅ | ❌ |
 
----
+______________________________________________________________________
 
 # Checking if a Thread is Alive
 
@@ -607,7 +608,7 @@ False
 
 Useful for monitoring.
 
----
+______________________________________________________________________
 
 # Thread Identity
 
@@ -631,7 +632,7 @@ Useful in:
 - Debugging
 - Profiling
 
----
+______________________________________________________________________
 
 # Enumerating Threads
 
@@ -647,7 +648,7 @@ print(
 
 Useful when diagnosing applications.
 
----
+______________________________________________________________________
 
 # Thread Communication (Preview)
 
@@ -676,7 +677,7 @@ We'll later study:
 
 These are the preferred mechanisms.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -717,7 +718,7 @@ The user receives a faster response.
 
 > **Note:** In large production systems, background jobs are usually handled by task queues such as Celery or message brokers rather than raw threads, but understanding threads is still essential.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -737,13 +738,13 @@ Correct
 target=worker
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
 Forgetting `join()` when the result of the thread is required before continuing.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -751,7 +752,7 @@ Trying to restart a finished thread.
 
 A `Thread` object can only be started once.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -759,7 +760,7 @@ Using daemon threads for important work.
 
 Daemon threads may terminate abruptly when the interpreter exits.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -777,7 +778,7 @@ Daemon threads may terminate abruptly when the interpreter exits.
 
 ❌ Don't create hundreds of threads without measuring performance.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -795,7 +796,7 @@ Even if you don't explicitly create threads, your application is likely using th
 
 Understanding the thread lifecycle helps when debugging deadlocks, hanging applications, or shutdown issues.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -805,9 +806,10 @@ Understanding the thread lifecycle helps when debugging deadlocks, hanging appli
 
 ### Answer
 
-Calling the function executes it immediately in the current thread. Calling `start()` creates a new operating system thread and executes the target function inside it.
+Calling the function executes it immediately in the current thread. Calling `start()` creates a new operating system
+thread and executes the target function inside it.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -817,7 +819,7 @@ Calling the function executes it immediately in the current thread. Calling `sta
 
 It blocks the calling thread until the target thread completes execution.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -825,9 +827,10 @@ It blocks the calling thread until the target thread completes execution.
 
 ### Answer
 
-A daemon thread runs in the background and does not prevent the Python process from exiting. It is automatically terminated when all non-daemon threads finish.
+A daemon thread runs in the background and does not prevent the Python process from exiting. It is automatically
+terminated when all non-daemon threads finish.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -837,7 +840,7 @@ A daemon thread runs in the background and does not prevent the Python process f
 
 No. A `Thread` instance can only be started once. Attempting to call `start()` again raises a `RuntimeError`.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -847,7 +850,7 @@ No. A `Thread` instance can only be started once. Attempting to call `start()` a
 
 Meaningful names improve logging, debugging, monitoring, and troubleshooting in production systems.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -914,7 +917,7 @@ Expected Output (order may vary)
 All downloads completed.
 ```
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -926,7 +929,7 @@ How do you create a thread in Python?
 
 Create a `threading.Thread` object with a target function and call `start()`.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -936,7 +939,7 @@ What is the purpose of `join()`?
 
 To wait until another thread finishes execution.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -944,9 +947,10 @@ What is the difference between daemon and non-daemon threads?
 
 ### Answer
 
-Daemon threads terminate automatically when the interpreter exits, whereas non-daemon threads keep the process alive until they complete.
+Daemon threads terminate automatically when the interpreter exits, whereas non-daemon threads keep the process alive
+until they complete.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -956,7 +960,7 @@ Can two threads share memory?
 
 Yes. Threads within the same process share the heap and can access the same Python objects.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -964,9 +968,10 @@ Why is thread execution order unpredictable?
 
 ### Answer
 
-Because thread scheduling is controlled by the operating system and the Python interpreter, not by the order in which `start()` is called.
+Because thread scheduling is controlled by the operating system and the Python interpreter, not by the order in which
+`start()` is called.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -978,7 +983,7 @@ Create five threads that simulate downloading five different files.
 - Wait for all threads using `join()`.
 - Print the total execution time.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -988,7 +993,7 @@ Observe what happens when the main program exits before both complete.
 
 Explain the difference.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -1000,7 +1005,7 @@ Write a program that periodically prints:
 
 Use `threading.current_thread()` and `is_alive()`.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -1010,7 +1015,7 @@ Identify one I/O-bound task that could safely run in a background thread.
 
 Explain why it is appropriate and what potential limitations exist.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1026,11 +1031,12 @@ In this lesson, you learned:
 - ✅ Production threading practices.
 - ✅ Common interview questions.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[44-concurrency-part-4-thread-synchronization-locks](44-concurrency-part-4-thread-synchronization-locks.md)
+**File:** [44-concurrency-part-4-thread-synchronization-locks](44-concurrency-part-4-thread-synchronization-locks.md)
 
-In the next lesson, we'll study one of the most critical topics in concurrent programming: **thread synchronization**. You'll learn about race conditions, critical sections, `Lock`, `RLock`, deadlocks, lock ordering, and how to write thread-safe production code.
+In the next lesson, we'll study one of the most critical topics in concurrent programming: **thread synchronization**.
+You'll learn about race conditions, critical sections, `Lock`, `RLock`, deadlocks, lock ordering, and how to write
+thread-safe production code.

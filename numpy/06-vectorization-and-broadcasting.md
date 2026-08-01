@@ -2,7 +2,7 @@
 
 **Python Version Introduced:** Python 3.x
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -17,7 +17,7 @@ By the end of this lesson, you will be able to:
 - Avoid common broadcasting mistakes.
 - Apply vectorization techniques used in production systems.
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -35,7 +35,7 @@ Those operations reorganize data.
 
 This lesson focuses on **processing** that data efficiently.
 
----
+______________________________________________________________________
 
 # Why Does Vectorization Matter?
 
@@ -68,7 +68,7 @@ Much faster.
 
 Much cleaner.
 
----
+______________________________________________________________________
 
 # Why Are Python Loops Slow?
 
@@ -93,7 +93,7 @@ Every iteration involves:
 
 The CPU repeatedly switches between Python objects.
 
----
+______________________________________________________________________
 
 NumPy performs operations differently.
 
@@ -107,7 +107,7 @@ Internally, NumPy performs the multiplication in optimized compiled code over co
 
 The Python interpreter is no longer involved for every element.
 
----
+______________________________________________________________________
 
 # What is Vectorization?
 
@@ -145,7 +145,7 @@ One Operation
 Entire Result
 ```
 
----
+______________________________________________________________________
 
 # Example
 
@@ -174,7 +174,7 @@ Output
 [15 25 35]
 ```
 
----
+______________________________________________________________________
 
 # Benefits of Vectorization
 
@@ -186,7 +186,7 @@ Output
 
 This is why experienced NumPy users avoid explicit Python loops whenever possible.
 
----
+______________________________________________________________________
 
 # Element-wise Operations
 
@@ -248,7 +248,7 @@ Output
 
 Operations occur element by element.
 
----
+______________________________________________________________________
 
 # Vectorized Comparisons
 
@@ -278,7 +278,7 @@ Output
 [30 40]
 ```
 
----
+______________________________________________________________________
 
 # Universal Functions (ufuncs)
 
@@ -295,7 +295,7 @@ Examples include:
 - `np.cos()`
 - `np.abs()`
 
----
+______________________________________________________________________
 
 # Example
 
@@ -311,7 +311,7 @@ Output
 [1. 2. 3. 4.]
 ```
 
----
+______________________________________________________________________
 
 Another example.
 
@@ -327,7 +327,7 @@ Output
 [0. 1. 0.]
 ```
 
----
+______________________________________________________________________
 
 # What Happens Without Broadcasting?
 
@@ -353,7 +353,7 @@ ValueError
 
 The shapes are incompatible.
 
----
+______________________________________________________________________
 
 # What is Broadcasting?
 
@@ -391,7 +391,7 @@ is conceptually treated as
 
 No actual copy is made.
 
----
+______________________________________________________________________
 
 # Broadcasting Example
 
@@ -415,7 +415,7 @@ Output
 
 The vector is reused for every row.
 
----
+______________________________________________________________________
 
 Memory concept.
 
@@ -444,7 +444,7 @@ The repeated rows are conceptual.
 
 NumPy does not allocate another array.
 
----
+______________________________________________________________________
 
 # Broadcasting Rules
 
@@ -458,7 +458,7 @@ OR
 
 - One of them is 1.
 
----
+______________________________________________________________________
 
 Example.
 
@@ -490,7 +490,7 @@ can be broadcast,
 
 the operation succeeds.
 
----
+______________________________________________________________________
 
 Another example.
 
@@ -514,7 +514,7 @@ can be expanded.
 
 Broadcasting succeeds.
 
----
+______________________________________________________________________
 
 # Broadcasting Failure
 
@@ -552,7 +552,7 @@ Result
 ValueError
 ```
 
----
+______________________________________________________________________
 
 # Using `newaxis`
 
@@ -590,7 +590,7 @@ Equivalent to
 np.expand_dims(arr, axis=1)
 ```
 
----
+______________________________________________________________________
 
 # Broadcasting with `newaxis`
 
@@ -638,21 +638,19 @@ become
 (3,3)
 ```
 
----
+______________________________________________________________________
 
 # Performance Notes
 
-Operation | Complexity | Memory
-----------|------------|--------
-Vectorized arithmetic | O(n) | O(n) for the result
-Broadcasting | O(n) | No duplicated broadcasted data
-Python loop | O(n) | O(n)
+Operation | Complexity | Memory ----------|------------|-------- Vectorized arithmetic | O(n) | O(n) for the result
+Broadcasting | O(n) | No duplicated broadcasted data Python loop | O(n) | O(n)
 
-Although both approaches are O(n), vectorized NumPy operations have a much smaller constant factor because they execute in optimized compiled code.
+Although both approaches are O(n), vectorized NumPy operations have a much smaller constant factor because they execute
+in optimized compiled code.
 
 Broadcasting also avoids allocating repeated copies of smaller arrays.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -673,7 +671,7 @@ Good
 arr += 1
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -689,7 +687,7 @@ Misunderstanding broadcasting.
 
 This cannot be broadcast.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -699,7 +697,7 @@ It usually doesn't.
 
 Broadcasting is largely a metadata operation.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -713,7 +711,7 @@ print(arr.shape)
 
 before debugging broadcasting errors.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -723,7 +721,7 @@ before debugging broadcasting errors.
 - Check shapes before performing operations.
 - Write code that expresses operations on entire arrays rather than individual elements.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -737,9 +735,10 @@ Examples include:
 - Computing neural network activations.
 - Processing millions of sensor readings simultaneously.
 
-Efficient use of broadcasting eliminates many explicit loops, resulting in code that is shorter, easier to read, and significantly faster.
+Efficient use of broadcasting eliminates many explicit loops, resulting in code that is shorter, easier to read, and
+significantly faster.
 
----
+______________________________________________________________________
 
 ```markdown id="k2v9mt"
 # Questions
@@ -783,7 +782,7 @@ When they are equal or when one of them is 1.
 No. NumPy conceptually expands the array without physically duplicating its data.
 ```
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -800,14 +799,14 @@ c = np.array([100, 200])
 Perform these tasks:
 
 1. Add `b` to every row of `a`.
-2. Multiply every element of `a` by 5.
-3. Compute the square root of every element in `a`.
-4. Convert `c` into a column vector using both `np.newaxis` and `expand_dims()`.
-5. Add the column vector to `a` using broadcasting.
-6. Try to add an incompatible array and explain why NumPy raises an error.
-7. Print the shapes of all arrays before each operation to understand broadcasting.
+1. Multiply every element of `a` by 5.
+1. Compute the square root of every element in `a`.
+1. Convert `c` into a column vector using both `np.newaxis` and `expand_dims()`.
+1. Add the column vector to `a` using broadcasting.
+1. Try to add an incompatible array and explain why NumPy raises an error.
+1. Print the shapes of all arrays before each operation to understand broadcasting.
 
----
+______________________________________________________________________
 
 ```markdown id="w7d3pb"
 # Knowledge Check
@@ -881,33 +880,36 @@ What should you inspect first when debugging a broadcasting error?
 The shapes of the arrays using their `shape` attribute.
 ```
 
----
+______________________________________________________________________
 
 # Assignment
 
 1. Create a `(4, 5)` matrix using `np.arange()`.
-2. Perform the following operations using **vectorization only** (no Python loops):
+1. Perform the following operations using **vectorization only** (no Python loops):
    - Add 10 to every element.
    - Multiply every element by 3.
    - Compute the square root of every element.
    - Compute the sine of every element.
-3. Create row and column vectors and use broadcasting to:
+1. Create row and column vectors and use broadcasting to:
    - Add values to every row.
    - Add values to every column.
-4. Intentionally create incompatible shapes and identify which broadcasting rule is violated.
-5. For each operation, record:
+1. Intentionally create incompatible shapes and identify which broadcasting rule is violated.
+1. For each operation, record:
    - Input shapes
    - Output shape
    - Whether broadcasting occurred
    - Whether additional array duplication was required
 
----
+______________________________________________________________________
 
 # Summary
 
-In this lesson, you learned why vectorization is central to NumPy's performance and how broadcasting allows arrays with compatible shapes to participate in efficient element-wise operations. You explored Universal Functions (ufuncs), broadcasting rules, the use of `np.newaxis`, and the performance advantages of avoiding Python loops. These concepts are essential for writing fast, readable, and scalable numerical code.
+In this lesson, you learned why vectorization is central to NumPy's performance and how broadcasting allows arrays with
+compatible shapes to participate in efficient element-wise operations. You explored Universal Functions (ufuncs),
+broadcasting rules, the use of `np.newaxis`, and the performance advantages of avoiding Python loops. These concepts are
+essential for writing fast, readable, and scalable numerical code.
 
----
+______________________________________________________________________
 
 # Next Lesson
 

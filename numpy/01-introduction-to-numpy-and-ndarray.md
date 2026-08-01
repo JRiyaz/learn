@@ -6,7 +6,7 @@
 
 **Python Version Introduced:** Python 3.x
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -22,7 +22,7 @@ By the end of this lesson, you will be able to:
 - Learn when NumPy is the right choice.
 - Gain a high-level understanding of Views vs Copies (covered in depth later).
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -41,7 +41,7 @@ Before learning NumPy, you should already be comfortable with:
 
 NumPy extends Python—it does **not** replace it.
 
----
+______________________________________________________________________
 
 # Why Was NumPy Created?
 
@@ -71,7 +71,7 @@ Its goals are:
 
 Today, almost every scientific and machine learning library in Python is built on top of NumPy.
 
----
+______________________________________________________________________
 
 # Python List Internals
 
@@ -129,7 +129,7 @@ This design makes Python incredibly flexible.
 
 It also introduces overhead.
 
----
+______________________________________________________________________
 
 # Why Is This Slow?
 
@@ -149,7 +149,7 @@ This leads to:
 - Poor cache locality
 - Slower computations
 
----
+______________________________________________________________________
 
 # NumPy's Solution
 
@@ -181,7 +181,7 @@ No pointers.
 
 Just raw numerical values.
 
----
+______________________________________________________________________
 
 # Contiguous Memory
 
@@ -207,7 +207,7 @@ Because the CPU reads neighbouring memory very efficiently, operations become dr
 
 This is one of the main reasons NumPy outperforms Python lists for numerical work.
 
----
+______________________________________________________________________
 
 # Homogeneous Data
 
@@ -250,7 +250,7 @@ Homogeneous storage allows NumPy to:
 - Execute compiled operations efficiently
 - Predict the location of every element instantly
 
----
+______________________________________________________________________
 
 # Creating Your First ndarray
 
@@ -280,7 +280,7 @@ Output
 <class 'numpy.ndarray'>
 ```
 
----
+______________________________________________________________________
 
 # What is an ndarray?
 
@@ -302,7 +302,7 @@ Whether you're working with:
 
 they are all represented as `ndarray` objects.
 
----
+______________________________________________________________________
 
 # Understanding Dimensions
 
@@ -318,7 +318,7 @@ Output
 42
 ```
 
----
+______________________________________________________________________
 
 ## 1-D
 
@@ -326,7 +326,7 @@ Output
 np.array([1, 2, 3])
 ```
 
----
+______________________________________________________________________
 
 ## 2-D
 
@@ -337,7 +337,7 @@ np.array([
 ])
 ```
 
----
+______________________________________________________________________
 
 ## 3-D
 
@@ -356,7 +356,7 @@ np.array([
 
 Images, videos and deep learning tensors often use higher-dimensional arrays.
 
----
+______________________________________________________________________
 
 # Important ndarray Attributes
 
@@ -369,7 +369,7 @@ arr = np.array([
 ])
 ```
 
----
+______________________________________________________________________
 
 ## shape
 
@@ -388,7 +388,7 @@ Meaning:
 - 2 rows
 - 3 columns
 
----
+______________________________________________________________________
 
 ## ndim
 
@@ -404,7 +404,7 @@ Output
 
 Number of dimensions.
 
----
+______________________________________________________________________
 
 ## size
 
@@ -420,7 +420,7 @@ Output
 
 Total number of elements.
 
----
+______________________________________________________________________
 
 ## dtype
 
@@ -436,7 +436,7 @@ int64
 
 Represents the data type stored in the array.
 
----
+______________________________________________________________________
 
 ## itemsize
 
@@ -454,9 +454,10 @@ Each integer occupies **8 bytes** (`int64`).
 
 If the array used `int32`, the value would typically be **4 bytes**.
 
-This is useful when working with large datasets, where choosing a smaller data type can significantly reduce memory usage.
+This is useful when working with large datasets, where choosing a smaller data type can significantly reduce memory
+usage.
 
----
+______________________________________________________________________
 
 ## nbytes
 
@@ -478,7 +479,7 @@ Calculation:
 
 Unlike `sys.getsizeof()`, `nbytes` reports only the memory used by the array's data buffer.
 
----
+______________________________________________________________________
 
 # Why `dtype` Matters
 
@@ -502,7 +503,7 @@ For an array with 100 million integers, choosing the appropriate `dtype` can sav
 
 We'll explore data types in more detail in a later lesson.
 
----
+______________________________________________________________________
 
 # Views vs Copies (Introduction)
 
@@ -550,7 +551,7 @@ This distinction is extremely important for both correctness and performance.
 
 We'll dedicate an entire lesson to it later.
 
----
+______________________________________________________________________
 
 # Where is NumPy Used?
 
@@ -567,7 +568,7 @@ NumPy is the foundation for many Python libraries:
 
 If you understand NumPy well, learning these libraries becomes much easier.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -577,7 +578,7 @@ If you understand NumPy well, learning these libraries becomes much easier.
 - Prefer vectorized operations over Python loops (covered later).
 - Understand memory usage before working with large datasets.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -593,9 +594,10 @@ For example:
 
 A poor choice of `dtype` or unnecessary memory copies can increase memory usage dramatically and slow down applications.
 
-Engineers working with data-intensive systems routinely consider memory layout, data types, and copy behaviour to build efficient solutions.
+Engineers working with data-intensive systems routinely consider memory layout, data types, and copy behaviour to build
+efficient solutions.
 
----
+______________________________________________________________________
 
 ```markdown id="t9c4zs"
 # Questions
@@ -639,25 +641,25 @@ The number of bytes used to store a single element in the array.
 A View shares the same underlying memory as the original array, whereas a Copy allocates new memory and is completely independent.
 ```
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
 Write a program that:
 
 1. Creates a 2×3 NumPy array.
-2. Prints:
+1. Prints:
    - `shape`
    - `ndim`
    - `size`
    - `dtype`
    - `itemsize`
    - `nbytes`
-3. Create another array with `dtype=np.int32` and compare `itemsize` and `nbytes`.
-4. Repeat using `dtype=np.float64`.
-5. Explain how changing the data type affects memory usage.
+1. Create another array with `dtype=np.int32` and compare `itemsize` and `nbytes`.
+1. Repeat using `dtype=np.float64`.
+1. Explain how changing the data type affects memory usage.
 
----
+______________________________________________________________________
 
 ```markdown id="w7n6pf"
 # Knowledge Check
@@ -721,30 +723,33 @@ What is the key difference between a View and a Copy?
 A View shares memory with the original array, while a Copy has its own separate memory.
 ```
 
----
+______________________________________________________________________
 
 # Assignment
 
 1. Compare a Python list and a NumPy array containing one million integers.
-2. Measure:
+1. Measure:
    - `itemsize`
    - `nbytes`
    - `dtype`
-3. Create arrays using:
+1. Create arrays using:
    - `int32`
    - `int64`
    - `float32`
    - `float64`
-4. Record how memory usage changes for each data type.
-5. Research two real-world applications where reducing memory usage with an appropriate `dtype` would have a significant impact.
+1. Record how memory usage changes for each data type.
+1. Research two real-world applications where reducing memory usage with an appropriate `dtype` would have a significant impact.
 
----
+______________________________________________________________________
 
 # Summary
 
-In this lesson, you learned why NumPy was created and how its `ndarray` differs fundamentally from Python lists. You explored contiguous memory, homogeneous data, core array attributes such as `shape`, `size`, `ndim`, `dtype`, `itemsize`, and `nbytes`, and gained an introduction to views and copies. These concepts form the foundation for understanding how NumPy achieves its performance and will support everything you learn in the rest of the course.
+In this lesson, you learned why NumPy was created and how its `ndarray` differs fundamentally from Python lists. You
+explored contiguous memory, homogeneous data, core array attributes such as `shape`, `size`, `ndim`, `dtype`,
+`itemsize`, and `nbytes`, and gained an introduction to views and copies. These concepts form the foundation for
+understanding how NumPy achieves its performance and will support everything you learn in the rest of the course.
 
----
+______________________________________________________________________
 
 # Next Lesson
 

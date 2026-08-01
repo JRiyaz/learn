@@ -2,11 +2,12 @@
 
 > A comprehensive roadmap for transitioning from a Python Backend Engineer to an AI/ML Engineer.
 
----
+______________________________________________________________________
 
 # Phase 1: Mathematics
 
 ## Linear Algebra
+
 - Scalars
 - Vectors
 - Matrices
@@ -21,6 +22,7 @@
 - Matrix Decomposition (High Level)
 
 ## Calculus
+
 - Functions
 - Derivatives
 - Partial Derivatives
@@ -32,12 +34,14 @@
 ## Probability & Statistics
 
 ### Probability
+
 - Random Variables
 - Probability Distributions
 - Conditional Probability
 - Bayes' Theorem
 
 ### Statistics
+
 - Mean
 - Median
 - Mode
@@ -49,17 +53,19 @@
 - Hypothesis Testing
 - Confidence Interval
 
----
+______________________________________________________________________
 
 # Phase 2: Python for Data Science
 
 ## NumPy
+
 - Arrays
 - Broadcasting
 - Vectorization
 - Matrix Operations
 
 ## Pandas
+
 - DataFrames
 - Series
 - Filtering
@@ -71,15 +77,17 @@
 - Data Cleaning
 
 ## Data Visualization
+
 - Matplotlib
 - Seaborn
 - Plotly (Optional)
 
 ## Notebook
+
 - Jupyter Notebook
 - Google Colab
 
----
+______________________________________________________________________
 
 # Phase 3: Data Engineering Basics
 
@@ -93,19 +101,21 @@
 - Feature Engineering
 - Exploratory Data Analysis (EDA)
 
----
+______________________________________________________________________
 
 # Phase 4: Machine Learning
 
 ## Supervised Learning
 
 ### Regression
+
 - Linear Regression
 - Polynomial Regression
 - Ridge Regression
 - Lasso Regression
 
 ### Classification
+
 - Logistic Regression
 - Decision Trees
 - Random Forest
@@ -117,7 +127,7 @@
 - LightGBM
 - CatBoost
 
----
+______________________________________________________________________
 
 ## Unsupervised Learning
 
@@ -128,17 +138,19 @@
 - t-SNE
 - UMAP
 
----
+______________________________________________________________________
 
 ## Model Evaluation
 
 ### Regression Metrics
+
 - MAE
 - MSE
 - RMSE
 - R² Score
 
 ### Classification Metrics
+
 - Accuracy
 - Precision
 - Recall
@@ -146,7 +158,7 @@
 - ROC-AUC
 - Confusion Matrix
 
----
+______________________________________________________________________
 
 ## Model Validation
 
@@ -158,7 +170,7 @@
 - Grid Search
 - Random Search
 
----
+______________________________________________________________________
 
 # Phase 5: Machine Learning Libraries
 
@@ -167,7 +179,7 @@
 - LightGBM
 - CatBoost
 
----
+______________________________________________________________________
 
 # Phase 6: Deep Learning
 
@@ -182,7 +194,7 @@
 - Batch Normalization
 - Dropout
 
----
+______________________________________________________________________
 
 ## Frameworks
 
@@ -190,7 +202,7 @@
 - TensorFlow
 - Keras
 
----
+______________________________________________________________________
 
 ## CNN
 
@@ -199,7 +211,7 @@
 - Image Classification
 - Transfer Learning
 
----
+______________________________________________________________________
 
 ## Sequence Models
 
@@ -207,7 +219,7 @@
 - LSTM
 - GRU
 
----
+______________________________________________________________________
 
 # Phase 7: NLP
 
@@ -221,7 +233,7 @@
 - FastText
 - GloVe
 
----
+______________________________________________________________________
 
 # Phase 8: Transformers & LLMs
 
@@ -242,7 +254,7 @@
 - Gemma
 - Phi
 
----
+______________________________________________________________________
 
 ## Concepts
 
@@ -254,7 +266,7 @@
 - Embeddings
 - Tokenization
 
----
+______________________________________________________________________
 
 # Phase 9: Prompt Engineering
 
@@ -269,7 +281,7 @@
 - JSON Output
 - Guardrails
 
----
+______________________________________________________________________
 
 # Phase 10: Retrieval Augmented Generation (RAG)
 
@@ -302,7 +314,7 @@
 - Reranking
 - Metadata Filtering
 
----
+______________________________________________________________________
 
 # Phase 11: AI Frameworks
 
@@ -313,7 +325,7 @@
 - CrewAI (Optional)
 - AutoGen (Optional)
 
----
+______________________________________________________________________
 
 # Phase 12: AI APIs
 
@@ -331,7 +343,7 @@
 - Batch Processing
 - Cost Optimization
 
----
+______________________________________________________________________
 
 # Phase 13: Fine-Tuning
 
@@ -344,7 +356,7 @@
 - RLHF (Concept)
 - DPO (Overview)
 
----
+______________________________________________________________________
 
 # Phase 14: MLOps
 
@@ -358,7 +370,7 @@
 - Drift Detection
 - CI/CD for ML
 
----
+______________________________________________________________________
 
 # Phase 15: AI Infrastructure
 
@@ -373,19 +385,22 @@
 - Ollama
 - Hugging Face Transformers
 
----
+______________________________________________________________________
 
 # Phase 16: Databases
 
 ## SQL
+
 - PostgreSQL
 - MySQL
 
 ## NoSQL
+
 - MongoDB
 - Redis
 
 ## Vector Databases
+
 - Pinecone
 - FAISS
 - ChromaDB
@@ -393,7 +408,7 @@
 - Weaviate
 - Milvus
 
----
+______________________________________________________________________
 
 # Phase 17: Data Engineering
 
@@ -405,7 +420,7 @@
 - Data Lake (Concept)
 - Data Warehouse (Concept)
 
----
+______________________________________________________________________
 
 # Phase 18: Backend Engineering
 
@@ -421,7 +436,7 @@
 - Security
 - Microservices
 
----
+______________________________________________________________________
 
 # Phase 19: Deployment
 
@@ -434,7 +449,7 @@
 - Azure AI
 - GCP Vertex AI
 
----
+______________________________________________________________________
 
 # Phase 20: AI System Design
 
@@ -450,7 +465,7 @@
 - AI Resume Analyzer
 - AI Meeting Assistant
 
----
+______________________________________________________________________
 
 # Phase 21: AI Security
 
@@ -463,7 +478,7 @@
 - Content Moderation
 - Guardrails
 
----
+______________________________________________________________________
 
 # Phase 22: AI Evaluation
 
@@ -477,22 +492,25 @@
 - Hallucination Detection
 - RAG Evaluation
 
----
+______________________________________________________________________
 
 # Phase 23: AI Projects
 
 ## Beginner
+
 - House Price Prediction
 - Iris Classification
 - Titanic Survival Prediction
 
 ## Intermediate
+
 - Spam Detection
 - Sentiment Analysis
 - Recommendation System
 - Image Classifier
 
 ## Advanced
+
 - ChatGPT Clone
 - RAG Chatbot
 - AI PDF Assistant
@@ -502,17 +520,19 @@
 - AI Search Engine
 - Multi-Agent AI System
 
----
+______________________________________________________________________
 
 # Phase 24: Interview Topics
 
 ## Mathematics
+
 - Linear Algebra
 - Probability
 - Statistics
 - Calculus
 
 ## Machine Learning
+
 - Bias vs Variance
 - Overfitting
 - Underfitting
@@ -521,6 +541,7 @@
 - Cross Validation
 
 ## Deep Learning
+
 - CNN
 - RNN
 - LSTM
@@ -529,6 +550,7 @@
 - Backpropagation
 
 ## LLM
+
 - Embeddings
 - Tokenization
 - Attention
@@ -537,38 +559,39 @@
 - Prompt Engineering
 
 ## System Design
+
 - AI Chatbot
 - RAG Architecture
 - Vector Database Design
 - Model Serving
 - AI Scalability
 
----
+______________________________________________________________________
 
 # Learning Order (Recommended)
 
 1. Mathematics
-2. Python for Data Science
-3. NumPy & Pandas
-4. Data Visualization
-5. Machine Learning
-6. Scikit-learn
-7. Deep Learning (PyTorch)
-8. NLP
-9. Transformers
-10. LLMs
-11. Prompt Engineering
-12. RAG
-13. Vector Databases
-14. LangChain / LlamaIndex
-15. Fine-Tuning
-16. MLOps
-17. AI Deployment
-18. AI System Design
-19. AI Security
-20. Advanced AI Projects
+1. Python for Data Science
+1. NumPy & Pandas
+1. Data Visualization
+1. Machine Learning
+1. Scikit-learn
+1. Deep Learning (PyTorch)
+1. NLP
+1. Transformers
+1. LLMs
+1. Prompt Engineering
+1. RAG
+1. Vector Databases
+1. LangChain / LlamaIndex
+1. Fine-Tuning
+1. MLOps
+1. AI Deployment
+1. AI System Design
+1. AI Security
+1. Advanced AI Projects
 
----
+______________________________________________________________________
 
 # Recommended Projects
 
@@ -588,7 +611,7 @@
 - Multi-Agent AI System
 - Enterprise RAG Application
 
----
+______________________________________________________________________
 
 # Existing Skills You Already Have (Backend Advantage)
 

@@ -1,6 +1,7 @@
 # File: python/05-decorators-part-2.md
 
 # Python Advanced - Lesson 05 (Part 2)
+
 # Advanced Decorators
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 75 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -27,7 +28,7 @@ By the end of this lesson, you will understand:
 - How to build caching decorators
 - How decorators are used in FastAPI and Flask
 
----
+______________________________________________________________________
 
 # Theory
 
@@ -41,7 +42,7 @@ def greet():
 
 Now let's make decorators much more powerful.
 
----
+______________________________________________________________________
 
 # Decorators with Arguments
 
@@ -65,7 +66,7 @@ def create_user():
 
 To achieve this, we need **one extra level of nesting**.
 
----
+______________________________________________________________________
 
 # Example 1
 
@@ -120,7 +121,7 @@ Creating user...
 [USER SERVICE] Finished
 ```
 
----
+______________________________________________________________________
 
 # Understanding the Flow
 
@@ -160,7 +161,7 @@ There are now **three functions** involved:
 - `decorator`
 - `wrapper`
 
----
+______________________________________________________________________
 
 # Stacking Decorators
 
@@ -203,7 +204,7 @@ Actual Function
 
 The decorator closest to the function executes first.
 
----
+______________________________________________________________________
 
 # Example 2
 
@@ -250,7 +251,7 @@ Second
 Hello
 ```
 
----
+______________________________________________________________________
 
 # The Problem with Simple Decorators
 
@@ -288,7 +289,7 @@ Oops!
 
 We lost the original function's metadata.
 
----
+______________________________________________________________________
 
 # functools.wraps
 
@@ -298,7 +299,7 @@ Python provides a solution.
 from functools import wraps
 ```
 
----
+______________________________________________________________________
 
 # Example 3
 
@@ -337,7 +338,7 @@ Greets the user.
 
 Always use `@wraps` in production decorators.
 
----
+______________________________________________________________________
 
 # Timing Decorator
 
@@ -383,7 +384,7 @@ def calculate():
 calculate()
 ```
 
----
+______________________________________________________________________
 
 # Authentication Decorator
 
@@ -437,7 +438,7 @@ Output
 Dashboard Loaded
 ```
 
----
+______________________________________________________________________
 
 # Caching Decorator
 
@@ -499,7 +500,7 @@ Using Cache
 
 Notice that the second call never recalculates the value.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -541,7 +542,7 @@ Even Python's standard library uses decorators:
 
 Understanding decorators means understanding how many Python frameworks work internally.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -551,9 +552,11 @@ Understanding decorators means understanding how many Python frameworks work int
 
 ### Answer
 
-`functools.wraps` preserves the original function's metadata, such as its name, documentation string and annotations. Without it, the decorated function appears to be the wrapper function, which makes debugging, introspection and documentation generation more difficult.
+`functools.wraps` preserves the original function's metadata, such as its name, documentation string and annotations.
+Without it, the decorated function appears to be the wrapper function, which makes debugging, introspection and
+documentation generation more difficult.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -578,7 +581,7 @@ func = A(B(func))
 
 The decorator closest to the function is applied first.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -586,9 +589,10 @@ The decorator closest to the function is applied first.
 
 ### Answer
 
-Decorators separate cross-cutting concerns such as routing, authentication, validation, caching and logging from business logic. This keeps endpoint functions clean, reusable and easier to maintain.
+Decorators separate cross-cutting concerns such as routing, authentication, validation, caching and logging from
+business logic. This keeps endpoint functions clean, reusable and easier to maintain.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -644,7 +648,7 @@ Task Finished
 Execution Time: 2.00xxxx seconds
 ```
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -654,9 +658,10 @@ Why do decorator factories require three nested functions?
 
 ### Answer
 
-The outer function receives the decorator's arguments, the middle function receives the original function, and the innermost wrapper executes the function while adding extra behaviour.
+The outer function receives the decorator's arguments, the middle function receives the original function, and the
+innermost wrapper executes the function while adding extra behaviour.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -666,7 +671,7 @@ Why should decorators use `@wraps`?
 
 To preserve the original function's metadata, making debugging, documentation and framework integration work correctly.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -676,7 +681,7 @@ How are multiple decorators executed?
 
 They are applied from the bottom up. The decorator closest to the function wraps it first.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -690,7 +695,7 @@ Name three real-world uses of decorators.
 
 Other common uses include caching, routing, transactions and validation.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -698,9 +703,10 @@ What problem do decorators solve?
 
 ### Answer
 
-They eliminate duplicated code by separating reusable behaviour from business logic, making applications cleaner and easier to maintain.
+They eliminate duplicated code by separating reusable behaviour from business logic, making applications cleaner and
+easier to maintain.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -708,7 +714,7 @@ They eliminate duplicated code by separating reusable behaviour from business lo
 
 Create a decorator that measures how long a function takes to execute.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -722,7 +728,7 @@ Running function: calculate_salary
 
 (Hint: Use `function.__name__`.)
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -750,7 +756,7 @@ Hello
 Hello
 ```
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -763,12 +769,11 @@ In this lesson, you learned:
 - ✅ How timing, authentication and caching decorators are implemented.
 - ✅ Why decorators are fundamental to modern Python web frameworks.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[06-Iterators-and-Iterables-part-1](06-iterators-and-iterables-part-1.md)
+**File:** [06-Iterators-and-Iterables-part-1](06-iterators-and-iterables-part-1.md)
 
 Topics:
 

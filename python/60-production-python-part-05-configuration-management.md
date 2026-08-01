@@ -1,6 +1,7 @@
 # File: python/60-production-python-part-05-configuration-management.md
 
 # Production Python
+
 # Part 5: Configuration Management – Building Configurable and Deployable Applications
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 10–12 Hours
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -32,7 +33,7 @@ By the end of this lesson, you will understand:
 - Production best practices
 - questions
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -61,7 +62,7 @@ Changing the source code for every deployment is not practical.
 
 This is where configuration management becomes essential.
 
----
+______________________________________________________________________
 
 # What is Configuration?
 
@@ -80,7 +81,7 @@ Examples include:
 
 Your application code should remain the same while configuration changes.
 
----
+______________________________________________________________________
 
 # Code vs Configuration
 
@@ -106,7 +107,7 @@ API_KEY = config.api_key
 
 Notice that the application reads configuration instead of hardcoding it.
 
----
+______________________________________________________________________
 
 # Why Separate Configuration?
 
@@ -135,7 +136,7 @@ Benefits include:
 - Better security
 - Simpler automation
 
----
+______________________________________________________________________
 
 # The Twelve-Factor App
 
@@ -147,7 +148,7 @@ One of its key recommendations is:
 
 This allows the same application artifact to be deployed across multiple environments with different settings.
 
----
+______________________________________________________________________
 
 # Configuration Sources
 
@@ -177,7 +178,7 @@ Default Values
 
 Production applications often combine several of these.
 
----
+______________________________________________________________________
 
 # Configuration Precedence
 
@@ -205,7 +206,7 @@ The first available value wins.
 
 Having a predictable precedence prevents unexpected behaviour.
 
----
+______________________________________________________________________
 
 # Centralised Configuration
 
@@ -241,7 +242,7 @@ contains all application settings.
 
 Other modules import from a single source.
 
----
+______________________________________________________________________
 
 # Example Configuration Class
 
@@ -268,7 +269,7 @@ class Config:
 
 Every module reads from this class rather than accessing environment variables directly.
 
----
+______________________________________________________________________
 
 # Configuration Validation
 
@@ -303,7 +304,7 @@ PORT = int(port)
 
 Fail fast during startup rather than after deployment.
 
----
+______________________________________________________________________
 
 # Development vs Production
 
@@ -334,7 +335,7 @@ The application code is identical.
 
 Only configuration changes.
 
----
+______________________________________________________________________
 
 # Secrets Are Configuration
 
@@ -352,7 +353,7 @@ Never commit them to Git.
 
 Treat secrets differently from normal configuration.
 
----
+______________________________________________________________________
 
 # Configuration Caching
 
@@ -382,7 +383,7 @@ Use Throughout Application
 
 Most applications load configuration once during startup.
 
----
+______________________________________________________________________
 
 # Feature Flags
 
@@ -398,7 +399,7 @@ Changing configuration enables or disables features without modifying code.
 
 This allows safer deployments and gradual rollouts.
 
----
+______________________________________________________________________
 
 # Backend Example
 
@@ -444,7 +445,7 @@ Application Exits
 
 This is preferable to discovering configuration errors after serving requests.
 
----
+______________________________________________________________________
 
 # Configuration Anti-Patterns
 
@@ -454,7 +455,7 @@ This is preferable to discovering configuration errors after serving requests.
 DATABASE_URL = "localhost"
 ```
 
----
+______________________________________________________________________
 
 ## Reading Environment Variables Everywhere
 
@@ -470,7 +471,7 @@ Read once.
 
 Expose through a configuration object.
 
----
+______________________________________________________________________
 
 ## Hidden Defaults
 
@@ -480,7 +481,7 @@ For critical settings,
 
 prefer failing fast.
 
----
+______________________________________________________________________
 
 ## Configuration Duplication
 
@@ -488,7 +489,7 @@ Avoid copying the same configuration value into multiple modules.
 
 Maintain a single source of truth.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -496,31 +497,31 @@ Maintain a single source of truth.
 
 Hardcoding secrets.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
 Mixing configuration with business logic.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
 Not validating configuration.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
 Reading environment variables throughout the codebase.
 
----
+______________________________________________________________________
 
 ## Mistake 5
 
 Using different configuration mechanisms for different modules.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -540,7 +541,7 @@ Using different configuration mechanisms for different modules.
 
 ❌ Don't scatter configuration across the application.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -560,7 +561,7 @@ Only configuration differs between deployments.
 
 This principle enables repeatable, reliable deployments and supports modern CI/CD pipelines.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -572,7 +573,7 @@ This principle enables repeatable, reliable deployments and supports modern CI/C
 
 Because configuration changes between deployments, while application logic should remain the same.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -582,7 +583,7 @@ Because configuration changes between deployments, while application logic shoul
 
 To detect invalid or missing settings during application startup instead of failing later during runtime.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -592,7 +593,7 @@ To detect invalid or missing settings during application startup instead of fail
 
 It creates a single source of truth, simplifies maintenance, and prevents inconsistent behaviour across modules.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -602,7 +603,7 @@ It creates a single source of truth, simplifies maintenance, and prevents incons
 
 Because exposing secrets can compromise application security and user data.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -610,9 +611,10 @@ Because exposing secrets can compromise application security and user data.
 
 ### Answer
 
-Because configuration errors are deployment problems that should be detected before the application begins serving requests.
+Because configuration errors are deployment problems that should be detected before the application begins serving
+requests.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -637,7 +639,7 @@ Validate required settings during startup.
 
 Then update another module to consume the configuration object instead of calling `os.getenv()` directly.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -647,9 +649,10 @@ What is configuration management?
 
 ### Answer
 
-It is the practice of separating deployment-specific settings from application code so the same application can run in multiple environments.
+It is the practice of separating deployment-specific settings from application code so the same application can run in
+multiple environments.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -657,9 +660,10 @@ Why should configuration be loaded once during startup?
 
 ### Answer
 
-Loading once avoids repeated lookups, ensures consistent values, and allows validation before the application begins handling requests.
+Loading once avoids repeated lookups, ensures consistent values, and allows validation before the application begins
+handling requests.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -669,7 +673,7 @@ What is configuration precedence?
 
 It defines which configuration source takes priority when the same setting exists in multiple places.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -679,7 +683,7 @@ Why should secrets never be hardcoded?
 
 Hardcoded secrets are difficult to rotate, can leak through source control, and create significant security risks.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -687,9 +691,10 @@ How does configuration management support CI/CD?
 
 ### Answer
 
-It allows the same application artifact to be deployed across environments, with only configuration changing between deployments.
+It allows the same application artifact to be deployed across environments, with only configuration changing between
+deployments.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -697,7 +702,7 @@ It allows the same application artifact to be deployed across environments, with
 
 Refactor one of your Flask or FastAPI projects to use a single configuration class.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -705,13 +710,13 @@ Identify every hardcoded configuration value in one of your projects.
 
 Move each into the configuration layer.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
 Implement configuration validation that prevents application startup if required settings are missing.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -724,7 +729,7 @@ Categorise each setting as:
 - Secret
 - Environment-specific
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -739,9 +744,8 @@ In this lesson, you learned:
 - ✅ Secrets management principles.
 - ✅ Production configuration best practices.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[61-production-python-part-06-environment-variables](61-production-python-part-06-environment-variables.md)
+**File:** [61-production-python-part-06-environment-variables](61-production-python-part-06-environment-variables.md)

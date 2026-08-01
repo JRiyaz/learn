@@ -1,6 +1,7 @@
 # File: python/34-dict-deep-dive-part-1.md
 
 # Python Built-in Types
+
 # Dictionary (`dict`) Deep Dive - Part 1: Fundamentals, Hash Tables & Core Operations
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 4 Hours
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -30,7 +31,7 @@
 - From **Python 3.7 onwards**, insertion order is guaranteed by the language specification.
 - Modern dictionaries are both memory efficient and extremely fast.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -48,7 +49,7 @@ By the end of this lesson, you will understand:
 - Time complexity
 - Production best practices
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -62,7 +63,7 @@ Tuples are:
 
 Today's topic is the **Dictionary**, arguably the most important data structure in Python.
 
----
+______________________________________________________________________
 
 # Why Dictionaries Matter
 
@@ -81,7 +82,7 @@ Examples include:
 
 If you open a FastAPI or Flask project, you'll find dictionaries everywhere.
 
----
+______________________________________________________________________
 
 # What is a Dictionary?
 
@@ -113,7 +114,7 @@ Instead of searching sequentially,
 
 Python jumps directly to the value.
 
----
+______________________________________________________________________
 
 # Real World Analogy
 
@@ -155,7 +156,7 @@ Instant lookup.
 
 A dictionary works in a similar way.
 
----
+______________________________________________________________________
 
 # Dictionary Structure
 
@@ -173,7 +174,7 @@ A dictionary works in a similar way.
 
 Every key maps to exactly one value.
 
----
+______________________________________________________________________
 
 # Creating Dictionaries
 
@@ -217,7 +218,7 @@ user = dict(
 )
 ```
 
----
+______________________________________________________________________
 
 # Accessing Values
 
@@ -247,7 +248,7 @@ Average
 O(1)
 ```
 
----
+______________________________________________________________________
 
 # Updating Values
 
@@ -263,7 +264,7 @@ Output
 {'name': 'Alice', 'age': 31}
 ```
 
----
+______________________________________________________________________
 
 # Adding New Keys
 
@@ -287,7 +288,7 @@ Output
 }
 ```
 
----
+______________________________________________________________________
 
 # Deleting Keys
 
@@ -303,7 +304,7 @@ Output
 {'name': 'Alice'}
 ```
 
----
+______________________________________________________________________
 
 # pop()
 
@@ -333,7 +334,7 @@ Output
 
 Useful when you need the removed value.
 
----
+______________________________________________________________________
 
 # popitem()
 
@@ -361,7 +362,7 @@ Since Python 3.7,
 
 this follows insertion order.
 
----
+______________________________________________________________________
 
 # clear()
 
@@ -377,7 +378,7 @@ Output
 {}
 ```
 
----
+______________________________________________________________________
 
 # The Biggest Question
 
@@ -389,7 +390,7 @@ The answer is:
 Hash Tables
 ```
 
----
+______________________________________________________________________
 
 # What is a Hash Table?
 
@@ -423,7 +424,7 @@ Python computes the hash,
 
 then jumps directly to the correct location.
 
----
+______________________________________________________________________
 
 # Visualising
 
@@ -457,7 +458,7 @@ Complexity
 O(n)
 ```
 
----
+______________________________________________________________________
 
 With hashing
 
@@ -483,7 +484,7 @@ Complexity
 Average O(1)
 ```
 
----
+______________________________________________________________________
 
 # hash()
 
@@ -503,7 +504,7 @@ Your output will differ.
 
 Hash values are intentionally randomised between Python processes for many built-in types like strings.
 
----
+______________________________________________________________________
 
 # Why Randomised?
 
@@ -515,7 +516,7 @@ an attacker could deliberately create many collisions.
 
 Hash randomisation helps reduce certain denial-of-service attacks.
 
----
+______________________________________________________________________
 
 # Hashable Objects
 
@@ -533,7 +534,7 @@ hash((1, 2))
 
 Valid.
 
----
+______________________________________________________________________
 
 # Unhashable Objects
 
@@ -551,7 +552,7 @@ Lists are mutable.
 
 Their hash could change.
 
----
+______________________________________________________________________
 
 # Dictionary Keys
 
@@ -583,7 +584,7 @@ set()
 
 These mutable objects cannot be dictionary keys.
 
----
+______________________________________________________________________
 
 # Why?
 
@@ -617,7 +618,7 @@ Therefore,
 
 mutable objects cannot be used.
 
----
+______________________________________________________________________
 
 # Dictionary Lookup
 
@@ -663,7 +664,7 @@ Notice
 
 Python does **not** compare every key.
 
----
+______________________________________________________________________
 
 # KeyError
 
@@ -681,7 +682,7 @@ KeyError
 
 The key does not exist.
 
----
+______________________________________________________________________
 
 # get()
 
@@ -723,7 +724,7 @@ Output
 0
 ```
 
----
+______________________________________________________________________
 
 # Why Use get()?
 
@@ -753,7 +754,7 @@ payload.get("email")
 
 Much safer.
 
----
+______________________________________________________________________
 
 # Membership Testing
 
@@ -779,7 +780,7 @@ Average
 O(1)
 ```
 
----
+______________________________________________________________________
 
 # Iterating
 
@@ -791,7 +792,7 @@ for key in user:
     print(key)
 ```
 
----
+______________________________________________________________________
 
 # keys()
 
@@ -805,7 +806,7 @@ Equivalent,
 
 but more explicit.
 
----
+______________________________________________________________________
 
 # values()
 
@@ -823,7 +824,7 @@ Alice
 30
 ```
 
----
+______________________________________________________________________
 
 # items()
 
@@ -843,7 +844,7 @@ name Alice
 age 30
 ```
 
----
+______________________________________________________________________
 
 # Dictionary Views
 
@@ -869,7 +870,7 @@ Output
 
 This is a **dynamic view**.
 
----
+______________________________________________________________________
 
 # Dynamic View Example
 
@@ -899,7 +900,7 @@ dict_keys(['name', 'age'])
 
 The view updates automatically.
 
----
+______________________________________________________________________
 
 # Time Complexity
 
@@ -912,9 +913,10 @@ The view updates automatically.
 | Membership | Average O(1) |
 | Iteration | O(n) |
 
-Worst-case complexity can degrade if many hash collisions occur, but modern Python dictionaries are designed to minimise this.
+Worst-case complexity can degrade if many hash collisions occur, but modern Python dictionaries are designed to minimise
+this.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -934,7 +936,7 @@ Prefer
 user.get("email")
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -950,7 +952,7 @@ cache = {
 }
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -966,7 +968,7 @@ use
 list(user.keys())
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -992,7 +994,7 @@ for key, value in user.items():
 
 One lookup instead of two.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -1010,7 +1012,7 @@ One lookup instead of two.
 
 ❌ Don't use mutable objects as keys.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -1066,7 +1068,7 @@ config = {
 
 Understanding dictionaries is essential because most backend data eventually becomes a dictionary.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1076,9 +1078,10 @@ Understanding dictionaries is essential because most backend data eventually bec
 
 ### Answer
 
-Because dictionaries use hash tables. Python computes the key's hash value and uses it to locate the appropriate bucket instead of searching every key sequentially.
+Because dictionaries use hash tables. Python computes the key's hash value and uses it to locate the appropriate bucket
+instead of searching every key sequentially.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1086,9 +1089,10 @@ Because dictionaries use hash tables. Python computes the key's hash value and u
 
 ### Answer
 
-Lists are mutable. If their contents changed after insertion, their hash value would change, making them impossible to locate reliably in the hash table.
+Lists are mutable. If their contents changed after insertion, their hash value would change, making them impossible to
+locate reliably in the hash table.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1096,9 +1100,10 @@ Lists are mutable. If their contents changed after insertion, their hash value w
 
 ### Answer
 
-Use `get()` when missing keys are expected or acceptable. Use square brackets when the key must exist and its absence indicates a programming error.
+Use `get()` when missing keys are expected or acceptable. Use square brackets when the key must exist and its absence
+indicates a programming error.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -1108,7 +1113,7 @@ Use `get()` when missing keys are expected or acceptable. Use square brackets wh
 
 A dynamic view of key-value pairs that can be iterated efficiently and reflects changes made to the dictionary.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -1164,7 +1169,7 @@ Removed age: 31
 {'name': 'Alice', 'country': 'India'}
 ```
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -1176,7 +1181,7 @@ Why are dictionaries generally faster than lists for lookups?
 
 Dictionaries use hash tables, allowing direct access to values using hash computations instead of sequential searches.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -1186,7 +1191,7 @@ Why should dictionary keys usually be immutable?
 
 Immutable objects produce stable hash values, allowing Python to locate them reliably in the hash table.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -1196,7 +1201,7 @@ What is the difference between `pop()` and `del`?
 
 `pop()` removes a key and returns its value, while `del` simply removes the key without returning the value.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -1206,7 +1211,7 @@ Why is `items()` preferred when iterating over both keys and values?
 
 It provides both the key and value in a single iteration, avoiding an additional dictionary lookup.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1216,7 +1221,7 @@ Do `keys()`, `values()` and `items()` return lists?
 
 No. They return dynamic view objects that reflect changes made to the dictionary.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -1231,25 +1236,25 @@ Support:
 - Remove product
 - Display inventory
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
 Count the frequency of every word in a paragraph using a dictionary.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
 Given a list of employee dictionaries, group employees by department using a dictionary.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
 Create a configuration loader that safely reads optional settings using `get()` and sensible default values.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1265,12 +1270,11 @@ In this lesson, you learned:
 - ✅ Production use cases.
 - ✅ Common interview topics.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[35-Dict-Deep-Dive-part-2](35-dict-deep-dive-part-2.md)
+**File:** [35-Dict-Deep-Dive-part-2](35-dict-deep-dive-part-2.md)
 
 Topics:
 

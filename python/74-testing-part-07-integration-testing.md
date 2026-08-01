@@ -1,6 +1,7 @@
 # File: python/74-testing-part-07-integration-testing.md
 
 # Testing
+
 # Part 7: Integration Testing – Verifying Components Work Together
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 12–15 Hours
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -31,7 +32,7 @@ By the end of this lesson, you will understand:
 - Integration testing strategies
 - Production best practices
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -52,7 +53,7 @@ However, unit tests cannot answer an equally important question:
 
 That's the purpose of integration testing.
 
----
+______________________________________________________________________
 
 # What is Integration Testing?
 
@@ -82,7 +83,7 @@ Response
 
 Unlike unit tests, the goal is **not isolation**, but **interaction**.
 
----
+______________________________________________________________________
 
 # Unit Test vs Integration Test
 
@@ -104,7 +105,7 @@ Mock Email Service
 
 Only business logic is tested.
 
----
+______________________________________________________________________
 
 ### Integration Test
 
@@ -130,7 +131,7 @@ The repository is real.
 
 The SQL is real.
 
----
+______________________________________________________________________
 
 # Why Integration Tests Matter
 
@@ -152,7 +153,7 @@ Unit tests cannot detect SQL problems.
 
 Integration tests execute the real query.
 
----
+______________________________________________________________________
 
 # A Typical Backend Architecture
 
@@ -180,7 +181,7 @@ Each layer may work individually.
 
 Integration testing verifies the entire chain.
 
----
+______________________________________________________________________
 
 # What Should Be Real?
 
@@ -200,7 +201,7 @@ Database
 
 Business logic and persistence work together exactly as they do in production.
 
----
+______________________________________________________________________
 
 # What Can Still Be Mocked?
 
@@ -232,7 +233,7 @@ Mock Stripe API
 
 The goal is to avoid relying on systems outside your control.
 
----
+______________________________________________________________________
 
 # Example Project
 
@@ -254,7 +255,7 @@ app/
 
 Unlike unit tests, most components are real.
 
----
+______________________________________________________________________
 
 # Testing a Repository
 
@@ -306,7 +307,7 @@ def test_create_user(
 
 The repository talks to a real database.
 
----
+______________________________________________________________________
 
 # Why Use a Test Database?
 
@@ -333,7 +334,7 @@ Common choices:
 - Docker containers
 - Temporary databases
 
----
+______________________________________________________________________
 
 # Database Isolation
 
@@ -377,7 +378,7 @@ Next Test
 
 Tests should never depend on previous tests.
 
----
+______________________________________________________________________
 
 # Transactions
 
@@ -403,7 +404,7 @@ Benefits:
 
 This technique is widely used with SQLAlchemy.
 
----
+______________________________________________________________________
 
 # Fixtures for Integration Tests
 
@@ -425,7 +426,7 @@ def session():
 
 Each test receives a clean database session.
 
----
+______________________________________________________________________
 
 # Testing Services
 
@@ -453,7 +454,7 @@ Use the real repository.
 
 The service should be tested exactly as it runs in production.
 
----
+______________________________________________________________________
 
 # Testing Error Handling
 
@@ -482,7 +483,7 @@ with pytest.raises(
     )
 ```
 
----
+______________________________________________________________________
 
 # Using Docker
 
@@ -514,7 +515,7 @@ Advantages:
 - Same environment in CI
 - Same database version
 
----
+______________________________________________________________________
 
 # Integration Test Pyramid
 
@@ -534,7 +535,7 @@ Most tests should still be unit tests.
 
 Integration tests verify communication between components.
 
----
+______________________________________________________________________
 
 # Example Workflow
 
@@ -570,7 +571,7 @@ Response
 
 An integration test verifies that the complete workflow succeeds.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -578,13 +579,13 @@ An integration test verifies that the complete workflow succeeds.
 
 Running integration tests against production resources.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
 Sharing the same database state between tests.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -592,13 +593,13 @@ Mocking everything.
 
 If everything is mocked, the test is no longer an integration test.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
 Making integration tests depend on internet access.
 
----
+______________________________________________________________________
 
 ## Mistake 5
 
@@ -606,7 +607,7 @@ Combining unit and integration tests in the same test file.
 
 Keep them organised separately.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -624,7 +625,7 @@ Keep them organised separately.
 
 ❌ Don't depend on test execution order.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -668,7 +669,7 @@ When the pipeline finishes, the container is destroyed.
 
 This approach ensures every test run starts from a known environment, eliminating "it works on my machine" problems.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -680,7 +681,7 @@ This approach ensures every test run starts from a known environment, eliminatin
 
 To verify that multiple real components work together correctly.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -690,7 +691,7 @@ To verify that multiple real components work together correctly.
 
 Because repository logic, SQL queries, and database interactions must be validated against a real database.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -700,7 +701,7 @@ Because repository logic, SQL queries, and database interactions must be validat
 
 Tests may modify or delete data, making production databases unsafe for automated testing.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -710,7 +711,7 @@ Tests may modify or delete data, making production databases unsafe for automate
 
 They allow each test to be rolled back, providing isolation without requiring manual cleanup.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -720,7 +721,7 @@ They allow each test to be rolled back, providing isolation without requiring ma
 
 External systems such as payment gateways, email providers, cloud services, and third-party APIs.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -758,7 +759,7 @@ Implement:
 
 Then repeat the exercise using a Dockerised PostgreSQL instance.
 
----
+______________________________________________________________________
 
 # Knowledge Check
 
@@ -768,9 +769,10 @@ Why are integration tests slower than unit tests?
 
 ### Answer
 
-Because they communicate with real infrastructure such as databases, file systems, or network services instead of lightweight mocks.
+Because they communicate with real infrastructure such as databases, file systems, or network services instead of
+lightweight mocks.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -778,9 +780,10 @@ Why should integration tests use dedicated infrastructure?
 
 ### Answer
 
-Dedicated infrastructure prevents test data from affecting production systems and ensures predictable, repeatable results.
+Dedicated infrastructure prevents test data from affecting production systems and ensures predictable, repeatable
+results.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -790,7 +793,7 @@ When should external services still be mocked in integration tests?
 
 When the services are outside your application's control or would make tests slow, expensive, or unreliable.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -800,7 +803,7 @@ Why is database rollback a common testing strategy?
 
 It restores the database to a clean state after each test, preventing tests from affecting one another.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -808,9 +811,10 @@ How do unit tests and integration tests complement each other?
 
 ### Answer
 
-Unit tests verify individual components in isolation, while integration tests verify that those components communicate correctly when assembled into a working application.
+Unit tests verify individual components in isolation, while integration tests verify that those components communicate
+correctly when assembled into a working application.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -820,7 +824,7 @@ Create a PostgreSQL test database for one of your existing FastAPI or Flask proj
 
 Write integration tests for every repository method.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -828,7 +832,7 @@ Configure your integration tests to run inside Docker.
 
 Ensure a fresh database container is created for every CI run.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -841,17 +845,18 @@ Write integration tests covering:
 - Record deletion.
 - Query returning no results.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
 Review your current unit tests.
 
-Identify any tests that would provide greater confidence if converted into integration tests using real repositories and a real database.
+Identify any tests that would provide greater confidence if converted into integration tests using real repositories and
+a real database.
 
 Explain your reasoning for each.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -867,9 +872,8 @@ In this lesson, you learned:
 - ✅ Docker-based integration testing.
 - ✅ Production best practices for backend integration testing.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[75-testing-part-08-api-testing](75-testing-part-08-api-testing.md)
+**File:** [75-testing-part-08-api-testing](75-testing-part-08-api-testing.md)

@@ -1,6 +1,7 @@
 # File: python/71-testing-part-04-mocking.md
 
 # Testing
+
 # Part 4: Mocking – Isolating External Dependencies in Tests
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 12–14 Hours
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -33,7 +34,7 @@ By the end of this lesson, you will understand:
 - Common mistakes
 - Production best practices
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -69,7 +70,7 @@ Instead, we replace those dependencies with fake objects.
 
 This technique is called **mocking**.
 
----
+______________________________________________________________________
 
 # What is Mocking?
 
@@ -97,7 +98,7 @@ Mock Database
 
 The application behaves as though the dependency exists, but nothing external actually happens.
 
----
+______________________________________________________________________
 
 # Why Mock?
 
@@ -142,7 +143,7 @@ The test becomes:
 - Deterministic
 - Independent
 
----
+______________________________________________________________________
 
 # Unit Tests Should Be Isolated
 
@@ -157,7 +158,7 @@ It should not fail because:
 
 External systems belong in integration tests.
 
----
+______________________________________________________________________
 
 # Test Doubles
 
@@ -175,7 +176,7 @@ Test Double
 
 Each serves a different purpose.
 
----
+______________________________________________________________________
 
 # Dummy
 
@@ -202,7 +203,7 @@ logger = object()
 
 It satisfies the interface but is never used.
 
----
+______________________________________________________________________
 
 # Stub
 
@@ -230,7 +231,7 @@ class StubRepository:
 
 The behaviour never changes.
 
----
+______________________________________________________________________
 
 # Fake
 
@@ -260,7 +261,7 @@ Unlike a stub, it contains working logic.
 
 In-memory databases are common examples.
 
----
+______________________________________________________________________
 
 # Spy
 
@@ -282,7 +283,7 @@ With what arguments?
 
 Spies help verify behaviour.
 
----
+______________________________________________________________________
 
 # Mock
 
@@ -297,7 +298,7 @@ It can answer questions such as:
 - How many times?
 - With which arguments?
 
----
+______________________________________________________________________
 
 # unittest.mock
 
@@ -307,7 +308,7 @@ Python's standard mocking library:
 from unittest.mock import Mock
 ```
 
----
+______________________________________________________________________
 
 # Creating a Mock
 
@@ -332,7 +333,7 @@ No database.
 
 Just a mock object.
 
----
+______________________________________________________________________
 
 # Returning Values
 
@@ -368,7 +369,7 @@ returns:
 
 without executing any real code.
 
----
+______________________________________________________________________
 
 # Raising Exceptions
 
@@ -394,7 +395,7 @@ raises the configured exception.
 
 This allows error handling to be tested safely.
 
----
+______________________________________________________________________
 
 # Verifying Calls
 
@@ -424,7 +425,7 @@ email.send.assert_called_once_with(
 
 These assertions ensure the interaction occurred as expected.
 
----
+______________________________________________________________________
 
 # MagicMock
 
@@ -447,7 +448,7 @@ works without additional configuration.
 
 Use `MagicMock` when mocking objects that behave like containers, iterators, or context managers.
 
----
+______________________________________________________________________
 
 # patch()
 
@@ -493,7 +494,7 @@ Afterwards:
 Original Object Restored
 ```
 
----
+______________________________________________________________________
 
 # Where to Patch
 
@@ -525,7 +526,7 @@ should be patched.
 
 **Patch where the object is looked up, not where it was originally defined.**
 
----
+______________________________________________________________________
 
 # Backend Example
 
@@ -577,7 +578,7 @@ No real email is sent.
 
 The behaviour is verified.
 
----
+______________________________________________________________________
 
 # Mocking Multiple Dependencies
 
@@ -601,7 +602,7 @@ Each dependency is controlled independently.
 
 The test focuses only on `UserService`.
 
----
+______________________________________________________________________
 
 # Over-Mocking
 
@@ -633,7 +634,7 @@ At this point, the test may no longer represent realistic behaviour.
 
 Mock only external dependencies that are outside the unit under test.
 
----
+______________________________________________________________________
 
 # Mock vs Fake
 
@@ -661,7 +662,7 @@ Only Pretends
 
 Choose the approach that best fits the behaviour you need to verify.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -671,31 +672,31 @@ Mocking the class being tested.
 
 Only mock its dependencies.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
 Patching the wrong import location.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
 Verifying implementation details instead of behaviour.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
 Creating overly complicated mock configurations.
 
----
+______________________________________________________________________
 
 ## Mistake 5
 
 Using mocks instead of integration tests for verifying external systems.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -713,7 +714,7 @@ Using mocks instead of integration tests for verifying external systems.
 
 ❌ Don't test the mocking library.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -732,7 +733,7 @@ Integration tests then verify communication with the real systems.
 
 This separation keeps unit tests fast while ensuring production integrations are also validated.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -744,7 +745,7 @@ This separation keeps unit tests fast while ensuring production integrations are
 
 Mocking replaces a real dependency with a controllable object during testing.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -754,7 +755,7 @@ Mocking replaces a real dependency with a controllable object during testing.
 
 To keep tests fast, deterministic, and independent of network or infrastructure failures.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -762,9 +763,10 @@ To keep tests fast, deterministic, and independent of network or infrastructure 
 
 ### Answer
 
-A fake contains a simplified working implementation, while a mock primarily simulates behaviour and records interactions.
+A fake contains a simplified working implementation, while a mock primarily simulates behaviour and records
+interactions.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -774,7 +776,7 @@ A fake contains a simplified working implementation, while a mock primarily simu
 
 When the code under test creates or looks up dependencies that cannot easily be injected.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -782,9 +784,10 @@ When the code under test creates or looks up dependencies that cannot easily be 
 
 ### Answer
 
-Because Python uses the imported reference within the module under test. Patching the original definition may not affect the object actually being used.
+Because Python uses the imported reference within the module under test. Patching the original definition may not affect
+the object actually being used.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -817,7 +820,7 @@ Write tests that:
 
 Then create a second version using `patch()` instead of constructor injection and compare the two approaches.
 
----
+______________________________________________________________________
 
 # Knowledge Check
 
@@ -829,7 +832,7 @@ Why are mocks valuable in unit testing?
 
 They isolate the unit under test from external systems, making tests fast, reliable, and deterministic.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -837,9 +840,10 @@ When should a fake be preferred over a mock?
 
 ### Answer
 
-When a lightweight working implementation better represents the dependency, such as an in-memory repository used across many tests.
+When a lightweight working implementation better represents the dependency, such as an in-memory repository used across
+many tests.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -849,7 +853,7 @@ What is the biggest advantage of dependency injection when using mocks?
 
 Dependencies can be replaced directly without relying on runtime patching, resulting in simpler and more explicit tests.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -857,9 +861,10 @@ Why can excessive mocking become a problem?
 
 ### Answer
 
-Over-mocked tests may verify implementation details instead of behaviour, making them brittle and reducing confidence in real-world behaviour.
+Over-mocked tests may verify implementation details instead of behaviour, making them brittle and reducing confidence in
+real-world behaviour.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -867,9 +872,10 @@ How should unit and integration tests divide responsibilities?
 
 ### Answer
 
-Unit tests mock external systems to verify business logic, while integration tests verify that the application communicates correctly with real external services.
+Unit tests mock external systems to verify business logic, while integration tests verify that the application
+communicates correctly with real external services.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -879,7 +885,7 @@ Take one service from your Flask or FastAPI project.
 
 Replace its repository with a `Mock` and verify all expected interactions.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -892,7 +898,7 @@ Write tests that simulate:
 
 Use `side_effect` where appropriate.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -900,7 +906,7 @@ Create an in-memory fake repository and compare the readability of tests using a
 
 Document when each approach is preferable.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -910,7 +916,7 @@ Identify every use of `patch()`.
 
 For each case, determine whether constructor injection could replace patching and simplify the test.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -926,9 +932,8 @@ In this lesson, you learned:
 - ✅ The importance of patching the correct location.
 - ✅ Production mocking best practices.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[72-testing-part-05-monkeypatch](72-testing-part-05-monkeypatch.md)
+**File:** [72-testing-part-05-monkeypatch](72-testing-part-05-monkeypatch.md)

@@ -1,6 +1,7 @@
 # File: python/17-abstract-base-classes.md
 
 # Python Advanced - Lesson 17
+
 # Abstract Base Classes (ABC) - Defining Contracts for Classes
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 100 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -32,7 +33,7 @@ By the end of this lesson, you will understand:
 - ABCs vs duck typing
 - Production use cases
 
----
+______________________________________________________________________
 
 # Why Do Abstract Base Classes Exist?
 
@@ -78,7 +79,7 @@ The method does nothing.
 
 This bug may go unnoticed until production.
 
----
+______________________________________________________________________
 
 # The Problem
 
@@ -99,7 +100,7 @@ But Python doesn't enforce this automatically.
 
 This is exactly why Abstract Base Classes exist.
 
----
+______________________________________________________________________
 
 # What is an Abstract Base Class?
 
@@ -127,7 +128,7 @@ PushNotification
 
 Every child promises to implement the required behaviour.
 
----
+______________________________________________________________________
 
 # The abc Module
 
@@ -140,7 +141,7 @@ from abc import ABC, abstractmethod
 - `ABC` marks a class as abstract.
 - `@abstractmethod` marks methods that subclasses must implement.
 
----
+______________________________________________________________________
 
 # Creating an Abstract Base Class
 
@@ -158,7 +159,7 @@ class Notification(ABC):
 
 This class is now abstract.
 
----
+______________________________________________________________________
 
 # Instantiating an Abstract Class
 
@@ -180,7 +181,7 @@ Why?
 
 Because an abstract class represents an incomplete implementation.
 
----
+______________________________________________________________________
 
 # Implementing the Abstract Method
 
@@ -219,7 +220,7 @@ Sending email
 
 Now the contract has been satisfied.
 
----
+______________________________________________________________________
 
 # Forgetting to Implement
 
@@ -249,7 +250,7 @@ Python immediately reports the mistake.
 
 This is much safer than discovering the error later.
 
----
+______________________________________________________________________
 
 # Multiple Abstract Methods
 
@@ -279,7 +280,7 @@ class Repository(ABC):
 
 Every subclass must implement all three.
 
----
+______________________________________________________________________
 
 # Abstract Methods Can Have Implementations
 
@@ -319,7 +320,7 @@ Writing to console
 
 The method remains abstract because subclasses are still required to override it.
 
----
+______________________________________________________________________
 
 # ABCs Define Contracts
 
@@ -339,7 +340,7 @@ Must implement:
 
 Any subclass that fails to honour the agreement cannot be instantiated.
 
----
+______________________________________________________________________
 
 # Polymorphism with ABCs
 
@@ -409,7 +410,7 @@ The checkout function doesn't care which gateway it receives.
 
 It only depends on the contract.
 
----
+______________________________________________________________________
 
 # ABC vs Normal Base Class
 
@@ -427,7 +428,7 @@ Subclasses may override the method.
 
 But they don't have to.
 
----
+______________________________________________________________________
 
 Abstract Base Class
 
@@ -442,7 +443,7 @@ class Animal(ABC):
 
 Now every subclass **must** implement `speak()`.
 
----
+______________________________________________________________________
 
 # ABC vs Duck Typing
 
@@ -478,7 +479,7 @@ def make_sound(animal):
 
 This works even without inheritance.
 
----
+______________________________________________________________________
 
 # So Why Use ABCs?
 
@@ -501,7 +502,7 @@ Abstract Base Classes
 
 Many production systems use both approaches depending on the situation.
 
----
+______________________________________________________________________
 
 # ABCs in the Standard Library
 
@@ -521,7 +522,7 @@ io.IOBase
 
 When you implement these interfaces correctly, your classes behave like built-in Python objects.
 
----
+______________________________________________________________________
 
 # Production Example - Repository Pattern
 
@@ -561,7 +562,7 @@ The service layer depends only on the abstract contract.
 
 It doesn't care which database is used.
 
----
+______________________________________________________________________
 
 # Production Example - Storage Providers
 
@@ -588,7 +589,7 @@ Each provider implements the same interface.
 
 Switching providers requires minimal changes to business logic.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -604,7 +605,7 @@ Switching providers requires minimal changes to business logic.
 
 ❌ Don't use ABCs when duck typing is sufficient.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -645,7 +646,7 @@ This principle is often summarised as:
 
 > **Depend upon abstractions, not concrete implementations.**
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -655,9 +656,10 @@ This principle is often summarised as:
 
 ### Answer
 
-An Abstract Base Class is a class that cannot be instantiated directly and defines one or more abstract methods that subclasses must implement.
+An Abstract Base Class is a class that cannot be instantiated directly and defines one or more abstract methods that
+subclasses must implement.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -665,9 +667,10 @@ An Abstract Base Class is a class that cannot be instantiated directly and defin
 
 ### Answer
 
-`@abstractmethod` marks a method that must be implemented by all concrete subclasses. Python prevents instantiation of subclasses that fail to implement these methods.
+`@abstractmethod` marks a method that must be implemented by all concrete subclasses. Python prevents instantiation of
+subclasses that fail to implement these methods.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -677,7 +680,7 @@ An Abstract Base Class is a class that cannot be instantiated directly and defin
 
 Use an ABC when multiple classes must follow the same interface and you want Python to enforce that contract at runtime.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -685,9 +688,10 @@ Use an ABC when multiple classes must follow the same interface and you want Pyt
 
 ### Answer
 
-Duck typing relies on an object's behaviour without requiring inheritance. ABCs explicitly define and enforce a shared interface. Duck typing offers flexibility, while ABCs provide stronger guarantees and clearer contracts.
+Duck typing relies on an object's behaviour without requiring inheritance. ABCs explicitly define and enforce a shared
+interface. Duck typing offers flexibility, while ABCs provide stronger guarantees and clearer contracts.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -753,7 +757,7 @@ Charging £75 via PayPal
 
 Now comment out one of the `pay()` implementations and observe the error when creating an instance.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -765,7 +769,7 @@ What is an Abstract Base Class?
 
 An Abstract Base Class defines a common interface for subclasses and cannot be instantiated directly.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -775,7 +779,7 @@ What does `@abstractmethod` do?
 
 It marks a method that every concrete subclass must implement before it can be instantiated.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -785,7 +789,7 @@ Can an abstract method contain code?
 
 Yes. An abstract method may include a partial implementation, but subclasses are still required to override it.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -793,9 +797,10 @@ Why are ABCs useful in large applications?
 
 ### Answer
 
-They enforce consistent interfaces, reduce implementation errors, and allow different components to be substituted without changing business logic.
+They enforce consistent interfaces, reduce implementation errors, and allow different components to be substituted
+without changing business logic.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -803,9 +808,10 @@ Should you always use ABCs instead of duck typing?
 
 ### Answer
 
-No. Duck typing is often sufficient for simple or highly dynamic code. ABCs are most valuable when explicit contracts and runtime enforcement improve maintainability.
+No. Duck typing is often sufficient for simple or highly dynamic code. ABCs are most valuable when explicit contracts
+and runtime enforcement improve maintainability.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -824,7 +830,7 @@ Implement:
 
 Calculate and print their areas.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -838,7 +844,7 @@ Implement:
 - `MySQLDatabase`
 - `PostgreSQLDatabase`
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -856,15 +862,16 @@ Each should implement:
 upload(file)
 ```
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
-Refactor one of your earlier composition examples so that the injected dependency is an Abstract Base Class instead of a concrete implementation.
+Refactor one of your earlier composition examples so that the injected dependency is an Abstract Base Class instead of a
+concrete implementation.
 
 Explain why this improves extensibility and testing.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -878,12 +885,11 @@ In this lesson, you learned:
 - ✅ Production uses such as repositories, payment gateways and storage providers.
 - ✅ Best practices for designing extensible object-oriented systems.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[18-Mixins](18-mixins.md)
+**File:** [18-Mixins](18-mixins.md)
 
 Topics:
 

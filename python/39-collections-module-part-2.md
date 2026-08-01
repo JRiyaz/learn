@@ -1,6 +1,7 @@
 # File: python/39-collections-module-part-2.md
 
 # Python Standard Library
+
 # Collections Module - Part 2: `namedtuple`, `OrderedDict`, `ChainMap`, `UserDict`, `UserList` & `UserString`
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 5 Hours
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -33,7 +34,7 @@
 - `namedtuple` remains useful, although many projects now prefer `dataclass` for mutable domain models.
 - `ChainMap` and the `User*` classes remain valuable in specialised scenarios.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -50,7 +51,7 @@ By the end of this lesson, you will understand:
 - Production use cases
 - Modern alternatives
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -64,7 +65,7 @@ These solve common data processing problems.
 
 Today we'll finish the `collections` module by looking at several specialised data structures.
 
----
+______________________________________________________________________
 
 # Choosing the Right Collection
 
@@ -81,7 +82,7 @@ Python provides many collection types because different problems require differe
 
 Choosing the correct data structure often simplifies both code and maintenance.
 
----
+______________________________________________________________________
 
 # `namedtuple`
 
@@ -107,7 +108,7 @@ What does index `0` represent?
 
 Nothing in the code tells us.
 
----
+______________________________________________________________________
 
 # Introducing `namedtuple`
 
@@ -136,7 +137,7 @@ Alice
 
 The code is immediately more readable.
 
----
+______________________________________________________________________
 
 # Tuple Behaviour
 
@@ -158,7 +159,7 @@ It remains:
 - Memory efficient
 - Hashable (when fields are hashable)
 
----
+______________________________________________________________________
 
 # Index Access Still Works
 
@@ -174,7 +175,7 @@ Output
 
 Field names simply provide a clearer interface.
 
----
+______________________________________________________________________
 
 # Useful Methods
 
@@ -210,7 +211,7 @@ User(name='Alice', age=31, role='Engineer')
 
 Notice that `_replace()` returns a **new** object because `namedtuple` is immutable.
 
----
+______________________________________________________________________
 
 # When Should You Use `namedtuple`?
 
@@ -222,7 +223,7 @@ Good use cases:
 - Database query results
 - Geographic coordinates
 
----
+______________________________________________________________________
 
 # When Should You Prefer `dataclass`?
 
@@ -235,7 +236,7 @@ If the object:
 
 a `dataclass` is usually a better choice.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -256,7 +257,7 @@ user = User(
 print(user.email)
 ```
 
----
+______________________________________________________________________
 
 # `OrderedDict`
 
@@ -270,7 +271,7 @@ Developers used
 from collections import OrderedDict
 ```
 
----
+______________________________________________________________________
 
 # Example
 
@@ -289,7 +290,7 @@ Today,
 
 a normal dictionary produces similar ordering behaviour.
 
----
+______________________________________________________________________
 
 # Does `OrderedDict` Still Matter?
 
@@ -327,7 +328,7 @@ OrderedDict([
 ])
 ```
 
----
+______________________________________________________________________
 
 # LRU Cache Concept
 
@@ -351,7 +352,7 @@ remove the oldest item.
 
 `OrderedDict` makes this simple.
 
----
+______________________________________________________________________
 
 # `ChainMap`
 
@@ -379,7 +380,7 @@ Instead,
 
 `ChainMap` lets us search several mappings without copying them.
 
----
+______________________________________________________________________
 
 # Creating a ChainMap
 
@@ -411,7 +412,7 @@ Output
 
 The first mapping wins.
 
----
+______________________________________________________________________
 
 # Search Order
 
@@ -433,7 +434,7 @@ Key Found
 
 No dictionary merging occurs.
 
----
+______________________________________________________________________
 
 # Updating Values
 
@@ -454,7 +455,7 @@ Output
 
 Assignments always affect the first mapping.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -484,7 +485,7 @@ Defaults
 
 Exactly what many backend applications require.
 
----
+______________________________________________________________________
 
 # `UserDict`
 
@@ -500,7 +501,7 @@ CPython's built-in types sometimes bypass overridden methods internally.
 
 The recommended approach is usually to inherit from `UserDict`.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -525,7 +526,7 @@ Output
 {'content-type': 'application/json'}
 ```
 
----
+______________________________________________________________________
 
 # Why `UserDict`?
 
@@ -541,7 +542,7 @@ rather than implementing everything in C like the built-in `dict`.
 
 This makes subclass behaviour more predictable.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -557,7 +558,7 @@ CONTENT-TYPE
 
 A custom dictionary can normalise keys automatically.
 
----
+______________________________________________________________________
 
 # `UserList`
 
@@ -590,7 +591,7 @@ numbers.append(10)
 numbers.append(20)
 ```
 
----
+______________________________________________________________________
 
 # `UserString`
 
@@ -615,7 +616,7 @@ Although possible,
 
 subclassing strings is relatively uncommon.
 
----
+______________________________________________________________________
 
 # Comparison
 
@@ -631,7 +632,7 @@ subclassing strings is relatively uncommon.
 | `UserList` | ⭐⭐☆☆☆ |
 | `UserString` | ⭐☆☆☆☆ |
 
----
+______________________________________________________________________
 
 # Time Complexity
 
@@ -642,7 +643,7 @@ subclassing strings is relatively uncommon.
 | `ChainMap` | O(number of mappings) | O(1) (first map) | O(1) (first map) |
 | `UserDict` | O(1) | O(1) | O(1) |
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -652,7 +653,7 @@ Using `OrderedDict` only to preserve insertion order.
 
 Modern dictionaries already preserve insertion order.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -660,7 +661,7 @@ Using `namedtuple` for complex domain objects.
 
 Use `dataclass` when mutability or methods are needed.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -670,7 +671,7 @@ If you only need layered lookups,
 
 consider `ChainMap`.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -678,7 +679,7 @@ Subclassing `dict` directly when extensive customisation is required.
 
 `UserDict` is often easier and more predictable.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -694,7 +695,7 @@ Subclassing `dict` directly when extensive customisation is required.
 
 ❌ Don't use `namedtuple` when objects need validation or mutable state.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -725,7 +726,7 @@ These structures appear in specialised backend scenarios.
 
 Senior engineers know these tools exist—even if they use them less frequently than `deque`, `Counter`, or `defaultdict`.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -735,9 +736,10 @@ Senior engineers know these tools exist—even if they use them less frequently 
 
 ### Answer
 
-When the data has named fields and represents a fixed immutable record. Named fields improve readability while preserving tuple performance.
+When the data has named fields and represents a fixed immutable record. Named fields improve readability while
+preserving tuple performance.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -745,9 +747,10 @@ When the data has named fields and represents a fixed immutable record. Named fi
 
 ### Answer
 
-Not entirely. Normal dictionaries preserve insertion order, but `OrderedDict` still provides specialised ordering operations such as `move_to_end()` that are useful for algorithms like LRU caches.
+Not entirely. Normal dictionaries preserve insertion order, but `OrderedDict` still provides specialised ordering
+operations such as `move_to_end()` that are useful for algorithms like LRU caches.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -757,7 +760,7 @@ Not entirely. Normal dictionaries preserve insertion order, but `OrderedDict` st
 
 It provides a single view across multiple mappings, searching each in order without copying or merging dictionaries.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -765,9 +768,10 @@ It provides a single view across multiple mappings, searching each in order with
 
 ### Answer
 
-`UserDict` is implemented in Python and stores data in an internal dictionary, making custom behaviour easier and more predictable than subclassing the built-in `dict`.
+`UserDict` is implemented in Python and stores data in an internal dictionary, making custom behaviour easier and more
+predictable than subclassing the built-in `dict`.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -777,7 +781,7 @@ It provides a single view across multiple mappings, searching each in order with
 
 Use a `dataclass` when objects need mutability, validation, methods, inheritance, or more complex business logic.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -848,7 +852,7 @@ alice@example.com
 {'content-type': 'application/json'}
 ```
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -860,7 +864,7 @@ When should you use a `namedtuple`?
 
 For lightweight immutable records with named fields, especially when readability is more important than raw tuples.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -870,7 +874,7 @@ Why is `OrderedDict` less common today?
 
 Because Python 3.7+ guarantees insertion order for normal dictionaries, eliminating its primary historical purpose.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -880,7 +884,7 @@ What problem does `ChainMap` solve?
 
 It allows multiple mappings to be searched as a single logical mapping without creating merged copies.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -890,7 +894,7 @@ Why use `UserDict`?
 
 To implement custom dictionary behaviour more predictably than subclassing the built-in `dict`.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -900,7 +904,7 @@ When should you use a `dataclass` instead of a `namedtuple`?
 
 When the object requires mutable fields, methods, validation, inheritance, or business logic.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -914,7 +918,7 @@ Support:
 - Case-insensitive insertion
 - Normal dictionary interface
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -926,13 +930,13 @@ Create an application configuration loader using `ChainMap` with:
 
 Demonstrate how precedence works.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
 Replace tuple-based database query results with `namedtuple` objects and compare the readability of the resulting code.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -945,7 +949,7 @@ Support:
 - Maximum cache size
 - Automatic eviction of the least recently used item
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -960,7 +964,7 @@ In this lesson, you learned:
 - ✅ Performance trade-offs.
 - ✅ Senior backend interview topics.
 
----
+______________________________________________________________________
 
 # Module Summary – Built-in Types & Collections
 
@@ -974,14 +978,15 @@ Over Lessons **29–39**, you've developed a deep understanding of Python's core
 - Numeric types and precision
 - The `collections` module
 
-This knowledge forms the foundation for writing efficient, production-grade Python code. Understanding the internal behaviour of these data structures will help you make informed design decisions, optimise performance, and write cleaner backend applications.
+This knowledge forms the foundation for writing efficient, production-grade Python code. Understanding the internal
+behaviour of these data structures will help you make informed design decisions, optimise performance, and write cleaner
+backend applications.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[40-Algorithms-With-Python-Collections](40-algorithms-with-python-collections.md)
+**File:** [40-Algorithms-With-Python-Collections](40-algorithms-with-python-collections.md)
 
 Topics:
 

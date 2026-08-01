@@ -1,6 +1,7 @@
 # File: python/21-slots.md
 
 # Python Advanced - Lesson 21
+
 # `__slots__` - Optimising Memory and Controlling Object Attributes
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 100 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -28,7 +29,7 @@ By the end of this lesson, you will understand:
 - Dataclasses with slots
 - Production use cases
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -50,7 +51,7 @@ Unlike descriptors, `__slots__` is primarily about:
 - Preventing accidental attributes
 - Controlling object layout
 
----
+______________________________________________________________________
 
 # The Problem
 
@@ -76,7 +77,7 @@ Everything looks normal.
 
 But internally, Python stores attributes in a dictionary.
 
----
+______________________________________________________________________
 
 # Every Object Has a __dict__
 
@@ -110,7 +111,7 @@ User Object
 +----------------------+
 ```
 
----
+______________________________________________________________________
 
 # Why Use a Dictionary?
 
@@ -140,7 +141,7 @@ Output
 
 Python allows this because attributes are stored in a dictionary.
 
----
+______________________________________________________________________
 
 # The Cost of Flexibility
 
@@ -177,7 +178,7 @@ may create millions of objects.
 
 Saving even a small amount of memory per object becomes significant.
 
----
+______________________________________________________________________
 
 # Enter __slots__
 
@@ -209,7 +210,7 @@ Internally,
 
 it's very different.
 
----
+______________________________________________________________________
 
 # What Changed?
 
@@ -261,7 +262,7 @@ age
 
 No instance dictionary is created.
 
----
+______________________________________________________________________
 
 # Checking __dict__
 
@@ -278,7 +279,7 @@ AttributeError:
 
 The dictionary no longer exists.
 
----
+______________________________________________________________________
 
 # Dynamic Attributes Are Gone
 
@@ -305,7 +306,7 @@ AttributeError:
 
 Only declared attributes are allowed.
 
----
+______________________________________________________________________
 
 # Why Does This Save Memory?
 
@@ -343,7 +344,7 @@ Attribute
 
 Python avoids creating and managing a dictionary for every object.
 
----
+______________________________________________________________________
 
 # Memory Comparison
 
@@ -375,7 +376,7 @@ Fixed Attribute Storage
 
 Memory savings can be substantial, although the exact amount depends on the Python version and the number of attributes.
 
----
+______________________________________________________________________
 
 # Does __slots__ Improve Speed?
 
@@ -395,7 +396,7 @@ You should choose `__slots__` because of memory efficiency and attribute control
 
 not because you expect major performance gains.
 
----
+______________________________________________________________________
 
 # Using Multiple Slots
 
@@ -415,7 +416,7 @@ class Employee:
 
 These are now the only permitted instance attributes.
 
----
+______________________________________________________________________
 
 # Inheritance Without Slots
 
@@ -450,7 +451,7 @@ Python automatically gives it a `__dict__`.
 
 The optimisation is lost.
 
----
+______________________________________________________________________
 
 # Inheritance With Slots
 
@@ -493,7 +494,7 @@ raises
 AttributeError
 ```
 
----
+______________________________________________________________________
 
 # Empty Slots
 
@@ -513,7 +514,7 @@ but still wants to prevent Python from creating a `__dict__`.
 
 This preserves the parent's slot optimisation.
 
----
+______________________________________________________________________
 
 # Weak References
 
@@ -557,7 +558,7 @@ Most applications never need this,
 
 but libraries often do.
 
----
+______________________________________________________________________
 
 # Slots and Dataclasses
 
@@ -579,7 +580,7 @@ Python automatically creates the appropriate slots.
 
 This is the recommended approach when using dataclasses in memory-sensitive applications.
 
----
+______________________________________________________________________
 
 # Slots and Descriptors
 
@@ -613,7 +614,7 @@ class Product:
 
 Descriptors and slots work together perfectly.
 
----
+______________________________________________________________________
 
 # When Should You Use __slots__?
 
@@ -634,7 +635,7 @@ Poor candidates
 - Rapid prototyping
 - Code that heavily relies on `__dict__`
 
----
+______________________________________________________________________
 
 # Production Example - Game Engine
 
@@ -665,7 +666,7 @@ class Bullet:
     )
 ```
 
----
+______________________________________________________________________
 
 # Production Example - Market Data
 
@@ -686,7 +687,7 @@ class Tick:
 
 Reducing per-object memory allows more market data to remain in memory simultaneously.
 
----
+______________________________________________________________________
 
 # Production Example - Backend APIs
 
@@ -707,7 +708,7 @@ class UserRecord:
 
 Memory savings can reduce garbage collection pressure and improve overall throughput.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -717,7 +718,7 @@ Using slots everywhere.
 
 Most applications won't benefit.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -725,7 +726,7 @@ Expecting dramatic speed improvements.
 
 Memory savings are the primary advantage.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -739,7 +740,7 @@ class Child(Parent):
 
 This silently reintroduces `__dict__`.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -747,7 +748,7 @@ Forgetting `__weakref__`
 
 Library code that relies on weak references may stop working.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -763,7 +764,7 @@ Library code that relies on weak references may stop working.
 
 ❌ Don't use slots if dynamic attributes are required.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -786,7 +787,7 @@ Where `__slots__` shines is in systems that create **millions** of lightweight o
 
 Always profile your application before introducing memory optimisations.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -796,9 +797,10 @@ Always profile your application before introducing memory optimisations.
 
 ### Answer
 
-`__slots__` reduces per-instance memory usage by preventing Python from creating an instance `__dict__` and by storing attributes in fixed locations.
+`__slots__` reduces per-instance memory usage by preventing Python from creating an instance `__dict__` and by storing
+attributes in fixed locations.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -808,7 +810,7 @@ Always profile your application before introducing memory optimisations.
 
 No. Only attributes listed in `__slots__` may be assigned unless the class also defines a `__dict__`.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -816,9 +818,10 @@ No. Only attributes listed in `__slots__` may be assigned unless the class also 
 
 ### Answer
 
-It may provide a small improvement in attribute access, but its primary benefit is reduced memory usage and preventing accidental attribute creation.
+It may provide a small improvement in attribute access, but its primary benefit is reduced memory usage and preventing
+accidental attribute creation.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -826,9 +829,10 @@ It may provide a small improvement in attribute access, but its primary benefit 
 
 ### Answer
 
-Python creates an instance `__dict__` for the subclass, which removes most of the memory optimisation provided by the parent class.
+Python creates an instance `__dict__` for the subclass, which removes most of the memory optimisation provided by the
+parent class.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -889,7 +893,7 @@ Product(name='Keyboard', price=49.99)
 
 Now remove `__slots__` from `User` and observe how adding `country` succeeds.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -899,9 +903,10 @@ What is `__slots__`?
 
 ### Answer
 
-`__slots__` is a class attribute that defines a fixed set of allowed instance attributes, reducing memory usage by eliminating the instance `__dict__`.
+`__slots__` is a class attribute that defines a fixed set of allowed instance attributes, reducing memory usage by
+eliminating the instance `__dict__`.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -911,7 +916,7 @@ Why does `__slots__` reduce memory usage?
 
 Because Python stores attribute values in fixed locations instead of allocating a separate dictionary for every object.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -921,7 +926,7 @@ Does every class benefit from `__slots__`?
 
 No. It is most useful for classes with many instances where memory consumption is significant.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -929,9 +934,10 @@ Why might a subclass lose the benefits of `__slots__`?
 
 ### Answer
 
-If the subclass doesn't define its own `__slots__`, Python creates an instance `__dict__`, reintroducing the memory overhead.
+If the subclass doesn't define its own `__slots__`, Python creates an instance `__dict__`, reintroducing the memory
+overhead.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -939,9 +945,10 @@ Can `@property` be used with `__slots__`?
 
 ### Answer
 
-Yes. Properties are descriptors and work normally with slotted classes as long as the underlying storage attribute is included in `__slots__`.
+Yes. Properties are descriptors and work normally with slotted classes as long as the underlying storage attribute is
+included in `__slots__`.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -956,7 +963,7 @@ Use `__slots__`.
 
 Verify that adding a `colour` attribute raises an exception.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -969,7 +976,7 @@ Both should use `__slots__`.
 
 Ensure `Car` adds only one new attribute without reintroducing `__dict__`.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -981,13 +988,14 @@ Rewrite one of your previous dataclass examples using:
 
 Explain what changed.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
-Research a Python library you use (such as SQLAlchemy, NumPy or Pydantic) and investigate whether it uses `__slots__` internally. Summarise why it does—or why it doesn't.
+Research a Python library you use (such as SQLAlchemy, NumPy or Pydantic) and investigate whether it uses `__slots__`
+internally. Summarise why it does—or why it doesn't.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1001,12 +1009,11 @@ In this lesson, you learned:
 - ✅ How `@dataclass(slots=True)` simplifies usage.
 - ✅ When `__slots__` is beneficial in production systems.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[22-New-and-Metaclasses](22-new-and-metaclasses.md)
+**File:** [22-New-and-Metaclasses](22-new-and-metaclasses.md)
 
 Topics:
 

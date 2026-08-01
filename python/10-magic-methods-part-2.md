@@ -1,6 +1,7 @@
 # File: python/10-magic-methods-part-2.md
 
 # Python Advanced - Lesson 10 (Part 2)
+
 # Magic Methods - Customising Object Behaviour
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 90 Minutes
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -30,7 +31,7 @@ By the end of this lesson, you will understand:
 - Production use cases
 - Common interview questions
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -60,7 +61,7 @@ Now we'll learn how Python decides:
 - How objects are compared
 - How operators like `+` work
 
----
+______________________________________________________________________
 
 # __str__() — Human-Friendly Representation
 
@@ -89,7 +90,7 @@ Not very useful.
 
 Python doesn't know how to display your object.
 
----
+______________________________________________________________________
 
 # Defining __str__()
 
@@ -119,7 +120,7 @@ User(name=Alice)
 
 Much more readable.
 
----
+______________________________________________________________________
 
 # When is __str__() Called?
 
@@ -141,7 +142,7 @@ user.__str__()
 
 directly.
 
----
+______________________________________________________________________
 
 # __repr__() — Developer Representation
 
@@ -164,7 +165,7 @@ Without `__repr__()`:
 
 Not helpful.
 
----
+______________________________________________________________________
 
 # Defining __repr__()
 
@@ -197,7 +198,7 @@ Output
 [User(name='Alice'), User(name='Bob')]
 ```
 
----
+______________________________________________________________________
 
 # __str__() vs __repr__()
 
@@ -233,7 +234,7 @@ Hello Alice
 User(name='Alice')
 ```
 
----
+______________________________________________________________________
 
 # When Should You Use Each?
 
@@ -250,7 +251,7 @@ Use `__repr__()` for:
 - Interactive shell
 - Logging collections
 
----
+______________________________________________________________________
 
 # __len__()
 
@@ -290,7 +291,7 @@ Output
 3
 ```
 
----
+______________________________________________________________________
 
 # __bool__()
 
@@ -336,7 +337,7 @@ Output
 Account has funds
 ```
 
----
+______________________________________________________________________
 
 # __eq__()
 
@@ -367,7 +368,7 @@ Why?
 
 Because Python compares object identity by default.
 
----
+______________________________________________________________________
 
 # Custom Equality
 
@@ -395,7 +396,7 @@ Output
 True
 ```
 
----
+______________________________________________________________________
 
 # Comparison Magic Methods
 
@@ -432,7 +433,7 @@ Output
 True
 ```
 
----
+______________________________________________________________________
 
 # __hash__()
 
@@ -455,13 +456,14 @@ class User:
         return hash(self.id)
 ```
 
-Now objects with the same identifier can participate correctly in hash-based collections when combined with a compatible `__eq__()` implementation.
+Now objects with the same identifier can participate correctly in hash-based collections when combined with a compatible
+`__eq__()` implementation.
 
 A key rule:
 
 > If you override `__eq__()`, you should also consider whether you need a matching `__hash__()` implementation. Objects that compare equal should produce the same hash value.
 
----
+______________________________________________________________________
 
 # Operator Overloading
 
@@ -514,7 +516,7 @@ Python internally performs something similar to:
 wallet.__add__(bonus)
 ```
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -556,7 +558,7 @@ Numeric Types
 
 Libraries such as NumPy overload operators so mathematical expressions behave naturally.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -578,7 +580,7 @@ user1 + user2
 
 only makes sense if adding two users has a clear meaning.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -588,9 +590,11 @@ only makes sense if adding two users has a clear meaning.
 
 ### Answer
 
-`__str__()` provides a human-readable representation intended for end users, while `__repr__()` provides a developer-focused representation useful for debugging and interactive sessions. If `__str__()` is not implemented, Python falls back to `__repr__()`.
+`__str__()` provides a human-readable representation intended for end users, while `__repr__()` provides a
+developer-focused representation useful for debugging and interactive sessions. If `__str__()` is not implemented,
+Python falls back to `__repr__()`.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -598,9 +602,10 @@ only makes sense if adding two users has a clear meaning.
 
 ### Answer
 
-Hash-based collections such as dictionaries and sets rely on equal objects having identical hash values. If objects compare equal but have different hashes, collection behaviour becomes inconsistent.
+Hash-based collections such as dictionaries and sets rely on equal objects having identical hash values. If objects
+compare equal but have different hashes, collection behaviour becomes inconsistent.
 
----
+______________________________________________________________________
 
 ### Questions
 
@@ -608,9 +613,10 @@ Hash-based collections such as dictionaries and sets rely on equal objects havin
 
 ### Answer
 
-Operator overloading allows custom objects to define the behaviour of operators such as `+`, `-` and `<` by implementing the corresponding magic methods like `__add__()` and `__lt__()`.
+Operator overloading allows custom objects to define the behaviour of operators such as `+`, `-` and `<` by implementing
+the corresponding magic methods like `__add__()` and `__lt__()`.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -666,7 +672,7 @@ False
 True
 ```
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -678,7 +684,7 @@ What is the purpose of `__str__()`?
 
 It provides a human-readable string representation of an object, typically used by `print()` and `str()`.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -688,7 +694,7 @@ When is `__repr__()` used?
 
 It is used for debugging, interactive sessions and as the fallback representation when `__str__()` is not implemented.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -698,7 +704,7 @@ What does `__len__()` do?
 
 It defines the value returned by the built-in `len()` function for an object.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -708,7 +714,7 @@ Why is `__bool__()` useful?
 
 It allows a class to define when its instances should evaluate to `True` or `False` in Boolean contexts.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -716,9 +722,10 @@ What is operator overloading?
 
 ### Answer
 
-Operator overloading allows custom classes to define how operators such as `+`, `-`, `<` and `==` behave by implementing the corresponding magic methods.
+Operator overloading allows custom classes to define how operators such as `+`, `-`, `<` and `==` behave by implementing
+the corresponding magic methods.
 
----
+______________________________________________________________________
 
 ## Question 6
 
@@ -726,9 +733,10 @@ Why should `__eq__()` and `__hash__()` be consistent?
 
 ### Answer
 
-Because dictionaries and sets rely on equal objects producing the same hash value. Violating this rule can lead to incorrect behaviour in hash-based collections.
+Because dictionaries and sets rely on equal objects producing the same hash value. Violating this rule can lead to
+incorrect behaviour in hash-based collections.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -738,7 +746,7 @@ Create a `Book` class with custom `__str__()` and `__repr__()` methods.
 
 Print a single object and a list of objects to observe the difference.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -746,7 +754,7 @@ Create a `ShoppingCart` class that implements `__len__()`.
 
 Return the number of products in the cart.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -754,7 +762,7 @@ Create a `Wallet` class that overloads the `+` operator using `__add__()`.
 
 Adding two wallets should return a new wallet containing the combined balance.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
@@ -762,7 +770,7 @@ Create a `Student` class that compares students by GPA using `__lt__()`.
 
 Sort a list of students using the built-in `sorted()` function.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -777,12 +785,11 @@ In this lesson, you learned:
 - ✅ How operator overloading makes custom classes behave like built-in types.
 - ✅ Production best practices for implementing magic methods.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[11-Dataclasses](11-dataclasses.md)
+**File:** [11-Dataclasses](11-dataclasses.md)
 
 Topics:
 
@@ -796,4 +803,5 @@ Topics:
 - Dataclass Inheritance
 - Production Examples
 
+```
 ```

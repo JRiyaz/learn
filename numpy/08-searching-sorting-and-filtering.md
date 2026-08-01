@@ -2,7 +2,7 @@
 
 **Python Version Introduced:** Python 3.x
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -19,7 +19,7 @@ By the end of this lesson, you will be able to:
 - Insert values into sorted arrays using `searchsorted()`.
 - Understand performance characteristics of searching and sorting operations.
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -48,7 +48,7 @@ This lesson answers questions like:
 - How do I sort the data?
 - Which values are unique?
 
----
+______________________________________________________________________
 
 # Why Searching & Sorting Matter
 
@@ -66,7 +66,7 @@ These are everyday data-processing tasks.
 
 NumPy provides optimized functions for all of them.
 
----
+______________________________________________________________________
 
 # Searching vs Filtering vs Sorting
 
@@ -80,7 +80,7 @@ Although these terms are often used together, they solve different problems.
 
 Understanding the distinction makes code easier to read and maintain.
 
----
+______________________________________________________________________
 
 # `sort()`
 
@@ -88,7 +88,7 @@ Understanding the distinction makes code easier to read and maintain.
 
 Returns a sorted copy of an array.
 
----
+______________________________________________________________________
 
 ## Syntax
 
@@ -102,7 +102,7 @@ or
 array.sort()
 ```
 
----
+______________________________________________________________________
 
 ## Parameters
 
@@ -110,7 +110,7 @@ array.sort()
 |-----------|-------------|
 | `axis` | Axis along which to sort |
 
----
+______________________________________________________________________
 
 ## Return Value
 
@@ -118,7 +118,7 @@ array.sort()
 
 `array.sort()` sorts the array **in place** and returns `None`.
 
----
+______________________________________________________________________
 
 ## Example
 
@@ -144,7 +144,7 @@ Original array
 
 remains unchanged.
 
----
+______________________________________________________________________
 
 # In-Place Sorting
 
@@ -164,7 +164,7 @@ Output
 
 The original array has changed.
 
----
+______________________________________________________________________
 
 # Sorting Along an Axis
 
@@ -190,7 +190,7 @@ Output
  [4 5 6]]
 ```
 
----
+______________________________________________________________________
 
 Sort each column.
 
@@ -207,7 +207,7 @@ Output
 
 Each column is sorted independently.
 
----
+______________________________________________________________________
 
 # Descending Order
 
@@ -225,7 +225,7 @@ Output
 [8 6 5 3 1]
 ```
 
----
+______________________________________________________________________
 
 # `argsort()`
 
@@ -233,7 +233,7 @@ Output
 
 Returns the indices that would sort an array.
 
----
+______________________________________________________________________
 
 ## Syntax
 
@@ -241,7 +241,7 @@ Returns the indices that would sort an array.
 np.argsort(array)
 ```
 
----
+______________________________________________________________________
 
 ## Example
 
@@ -267,7 +267,7 @@ scores[2] = 85
 scores[0] = 90
 ```
 
----
+______________________________________________________________________
 
 ## Why is this useful?
 
@@ -304,7 +304,7 @@ Output
 
 This is a common technique when sorting related datasets.
 
----
+______________________________________________________________________
 
 # `unique()`
 
@@ -312,7 +312,7 @@ This is a common technique when sorting related datasets.
 
 Returns the unique values in an array.
 
----
+______________________________________________________________________
 
 ## Syntax
 
@@ -320,7 +320,7 @@ Returns the unique values in an array.
 np.unique(array)
 ```
 
----
+______________________________________________________________________
 
 ## Example
 
@@ -342,7 +342,7 @@ Duplicates are removed.
 
 The output is sorted.
 
----
+______________________________________________________________________
 
 ## Production Usage
 
@@ -353,7 +353,7 @@ Removing duplicate:
 - Categories
 - Labels
 
----
+______________________________________________________________________
 
 # `where()`
 
@@ -361,7 +361,7 @@ Removing duplicate:
 
 Returns values or indices based on a condition.
 
----
+______________________________________________________________________
 
 ## Syntax
 
@@ -375,7 +375,7 @@ or
 np.where(condition, x, y)
 ```
 
----
+______________________________________________________________________
 
 ## Example 1
 
@@ -393,7 +393,7 @@ Output
 (array([2,3]),)
 ```
 
----
+______________________________________________________________________
 
 ## Example 2
 
@@ -433,7 +433,7 @@ Else
 0
 ```
 
----
+______________________________________________________________________
 
 # `nonzero()`
 
@@ -441,7 +441,7 @@ Else
 
 Returns the indices of non-zero elements.
 
----
+______________________________________________________________________
 
 ## Syntax
 
@@ -449,7 +449,7 @@ Returns the indices of non-zero elements.
 np.nonzero(array)
 ```
 
----
+______________________________________________________________________
 
 ## Example
 
@@ -473,7 +473,7 @@ Useful for:
 - Image processing
 - Mask generation
 
----
+______________________________________________________________________
 
 # `any()`
 
@@ -481,7 +481,7 @@ Useful for:
 
 Returns `True` if **at least one** element satisfies the condition.
 
----
+______________________________________________________________________
 
 Example.
 
@@ -497,7 +497,7 @@ Output
 True
 ```
 
----
+______________________________________________________________________
 
 # `all()`
 
@@ -505,7 +505,7 @@ True
 
 Returns `True` only if **every** element satisfies the condition.
 
----
+______________________________________________________________________
 
 Example.
 
@@ -531,7 +531,7 @@ Output
 False
 ```
 
----
+______________________________________________________________________
 
 # `isin()`
 
@@ -539,7 +539,7 @@ False
 
 Checks membership.
 
----
+______________________________________________________________________
 
 ## Syntax
 
@@ -547,7 +547,7 @@ Checks membership.
 np.isin(array, values)
 ```
 
----
+______________________________________________________________________
 
 ## Example
 
@@ -570,7 +570,7 @@ Output
 
 Very useful for filtering categories or IDs.
 
----
+______________________________________________________________________
 
 # `searchsorted()`
 
@@ -578,7 +578,7 @@ Very useful for filtering categories or IDs.
 
 Finds the insertion position that keeps a sorted array ordered.
 
----
+______________________________________________________________________
 
 ## Syntax
 
@@ -586,7 +586,7 @@ Finds the insertion position that keeps a sorted array ordered.
 np.searchsorted(sorted_array, value)
 ```
 
----
+______________________________________________________________________
 
 ## Example
 
@@ -616,7 +616,7 @@ should be inserted before
 30
 ```
 
----
+______________________________________________________________________
 
 ## Real-World Usage
 
@@ -627,25 +627,18 @@ Applications include:
 - Maintaining sorted logs
 - Financial order books
 
----
+______________________________________________________________________
 
 # Performance Notes
 
-Operation | Average Complexity | Output
-----------|-------------------|-------
-sort() | O(n log n) | Sorted array
-argsort() | O(n log n) | Indices
-unique() | O(n log n)* | Unique values
-where() | O(n) | Indices or values
-nonzero() | O(n) | Indices
-any() | O(n) | Boolean
-all() | O(n) | Boolean
-isin() | O(n + m) (conceptually) | Boolean mask
+Operation | Average Complexity | Output ----------|-------------------|------- sort() | O(n log n) | Sorted array
+argsort() | O(n log n) | Indices unique() | O(n log n)\* | Unique values where() | O(n) | Indices or values nonzero() |
+O(n) | Indices any() | O(n) | Boolean all() | O(n) | Boolean isin() | O(n + m) (conceptually) | Boolean mask
 searchsorted() | O(log n) | Insertion index
 
 \*`unique()` typically sorts internally to produce sorted unique values.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -665,7 +658,7 @@ argsort()
 
 returns indices.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -673,7 +666,7 @@ Expecting `array.sort()` to return a new array.
 
 It modifies the original array and returns `None`.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -695,7 +688,7 @@ Good
 result = arr[arr > 20]
 ```
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -713,7 +706,7 @@ Prefer
 np.isin(arr,[2,5])
 ```
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -724,7 +717,7 @@ np.isin(arr,[2,5])
 - Use `searchsorted()` for efficient insertion into sorted arrays.
 - Use `any()` and `all()` for concise validation checks.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -739,9 +732,10 @@ Examples include:
 - Maintaining ranked recommendation lists.
 - Building preprocessing pipelines for machine learning.
 
-These operations are often applied to millions of records, making NumPy's optimized implementations far more efficient than Python loops.
+These operations are often applied to millions of records, making NumPy's optimized implementations far more efficient
+than Python loops.
 
----
+______________________________________________________________________
 
 ```markdown id="n4q8wx"
 # Questions
@@ -785,7 +779,7 @@ It returns elements from `x` where the condition is `True` and elements from `y`
 It returns the sorted unique values from an array.
 ```
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -800,16 +794,16 @@ scores = np.array([
 Perform these tasks:
 
 1. Sort the scores in ascending order.
-2. Sort them in descending order.
-3. Find the indices that would sort the array.
-4. Remove duplicate scores.
-5. Find the indices of scores greater than 85 using `where()`.
-6. Replace all scores below 75 with `0` using `where()`.
-7. Check whether the scores contain `95` and `100` using `isin()`.
-8. Determine where a new score of `87` should be inserted using `searchsorted()`.
-9. Verify whether all scores are above 50 and whether any score is above 90.
+1. Sort them in descending order.
+1. Find the indices that would sort the array.
+1. Remove duplicate scores.
+1. Find the indices of scores greater than 85 using `where()`.
+1. Replace all scores below 75 with `0` using `where()`.
+1. Check whether the scores contain `95` and `100` using `isin()`.
+1. Determine where a new score of `87` should be inserted using `searchsorted()`.
+1. Verify whether all scores are above 50 and whether any score is above 90.
 
----
+______________________________________________________________________
 
 ```markdown id="c7v5lp"
 # Knowledge Check
@@ -893,29 +887,32 @@ Why is `argsort()` useful when working with multiple related arrays?
 Because it allows the same sorted index order to be applied to other arrays, keeping related data aligned.
 ```
 
----
+______________________________________________________________________
 
 # Assignment
 
 1. Generate an array of 100 random integers between 1 and 100.
-2. Perform the following operations:
+1. Perform the following operations:
    - Sort the array in ascending and descending order.
    - Remove duplicate values.
    - Find all values greater than 75.
    - Replace values below 25 with `-1` using `where()`.
    - Determine whether all values are positive.
    - Check whether any values exceed 95.
-3. Create a second array containing labels (for example, `"A"`, `"B"`, `"C"`, ...) corresponding to the numbers.
-4. Use `argsort()` to sort both arrays while preserving the relationship between values and labels.
-5. Insert several new values into the sorted array conceptually using `searchsorted()` and explain why binary search makes this operation efficient.
+1. Create a second array containing labels (for example, `"A"`, `"B"`, `"C"`, ...) corresponding to the numbers.
+1. Use `argsort()` to sort both arrays while preserving the relationship between values and labels.
+1. Insert several new values into the sorted array conceptually using `searchsorted()` and explain why binary search makes this operation efficient.
 
----
+______________________________________________________________________
 
 # Summary
 
-In this lesson, you learned how to search, sort, and filter data efficiently using NumPy. You explored `sort()`, `argsort()`, `unique()`, `where()`, `nonzero()`, `any()`, `all()`, `isin()`, and `searchsorted()`, while understanding their performance characteristics and practical applications. These operations are fundamental for preparing data for analysis, reporting, and machine learning.
+In this lesson, you learned how to search, sort, and filter data efficiently using NumPy. You explored `sort()`,
+`argsort()`, `unique()`, `where()`, `nonzero()`, `any()`, `all()`, `isin()`, and `searchsorted()`, while understanding
+their performance characteristics and practical applications. These operations are fundamental for preparing data for
+analysis, reporting, and machine learning.
 
----
+______________________________________________________________________
 
 # Next Lesson
 

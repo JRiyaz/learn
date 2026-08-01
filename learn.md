@@ -2,11 +2,12 @@
 
 > Comprehensive roadmap covering Python, backend engineering, databases, distributed systems, software design, security, DevOps, and system design.
 
----
+______________________________________________________________________
 
 # 1. Python
 
 ## Core Python
+
 - Variables
 - Data Types
 - Operators
@@ -19,6 +20,7 @@
 - OOP Basics
 
 ## Advanced Python
+
 - Decorators
 - Closures
 - Generators
@@ -46,7 +48,7 @@
 - Virtual Environments
 - Dependency Management
 
----
+______________________________________________________________________
 
 # 2. Object-Oriented Programming (OOP)
 
@@ -59,7 +61,7 @@
 - Aggregation
 - Dependency Injection
 
----
+______________________________________________________________________
 
 # 3. SOLID Principles
 
@@ -69,7 +71,7 @@
 - Interface Segregation Principle (ISP)
 - Dependency Inversion Principle (DIP)
 
----
+______________________________________________________________________
 
 # 4. Software Engineering Principles
 
@@ -89,7 +91,7 @@
 - Immutability
 - Convention over Configuration
 
----
+______________________________________________________________________
 
 # 5. Design Patterns (Gang of Four)
 
@@ -125,7 +127,7 @@
 - Iterator
 - Interpreter
 
----
+______________________________________________________________________
 
 # 6. Data Structures
 
@@ -147,7 +149,7 @@
 - Graphs
 - Disjoint Set (Union Find)
 
----
+______________________________________________________________________
 
 # 7. Algorithms
 
@@ -183,7 +185,7 @@
 - Monotonic Stack
 - Monotonic Queue
 
----
+______________________________________________________________________
 
 # 8. SQL
 
@@ -256,7 +258,7 @@
 - Normalization
 - Denormalization
 
----
+______________________________________________________________________
 
 # 9. SQLAlchemy
 
@@ -277,7 +279,7 @@
 - Alembic
 - Migrations
 
----
+______________________________________________________________________
 
 # 10. FastAPI
 
@@ -305,7 +307,7 @@
 - OpenAPI
 - Swagger
 
----
+______________________________________________________________________
 
 # 11. REST API Design
 
@@ -323,7 +325,7 @@
 - Idempotency
 - API Documentation
 
----
+______________________________________________________________________
 
 # 12. Docker
 
@@ -345,7 +347,7 @@
 - CMD
 - Resource Limits
 
----
+______________________________________________________________________
 
 # 13. Git
 
@@ -367,7 +369,7 @@
 - Branching Strategy
 - Conflict Resolution
 
----
+______________________________________________________________________
 
 # 14. Redis
 
@@ -389,7 +391,7 @@
 - Session Storage
 - Eviction Policies
 
----
+______________________________________________________________________
 
 # 15. Kafka
 
@@ -412,7 +414,7 @@
 - DLQ
 - Schema Registry
 
----
+______________________________________________________________________
 
 # 16. Microservices
 
@@ -452,7 +454,7 @@
 - Correlation ID
 - Distributed Tracing
 
----
+______________________________________________________________________
 
 # 17. System Design
 
@@ -488,7 +490,7 @@
 - Rate Limiter
 - Distributed Cache
 
----
+______________________________________________________________________
 
 # 18. Security (OWASP Top 10)
 
@@ -519,7 +521,7 @@
 - API Keys
 - Rate Limiting
 
----
+______________________________________________________________________
 
 # 19. Testing
 
@@ -534,7 +536,7 @@
 - Test Coverage
 - Contract Testing
 
----
+______________________________________________________________________
 
 # 20. CI/CD
 
@@ -549,7 +551,7 @@
 - Canary Deployment
 - Feature Flags
 
----
+______________________________________________________________________
 
 # 21. Observability
 
@@ -564,7 +566,7 @@
 - Prometheus
 - Grafana
 
----
+______________________________________________________________________
 
 # 22. Performance Engineering
 
@@ -580,7 +582,7 @@
 - Load Testing
 - Stress Testing
 
----
+______________________________________________________________________
 
 # 23. Linux
 
@@ -606,7 +608,7 @@
 - chmod
 - chown
 
----
+______________________________________________________________________
 
 # 24. Networking
 
@@ -625,7 +627,7 @@
 - REST
 - gRPC
 
----
+______________________________________________________________________
 
 # 25. Cloud (Recommended)
 
@@ -640,7 +642,7 @@
 - EKS (Overview)
 - CloudWatch
 
----
+______________________________________________________________________
 
 # 26. Behavioral Interview
 
@@ -653,32 +655,37 @@
 - Success Stories
 - STAR Method
 
----
+______________________________________________________________________
 
 # 27. Senior-Level Interview Practice
 
 ## Coding
+
 - LeetCode Medium
 - LeetCode Hard
 - DSA Patterns
 
 ## SQL
+
 - Window Functions
 - Query Optimization
 - Database Design
 
 ## System Design
+
 - End-to-End Architecture
 - Scaling
 - Trade-offs
 
 ## Backend
+
 - API Design
 - Performance
 - Caching
 - Concurrency
 
 ## Mock Interviews
+
 - Coding Interview
 - SQL Interview
 - Backend Interview

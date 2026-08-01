@@ -1,6 +1,7 @@
 # File: python/64-production-python-part-10-dependency-injection.md
 
 # Production Python
+
 # Part 9: Dependency Injection – Building Loosely Coupled and Testable Applications
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 10–12 Hours
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -32,7 +33,7 @@ By the end of this lesson, you will understand:
 - Common anti-patterns
 - Production best practices
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -78,7 +79,7 @@ Although this works, it creates a hidden problem:
 
 **`UserService` is now responsible for creating its own dependencies.**
 
----
+______________________________________________________________________
 
 # What is a Dependency?
 
@@ -106,7 +107,7 @@ UserRepository
 
 `UserRepository` is a dependency.
 
----
+______________________________________________________________________
 
 # What is Dependency Injection?
 
@@ -144,7 +145,7 @@ Now the service no longer decides **which repository** to use.
 
 Someone else supplies it.
 
----
+______________________________________________________________________
 
 # Why is This Better?
 
@@ -182,7 +183,7 @@ UserService
 
 Responsibilities are separated.
 
----
+______________________________________________________________________
 
 # Tight Coupling
 
@@ -211,7 +212,7 @@ Problems:
 
 This is called **tight coupling**.
 
----
+______________________________________________________________________
 
 # Loose Coupling
 
@@ -240,7 +241,7 @@ Now we can provide:
 
 without changing `UserService`.
 
----
+______________________________________________________________________
 
 # Constructor Injection
 
@@ -268,7 +269,7 @@ Dependencies are required before the object can be used.
 
 This is the preferred approach in most backend applications.
 
----
+______________________________________________________________________
 
 # Method Injection
 
@@ -290,7 +291,7 @@ class ReportService:
 
 The dependency is supplied only for that method call.
 
----
+______________________________________________________________________
 
 # Interface-Based Design
 
@@ -339,7 +340,7 @@ In Python, this is commonly achieved using:
 - Abstract Base Classes
 - Protocols (covered in the previous lesson)
 
----
+______________________________________________________________________
 
 # Manual Dependency Injection
 
@@ -362,7 +363,7 @@ This is perfectly acceptable for many projects.
 
 Not every application requires a Dependency Injection framework.
 
----
+______________________________________________________________________
 
 # Dependency Injection Container
 
@@ -408,7 +409,7 @@ Many languages have mature DI frameworks.
 
 Python often relies on manual DI or lightweight libraries.
 
----
+______________________________________________________________________
 
 # Dependency Injection in FastAPI
 
@@ -444,7 +445,7 @@ FastAPI creates and injects the dependency automatically.
 
 We will explore this in detail during the FastAPI module.
 
----
+______________________________________________________________________
 
 # Testing with Dependency Injection
 
@@ -501,7 +502,7 @@ service = UserService(
 
 The service can now be tested without a real database.
 
----
+______________________________________________________________________
 
 # Lifetime Management
 
@@ -525,7 +526,7 @@ Examples:
 
 Managing these lifetimes is one responsibility of Dependency Injection frameworks.
 
----
+______________________________________________________________________
 
 # Backend Example
 
@@ -564,7 +565,7 @@ Each incoming request reuses the already-created service.
 
 Object creation is centralised.
 
----
+______________________________________________________________________
 
 # Service Locator (Anti-Pattern)
 
@@ -585,7 +586,7 @@ Its dependencies are hidden.
 
 Constructor Injection makes dependencies explicit.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -593,13 +594,13 @@ Constructor Injection makes dependencies explicit.
 
 Creating dependencies inside constructors.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
 Using global singleton objects everywhere.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -613,7 +614,7 @@ If a class requires:
 
 it may have too many responsibilities.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -621,7 +622,7 @@ Using a Dependency Injection framework for a very small application.
 
 Manual Dependency Injection is often simpler.
 
----
+______________________________________________________________________
 
 ## Mistake 5
 
@@ -629,7 +630,7 @@ Confusing Dependency Injection with Inversion of Control.
 
 Dependency Injection is one technique for achieving Inversion of Control.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -647,7 +648,7 @@ Dependency Injection is one technique for achieving Inversion of Control.
 
 ❌ Don't overuse Dependency Injection frameworks.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -668,9 +669,10 @@ Dependency Injection enables:
 - Flexible implementations
 - Reduced coupling
 
-In Python, many production applications successfully use **manual Dependency Injection** combined with thoughtful object composition rather than large DI frameworks.
+In Python, many production applications successfully use **manual Dependency Injection** combined with thoughtful object
+composition rather than large DI frameworks.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -680,9 +682,10 @@ In Python, many production applications successfully use **manual Dependency Inj
 
 ### Answer
 
-It is the practice of providing dependencies to an object from the outside instead of allowing the object to create them itself.
+It is the practice of providing dependencies to an object from the outside instead of allowing the object to create them
+itself.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -692,7 +695,7 @@ It is the practice of providing dependencies to an object from the outside inste
 
 It makes dependencies explicit and ensures an object cannot be created without everything it requires.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -702,7 +705,7 @@ It makes dependencies explicit and ensures an object cannot be created without e
 
 Because dependencies can easily be replaced with fake or mock implementations without modifying the class being tested.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -712,7 +715,7 @@ Because dependencies can easily be replaced with fake or mock implementations wi
 
 No. Manual Dependency Injection is sufficient for many applications and is often simpler.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -720,9 +723,10 @@ No. Manual Dependency Injection is sufficient for many applications and is often
 
 ### Answer
 
-It occurs when a class directly creates or depends on specific implementations, making replacement, testing, and maintenance more difficult.
+It occurs when a class directly creates or depends on specific implementations, making replacement, testing, and
+maintenance more difficult.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -768,7 +772,7 @@ service = BookService(
 
 Finally, create a `FakeBookRepository` and verify that `BookService` works without any code changes.
 
----
+______________________________________________________________________
 
 # Knowledge Check
 
@@ -778,9 +782,10 @@ Why is Dependency Injection considered a design principle rather than a framewor
 
 ### Answer
 
-Because it is a way of organising object creation and dependencies. Frameworks may support it, but it can be implemented manually.
+Because it is a way of organising object creation and dependencies. Frameworks may support it, but it can be implemented
+manually.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -790,7 +795,7 @@ What problem does Dependency Injection solve?
 
 It reduces coupling by separating object creation from object behaviour, making systems easier to maintain and test.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -800,7 +805,7 @@ When is manual Dependency Injection preferable?
 
 For small to medium-sized applications where explicit object creation remains simple and easy to understand.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -810,7 +815,7 @@ Why should business logic depend on abstractions?
 
 Depending on abstractions allows implementations to change without affecting the business logic.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -818,23 +823,25 @@ What is the Service Locator anti-pattern?
 
 ### Answer
 
-It hides dependencies by allowing classes to fetch them from a global container, making the code harder to understand, test, and maintain.
+It hides dependencies by allowing classes to fetch them from a global container, making the code harder to understand,
+test, and maintain.
 
----
+______________________________________________________________________
 
 # Assignment
 
 ## Exercise 1
 
-Refactor one of your existing Flask or FastAPI projects to use Constructor Injection instead of creating dependencies inside services.
+Refactor one of your existing Flask or FastAPI projects to use Constructor Injection instead of creating dependencies
+inside services.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
 Replace one repository with a fake implementation and verify that the service behaves identically.
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -842,15 +849,16 @@ Draw the dependency graph of one of your backend projects.
 
 Identify which objects should be created once and which should be created per request.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
 Review your service classes.
 
-If any service has more than five constructor dependencies, evaluate whether it is taking on too many responsibilities and suggest a refactoring.
+If any service has more than five constructor dependencies, evaluate whether it is taking on too many responsibilities
+and suggest a refactoring.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -866,9 +874,8 @@ In this lesson, you learned:
 - ✅ Dependency Injection in FastAPI.
 - ✅ Production best practices.
 
----
+______________________________________________________________________
 
 # Next Lesson
 
-**File:**
-[66-production-python-part-11-profiling.md](66-production-python-part-11-profiling.md)
+**File:** [66-production-python-part-11-profiling.md](66-production-python-part-11-profiling.md)

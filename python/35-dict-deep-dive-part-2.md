@@ -1,6 +1,7 @@
 # File: python/35-dict-deep-dive-part-2.md
 
 # Python Built-in Types
+
 # Dictionary (`dict`) Deep Dive - Part 2: Internals, Advanced Operations & Production Patterns
 
 > **Course:** Backend Engineering Roadmap
@@ -13,7 +14,7 @@
 >
 > **Estimated Time:** 4.5 Hours
 
----
+______________________________________________________________________
 
 # Python Version Introduced
 
@@ -31,7 +32,7 @@
 - Python 3.9 introduced dictionary merging using `|` and `|=`.
 - CPython continuously improves dictionary memory usage and lookup performance.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -49,7 +50,7 @@ By the end of this lesson, you will understand:
 - Performance considerations
 - Production patterns
 
----
+______________________________________________________________________
 
 # Recap
 
@@ -62,9 +63,10 @@ In Part 1, we learned:
 - Dictionary views
 - Time complexity
 
-In this lesson, we'll explore how dictionaries remain fast even under heavy workloads and learn advanced dictionary patterns used in production systems.
+In this lesson, we'll explore how dictionaries remain fast even under heavy workloads and learn advanced dictionary
+patterns used in production systems.
 
----
+______________________________________________________________________
 
 # Hash Collisions
 
@@ -86,7 +88,7 @@ But what happens if two different keys produce the same bucket?
 
 This is called a **hash collision**.
 
----
+______________________________________________________________________
 
 # Collision Example
 
@@ -124,7 +126,7 @@ Bucket 2
 
 Now two keys want the same location.
 
----
+______________________________________________________________________
 
 # Does This Break the Dictionary?
 
@@ -138,9 +140,10 @@ Although the exact implementation is complex and CPython-specific, the important
 - It continues searching for another suitable location.
 - Lookups remain extremely fast in normal situations.
 
-As backend engineers, you rarely need to know the exact probing algorithm, but you should understand that collisions are expected and efficiently handled.
+As backend engineers, you rarely need to know the exact probing algorithm, but you should understand that collisions are
+expected and efficiently handled.
 
----
+______________________________________________________________________
 
 # Why Don't We See Slow Dictionaries?
 
@@ -152,7 +155,7 @@ Because:
 
 This keeps average lookup performance close to **O(1)**.
 
----
+______________________________________________________________________
 
 # Dictionary Resizing
 
@@ -200,7 +203,7 @@ Continue
 
 This process is called **resizing**.
 
----
+______________________________________________________________________
 
 # Why Resize?
 
@@ -212,7 +215,7 @@ causing slower lookups.
 
 Resizing helps maintain fast average performance.
 
----
+______________________________________________________________________
 
 # Insertion Order
 
@@ -244,7 +247,7 @@ Notice
 
 The keys appear in the order they were inserted.
 
----
+______________________________________________________________________
 
 # Updating Doesn't Change Order
 
@@ -267,7 +270,7 @@ Output
 
 The key stays in the same position.
 
----
+______________________________________________________________________
 
 # Removing and Re-Inserting
 
@@ -292,7 +295,7 @@ Output
 
 Re-inserting places the key at the end.
 
----
+______________________________________________________________________
 
 # update()
 
@@ -321,7 +324,7 @@ Output
 }
 ```
 
----
+______________________________________________________________________
 
 # Overwriting Values
 
@@ -345,7 +348,7 @@ Output
 
 Existing keys are replaced.
 
----
+______________________________________________________________________
 
 # Merge Operator (`|`)
 
@@ -378,7 +381,7 @@ Unlike `update()`,
 
 the original dictionaries remain unchanged.
 
----
+______________________________________________________________________
 
 # Merge Assignment (`|=`)
 
@@ -396,7 +399,7 @@ print(config)
 
 This modifies the existing dictionary.
 
----
+______________________________________________________________________
 
 # setdefault()
 
@@ -431,7 +434,7 @@ Output
 {'apple': 0}
 ```
 
----
+______________________________________________________________________
 
 # Existing Keys
 
@@ -453,7 +456,7 @@ Output
 
 Nothing changes.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -486,7 +489,7 @@ Output
 }
 ```
 
----
+______________________________________________________________________
 
 # fromkeys()
 
@@ -511,7 +514,7 @@ Output
 }
 ```
 
----
+______________________________________________________________________
 
 # A Common Pitfall
 
@@ -550,7 +553,7 @@ All keys share the same list object.
 
 Always be careful when using mutable default values.
 
----
+______________________________________________________________________
 
 # Dictionary Comprehensions
 
@@ -577,7 +580,7 @@ Output
 }
 ```
 
----
+______________________________________________________________________
 
 # Conditional Comprehensions
 
@@ -603,7 +606,7 @@ Output
 }
 ```
 
----
+______________________________________________________________________
 
 # Reversing a Dictionary
 
@@ -632,7 +635,7 @@ Output
 
 This only works if the values are unique.
 
----
+______________________________________________________________________
 
 # Time Complexity
 
@@ -648,7 +651,7 @@ This only works if the values are unique.
 
 Resizing is infrequent, so overall performance remains excellent.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -662,7 +665,7 @@ dict.fromkeys(keys, [])
 
 Every key shares the same list.
 
----
+______________________________________________________________________
 
 ## Mistake 2
 
@@ -670,7 +673,7 @@ Using `setdefault()` when simple assignment is clearer.
 
 Don't overuse it.
 
----
+______________________________________________________________________
 
 ## Mistake 3
 
@@ -678,7 +681,7 @@ Depending on insertion order in Python versions before 3.7.
 
 Only Python 3.7+ guarantees insertion order.
 
----
+______________________________________________________________________
 
 ## Mistake 4
 
@@ -688,7 +691,7 @@ Where possible,
 
 reuse existing dictionaries.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -706,7 +709,7 @@ reuse existing dictionaries.
 
 ❌ Don't rely on dictionary ordering in code targeting Python versions before 3.7.
 
----
+______________________________________________________________________
 
 # Production Insight
 
@@ -749,7 +752,7 @@ cache = {
 
 Senior backend engineers often use dictionaries to convert repeated database lookups from **O(n)** to **O(1)**.
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -759,9 +762,10 @@ Senior backend engineers often use dictionaries to convert repeated database loo
 
 ### Answer
 
-A hash collision occurs when two different keys map to the same location in the hash table. Python resolves collisions internally while maintaining fast average lookup performance.
+A hash collision occurs when two different keys map to the same location in the hash table. Python resolves collisions
+internally while maintaining fast average lookup performance.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -769,9 +773,10 @@ A hash collision occurs when two different keys map to the same location in the 
 
 ### Answer
 
-As dictionaries become crowded, collisions become more frequent. Resizing creates a larger table, reducing collisions and maintaining efficient lookups.
+As dictionaries become crowded, collisions become more frequent. Resizing creates a larger table, reducing collisions
+and maintaining efficient lookups.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -781,7 +786,7 @@ As dictionaries become crowded, collisions become more frequent. Resizing create
 
 It's useful when grouping or accumulating values where keys may not yet exist, such as grouping employees by department.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -791,7 +796,7 @@ It's useful when grouping or accumulating values where keys may not yet exist, s
 
 `update()` modifies the existing dictionary, while `|` creates a new merged dictionary, leaving the originals unchanged.
 
----
+______________________________________________________________________
 
 ### Question
 
@@ -801,7 +806,7 @@ It's useful when grouping or accumulating values where keys may not yet exist, s
 
 Because every key references the same list object. Modifying one value affects all keys.
 
----
+______________________________________________________________________
 
 # Practical Lesson
 
@@ -874,7 +879,7 @@ Expected Output
 }
 ```
 
----
+______________________________________________________________________
 
 # Questions
 
@@ -884,9 +889,10 @@ What is a hash collision?
 
 ### Answer
 
-It occurs when two different keys map to the same hash table location. Python resolves collisions internally while maintaining efficient lookups.
+It occurs when two different keys map to the same hash table location. Python resolves collisions internally while
+maintaining efficient lookups.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -896,7 +902,7 @@ What is the difference between `update()` and `|`?
 
 `update()` modifies the existing dictionary. The `|` operator creates a new merged dictionary.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -906,7 +912,7 @@ When should you use `setdefault()`?
 
 When building grouped collections or initialising missing keys without writing explicit existence checks.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -916,7 +922,7 @@ Why is `dict.fromkeys(keys, [])` usually a bug?
 
 Because every key shares the same mutable list instance, causing unexpected side effects when one list is modified.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -926,7 +932,7 @@ Why are dictionary comprehensions useful?
 
 They provide a concise, readable, and efficient way to construct dictionaries from existing iterables.
 
----
+______________________________________________________________________
 
 # Assignment
 
@@ -934,7 +940,7 @@ They provide a concise, readable, and efficient way to construct dictionaries fr
 
 Read a CSV file of employees and group them by department using `setdefault()`.
 
----
+______________________________________________________________________
 
 ## Exercise 2
 
@@ -945,7 +951,7 @@ Implement a simple in-memory cache where user IDs are keys and user records are 
 - Delete
 - Lookup
 
----
+______________________________________________________________________
 
 ## Exercise 3
 
@@ -957,13 +963,14 @@ Merge three configuration dictionaries:
 
 Ensure user values override all others.
 
----
+______________________________________________________________________
 
 ## Exercise 4
 
-Given a list of products, create a dictionary that maps each product ID to the corresponding product using a dictionary comprehension. Compare lookup performance with searching through the original list.
+Given a list of products, create a dictionary that maps each product ID to the corresponding product using a dictionary
+comprehension. Compare lookup performance with searching through the original list.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -979,12 +986,11 @@ In this lesson, you learned:
 - ✅ Performance considerations.
 - ✅ Senior backend interview topics.
 
----
+______________________________________________________________________
 
 # What's Next
 
-**File:**
-[36-Set-and-Frozenset](36-set-and-frozenset.md)
+**File:** [36-Set-and-Frozenset](36-set-and-frozenset.md)
 
 Topics:
 
