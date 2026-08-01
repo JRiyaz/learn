@@ -348,3 +348,7 @@ ability to provide AI with high-quality context.
 
 If you build repositories that are easy for humans to understand, they will almost always be easier for AI to understand
 as well.
+
+## Next
+
+[Context Optimization Libraries & Repository Indexing](part-9.md)
