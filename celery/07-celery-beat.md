@@ -1,4 +1,5 @@
 # Celery Masterclass for Backend Engineers
+
 ## File 19 – Celery Beat, Periodic Tasks & Production Scheduling
 
 > **Course Level:** Intermediate → Advanced
@@ -26,7 +27,7 @@
 >
 > Celery provides **Celery Beat** for this purpose.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -41,30 +42,30 @@ By the end of this chapter, you will be able to:
 - Avoid duplicate scheduled executions.
 - Compare Celery Beat with Cron Jobs.
 
----
+______________________________________________________________________
 
 # Table of Contents
 
 1. Why Scheduling Exists
-2. What is Celery Beat?
-3. Beat Architecture
-4. Periodic Tasks
-5. Interval Scheduling
-6. Cron Scheduling
-7. Solar Scheduling
-8. Beat Scheduler
-9. Production Deployment
-10. Celery Beat vs Cron
-11. Best Practices
-12. Summary
-13. Key Takeaways
-14. Interview Deep Dive
-15. Practice Questions
-16. Mini Assignment
-17. Common Mistakes
-18. What's Next?
+1. What is Celery Beat?
+1. Beat Architecture
+1. Periodic Tasks
+1. Interval Scheduling
+1. Cron Scheduling
+1. Solar Scheduling
+1. Beat Scheduler
+1. Production Deployment
+1. Celery Beat vs Cron
+1. Best Practices
+1. Summary
+1. Key Takeaways
+1. Interview Deep Dive
+1. Practice Questions
+1. Mini Assignment
+1. Common Mistakes
+1. What's Next?
 
----
+______________________________________________________________________
 
 # Why Scheduling Exists
 
@@ -94,7 +95,7 @@ Nobody clicks a button.
 
 The work happens automatically.
 
----
+______________________________________________________________________
 
 Another example
 
@@ -104,7 +105,7 @@ Every hour
 Sync Exchange Rates
 ```
 
----
+______________________________________________________________________
 
 Every Monday
 
@@ -112,7 +113,7 @@ Every Monday
 Generate Payroll
 ```
 
----
+______________________________________________________________________
 
 Every month
 
@@ -124,7 +125,7 @@ These are
 
 **Scheduled Tasks**.
 
----
+______________________________________________________________________
 
 # What is Celery Beat?
 
@@ -142,7 +143,7 @@ it decides
 
 tasks should be executed.
 
----
+______________________________________________________________________
 
 Think of it like
 
@@ -154,7 +155,7 @@ It wakes Workers
 
 at the correct time.
 
----
+______________________________________________________________________
 
 # Celery Beat Architecture
 
@@ -192,7 +193,7 @@ never executes Python code.
 
 Workers still do the work.
 
----
+______________________________________________________________________
 
 # Important Misconception
 
@@ -216,7 +217,7 @@ Exactly like
 
 FastAPI publishes tasks.
 
----
+______________________________________________________________________
 
 # Periodic Tasks
 
@@ -234,7 +235,7 @@ Every Hour
 Sync Exchange Rates
 ```
 
----
+______________________________________________________________________
 
 Another
 
@@ -246,7 +247,7 @@ Daily
 Clean Temporary Files
 ```
 
----
+______________________________________________________________________
 
 Another
 
@@ -258,7 +259,7 @@ Weekly
 Generate Reports
 ```
 
----
+______________________________________________________________________
 
 # Configuring Beat
 
@@ -289,7 +290,7 @@ Publish
 generate_report
 ```
 
----
+______________________________________________________________________
 
 # Interval Scheduling
 
@@ -303,7 +304,7 @@ Run every
 schedule = 10.0
 ```
 
----
+______________________________________________________________________
 
 Run every
 
@@ -315,7 +316,7 @@ Run every
 schedule = 300.0
 ```
 
----
+______________________________________________________________________
 
 Timeline
 
@@ -343,7 +344,7 @@ Run
 Run
 ```
 
----
+______________________________________________________________________
 
 # Interval Use Cases
 
@@ -355,7 +356,7 @@ Good for
 - Sync jobs
 - Health checks
 
----
+______________________________________________________________________
 
 # Cron Scheduling
 
@@ -380,7 +381,7 @@ crontab(
 )
 ```
 
----
+______________________________________________________________________
 
 Every Monday
 
@@ -396,7 +397,7 @@ crontab(
 )
 ```
 
----
+______________________________________________________________________
 
 Every first day
 
@@ -414,7 +415,7 @@ crontab(
 )
 ```
 
----
+______________________________________________________________________
 
 # Cron Examples
 
@@ -424,7 +425,7 @@ Daily Backup
 00:00
 ```
 
----
+______________________________________________________________________
 
 Weekly Report
 
@@ -434,7 +435,7 @@ Monday
 08:00
 ```
 
----
+______________________________________________________________________
 
 Monthly Invoice
 
@@ -444,7 +445,7 @@ Day 1
 09:00
 ```
 
----
+______________________________________________________________________
 
 Every 15 Minutes
 
@@ -452,7 +453,7 @@ Every 15 Minutes
 crontab(minute="*/15")
 ```
 
----
+______________________________________________________________________
 
 # Solar Scheduling
 
@@ -481,7 +482,7 @@ Useful for
 
 Much less common in business applications.
 
----
+______________________________________________________________________
 
 # Beat Scheduler
 
@@ -507,7 +508,7 @@ Publish Task
 
 Workers remain unchanged.
 
----
+______________________________________________________________________
 
 # Complete Flow
 
@@ -535,7 +536,7 @@ Worker
 Execute
 ```
 
----
+______________________________________________________________________
 
 # Multiple Scheduled Tasks
 
@@ -575,7 +576,7 @@ Exchange Rate Sync
 
 Beat manages all of them.
 
----
+______________________________________________________________________
 
 # Production Deployment
 
@@ -609,7 +610,7 @@ Many Workers
 
 can execute them.
 
----
+______________________________________________________________________
 
 # Why Only One Beat?
 
@@ -649,7 +650,7 @@ usually run
 
 **one Beat instance**.
 
----
+______________________________________________________________________
 
 # High Availability
 
@@ -671,7 +672,7 @@ One Scheduler
 Many Workers
 ```
 
----
+______________________________________________________________________
 
 # Celery Beat vs Cron
 
@@ -683,7 +684,7 @@ Why not Cron?
 
 Let's compare.
 
----
+______________________________________________________________________
 
 Cron
 
@@ -691,7 +692,7 @@ Cron
 Runs Shell Commands
 ```
 
----
+______________________________________________________________________
 
 Beat
 
@@ -699,7 +700,7 @@ Beat
 Publishes Celery Tasks
 ```
 
----
+______________________________________________________________________
 
 Cron
 
@@ -707,7 +708,7 @@ Cron
 Single Machine
 ```
 
----
+______________________________________________________________________
 
 Beat
 
@@ -715,7 +716,7 @@ Beat
 Distributed Workers
 ```
 
----
+______________________________________________________________________
 
 Cron
 
@@ -723,7 +724,7 @@ Cron
 No Queue
 ```
 
----
+______________________________________________________________________
 
 Beat
 
@@ -731,7 +732,7 @@ Beat
 Uses RabbitMQ
 ```
 
----
+______________________________________________________________________
 
 Comparison
 
@@ -743,7 +744,7 @@ Comparison
 | Limited Scaling | Horizontally Scalable |
 | No Task Queue | Uses Broker |
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -783,7 +784,7 @@ Every one
 
 is a Beat task.
 
----
+______________________________________________________________________
 
 # Another Example
 
@@ -819,7 +820,7 @@ Night
 Generate Daily Report
 ```
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -837,7 +838,7 @@ Generate Daily Report
 
 ✔ Log every scheduled execution.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -857,7 +858,7 @@ and Workers
 
 form a complete distributed scheduling system.
 
----
+______________________________________________________________________
 
 # Key Takeaways
 
@@ -870,7 +871,7 @@ form a complete distributed scheduling system.
 - Beat integrates naturally with RabbitMQ.
 - Cron and Beat solve different problems.
 
----
+______________________________________________________________________
 
 # Interview Deep Dive
 
@@ -880,9 +881,10 @@ form a complete distributed scheduling system.
 
 #### Answer
 
-Celery Beat is a scheduler that publishes Celery tasks according to predefined schedules. It does not execute tasks itself; Workers consume and execute the published tasks.
+Celery Beat is a scheduler that publishes Celery tasks according to predefined schedules. It does not execute tasks
+itself; Workers consume and execute the published tasks.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -890,9 +892,10 @@ Celery Beat is a scheduler that publishes Celery tasks according to predefined s
 
 #### Answer
 
-Beat decides when tasks should run and publishes them to the Broker. Workers consume those tasks from the Broker and execute the corresponding Python functions.
+Beat decides when tasks should run and publishes them to the Broker. Workers consume those tasks from the Broker and
+execute the corresponding Python functions.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -900,9 +903,10 @@ Beat decides when tasks should run and publishes them to the Broker. Workers con
 
 #### Answer
 
-Running multiple independent Beat instances can cause duplicate task publication, resulting in tasks executing multiple times. Production systems typically ensure only one active scheduler.
+Running multiple independent Beat instances can cause duplicate task publication, resulting in tasks executing multiple
+times. Production systems typically ensure only one active scheduler.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -910,9 +914,10 @@ Running multiple independent Beat instances can cause duplicate task publication
 
 #### Answer
 
-Use Interval scheduling for recurring tasks that repeat after a fixed duration, such as health checks, polling APIs, cache cleanup, or periodic synchronization.
+Use Interval scheduling for recurring tasks that repeat after a fixed duration, such as health checks, polling APIs,
+cache cleanup, or periodic synchronization.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -920,9 +925,10 @@ Use Interval scheduling for recurring tasks that repeat after a fixed duration, 
 
 #### Answer
 
-Use Cron scheduling when tasks must execute at specific calendar times, such as daily reports, weekly payroll, monthly billing, or nightly backups.
+Use Cron scheduling when tasks must execute at specific calendar times, such as daily reports, weekly payroll, monthly
+billing, or nightly backups.
 
----
+______________________________________________________________________
 
 ## Question 6
 
@@ -930,9 +936,10 @@ Use Cron scheduling when tasks must execute at specific calendar times, such as 
 
 #### Answer
 
-Cron is an operating system scheduler that executes commands on a single machine. Celery Beat is an application-level scheduler that publishes distributed Celery tasks through a message broker for execution by Workers.
+Cron is an operating system scheduler that executes commands on a single machine. Celery Beat is an application-level
+scheduler that publishes distributed Celery tasks through a message broker for execution by Workers.
 
----
+______________________________________________________________________
 
 ## Question 7
 
@@ -940,24 +947,25 @@ Cron is an operating system scheduler that executes commands on a single machine
 
 #### Answer
 
-Scheduled tasks may be retried or accidentally published more than once. Idempotency ensures repeated executions produce the same final result without unwanted side effects.
+Scheduled tasks may be retried or accidentally published more than once. Idempotency ensures repeated executions produce
+the same final result without unwanted side effects.
 
----
+______________________________________________________________________
 
 # Practice Questions
 
 1. What is Celery Beat?
-2. Why doesn't Beat execute tasks?
-3. Compare Beat and Workers.
-4. Explain Interval scheduling.
-5. Explain Cron scheduling.
-6. Why should only one Beat instance exist?
-7. Compare Cron and Beat.
-8. Design a scheduling system for an online bank.
-9. Which tasks should use Interval scheduling?
-10. Which tasks should use Cron scheduling?
+1. Why doesn't Beat execute tasks?
+1. Compare Beat and Workers.
+1. Explain Interval scheduling.
+1. Explain Cron scheduling.
+1. Why should only one Beat instance exist?
+1. Compare Cron and Beat.
+1. Design a scheduling system for an online bank.
+1. Which tasks should use Interval scheduling?
+1. Which tasks should use Cron scheduling?
 
----
+______________________________________________________________________
 
 # Mini Assignment
 
@@ -983,7 +991,7 @@ For each task, specify:
 
 Explain your design.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -999,7 +1007,7 @@ Explain your design.
 
 ❌ Scheduling CPU-intensive and lightweight tasks on the same Worker pool.
 
----
+______________________________________________________________________
 
 # What's Next?
 

@@ -1,4 +1,5 @@
 # RabbitMQ Masterclass for Backend Engineers
+
 ## File 07 – Work Queues, Prefetch & Fair Dispatch
 
 > **Course Level:** Intermediate → Advanced
@@ -15,7 +16,7 @@
 >
 > This chapter answers these questions.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -30,31 +31,31 @@ By the end of this chapter, you will be able to:
 - Optimize consumer throughput.
 - Prevent slow consumers from becoming bottlenecks.
 
----
+______________________________________________________________________
 
 # Table of Contents
 
 1. Why Work Queues Exist
-2. The Work Queue Pattern
-3. Multiple Consumers
-4. Round-Robin Dispatch
-5. The Problem with Round-Robin
-6. Fair Dispatch
-7. Prefetch Count
-8. Unacknowledged Messages
-9. Choosing the Right Prefetch Value
-10. Backpressure
-11. Scaling Consumers
-12. Real Production Example
-13. Summary
-14. Key Takeaways
-15. Interview Deep Dive
-16. Practice Questions
-17. Mini Assignment
-18. Common Mistakes
-19. What's Next?
+1. The Work Queue Pattern
+1. Multiple Consumers
+1. Round-Robin Dispatch
+1. The Problem with Round-Robin
+1. Fair Dispatch
+1. Prefetch Count
+1. Unacknowledged Messages
+1. Choosing the Right Prefetch Value
+1. Backpressure
+1. Scaling Consumers
+1. Real Production Example
+1. Summary
+1. Key Takeaways
+1. Interview Deep Dive
+1. Practice Questions
+1. Mini Assignment
+1. Common Mistakes
+1. What's Next?
 
----
+______________________________________________________________________
 
 # Why Work Queues Exist
 
@@ -108,7 +109,7 @@ RabbitMQ automatically distributes work.
 
 This is called the **Work Queue Pattern**.
 
----
+______________________________________________________________________
 
 # What is a Work Queue?
 
@@ -132,7 +133,7 @@ multiple workers share the workload.
 
 Each task is processed only once.
 
----
+______________________________________________________________________
 
 # Why Use Work Queues?
 
@@ -150,7 +151,7 @@ Instead of slowing down your API,
 
 RabbitMQ moves these jobs to background workers.
 
----
+______________________________________________________________________
 
 # Multiple Consumers
 
@@ -190,7 +191,7 @@ RabbitMQ uses a dispatch strategy.
 
 Let's understand it.
 
----
+______________________________________________________________________
 
 # Round-Robin Dispatch
 
@@ -224,7 +225,7 @@ Seems perfect.
 
 But there is a problem.
 
----
+______________________________________________________________________
 
 # The Problem with Round-Robin
 
@@ -276,7 +277,7 @@ Workers A and C remain mostly idle.
 
 Overall throughput decreases.
 
----
+______________________________________________________________________
 
 # Visual Example
 
@@ -310,7 +311,7 @@ Round-Robin ignores processing speed.
 
 It only counts message delivery.
 
----
+______________________________________________________________________
 
 # The Solution: Fair Dispatch
 
@@ -350,7 +351,7 @@ Gets Next Task
 
 This is called **Fair Dispatch**.
 
----
+______________________________________________________________________
 
 # How Fair Dispatch Works
 
@@ -384,7 +385,7 @@ Busy workers receive fewer tasks.
 
 Idle workers receive more.
 
----
+______________________________________________________________________
 
 # Prefetch Count
 
@@ -394,7 +395,7 @@ Fair Dispatch is controlled using
 
 This is one of RabbitMQ's most important performance settings.
 
----
+______________________________________________________________________
 
 # What is Prefetch Count?
 
@@ -422,7 +423,7 @@ Only then
 
 RabbitMQ sends another.
 
----
+______________________________________________________________________
 
 Diagram
 
@@ -448,7 +449,7 @@ Next Task
 
 Simple.
 
----
+______________________________________________________________________
 
 # What Happens with Prefetch = 5?
 
@@ -480,7 +481,7 @@ Worker processes them one by one.
 
 No additional messages are delivered until one is acknowledged.
 
----
+______________________________________________________________________
 
 # Prefetch = Unlimited
 
@@ -514,7 +515,7 @@ Idle
 
 Poor load balancing.
 
----
+______________________________________________________________________
 
 # Why Prefetch = 1 is Popular
 
@@ -542,7 +543,7 @@ Everyone stays busy.
 
 This maximizes throughput.
 
----
+______________________________________________________________________
 
 # Unacknowledged Messages
 
@@ -580,7 +581,7 @@ RabbitMQ counts these messages.
 
 Prefetch Count limits how many unacknowledged messages each Consumer can have.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -612,7 +613,7 @@ does RabbitMQ deliver
 Task C
 ```
 
----
+______________________________________________________________________
 
 # Choosing the Right Prefetch Count
 
@@ -620,7 +621,7 @@ There is no universal answer.
 
 It depends on your workload.
 
----
+______________________________________________________________________
 
 ## CPU Intensive Tasks
 
@@ -638,7 +639,7 @@ Prefetch = 1
 
 Keeps work balanced.
 
----
+______________________________________________________________________
 
 ## I/O Intensive Tasks
 
@@ -658,7 +659,7 @@ Workers spend time waiting.
 
 Receiving multiple messages improves utilization.
 
----
+______________________________________________________________________
 
 ## Very Fast Tasks
 
@@ -676,7 +677,7 @@ Prefetch = 100+
 
 Reduces network overhead.
 
----
+______________________________________________________________________
 
 # Backpressure
 
@@ -728,13 +729,13 @@ Queue
 
 This is called **Backpressure**.
 
----
+______________________________________________________________________
 
 # Handling Backpressure
 
 Several approaches exist.
 
----
+______________________________________________________________________
 
 ## Add More Consumers
 
@@ -754,7 +755,7 @@ Queue
 50 Workers
 ```
 
----
+______________________________________________________________________
 
 ## Increase Worker Resources
 
@@ -764,7 +765,7 @@ Upgrade
 - RAM
 - Disk
 
----
+______________________________________________________________________
 
 ## Optimize Processing
 
@@ -774,7 +775,7 @@ Reduce
 - Network calls
 - Blocking operations
 
----
+______________________________________________________________________
 
 ## Split Queues
 
@@ -798,7 +799,7 @@ Notification Queue
 
 Different workloads can now scale independently.
 
----
+______________________________________________________________________
 
 # Consumer Scaling
 
@@ -828,7 +829,7 @@ no Producer changes.
 
 RabbitMQ automatically includes the new worker.
 
----
+______________________________________________________________________
 
 # Real Production Example
 
@@ -872,7 +873,7 @@ As demand increases,
 
 new workers are added without changing the Producer.
 
----
+______________________________________________________________________
 
 # Performance Tips
 
@@ -888,7 +889,7 @@ new workers are added without changing the Producer.
 
 ✔ Separate heavy and lightweight jobs.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -907,7 +908,7 @@ Proper Prefetch configuration improves
 
 Choosing the correct value depends on the nature of your workload.
 
----
+______________________________________________________________________
 
 # Key Takeaways
 
@@ -921,7 +922,7 @@ Choosing the correct value depends on the nature of your workload.
 - Monitor Queue length and unacknowledged messages in production.
 - Scale Consumers independently of Producers.
 
----
+______________________________________________________________________
 
 # Interview Deep Dive
 
@@ -931,9 +932,10 @@ Choosing the correct value depends on the nature of your workload.
 
 #### Answer
 
-The Work Queue Pattern distributes tasks among multiple Consumers so that each task is processed only once. It enables horizontal scaling and improves throughput for background processing systems.
+The Work Queue Pattern distributes tasks among multiple Consumers so that each task is processed only once. It enables
+horizontal scaling and improves throughput for background processing systems.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -941,9 +943,10 @@ The Work Queue Pattern distributes tasks among multiple Consumers so that each t
 
 #### Answer
 
-RabbitMQ uses Round-Robin dispatch, delivering messages sequentially to connected Consumers without considering how long each Consumer takes to process a message.
+RabbitMQ uses Round-Robin dispatch, delivering messages sequentially to connected Consumers without considering how long
+each Consumer takes to process a message.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -951,9 +954,10 @@ RabbitMQ uses Round-Robin dispatch, delivering messages sequentially to connecte
 
 #### Answer
 
-Round-Robin assumes all Consumers process messages at the same speed. If one Consumer is slower than the others, it still receives an equal number of messages, creating bottlenecks and reducing overall throughput.
+Round-Robin assumes all Consumers process messages at the same speed. If one Consumer is slower than the others, it
+still receives an equal number of messages, creating bottlenecks and reducing overall throughput.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -961,9 +965,10 @@ Round-Robin assumes all Consumers process messages at the same speed. If one Con
 
 #### Answer
 
-Fair Dispatch prevents overloaded Consumers from receiving additional messages until they acknowledge previously delivered ones. It is achieved using Manual ACKs together with an appropriate Prefetch Count.
+Fair Dispatch prevents overloaded Consumers from receiving additional messages until they acknowledge previously
+delivered ones. It is achieved using Manual ACKs together with an appropriate Prefetch Count.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -971,9 +976,10 @@ Fair Dispatch prevents overloaded Consumers from receiving additional messages u
 
 #### Answer
 
-Prefetch Count specifies the maximum number of unacknowledged messages RabbitMQ can deliver to a Consumer. Once the limit is reached, RabbitMQ waits until the Consumer acknowledges a message before sending another.
+Prefetch Count specifies the maximum number of unacknowledged messages RabbitMQ can deliver to a Consumer. Once the
+limit is reached, RabbitMQ waits until the Consumer acknowledges a message before sending another.
 
----
+______________________________________________________________________
 
 ## Question 6
 
@@ -981,9 +987,10 @@ Prefetch Count specifies the maximum number of unacknowledged messages RabbitMQ 
 
 #### Answer
 
-Prefetch = 1 ensures that each Consumer receives only one unacknowledged message at a time. This provides excellent load balancing for long-running or CPU-intensive tasks because faster Consumers naturally receive more work.
+Prefetch = 1 ensures that each Consumer receives only one unacknowledged message at a time. This provides excellent load
+balancing for long-running or CPU-intensive tasks because faster Consumers naturally receive more work.
 
----
+______________________________________________________________________
 
 ## Question 7
 
@@ -991,24 +998,25 @@ Prefetch = 1 ensures that each Consumer receives only one unacknowledged message
 
 #### Answer
 
-Choose a lower Prefetch Count (often 1) for long-running CPU-intensive tasks and a higher Prefetch Count for lightweight or I/O-bound tasks where Consumers spend significant time waiting on external systems.
+Choose a lower Prefetch Count (often 1) for long-running CPU-intensive tasks and a higher Prefetch Count for lightweight
+or I/O-bound tasks where Consumers spend significant time waiting on external systems.
 
----
+______________________________________________________________________
 
 # Practice Questions
 
 1. Explain the Work Queue Pattern.
-2. What is Round-Robin dispatch?
-3. Why does Round-Robin become inefficient?
-4. Explain Fair Dispatch.
-5. What is Prefetch Count?
-6. What are unacknowledged messages?
-7. Why is Prefetch = 1 recommended for CPU-intensive tasks?
-8. What causes backpressure?
-9. How would you scale Consumers during peak traffic?
-10. How would you tune Prefetch for a high-throughput email service?
+1. What is Round-Robin dispatch?
+1. Why does Round-Robin become inefficient?
+1. Explain Fair Dispatch.
+1. What is Prefetch Count?
+1. What are unacknowledged messages?
+1. Why is Prefetch = 1 recommended for CPU-intensive tasks?
+1. What causes backpressure?
+1. How would you scale Consumers during peak traffic?
+1. How would you tune Prefetch for a high-throughput email service?
 
----
+______________________________________________________________________
 
 # Mini Assignment
 
@@ -1031,7 +1039,7 @@ For each task, determine:
 
 Explain your reasoning.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -1047,11 +1055,12 @@ Explain your reasoning.
 
 ❌ Scaling Producers instead of Consumers when Queues grow.
 
----
+______________________________________________________________________
 
 # What's Next?
 
-Now that you understand how RabbitMQ distributes work efficiently, it's time to learn how RabbitMQ handles **failed messages**.
+Now that you understand how RabbitMQ distributes work efficiently, it's time to learn how RabbitMQ handles **failed
+messages**.
 
 In the next chapter, we'll cover:
 

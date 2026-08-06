@@ -1,4 +1,5 @@
 # RabbitMQ + Celery Masterclass for Backend Engineers
+
 ## File 21 – FastAPI + RabbitMQ + Celery: Complete Production Architecture
 
 > **Course Level:** Senior Backend Engineer
@@ -21,7 +22,7 @@
 >
 > This is also one of the most common **Senior Backend interview** topics.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -35,29 +36,29 @@ By the end of this chapter, you will be able to:
 - Explain scaling strategies.
 - Answer architecture interview questions confidently.
 
----
+______________________________________________________________________
 
 # Table of Contents
 
 1. Why Combine RabbitMQ & Celery?
-2. Complete Architecture
-3. Request Lifecycle
-4. Project Structure
-5. Example Walkthrough
-6. Failure Scenarios
-7. Scaling
-8. Monitoring
-9. Best Practices
-10. Interview Architecture
-11. Summary
-12. Key Takeaways
-13. Interview Deep Dive
-14. Practice Questions
-15. Mini Assignment
-16. Common Mistakes
-17. What's Next?
+1. Complete Architecture
+1. Request Lifecycle
+1. Project Structure
+1. Example Walkthrough
+1. Failure Scenarios
+1. Scaling
+1. Monitoring
+1. Best Practices
+1. Interview Architecture
+1. Summary
+1. Key Takeaways
+1. Interview Deep Dive
+1. Practice Questions
+1. Mini Assignment
+1. Common Mistakes
+1. What's Next?
 
----
+______________________________________________________________________
 
 # Why Combine RabbitMQ & Celery?
 
@@ -110,7 +111,7 @@ Background
 
 This is the primary reason to use Celery.
 
----
+______________________________________________________________________
 
 # Complete Production Architecture
 
@@ -178,7 +179,7 @@ This is the primary reason to use Celery.
                 Monitoring System
 ```
 
----
+______________________________________________________________________
 
 # Understanding the Flow
 
@@ -218,7 +219,7 @@ Analytics
 
 The user does **not** wait.
 
----
+______________________________________________________________________
 
 # Step-by-Step Lifecycle
 
@@ -232,7 +233,7 @@ Client
 POST /signup
 ```
 
----
+______________________________________________________________________
 
 Step 2
 
@@ -246,7 +247,7 @@ Password
 Username
 ```
 
----
+______________________________________________________________________
 
 Step 3
 
@@ -256,7 +257,7 @@ Database
 INSERT User
 ```
 
----
+______________________________________________________________________
 
 Step 4
 
@@ -272,7 +273,7 @@ Response time
 80 ms
 ```
 
----
+______________________________________________________________________
 
 Step 5
 
@@ -316,7 +317,7 @@ Worker
 
 Everything happens independently.
 
----
+______________________________________________________________________
 
 # Why Is This Better?
 
@@ -352,7 +353,7 @@ Response
 4 Seconds
 ```
 
----
+______________________________________________________________________
 
 With Celery
 
@@ -376,7 +377,7 @@ Background Processing
 
 Huge improvement.
 
----
+______________________________________________________________________
 
 # Production Project Structure
 
@@ -422,7 +423,7 @@ Tasks are separated
 
 by domain.
 
----
+______________________________________________________________________
 
 # Request Classification
 
@@ -432,7 +433,7 @@ Every API request should ask
 Must the user wait?
 ```
 
----
+______________________________________________________________________
 
 If
 
@@ -452,7 +453,7 @@ Database Commit
 
 Run synchronously.
 
----
+______________________________________________________________________
 
 If
 
@@ -474,7 +475,7 @@ Thumbnail Generation
 
 Run asynchronously.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -520,7 +521,7 @@ Recommendations
 CRM
 ```
 
----
+______________________________________________________________________
 
 # Multiple Queues
 
@@ -568,7 +569,7 @@ Analytics Workers
 
 Each workload scales independently.
 
----
+______________________________________________________________________
 
 # Failure Scenario
 
@@ -614,7 +615,7 @@ The customer
 
 never notices.
 
----
+______________________________________________________________________
 
 # Another Failure
 
@@ -638,7 +639,7 @@ Success
 
 Work continues.
 
----
+______________________________________________________________________
 
 # Scaling Strategy
 
@@ -668,7 +669,7 @@ Image Workers
 
 Independent scaling.
 
----
+______________________________________________________________________
 
 # Production Deployment
 
@@ -718,7 +719,7 @@ This architecture
 
 supports horizontal scaling.
 
----
+______________________________________________________________________
 
 # Monitoring
 
@@ -744,7 +745,7 @@ Publish Rate
 ACK Rate
 ```
 
----
+______________________________________________________________________
 
 Monitor
 
@@ -768,7 +769,7 @@ Execution Time
 Worker Health
 ```
 
----
+______________________________________________________________________
 
 Monitor
 
@@ -796,7 +797,7 @@ Everything together
 
 provides complete visibility.
 
----
+______________________________________________________________________
 
 # Common Workflow
 
@@ -850,7 +851,7 @@ This combines
 
 everything you've learned.
 
----
+______________________________________________________________________
 
 # Where Does Redis Fit?
 
@@ -886,7 +887,7 @@ Sessions
 
 Very common production stack.
 
----
+______________________________________________________________________
 
 # Why Not Use Redis as Broker?
 
@@ -906,7 +907,7 @@ Redis is excellent,
 
 but it is not a full-featured message broker.
 
----
+______________________________________________________________________
 
 # Interview Architecture
 
@@ -980,7 +981,7 @@ Quorum Queues
 Horizontal Scaling
 ```
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -1004,7 +1005,7 @@ Horizontal Scaling
 
 ✔ Document queue ownership across teams.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1020,7 +1021,7 @@ Result Backends optionally track execution.
 
 Separate queues, retries, monitoring, and horizontal scaling make the system production-ready.
 
----
+______________________________________________________________________
 
 # Key Takeaways
 
@@ -1034,7 +1035,7 @@ Separate queues, retries, monitoring, and horizontal scaling make the system pro
 - Monitoring is essential.
 - Production systems combine multiple queues and worker pools.
 
----
+______________________________________________________________________
 
 # Interview Deep Dive
 
@@ -1044,9 +1045,11 @@ Separate queues, retries, monitoring, and horizontal scaling make the system pro
 
 #### Answer
 
-FastAPI handles HTTP requests and performs only the work required before responding, such as validation and database updates. It submits background tasks to Celery, which publishes them to RabbitMQ. RabbitMQ delivers tasks to Celery Workers, which execute them asynchronously. An optional Result Backend stores task states and results.
+FastAPI handles HTTP requests and performs only the work required before responding, such as validation and database
+updates. It submits background tasks to Celery, which publishes them to RabbitMQ. RabbitMQ delivers tasks to Celery
+Workers, which execute them asynchronously. An optional Result Backend stores task states and results.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -1054,9 +1057,10 @@ FastAPI handles HTTP requests and performs only the work required before respond
 
 #### Answer
 
-Email delivery is slow and depends on external services. Running it synchronously increases API latency and reduces throughput. Offloading it to Celery keeps the API responsive.
+Email delivery is slow and depends on external services. Running it synchronously increases API latency and reduces
+throughput. Offloading it to Celery keeps the API responsive.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -1064,9 +1068,10 @@ Email delivery is slow and depends on external services. Running it synchronousl
 
 #### Answer
 
-Different workloads have different execution times and resource requirements. Separate queues prevent long-running tasks from delaying short tasks and allow each workload to scale independently.
+Different workloads have different execution times and resource requirements. Separate queues prevent long-running tasks
+from delaying short tasks and allow each workload to scale independently.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -1074,9 +1079,10 @@ Different workloads have different execution times and resource requirements. Se
 
 #### Answer
 
-RabbitMQ provides durable queues, acknowledgements, retries, dead-letter queues, and advanced routing, ensuring messages are delivered reliably even when Workers fail.
+RabbitMQ provides durable queues, acknowledgements, retries, dead-letter queues, and advanced routing, ensuring messages
+are delivered reliably even when Workers fail.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1084,9 +1090,10 @@ RabbitMQ provides durable queues, acknowledgements, retries, dead-letter queues,
 
 #### Answer
 
-If the task has not been acknowledged, RabbitMQ requeues it. Another available Worker can consume and execute the task, assuming the task is idempotent.
+If the task has not been acknowledged, RabbitMQ requeues it. Another available Worker can consume and execute the task,
+assuming the task is idempotent.
 
----
+______________________________________________________________________
 
 ## Question 6
 
@@ -1094,9 +1101,10 @@ If the task has not been acknowledged, RabbitMQ requeues it. Another available W
 
 #### Answer
 
-Retries and message redelivery can cause the same task to execute multiple times. Idempotent tasks prevent duplicate side effects such as sending duplicate invoices or charging customers twice.
+Retries and message redelivery can cause the same task to execute multiple times. Idempotent tasks prevent duplicate
+side effects such as sending duplicate invoices or charging customers twice.
 
----
+______________________________________________________________________
 
 ## Question 7
 
@@ -1104,24 +1112,26 @@ Retries and message redelivery can cause the same task to execute multiple times
 
 #### Answer
 
-Scale FastAPI instances behind a load balancer, deploy RabbitMQ as a highly available cluster with Quorum Queues for critical workloads, separate tasks into dedicated queues, scale Worker pools independently based on workload, and monitor the system using Prometheus and Grafana.
+Scale FastAPI instances behind a load balancer, deploy RabbitMQ as a highly available cluster with Quorum Queues for
+critical workloads, separate tasks into dedicated queues, scale Worker pools independently based on workload, and
+monitor the system using Prometheus and Grafana.
 
----
+______________________________________________________________________
 
 # Practice Questions
 
 1. Explain the complete FastAPI + RabbitMQ + Celery architecture.
-2. Which operations should remain synchronous?
-3. Which operations should become background tasks?
-4. Why separate queues?
-5. Explain the end-to-end request lifecycle.
-6. How does RabbitMQ recover from Worker failures?
-7. How would you monitor this architecture?
-8. Design a scalable notification service.
-9. Design an asynchronous image-processing pipeline.
-10. Explain how you would prepare this architecture for Black Friday traffic.
+1. Which operations should remain synchronous?
+1. Which operations should become background tasks?
+1. Why separate queues?
+1. Explain the end-to-end request lifecycle.
+1. How does RabbitMQ recover from Worker failures?
+1. How would you monitor this architecture?
+1. Design a scalable notification service.
+1. Design an asynchronous image-processing pipeline.
+1. Explain how you would prepare this architecture for Black Friday traffic.
 
----
+______________________________________________________________________
 
 # Mini Assignment
 
@@ -1162,7 +1172,7 @@ For each task, define:
 
 Draw the entire architecture using ASCII diagrams and explain each component.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -1180,7 +1190,7 @@ Draw the entire architecture using ASCII diagrams and explain each component.
 
 ❌ Scaling only RabbitMQ while ignoring Worker bottlenecks.
 
----
+______________________________________________________________________
 
 # What's Next?
 

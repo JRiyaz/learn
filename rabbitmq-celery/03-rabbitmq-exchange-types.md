@@ -1,4 +1,5 @@
 # RabbitMQ Masterclass for Backend Engineers
+
 ## File 03 – RabbitMQ Exchange Types (Complete Deep Dive)
 
 > **Course Level:** Intermediate → Advanced
@@ -9,7 +10,7 @@
 >
 > That's exactly what Exchange Types solve.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -22,31 +23,31 @@ By the end of this chapter, you will be able to:
 - Explain Exchange Types in interviews with confidence.
 - Design event-driven systems using Exchanges.
 
----
+______________________________________________________________________
 
 # Table of Contents
 
 1. Why Exchanges Exist
-2. Exchange vs Queue
-3. How Routing Works
-4. Default Exchange
-5. Direct Exchange
-6. Fanout Exchange
-7. Topic Exchange
-8. Headers Exchange
-9. Exchange Comparison
-10. Choosing the Right Exchange
-11. Real Production Examples
-12. Common Design Patterns
-13. Summary
-14. Key Takeaways
-15. Interview Deep Dive
-16. Practice Questions
-17. Mini Assignment
-18. Common Mistakes
-19. What's Next?
+1. Exchange vs Queue
+1. How Routing Works
+1. Default Exchange
+1. Direct Exchange
+1. Fanout Exchange
+1. Topic Exchange
+1. Headers Exchange
+1. Exchange Comparison
+1. Choosing the Right Exchange
+1. Real Production Examples
+1. Common Design Patterns
+1. Summary
+1. Key Takeaways
+1. Interview Deep Dive
+1. Practice Questions
+1. Mini Assignment
+1. Common Mistakes
+1. What's Next?
 
----
+______________________________________________________________________
 
 # Why Do Exchanges Exist?
 
@@ -113,7 +114,7 @@ The Exchange knows the Queues.
 
 This keeps Producers simple and loosely coupled.
 
----
+______________________________________________________________________
 
 # Exchange vs Queue
 
@@ -129,7 +130,7 @@ Responsible for
 
 It **never stores messages.**
 
----
+______________________________________________________________________
 
 ## Queue
 
@@ -140,7 +141,7 @@ Responsible for
 - Delivering messages
 - Removing messages after acknowledgement
 
----
+______________________________________________________________________
 
 Think of it like this.
 
@@ -154,7 +155,7 @@ The traffic police decides where vehicles go.
 
 The parking lot stores them.
 
----
+______________________________________________________________________
 
 # How Routing Works
 
@@ -188,7 +189,7 @@ The Exchange uses the Routing Key to determine which Queue should receive the me
 
 Different Exchange Types use different routing rules.
 
----
+______________________________________________________________________
 
 # Exchange Types
 
@@ -208,7 +209,7 @@ RabbitMQ provides five Exchange Types.
 
 Let's study each one.
 
----
+______________________________________________________________________
 
 # 1. Default Exchange
 
@@ -228,7 +229,7 @@ Its name is
 
 Every Queue is automatically bound to the Default Exchange using its Queue name.
 
----
+______________________________________________________________________
 
 ## Example
 
@@ -262,7 +263,7 @@ email_queue
 
 No manual binding required.
 
----
+______________________________________________________________________
 
 ## When to Use
 
@@ -274,7 +275,7 @@ One Queue.
 
 No advanced routing.
 
----
+______________________________________________________________________
 
 # 2. Direct Exchange
 
@@ -298,7 +299,7 @@ email
 
 RabbitMQ routes it.
 
----
+______________________________________________________________________
 
 ## Example
 
@@ -320,7 +321,7 @@ Direct Exchange
 Email Queue
 ```
 
----
+______________________________________________________________________
 
 If Routing Key is
 
@@ -334,7 +335,7 @@ RabbitMQ sends it to
 Invoice Queue
 ```
 
----
+______________________________________________________________________
 
 ## Diagram
 
@@ -350,7 +351,7 @@ Invoice Queue
 
 Only exact matches succeed.
 
----
+______________________________________________________________________
 
 ## Multiple Queues
 
@@ -372,7 +373,7 @@ Queue B
 
 Both receive the message.
 
----
+______________________________________________________________________
 
 ## Real Example
 
@@ -400,7 +401,7 @@ email.send
 Email Queue
 ```
 
----
+______________________________________________________________________
 
 ## Advantages
 
@@ -409,13 +410,13 @@ Email Queue
 - Predictable
 - Easy to understand
 
----
+______________________________________________________________________
 
 ## Limitations
 
 No wildcard matching.
 
----
+______________________________________________________________________
 
 # 3. Fanout Exchange
 
@@ -423,7 +424,7 @@ Fanout ignores Routing Keys.
 
 It broadcasts every message.
 
----
+______________________________________________________________________
 
 Imagine a loudspeaker.
 
@@ -435,7 +436,7 @@ Everyone hears it.
 
 Fanout behaves similarly.
 
----
+______________________________________________________________________
 
 ## Diagram
 
@@ -453,7 +454,7 @@ Fanout behaves similarly.
 
 Every Queue receives the message.
 
----
+______________________________________________________________________
 
 Producer
 
@@ -463,7 +464,7 @@ User Registered
 
 Every Queue gets a copy.
 
----
+______________________________________________________________________
 
 ## Routing Key
 
@@ -473,7 +474,7 @@ You can specify one,
 
 RabbitMQ simply doesn't care.
 
----
+______________________________________________________________________
 
 ## Real Example
 
@@ -510,7 +511,7 @@ CRM
 
 Perfect use case.
 
----
+______________________________________________________________________
 
 ## Advantages
 
@@ -518,7 +519,7 @@ Perfect use case.
 - Event-driven systems
 - Multiple independent services
 
----
+______________________________________________________________________
 
 ## Limitations
 
@@ -526,7 +527,7 @@ Cannot selectively route messages.
 
 Everyone receives everything.
 
----
+______________________________________________________________________
 
 # 4. Topic Exchange
 
@@ -536,7 +537,7 @@ Instead of exact matching,
 
 it supports **patterns**.
 
----
+______________________________________________________________________
 
 Suppose your Routing Keys are
 
@@ -558,7 +559,7 @@ Instead of binding every Routing Key individually,
 
 Queues can subscribe to patterns.
 
----
+______________________________________________________________________
 
 ## Wildcards
 
@@ -574,7 +575,7 @@ Matches exactly one word.
 Matches zero or more words.
 ```
 
----
+______________________________________________________________________
 
 ## Examples
 
@@ -594,7 +595,7 @@ Match?
 
 ✅ Yes
 
----
+______________________________________________________________________
 
 Routing Key
 
@@ -612,7 +613,7 @@ Match?
 
 ✅ Yes
 
----
+______________________________________________________________________
 
 Routing Key
 
@@ -638,9 +639,9 @@ Because
 
 matches exactly one word.
 
----
+______________________________________________________________________
 
-## #
+## 
 
 The
 
@@ -672,7 +673,7 @@ order.anything.anything
 
 Everything.
 
----
+______________________________________________________________________
 
 ## Diagram
 
@@ -686,7 +687,7 @@ payment.* ────────────► Queue B
 user.# ───────────────► Queue C
 ```
 
----
+______________________________________________________________________
 
 ## Real Example
 
@@ -728,7 +729,7 @@ Analytics wants
 
 Everything.
 
----
+______________________________________________________________________
 
 ## Advantages
 
@@ -736,13 +737,13 @@ Extremely flexible.
 
 Perfect for microservices.
 
----
+______________________________________________________________________
 
 ## Limitations
 
 Slightly more complex.
 
----
+______________________________________________________________________
 
 # 5. Headers Exchange
 
@@ -752,7 +753,7 @@ Instead,
 
 it matches message headers.
 
----
+______________________________________________________________________
 
 Example
 
@@ -778,7 +779,7 @@ Priority = High
 
 Message is delivered.
 
----
+______________________________________________________________________
 
 ## Diagram
 
@@ -794,7 +795,7 @@ Country=India
 Finance Queue
 ```
 
----
+______________________________________________________________________
 
 ## Why Isn't It Common?
 
@@ -810,7 +811,7 @@ Most applications prefer
 
 Headers Exchange is rarely used.
 
----
+______________________________________________________________________
 
 # Exchange Comparison
 
@@ -823,7 +824,7 @@ Headers Exchange is rarely used.
 | Headers | No | No | No | No | Yes |
 | Most Common | Small Apps | Yes | Yes | Yes | Rare |
 
----
+______________________________________________________________________
 
 # Which Exchange Should You Choose?
 
@@ -835,7 +836,7 @@ Use when
 - Small projects
 - One Queue
 
----
+______________________________________________________________________
 
 ## Direct
 
@@ -855,7 +856,7 @@ Generate Invoice
 Resize Image
 ```
 
----
+______________________________________________________________________
 
 ## Fanout
 
@@ -879,7 +880,7 @@ Analytics
 Audit
 ```
 
----
+______________________________________________________________________
 
 ## Topic
 
@@ -891,7 +892,7 @@ Need wildcard routing.
 
 Large event-driven systems.
 
----
+______________________________________________________________________
 
 ## Headers
 
@@ -901,7 +902,7 @@ Routing depends on metadata instead of Routing Keys.
 
 Rare.
 
----
+______________________________________________________________________
 
 # Real Production Example
 
@@ -951,7 +952,7 @@ Audit Queue
 
 Every service receives exactly what it needs.
 
----
+______________________________________________________________________
 
 # Common Design Patterns
 
@@ -961,7 +962,7 @@ Every service receives exactly what it needs.
 Fanout Exchange
 ```
 
----
+______________________________________________________________________
 
 ## Task Queue
 
@@ -969,7 +970,7 @@ Fanout Exchange
 Direct Exchange
 ```
 
----
+______________________________________________________________________
 
 ## Microservices
 
@@ -977,7 +978,7 @@ Direct Exchange
 Topic Exchange
 ```
 
----
+______________________________________________________________________
 
 ## Simple Queue
 
@@ -985,7 +986,7 @@ Topic Exchange
 Default Exchange
 ```
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -995,7 +996,7 @@ Different Exchange Types solve different routing problems.
 
 Choosing the correct Exchange simplifies system design and keeps Producers decoupled from Consumers.
 
----
+______________________________________________________________________
 
 # Key Takeaways
 
@@ -1009,7 +1010,7 @@ Choosing the correct Exchange simplifies system design and keeps Producers decou
 - Topic Exchange is the most flexible.
 - Direct Exchange is the most common for task queues.
 
----
+______________________________________________________________________
 
 # Interview Deep Dive
 
@@ -1019,9 +1020,10 @@ Choosing the correct Exchange simplifies system design and keeps Producers decou
 
 #### Answer
 
-Exchanges decouple Producers from Queues by acting as routing components. Producers publish messages to Exchanges without knowing which Queues exist. This allows routing logic to change without modifying Producer code.
+Exchanges decouple Producers from Queues by acting as routing components. Producers publish messages to Exchanges
+without knowing which Queues exist. This allows routing logic to change without modifying Producer code.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -1029,9 +1031,10 @@ Exchanges decouple Producers from Queues by acting as routing components. Produc
 
 #### Answer
 
-Direct Exchange is the most commonly used Exchange because it provides simple, efficient, and predictable routing based on exact Routing Key matches.
+Direct Exchange is the most commonly used Exchange because it provides simple, efficient, and predictable routing based
+on exact Routing Key matches.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -1039,9 +1042,10 @@ Direct Exchange is the most commonly used Exchange because it provides simple, e
 
 #### Answer
 
-A Direct Exchange routes messages only to Queues whose Binding Key exactly matches the Routing Key. A Fanout Exchange ignores Routing Keys entirely and broadcasts every message to all bound Queues.
+A Direct Exchange routes messages only to Queues whose Binding Key exactly matches the Routing Key. A Fanout Exchange
+ignores Routing Keys entirely and broadcasts every message to all bound Queues.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -1049,9 +1053,10 @@ A Direct Exchange routes messages only to Queues whose Binding Key exactly match
 
 #### Answer
 
-Topic Exchanges are ideal for event-driven microservices where services subscribe to groups of events using wildcard patterns such as `order.*` or `payment.#`.
+Topic Exchanges are ideal for event-driven microservices where services subscribe to groups of events using wildcard
+patterns such as `order.*` or `payment.#`.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1059,9 +1064,11 @@ Topic Exchanges are ideal for event-driven microservices where services subscrib
 
 #### Answer
 
-Headers Exchanges require RabbitMQ to inspect message headers for routing decisions, making them more complex and generally slower than Routing Key-based exchanges. Most real-world systems use Direct, Fanout, or Topic Exchanges instead.
+Headers Exchanges require RabbitMQ to inspect message headers for routing decisions, making them more complex and
+generally slower than Routing Key-based exchanges. Most real-world systems use Direct, Fanout, or Topic Exchanges
+instead.
 
----
+______________________________________________________________________
 
 ## Question 6
 
@@ -1071,22 +1078,22 @@ Headers Exchanges require RabbitMQ to inspect message headers for routing decisi
 
 A Fanout Exchange is the best choice because every service should receive the same event regardless of Routing Keys.
 
----
+______________________________________________________________________
 
 # Practice Questions
 
 1. Explain the purpose of an Exchange.
-2. Why does RabbitMQ provide multiple Exchange Types?
-3. Compare Direct and Topic Exchanges.
-4. Explain the `*` and `#` wildcards.
-5. Why are Fanout Exchanges useful for event-driven systems?
-6. What are the disadvantages of Headers Exchanges?
-7. Which Exchange would you use for task queues?
-8. Which Exchange would you use for microservices?
-9. Can a Fanout Exchange use Routing Keys?
-10. Why doesn't an Exchange store messages?
+1. Why does RabbitMQ provide multiple Exchange Types?
+1. Compare Direct and Topic Exchanges.
+1. Explain the `*` and `#` wildcards.
+1. Why are Fanout Exchanges useful for event-driven systems?
+1. What are the disadvantages of Headers Exchanges?
+1. Which Exchange would you use for task queues?
+1. Which Exchange would you use for microservices?
+1. Can a Fanout Exchange use Routing Keys?
+1. Why doesn't an Exchange store messages?
 
----
+______________________________________________________________________
 
 # Mini Assignment
 
@@ -1103,12 +1110,12 @@ When a ride is booked, identify:
 Then answer:
 
 1. Which services should receive every event?
-2. Which services should receive only payment events?
-3. Which Exchange Type would you choose and why?
+1. Which services should receive only payment events?
+1. Which Exchange Type would you choose and why?
 
 Draw the complete architecture using ASCII diagrams.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -1124,7 +1131,7 @@ Draw the complete architecture using ASCII diagrams.
 
 ❌ Confusing Binding Keys with Routing Keys.
 
----
+______________________________________________________________________
 
 # What's Next?
 

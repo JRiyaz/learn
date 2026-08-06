@@ -1,4 +1,5 @@
 # RabbitMQ Masterclass for Backend Engineers
+
 ## File 02 – RabbitMQ Architecture & Core Components
 
 > **Course Level:** Intermediate → Advanced
@@ -9,7 +10,7 @@
 >
 > **"How does RabbitMQ actually work internally?"**
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -25,31 +26,31 @@ By the end of this chapter, you will be able to:
 - Explain the complete lifecycle of a message.
 - Understand how RabbitMQ enables loose coupling.
 
----
+______________________________________________________________________
 
 # Table of Contents
 
 1. RabbitMQ Architecture
-2. Producer
-3. Consumer
-4. Queue
-5. Exchange
-6. Binding
-7. Routing Key
-8. Connection
-9. Channel
-10. Virtual Host (vHost)
-11. Complete Message Lifecycle
-12. Real Production Example
-13. Summary
-14. Key Takeaways
-15. Interview Deep Dive
-16. Practice Questions
-17. Mini Assignment
-18. Common Mistakes
-19. What's Next?
+1. Producer
+1. Consumer
+1. Queue
+1. Exchange
+1. Binding
+1. Routing Key
+1. Connection
+1. Channel
+1. Virtual Host (vHost)
+1. Complete Message Lifecycle
+1. Real Production Example
+1. Summary
+1. Key Takeaways
+1. Interview Deep Dive
+1. Practice Questions
+1. Mini Assignment
+1. Common Mistakes
+1. What's Next?
 
----
+______________________________________________________________________
 
 # RabbitMQ Architecture
 
@@ -84,7 +85,7 @@ Instead, every message goes through an **Exchange**.
 
 This is one of the biggest differences between RabbitMQ and many simple queue systems.
 
----
+______________________________________________________________________
 
 # Understanding the Flow
 
@@ -108,7 +109,7 @@ Consumer
 
 Every single RabbitMQ application follows this architecture.
 
----
+______________________________________________________________________
 
 # Producer
 
@@ -129,7 +130,7 @@ RabbitMQ doesn't care about the programming language.
 
 It only accepts messages.
 
----
+______________________________________________________________________
 
 ## Example
 
@@ -156,7 +157,7 @@ After publishing,
 
 the Producer's job is finished.
 
----
+______________________________________________________________________
 
 ## Important Characteristics
 
@@ -171,7 +172,7 @@ The Producer simply publishes.
 
 RabbitMQ handles everything else.
 
----
+______________________________________________________________________
 
 # Real World Analogy
 
@@ -199,7 +200,7 @@ Your responsibility ends after posting it.
 
 RabbitMQ Producers behave exactly like this.
 
----
+______________________________________________________________________
 
 # Consumer
 
@@ -219,7 +220,7 @@ Consumers perform the actual business logic.
 
 RabbitMQ only delivers messages.
 
----
+______________________________________________________________________
 
 ## Conceptual Consumer Loop
 
@@ -243,7 +244,7 @@ Wait Again
 
 Consumers usually run for days or weeks without stopping.
 
----
+______________________________________________________________________
 
 # Multiple Consumers
 
@@ -288,7 +289,7 @@ Each consumer receives different messages.
 
 This dramatically improves throughput.
 
----
+______________________________________________________________________
 
 # Queue
 
@@ -312,7 +313,7 @@ Everyone waits their turn.
 
 RabbitMQ queues work similarly.
 
----
+______________________________________________________________________
 
 ## Queue Responsibilities
 
@@ -324,7 +325,7 @@ Queues
 - Remove processed messages
 - Handle pending work
 
----
+______________________________________________________________________
 
 ## Queue Example
 
@@ -346,7 +347,7 @@ Email #4
 
 Consumers process one message at a time.
 
----
+______________________________________________________________________
 
 ## Is RabbitMQ FIFO?
 
@@ -384,7 +385,7 @@ real-world ordering may change because of
 
 We'll study these later.
 
----
+______________________________________________________________________
 
 # Exchange
 
@@ -416,7 +417,7 @@ Exchange
 Queue
 ```
 
----
+______________________________________________________________________
 
 ## What is an Exchange?
 
@@ -426,7 +427,7 @@ It decides
 
 **Which queue should receive the message?**
 
----
+______________________________________________________________________
 
 ## Airport Analogy
 
@@ -450,7 +451,7 @@ The airport routes them.
 
 An Exchange behaves the same way.
 
----
+______________________________________________________________________
 
 ## Does an Exchange Store Messages?
 
@@ -476,7 +477,7 @@ It never stores anything.
 
 Queues store messages.
 
----
+______________________________________________________________________
 
 # Binding
 
@@ -494,7 +495,7 @@ Without a Binding,
 
 the Exchange has nowhere to send messages.
 
----
+______________________________________________________________________
 
 ## Road Analogy
 
@@ -512,7 +513,7 @@ City
 
 Road
 
-=
+\=
 
 Binding
 
@@ -524,7 +525,7 @@ No Binding.
 
 No message delivery.
 
----
+______________________________________________________________________
 
 # Routing Key
 
@@ -570,7 +571,7 @@ Send accordingly
 
 Routing Keys become much more important when we study Exchange Types.
 
----
+______________________________________________________________________
 
 # Connection
 
@@ -594,7 +595,7 @@ Opening thousands of them wastes resources.
 
 RabbitMQ introduces Channels to solve this.
 
----
+______________________________________________________________________
 
 # Channel
 
@@ -634,7 +635,7 @@ TCP Connection
 └── Channel N
 ```
 
----
+______________________________________________________________________
 
 ## Why Channels?
 
@@ -660,7 +661,7 @@ Few Connections
 Many Channels
 ```
 
----
+______________________________________________________________________
 
 # Virtual Host (vHost)
 
@@ -700,7 +701,7 @@ Each Virtual Host has
 
 completely isolated.
 
----
+______________________________________________________________________
 
 ## Example
 
@@ -722,7 +723,7 @@ No conflict.
 
 Different Virtual Hosts.
 
----
+______________________________________________________________________
 
 # Complete Message Lifecycle
 
@@ -796,7 +797,7 @@ Consumer acknowledges message.
 
 RabbitMQ removes the message from the queue.
 
----
+______________________________________________________________________
 
 # Complete Architecture Diagram
 
@@ -824,7 +825,7 @@ RabbitMQ removes the message from the queue.
    Consumer A    Consumer B     Consumer C
 ```
 
----
+______________________________________________________________________
 
 # Real Production Example
 
@@ -889,7 +890,7 @@ It simply publishes an event.
 
 This is called **Loose Coupling**.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -907,7 +908,7 @@ RabbitMQ internally consists of several components that work together.
 
 Understanding these concepts is essential before learning Exchanges in depth.
 
----
+______________________________________________________________________
 
 # Key Takeaways
 
@@ -921,7 +922,7 @@ Understanding these concepts is essential before learning Exchanges in depth.
 - Virtual Hosts isolate RabbitMQ resources.
 - Loose coupling is one of RabbitMQ's biggest strengths.
 
----
+______________________________________________________________________
 
 # Interview Deep Dive
 
@@ -931,9 +932,10 @@ Understanding these concepts is essential before learning Exchanges in depth.
 
 #### Answer
 
-RabbitMQ introduces Exchanges to decouple Producers from Queues. This allows routing logic to change without modifying Producer applications and enables advanced routing patterns such as Direct, Fanout, Topic, and Headers Exchanges.
+RabbitMQ introduces Exchanges to decouple Producers from Queues. This allows routing logic to change without modifying
+Producer applications and enables advanced routing patterns such as Direct, Fanout, Topic, and Headers Exchanges.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -941,9 +943,10 @@ RabbitMQ introduces Exchanges to decouple Producers from Queues. This allows rou
 
 #### Answer
 
-An Exchange receives messages from Producers and routes them to one or more Queues based on routing rules. Exchanges never store messages.
+An Exchange receives messages from Producers and routes them to one or more Queues based on routing rules. Exchanges
+never store messages.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -953,7 +956,7 @@ An Exchange receives messages from Producers and routes them to one or more Queu
 
 An Exchange routes messages but does not store them. A Queue stores messages until Consumers process them.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -961,9 +964,10 @@ An Exchange routes messages but does not store them. A Queue stores messages unt
 
 #### Answer
 
-TCP Connections are expensive to establish and maintain. Channels are lightweight virtual connections that allow multiple communication streams over a single TCP connection, improving performance and reducing resource consumption.
+TCP Connections are expensive to establish and maintain. Channels are lightweight virtual connections that allow
+multiple communication streams over a single TCP connection, improving performance and reducing resource consumption.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -971,9 +975,11 @@ TCP Connections are expensive to establish and maintain. Channels are lightweigh
 
 #### Answer
 
-A Virtual Host (vHost) is an isolated namespace within RabbitMQ that contains its own Queues, Exchanges, Bindings, Users, and Permissions. It enables multiple environments such as Development, QA, and Production to coexist on the same RabbitMQ server.
+A Virtual Host (vHost) is an isolated namespace within RabbitMQ that contains its own Queues, Exchanges, Bindings,
+Users, and Permissions. It enables multiple environments such as Development, QA, and Production to coexist on the same
+RabbitMQ server.
 
----
+______________________________________________________________________
 
 ## Question 6
 
@@ -981,22 +987,25 @@ A Virtual Host (vHost) is an isolated namespace within RabbitMQ that contains it
 
 #### Answer
 
-A Producer publishes a message through a Channel over a TCP Connection to an Exchange. The Exchange uses Routing Keys and Bindings to determine which Queue should receive the message. The Queue stores the message until a Consumer processes it. After successful processing, the Consumer acknowledges the message, and RabbitMQ removes it from the Queue.
+A Producer publishes a message through a Channel over a TCP Connection to an Exchange. The Exchange uses Routing Keys
+and Bindings to determine which Queue should receive the message. The Queue stores the message until a Consumer
+processes it. After successful processing, the Consumer acknowledges the message, and RabbitMQ removes it from the
+Queue.
 
----
+______________________________________________________________________
 
 # Practice Questions
 
 1. Explain the complete RabbitMQ architecture.
-2. Why are Exchanges required?
-3. Can an Exchange store messages?
-4. What is the difference between a Connection and a Channel?
-5. Why are Virtual Hosts useful?
-6. Explain how Routing Keys work.
-7. What is Loose Coupling?
-8. Why doesn't RabbitMQ allow Producers to know Consumers?
+1. Why are Exchanges required?
+1. Can an Exchange store messages?
+1. What is the difference between a Connection and a Channel?
+1. Why are Virtual Hosts useful?
+1. Explain how Routing Keys work.
+1. What is Loose Coupling?
+1. Why doesn't RabbitMQ allow Producers to know Consumers?
 
----
+______________________________________________________________________
 
 # Mini Assignment
 
@@ -1012,7 +1021,7 @@ When a student enrolls in a course, identify:
 
 Draw the architecture using ASCII diagrams.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -1028,7 +1037,7 @@ Draw the architecture using ASCII diagrams.
 
 ❌ Ignoring Virtual Hosts in multi-environment deployments.
 
----
+______________________________________________________________________
 
 # What's Next?
 

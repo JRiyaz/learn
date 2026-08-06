@@ -1,4 +1,5 @@
 # RabbitMQ Masterclass for Backend Engineers
+
 ## File 05 – Message Acknowledgements & Delivery Guarantees
 
 > **Course Level:** Intermediate → Advanced
@@ -18,7 +19,7 @@
 >
 > This chapter is one of the **most important RabbitMQ concepts** and is asked very frequently in backend interviews.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -33,30 +34,30 @@ By the end of this chapter, you will be able to:
 - Understand delivery guarantees.
 - Design reliable message-processing systems.
 
----
+______________________________________________________________________
 
 # Table of Contents
 
 1. Why ACKs Exist
-2. Message Lifecycle
-3. Automatic ACK
-4. Manual ACK
-5. What Happens if a Consumer Crashes?
-6. Message Redelivery
-7. Reject vs NACK
-8. Requeue
-9. Delivery Guarantees
-10. Best Practices
-11. Production Example
-12. Summary
-13. Key Takeaways
-14. Interview Deep Dive
-15. Practice Questions
-16. Mini Assignment
-17. Common Mistakes
-18. What's Next?
+1. Message Lifecycle
+1. Automatic ACK
+1. Manual ACK
+1. What Happens if a Consumer Crashes?
+1. Message Redelivery
+1. Reject vs NACK
+1. Requeue
+1. Delivery Guarantees
+1. Best Practices
+1. Production Example
+1. Summary
+1. Key Takeaways
+1. Interview Deep Dive
+1. Practice Questions
+1. Mini Assignment
+1. Common Mistakes
+1. What's Next?
 
----
+______________________________________________________________________
 
 # Why Do ACKs Exist?
 
@@ -83,7 +84,7 @@ RabbitMQ has no idea.
 
 That's why acknowledgements exist.
 
----
+______________________________________________________________________
 
 # What is an Acknowledgement?
 
@@ -97,7 +98,7 @@ It tells RabbitMQ
 You may safely remove it.
 ```
 
----
+______________________________________________________________________
 
 # Message Lifecycle with ACK
 
@@ -139,7 +140,7 @@ Instead,
 
 it waits for an ACK.
 
----
+______________________________________________________________________
 
 # Why Doesn't RabbitMQ Delete Immediately?
 
@@ -173,7 +174,7 @@ RabbitMQ waits.
 
 Only after receiving an ACK does it remove the message.
 
----
+______________________________________________________________________
 
 # Automatic Acknowledgements
 
@@ -197,7 +198,7 @@ Notice
 
 RabbitMQ doesn't wait.
 
----
+______________________________________________________________________
 
 ## Problem
 
@@ -223,7 +224,7 @@ Work Lost Forever
 
 Automatic ACK is therefore risky.
 
----
+______________________________________________________________________
 
 ## When Can Auto ACK Be Used?
 
@@ -246,7 +247,7 @@ Never use Auto ACK for
 - Banking
 - Financial systems
 
----
+______________________________________________________________________
 
 # Manual Acknowledgements
 
@@ -278,7 +279,7 @@ RabbitMQ Deletes Message
 
 This guarantees that messages aren't lost because of unexpected failures.
 
----
+______________________________________________________________________
 
 # Why Manual ACK Is Better
 
@@ -308,7 +309,7 @@ Only after all operations succeed
 
 does RabbitMQ delete the message.
 
----
+______________________________________________________________________
 
 # Consumer Crash Scenario
 
@@ -348,7 +349,7 @@ Message Returned to Queue
 
 Another Consumer can now process it.
 
----
+______________________________________________________________________
 
 # Visualizing the Crash
 
@@ -394,7 +395,7 @@ Another Consumer Processes It
 
 Huge difference.
 
----
+______________________________________________________________________
 
 # What is Redelivery?
 
@@ -424,7 +425,7 @@ This is called
 
 **Message Redelivery**
 
----
+______________________________________________________________________
 
 RabbitMQ marks the message internally as
 
@@ -434,7 +435,7 @@ Redelivered = True
 
 Consumers can inspect this flag if needed.
 
----
+______________________________________________________________________
 
 # Reject vs NACK
 
@@ -452,7 +453,7 @@ NACK
 
 Let's understand both.
 
----
+______________________________________________________________________
 
 # Reject
 
@@ -480,7 +481,7 @@ or
 Requeue
 ```
 
----
+______________________________________________________________________
 
 # Example
 
@@ -506,7 +507,7 @@ Return to Queue
 
 depending on configuration.
 
----
+______________________________________________________________________
 
 # NACK (Negative Acknowledgement)
 
@@ -533,7 +534,7 @@ NACK Multiple Messages
 
 RabbitMQ can return all of them.
 
----
+______________________________________________________________________
 
 # Reject vs NACK
 
@@ -544,7 +545,7 @@ RabbitMQ can return all of them.
 | Can requeue | Can requeue |
 | Most basic API | Preferred for advanced consumers |
 
----
+______________________________________________________________________
 
 # Requeue
 
@@ -578,7 +579,7 @@ Later,
 
 another Consumer processes it.
 
----
+______________________________________________________________________
 
 # Infinite Retry Problem
 
@@ -628,7 +629,7 @@ It wastes network bandwidth.
 
 It fills logs.
 
----
+______________________________________________________________________
 
 # Solution
 
@@ -654,7 +655,7 @@ Dead Letter Queue
 
 We'll study Dead Letter Queues in a later chapter.
 
----
+______________________________________________________________________
 
 # Delivery Guarantees
 
@@ -662,7 +663,7 @@ One of the most important interview topics.
 
 RabbitMQ provides different delivery guarantees.
 
----
+______________________________________________________________________
 
 # At Most Once
 
@@ -680,7 +681,7 @@ Fast.
 
 Less reliable.
 
----
+______________________________________________________________________
 
 Example
 
@@ -696,7 +697,7 @@ Lost
 Acceptable
 ```
 
----
+______________________________________________________________________
 
 # At Least Once
 
@@ -722,7 +723,7 @@ However,
 
 it might be delivered twice.
 
----
+______________________________________________________________________
 
 Example
 
@@ -744,7 +745,7 @@ Same Message Again
 
 Your application must handle duplicates.
 
----
+______________________________________________________________________
 
 # Exactly Once?
 
@@ -764,7 +765,7 @@ Exactly-once delivery requires
 
 RabbitMQ alone cannot provide it.
 
----
+______________________________________________________________________
 
 # Idempotency
 
@@ -790,7 +791,7 @@ This property is called
 
 Production Consumers should always be idempotent.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -798,7 +799,7 @@ Production Consumers should always be idempotent.
 
 Almost always.
 
----
+______________________________________________________________________
 
 ## ACK Only After Success
 
@@ -824,7 +825,7 @@ Process Payment
 ACK
 ```
 
----
+______________________________________________________________________
 
 ## Make Consumers Idempotent
 
@@ -832,7 +833,7 @@ Duplicate deliveries happen.
 
 Your application should safely handle them.
 
----
+______________________________________________________________________
 
 ## Avoid Infinite Requeues
 
@@ -841,7 +842,7 @@ Always configure
 - retry limits
 - dead-letter queues
 
----
+______________________________________________________________________
 
 ## Monitor Redelivered Messages
 
@@ -851,7 +852,7 @@ A growing number of redelivered messages usually indicates
 - unstable dependencies
 - database outages
 
----
+______________________________________________________________________
 
 # Real Production Example
 
@@ -889,7 +890,7 @@ ACK
 
 RabbitMQ removes the message.
 
----
+______________________________________________________________________
 
 Now imagine
 
@@ -913,7 +914,7 @@ Another Consumer retries later.
 
 No work is silently lost.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -929,7 +930,7 @@ while Reject and NACK provide mechanisms for handling failures.
 
 Understanding ACKs is essential for building fault-tolerant distributed systems.
 
----
+______________________________________________________________________
 
 # Key Takeaways
 
@@ -943,7 +944,7 @@ Understanding ACKs is essential for building fault-tolerant distributed systems.
 - RabbitMQ guarantees **at least once delivery**, not exactly once.
 - Consumers should be idempotent.
 
----
+______________________________________________________________________
 
 # Interview Deep Dive
 
@@ -953,9 +954,10 @@ Understanding ACKs is essential for building fault-tolerant distributed systems.
 
 #### Answer
 
-A Message Acknowledgement (ACK) is a confirmation sent by a Consumer indicating that a message has been processed successfully. Once RabbitMQ receives the ACK, it safely removes the message from the Queue.
+A Message Acknowledgement (ACK) is a confirmation sent by a Consumer indicating that a message has been processed
+successfully. Once RabbitMQ receives the ACK, it safely removes the message from the Queue.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -963,9 +965,10 @@ A Message Acknowledgement (ACK) is a confirmation sent by a Consumer indicating 
 
 #### Answer
 
-Automatic ACKs delete messages immediately after delivery, which can result in message loss if the Consumer crashes before processing. Manual ACKs ensure messages are removed only after successful processing, improving reliability.
+Automatic ACKs delete messages immediately after delivery, which can result in message loss if the Consumer crashes
+before processing. Manual ACKs ensure messages are removed only after successful processing, improving reliability.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -973,9 +976,10 @@ Automatic ACKs delete messages immediately after delivery, which can result in m
 
 #### Answer
 
-RabbitMQ detects that the Consumer's connection has closed without an ACK. The unacknowledged message is requeued and becomes available for another Consumer to process.
+RabbitMQ detects that the Consumer's connection has closed without an ACK. The unacknowledged message is requeued and
+becomes available for another Consumer to process.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -983,9 +987,10 @@ RabbitMQ detects that the Consumer's connection has closed without an ACK. The u
 
 #### Answer
 
-Reject is used to reject a single message. NACK (Negative Acknowledgement) is more flexible and can reject one or multiple messages. Both can optionally requeue the message.
+Reject is used to reject a single message. NACK (Negative Acknowledgement) is more flexible and can reject one or
+multiple messages. Both can optionally requeue the message.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -993,9 +998,11 @@ Reject is used to reject a single message. NACK (Negative Acknowledgement) is mo
 
 #### Answer
 
-No. RabbitMQ typically provides at-least-once delivery. A message may be delivered more than once if a Consumer crashes after processing but before acknowledging. Applications should implement idempotent Consumers to safely handle duplicates.
+No. RabbitMQ typically provides at-least-once delivery. A message may be delivered more than once if a Consumer crashes
+after processing but before acknowledging. Applications should implement idempotent Consumers to safely handle
+duplicates.
 
----
+______________________________________________________________________
 
 ## Question 6
 
@@ -1003,9 +1010,10 @@ No. RabbitMQ typically provides at-least-once delivery. A message may be deliver
 
 #### Answer
 
-Idempotency means processing the same message multiple times produces the same final result as processing it once. This prevents duplicate effects caused by message redelivery.
+Idempotency means processing the same message multiple times produces the same final result as processing it once. This
+prevents duplicate effects caused by message redelivery.
 
----
+______________________________________________________________________
 
 ## Question 7
 
@@ -1013,24 +1021,25 @@ Idempotency means processing the same message multiple times produces the same f
 
 #### Answer
 
-Sending an ACK before completing processing risks losing the message if the Consumer crashes afterward. ACK should always be the final step after successful completion of all required operations.
+Sending an ACK before completing processing risks losing the message if the Consumer crashes afterward. ACK should
+always be the final step after successful completion of all required operations.
 
----
+______________________________________________________________________
 
 # Practice Questions
 
 1. Explain the complete ACK lifecycle.
-2. Why is Auto ACK dangerous?
-3. What happens when a Consumer crashes?
-4. Explain Message Redelivery.
-5. Compare Reject and NACK.
-6. What is Requeue?
-7. Why are Infinite Retry Loops harmful?
-8. Explain At-most-once and At-least-once delivery.
-9. Why can't RabbitMQ guarantee Exactly Once delivery?
-10. What makes a Consumer idempotent?
+1. Why is Auto ACK dangerous?
+1. What happens when a Consumer crashes?
+1. Explain Message Redelivery.
+1. Compare Reject and NACK.
+1. What is Requeue?
+1. Why are Infinite Retry Loops harmful?
+1. Explain At-most-once and At-least-once delivery.
+1. Why can't RabbitMQ guarantee Exactly Once delivery?
+1. What makes a Consumer idempotent?
 
----
+______________________________________________________________________
 
 # Mini Assignment
 
@@ -1053,7 +1062,7 @@ Operations:
 
 Explain your reasoning for each.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -1069,7 +1078,7 @@ Explain your reasoning for each.
 
 ❌ Forgetting to monitor redelivered messages.
 
----
+______________________________________________________________________
 
 # What's Next?
 

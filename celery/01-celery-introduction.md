@@ -1,4 +1,5 @@
 # Celery Masterclass for Backend Engineers
+
 ## File 13 – Introduction to Celery & Background Task Processing
 
 > **Course Level:** Intermediate → Advanced
@@ -19,7 +20,7 @@
 >
 > This chapter explains **why Celery exists**, what problems it solves, and how it differs from RabbitMQ.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -33,31 +34,31 @@ By the end of this chapter, you will be able to:
 - Explain why Python applications use Celery.
 - Understand where Celery fits inside a backend architecture.
 
----
+______________________________________________________________________
 
 # Table of Contents
 
 1. Why Celery Exists
-2. Background Processing
-3. The Problem with Synchronous APIs
-4. What is Celery?
-5. RabbitMQ vs Celery
-6. Celery Architecture
-7. Celery Components
-8. Typical Workflow
-9. Common Use Cases
-10. Celery vs Threads
-11. Celery vs Cron
-12. Best Practices
-13. Summary
-14. Key Takeaways
-15. Interview Deep Dive
-16. Practice Questions
-17. Mini Assignment
-18. Common Mistakes
-19. What's Next?
+1. Background Processing
+1. The Problem with Synchronous APIs
+1. What is Celery?
+1. RabbitMQ vs Celery
+1. Celery Architecture
+1. Celery Components
+1. Typical Workflow
+1. Common Use Cases
+1. Celery vs Threads
+1. Celery vs Cron
+1. Best Practices
+1. Summary
+1. Key Takeaways
+1. Interview Deep Dive
+1. Practice Questions
+1. Mini Assignment
+1. Common Mistakes
+1. What's Next?
 
----
+______________________________________________________________________
 
 # Why Celery Exists
 
@@ -107,7 +108,7 @@ The problem?
 
 The user waits for everything.
 
----
+______________________________________________________________________
 
 # The Bigger the Application...
 
@@ -175,7 +176,7 @@ Image Processing
 
 Your API becomes unusable.
 
----
+______________________________________________________________________
 
 # Traditional Solution
 
@@ -195,7 +196,7 @@ All inside the HTTP request.
 
 The request blocks until everything finishes.
 
----
+______________________________________________________________________
 
 # Why Is This Bad?
 
@@ -223,7 +224,7 @@ Poor Scalability
 
 A single slow task delays every user.
 
----
+______________________________________________________________________
 
 # Background Processing
 
@@ -269,7 +270,7 @@ This is called
 
 **Background Processing**
 
----
+______________________________________________________________________
 
 # Real World Analogy
 
@@ -299,7 +300,7 @@ You don't stand at the counter watching the chef cook.
 
 Background processing works the same way.
 
----
+______________________________________________________________________
 
 # What is Celery?
 
@@ -329,7 +330,7 @@ Celery schedules the task.
 
 A worker executes it later.
 
----
+______________________________________________________________________
 
 # What Does Celery Actually Do?
 
@@ -346,7 +347,7 @@ Notice something.
 
 RabbitMQ did none of these.
 
----
+______________________________________________________________________
 
 # RabbitMQ vs Celery
 
@@ -354,7 +355,7 @@ Many developers confuse them.
 
 Let's compare.
 
----
+______________________________________________________________________
 
 ## RabbitMQ
 
@@ -364,7 +365,7 @@ RabbitMQ says
 I transport work.
 ```
 
----
+______________________________________________________________________
 
 ## Celery
 
@@ -374,7 +375,7 @@ Celery says
 I execute work.
 ```
 
----
+______________________________________________________________________
 
 RabbitMQ
 
@@ -388,7 +389,7 @@ Celery
 Task Queue Framework
 ```
 
----
+______________________________________________________________________
 
 RabbitMQ
 
@@ -402,7 +403,7 @@ Celery
 Python Specific
 ```
 
----
+______________________________________________________________________
 
 RabbitMQ
 
@@ -416,7 +417,7 @@ Celery
 Knows Python Functions
 ```
 
----
+______________________________________________________________________
 
 # A Better Analogy
 
@@ -436,11 +437,11 @@ Customer
 
 Courier
 
-=
+\=
 
 RabbitMQ
 
----
+______________________________________________________________________
 
 Now imagine a restaurant.
 
@@ -468,7 +469,7 @@ RabbitMQ is the waiter.
 
 Celery Worker is the chef.
 
----
+______________________________________________________________________
 
 # Celery Architecture
 
@@ -524,7 +525,7 @@ RabbitMQ transports it.
 
 Worker executes it.
 
----
+______________________________________________________________________
 
 # Celery Components
 
@@ -552,7 +553,7 @@ Result Backend
 
 Let's understand each.
 
----
+______________________________________________________________________
 
 # Application
 
@@ -564,7 +565,7 @@ Usually
 
 The application creates tasks.
 
----
+______________________________________________________________________
 
 Example
 
@@ -576,7 +577,7 @@ POST /checkout
 generate_invoice.delay()
 ```
 
----
+______________________________________________________________________
 
 # Task
 
@@ -595,7 +596,7 @@ Celery converts this function
 
 into a background job.
 
----
+______________________________________________________________________
 
 # Broker
 
@@ -613,7 +614,7 @@ Redis
 
 The Broker transports tasks.
 
----
+______________________________________________________________________
 
 # Worker
 
@@ -637,7 +638,7 @@ Done
 
 Workers continuously listen for tasks.
 
----
+______________________________________________________________________
 
 # Result Backend
 
@@ -673,7 +674,7 @@ Result Backends are optional.
 
 Many applications don't need them.
 
----
+______________________________________________________________________
 
 # Typical Workflow
 
@@ -733,7 +734,7 @@ Result Backend
 
 Stores Success.
 
----
+______________________________________________________________________
 
 # Complete Flow Diagram
 
@@ -767,7 +768,7 @@ Result Backend
 
 Every production Celery application follows this architecture.
 
----
+______________________________________________________________________
 
 # Common Use Cases
 
@@ -785,7 +786,7 @@ Celery is commonly used for
 - Scheduled Jobs
 - API Integrations
 
----
+______________________________________________________________________
 
 # Celery vs Python Threads
 
@@ -797,7 +798,7 @@ Why not use threads?
 
 Let's compare.
 
----
+______________________________________________________________________
 
 Python Thread
 
@@ -809,7 +810,7 @@ If your application crashes,
 
 the thread dies.
 
----
+______________________________________________________________________
 
 Celery
 
@@ -821,7 +822,7 @@ Workers continue
 
 even if your API restarts.
 
----
+______________________________________________________________________
 
 Comparison
 
@@ -833,7 +834,7 @@ Comparison
 | No Queue | Queue Based |
 | Crash loses work | Broker stores work |
 
----
+______________________________________________________________________
 
 # Celery vs Cron Jobs
 
@@ -849,7 +850,7 @@ Generate Report
 
 Time-based.
 
----
+______________________________________________________________________
 
 Celery
 
@@ -863,7 +864,7 @@ Generate Thumbnail
 
 Event-based.
 
----
+______________________________________________________________________
 
 Cron is good for
 
@@ -881,7 +882,7 @@ Later,
 
 we'll see that Celery can also schedule recurring jobs using **Celery Beat**.
 
----
+______________________________________________________________________
 
 # When Should You Use Celery?
 
@@ -894,7 +895,7 @@ Use Celery when
 - You need distributed workers.
 - You want scalable background processing.
 
----
+______________________________________________________________________
 
 # When Shouldn't You Use Celery?
 
@@ -909,7 +910,7 @@ Introducing Celery adds infrastructure,
 
 so use it when the benefits outweigh the complexity.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -925,7 +926,7 @@ so use it when the benefits outweigh the complexity.
 
 ✔ Monitor workers.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -945,7 +946,7 @@ Together,
 
 they provide scalable, reliable background processing for Python applications.
 
----
+______________________________________________________________________
 
 # Key Takeaways
 
@@ -958,7 +959,7 @@ they provide scalable, reliable background processing for Python applications.
 - Result Backends store task status.
 - Celery is designed for Python.
 
----
+______________________________________________________________________
 
 # Interview Deep Dive
 
@@ -968,9 +969,10 @@ they provide scalable, reliable background processing for Python applications.
 
 #### Answer
 
-Celery is a distributed task queue for Python that executes background tasks asynchronously. It enables applications to offload long-running work to dedicated worker processes using a message broker such as RabbitMQ or Redis.
+Celery is a distributed task queue for Python that executes background tasks asynchronously. It enables applications to
+offload long-running work to dedicated worker processes using a message broker such as RabbitMQ or Redis.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -978,9 +980,10 @@ Celery is a distributed task queue for Python that executes background tasks asy
 
 #### Answer
 
-Celery was created to move long-running tasks out of HTTP request-response cycles, improving API responsiveness, scalability, and reliability.
+Celery was created to move long-running tasks out of HTTP request-response cycles, improving API responsiveness,
+scalability, and reliability.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -988,9 +991,11 @@ Celery was created to move long-running tasks out of HTTP request-response cycle
 
 #### Answer
 
-RabbitMQ is a message broker responsible for transporting messages between applications. Celery is a Python framework that converts Python functions into background tasks and executes them using worker processes. Celery commonly uses RabbitMQ as its broker.
+RabbitMQ is a message broker responsible for transporting messages between applications. Celery is a Python framework
+that converts Python functions into background tasks and executes them using worker processes. Celery commonly uses
+RabbitMQ as its broker.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -998,9 +1003,11 @@ RabbitMQ is a message broker responsible for transporting messages between appli
 
 #### Answer
 
-Celery workers run in separate processes and can be distributed across multiple machines. Tasks survive API restarts, support retries, and can scale horizontally, whereas Python threads are tied to a single process and do not provide these capabilities.
+Celery workers run in separate processes and can be distributed across multiple machines. Tasks survive API restarts,
+support retries, and can scale horizontally, whereas Python threads are tied to a single process and do not provide
+these capabilities.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1008,9 +1015,10 @@ Celery workers run in separate processes and can be distributed across multiple 
 
 #### Answer
 
-The primary components are the application, tasks, broker, workers, and an optional result backend. Together they provide asynchronous task execution and monitoring.
+The primary components are the application, tasks, broker, workers, and an optional result backend. Together they
+provide asynchronous task execution and monitoring.
 
----
+______________________________________________________________________
 
 ## Question 6
 
@@ -1018,9 +1026,10 @@ The primary components are the application, tasks, broker, workers, and an optio
 
 #### Answer
 
-A Result Backend stores task states and optional return values. It allows applications to query whether a task is pending, running, successful, or failed.
+A Result Backend stores task states and optional return values. It allows applications to query whether a task is
+pending, running, successful, or failed.
 
----
+______________________________________________________________________
 
 ## Question 7
 
@@ -1028,24 +1037,25 @@ A Result Backend stores task states and optional return values. It allows applic
 
 #### Answer
 
-Celery is ideal for long-running, asynchronous, or retryable tasks such as sending emails, generating reports, processing images, integrating with external APIs, and scheduled background jobs.
+Celery is ideal for long-running, asynchronous, or retryable tasks such as sending emails, generating reports,
+processing images, integrating with external APIs, and scheduled background jobs.
 
----
+______________________________________________________________________
 
 # Practice Questions
 
 1. What is Celery?
-2. Why was Celery created?
-3. Compare Celery and RabbitMQ.
-4. Explain Celery's architecture.
-5. What is a Celery Task?
-6. What is the role of the Broker?
-7. Why are Workers needed?
-8. What is a Result Backend?
-9. Compare Celery with Python Threads.
-10. Compare Celery with Cron Jobs.
+1. Why was Celery created?
+1. Compare Celery and RabbitMQ.
+1. Explain Celery's architecture.
+1. What is a Celery Task?
+1. What is the role of the Broker?
+1. Why are Workers needed?
+1. What is a Result Backend?
+1. Compare Celery with Python Threads.
+1. Compare Celery with Cron Jobs.
 
----
+______________________________________________________________________
 
 # Mini Assignment
 
@@ -1069,7 +1079,7 @@ For each task, determine:
 
 Explain your design.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -1085,7 +1095,7 @@ Explain your design.
 
 ❌ Confusing Celery Tasks with RabbitMQ messages.
 
----
+______________________________________________________________________
 
 # What's Next?
 

@@ -1,4 +1,5 @@
 # Celery Masterclass for Backend Engineers
+
 ## File 17 – Retries, Time Limits, Idempotency & Reliable Task Execution
 
 > **Course Level:** Intermediate → Advanced
@@ -23,7 +24,7 @@
 >
 > This chapter teaches production-grade reliability in Celery.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -38,31 +39,31 @@ By the end of this chapter, you will be able to:
 - Handle task failures correctly.
 - Design production-ready background jobs.
 
----
+______________________________________________________________________
 
 # Table of Contents
 
 1. Why Tasks Fail
-2. Retry Basics
-3. Manual Retry
-4. Automatic Retry
-5. Retry Policies
-6. Exponential Backoff
-7. Maximum Retries
-8. Idempotency
-9. Soft Time Limits
-10. Hard Time Limits
-11. Failure Handling
-12. Production Examples
-13. Summary
-14. Key Takeaways
-15. Interview Deep Dive
-16. Practice Questions
-17. Mini Assignment
-18. Common Mistakes
-19. What's Next?
+1. Retry Basics
+1. Manual Retry
+1. Automatic Retry
+1. Retry Policies
+1. Exponential Backoff
+1. Maximum Retries
+1. Idempotency
+1. Soft Time Limits
+1. Hard Time Limits
+1. Failure Handling
+1. Production Examples
+1. Summary
+1. Key Takeaways
+1. Interview Deep Dive
+1. Practice Questions
+1. Mini Assignment
+1. Common Mistakes
+1. What's Next?
 
----
+______________________________________________________________________
 
 # Why Do Tasks Fail?
 
@@ -108,7 +109,7 @@ many business operations would never complete.
 
 Retries solve this problem.
 
----
+______________________________________________________________________
 
 # Retry Basics
 
@@ -148,7 +149,7 @@ Without retries,
 
 the email would never be sent.
 
----
+______________________________________________________________________
 
 # Manual Retry
 
@@ -179,7 +180,7 @@ This gives the task access to
 self.retry()
 ```
 
----
+______________________________________________________________________
 
 # What Happens Internally?
 
@@ -213,7 +214,7 @@ Task Executes Again
 
 The task is scheduled again instead of being marked as failed immediately.
 
----
+______________________________________________________________________
 
 # Automatic Retry
 
@@ -245,7 +246,7 @@ if an exception is raised,
 
 Celery retries automatically.
 
----
+______________________________________________________________________
 
 # Retry Policy
 
@@ -282,7 +283,7 @@ Retry
 Failure
 ```
 
----
+______________________________________________________________________
 
 # Maximum Retries
 
@@ -325,7 +326,7 @@ Failure
 
 The task eventually stops retrying.
 
----
+______________________________________________________________________
 
 # Exponential Backoff
 
@@ -373,7 +374,7 @@ This is called
 
 **Exponential Backoff**.
 
----
+______________________________________________________________________
 
 # Automatic Backoff
 
@@ -392,7 +393,7 @@ def sync_data():
 
 Celery automatically increases the delay between retries.
 
----
+______________________________________________________________________
 
 # Retry Jitter
 
@@ -420,7 +421,7 @@ all Workers retry at the same moment.
 
 This creates another spike.
 
----
+______________________________________________________________________
 
 Celery supports
 
@@ -444,13 +445,13 @@ Worker C
 
 Retries become distributed.
 
----
+______________________________________________________________________
 
 # Which Exceptions Should Be Retried?
 
 Not every failure should be retried.
 
----
+______________________________________________________________________
 
 Retry
 
@@ -466,7 +467,7 @@ SMTP Unavailable
 Connection Reset
 ```
 
----
+______________________________________________________________________
 
 Do Not Retry
 
@@ -486,7 +487,7 @@ These are permanent problems.
 
 Retries won't help.
 
----
+______________________________________________________________________
 
 # Idempotency
 
@@ -518,7 +519,7 @@ Customer Charged Twice
 
 A serious bug.
 
----
+______________________________________________________________________
 
 # What is Idempotency?
 
@@ -530,7 +531,7 @@ if running it multiple times
 
 produces the same final result.
 
----
+______________________________________________________________________
 
 Example
 
@@ -550,7 +551,7 @@ Run Again
 ₹200
 ```
 
----
+______________________________________________________________________
 
 Good
 
@@ -566,7 +567,7 @@ Skip Processing
 
 Duplicate execution has no effect.
 
----
+______________________________________________________________________
 
 # Designing Idempotent Tasks
 
@@ -604,7 +605,7 @@ Process Payment
 
 This protects against duplicate execution.
 
----
+______________________________________________________________________
 
 # Soft Time Limit
 
@@ -648,7 +649,7 @@ Your code can catch it
 
 and clean up resources.
 
----
+______________________________________________________________________
 
 # Hard Time Limit
 
@@ -672,7 +673,7 @@ Celery forcefully terminates the Worker process executing the task.
 
 No cleanup code is guaranteed to run.
 
----
+______________________________________________________________________
 
 # Soft vs Hard Time Limit
 
@@ -700,7 +701,7 @@ Comparison
 | Cleanup possible | Cleanup unlikely |
 | Graceful | Forceful |
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -728,7 +729,7 @@ The task attempts graceful shutdown,
 
 then is forcefully stopped if necessary.
 
----
+______________________________________________________________________
 
 # Failure Handling
 
@@ -754,7 +755,7 @@ also send alerts
 
 or move failed work into investigation workflows.
 
----
+______________________________________________________________________
 
 # Real Production Example
 
@@ -790,7 +791,7 @@ Alert Support Team
 
 The application avoids retrying forever.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -810,7 +811,7 @@ The application avoids retrying forever.
 
 ✔ Monitor failed tasks.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -826,7 +827,7 @@ Together,
 
 these mechanisms create reliable production-grade background processing.
 
----
+______________________________________________________________________
 
 # Key Takeaways
 
@@ -840,7 +841,7 @@ these mechanisms create reliable production-grade background processing.
 - Hard time limits terminate stuck tasks.
 - Monitor retry and failure rates.
 
----
+______________________________________________________________________
 
 # Interview Deep Dive
 
@@ -850,9 +851,10 @@ these mechanisms create reliable production-grade background processing.
 
 #### Answer
 
-Retries allow temporary failures, such as network outages or database timeouts, to recover automatically without requiring manual intervention, improving system reliability.
+Retries allow temporary failures, such as network outages or database timeouts, to recover automatically without
+requiring manual intervention, improving system reliability.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -860,9 +862,11 @@ Retries allow temporary failures, such as network outages or database timeouts, 
 
 #### Answer
 
-Manual retries use `self.retry()` inside task code, giving fine-grained control over retry behavior. Automatic retries are configured declaratively using options like `autoretry_for`, allowing Celery to retry matching exceptions automatically.
+Manual retries use `self.retry()` inside task code, giving fine-grained control over retry behavior. Automatic retries
+are configured declaratively using options like `autoretry_for`, allowing Celery to retry matching exceptions
+automatically.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -870,9 +874,10 @@ Manual retries use `self.retry()` inside task code, giving fine-grained control 
 
 #### Answer
 
-Exponential backoff increases the delay between retry attempts after each failure. This reduces pressure on failing systems and gives external services time to recover.
+Exponential backoff increases the delay between retry attempts after each failure. This reduces pressure on failing
+systems and gives external services time to recover.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -880,9 +885,10 @@ Exponential backoff increases the delay between retry attempts after each failur
 
 #### Answer
 
-Because tasks may execute more than once due to retries or message redelivery. Idempotent tasks ensure duplicate executions do not produce duplicate side effects, such as charging a customer twice.
+Because tasks may execute more than once due to retries or message redelivery. Idempotent tasks ensure duplicate
+executions do not produce duplicate side effects, such as charging a customer twice.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -890,9 +896,10 @@ Because tasks may execute more than once due to retries or message redelivery. I
 
 #### Answer
 
-A soft time limit raises an exception inside the task, allowing cleanup logic to run. A hard time limit forcibly terminates the worker process if the task continues beyond the configured limit.
+A soft time limit raises an exception inside the task, allowing cleanup logic to run. A hard time limit forcibly
+terminates the worker process if the task continues beyond the configured limit.
 
----
+______________________________________________________________________
 
 ## Question 6
 
@@ -900,9 +907,10 @@ A soft time limit raises an exception inside the task, allowing cleanup logic to
 
 #### Answer
 
-Permanent failures such as validation errors, malformed input, permission errors, and business rule violations should generally not be retried because repeated execution will not change the outcome.
+Permanent failures such as validation errors, malformed input, permission errors, and business rule violations should
+generally not be retried because repeated execution will not change the outcome.
 
----
+______________________________________________________________________
 
 ## Question 7
 
@@ -910,24 +918,26 @@ Permanent failures such as validation errors, malformed input, permission errors
 
 #### Answer
 
-Use idempotency by assigning each payment a unique identifier, checking whether it has already been processed before charging the customer, retry only transient gateway failures, and configure reasonable retry limits with exponential backoff.
+Use idempotency by assigning each payment a unique identifier, checking whether it has already been processed before
+charging the customer, retry only transient gateway failures, and configure reasonable retry limits with exponential
+backoff.
 
----
+______________________________________________________________________
 
 # Practice Questions
 
 1. Why do Celery tasks fail?
-2. Explain manual retries.
-3. Explain automatic retries.
-4. What is exponential backoff?
-5. Why is retry jitter useful?
-6. What is idempotency?
-7. Compare soft and hard time limits.
-8. Which failures should not be retried?
-9. Design a retry policy for an email service.
-10. Design an idempotent payment task.
+1. Explain manual retries.
+1. Explain automatic retries.
+1. What is exponential backoff?
+1. Why is retry jitter useful?
+1. What is idempotency?
+1. Compare soft and hard time limits.
+1. Which failures should not be retried?
+1. Design a retry policy for an email service.
+1. Design an idempotent payment task.
 
----
+______________________________________________________________________
 
 # Mini Assignment
 
@@ -954,7 +964,7 @@ For each task, define:
 
 Explain your reasoning.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -972,7 +982,7 @@ Explain your reasoning.
 
 ❌ Assuming retries guarantee success.
 
----
+______________________________________________________________________
 
 # What's Next?
 

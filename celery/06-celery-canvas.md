@@ -1,4 +1,5 @@
 # Celery Masterclass for Backend Engineers
+
 ## File 18 – Celery Canvas: Chains, Groups, Chords & Workflow Orchestration
 
 > **Course Level:** Intermediate → Advanced
@@ -45,7 +46,7 @@
 >
 > Celery provides the **Canvas API** to build these workflows.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -60,28 +61,28 @@ By the end of this chapter, you will be able to:
 - Design complex task workflows.
 - Choose the correct Canvas primitive.
 
----
+______________________________________________________________________
 
 # Table of Contents
 
 1. Why Canvas Exists
-2. What is a Signature?
-3. Chains
-4. Groups
-5. Chords
-6. Maps
-7. Starmaps
-8. Workflow Patterns
-9. Production Examples
-10. Summary
-11. Key Takeaways
-12. Interview Deep Dive
-13. Practice Questions
-14. Mini Assignment
-15. Common Mistakes
-16. What's Next?
+1. What is a Signature?
+1. Chains
+1. Groups
+1. Chords
+1. Maps
+1. Starmaps
+1. Workflow Patterns
+1. Production Examples
+1. Summary
+1. Key Takeaways
+1. Interview Deep Dive
+1. Practice Questions
+1. Mini Assignment
+1. Common Mistakes
+1. What's Next?
 
----
+______________________________________________________________________
 
 # Why Canvas Exists
 
@@ -119,7 +120,7 @@ Writing this manually becomes messy.
 
 Celery Canvas lets us compose workflows.
 
----
+______________________________________________________________________
 
 # What is Canvas?
 
@@ -141,7 +142,7 @@ Multiple Tasks
 Connected Together
 ```
 
----
+______________________________________________________________________
 
 Canvas provides
 
@@ -161,7 +162,7 @@ Starmap
 
 Let's learn each one.
 
----
+______________________________________________________________________
 
 # Signatures
 
@@ -195,7 +196,7 @@ No execution happens.
 
 It simply creates a task signature.
 
----
+______________________________________________________________________
 
 # delay()
 
@@ -203,7 +204,7 @@ It simply creates a task signature.
 Execute Immediately
 ```
 
----
+______________________________________________________________________
 
 # Signature
 
@@ -215,7 +216,7 @@ Prepare
 Execute Later
 ```
 
----
+______________________________________________________________________
 
 Example
 
@@ -233,7 +234,7 @@ task.delay()
 
 Now execution starts.
 
----
+______________________________________________________________________
 
 # Why Signatures?
 
@@ -245,7 +246,7 @@ and Chords
 
 are built using them.
 
----
+______________________________________________________________________
 
 # Chains
 
@@ -275,7 +276,7 @@ Tasks execute
 
 one after another.
 
----
+______________________________________________________________________
 
 Example
 
@@ -291,7 +292,7 @@ workflow = chain(
 workflow.delay()
 ```
 
----
+______________________________________________________________________
 
 # How Chains Work
 
@@ -337,7 +338,7 @@ Each task receives
 
 the previous task's output.
 
----
+______________________________________________________________________
 
 # Chain Diagram
 
@@ -359,7 +360,7 @@ Task D
 
 Sequential execution.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -397,7 +398,7 @@ Use
 Chain
 ```
 
----
+______________________________________________________________________
 
 # Groups
 
@@ -427,7 +428,7 @@ None depend on each other.
 
 Run them simultaneously.
 
----
+______________________________________________________________________
 
 Example
 
@@ -441,7 +442,7 @@ group(
 ).delay()
 ```
 
----
+______________________________________________________________________
 
 Diagram
 
@@ -459,7 +460,7 @@ Diagram
 
 Parallel execution.
 
----
+______________________________________________________________________
 
 # Why Groups?
 
@@ -501,7 +502,7 @@ Watermark
 
 Huge improvement.
 
----
+______________________________________________________________________
 
 # Chords
 
@@ -533,7 +534,7 @@ must wait
 
 until all three finish.
 
----
+______________________________________________________________________
 
 This is called
 
@@ -543,7 +544,7 @@ a
 Chord
 ```
 
----
+______________________________________________________________________
 
 Example
 
@@ -561,7 +562,7 @@ workflow = chord(
 )
 ```
 
----
+______________________________________________________________________
 
 Diagram
 
@@ -579,7 +580,7 @@ Watermark
 
 The final callback waits.
 
----
+______________________________________________________________________
 
 # Difference Between Group and Chord
 
@@ -601,7 +602,7 @@ Run Together
 Execute Callback
 ```
 
----
+______________________________________________________________________
 
 Comparison
 
@@ -611,7 +612,7 @@ Comparison
 | No callback | Callback |
 | Independent finish | Final aggregation |
 
----
+______________________________________________________________________
 
 # Map
 
@@ -647,7 +648,7 @@ use
 map()
 ```
 
----
+______________________________________________________________________
 
 Example
 
@@ -667,7 +668,7 @@ Resize Image3
 ...
 ```
 
----
+______________________________________________________________________
 
 # Starmap
 
@@ -703,7 +704,7 @@ Use
 starmap()
 ```
 
----
+______________________________________________________________________
 
 Example
 
@@ -723,7 +724,7 @@ becomes
 
 individual arguments.
 
----
+______________________________________________________________________
 
 # Workflow Comparison
 
@@ -733,7 +734,7 @@ Sequential
 Chain
 ```
 
----
+______________________________________________________________________
 
 Parallel
 
@@ -741,11 +742,11 @@ Parallel
 Group
 ```
 
----
+______________________________________________________________________
 
 Parallel
 
-+
+-
 
 Final Callback
 
@@ -753,7 +754,7 @@ Final Callback
 Chord
 ```
 
----
+______________________________________________________________________
 
 Same Task
 
@@ -763,7 +764,7 @@ Many Inputs
 Map
 ```
 
----
+______________________________________________________________________
 
 Same Task
 
@@ -773,7 +774,7 @@ Different Arguments
 Starmap
 ```
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -811,7 +812,7 @@ Notify User
 
 Excellent real-world example.
 
----
+______________________________________________________________________
 
 # Another Production Example
 
@@ -845,7 +846,7 @@ Each step depends
 
 on the previous one.
 
----
+______________________________________________________________________
 
 # Choosing the Right Primitive
 
@@ -907,7 +908,7 @@ Different Arguments
 Starmap
 ```
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -923,7 +924,7 @@ Starmap
 
 ✔ Monitor workflow failures.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -941,7 +942,7 @@ Map and Starmap simplify applying the same task across many inputs.
 
 Canvas is essential for building sophisticated asynchronous systems.
 
----
+______________________________________________________________________
 
 # Key Takeaways
 
@@ -954,7 +955,7 @@ Canvas is essential for building sophisticated asynchronous systems.
 - Starmaps support multiple arguments.
 - Choose primitives based on task dependencies.
 
----
+______________________________________________________________________
 
 # Interview Deep Dive
 
@@ -964,9 +965,10 @@ Canvas is essential for building sophisticated asynchronous systems.
 
 #### Answer
 
-Celery Canvas is a workflow framework that allows multiple tasks to be composed into complex execution graphs such as sequential pipelines, parallel execution, and callback workflows.
+Celery Canvas is a workflow framework that allows multiple tasks to be composed into complex execution graphs such as
+sequential pipelines, parallel execution, and callback workflows.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -974,9 +976,10 @@ Celery Canvas is a workflow framework that allows multiple tasks to be composed 
 
 #### Answer
 
-A Signature is a serialized description of a task and its arguments that can be passed around, combined with other Signatures, and executed later. It is created using methods like `.s()`.
+A Signature is a serialized description of a task and its arguments that can be passed around, combined with other
+Signatures, and executed later. It is created using methods like `.s()`.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -984,9 +987,10 @@ A Signature is a serialized description of a task and its arguments that can be 
 
 #### Answer
 
-A Chain executes tasks sequentially, with each task receiving the previous task's result. A Group executes multiple independent tasks in parallel without sharing results.
+A Chain executes tasks sequentially, with each task receiving the previous task's result. A Group executes multiple
+independent tasks in parallel without sharing results.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -994,9 +998,10 @@ A Chain executes tasks sequentially, with each task receiving the previous task'
 
 #### Answer
 
-A Chord combines a Group with a callback task. The callback executes only after every task in the Group has completed successfully.
+A Chord combines a Group with a callback task. The callback executes only after every task in the Group has completed
+successfully.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1004,9 +1009,10 @@ A Chord combines a Group with a callback task. The callback executes only after 
 
 #### Answer
 
-Use a Group when tasks are independent of one another and can safely execute in parallel, such as resizing images into multiple formats.
+Use a Group when tasks are independent of one another and can safely execute in parallel, such as resizing images into
+multiple formats.
 
----
+______________________________________________________________________
 
 ## Question 6
 
@@ -1014,9 +1020,10 @@ Use a Group when tasks are independent of one another and can safely execute in 
 
 #### Answer
 
-Map applies the same task to multiple inputs where each input is treated as a single argument. Starmap applies the same task to multiple tuples, expanding each tuple into separate positional arguments.
+Map applies the same task to multiple inputs where each input is treated as a single argument. Starmap applies the same
+task to multiple tuples, expanding each tuple into separate positional arguments.
 
----
+______________________________________________________________________
 
 ## Question 7
 
@@ -1024,24 +1031,25 @@ Map applies the same task to multiple inputs where each input is treated as a si
 
 #### Answer
 
-A video processing pipeline may generate thumbnails, extract audio, create previews, and run AI moderation in parallel. Once all complete, a callback publishes the video and notifies the user.
+A video processing pipeline may generate thumbnails, extract audio, create previews, and run AI moderation in parallel.
+Once all complete, a callback publishes the video and notifies the user.
 
----
+______________________________________________________________________
 
 # Practice Questions
 
 1. What is Celery Canvas?
-2. Explain Task Signatures.
-3. Compare Chain and Group.
-4. Compare Group and Chord.
-5. When should Map be used?
-6. When should Starmap be used?
-7. Design a video-processing workflow.
-8. Design an invoice-generation workflow.
-9. Explain how task results flow through a Chain.
-10. Why should callback tasks be idempotent?
+1. Explain Task Signatures.
+1. Compare Chain and Group.
+1. Compare Group and Chord.
+1. When should Map be used?
+1. When should Starmap be used?
+1. Design a video-processing workflow.
+1. Design an invoice-generation workflow.
+1. Explain how task results flow through a Chain.
+1. Why should callback tasks be idempotent?
 
----
+______________________________________________________________________
 
 # Mini Assignment
 
@@ -1067,7 +1075,7 @@ For each task, determine:
 
 Draw the entire workflow using ASCII diagrams.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -1083,11 +1091,12 @@ Draw the entire workflow using ASCII diagrams.
 
 ❌ Making callback tasks non-idempotent.
 
----
+______________________________________________________________________
 
 # What's Next?
 
-Now that you understand workflow orchestration, we'll explore **Celery Beat**, the scheduling component that allows tasks to run automatically on recurring schedules.
+Now that you understand workflow orchestration, we'll explore **Celery Beat**, the scheduling component that allows
+tasks to run automatically on recurring schedules.
 
 The next chapter covers:
 

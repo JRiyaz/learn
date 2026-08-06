@@ -1,4 +1,5 @@
 # Celery Masterclass for Backend Engineers
+
 ## File 15 – Creating Your First Celery Application
 
 > **Course Level:** Intermediate → Advanced
@@ -18,7 +19,7 @@
 >
 > This is the first chapter where we'll write production-style code.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -33,31 +34,31 @@ By the end of this chapter, you will be able to:
 - Understand project structure.
 - Debug common startup issues.
 
----
+______________________________________________________________________
 
 # Table of Contents
 
 1. Project Architecture
-2. Installing RabbitMQ
-3. Installing Celery
-4. Project Structure
-5. Creating the Celery Application
-6. Creating Tasks
-7. Starting RabbitMQ
-8. Starting Workers
-9. Sending Tasks
-10. Complete Task Flow
-11. Common Errors
-12. Best Practices
-13. Summary
-14. Key Takeaways
-15. Interview Deep Dive
-16. Practice Questions
-17. Mini Assignment
-18. Common Mistakes
-19. What's Next?
+1. Installing RabbitMQ
+1. Installing Celery
+1. Project Structure
+1. Creating the Celery Application
+1. Creating Tasks
+1. Starting RabbitMQ
+1. Starting Workers
+1. Sending Tasks
+1. Complete Task Flow
+1. Common Errors
+1. Best Practices
+1. Summary
+1. Key Takeaways
+1. Interview Deep Dive
+1. Practice Questions
+1. Mini Assignment
+1. Common Mistakes
+1. What's Next?
 
----
+______________________________________________________________________
 
 # Project Architecture
 
@@ -95,7 +96,7 @@ RabbitMQ transports them.
 
 Workers execute them.
 
----
+______________________________________________________________________
 
 # Step 1 — Install RabbitMQ
 
@@ -126,7 +127,7 @@ Broker Port
 5672
 ```
 
----
+______________________________________________________________________
 
 # Step 2 — Install Celery
 
@@ -146,7 +147,7 @@ Example
 5.x.x
 ```
 
----
+______________________________________________________________________
 
 # Step 3 — Project Structure
 
@@ -180,7 +181,7 @@ As applications grow,
 
 split tasks into multiple modules.
 
----
+______________________________________________________________________
 
 # Step 4 — Create the Celery Application
 
@@ -203,7 +204,7 @@ This tells Celery
 
 where RabbitMQ is running.
 
----
+______________________________________________________________________
 
 # Broker URL Format
 
@@ -243,7 +244,7 @@ Production usually uses
 
 non-default credentials.
 
----
+______________________________________________________________________
 
 # Step 5 — Create Tasks
 
@@ -273,7 +274,7 @@ Without it,
 
 Workers won't recognize the task.
 
----
+______________________________________________________________________
 
 # Step 6 — Another Task
 
@@ -291,7 +292,7 @@ can become a Celery task,
 
 provided its arguments are serializable.
 
----
+______________________________________________________________________
 
 # Step 7 — Start RabbitMQ
 
@@ -309,7 +310,7 @@ docker ps
 
 RabbitMQ should appear.
 
----
+______________________________________________________________________
 
 # Step 8 — Start a Worker
 
@@ -349,7 +350,7 @@ Ready.
 
 Now the Worker is listening.
 
----
+______________________________________________________________________
 
 # Step 9 — Send a Task
 
@@ -383,7 +384,7 @@ send_email
 alice@example.com
 ```
 
----
+______________________________________________________________________
 
 # What Happens Internally?
 
@@ -423,7 +424,7 @@ ACK
 
 Everything happens asynchronously.
 
----
+______________________________________________________________________
 
 # Another Example
 
@@ -451,7 +452,7 @@ Not
 
 The task is still executing.
 
----
+______________________________________________________________________
 
 # Task IDs
 
@@ -477,7 +478,7 @@ Useful for
 - debugging
 - querying task status
 
----
+______________________________________________________________________
 
 # AsyncResult
 
@@ -508,7 +509,7 @@ Output
 
 Task IDs uniquely identify each task.
 
----
+______________________________________________________________________
 
 # Checking Task State
 
@@ -540,7 +541,7 @@ Without a Result Backend,
 
 state tracking is limited.
 
----
+______________________________________________________________________
 
 # Returning Values
 
@@ -566,7 +567,7 @@ multiply.delay(5, 4)
 
 can be retrieved.
 
----
+______________________________________________________________________
 
 # Running Multiple Tasks
 
@@ -584,7 +585,7 @@ All tasks are independent.
 
 Workers execute them concurrently.
 
----
+______________________________________________________________________
 
 # Folder Organization (Production)
 
@@ -612,7 +613,7 @@ tasks/
 
 Much easier to maintain.
 
----
+______________________________________________________________________
 
 # Logging
 
@@ -634,7 +635,7 @@ logger.info("Email sent")
 
 Structured logging is essential for production debugging.
 
----
+______________________________________________________________________
 
 # Common Startup Errors
 
@@ -650,7 +651,7 @@ Solution
 
 Start RabbitMQ.
 
----
+______________________________________________________________________
 
 ## Wrong Broker URL
 
@@ -670,7 +671,7 @@ host,
 
 and port.
 
----
+______________________________________________________________________
 
 ## Task Not Registered
 
@@ -684,7 +685,7 @@ Solution
 
 Ensure the task module is imported and decorated with `@celery.task`.
 
----
+______________________________________________________________________
 
 ## Wrong Application Path
 
@@ -702,7 +703,7 @@ Module Not Found
 
 Verify the `-A` argument points to the correct Celery application.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -720,7 +721,7 @@ Verify the `-A` argument points to the correct Celery application.
 
 ✔ Secure RabbitMQ credentials.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -739,7 +740,7 @@ and a Worker executes it asynchronously.
 
 This pattern allows APIs to remain fast while heavy work happens in the background.
 
----
+______________________________________________________________________
 
 # Key Takeaways
 
@@ -752,7 +753,7 @@ This pattern allows APIs to remain fast while heavy work happens in the backgrou
 - Use structured logging.
 - Organize tasks by domain.
 
----
+______________________________________________________________________
 
 # Interview Deep Dive
 
@@ -762,9 +763,10 @@ This pattern allows APIs to remain fast while heavy work happens in the backgrou
 
 #### Answer
 
-Create a `Celery` object with a name and a Broker configuration. This application manages task registration, configuration, and communication with the message broker.
+Create a `Celery` object with a name and a Broker configuration. This application manages task registration,
+configuration, and communication with the message broker.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -772,9 +774,10 @@ Create a `Celery` object with a name and a Broker configuration. This applicatio
 
 #### Answer
 
-`.delay()` serializes the task name and arguments, sends them to the configured Broker, and immediately returns an `AsyncResult` object without executing the task synchronously.
+`.delay()` serializes the task name and arguments, sends them to the configured Broker, and immediately returns an
+`AsyncResult` object without executing the task synchronously.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -782,9 +785,10 @@ Create a `Celery` object with a name and a Broker configuration. This applicatio
 
 #### Answer
 
-Because task execution happens asynchronously in a separate Worker process. `.delay()` only schedules the task and returns immediately.
+Because task execution happens asynchronously in a separate Worker process. `.delay()` only schedules the task and
+returns immediately.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -792,9 +796,10 @@ Because task execution happens asynchronously in a separate Worker process. `.de
 
 #### Answer
 
-`AsyncResult` is a handle to a submitted task. It contains the task ID and can be used to check task status or retrieve results when a Result Backend is configured.
+`AsyncResult` is a handle to a submitted task. It contains the task ID and can be used to check task status or retrieve
+results when a Result Backend is configured.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -802,9 +807,10 @@ Because task execution happens asynchronously in a separate Worker process. `.de
 
 #### Answer
 
-The decorator registers the function with the Celery application so Workers can discover and execute it when task messages arrive.
+The decorator registers the function with the Celery application so Workers can discover and execute it when task
+messages arrive.
 
----
+______________________________________________________________________
 
 ## Question 6
 
@@ -812,9 +818,10 @@ The decorator registers the function with the Celery application so Workers can 
 
 #### Answer
 
-This occurs when the Worker has not imported the module containing the task or when the function is missing the `@celery.task` decorator.
+This occurs when the Worker has not imported the module containing the task or when the function is missing the
+`@celery.task` decorator.
 
----
+______________________________________________________________________
 
 ## Question 7
 
@@ -822,24 +829,25 @@ This occurs when the Worker has not imported the module containing the task or w
 
 #### Answer
 
-Workers load the Celery application, import registered task modules, build a task registry, and match incoming task names from the Broker to registered Python functions.
+Workers load the Celery application, import registered task modules, build a task registry, and match incoming task
+names from the Broker to registered Python functions.
 
----
+______________________________________________________________________
 
 # Practice Questions
 
 1. Explain the project structure of a Celery application.
-2. What is the purpose of the Celery application object?
-3. What happens internally when `.delay()` is called?
-4. Explain the Broker URL.
-5. Why is the `@celery.task` decorator required?
-6. What is an `AsyncResult`?
-7. How are task IDs used?
-8. Why should logging be used instead of `print()`?
-9. Explain how Workers execute tasks.
-10. What are common startup errors?
+1. What is the purpose of the Celery application object?
+1. What happens internally when `.delay()` is called?
+1. Explain the Broker URL.
+1. Why is the `@celery.task` decorator required?
+1. What is an `AsyncResult`?
+1. How are task IDs used?
+1. Why should logging be used instead of `print()`?
+1. Explain how Workers execute tasks.
+1. What are common startup errors?
 
----
+______________________________________________________________________
 
 # Mini Assignment
 
@@ -861,7 +869,7 @@ For each task, explain:
 
 Also design a clean folder structure for the project.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -877,7 +885,7 @@ Also design a clean folder structure for the project.
 
 ❌ Placing every task in one giant `tasks.py` file.
 
----
+______________________________________________________________________
 
 # What's Next?
 

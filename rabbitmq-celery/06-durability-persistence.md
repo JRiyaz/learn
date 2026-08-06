@@ -1,4 +1,5 @@
 # RabbitMQ Masterclass for Backend Engineers
+
 ## File 06 – Durability, Persistence & Publisher Confirms
 
 > **Course Level:** Intermediate → Advanced
@@ -17,7 +18,7 @@
 >
 > This chapter answers those questions.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -31,29 +32,29 @@ By the end of this chapter, you will be able to:
 - Design reliable messaging systems.
 - Avoid common reliability mistakes.
 
----
+______________________________________________________________________
 
 # Table of Contents
 
 1. Why Reliability Matters
-2. What Happens During a RabbitMQ Crash?
-3. Queue Durability
-4. Message Persistence
-5. Durable Queue vs Persistent Message
-6. Publisher Confirms
-7. Publisher Confirms vs Consumer ACKs
-8. RabbitMQ Transactions
-9. Reliability Matrix
-10. Real Production Example
-11. Summary
-12. Key Takeaways
-13. Interview Deep Dive
-14. Practice Questions
-15. Mini Assignment
-16. Common Mistakes
-17. What's Next?
+1. What Happens During a RabbitMQ Crash?
+1. Queue Durability
+1. Message Persistence
+1. Durable Queue vs Persistent Message
+1. Publisher Confirms
+1. Publisher Confirms vs Consumer ACKs
+1. RabbitMQ Transactions
+1. Reliability Matrix
+1. Real Production Example
+1. Summary
+1. Key Takeaways
+1. Interview Deep Dive
+1. Practice Questions
+1. Mini Assignment
+1. Common Mistakes
+1. What's Next?
 
----
+______________________________________________________________________
 
 # Why Reliability Matters
 
@@ -86,7 +87,7 @@ If we cannot answer these questions confidently,
 
 our system isn't reliable.
 
----
+______________________________________________________________________
 
 # What Happens During a RabbitMQ Crash?
 
@@ -125,9 +126,9 @@ Unless RabbitMQ was instructed to persist data.
 This introduces two important concepts:
 
 1. Durable Queues
-2. Persistent Messages
+1. Persistent Messages
 
----
+______________________________________________________________________
 
 # Queue Durability
 
@@ -157,7 +158,7 @@ After restart,
 
 RabbitMQ recreates it.
 
----
+______________________________________________________________________
 
 ## Durable Queue Example
 
@@ -187,7 +188,7 @@ After restart,
 
 the Queue still exists.
 
----
+______________________________________________________________________
 
 # Non-Durable Queue
 
@@ -215,7 +216,7 @@ This is acceptable for temporary workloads,
 
 but not for critical business systems.
 
----
+______________________________________________________________________
 
 # Important Misconception
 
@@ -237,7 +238,7 @@ the Queue itself.
 
 It says nothing about the messages inside.
 
----
+______________________________________________________________________
 
 # Message Persistence
 
@@ -253,7 +254,7 @@ or
 Transient
 ```
 
----
+______________________________________________________________________
 
 ## Persistent Message
 
@@ -277,7 +278,7 @@ If RabbitMQ crashes,
 
 the message can be recovered.
 
----
+______________________________________________________________________
 
 ## Transient Message
 
@@ -297,7 +298,7 @@ RabbitMQ crashes.
 Message Lost
 ```
 
----
+______________________________________________________________________
 
 # Durable Queue vs Persistent Message
 
@@ -305,7 +306,7 @@ This is probably the most common RabbitMQ interview question.
 
 Let's compare them.
 
----
+______________________________________________________________________
 
 ## Durable Queue
 
@@ -315,7 +316,7 @@ Protects
 Queue
 ```
 
----
+______________________________________________________________________
 
 ## Persistent Message
 
@@ -325,7 +326,7 @@ Protects
 Message
 ```
 
----
+______________________________________________________________________
 
 Diagram
 
@@ -347,7 +348,7 @@ Message survives restart
 
 They protect different things.
 
----
+______________________________________________________________________
 
 # Complete Reliability Matrix
 
@@ -375,7 +376,7 @@ Message Lost
 
 Worst case.
 
----
+______________________________________________________________________
 
 ## Case 2
 
@@ -403,7 +404,7 @@ Queue survives.
 
 Messages disappear.
 
----
+______________________________________________________________________
 
 ## Case 3
 
@@ -429,7 +430,7 @@ Messages Cannot Be Recovered
 
 Persistent messages are useless because the Queue itself is gone.
 
----
+______________________________________________________________________
 
 ## Case 4 (Production)
 
@@ -455,7 +456,7 @@ Messages Restored
 
 This is the recommended production configuration.
 
----
+______________________________________________________________________
 
 # Message Journey
 
@@ -493,7 +494,7 @@ Notice
 
 The message is stored safely before it reaches the Consumer.
 
----
+______________________________________________________________________
 
 # Does Persistent Mean Immediately Written?
 
@@ -509,7 +510,7 @@ the message is flushed to disk.
 
 This improves throughput.
 
----
+______________________________________________________________________
 
 # Publisher Problem
 
@@ -527,7 +528,7 @@ the Producer only hopes the message arrived.
 
 This is dangerous.
 
----
+______________________________________________________________________
 
 # Publisher Confirms
 
@@ -569,7 +570,7 @@ Now the Producer knows
 Message Safely Accepted
 ```
 
----
+______________________________________________________________________
 
 # Without Publisher Confirms
 
@@ -593,7 +594,7 @@ Nobody knows.
 
 The Producer is uncertain.
 
----
+______________________________________________________________________
 
 # With Publisher Confirms
 
@@ -619,7 +620,7 @@ Producer
 
 Now the Producer knows.
 
----
+______________________________________________________________________
 
 # Consumer ACK vs Publisher Confirm
 
@@ -627,7 +628,7 @@ These are frequently confused.
 
 Let's compare them.
 
----
+______________________________________________________________________
 
 ## Publisher Confirm
 
@@ -647,7 +648,7 @@ Meaning
 RabbitMQ accepted your message.
 ```
 
----
+______________________________________________________________________
 
 ## Consumer ACK
 
@@ -667,7 +668,7 @@ Meaning
 I successfully processed the message.
 ```
 
----
+______________________________________________________________________
 
 Diagram
 
@@ -697,7 +698,7 @@ Consumer ACK
 
 They solve completely different problems.
 
----
+______________________________________________________________________
 
 # RabbitMQ Transactions
 
@@ -725,7 +726,7 @@ Rollback
 
 The message isn't published.
 
----
+______________________________________________________________________
 
 ## Why Aren't Transactions Popular?
 
@@ -745,7 +746,7 @@ instead.
 
 Publisher Confirms provide high reliability with much better performance.
 
----
+______________________________________________________________________
 
 # Reliability Flow
 
@@ -789,7 +790,7 @@ RabbitMQ Deletes Message
 
 This provides strong reliability.
 
----
+______________________________________________________________________
 
 # Real Production Example
 
@@ -835,7 +836,7 @@ it can safely retry publishing.
 
 This combination provides a highly reliable messaging workflow.
 
----
+______________________________________________________________________
 
 # Reliability Checklist
 
@@ -857,7 +858,7 @@ always use
 
 Missing any one of these reduces reliability.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -875,7 +876,7 @@ Together,
 
 these mechanisms provide a reliable messaging system capable of surviving crashes and failures.
 
----
+______________________________________________________________________
 
 # Key Takeaways
 
@@ -889,7 +890,7 @@ these mechanisms provide a reliable messaging system capable of surviving crashe
 - Publisher Confirms are preferred in production.
 - Production systems combine Durable Queues, Persistent Messages, Publisher Confirms, and Manual ACKs.
 
----
+______________________________________________________________________
 
 # Interview Deep Dive
 
@@ -899,9 +900,10 @@ these mechanisms provide a reliable messaging system capable of surviving crashe
 
 #### Answer
 
-A Durable Queue ensures the Queue definition survives a RabbitMQ restart, while a Persistent Message ensures the message itself is stored on disk and can be recovered after a restart. Both must be used together for reliable messaging.
+A Durable Queue ensures the Queue definition survives a RabbitMQ restart, while a Persistent Message ensures the message
+itself is stored on disk and can be recovered after a restart. Both must be used together for reliable messaging.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -909,9 +911,10 @@ A Durable Queue ensures the Queue definition survives a RabbitMQ restart, while 
 
 #### Answer
 
-No. A Durable Queue only protects the Queue's metadata. Messages must be published as Persistent Messages if they should survive a RabbitMQ restart.
+No. A Durable Queue only protects the Queue's metadata. Messages must be published as Persistent Messages if they should
+survive a RabbitMQ restart.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -919,9 +922,10 @@ No. A Durable Queue only protects the Queue's metadata. Messages must be publish
 
 #### Answer
 
-Publisher Confirms allow the Producer to know whether RabbitMQ successfully accepted and stored a published message. Without them, the Producer cannot distinguish between a successful publish and a network failure.
+Publisher Confirms allow the Producer to know whether RabbitMQ successfully accepted and stored a published message.
+Without them, the Producer cannot distinguish between a successful publish and a network failure.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -929,9 +933,10 @@ Publisher Confirms allow the Producer to know whether RabbitMQ successfully acce
 
 #### Answer
 
-Publisher Confirms flow from RabbitMQ to the Producer and confirm message acceptance. Consumer ACKs flow from the Consumer to RabbitMQ and confirm successful message processing.
+Publisher Confirms flow from RabbitMQ to the Producer and confirm message acceptance. Consumer ACKs flow from the
+Consumer to RabbitMQ and confirm successful message processing.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -939,9 +944,10 @@ Publisher Confirms flow from RabbitMQ to the Producer and confirm message accept
 
 #### Answer
 
-Transactions provide reliability but significantly reduce throughput because every publish operation becomes transactional. Publisher Confirms offer similar reliability with much better performance.
+Transactions provide reliability but significantly reduce throughput because every publish operation becomes
+transactional. Publisher Confirms offer similar reliability with much better performance.
 
----
+______________________________________________________________________
 
 ## Question 6
 
@@ -949,24 +955,25 @@ Transactions provide reliability but significantly reduce throughput because eve
 
 #### Answer
 
-A production payment system should use Durable Queues, Persistent Messages, Publisher Confirms, Manual ACKs, retry policies, Dead Letter Queues, and idempotent Consumers to minimize message loss and handle failures safely.
+A production payment system should use Durable Queues, Persistent Messages, Publisher Confirms, Manual ACKs, retry
+policies, Dead Letter Queues, and idempotent Consumers to minimize message loss and handle failures safely.
 
----
+______________________________________________________________________
 
 # Practice Questions
 
 1. Explain Queue Durability.
-2. Explain Message Persistence.
-3. Why are both required for production?
-4. What happens if only the Queue is durable?
-5. What happens if only the Message is persistent?
-6. What are Publisher Confirms?
-7. Compare Publisher Confirms with Consumer ACKs.
-8. Why are Transactions slower?
-9. What configuration provides maximum reliability?
-10. Design a reliable messaging flow for an online payment system.
+1. Explain Message Persistence.
+1. Why are both required for production?
+1. What happens if only the Queue is durable?
+1. What happens if only the Message is persistent?
+1. What are Publisher Confirms?
+1. Compare Publisher Confirms with Consumer ACKs.
+1. Why are Transactions slower?
+1. What configuration provides maximum reliability?
+1. Design a reliable messaging flow for an online payment system.
 
----
+______________________________________________________________________
 
 # Mini Assignment
 
@@ -989,7 +996,7 @@ Events:
 
 Explain your reasoning and identify which events require the highest reliability.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -1005,7 +1012,7 @@ Explain your reasoning and identify which events require the highest reliability
 
 ❌ Assuming Persistent Messages guarantee exactly-once delivery.
 
----
+______________________________________________________________________
 
 # What's Next?
 

@@ -1,4 +1,5 @@
 # RabbitMQ Masterclass for Backend Engineers
+
 ## File 04 – RabbitMQ Queues Deep Dive
 
 > **Course Level:** Intermediate → Advanced
@@ -7,7 +8,7 @@
 >
 > In this chapter, we'll learn **where the message actually lives** before it is processed.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -21,32 +22,32 @@ By the end of this chapter, you will be able to:
 - Understand Queue declaration and configuration.
 - Design Queue strategies for production systems.
 
----
+______________________________________________________________________
 
 # Table of Contents
 
 1. What is a Queue?
-2. Queue Lifecycle
-3. Queue Declaration
-4. Queue Properties
-5. Durable Queues
-6. Temporary Queues
-7. Exclusive Queues
-8. Auto-delete Queues
-9. FIFO Behavior
-10. Multiple Consumers
-11. Queue Length & Backlogs
-12. Queue Design Best Practices
-13. Real Production Examples
-14. Summary
-15. Key Takeaways
-16. Interview Deep Dive
-17. Practice Questions
-18. Mini Assignment
-19. Common Mistakes
-20. What's Next?
+1. Queue Lifecycle
+1. Queue Declaration
+1. Queue Properties
+1. Durable Queues
+1. Temporary Queues
+1. Exclusive Queues
+1. Auto-delete Queues
+1. FIFO Behavior
+1. Multiple Consumers
+1. Queue Length & Backlogs
+1. Queue Design Best Practices
+1. Real Production Examples
+1. Summary
+1. Key Takeaways
+1. Interview Deep Dive
+1. Practice Questions
+1. Mini Assignment
+1. Common Mistakes
+1. What's Next?
 
----
+______________________________________________________________________
 
 # What is a Queue?
 
@@ -78,7 +79,7 @@ Think of it as a waiting room.
 
 Messages wait until a Consumer becomes available.
 
----
+______________________________________________________________________
 
 # Real World Analogy
 
@@ -104,7 +105,7 @@ Doctors call patients one by one.
 
 RabbitMQ Queues work exactly the same way.
 
----
+______________________________________________________________________
 
 # Queue Responsibilities
 
@@ -128,7 +129,7 @@ Remove
 
 Let's examine each one.
 
----
+______________________________________________________________________
 
 ## Receive
 
@@ -148,7 +149,7 @@ Queue
 
 The Producer never communicates directly with the Queue.
 
----
+______________________________________________________________________
 
 ## Store
 
@@ -172,7 +173,7 @@ Message 3
 
 Messages remain here until consumed.
 
----
+______________________________________________________________________
 
 ## Deliver
 
@@ -188,7 +189,7 @@ Queue
 Consumer
 ```
 
----
+______________________________________________________________________
 
 ## Remove
 
@@ -198,7 +199,7 @@ RabbitMQ removes it from the Queue (after receiving an acknowledgement).
 
 We'll study acknowledgements in detail later.
 
----
+______________________________________________________________________
 
 # Queue Lifecycle
 
@@ -230,7 +231,7 @@ Queue Deleted (optional)
 
 Queues themselves may exist long after all messages have been processed.
 
----
+______________________________________________________________________
 
 # Queue Declaration
 
@@ -258,7 +259,7 @@ If the Queue already exists with the same configuration,
 
 RabbitMQ simply uses the existing one.
 
----
+______________________________________________________________________
 
 # Queue Naming
 
@@ -292,7 +293,7 @@ q
 
 Queue names should clearly indicate their purpose.
 
----
+______________________________________________________________________
 
 # Queue Properties
 
@@ -314,7 +315,7 @@ Queue
 
 Let's study each one.
 
----
+______________________________________________________________________
 
 # Durable Queue
 
@@ -340,7 +341,7 @@ Queue Still Exists
 
 This is extremely important in production.
 
----
+______________________________________________________________________
 
 ## Important Clarification
 
@@ -354,7 +355,7 @@ they must also be published as **Persistent Messages**.
 
 We'll cover Persistent Messages in a later chapter.
 
----
+______________________________________________________________________
 
 # Temporary Queue
 
@@ -382,7 +383,7 @@ Useful for
 - Temporary communication
 - Development environments
 
----
+______________________________________________________________________
 
 # Exclusive Queue
 
@@ -400,7 +401,7 @@ If another Connection tries to access it,
 
 RabbitMQ rejects the request.
 
----
+______________________________________________________________________
 
 When the owning Connection closes,
 
@@ -414,7 +415,7 @@ Client Disconnects
 Queue Deleted
 ```
 
----
+______________________________________________________________________
 
 ## Use Cases
 
@@ -424,7 +425,7 @@ Exclusive Queues are commonly used for
 - Temporary client sessions
 - Private communication channels
 
----
+______________________________________________________________________
 
 # Auto-delete Queue
 
@@ -452,7 +453,7 @@ Last Consumer Disconnects
 Queue Deleted
 ```
 
----
+______________________________________________________________________
 
 ## Difference Between Exclusive and Auto-delete
 
@@ -472,7 +473,7 @@ Deleted when
 Last Consumer disconnects.
 ```
 
----
+______________________________________________________________________
 
 # FIFO Behavior
 
@@ -512,7 +513,7 @@ Message B
 Message C
 ```
 
----
+______________________________________________________________________
 
 # Is RabbitMQ Always FIFO?
 
@@ -534,7 +535,7 @@ RabbitMQ provides **FIFO delivery** under normal conditions,
 
 but processing order is not guaranteed in every scenario.
 
----
+______________________________________________________________________
 
 # Multiple Consumers
 
@@ -582,7 +583,7 @@ This is called
 
 Each message goes to exactly one Consumer.
 
----
+______________________________________________________________________
 
 # Example
 
@@ -622,7 +623,7 @@ Task 3
 
 Every message is processed once.
 
----
+______________________________________________________________________
 
 # Queue Length
 
@@ -645,7 +646,7 @@ This is called
 
 **Backlog**
 
----
+______________________________________________________________________
 
 # Backpressure
 
@@ -683,7 +684,7 @@ This is known as
 
 Production systems monitor Queue length to detect this problem.
 
----
+______________________________________________________________________
 
 # Queue Scaling
 
@@ -715,7 +716,7 @@ This is called
 
 **Horizontal Scaling**
 
----
+______________________________________________________________________
 
 # Queue Design Best Practices
 
@@ -739,7 +740,7 @@ general_queue
 
 Avoid mixing unrelated work.
 
----
+______________________________________________________________________
 
 ## Separate Heavy Tasks
 
@@ -779,7 +780,7 @@ Image Workers
 
 Heavy work won't block lightweight tasks.
 
----
+______________________________________________________________________
 
 ## Monitor Queue Length
 
@@ -791,7 +792,7 @@ Large Queues indicate
 
 Always monitor Queue depth in production.
 
----
+______________________________________________________________________
 
 # Real Production Example
 
@@ -845,7 +846,7 @@ If Invoice generation becomes slow,
 
 Email delivery continues unaffected.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -868,7 +869,7 @@ Well-designed Queues improve
 
 Poor Queue design can create bottlenecks and slow the entire system.
 
----
+______________________________________________________________________
 
 # Key Takeaways
 
@@ -882,7 +883,7 @@ Poor Queue design can create bottlenecks and slow the entire system.
 - Queue backlogs indicate performance issues.
 - Separate heavy and lightweight workloads into different Queues.
 
----
+______________________________________________________________________
 
 # Interview Deep Dive
 
@@ -892,9 +893,10 @@ Poor Queue design can create bottlenecks and slow the entire system.
 
 #### Answer
 
-A Queue temporarily stores messages received from an Exchange until Consumers are ready to process them. After successful processing and acknowledgement, RabbitMQ removes the message from the Queue.
+A Queue temporarily stores messages received from an Exchange until Consumers are ready to process them. After
+successful processing and acknowledgement, RabbitMQ removes the message from the Queue.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -902,9 +904,10 @@ A Queue temporarily stores messages received from an Exchange until Consumers ar
 
 #### Answer
 
-A Durable Queue ensures that the Queue itself survives a RabbitMQ restart. Persistent Messages ensure that the messages inside the Queue survive a restart. Both are required if you want complete durability.
+A Durable Queue ensures that the Queue itself survives a RabbitMQ restart. Persistent Messages ensure that the messages
+inside the Queue survive a restart. Both are required if you want complete durability.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -912,9 +915,10 @@ A Durable Queue ensures that the Queue itself survives a RabbitMQ restart. Persi
 
 #### Answer
 
-An Exclusive Queue is accessible only by the Connection that created it. It is automatically deleted when that Connection closes.
+An Exclusive Queue is accessible only by the Connection that created it. It is automatically deleted when that
+Connection closes.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -924,7 +928,7 @@ An Exclusive Queue is accessible only by the Connection that created it. It is a
 
 An Auto-delete Queue is automatically deleted when its last Consumer disconnects.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -932,9 +936,10 @@ An Auto-delete Queue is automatically deleted when its last Consumer disconnects
 
 #### Answer
 
-RabbitMQ generally delivers messages in FIFO order, but strict processing order is not guaranteed when multiple Consumers, retries, priorities, or re-queued messages are involved.
+RabbitMQ generally delivers messages in FIFO order, but strict processing order is not guaranteed when multiple
+Consumers, retries, priorities, or re-queued messages are involved.
 
----
+______________________________________________________________________
 
 ## Question 6
 
@@ -942,9 +947,10 @@ RabbitMQ generally delivers messages in FIFO order, but strict processing order 
 
 #### Answer
 
-Combining long-running and short-running tasks in the same Queue can delay lightweight tasks. Separate Queues allow independent scaling and prevent one workload from blocking another.
+Combining long-running and short-running tasks in the same Queue can delay lightweight tasks. Separate Queues allow
+independent scaling and prevent one workload from blocking another.
 
----
+______________________________________________________________________
 
 ## Question 7
 
@@ -952,24 +958,25 @@ Combining long-running and short-running tasks in the same Queue can delay light
 
 #### Answer
 
-Backlogs occur when Producers publish messages faster than Consumers can process them, or when Consumers become unavailable or too slow.
+Backlogs occur when Producers publish messages faster than Consumers can process them, or when Consumers become
+unavailable or too slow.
 
----
+______________________________________________________________________
 
 # Practice Questions
 
 1. Explain the lifecycle of a Queue.
-2. Differentiate between Durable and Temporary Queues.
-3. Compare Exclusive and Auto-delete Queues.
-4. Why isn't RabbitMQ always FIFO?
-5. What is Backpressure?
-6. How do multiple Consumers improve performance?
-7. Why should different workloads use different Queues?
-8. What happens when Consumers are slower than Producers?
-9. Why should Queue depth be monitored?
-10. Explain how Queue scaling works.
+1. Differentiate between Durable and Temporary Queues.
+1. Compare Exclusive and Auto-delete Queues.
+1. Why isn't RabbitMQ always FIFO?
+1. What is Backpressure?
+1. How do multiple Consumers improve performance?
+1. Why should different workloads use different Queues?
+1. What happens when Consumers are slower than Producers?
+1. Why should Queue depth be monitored?
+1. Explain how Queue scaling works.
 
----
+______________________________________________________________________
 
 # Mini Assignment
 
@@ -985,7 +992,7 @@ When a user uploads a video, identify:
 
 Draw the complete Queue architecture using ASCII diagrams.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -1001,7 +1008,7 @@ Draw the complete Queue architecture using ASCII diagrams.
 
 ❌ Scaling API servers instead of Consumers.
 
----
+______________________________________________________________________
 
 # What's Next?
 

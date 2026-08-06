@@ -1,4 +1,5 @@
 # Celery Masterclass for Backend Engineers
+
 ## File 14 – Celery Architecture & Core Components
 
 > **Course Level:** Intermediate → Advanced
@@ -15,7 +16,7 @@
 >
 > This is one of the most important chapters because it explains the complete lifecycle of a Celery task.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -29,30 +30,30 @@ By the end of this chapter, you will be able to:
 - Explain Celery internals in interviews.
 - Debug Celery task execution.
 
----
+______________________________________________________________________
 
 # Table of Contents
 
 1. Celery Architecture
-2. Components Overview
-3. Celery Application
-4. Tasks
-5. Broker
-6. Worker
-7. Result Backend
-8. Task Lifecycle
-9. Task States
-10. Complete Message Flow
-11. Production Architecture
-12. Summary
-13. Key Takeaways
-14. Interview Deep Dive
-15. Practice Questions
-16. Mini Assignment
-17. Common Mistakes
-18. What's Next?
+1. Components Overview
+1. Celery Application
+1. Tasks
+1. Broker
+1. Worker
+1. Result Backend
+1. Task Lifecycle
+1. Task States
+1. Complete Message Flow
+1. Production Architecture
+1. Summary
+1. Key Takeaways
+1. Interview Deep Dive
+1. Practice Questions
+1. Mini Assignment
+1. Common Mistakes
+1. What's Next?
 
----
+______________________________________________________________________
 
 # Celery Architecture
 
@@ -104,7 +105,7 @@ Let's look at the entire architecture.
 
 Every task follows this path.
 
----
+______________________________________________________________________
 
 # Components Overview
 
@@ -132,7 +133,7 @@ Result Backend
 
 Each has a different responsibility.
 
----
+______________________________________________________________________
 
 # Celery Application
 
@@ -159,7 +160,7 @@ It knows
 
 Everything begins here.
 
----
+______________________________________________________________________
 
 ## Example
 
@@ -175,7 +176,7 @@ app = Celery(
 
 This creates a Celery application.
 
----
+______________________________________________________________________
 
 # What Does the Application Store?
 
@@ -197,7 +198,7 @@ Celery App
 └── Queue Configuration
 ```
 
----
+______________________________________________________________________
 
 # Tasks
 
@@ -223,7 +224,7 @@ Without
 
 Celery doesn't know about it.
 
----
+______________________________________________________________________
 
 # Task Registration
 
@@ -261,7 +262,7 @@ send_sms
 
 Workers use this registry.
 
----
+______________________________________________________________________
 
 # Broker
 
@@ -283,7 +284,7 @@ never executes code.
 
 It only stores and delivers messages.
 
----
+______________________________________________________________________
 
 # What Does Celery Send?
 
@@ -329,7 +330,7 @@ Metadata
 
 RabbitMQ stores this message.
 
----
+______________________________________________________________________
 
 # Worker
 
@@ -353,7 +354,7 @@ Execute Python Function
 
 Workers never stop listening.
 
----
+______________________________________________________________________
 
 # Worker Lifecycle
 
@@ -387,7 +388,7 @@ Waits Again
 
 Workers repeat this forever.
 
----
+______________________________________________________________________
 
 # Worker Processes
 
@@ -415,7 +416,7 @@ Each process executes one task.
 
 This allows parallel execution.
 
----
+______________________________________________________________________
 
 # Result Backend
 
@@ -445,7 +446,7 @@ Answer
 Result Backend
 ```
 
----
+______________________________________________________________________
 
 Common Result Backends
 
@@ -459,7 +460,7 @@ RPC
 Memcached
 ```
 
----
+______________________________________________________________________
 
 # Task Lifecycle
 
@@ -527,7 +528,7 @@ ACK Broker
 
 Done.
 
----
+______________________________________________________________________
 
 # Serialization
 
@@ -563,7 +564,7 @@ Workers deserialize
 
 before executing.
 
----
+______________________________________________________________________
 
 # Complete Flow
 
@@ -611,7 +612,7 @@ Result Backend
 ACK
 ```
 
----
+______________________________________________________________________
 
 # Task States
 
@@ -653,7 +654,7 @@ STARTED
 FAILURE
 ```
 
----
+______________________________________________________________________
 
 # PENDING
 
@@ -669,7 +670,7 @@ RabbitMQ
 Waiting
 ```
 
----
+______________________________________________________________________
 
 # RECEIVED
 
@@ -685,7 +686,7 @@ Worker
 
 Task hasn't started yet.
 
----
+______________________________________________________________________
 
 # STARTED
 
@@ -693,7 +694,7 @@ Worker is executing
 
 the function.
 
----
+______________________________________________________________________
 
 # SUCCESS
 
@@ -703,7 +704,7 @@ Result stored
 
 (if a Result Backend exists).
 
----
+______________________________________________________________________
 
 # FAILURE
 
@@ -717,7 +718,7 @@ Celery stores
 
 Useful for debugging.
 
----
+______________________________________________________________________
 
 # RETRY
 
@@ -745,7 +746,7 @@ RETRY
 
 state.
 
----
+______________________________________________________________________
 
 # REVOKED
 
@@ -767,7 +768,7 @@ Celery marks
 REVOKED
 ```
 
----
+______________________________________________________________________
 
 # Task Flow Diagram
 
@@ -827,7 +828,7 @@ STARTED
 FAILURE
 ```
 
----
+______________________________________________________________________
 
 # Production Architecture
 
@@ -864,7 +865,7 @@ shares
 
 Tasks are distributed automatically.
 
----
+______________________________________________________________________
 
 # Why Separate Workers?
 
@@ -906,7 +907,7 @@ Video Workers
 
 Better scalability.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -928,7 +929,7 @@ and optionally stored in a Result Backend.
 
 Understanding this lifecycle is essential for debugging and designing production systems.
 
----
+______________________________________________________________________
 
 # Key Takeaways
 
@@ -941,7 +942,7 @@ Understanding this lifecycle is essential for debugging and designing production
 - Workers deserialize tasks before execution.
 - Multiple Worker processes enable parallelism.
 
----
+______________________________________________________________________
 
 # Interview Deep Dive
 
@@ -951,9 +952,10 @@ Understanding this lifecycle is essential for debugging and designing production
 
 #### Answer
 
-Celery consists of the Application, Tasks, Broker, Workers, and an optional Result Backend. Together they enable asynchronous task execution.
+Celery consists of the Application, Tasks, Broker, Workers, and an optional Result Backend. Together they enable
+asynchronous task execution.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -961,9 +963,11 @@ Celery consists of the Application, Tasks, Broker, Workers, and an optional Resu
 
 #### Answer
 
-Celery serializes the task name, arguments, and metadata into a message, publishes it to the configured Broker, and returns immediately. A Worker later consumes the message, deserializes it, executes the task, optionally stores the result, and acknowledges the message.
+Celery serializes the task name, arguments, and metadata into a message, publishes it to the configured Broker, and
+returns immediately. A Worker later consumes the message, deserializes it, executes the task, optionally stores the
+result, and acknowledges the message.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -971,9 +975,10 @@ Celery serializes the task name, arguments, and metadata into a message, publish
 
 #### Answer
 
-RabbitMQ cannot store Python functions directly. Celery serializes task information into formats such as JSON before sending it to the Broker. Workers deserialize the message before execution.
+RabbitMQ cannot store Python functions directly. Celery serializes task information into formats such as JSON before
+sending it to the Broker. Workers deserialize the message before execution.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -981,9 +986,10 @@ RabbitMQ cannot store Python functions directly. Celery serializes task informat
 
 #### Answer
 
-The Result Backend stores task states and optional return values, allowing applications to query whether tasks are pending, running, successful, failed, or retried.
+The Result Backend stores task states and optional return values, allowing applications to query whether tasks are
+pending, running, successful, failed, or retried.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -993,7 +999,7 @@ The Result Backend stores task states and optional return values, allowing appli
 
 Common task states include PENDING, RECEIVED, STARTED, SUCCESS, FAILURE, RETRY, and REVOKED.
 
----
+______________________________________________________________________
 
 ## Question 6
 
@@ -1001,9 +1007,10 @@ Common task states include PENDING, RECEIVED, STARTED, SUCCESS, FAILURE, RETRY, 
 
 #### Answer
 
-Separate Worker pools prevent long-running tasks from blocking short tasks, improve resource utilization, and allow independent scaling of different workloads.
+Separate Worker pools prevent long-running tasks from blocking short tasks, improve resource utilization, and allow
+independent scaling of different workloads.
 
----
+______________________________________________________________________
 
 ## Question 7
 
@@ -1013,22 +1020,22 @@ Separate Worker pools prevent long-running tasks from blocking short tasks, impr
 
 No. RabbitMQ only transports task messages. Celery Workers execute the actual Python functions.
 
----
+______________________________________________________________________
 
 # Practice Questions
 
 1. Explain the Celery architecture.
-2. What is the Celery Application?
-3. What happens during task registration?
-4. Why is serialization required?
-5. Explain the role of the Broker.
-6. Explain the Worker lifecycle.
-7. What is a Result Backend?
-8. List the common task states.
-9. Explain the complete task lifecycle.
-10. Why should different workloads use different Worker pools?
+1. What is the Celery Application?
+1. What happens during task registration?
+1. Why is serialization required?
+1. Explain the role of the Broker.
+1. Explain the Worker lifecycle.
+1. What is a Result Backend?
+1. List the common task states.
+1. Explain the complete task lifecycle.
+1. Why should different workloads use different Worker pools?
 
----
+______________________________________________________________________
 
 # Mini Assignment
 
@@ -1053,7 +1060,7 @@ For each task, determine:
 
 Draw the complete architecture using ASCII diagrams.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -1069,7 +1076,7 @@ Draw the complete architecture using ASCII diagrams.
 
 ❌ Ignoring task state monitoring.
 
----
+______________________________________________________________________
 
 # What's Next?
 

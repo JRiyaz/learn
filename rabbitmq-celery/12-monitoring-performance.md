@@ -1,4 +1,5 @@
 # RabbitMQ Masterclass for Backend Engineers
+
 ## File 12 – Monitoring, Management UI & Performance Tuning
 
 > **Course Level:** Intermediate → Advanced
@@ -17,7 +18,7 @@
 >
 > This chapter teaches you how to monitor and troubleshoot RabbitMQ in production.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -31,31 +32,31 @@ By the end of this chapter, you will be able to:
 - Tune RabbitMQ for better throughput.
 - Integrate RabbitMQ with Prometheus & Grafana.
 
----
+______________________________________________________________________
 
 # Table of Contents
 
 1. Why Monitoring Matters
-2. RabbitMQ Management Plugin
-3. RabbitMQ Management UI
-4. Dashboard Overview
-5. Queue Metrics
-6. Consumer Metrics
-7. Node Metrics
-8. Connection & Channel Metrics
-9. Performance Tuning
-10. Prometheus & Grafana
-11. Production Troubleshooting
-12. Best Practices
-13. Summary
-14. Key Takeaways
-15. Interview Deep Dive
-16. Practice Questions
-17. Mini Assignment
-18. Common Mistakes
-19. What's Next?
+1. RabbitMQ Management Plugin
+1. RabbitMQ Management UI
+1. Dashboard Overview
+1. Queue Metrics
+1. Consumer Metrics
+1. Node Metrics
+1. Connection & Channel Metrics
+1. Performance Tuning
+1. Prometheus & Grafana
+1. Production Troubleshooting
+1. Best Practices
+1. Summary
+1. Key Takeaways
+1. Interview Deep Dive
+1. Practice Questions
+1. Mini Assignment
+1. Common Mistakes
+1. What's Next?
 
----
+______________________________________________________________________
 
 # Why Monitoring Matters
 
@@ -93,7 +94,7 @@ Monitoring tells you
 
 **what is actually happening.**
 
----
+______________________________________________________________________
 
 # RabbitMQ Management Plugin
 
@@ -126,7 +127,7 @@ Default Port
 15672
 ```
 
----
+______________________________________________________________________
 
 # Login
 
@@ -148,7 +149,7 @@ In production,
 
 create dedicated users with proper permissions.
 
----
+______________________________________________________________________
 
 # Dashboard Overview
 
@@ -172,7 +173,7 @@ Message Rates
 
 Think of this as RabbitMQ's health dashboard.
 
----
+______________________________________________________________________
 
 # RabbitMQ UI Layout
 
@@ -192,7 +193,7 @@ Admin
 
 Each section serves a different purpose.
 
----
+______________________________________________________________________
 
 # Overview Page
 
@@ -230,7 +231,7 @@ If something looks abnormal,
 
 start investigating here.
 
----
+______________________________________________________________________
 
 # Queues Page
 
@@ -260,7 +261,7 @@ Consumers
 
 Every Queue displays important statistics.
 
----
+______________________________________________________________________
 
 # Understanding Queue Metrics
 
@@ -284,7 +285,7 @@ Large numbers indicate
 
 Consumers cannot keep up.
 
----
+______________________________________________________________________
 
 ## Unacknowledged Messages
 
@@ -306,7 +307,7 @@ Processing
 
 These messages are currently in progress.
 
----
+______________________________________________________________________
 
 ## Total Messages
 
@@ -320,7 +321,7 @@ Unacknowledged
 
 Represents the total Queue size.
 
----
+______________________________________________________________________
 
 # Queue States
 
@@ -336,7 +337,7 @@ Unacked
 3
 ```
 
----
+______________________________________________________________________
 
 Unhealthy Queue
 
@@ -352,7 +353,7 @@ Unacked
 
 Consumers cannot process fast enough.
 
----
+______________________________________________________________________
 
 Another Problem
 
@@ -372,7 +373,7 @@ Consumers may be
 - deadlocked
 - extremely slow
 
----
+______________________________________________________________________
 
 # Consumer Page
 
@@ -396,7 +397,7 @@ Useful for
 - debugging crashes
 - identifying idle workers
 
----
+______________________________________________________________________
 
 # Connection Page
 
@@ -425,7 +426,7 @@ Information includes
 
 Unexpected spikes may indicate connection leaks.
 
----
+______________________________________________________________________
 
 # Channel Page
 
@@ -450,7 +451,7 @@ Too many Channels
 
 may indicate application bugs.
 
----
+______________________________________________________________________
 
 # Exchange Page
 
@@ -474,7 +475,7 @@ Outgoing Messages
 
 Useful for debugging routing issues.
 
----
+______________________________________________________________________
 
 # Node Metrics
 
@@ -496,7 +497,7 @@ Process Count
 
 These metrics are critical in production.
 
----
+______________________________________________________________________
 
 # Memory Usage
 
@@ -516,7 +517,7 @@ Publishers become blocked.
 
 No new messages are accepted until memory decreases.
 
----
+______________________________________________________________________
 
 # Disk Alarm
 
@@ -538,7 +539,7 @@ Block Publishers
 
 Prevents complete server failure.
 
----
+______________________________________________________________________
 
 # File Descriptors
 
@@ -564,7 +565,7 @@ Always monitor
 Open File Descriptors
 ```
 
----
+______________________________________________________________________
 
 # Message Rates
 
@@ -598,7 +599,7 @@ ACK
 
 Balanced.
 
----
+______________________________________________________________________
 
 Problem
 
@@ -616,13 +617,13 @@ ACK
 
 Queue will grow rapidly.
 
----
+______________________________________________________________________
 
 # Performance Tuning
 
 Let's improve throughput.
 
----
+______________________________________________________________________
 
 ## Increase Consumers
 
@@ -652,7 +653,7 @@ Worker3
 Worker4
 ```
 
----
+______________________________________________________________________
 
 ## Tune Prefetch
 
@@ -682,7 +683,7 @@ Fast Tasks
 Prefetch = 50
 ```
 
----
+______________________________________________________________________
 
 ## Separate Heavy Workloads
 
@@ -718,7 +719,7 @@ Video Queue
 Video Workers
 ```
 
----
+______________________________________________________________________
 
 ## Use Durable Queues Only When Needed
 
@@ -734,7 +735,7 @@ is slower than memory.
 
 Don't enable persistence unnecessarily.
 
----
+______________________________________________________________________
 
 # Prometheus Integration
 
@@ -760,7 +761,7 @@ Prometheus collects metrics.
 
 Grafana visualizes them.
 
----
+______________________________________________________________________
 
 # Common Metrics
 
@@ -786,7 +787,7 @@ Node Status
 
 These are commonly plotted on dashboards.
 
----
+______________________________________________________________________
 
 # Sample Grafana Dashboard
 
@@ -822,7 +823,7 @@ Consumer Rate
 
 Operations teams monitor these continuously.
 
----
+______________________________________________________________________
 
 # Production Troubleshooting
 
@@ -841,7 +842,7 @@ Alive?
 
 ```
 
----
+______________________________________________________________________
 
 ## Problem
 
@@ -860,7 +861,7 @@ Slow?
 
 ```
 
----
+______________________________________________________________________
 
 ## Problem
 
@@ -876,7 +877,7 @@ Application Logs
 Crash?
 ```
 
----
+______________________________________________________________________
 
 ## Problem
 
@@ -896,7 +897,7 @@ Too Many Queues
 Consumers Offline
 ```
 
----
+______________________________________________________________________
 
 ## Problem
 
@@ -916,7 +917,7 @@ Deadlocks
 External API Calls
 ```
 
----
+______________________________________________________________________
 
 # Useful CLI Commands
 
@@ -956,7 +957,7 @@ List Channels
 rabbitmqctl list_channels
 ```
 
----
+______________________________________________________________________
 
 # Production Monitoring Checklist
 
@@ -982,7 +983,7 @@ Monitor
 
 ✅ Quorum Leader Changes
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -1002,7 +1003,7 @@ Monitor
 
 ✔ Keep RabbitMQ updated.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1019,7 +1020,7 @@ The Management Plugin provides visibility into
 
 Combining RabbitMQ with Prometheus and Grafana enables proactive monitoring and faster troubleshooting.
 
----
+______________________________________________________________________
 
 # Key Takeaways
 
@@ -1033,7 +1034,7 @@ Combining RabbitMQ with Prometheus and Grafana enables proactive monitoring and 
 - Separate heavy workloads.
 - Scale Consumers before Producers.
 
----
+______________________________________________________________________
 
 # Interview Deep Dive
 
@@ -1043,9 +1044,10 @@ Combining RabbitMQ with Prometheus and Grafana enables proactive monitoring and 
 
 #### Answer
 
-Monitoring helps detect bottlenecks, consumer failures, queue backlogs, memory pressure, disk issues, and routing problems before they impact users. It enables proactive maintenance and faster troubleshooting.
+Monitoring helps detect bottlenecks, consumer failures, queue backlogs, memory pressure, disk issues, and routing
+problems before they impact users. It enables proactive maintenance and faster troubleshooting.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -1055,7 +1057,7 @@ Monitoring helps detect bottlenecks, consumer failures, queue backlogs, memory p
 
 Messages Ready are waiting in the Queue and have not yet been delivered to any Consumer.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -1065,7 +1067,7 @@ Messages Ready are waiting in the Queue and have not yet been delivered to any C
 
 These are messages that RabbitMQ has already delivered to Consumers but has not yet received acknowledgements for.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -1073,9 +1075,10 @@ These are messages that RabbitMQ has already delivered to Consumers but has not 
 
 #### Answer
 
-Possible reasons include slow Consumers, crashed Consumers, insufficient worker capacity, database bottlenecks, or Producers publishing messages faster than Consumers can process them.
+Possible reasons include slow Consumers, crashed Consumers, insufficient worker capacity, database bottlenecks, or
+Producers publishing messages faster than Consumers can process them.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1083,9 +1086,10 @@ Possible reasons include slow Consumers, crashed Consumers, insufficient worker 
 
 #### Answer
 
-RabbitMQ activates a Memory Alarm and temporarily blocks Publishers from sending new messages until memory usage falls below the configured threshold.
+RabbitMQ activates a Memory Alarm and temporarily blocks Publishers from sending new messages until memory usage falls
+below the configured threshold.
 
----
+______________________________________________________________________
 
 ## Question 6
 
@@ -1093,9 +1097,10 @@ RabbitMQ activates a Memory Alarm and temporarily blocks Publishers from sending
 
 #### Answer
 
-Prometheus collects time-series metrics from RabbitMQ, while Grafana visualizes those metrics with dashboards and alerts, making it easier to monitor system health over time.
+Prometheus collects time-series metrics from RabbitMQ, while Grafana visualizes those metrics with dashboards and
+alerts, making it easier to monitor system health over time.
 
----
+______________________________________________________________________
 
 ## Question 7
 
@@ -1103,24 +1108,25 @@ Prometheus collects time-series metrics from RabbitMQ, while Grafana visualizes 
 
 #### Answer
 
-Important metrics include Queue depth, Ready messages, Unacknowledged messages, Publish rate, ACK rate, Consumer count, Memory usage, Disk usage, Connection count, Channel count, and Node health.
+Important metrics include Queue depth, Ready messages, Unacknowledged messages, Publish rate, ACK rate, Consumer count,
+Memory usage, Disk usage, Connection count, Channel count, and Node health.
 
----
+______________________________________________________________________
 
 # Practice Questions
 
 1. Explain the RabbitMQ Management Plugin.
-2. What are Ready Messages?
-3. What are Unacknowledged Messages?
-4. What causes Queue growth?
-5. What is a Memory Alarm?
-6. Why monitor File Descriptors?
-7. What metrics would you display in Grafana?
-8. How would you troubleshoot slow Consumers?
-9. Why should Queue depth be monitored continuously?
-10. Design a monitoring dashboard for RabbitMQ.
+1. What are Ready Messages?
+1. What are Unacknowledged Messages?
+1. What causes Queue growth?
+1. What is a Memory Alarm?
+1. Why monitor File Descriptors?
+1. What metrics would you display in Grafana?
+1. How would you troubleshoot slow Consumers?
+1. Why should Queue depth be monitored continuously?
+1. Design a monitoring dashboard for RabbitMQ.
 
----
+______________________________________________________________________
 
 # Mini Assignment
 
@@ -1153,7 +1159,7 @@ Also define alerts for
 
 Explain why each alert is important.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -1171,13 +1177,15 @@ Explain why each alert is important.
 
 ❌ Waiting until production issues occur before adding dashboards.
 
----
+______________________________________________________________________
 
 # What's Next?
 
-Congratulations! You now have a strong understanding of RabbitMQ fundamentals, reliability, routing, scaling, and production operations.
+Congratulations! You now have a strong understanding of RabbitMQ fundamentals, reliability, routing, scaling, and
+production operations.
 
-The next section of the course shifts from RabbitMQ itself to **Celery**, where you'll learn how Python applications use RabbitMQ to execute background tasks.
+The next section of the course shifts from RabbitMQ itself to **Celery**, where you'll learn how Python applications use
+RabbitMQ to execute background tasks.
 
 We'll start with:
 

@@ -1,4 +1,5 @@
 # RabbitMQ Masterclass for Backend Engineers
+
 ## File 11 – Clustering, High Availability, Quorum Queues & Disaster Recovery
 
 > **Course Level:** Intermediate → Advanced
@@ -17,7 +18,7 @@
 >
 > This chapter explains how RabbitMQ achieves High Availability (HA) and fault tolerance.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -34,32 +35,32 @@ By the end of this chapter, you will be able to:
 - Understand Network Partitions.
 - Design production RabbitMQ deployments.
 
----
+______________________________________________________________________
 
 # Table of Contents
 
 1. Why High Availability Matters
-2. Single Node RabbitMQ
-3. RabbitMQ Cluster
-4. RabbitMQ Nodes
-5. Metadata Replication
-6. Queue Replication
-7. Classic Mirrored Queues
-8. Quorum Queues
-9. Leader & Followers
-10. Failover
-11. Network Partitions
-12. Cluster Design
-13. Production Architectures
-14. Summary
-15. Key Takeaways
-16. Interview Deep Dive
-17. Practice Questions
-18. Mini Assignment
-19. Common Mistakes
-20. What's Next?
+1. Single Node RabbitMQ
+1. RabbitMQ Cluster
+1. RabbitMQ Nodes
+1. Metadata Replication
+1. Queue Replication
+1. Classic Mirrored Queues
+1. Quorum Queues
+1. Leader & Followers
+1. Failover
+1. Network Partitions
+1. Cluster Design
+1. Production Architectures
+1. Summary
+1. Key Takeaways
+1. Interview Deep Dive
+1. Practice Questions
+1. Mini Assignment
+1. Common Mistakes
+1. What's Next?
 
----
+______________________________________________________________________
 
 # Why High Availability Matters
 
@@ -122,7 +123,7 @@ This is called
 
 **Single Point of Failure (SPOF).**
 
----
+______________________________________________________________________
 
 # Single Node RabbitMQ
 
@@ -157,7 +158,7 @@ Disadvantages
 - Maintenance requires downtime.
 - No redundancy.
 
----
+______________________________________________________________________
 
 # RabbitMQ Cluster
 
@@ -195,7 +196,7 @@ Instead of depending on one machine,
 
 the workload is shared.
 
----
+______________________________________________________________________
 
 # What is a Node?
 
@@ -225,7 +226,7 @@ Together,
 
 they form one logical RabbitMQ Cluster.
 
----
+______________________________________________________________________
 
 # Important Misconception
 
@@ -258,7 +259,7 @@ They do **not** automatically replicate queue messages.
 
 This surprises many developers.
 
----
+______________________________________________________________________
 
 # Metadata Replication
 
@@ -304,7 +305,7 @@ Exists.
 
 But the messages inside may exist on only one Node.
 
----
+______________________________________________________________________
 
 # Queue Replication
 
@@ -358,7 +359,7 @@ are healthy.
 
 This is why Queue Replication exists.
 
----
+______________________________________________________________________
 
 # Classic Mirrored Queues
 
@@ -400,7 +401,7 @@ Messages were copied
 
 to multiple Nodes.
 
----
+______________________________________________________________________
 
 ## Problem with Mirrored Queues
 
@@ -423,7 +424,7 @@ Quorum Queues
 
 instead.
 
----
+______________________________________________________________________
 
 # Quorum Queues
 
@@ -437,7 +438,7 @@ You don't need to understand Raft in depth,
 
 but you should understand the concept.
 
----
+______________________________________________________________________
 
 # Quorum Queue Architecture
 
@@ -481,7 +482,7 @@ Diagram
 Follower(Node B)   Follower(Node C)
 ```
 
----
+______________________________________________________________________
 
 # Leader Responsibilities
 
@@ -495,7 +496,7 @@ accepts
 
 Everything first reaches the Leader.
 
----
+______________________________________________________________________
 
 # Followers
 
@@ -521,7 +522,7 @@ If the Leader crashes,
 
 a new Leader is elected.
 
----
+______________________________________________________________________
 
 # Write Flow
 
@@ -563,7 +564,7 @@ RabbitMQ waits until a majority agrees.
 
 This is why Quorum Queues are reliable.
 
----
+______________________________________________________________________
 
 # What is Majority?
 
@@ -595,7 +596,7 @@ RabbitMQ only considers a write successful
 
 after the majority stores it.
 
----
+______________________________________________________________________
 
 # Why Majority?
 
@@ -615,7 +616,7 @@ the message would disappear.
 
 Majority replication prevents this.
 
----
+______________________________________________________________________
 
 # Failover
 
@@ -675,7 +676,7 @@ Usually,
 
 no manual intervention is required.
 
----
+______________________________________________________________________
 
 # Network Partition
 
@@ -717,7 +718,7 @@ The minority side stops accepting writes,
 
 preventing inconsistent data.
 
----
+______________________________________________________________________
 
 # Why Not Use Two Nodes?
 
@@ -779,7 +780,7 @@ Never
 
 for quorum-based systems.
 
----
+______________________________________________________________________
 
 # Production Deployment
 
@@ -815,13 +816,13 @@ If one Node fails,
 
 others continue serving requests.
 
----
+______________________________________________________________________
 
 # Cluster vs Quorum Queue
 
 These are different concepts.
 
----
+______________________________________________________________________
 
 ## RabbitMQ Cluster
 
@@ -831,7 +832,7 @@ Provides
 Multiple RabbitMQ Servers
 ```
 
----
+______________________________________________________________________
 
 ## Quorum Queue
 
@@ -845,7 +846,7 @@ A Cluster without Quorum Queues
 
 does **not** automatically replicate messages.
 
----
+______________________________________________________________________
 
 # Disaster Recovery
 
@@ -871,7 +872,7 @@ perform
 
 RabbitMQ alone is only one part of a complete disaster recovery strategy.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -889,7 +890,7 @@ RabbitMQ alone is only one part of a complete disaster recovery strategy.
 
 ✔ Test failover regularly.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -911,7 +912,7 @@ and automatically recover from Node failures,
 
 making them the preferred solution for mission-critical systems.
 
----
+______________________________________________________________________
 
 # Key Takeaways
 
@@ -925,7 +926,7 @@ making them the preferred solution for mission-critical systems.
 - Odd numbers of Nodes are recommended.
 - Failover is automatic after Leader failure.
 
----
+______________________________________________________________________
 
 # Interview Deep Dive
 
@@ -935,9 +936,10 @@ making them the preferred solution for mission-critical systems.
 
 #### Answer
 
-A RabbitMQ Cluster is a group of RabbitMQ Nodes that work together as a single logical messaging system. Clustering improves availability and management by sharing metadata such as Exchanges, Queues, Users, and Bindings across Nodes.
+A RabbitMQ Cluster is a group of RabbitMQ Nodes that work together as a single logical messaging system. Clustering
+improves availability and management by sharing metadata such as Exchanges, Queues, Users, and Bindings across Nodes.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -945,9 +947,10 @@ A RabbitMQ Cluster is a group of RabbitMQ Nodes that work together as a single l
 
 #### Answer
 
-No. Clustering replicates metadata but not Queue contents. Message replication requires technologies such as Quorum Queues.
+No. Clustering replicates metadata but not Queue contents. Message replication requires technologies such as Quorum
+Queues.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -955,9 +958,10 @@ No. Clustering replicates metadata but not Queue contents. Message replication r
 
 #### Answer
 
-Quorum Queues are RabbitMQ's modern replicated queue implementation based on the Raft consensus algorithm. They replicate messages across multiple Nodes and automatically recover from Leader failures.
+Quorum Queues are RabbitMQ's modern replicated queue implementation based on the Raft consensus algorithm. They
+replicate messages across multiple Nodes and automatically recover from Leader failures.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -965,9 +969,10 @@ Quorum Queues are RabbitMQ's modern replicated queue implementation based on the
 
 #### Answer
 
-Classic Mirrored Queues had synchronization complexity, split-brain issues, and operational challenges. Quorum Queues provide a more robust and reliable replication model.
+Classic Mirrored Queues had synchronization complexity, split-brain issues, and operational challenges. Quorum Queues
+provide a more robust and reliable replication model.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -975,9 +980,10 @@ Classic Mirrored Queues had synchronization complexity, split-brain issues, and 
 
 #### Answer
 
-Quorum-based systems require majority voting. An odd number of Nodes minimizes ambiguity during failures and allows the Cluster to continue operating when one Node becomes unavailable.
+Quorum-based systems require majority voting. An odd number of Nodes minimizes ambiguity during failures and allows the
+Cluster to continue operating when one Node becomes unavailable.
 
----
+______________________________________________________________________
 
 ## Question 6
 
@@ -985,9 +991,10 @@ Quorum-based systems require majority voting. An odd number of Nodes minimizes a
 
 #### Answer
 
-RabbitMQ automatically elects one of the Followers as the new Leader. Producers and Consumers reconnect, and processing continues with minimal interruption.
+RabbitMQ automatically elects one of the Followers as the new Leader. Producers and Consumers reconnect, and processing
+continues with minimal interruption.
 
----
+______________________________________________________________________
 
 ## Question 7
 
@@ -995,24 +1002,25 @@ RabbitMQ automatically elects one of the Followers as the new Leader. Producers 
 
 #### Answer
 
-A Cluster provides multiple RabbitMQ servers working together and shares metadata across Nodes. A Quorum Queue provides replicated Queue data using Leader-Follower replication within the Cluster.
+A Cluster provides multiple RabbitMQ servers working together and shares metadata across Nodes. A Quorum Queue provides
+replicated Queue data using Leader-Follower replication within the Cluster.
 
----
+______________________________________________________________________
 
 # Practice Questions
 
 1. What problem does RabbitMQ Clustering solve?
-2. Explain the difference between a Cluster and a Quorum Queue.
-3. Why doesn't Clustering alone protect Queue messages?
-4. What are Quorum Queues?
-5. Why were Mirrored Queues replaced?
-6. Explain Leader-Follower replication.
-7. Why are odd numbers of Nodes recommended?
-8. What happens during a Leader failure?
-9. Explain majority voting.
-10. Design a RabbitMQ deployment for a payment system.
+1. Explain the difference between a Cluster and a Quorum Queue.
+1. Why doesn't Clustering alone protect Queue messages?
+1. What are Quorum Queues?
+1. Why were Mirrored Queues replaced?
+1. Explain Leader-Follower replication.
+1. Why are odd numbers of Nodes recommended?
+1. What happens during a Leader failure?
+1. Explain majority voting.
+1. Design a RabbitMQ deployment for a payment system.
 
----
+______________________________________________________________________
 
 # Mini Assignment
 
@@ -1037,7 +1045,7 @@ Your design should include:
 
 Explain why you chose each component.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -1053,11 +1061,12 @@ Explain why you chose each component.
 
 ❌ Confusing metadata replication with message replication.
 
----
+______________________________________________________________________
 
 # What's Next?
 
-Now that you've mastered RabbitMQ architecture, routing, reliability, and high availability, we'll shift our focus to **operating RabbitMQ in production**.
+Now that you've mastered RabbitMQ architecture, routing, reliability, and high availability, we'll shift our focus to
+**operating RabbitMQ in production**.
 
 The next chapter covers:
 

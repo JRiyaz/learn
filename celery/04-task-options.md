@@ -1,4 +1,5 @@
 # Celery Masterclass for Backend Engineers
+
 ## File 16 – Sending Tasks, `delay()`, `apply_async()` & Advanced Task Options
 
 > **Course Level:** Intermediate → Advanced
@@ -24,7 +25,7 @@
 >
 > This chapter covers all of them.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -40,29 +41,29 @@ By the end of this chapter, you will be able to:
 - Configure task expiration
 - Design production-ready task submissions
 
----
+______________________________________________________________________
 
 # Table of Contents
 
 1. delay()
-2. apply_async()
-3. delay vs apply_async
-4. Countdown
-5. ETA
-6. Expiration
-7. Routing
-8. Priorities
-9. Serialization
-10. Production Examples
-11. Summary
-12. Key Takeaways
-13. Interview Deep Dive
-14. Practice Questions
-15. Mini Assignment
-16. Common Mistakes
-17. What's Next?
+1. apply_async()
+1. delay vs apply_async
+1. Countdown
+1. ETA
+1. Expiration
+1. Routing
+1. Priorities
+1. Serialization
+1. Production Examples
+1. Summary
+1. Key Takeaways
+1. Interview Deep Dive
+1. Practice Questions
+1. Mini Assignment
+1. Common Mistakes
+1. What's Next?
 
----
+______________________________________________________________________
 
 # Why Isn't `delay()` Enough?
 
@@ -85,7 +86,7 @@ But what if you want
 
 `delay()` cannot do these.
 
----
+______________________________________________________________________
 
 # delay()
 
@@ -109,7 +110,7 @@ That's all.
 
 No magic.
 
----
+______________________________________________________________________
 
 # What Does delay() Support?
 
@@ -129,7 +130,7 @@ resize_image.delay(
 
 Nothing more.
 
----
+______________________________________________________________________
 
 # apply_async()
 
@@ -159,7 +160,7 @@ send_email.delay(
 )
 ```
 
----
+______________________________________________________________________
 
 # Why Use apply_async()?
 
@@ -176,7 +177,7 @@ Because it supports
 
 Almost every advanced feature.
 
----
+______________________________________________________________________
 
 # delay vs apply_async
 
@@ -189,7 +190,7 @@ Almost every advanced feature.
 | No priority | Supports priority |
 | Easier | More powerful |
 
----
+______________________________________________________________________
 
 # Countdown
 
@@ -224,7 +225,7 @@ Worker executes it
 
 10 minutes later.
 
----
+______________________________________________________________________
 
 Timeline
 
@@ -244,7 +245,7 @@ Task Submitted
 Worker Executes
 ```
 
----
+______________________________________________________________________
 
 # Real Production Example
 
@@ -268,7 +269,7 @@ Rate Your Delivery
 
 Countdown is perfect.
 
----
+______________________________________________________________________
 
 # ETA (Exact Time)
 
@@ -312,7 +313,7 @@ Christmas
 9:00 AM
 ```
 
----
+______________________________________________________________________
 
 # Countdown vs ETA
 
@@ -330,7 +331,7 @@ Tomorrow
 10:00 AM
 ```
 
----
+______________________________________________________________________
 
 Comparison
 
@@ -340,7 +341,7 @@ Comparison
 | Seconds later | Specific date/time |
 | Simpler | Calendar based |
 
----
+______________________________________________________________________
 
 # Expiration
 
@@ -377,7 +378,7 @@ After
 
 Celery discards it.
 
----
+______________________________________________________________________
 
 Real Example
 
@@ -391,7 +392,7 @@ Tomorrow
 
 it's meaningless.
 
----
+______________________________________________________________________
 
 # Queue Routing
 
@@ -419,7 +420,7 @@ RabbitMQ routes it
 
 to the Email Queue.
 
----
+______________________________________________________________________
 
 Architecture
 
@@ -439,7 +440,7 @@ Video Queue
 Video Workers
 ```
 
----
+______________________________________________________________________
 
 # Why Route Tasks?
 
@@ -469,7 +470,7 @@ Emails become slow.
 
 Separate Queues solve this.
 
----
+______________________________________________________________________
 
 # Task Priorities
 
@@ -515,7 +516,7 @@ gets processed sooner,
 
 provided the broker supports priorities and the queue is configured for them.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -560,7 +561,7 @@ Priority
 Analytics
 ```
 
----
+______________________________________________________________________
 
 # Serialization
 
@@ -586,7 +587,7 @@ Default
 JSON
 ```
 
----
+______________________________________________________________________
 
 # Why JSON?
 
@@ -597,7 +598,7 @@ Advantages
 - Fast
 - Human readable
 
----
+______________________________________________________________________
 
 # Why Not Pickle?
 
@@ -618,7 +619,7 @@ usually prefer
 JSON
 ```
 
----
+______________________________________________________________________
 
 # Task IDs
 
@@ -652,7 +653,7 @@ Useful for
 - Debugging
 - API responses
 
----
+______________________________________________________________________
 
 # Complete Flow
 
@@ -692,7 +693,7 @@ Execute
 Result Backend
 ```
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -744,7 +745,7 @@ Every task
 
 uses different options.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -764,17 +765,18 @@ uses different options.
 
 ✔ Prefer JSON serialization.
 
----
+______________________________________________________________________
 
 # Summary
 
 `delay()` is a convenient shortcut for submitting Celery tasks.
 
-`apply_async()` is the full-featured API that enables scheduling, routing, priorities, expiration, and other advanced task options.
+`apply_async()` is the full-featured API that enables scheduling, routing, priorities, expiration, and other advanced
+task options.
 
 Most production systems use `apply_async()` because it provides complete control over task execution.
 
----
+______________________________________________________________________
 
 # Key Takeaways
 
@@ -787,7 +789,7 @@ Most production systems use `apply_async()` because it provides complete control
 - Priorities help order task execution.
 - JSON is the preferred serializer.
 
----
+______________________________________________________________________
 
 # Interview Deep Dive
 
@@ -797,9 +799,10 @@ Most production systems use `apply_async()` because it provides complete control
 
 #### Answer
 
-`delay()` is a convenience wrapper around `apply_async()` that only supports passing task arguments. `apply_async()` provides advanced options such as countdowns, ETAs, routing, priorities, expiration, and retry configuration.
+`delay()` is a convenience wrapper around `apply_async()` that only supports passing task arguments. `apply_async()`
+provides advanced options such as countdowns, ETAs, routing, priorities, expiration, and retry configuration.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -807,9 +810,10 @@ Most production systems use `apply_async()` because it provides complete control
 
 #### Answer
 
-Use `apply_async()` whenever you need advanced scheduling or routing features, such as delayed execution, queue selection, task priorities, expiration, or custom execution options.
+Use `apply_async()` whenever you need advanced scheduling or routing features, such as delayed execution, queue
+selection, task priorities, expiration, or custom execution options.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -817,9 +821,10 @@ Use `apply_async()` whenever you need advanced scheduling or routing features, s
 
 #### Answer
 
-Countdown schedules a task relative to the current time (for example, 10 minutes later), while ETA schedules a task at a specific absolute date and time.
+Countdown schedules a task relative to the current time (for example, 10 minutes later), while ETA schedules a task at a
+specific absolute date and time.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -827,9 +832,10 @@ Countdown schedules a task relative to the current time (for example, 10 minutes
 
 #### Answer
 
-Expiration prevents outdated tasks, such as OTP delivery or flash sale notifications, from executing after they are no longer useful.
+Expiration prevents outdated tasks, such as OTP delivery or flash sale notifications, from executing after they are no
+longer useful.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -837,9 +843,10 @@ Expiration prevents outdated tasks, such as OTP delivery or flash sale notificat
 
 #### Answer
 
-Separating workloads prevents long-running tasks from blocking lightweight tasks and allows each workload to scale independently with dedicated worker pools.
+Separating workloads prevents long-running tasks from blocking lightweight tasks and allows each workload to scale
+independently with dedicated worker pools.
 
----
+______________________________________________________________________
 
 ## Question 6
 
@@ -847,9 +854,10 @@ Separating workloads prevents long-running tasks from blocking lightweight tasks
 
 #### Answer
 
-JSON is language-independent, widely supported, human-readable, and safer than Python-specific serializers like Pickle when exchanging messages between systems.
+JSON is language-independent, widely supported, human-readable, and safer than Python-specific serializers like Pickle
+when exchanging messages between systems.
 
----
+______________________________________________________________________
 
 ## Question 7
 
@@ -857,24 +865,25 @@ JSON is language-independent, widely supported, human-readable, and safer than P
 
 #### Answer
 
-No. Queue priorities depend on broker support and queue configuration. Simply assigning a priority in Celery is not sufficient unless the underlying queue is configured to use priorities.
+No. Queue priorities depend on broker support and queue configuration. Simply assigning a priority in Celery is not
+sufficient unless the underlying queue is configured to use priorities.
 
----
+______________________________________________________________________
 
 # Practice Questions
 
 1. Explain how `delay()` works internally.
-2. Compare `delay()` and `apply_async()`.
-3. What is Countdown?
-4. What is ETA?
-5. When should Expiration be used?
-6. Why separate tasks into multiple queues?
-7. Explain task priorities.
-8. Why is JSON preferred over Pickle?
-9. Design a routing strategy for an e-commerce application.
-10. Explain the complete flow of `apply_async()`.
+1. Compare `delay()` and `apply_async()`.
+1. What is Countdown?
+1. What is ETA?
+1. When should Expiration be used?
+1. Why separate tasks into multiple queues?
+1. Explain task priorities.
+1. Why is JSON preferred over Pickle?
+1. Design a routing strategy for an e-commerce application.
+1. Explain the complete flow of `apply_async()`.
 
----
+______________________________________________________________________
 
 # Mini Assignment
 
@@ -900,7 +909,7 @@ For each task, specify:
 
 Explain why you chose each option.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -916,7 +925,7 @@ Explain why you chose each option.
 
 ❌ Mixing CPU-intensive and lightweight tasks in the same queue.
 
----
+______________________________________________________________________
 
 # What's Next?
 

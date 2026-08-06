@@ -1,4 +1,5 @@
 # RabbitMQ Masterclass for Backend Engineers
+
 ## File 09 – Message TTL, Queue TTL, Queue Length Limits & Overflow Strategies
 
 > **Course Level:** Intermediate → Advanced
@@ -19,7 +20,7 @@
 >
 > RabbitMQ provides several mechanisms to automatically remove these stale messages.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -33,28 +34,28 @@ By the end of this chapter, you will be able to:
 - Design queues that automatically clean themselves.
 - Prevent queues from growing indefinitely.
 
----
+______________________________________________________________________
 
 # Table of Contents
 
 1. Why Messages Should Expire
-2. Message TTL
-3. Queue TTL
-4. Queue Expiration
-5. Queue Length Limits
-6. Queue Overflow Strategies
-7. TTL + DLQ
-8. Production Use Cases
-9. Best Practices
-10. Summary
-11. Key Takeaways
-12. Interview Deep Dive
-13. Practice Questions
-14. Mini Assignment
-15. Common Mistakes
-16. What's Next?
+1. Message TTL
+1. Queue TTL
+1. Queue Expiration
+1. Queue Length Limits
+1. Queue Overflow Strategies
+1. TTL + DLQ
+1. Production Use Cases
+1. Best Practices
+1. Summary
+1. Key Takeaways
+1. Interview Deep Dive
+1. Practice Questions
+1. Mini Assignment
+1. Common Mistakes
+1. What's Next?
 
----
+______________________________________________________________________
 
 # Why Messages Should Expire
 
@@ -96,7 +97,7 @@ Some messages lose their value over time.
 
 RabbitMQ allows them to expire automatically.
 
----
+______________________________________________________________________
 
 # What is TTL?
 
@@ -116,7 +117,7 @@ After the TTL expires,
 
 RabbitMQ removes it.
 
----
+______________________________________________________________________
 
 # Message TTL
 
@@ -156,7 +157,7 @@ If a Consumer hasn't processed it,
 
 the message disappears.
 
----
+______________________________________________________________________
 
 # Visual Example
 
@@ -194,7 +195,7 @@ Email
 
 OTP expired.
 
----
+______________________________________________________________________
 
 # Real World Example
 
@@ -218,7 +219,7 @@ Meaningless.
 
 TTL prevents stale notifications.
 
----
+______________________________________________________________________
 
 # Queue TTL
 
@@ -228,7 +229,7 @@ Instead of expiring messages,
 
 RabbitMQ expires the Queue itself.
 
----
+______________________________________________________________________
 
 Suppose
 
@@ -246,7 +247,7 @@ After
 
 RabbitMQ deletes the Queue.
 
----
+______________________________________________________________________
 
 Timeline
 
@@ -266,13 +267,13 @@ TTL Expires
 Queue Deleted
 ```
 
----
+______________________________________________________________________
 
 # Message TTL vs Queue TTL
 
 These are completely different concepts.
 
----
+______________________________________________________________________
 
 ## Message TTL
 
@@ -282,7 +283,7 @@ Expires
 Messages
 ```
 
----
+______________________________________________________________________
 
 ## Queue TTL
 
@@ -292,7 +293,7 @@ Expires
 Entire Queue
 ```
 
----
+______________________________________________________________________
 
 Comparison
 
@@ -302,7 +303,7 @@ Comparison
 | Use Case | OTP, Notifications | Temporary Queues |
 | Common | Very Common | Less Common |
 
----
+______________________________________________________________________
 
 # Queue Expiration
 
@@ -340,7 +341,7 @@ Useful for
 - Dynamic queues
 - Development environments
 
----
+______________________________________________________________________
 
 # Queue Length Limits
 
@@ -370,7 +371,7 @@ Not good.
 
 RabbitMQ allows maximum Queue size.
 
----
+______________________________________________________________________
 
 Example
 
@@ -384,7 +385,7 @@ Once full,
 
 RabbitMQ follows an overflow policy.
 
----
+______________________________________________________________________
 
 # Queue Overflow
 
@@ -414,7 +415,7 @@ What should RabbitMQ do?
 
 RabbitMQ supports multiple strategies.
 
----
+______________________________________________________________________
 
 # Overflow Strategy 1
 
@@ -458,7 +459,7 @@ Queue becomes
 
 Oldest message removed.
 
----
+______________________________________________________________________
 
 # Overflow Strategy 2
 
@@ -494,7 +495,7 @@ Useful when
 
 losing existing messages is unacceptable.
 
----
+______________________________________________________________________
 
 # Overflow Strategy 3
 
@@ -520,7 +521,7 @@ Dead Letter Queue
 
 Allows later investigation.
 
----
+______________________________________________________________________
 
 # TTL with Dead Letter Queues
 
@@ -558,7 +559,7 @@ Useful for
 - Debugging
 - Monitoring
 
----
+______________________________________________________________________
 
 # TTL for Delayed Processing
 
@@ -588,7 +589,7 @@ before becoming available again.
 
 This is one of the most common retry implementations.
 
----
+______________________________________________________________________
 
 # Production Example
 
@@ -628,7 +629,7 @@ Reassign Driver
 
 TTL becomes part of the business workflow.
 
----
+______________________________________________________________________
 
 # Another Production Example
 
@@ -656,7 +657,7 @@ TTL = 5 Seconds
 
 RabbitMQ automatically removes stale updates.
 
----
+______________________________________________________________________
 
 # Queue Monitoring
 
@@ -674,7 +675,7 @@ These metrics indicate
 - Producer spikes
 - Infrastructure problems
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -693,7 +694,7 @@ Do expire
 - Live scores
 - Cache invalidations
 
----
+______________________________________________________________________
 
 ## Configure Queue Limits
 
@@ -703,13 +704,13 @@ Prevent
 Infinite Queue Growth
 ```
 
----
+______________________________________________________________________
 
 ## Combine TTL with DLQ
 
 Don't silently lose important messages.
 
----
+______________________________________________________________________
 
 ## Monitor Expired Messages
 
@@ -719,7 +720,7 @@ may indicate
 
 Consumers aren't keeping up.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -733,7 +734,7 @@ Combined with Dead Letter Queues,
 
 these features provide robust resource management for production systems.
 
----
+______________________________________________________________________
 
 # Key Takeaways
 
@@ -746,7 +747,7 @@ these features provide robust resource management for production systems.
 - TTL is useful for temporary information.
 - Critical business data should rarely expire automatically.
 
----
+______________________________________________________________________
 
 # Interview Deep Dive
 
@@ -756,9 +757,10 @@ these features provide robust resource management for production systems.
 
 #### Answer
 
-Message TTL defines how long an individual message can remain in RabbitMQ before it expires. Once the TTL expires, RabbitMQ removes the message or forwards it to a Dead Letter Exchange if configured.
+Message TTL defines how long an individual message can remain in RabbitMQ before it expires. Once the TTL expires,
+RabbitMQ removes the message or forwards it to a Dead Letter Exchange if configured.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -768,7 +770,7 @@ Message TTL defines how long an individual message can remain in RabbitMQ before
 
 Queue TTL defines how long an unused Queue should exist before RabbitMQ automatically deletes it.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -776,9 +778,10 @@ Queue TTL defines how long an unused Queue should exist before RabbitMQ automati
 
 #### Answer
 
-Message TTL applies to messages inside a Queue, while Queue TTL applies to the Queue itself. Message TTL removes expired messages; Queue TTL removes unused Queues.
+Message TTL applies to messages inside a Queue, while Queue TTL applies to the Queue itself. Message TTL removes expired
+messages; Queue TTL removes unused Queues.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -786,9 +789,10 @@ Message TTL applies to messages inside a Queue, while Queue TTL applies to the Q
 
 #### Answer
 
-Queue Length Limits prevent unlimited Queue growth, protecting RabbitMQ from excessive memory or disk usage when Consumers cannot keep up with Producers.
+Queue Length Limits prevent unlimited Queue growth, protecting RabbitMQ from excessive memory or disk usage when
+Consumers cannot keep up with Producers.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -796,9 +800,10 @@ Queue Length Limits prevent unlimited Queue growth, protecting RabbitMQ from exc
 
 #### Answer
 
-RabbitMQ follows its configured overflow policy, such as dropping the oldest message, rejecting new messages, or routing overflowed messages to a Dead Letter Queue.
+RabbitMQ follows its configured overflow policy, such as dropping the oldest message, rejecting new messages, or routing
+overflowed messages to a Dead Letter Queue.
 
----
+______________________________________________________________________
 
 ## Question 6
 
@@ -806,9 +811,10 @@ RabbitMQ follows its configured overflow policy, such as dropping the oldest mes
 
 #### Answer
 
-Examples include OTPs, flash sale notifications, live sports scores, stock market updates, session tokens, temporary cache invalidation events, and retry messages.
+Examples include OTPs, flash sale notifications, live sports scores, stock market updates, session tokens, temporary
+cache invalidation events, and retry messages.
 
----
+______________________________________________________________________
 
 ## Question 7
 
@@ -816,24 +822,25 @@ Examples include OTPs, flash sale notifications, live sports scores, stock marke
 
 #### Answer
 
-Generally, no. Payment and other critical business messages should not expire automatically because losing them could result in financial or business inconsistencies.
+Generally, no. Payment and other critical business messages should not expire automatically because losing them could
+result in financial or business inconsistencies.
 
----
+______________________________________________________________________
 
 # Practice Questions
 
 1. Explain Time To Live (TTL).
-2. Compare Message TTL and Queue TTL.
-3. Why are Queue Length Limits important?
-4. Explain Queue Overflow Strategies.
-5. How can TTL be used to implement delayed retries?
-6. Which applications benefit from Message TTL?
-7. Why shouldn't payment systems use Message TTL?
-8. Explain how TTL and DLQs work together.
-9. What metrics should be monitored in production?
-10. Design a Queue configuration for an OTP service.
+1. Compare Message TTL and Queue TTL.
+1. Why are Queue Length Limits important?
+1. Explain Queue Overflow Strategies.
+1. How can TTL be used to implement delayed retries?
+1. Which applications benefit from Message TTL?
+1. Why shouldn't payment systems use Message TTL?
+1. Explain how TTL and DLQs work together.
+1. What metrics should be monitored in production?
+1. Design a Queue configuration for an OTP service.
 
----
+______________________________________________________________________
 
 # Mini Assignment
 
@@ -857,7 +864,7 @@ For each requirement, specify:
 
 Explain your design choices.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -873,7 +880,7 @@ Explain your design choices.
 
 ❌ Assuming TTL timers start when Consumers receive the message (they start when the message enters the Queue).
 
----
+______________________________________________________________________
 
 # What's Next?
 

@@ -1,4 +1,5 @@
 # RabbitMQ Masterclass for Backend Engineers
+
 ## File 08 – Dead Letter Exchanges (DLX), Dead Letter Queues (DLQ) & Retry Strategies
 
 > **Course Level:** Intermediate → Advanced
@@ -17,7 +18,7 @@
 >
 > This chapter covers the production techniques used by companies like Amazon, Netflix, Uber, and Stripe.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -31,31 +32,31 @@ By the end of this chapter, you will be able to:
 - Explain Delayed Retries.
 - Design Production Failure Handling.
 
----
+______________________________________________________________________
 
 # Table of Contents
 
 1. Why Messages Fail
-2. Infinite Retry Problem
-3. What is a Dead Letter?
-4. Dead Letter Exchange (DLX)
-5. Dead Letter Queue (DLQ)
-6. Why Messages Become Dead Letters
-7. Poison Messages
-8. Retry Strategies
-9. Delayed Retries
-10. Retry Queue Pattern
-11. Production Retry Architecture
-12. Best Practices
-13. Summary
-14. Key Takeaways
-15. Interview Deep Dive
-16. Practice Questions
-17. Mini Assignment
-18. Common Mistakes
-19. What's Next?
+1. Infinite Retry Problem
+1. What is a Dead Letter?
+1. Dead Letter Exchange (DLX)
+1. Dead Letter Queue (DLQ)
+1. Why Messages Become Dead Letters
+1. Poison Messages
+1. Retry Strategies
+1. Delayed Retries
+1. Retry Queue Pattern
+1. Production Retry Architecture
+1. Best Practices
+1. Summary
+1. Key Takeaways
+1. Interview Deep Dive
+1. Practice Questions
+1. Mini Assignment
+1. Common Mistakes
+1. What's Next?
 
----
+______________________________________________________________________
 
 # Why Messages Fail
 
@@ -89,7 +90,7 @@ Email sending fails.
 
 Now what?
 
----
+______________________________________________________________________
 
 Or imagine
 
@@ -107,7 +108,7 @@ Connection Timeout
 
 Another failure.
 
----
+______________________________________________________________________
 
 Or
 
@@ -123,7 +124,7 @@ Failures happen every day.
 
 RabbitMQ needs a strategy.
 
----
+______________________________________________________________________
 
 # The Naive Solution
 
@@ -167,7 +168,7 @@ Actually,
 
 it's terrible.
 
----
+______________________________________________________________________
 
 # Infinite Retry Problem
 
@@ -209,13 +210,13 @@ Queue blocked.
 
 Workers busy.
 
----
+______________________________________________________________________
 
 This is called
 
 **Infinite Retry Loop**
 
----
+______________________________________________________________________
 
 # Real Production Example
 
@@ -249,7 +250,7 @@ Nothing changes.
 
 The message is permanently bad.
 
----
+______________________________________________________________________
 
 # What is a Dead Letter?
 
@@ -287,7 +288,7 @@ Problematic messages go to
 Dead Letter Queue
 ```
 
----
+______________________________________________________________________
 
 # Dead Letter Exchange (DLX)
 
@@ -327,7 +328,7 @@ RabbitMQ doesn't delete the message.
 
 It redirects it.
 
----
+______________________________________________________________________
 
 # Dead Letter Queue (DLQ)
 
@@ -353,13 +354,13 @@ or support engineers
 
 can inspect these messages later.
 
----
+______________________________________________________________________
 
 # Why Do Messages Become Dead Letters?
 
 RabbitMQ moves messages to a DLQ for several reasons.
 
----
+______________________________________________________________________
 
 ## Reason 1 — Reject without Requeue
 
@@ -375,7 +376,7 @@ RabbitMQ immediately sends the message
 
 to the DLX.
 
----
+______________________________________________________________________
 
 ## Example
 
@@ -389,7 +390,7 @@ Reject.
 
 Move to DLQ.
 
----
+______________________________________________________________________
 
 ## Reason 2 — Message Expired (TTL)
 
@@ -409,7 +410,7 @@ Nobody should process it afterward.
 
 RabbitMQ moves it to the DLQ.
 
----
+______________________________________________________________________
 
 ## Reason 3 — Queue Length Limit
 
@@ -429,7 +430,7 @@ Oldest message becomes
 
 Dead Letter.
 
----
+______________________________________________________________________
 
 ## Reason 4 — Delivery Limit
 
@@ -465,7 +466,7 @@ Much better than
 ∞ Retries
 ```
 
----
+______________________________________________________________________
 
 # Poison Messages
 
@@ -503,7 +504,7 @@ Crash
 
 It poisons the Queue.
 
----
+______________________________________________________________________
 
 Another example
 
@@ -519,7 +520,7 @@ Retrying is pointless.
 
 Move it to DLQ.
 
----
+______________________________________________________________________
 
 # Retry Strategies
 
@@ -527,7 +528,7 @@ There are several retry strategies.
 
 Let's examine each.
 
----
+______________________________________________________________________
 
 # Strategy 1
 
@@ -547,7 +548,7 @@ Useful for
 
 temporary network failures.
 
----
+______________________________________________________________________
 
 Problem
 
@@ -563,7 +564,7 @@ Retry
 Fails Again
 ```
 
----
+______________________________________________________________________
 
 # Strategy 2
 
@@ -583,7 +584,7 @@ Retry
 
 Allows temporary outages to recover.
 
----
+______________________________________________________________________
 
 # Strategy 3
 
@@ -619,7 +620,7 @@ Retry 4
 
 This is one of the most common production strategies.
 
----
+______________________________________________________________________
 
 # Strategy 4
 
@@ -643,7 +644,7 @@ Dead Letter Queue
 
 Probably the best default approach.
 
----
+______________________________________________________________________
 
 # Retry Queue Pattern
 
@@ -687,7 +688,7 @@ Main Queue
 DLQ
 ```
 
----
+______________________________________________________________________
 
 # Production Retry Architecture
 
@@ -761,7 +762,7 @@ DLQ
 
 This architecture is widely used in production systems.
 
----
+______________________________________________________________________
 
 # Message Lifecycle
 
@@ -783,7 +784,7 @@ Consumer
 ACK
 ```
 
----
+______________________________________________________________________
 
 Temporary Failure
 
@@ -815,7 +816,7 @@ Consumer
 ACK
 ```
 
----
+______________________________________________________________________
 
 Permanent Failure
 
@@ -847,7 +848,7 @@ Retry
 Dead Letter Queue
 ```
 
----
+______________________________________________________________________
 
 # Monitoring Dead Letter Queues
 
@@ -867,7 +868,7 @@ Sudden increases usually indicate
 - API failures
 - Invalid data
 
----
+______________________________________________________________________
 
 # Should We Process the DLQ?
 
@@ -901,7 +902,7 @@ Never automatically replay every DLQ message.
 
 Some messages are permanently invalid.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -909,25 +910,25 @@ Some messages are permanently invalid.
 
 Always limit retries.
 
----
+______________________________________________________________________
 
 ## Use Exponential Backoff
 
 Avoid overwhelming failing systems.
 
----
+______________________________________________________________________
 
 ## Separate Retry Queue
 
 Don't retry inside the same Queue.
 
----
+______________________________________________________________________
 
 ## Monitor DLQ
 
 Treat growing DLQs as production incidents.
 
----
+______________________________________________________________________
 
 ## Make Consumers Idempotent
 
@@ -937,7 +938,7 @@ Duplicate deliveries happen.
 
 Consumers should safely handle both.
 
----
+______________________________________________________________________
 
 # Real Production Example
 
@@ -979,7 +980,7 @@ Bank works.
 
 Payment succeeds.
 
----
+______________________________________________________________________
 
 Now imagine
 
@@ -1003,7 +1004,7 @@ Dead Letter Queue
 
 Support engineers investigate.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -1017,7 +1018,7 @@ Combined with retry queues and exponential backoff,
 
 DLQs provide a robust production-ready failure handling strategy.
 
----
+______________________________________________________________________
 
 # Key Takeaways
 
@@ -1030,7 +1031,7 @@ DLQs provide a robust production-ready failure handling strategy.
 - Monitor DLQ size in production.
 - Consumers should remain idempotent.
 
----
+______________________________________________________________________
 
 # Interview Deep Dive
 
@@ -1040,9 +1041,10 @@ DLQs provide a robust production-ready failure handling strategy.
 
 #### Answer
 
-A Dead Letter Queue (DLQ) is a Queue that stores messages that cannot be processed successfully. Instead of repeatedly retrying or deleting these messages, RabbitMQ moves them to the DLQ for later inspection and recovery.
+A Dead Letter Queue (DLQ) is a Queue that stores messages that cannot be processed successfully. Instead of repeatedly
+retrying or deleting these messages, RabbitMQ moves them to the DLQ for later inspection and recovery.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -1050,9 +1052,10 @@ A Dead Letter Queue (DLQ) is a Queue that stores messages that cannot be process
 
 #### Answer
 
-A Dead Letter Exchange (DLX) is a special Exchange that receives messages rejected, expired, or otherwise marked as dead letters and routes them to one or more Dead Letter Queues.
+A Dead Letter Exchange (DLX) is a special Exchange that receives messages rejected, expired, or otherwise marked as dead
+letters and routes them to one or more Dead Letter Queues.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -1060,9 +1063,10 @@ A Dead Letter Exchange (DLX) is a special Exchange that receives messages reject
 
 #### Answer
 
-A Poison Message is a message that consistently fails processing due to invalid data, corrupted payloads, or business rule violations. Retrying such messages is usually ineffective.
+A Poison Message is a message that consistently fails processing due to invalid data, corrupted payloads, or business
+rule violations. Retrying such messages is usually ineffective.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -1070,9 +1074,10 @@ A Poison Message is a message that consistently fails processing due to invalid 
 
 #### Answer
 
-Infinite retries waste CPU, fill logs, consume Queue capacity, and prevent healthy messages from being processed efficiently. Production systems should limit retries and move permanently failing messages to a Dead Letter Queue.
+Infinite retries waste CPU, fill logs, consume Queue capacity, and prevent healthy messages from being processed
+efficiently. Production systems should limit retries and move permanently failing messages to a Dead Letter Queue.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -1080,9 +1085,10 @@ Infinite retries waste CPU, fill logs, consume Queue capacity, and prevent healt
 
 #### Answer
 
-Exponential Backoff spaces retries further apart over time, reducing pressure on temporarily failing services and increasing the likelihood that external systems recover before the next retry.
+Exponential Backoff spaces retries further apart over time, reducing pressure on temporarily failing services and
+increasing the likelihood that external systems recover before the next retry.
 
----
+______________________________________________________________________
 
 ## Question 6
 
@@ -1090,9 +1096,10 @@ Exponential Backoff spaces retries further apart over time, reducing pressure on
 
 #### Answer
 
-Generally, no. DLQs are intended for investigation. Engineers inspect failed messages, identify the root cause, fix the issue, and then selectively replay valid messages.
+Generally, no. DLQs are intended for investigation. Engineers inspect failed messages, identify the root cause, fix the
+issue, and then selectively replay valid messages.
 
----
+______________________________________________________________________
 
 ## Question 7
 
@@ -1100,24 +1107,25 @@ Generally, no. DLQs are intended for investigation. Engineers inspect failed mes
 
 #### Answer
 
-A common production design uses a Main Queue, one or more Retry Queues with message TTLs, and a Dead Letter Queue. Messages move between these components until they either succeed or exceed the retry limit.
+A common production design uses a Main Queue, one or more Retry Queues with message TTLs, and a Dead Letter Queue.
+Messages move between these components until they either succeed or exceed the retry limit.
 
----
+______________________________________________________________________
 
 # Practice Questions
 
 1. Explain the difference between a DLX and a DLQ.
-2. What is a Poison Message?
-3. Why are infinite retries dangerous?
-4. Explain Exponential Backoff.
-5. What causes a message to become a dead letter?
-6. Why should retry logic use separate Queues?
-7. Should expired OTP messages be retried?
-8. How would you monitor a DLQ?
-9. When should a message be replayed from a DLQ?
-10. Design a retry strategy for an email service.
+1. What is a Poison Message?
+1. Why are infinite retries dangerous?
+1. Explain Exponential Backoff.
+1. What causes a message to become a dead letter?
+1. Why should retry logic use separate Queues?
+1. Should expired OTP messages be retried?
+1. How would you monitor a DLQ?
+1. When should a message be replayed from a DLQ?
+1. Design a retry strategy for an email service.
 
----
+______________________________________________________________________
 
 # Mini Assignment
 
@@ -1144,7 +1152,7 @@ For each failure below, determine whether it should be retried or moved directly
 
 Explain your reasoning.
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -1162,7 +1170,7 @@ Explain your reasoning.
 
 ❌ Assuming every failure is temporary.
 
----
+______________________________________________________________________
 
 # What's Next?
 

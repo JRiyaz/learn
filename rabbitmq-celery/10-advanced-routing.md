@@ -1,4 +1,5 @@
 # RabbitMQ Masterclass for Backend Engineers
+
 ## File 10 – Advanced Routing, Alternate Exchanges & Production Messaging Patterns
 
 > **Course Level:** Intermediate → Advanced
@@ -16,7 +17,7 @@
 >
 > This chapter answers those questions.
 
----
+______________________________________________________________________
 
 # Learning Objectives
 
@@ -30,30 +31,30 @@ By the end of this chapter, you will be able to:
 - Understand event fan-out patterns.
 - Build scalable messaging topologies.
 
----
+______________________________________________________________________
 
 # Table of Contents
 
 1. Why Advanced Routing Exists
-2. Multiple Queue Bindings
-3. Multiple Exchange Bindings
-4. Exchange-to-Exchange Bindings
-5. Alternate Exchanges
-6. Mandatory Publishing
-7. Routing Failures
-8. Event Bus Pattern
-9. Domain Events
-10. Production Architecture
-11. Best Practices
-12. Summary
-13. Key Takeaways
-14. Interview Deep Dive
-15. Practice Questions
-16. Mini Assignment
-17. Common Mistakes
-18. What's Next?
+1. Multiple Queue Bindings
+1. Multiple Exchange Bindings
+1. Exchange-to-Exchange Bindings
+1. Alternate Exchanges
+1. Mandatory Publishing
+1. Routing Failures
+1. Event Bus Pattern
+1. Domain Events
+1. Production Architecture
+1. Best Practices
+1. Summary
+1. Key Takeaways
+1. Interview Deep Dive
+1. Practice Questions
+1. Mini Assignment
+1. Common Mistakes
+1. What's Next?
 
----
+______________________________________________________________________
 
 # Why Advanced Routing Exists
 
@@ -101,7 +102,7 @@ Absolutely not.
 
 RabbitMQ provides advanced routing mechanisms so Producers remain completely unaware of downstream services.
 
----
+______________________________________________________________________
 
 # Multiple Queue Bindings
 
@@ -127,7 +128,7 @@ Audit Queue
 
 The Audit Queue receives messages from both Exchanges.
 
----
+______________________________________________________________________
 
 ## Real Example
 
@@ -157,7 +158,7 @@ Audit Queue
 
 All events are collected into a single Audit Queue.
 
----
+______________________________________________________________________
 
 # One Exchange to Multiple Queues
 
@@ -193,7 +194,7 @@ One event.
 
 Five independent services.
 
----
+______________________________________________________________________
 
 # Exchange-to-Exchange Bindings
 
@@ -223,7 +224,7 @@ Exchange
 Queue
 ```
 
----
+______________________________________________________________________
 
 ## Why Would We Need This?
 
@@ -277,7 +278,7 @@ Audit Queue
 
 This keeps routing centralized.
 
----
+______________________________________________________________________
 
 # Real Example
 
@@ -317,7 +318,7 @@ Scalable.
 
 Maintainable.
 
----
+______________________________________________________________________
 
 # Alternate Exchange (AE)
 
@@ -337,7 +338,7 @@ RabbitMQ silently drops the message.
 
 Not ideal.
 
----
+______________________________________________________________________
 
 # The Problem
 
@@ -359,7 +360,7 @@ No Queue
 
 Where should the message go?
 
----
+______________________________________________________________________
 
 # Alternate Exchange
 
@@ -383,7 +384,7 @@ Unrouted Queue
 
 Nothing is lost.
 
----
+______________________________________________________________________
 
 # Real Example
 
@@ -411,7 +412,7 @@ Unmatched Queue
 
 Developers inspect these unexpected events later.
 
----
+______________________________________________________________________
 
 # Why Alternate Exchanges Matter
 
@@ -447,7 +448,7 @@ Investigation
 
 Much safer.
 
----
+______________________________________________________________________
 
 # Mandatory Publishing
 
@@ -486,13 +487,13 @@ The Producer can then
 - Alert
 - Fix the issue
 
----
+______________________________________________________________________
 
 # Alternate Exchange vs Mandatory Publishing
 
 Many developers confuse these.
 
----
+______________________________________________________________________
 
 ## Alternate Exchange
 
@@ -504,7 +505,7 @@ RabbitMQ
 Stores Unrouted Message
 ```
 
----
+______________________________________________________________________
 
 ## Mandatory Publish
 
@@ -520,7 +521,7 @@ Returns Message
 Producer Decides
 ```
 
----
+______________________________________________________________________
 
 Comparison
 
@@ -530,7 +531,7 @@ Comparison
 | Message stays in RabbitMQ | Message returned to Producer |
 | Great for logging | Great for retry logic |
 
----
+______________________________________________________________________
 
 # Routing Failure Flow
 
@@ -552,7 +553,7 @@ No Queue
 Message Lost
 ```
 
----
+______________________________________________________________________
 
 With Alternate Exchange
 
@@ -576,7 +577,7 @@ Alternate Exchange
 Unmatched Queue
 ```
 
----
+______________________________________________________________________
 
 With Mandatory Publishing
 
@@ -596,7 +597,7 @@ No Queue
 Returned to Producer
 ```
 
----
+______________________________________________________________________
 
 # Event Bus Pattern
 
@@ -628,7 +629,7 @@ Event Bus
 
 Nothing else.
 
----
+______________________________________________________________________
 
 # Domain Events
 
@@ -694,13 +695,13 @@ Something happened.
 
 This is Event-Driven Architecture.
 
----
+______________________________________________________________________
 
 # Command vs Event
 
 These are frequently confused.
 
----
+______________________________________________________________________
 
 ## Command
 
@@ -716,7 +717,7 @@ Do this.
 
 Usually only one Consumer.
 
----
+______________________________________________________________________
 
 ## Event
 
@@ -732,7 +733,7 @@ This happened.
 
 Many Consumers may react.
 
----
+______________________________________________________________________
 
 Comparison
 
@@ -743,7 +744,7 @@ Comparison
 | Direct instruction | Broadcast information |
 | Tighter coupling | Looser coupling |
 
----
+______________________________________________________________________
 
 # Production Architecture
 
@@ -823,7 +824,7 @@ New services can subscribe
 
 without changing the Producer.
 
----
+______________________________________________________________________
 
 # Why This Scales So Well
 
@@ -851,7 +852,7 @@ Done.
 
 Existing services remain untouched.
 
----
+______________________________________________________________________
 
 # Best Practices
 
@@ -869,19 +870,19 @@ Publish
 Order Created
 ```
 
----
+______________________________________________________________________
 
 ## Use Alternate Exchanges
 
 Never silently lose messages.
 
----
+______________________________________________________________________
 
 ## Prefer Event-Driven Design
 
 Instead of tightly coupled APIs.
 
----
+______________________________________________________________________
 
 ## Keep Producers Dumb
 
@@ -891,7 +892,7 @@ only the Exchange.
 
 Never Queue names.
 
----
+______________________________________________________________________
 
 ## Separate Business Domains
 
@@ -909,7 +910,7 @@ Inventory Exchange
 
 instead of one giant Exchange.
 
----
+______________________________________________________________________
 
 # Summary
 
@@ -923,7 +924,7 @@ Event-driven architectures enable independent services to evolve without modifyi
 
 These patterns are widely used in modern cloud-native systems.
 
----
+______________________________________________________________________
 
 # Key Takeaways
 
@@ -936,7 +937,7 @@ These patterns are widely used in modern cloud-native systems.
 - Events differ from Commands.
 - Event-driven systems are highly scalable.
 
----
+______________________________________________________________________
 
 # Interview Deep Dive
 
@@ -946,9 +947,10 @@ These patterns are widely used in modern cloud-native systems.
 
 #### Answer
 
-An Alternate Exchange is a backup Exchange configured on a primary Exchange. If RabbitMQ cannot route a message to any Queue, it forwards the message to the Alternate Exchange instead of discarding it.
+An Alternate Exchange is a backup Exchange configured on a primary Exchange. If RabbitMQ cannot route a message to any
+Queue, it forwards the message to the Alternate Exchange instead of discarding it.
 
----
+______________________________________________________________________
 
 ## Question 2
 
@@ -956,9 +958,10 @@ An Alternate Exchange is a backup Exchange configured on a primary Exchange. If 
 
 #### Answer
 
-They prevent silent message loss caused by incorrect Routing Keys or missing Queue bindings by redirecting unrouted messages for later inspection or handling.
+They prevent silent message loss caused by incorrect Routing Keys or missing Queue bindings by redirecting unrouted
+messages for later inspection or handling.
 
----
+______________________________________________________________________
 
 ## Question 3
 
@@ -966,9 +969,10 @@ They prevent silent message loss caused by incorrect Routing Keys or missing Que
 
 #### Answer
 
-An Alternate Exchange handles unrouted messages within RabbitMQ by forwarding them to another Exchange. Mandatory Publishing returns unrouted messages directly to the Producer, allowing the application to decide what to do next.
+An Alternate Exchange handles unrouted messages within RabbitMQ by forwarding them to another Exchange. Mandatory
+Publishing returns unrouted messages directly to the Producer, allowing the application to decide what to do next.
 
----
+______________________________________________________________________
 
 ## Question 4
 
@@ -976,9 +980,10 @@ An Alternate Exchange handles unrouted messages within RabbitMQ by forwarding th
 
 #### Answer
 
-It allows one Exchange to forward messages to another Exchange before they reach Queues. This simplifies routing in large systems and promotes reuse of routing logic.
+It allows one Exchange to forward messages to another Exchange before they reach Queues. This simplifies routing in
+large systems and promotes reuse of routing logic.
 
----
+______________________________________________________________________
 
 ## Question 5
 
@@ -986,9 +991,10 @@ It allows one Exchange to forward messages to another Exchange before they reach
 
 #### Answer
 
-The Event Bus Pattern uses a central Exchange where services publish domain events. Multiple Consumers subscribe to relevant events without Producers knowing who the Consumers are.
+The Event Bus Pattern uses a central Exchange where services publish domain events. Multiple Consumers subscribe to
+relevant events without Producers knowing who the Consumers are.
 
----
+______________________________________________________________________
 
 ## Question 6
 
@@ -996,9 +1002,10 @@ The Event Bus Pattern uses a central Exchange where services publish domain even
 
 #### Answer
 
-A Command instructs a specific Consumer to perform an action, such as "Send Email." An Event announces that something has happened, such as "Order Created," allowing multiple Consumers to react independently.
+A Command instructs a specific Consumer to perform an action, such as "Send Email." An Event announces that something
+has happened, such as "Order Created," allowing multiple Consumers to react independently.
 
----
+______________________________________________________________________
 
 ## Question 7
 
@@ -1006,24 +1013,25 @@ A Command instructs a specific Consumer to perform an action, such as "Send Emai
 
 #### Answer
 
-They reduce coupling between services, improve scalability, simplify the addition of new Consumers, and allow services to evolve independently without changing Producers.
+They reduce coupling between services, improve scalability, simplify the addition of new Consumers, and allow services
+to evolve independently without changing Producers.
 
----
+______________________________________________________________________
 
 # Practice Questions
 
 1. Explain Exchange-to-Exchange bindings.
-2. What is an Alternate Exchange?
-3. Why should Alternate Exchanges be configured in production?
-4. Compare Mandatory Publishing and Alternate Exchanges.
-5. Explain the Event Bus Pattern.
-6. What is a Domain Event?
-7. Compare Commands and Events.
-8. Why should Producers avoid knowing Queue names?
-9. Design an Event Bus for an online shopping platform.
-10. Explain how RabbitMQ supports Event-Driven Architecture.
+1. What is an Alternate Exchange?
+1. Why should Alternate Exchanges be configured in production?
+1. Compare Mandatory Publishing and Alternate Exchanges.
+1. Explain the Event Bus Pattern.
+1. What is a Domain Event?
+1. Compare Commands and Events.
+1. Why should Producers avoid knowing Queue names?
+1. Design an Event Bus for an online shopping platform.
+1. Explain how RabbitMQ supports Event-Driven Architecture.
 
----
+______________________________________________________________________
 
 # Mini Assignment
 
@@ -1050,10 +1058,10 @@ Your design should include:
 Also answer:
 
 1. Which events should be broadcast?
-2. Which services should subscribe to every event?
-3. How would you prevent message loss caused by incorrect Routing Keys?
+1. Which services should subscribe to every event?
+1. How would you prevent message loss caused by incorrect Routing Keys?
 
----
+______________________________________________________________________
 
 # Common Mistakes
 
@@ -1069,13 +1077,14 @@ Also answer:
 
 ❌ Ignoring Alternate Exchanges in production.
 
----
+______________________________________________________________________
 
 # What's Next?
 
 You've now mastered RabbitMQ's routing capabilities.
 
-In the next chapter, we'll move into **RabbitMQ Clustering, High Availability, and Disaster Recovery**, where you'll learn:
+In the next chapter, we'll move into **RabbitMQ Clustering, High Availability, and Disaster Recovery**, where you'll
+learn:
 
 - RabbitMQ Clusters
 - Nodes
