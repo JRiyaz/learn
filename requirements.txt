@@ -3,6 +3,7 @@ openai==3.22.1
 python-dotenv==1.2.3
 beautifulsoup4==4.15.0
 requests==2.34.2
+nbformat==5.11.1
 
 # Dev dependencies
 ruff==0.16.9
